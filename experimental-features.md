@@ -1,72 +1,72 @@
 ---
 title: TiDB Experimental Features
 summary: Learn the experimental features of TiDB.
-aliases: ['/tidb/dev/experimental-features-4.0/']
+aliases: ["/tidb/dev/experimental-features-4.0/"]
 ---
 
-# TiDB Experimental Features
+# TiDB 実験的機能 {#tidb-experimental-features}
 
-This document introduces the experimental features of TiDB in different versions. It is **NOT** recommended to use these features in the production environment.
+このドキュメントでは、TiDB の実験的な機能をさまざまなバージョンで紹介します。**ない** は、本番環境でこれらの機能を使用することをお勧めします。
 
-## Performance
+## パフォーマンス {#performance}
 
-+ [Raft Engine](/tikv-configuration-file.md#raft-engine). (Introduced in v5.4)
-+ [Support collecting statistics for `PREDICATE COLUMNS`](/statistics.md#collect-statistics-on-some-columns) (Introduced in v5.4)
-+ [Support synchronously loading statistics](/statistics.md#load-statistics). (Introduced in v5.4)
+- [ラフトエンジン](/tikv-configuration-file.md#raft-engine)。(v5.4 で導入)
+- [`PREDICATE COLUMNS` の統計収集をサポート](/statistics.md#collect-statistics-on-some-columns) (v5.4 で導入)
+- [統計の同期ロードをサポート](/statistics.md#load-statistics)。(v5.4 で導入)
 
-## Stability
+## 安定性 {#stability}
 
-+ TiFlash limits the use of I/O resources by compressing or sorting data, mitigating the contention for I/O resources between background tasks and front-end data reading and writing (Introduced in v5.0)
-+ Improve the stability of the optimizer's choice of indexes (Introduced in v5.0)
-    + Extend the statistics feature by collecting the multi-column order dependency information.
-    + Refactor the statistics module, including deleting the `TopN` value from `CMSKetch` and the histogram, and adding NDV information for histogram buckets of each table index.
-+ When TiKV is deployed with limited resources, if the foreground of TiKV processes too many read and write requests, the CPU resources used by the background are occupied to help process such requests, which affects the performance stability of TiKV. To avoid this situation, you can use the [Quota Limiter](/tikv-configuration-file.md#quota) to limit the CPU resources to be used by the foreground. (Introduced in v6.0)
+- TiFlash は、データを圧縮またはソートすることによって I/O リソースの使用を制限し、バックグラウンドタスクとフロントエンドデータの読み取り/書き込みの間での I/O リソースの競合を軽減します（v5.0 で導入）
+- オプティマイザが選択したインデックスの安定性を向上させる (v5.0 で導入)
+  - 複数列の順序依存情報を収集して、統計機能を拡張します。
+  - `CMSKetch` とヒストグラムから `TopN` 値を削除したり、各テーブルインデックスのヒストグラムバケットの NDV 情報を追加したりするなど、統計モジュールをリファクタリングします。
+- TikV が限られたリソースでデプロイされている場合、TikV のフォアグラウンドが処理する読み取りおよび書き込み要求が多すぎると、バックグラウンドで使用される CPU リソースがそのような要求の処理を支援するために占有され、TikV のパフォーマンスの安定性に影響します。この状況を回避するには、[クォータリミッター](/tikv-configuration-file.md#quota) を使用して、フォアグラウンドで使用される CPU リソースを制限できます。(v6.0 で導入)
 
-## Scheduling
+## スケジューリング {#scheduling}
 
-+ Cascading Placement Rules feature. It is a replica rule system that guides PD to generate corresponding schedules for different types of data. By combining different scheduling rules, you can finely control the attributes of any continuous data range, such as the number of replicas, the storage location, the host type, whether to participate in Raft election, and whether to act as the Raft leader. See [Cascading Placement Rules](/configure-placement-rules.md) for details. (Introduced in v4.0)
-+ Elastic scheduling feature. It enables the TiDB cluster to dynamically scale out and in on Kubernetes based on real-time workloads, which effectively reduces the stress during your application's peak hours and saves overheads. See [Enable TidbCluster Auto-scaling](https://docs.pingcap.com/tidb-in-kubernetes/stable/enable-tidb-cluster-auto-scaling) for details. (Introduced in v4.0)
+- カスケード配置ルール機能。これは、PD がさまざまなタイプのデータに対応するスケジュールを生成するように誘導するレプリカルールシステムです。異なるスケジューリングルールを組み合わせることで、レプリカの数、保存場所、ホストタイプ、Raft 選挙に参加するかどうか、Raft リーダーとして機能するかどうかなど、連続するデータ範囲の属性を細かく制御できます。詳細については [カスケード配置ルール](/configure-placement-rules.md) を参照してください。(v4.0 で導入)
+- 弾力性のあるスケジューリング機能。これにより、TiDB クラスターはリアルタイムワークロードに基づいて Kubernetes 上で動的にスケールアウトおよびスケールインできます。これにより、アプリケーションのピーク時のストレスを効果的に軽減し、オーバーヘッドを節約できます。詳細については [TIDBcluster 自動スケーリングを有効にする](https://docs.pingcap.com/tidb-in-kubernetes/stable/enable-tidb-cluster-auto-scaling) を参照してください。(v4.0 で導入)
 
-## SQL
+## SQL {#sql}
 
-+ List Partition (Introduced in v5.0)
-+ List COLUMNS Partition (Introduced in v5.0)
-+ [Dynamic Pruning Mode for Partitioned Tables](/partitioned-table.md#dynamic-pruning-mode). (Introduced in v5.1)
-+ The expression index feature. The expression index is also called the function-based index. When you create an index, the index fields do not have to be a specific column but can be an expression calculated from one or more columns. This feature is useful for quickly accessing the calculation-based tables. See [Expression index](/sql-statements/sql-statement-create-index.md) for details. (Introduced in v4.0)
-+ [Generated Columns](/generated-columns.md) (Introduced in v2.1)
-+ [User-Defined Variables](/user-defined-variables.md) (Introduced in v2.1)
-+ [JSON data type](/data-type-json.md) and [JSON functions](/functions-and-operators/json-functions.md) (Introduced in v2.1)
-+ [View](/information-schema/information-schema-views.md) (Introduced in v2.1)
+- リストパーティション (v5.0 で導入)
+- 列パーティションを一覧表示 (v5.0 で導入)
+- [分割テーブルの動的プルーニングモード](/partitioned-table.md#dynamic-pruning-mode)。(v5.1 で導入)
+- 式インデックス機能。式インデックスは、関数ベースインデックスとも呼ばれます。インデックスを作成する場合、インデックスフィールドは特定の列である必要はありませんが、1 つ以上の列から計算される式にすることができます。この機能は、計算ベースのテーブルにすばやくアクセスするのに役立ちます。詳細については [式インデックス](/sql-statements/sql-statement-create-index.md) を参照してください。(v4.0 で導入)
+- [生成された列](/generated-columns.md) (v2.1 で導入)
+- [ユーザー定義変数](/user-defined-variables.md) (v2.1 で導入)
+- [JSON データタイプ](/data-type-json.md) と [JSON 関数](/functions-and-operators/json-functions.md) (v2.1 で導入)
+- [表示](/information-schema/information-schema-views.md) (v2.1 で導入)
 
-## Configuration management
+## 構成管理 {#configuration-management}
 
-+ Persistently store configuration parameters in PD, and support dynamically modifying configuration items. (Introduced in v4.0)
-+ [SHOW CONFIG](/sql-statements/sql-statement-show-config.md) (Introduced in v4.0)
+- 構成パラメータを PD に永続的に保存し、構成項目の動的な変更をサポートします。(v4.0 で導入)
+- [コンフィグを表示](/sql-statements/sql-statement-show-config.md) (v4.0 で導入)
 
-## Data sharing and subscription
+## データ共有と購読 {#data-sharing-and-subscription}
 
-+ [Integrate TiCDC with Kafka Connect (Confluent Platform)](/ticdc/integrate-confluent-using-ticdc.md) (Introduced in v5.0)
+- [TicDC を Kafka Connect と統合する (Confluent プラットフォーム)](/ticdc/integrate-confluent-using-ticdc.md) (v5.0 で導入)
 
-## Storage
+## ストレージ {#storage}
 
-+ [Disable Titan](/storage-engine/titan-configuration.md#disable-titan-experimental) (Introduced in v4.0)
-+ [Titan Level Merge](/storage-engine/titan-configuration.md#level-merge-experimental) (Introduced in v4.0)
-+ TiFlash supports distributing the new data of the storage engine on multiple hard drives to share the I/O pressure. (Introduced in v4.0)
+- [タイタンを無効にする](/storage-engine/titan-configuration.md#disable-titan-experimental) (v4.0 で導入)
+- [タイタンレベルマージ](/storage-engine/titan-configuration.md#level-merge-experimental) (v4.0 で導入)
+- TiFlash は、ストレージエンジンの新しいデータを複数のハードドライブに分散して I/O プレッシャーを分担することをサポートしています。(v4.0 で導入)
 
-## Backup and restoration
+## バックアップと復元 {#backup-and-restoration}
 
-+ [Back up Raw KV](/br/use-br-command-line-tool.md#back-up-raw-kv-experimental-feature) (Introduced in v3.1)
+- [Raw KV をバックアップする](/br/use-br-command-line-tool.md#back-up-raw-kv-experimental-feature) (v3.1 で導入)
 
-## Data migration
+## データ移行 {#data-migration}
 
-+ [Use WebUI](/dm/dm-webui-guide.md) to manage migration tasks in DM. (Introduced in v6.0)
+- [WebUI を使う](/dm/dm-webui-guide.md) を使用して、DM の移行タスクを管理します。(v6.0 で導入)
 
-## Garbage collection
+## ガベージコレクション {#garbage-collection}
 
-+ [Green GC](/system-variables.md#tidb_gc_scan_lock_mode-new-in-v50) (Introduced in v5.0)
+- [グリーン GC](/system-variables.md#tidb_gc_scan_lock_mode-new-in-v50) (v5.0 で導入)
 
-## Diagnostics
+## 診断 {#diagnostics}
 
-+ [SQL diagnostics](/information-schema/information-schema-sql-diagnostics.md) (Introduced in v4.0)
-+ [Cluster diagnostics](/dashboard/dashboard-diagnostics-access.md) (Introduced in v4.0)
-+ [Online Unsafe Recovery](/online-unsafe-recovery.md) (Introduced in v5.3)
+- [SQL 診断](/information-schema/information-schema-sql-diagnostics.md) (v4.0 で導入)
+- [クラスター診断](/dashboard/dashboard-diagnostics-access.md) (v4.0 で導入)
+- [オンライン安全でないリカバリ](/online-unsafe-recovery.md) (v5.3 で導入)
