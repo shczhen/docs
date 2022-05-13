@@ -6,7 +6,7 @@ aliases: ['/docs/dev/key-features/','/tidb/dev/key-features','/docs/dev/overview
 
 # TiDBの紹介 {#tidb-introduction}
 
-<span translate="no">[TiDB](https://github.com/pingcap/tidb)</span> （/&#39;taɪdiːbi：/、「Ti」はTitaniumの略）は、Hybrid Transactional and Analytical Processing（HTAP）ワークロードをサポートするオープンソースのNewSQLデータベースです。 MySQLと互換性があり、水平方向のスケーラビリティ、強力な一貫性、および高可用性を備えています。 TiDBの目標は、OLTP（オンライントランザクション処理）、OLAP（オンライン分析処理）、およびHTAPサービスをカバーするワンストップデータベースソリューションをユーザーに提供することです。 TiDBは、高可用性と大規模データとの強力な整合性を必要とするさまざまなユースケースに適しています。
+[TiDB](https://github.com/pingcap/tidb) （/&#39;taɪdiːbi：/、「Ti」はTitaniumの略）は、Hybrid Transactional and Analytical Processing（HTAP）ワークロードをサポートするオープンソースのNewSQLデータベースです。 MySQLと互換性があり、水平方向のスケーラビリティ、強力な一貫性、および高可用性を備えています。 TiDBの目標は、OLTP（オンライントランザクション処理）、OLAP（オンライン分析処理）、およびHTAPサービスをカバーするワンストップデータベースソリューションをユーザーに提供することです。 TiDBは、高可用性と大規模データとの強力な整合性を必要とするさまざまなユースケースに適しています。
 
 <video src="https://tidb-docs.s3.us-east-2.amazonaws.com/ENG+TiDB+Intro+2.mp4" width="600px" height="450px" controls poster="https://tidb-docs.s3.us-east-2.amazonaws.com/Thumbnail+-+ENG.png"></video>
 
@@ -22,15 +22,15 @@ aliases: ['/docs/dev/key-features/','/tidb/dev/key-features','/docs/dev/overview
 
 -   <strong>リアルタイムHTAP</strong>
 
-    TiDBは、2つのストレージエンジンを提供します<span translate="no">[TiKV](/tikv-overview.md)</span>つは行ベースのストレージエンジンで、 <span translate="no">[TiFlash](/tiflash/tiflash-overview.md)</span>は列型ストレージエンジンです。 TiFlashは、Multi-Raft Learnerプロトコルを使用して、TiKVからのデータをリアルタイムで複製し、TiKV行ベースのストレージエンジンとTiFlash列型ストレージエンジン間のデータの一貫性を確保します。 TiKVとTiFlashは、HTAPリソース分離の問題を解決するために、必要に応じて異なるマシンに展開できます。
+    TiDBは、2つのストレージエンジンを提供します[TiKV](/tikv-overview.md)つは行ベースのストレージエンジンで、 [TiFlash](/tiflash/tiflash-overview.md)は列型ストレージエンジンです。 TiFlashは、Multi-Raft Learnerプロトコルを使用して、TiKVからのデータをリアルタイムで複製し、TiKV行ベースのストレージエンジンとTiFlash列型ストレージエンジン間のデータの一貫性を確保します。 TiKVとTiFlashは、HTAPリソース分離の問題を解決するために、必要に応じて異なるマシンに展開できます。
 
 -   <strong>クラウドネイティブの分散データベース</strong>
 
-    TiDBは、クラウド向けに設計された分散データベースであり、クラウドプラットフォームに柔軟なスケーラビリティ、信頼性、セキュリティを提供します。ユーザーは、変化するワークロードの要件を満たすためにTiDBを柔軟にスケーリングできます。 TiDBでは、各データに少なくとも3つのレプリカがあり、データセンター全体の停止を許容するために、異なるクラウドアベイラビリティーゾーンでスケジュールすることができます。 <span translate="no">[TiDBオペレーター](https://docs.pingcap.com/tidb-in-kubernetes/stable/tidb-operator-overview)</span>は、KubernetesでのTiDBの管理を支援し、TiDBクラスターの運用に関連するタスクを自動化します。これにより、管理対象のKubernetesを提供するクラウドにTiDBを簡単にデプロイできます。フルマネージドのTiDBサービスである<span translate="no">[TiDBクラウド](https://pingcap.com/tidb-cloud/)</span>は、 <span translate="no">[クラウド内のTiDB](https://docs.pingcap.com/tidbcloud/)</span>の全力を解き放つための最も簡単で、最も経済的で、最も回復力のある方法であり、数回クリックするだけでTiDBクラスターを展開および実行できます。
+    TiDBは、クラウド向けに設計された分散データベースであり、クラウドプラットフォームに柔軟なスケーラビリティ、信頼性、セキュリティを提供します。ユーザーは、変化するワークロードの要件を満たすためにTiDBを柔軟にスケーリングできます。 TiDBでは、各データに少なくとも3つのレプリカがあり、データセンター全体の停止を許容するために、異なるクラウドアベイラビリティーゾーンでスケジュールすることができます。 [TiDBオペレーター](https://docs.pingcap.com/tidb-in-kubernetes/stable/tidb-operator-overview)は、KubernetesでのTiDBの管理を支援し、TiDBクラスターの運用に関連するタスクを自動化します。これにより、管理対象のKubernetesを提供するクラウドにTiDBを簡単にデプロイできます。フルマネージドのTiDBサービスである[TiDBクラウド](https://pingcap.com/tidb-cloud/)は、 [クラウド内のTiDB](https://docs.pingcap.com/tidbcloud/)の全力を解き放つための最も簡単で、最も経済的で、最も回復力のある方法であり、数回クリックするだけでTiDBクラスターを展開および実行できます。
 
 -   <strong>MySQL5.7プロトコルおよびMySQLエコシステムと互換性があります</strong>
 
-    TiDBは、MySQL 5.7プロトコル、MySQLの一般的な機能、およびMySQLエコシステムと互換性があります。アプリケーションをTiDBに移行するために、多くの場合、1行のコードを変更する必要はなく、少量のコードを変更するだけで済みます。さらに、TiDBは、アプリケーションデータをTiDBに簡単に移行するのに役立つ一連の<span translate="no">[データ移行ツール](/ecosystem-tool-user-guide.md)</span>を提供します。
+    TiDBは、MySQL 5.7プロトコル、MySQLの一般的な機能、およびMySQLエコシステムと互換性があります。アプリケーションをTiDBに移行するために、多くの場合、1行のコードを変更する必要はなく、少量のコードを変更するだけで済みます。さらに、TiDBは、アプリケーションデータをTiDBに簡単に移行するのに役立つ一連の[データ移行ツール](/ecosystem-tool-user-guide.md)を提供します。
 
     <video src="https://tidb-docs.s3.us-east-2.amazonaws.com/ENG+TiDB+Intro+1.mp4" width="600px" height="450px" controls poster="https://tidb-docs.s3.us-east-2.amazonaws.com/Thumbnail+-+ENG.png"></video>
 
@@ -46,7 +46,7 @@ aliases: ['/docs/dev/key-features/','/tidb/dev/key-features','/docs/dev/overview
 
 -   <strong>リアルタイムHTAPシナリオ</strong>
 
-    5G、モノのインターネット、人工知能の急速な成長に伴い、企業が生成するデータは途方もなく増加し続け、数百TB（テラバイト）またはPBレベルにまで達します。従来のソリューションは、OLTPデータベースを使用してオンライントランザクションアプリケーションを処理し、ETL（抽出、変換、読み込み）ツールを使用して、データ分析のためにデータをOLAPデータベースに複製することです。このソリューションには、ストレージコストが高く、リアルタイムパフォーマンスが低いなど、複数の欠点があります。 TiDBは、v4.0でTiFlashカラム型ストレージエンジンを導入します。これは、TiKV行ベースのストレージエンジンと組み合わせて、真のHTAPデータベースとしてTiDBを構築します。少量の追加ストレージコストで、オンライントランザクション処理とリアルタイムデータ分析の両方を同じシステムで処理できるため、コストを大幅に節約できます。
+    5G、モノのインターネット、人工知能の急速な成長に伴い、企業が生成するデータは途方もなく増加し続け、数百TB（テラバイト）またはPBレベルにまで達します。従来のソリューションは、OLTPデータベースを使用してオンライントランザクションアプリケーションを処理し、ETL（抽出、変換、読み込み）ツールを使用して、データ分析のためにデータをOLAPデータベースに複製することです。このソリューションには、ストレージコストが高く、リアルタイムパフォーマンスが低いなど、複数の欠点があります。 TiDBは、v4.0にTiFlashカラム型ストレージエンジンを導入しました。これは、TiKV行ベースのストレージエンジンと組み合わせて、真のHTAPデータベースとしてTiDBを構築します。少量の追加ストレージコストで、オンライントランザクション処理とリアルタイムデータ分析の両方を同じシステムで処理できるため、コストを大幅に節約できます。
 
 -   <strong>データ集約と二次処理のシナリオ</strong>
 
@@ -54,7 +54,7 @@ aliases: ['/docs/dev/key-features/','/tidb/dev/key-features','/docs/dev/overview
 
 ## も参照してください {#see-also}
 
--   <span translate="no">[TiDBアーキテクチャ](/tidb-architecture.md)</span>
--   <span translate="no">[TiDBストレージ](/tidb-storage.md)</span>
--   <span translate="no">[TiDBコンピューティング](/tidb-computing.md)</span>
--   <span translate="no">[TiDBスケジューリング](/tidb-scheduling.md)</span>
+-   [TiDBアーキテクチャ](/tidb-architecture.md)
+-   [TiDBストレージ](/tidb-storage.md)
+-   [TiDBコンピューティング](/tidb-computing.md)
+-   [TiDBスケジューリング](/tidb-scheduling.md)
