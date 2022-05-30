@@ -7,7 +7,7 @@ summary: Learn the `SCHEMATA` information_schema table.
 
 `SCHEMATA`の表は、データベースに関する情報を提供します。テーブルデータは、 `SHOW DATABASES`ステートメントの結果と同等です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -27,7 +27,7 @@ desc SCHEMATA;
 5 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM SCHEMATA;

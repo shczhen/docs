@@ -48,7 +48,7 @@ TiDB Binlogレプリケーションの遅延は秒単位で測定されます。
 
 次のコマンドを実行して、Pumpのステータスが正常であるかどうか、および`offline`状態にないすべてのPumpインスタンスが実行されているかどうかを確認します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 binlogctl -cmd pumps

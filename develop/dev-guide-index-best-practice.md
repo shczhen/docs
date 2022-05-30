@@ -13,7 +13,7 @@ summary: Learn some best practices for creating and using indexes in TiDB.
 
 このセクションでは、例として[書店](/develop/dev-guide-bookshop-schema-design.md)データベースの`books`テーブルを取り上げます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE `books` (
@@ -48,7 +48,7 @@ CREATE TABLE `books` (
 
     `title`列と`published_at`列に新しい複合インデックスを作成するとします。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     CREATE INDEX title_published_at_idx ON books (title, published_at);
@@ -56,7 +56,7 @@ CREATE TABLE `books` (
 
     次のクエリでも、結合されたインデックスを使用できます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT * FROM books WHERE title = 'database';
@@ -64,7 +64,7 @@ CREATE TABLE `books` (
 
     ただし、インデックスの左端の最初の列の条件が指定されていないため、次のクエリでは結合インデックスを使用できません。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT * FROM books WHERE published_at = '2018-08-18 21:42:08';
@@ -74,7 +74,7 @@ CREATE TABLE `books` (
 
     時間タイプ列`published_at`に新しいインデックスを作成するとします。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     CREATE INDEX published_at_idx ON books (published_at);
@@ -82,7 +82,7 @@ CREATE TABLE `books` (
 
     ただし、次のクエリでは`published_at`のインデックスを使用できません。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT * FROM books WHERE YEAR(published_at)=2022;
@@ -90,7 +90,7 @@ CREATE TABLE `books` (
 
     `published_at`でインデックスを使用するには、次のようにクエリを書き直すことができます。これにより、インデックス列で関数を使用する必要がなくなります。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT * FROM books WHERE published_at >= '2022-01-01' AND published_at < '2023-01-01';
@@ -98,7 +98,7 @@ CREATE TABLE `books` (
 
     式インデックスを使用して、クエリ条件で`YEAR(Published at)`の式インデックスを作成することもできます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     CREATE INDEX published_year_idx ON books ((YEAR(published_at)));
@@ -114,7 +114,7 @@ CREATE TABLE `books` (
 
     次のクエリでは、インデックス`title_published_at_idx`をスキャンするだけでデータを取得できます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT title, published_at FROM books WHERE title = 'database';
@@ -122,7 +122,7 @@ CREATE TABLE `books` (
 
     次のクエリステートメントは結合インデックス`(title, published_at)`を使用できますが、インデックスなしの列をクエリするための追加コストが発生します。これにより、TiDBは、インデックスデータ（通常は主キー情報）に格納されている参照に従って行データをクエリする必要があります。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT * FROM books WHERE title = 'database';
@@ -130,7 +130,7 @@ CREATE TABLE `books` (
 
 -   クエリ条件に`!=`または`NOT IN`が含まれている場合、クエリはインデックスを使用できません。たとえば、次のクエリはインデックスを使用できません。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT * FROM books WHERE title != 'database';
@@ -138,7 +138,7 @@ CREATE TABLE `books` (
 
 -   `LIKE`条件がクエリのワイルドカード`%`で始まる場合、クエリはインデックスを使用できません。たとえば、次のクエリはインデックスを使用できません。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT * FROM books WHERE title LIKE '%database';
@@ -148,7 +148,7 @@ CREATE TABLE `books` (
 
     次のクエリでは、インデックス`id_idx`と`title_idx`がそれぞれ列`id`と`title`で使用可能であると仮定して、 `id_idx`の方が優れていることがわかっている場合は、SQLで`USE INDEX`ヒントを使用して、TiDBオプティマイザーに`id_idx`インデックスを使用させることができます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT * FROM t USE INDEX(id_idx) WHERE id = 1 and title = 'database';

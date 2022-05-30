@@ -41,7 +41,7 @@ PD RecoverはTiDBパッケージに含まれているため、最新バージョ
 
 PDログからクラスターIDを取得するには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 cat {{/path/to}}/pd.log | grep "init cluster id"
@@ -56,7 +56,7 @@ cat {{/path/to}}/pd.log | grep "init cluster id"
 
 TiDBログからクラスターIDを取得するには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 cat {{/path/to}}/tidb.log | grep "init cluster id"
@@ -71,7 +71,7 @@ cat {{/path/to}}/tidb.log | grep "init cluster id"
 
 TiKVログからクラスターIDを取得するには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 cat {{/path/to}}/tikv.log | grep "connect to PD cluster"
@@ -94,7 +94,7 @@ cat {{/path/to}}/tikv.log | grep "connect to PD cluster"
 
 PDログから割り当てられたIDを取得するには、表示しているログが<strong>最後のPDリーダー</strong>のログであることを確認する必要があります。次のコマンドを実行して、割り当てられた最大IDを取得できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 cat {{/path/to}}/pd*.log | grep "idAllocator allocates a new id" |  awk -F'=' '{print $2}' | awk -F']' '{print $1}' | sort -r -n | head -n 1
@@ -115,7 +115,7 @@ cat {{/path/to}}/pd*.log | grep "idAllocator allocates a new id" |  awk -F'=' '{
 
 1つのPDノードで`pd-recover`つだけ実行する必要があります。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 ./pd-recover -endpoints http://10.0.1.13:2379 -cluster-id 6747551640615446306 -alloc-id 10000

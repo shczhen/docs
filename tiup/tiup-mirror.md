@@ -12,7 +12,7 @@ aliases: ['/tidb/dev/tiup-mirrors','/docs/dev/tiup/tiup-mirrors/','/docs/dev/ref
 
 次のコマンドを実行して、 `mirror`コマンドのヘルプ情報を取得します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup mirror --help
@@ -53,7 +53,7 @@ Use "tiup mirror [command] --help" for more information about a command.
 
 `tiup mirror clone`コマンドを実行して、ローカルミラーを構築できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup mirror clone <target-dir> [global-version] [flags]

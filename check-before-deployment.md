@@ -24,7 +24,7 @@ aliases: ['/docs/dev/check-before-deployment/']
 
 1.  データディスクを表示します。
 
-    {{&lt;コピー可能な&quot;shell-root&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     fdisk -l
@@ -36,7 +36,7 @@ aliases: ['/docs/dev/check-before-deployment/']
 
 2.  パーティションを作成します。
 
-    {{&lt;コピー可能な&quot;shell-root&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     parted -s -a optimal /dev/nvme0n1 mklabel gpt -- mkpart primary ext4 1 -1
@@ -48,7 +48,7 @@ aliases: ['/docs/dev/check-before-deployment/']
 
 3.  データディスクをext4ファイルシステムにフォーマットします。
 
-    {{&lt;コピー可能な&quot;shell-root&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     mkfs.ext4 /dev/nvme0n1p1
@@ -58,7 +58,7 @@ aliases: ['/docs/dev/check-before-deployment/']
 
     この例では、nvme0n1p1のUUIDは`c51eb23b-195c-4061-92a9-3fad812cc12f`です。
 
-    {{&lt;コピー可能な&quot;shell-root&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     lsblk -f
@@ -77,7 +77,7 @@ aliases: ['/docs/dev/check-before-deployment/']
 
 5.  `/etc/fstab`のファイルを編集し、 `nodelalloc`のマウントオプションを追加します。
 
-    {{&lt;コピー可能な&quot;shell-root&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     vi /etc/fstab
@@ -89,7 +89,7 @@ aliases: ['/docs/dev/check-before-deployment/']
 
 6.  データディスクをマウントします。
 
-    {{&lt;コピー可能な&quot;shell-root&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     mkdir /data1 && \
@@ -98,7 +98,7 @@ aliases: ['/docs/dev/check-before-deployment/']
 
 7.  次のコマンドで確認してください。
 
-    {{&lt;コピー可能な&quot;shell-root&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     mount -t ext4
@@ -114,7 +114,7 @@ aliases: ['/docs/dev/check-before-deployment/']
 
 TiDBは、動作のために十分なメモリスペースを必要とします。メモリが不足している場合、スワップをバッファとして使用すると、パフォーマンスが低下する可能性があります。したがって、次のコマンドを実行して、システムスワップを永続的に無効にすることをお勧めします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 echo "vm.swappiness = 0">> /etc/sysctl.conf
@@ -136,7 +136,7 @@ TiDBクラスターでは、読み取りおよび書き込み要求やデータ�
 
 1.  ファイアウォールの状態を確認してください。例として、CentOS Linuxリリース7.7.1908（コア）を取り上げます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     sudo firewall-cmd --state
@@ -145,7 +145,7 @@ TiDBクラスターでは、読み取りおよび書き込み要求やデータ�
 
 2.  ファイアウォールサービスを停止します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     sudo systemctl stop firewalld.service
@@ -153,7 +153,7 @@ TiDBクラスターでは、読み取りおよび書き込み要求やデータ�
 
 3.  ファイアウォールサービスの自動開始を無効にします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     sudo systemctl disable firewalld.service
@@ -161,7 +161,7 @@ TiDBクラスターでは、読み取りおよび書き込み要求やデータ�
 
 4.  ファイアウォールの状態を確認してください。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     sudo systemctl status firewalld.service
@@ -177,7 +177,7 @@ NTPサービスがインストールされているかどうか、およびNTP�
 
 1.  次のコマンドを実行します。 `running`が返される場合は、NTPサービスが実行されています。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     sudo systemctl status ntpd.service
@@ -191,7 +191,7 @@ NTPサービスがインストールされているかどうか、およびNTP�
 
     -   `Unit ntpd.service could not be found.`が返された場合は、次のコマンドを試して、システムがNTPとのクロック同期を実行するために`ntpd`ではなく`chronyd`を使用するように構成されているかどうかを確認します。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```bash
         sudo systemctl status chronyd.service
@@ -213,7 +213,7 @@ NTPサービスがインストールされているかどうか、およびNTP�
     >
     > Ubuntuシステムの場合、 `ntpstat`パッケージをインストールする必要があります。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     ntpstat
@@ -245,7 +245,7 @@ NTPサービスがインストールされているかどうか、およびNTP�
     >
     > これは、NTPdの代わりにChronyを使用するシステムにのみ適用されます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     chronyc tracking
@@ -283,7 +283,7 @@ NTPサービスがインストールされているかどうか、およびNTP�
 
 NTPサービスの同期をできるだけ早く開始するには、次のコマンドを実行します。 `pool.ntp.org`をNTPサーバーに置き換えます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 sudo systemctl stop ntpd.service && \
@@ -293,7 +293,7 @@ sudo systemctl start ntpd.service
 
 CentOS 7システムにNTPサービスを手動でインストールするには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 sudo yum install ntp ntpdate && \
@@ -313,7 +313,7 @@ sudo systemctl enable ntpd.service
 
 1.  次のコマンドを実行して、THPが有効か無効かを確認します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     cat /sys/kernel/mm/transparent_hugepage/enabled
@@ -329,7 +329,7 @@ sudo systemctl enable ntpd.service
 
 2.  次のコマンドを実行して、データディレクトリが配置されているディスクのI/Oスケジューラを確認します。 sdbディスクとsdcディスクの両方にデータディレクトリを作成するとします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     cat /sys/block/sd[bc]/queue/scheduler
@@ -346,7 +346,7 @@ sudo systemctl enable ntpd.service
 
 3.  次のコマンドを実行して、ディスクの`ID_SERIAL`を確認します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     udevadm info --name=/dev/sdb | grep ID_SERIAL
@@ -363,7 +363,7 @@ sudo systemctl enable ntpd.service
 
 4.  次のコマンドを実行して、cpufreqモジュールの電源ポリシーを確認します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     cpupower frequency-info --policy
@@ -385,7 +385,7 @@ sudo systemctl enable ntpd.service
 
         1.  `tuned-adm list`コマンドを実行して、現在のオペレーティングシステムの調整済みプロファイルを確認します。
 
-            {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+            {{< copyable "" >}}
 
             ```bash
             tuned-adm list
@@ -410,7 +410,7 @@ sudo systemctl enable ntpd.service
 
         2.  新しい調整済みプロファイルを作成します。
 
-            {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+            {{< copyable "" >}}
 
             ```bash
             mkdir /etc/tuned/balanced-tidb-optimal/
@@ -436,7 +436,7 @@ sudo systemctl enable ntpd.service
 
         3.  新しい調整済みプロファイルを適用します。
 
-            {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+            {{< copyable "" >}}
 
             ```bash
             tuned-adm profile balanced-tidb-optimal
@@ -450,7 +450,7 @@ sudo systemctl enable ntpd.service
             >
             > `grubby`を実行する前に、最初に`grubby`のパッケージをインストールします。
 
-            {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+            {{< copyable "" >}}
 
             ```bash
             grubby --default-kernel
@@ -462,7 +462,7 @@ sudo systemctl enable ntpd.service
 
         2.  `grubby --update-kernel`を実行して、カーネル構成を変更します。
 
-            {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+            {{< copyable "" >}}
 
             ```bash
             grubby --args="transparent_hugepage=never" --update-kernel /boot/vmlinuz-3.10.0-957.el7.x86_64
@@ -474,7 +474,7 @@ sudo systemctl enable ntpd.service
 
         3.  `grubby --info`を実行して、変更されたデフォルトのカーネル構成を確認します。
 
-            {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+            {{< copyable "" >}}
 
             ```bash
             grubby --info /boot/vmlinuz-3.10.0-957.el7.x86_64
@@ -495,7 +495,7 @@ sudo systemctl enable ntpd.service
 
         4.  現在のカーネル構成を変更して、THPをすぐに無効にします。
 
-            {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+            {{< copyable "" >}}
 
             ```bash
             echo never > /sys/kernel/mm/transparent_hugepage/enabled
@@ -504,7 +504,7 @@ sudo systemctl enable ntpd.service
 
         5.  udevスクリプトでI/Oスケジューラを構成します。
 
-            {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+            {{< copyable "" >}}
 
             ```bash
             vi /etc/udev/rules.d/60-tidb-schedulers.rules
@@ -518,7 +518,7 @@ sudo systemctl enable ntpd.service
 
         6.  udevスクリプトを適用します。
 
-            {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+            {{< copyable "" >}}
 
             ```bash
             udevadm control --reload-rules
@@ -527,7 +527,7 @@ sudo systemctl enable ntpd.service
 
         7.  CPU電源ポリシーを構成するサービスを作成します。
 
-            {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+            {{< copyable "" >}}
 
             ```bash
             cat  >> /etc/systemd/system/cpupower.service << EOF
@@ -543,7 +543,7 @@ sudo systemctl enable ntpd.service
 
         8.  CPU電源ポリシー構成サービスを適用します。
 
-            {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+            {{< copyable "" >}}
 
             ```bash
             systemctl daemon-reload
@@ -553,7 +553,7 @@ sudo systemctl enable ntpd.service
 
 6.  次のコマンドを実行して、THPステータスを確認します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     cat /sys/kernel/mm/transparent_hugepage/enabled
@@ -565,7 +565,7 @@ sudo systemctl enable ntpd.service
 
 7.  次のコマンドを実行して、データディレクトリが配置されているディスクのI/Oスケジューラを確認します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     cat /sys/block/sd[bc]/queue/scheduler
@@ -578,7 +578,7 @@ sudo systemctl enable ntpd.service
 
 8.  次のコマンドを実行して、cpufreqモジュールの電源ポリシーを確認します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     cpupower frequency-info --policy
@@ -592,7 +592,7 @@ sudo systemctl enable ntpd.service
 
 9.  次のコマンドを実行して、 `sysctl`つのパラメーターを変更します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     echo "fs.file-max = 1000000">> /etc/sysctl.conf
@@ -605,7 +605,7 @@ sudo systemctl enable ntpd.service
 
 10. 次のコマンドを実行して、ユーザーの`limits.conf`ファイルを構成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     cat << EOF >>/etc/security/limits.conf
@@ -622,7 +622,7 @@ sudo systemctl enable ntpd.service
 
 1.  `root`ユーザーアカウントを使用してそれぞれターゲットマシンにログインし、 `tidb`ユーザーを作成して、ログインパスワードを設定します。
 
-    {{&lt;コピー可能な&quot;shell-root&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     useradd tidb && \
@@ -631,7 +631,7 @@ sudo systemctl enable ntpd.service
 
 2.  パスワードなしでsudoを設定するには、次のコマンドを実行し、ファイルの最後に`tidb ALL=(ALL) NOPASSWD: ALL`を追加します。
 
-    {{&lt;コピー可能な&quot;shell-root&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     visudo
@@ -643,7 +643,7 @@ sudo systemctl enable ntpd.service
 
 3.  `tidb`人のユーザーを使用して制御マシンにログインし、次のコマンドを実行します。 `10.0.1.1`をターゲットマシンのIPに置き換え、プロンプトに従ってターゲットマシンの`tidb`ユーザーパスワードを入力します。コマンドの実行後、SSH相互信頼はすでに作成されています。これは他のマシンにも当てはまります。新しく作成された`tidb`人のユーザーには、 `.ssh`ディレクトリがありません。このようなディレクトリを作成するには、RSAキーを生成するコマンドを実行します。制御マシンにTiDBコンポーネントを展開するには、制御マシンと制御マシン自体の相互信頼を構成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     ssh-keygen -t rsa
@@ -652,7 +652,7 @@ sudo systemctl enable ntpd.service
 
 4.  `tidb`ユーザーアカウントを使用してコントロールマシンにログインし、 `ssh`を使用してターゲットマシンのIPにログインします。パスワードを入力する必要がなく、正常にログインできる場合は、SSH相互信頼が正常に構成されています。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     ssh 10.0.1.1
@@ -664,7 +664,7 @@ sudo systemctl enable ntpd.service
 
 5.  `tidb`ユーザーを使用してターゲットマシンにログインした後、次のコマンドを実行します。パスワードを入力する必要がなく、 `root`ユーザーに切り替えることができる場合は、 `tidb`ユーザーのパスワードなしのsudoが正常に構成されています。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     sudo -su root
@@ -685,7 +685,7 @@ sudo systemctl enable ntpd.service
 
 1.  インストールするターゲットノードにログインします。例として、CentOS Linuxリリース7.7.1908（コア）を取り上げます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     sudo yum -y install numactl
@@ -693,7 +693,7 @@ sudo systemctl enable ntpd.service
 
 2.  `tiup cluster`を使用して`exec`コマンドを実行し、バッチでインストールします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup cluster exec --help
@@ -711,7 +711,7 @@ sudo systemctl enable ntpd.service
 
     sudo特権を使用して、 `tidb-test`クラスター内のすべてのターゲットマシンに対してインストールコマンドを実行するには、次のコマンドを実行します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup cluster exec tidb-test --sudo --command "yum -y install numactl"

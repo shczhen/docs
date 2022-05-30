@@ -11,7 +11,7 @@ summary: Introduces TiDB's SQL performance tuning scheme and analysis approach.
 
 [`tiup demo`のインポート](/develop/dev-guide-bookshop-schema-design.md#via-tiup-demo)を使用してデータを準備できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup demo bookshop prepare --host 127.0.0.1 --port 4000 --books 1000000
@@ -25,7 +25,7 @@ SQLクエリが遅い最も一般的な理由は、 `SELECT`ステートメン�
 
 TiDBが主キーまたは二次インデックスではない列に基づいて大きなテーブルから少数の行を取得する場合、通常、パフォーマンスは低下します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM books WHERE title = 'Marian Yost';
@@ -47,7 +47,7 @@ Time: 0.582s
 
 このクエリが遅い理由を理解するには、 `EXPLAIN`を使用して実行プランを確認します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT * FROM books WHERE title = 'Marian Yost';
@@ -71,7 +71,7 @@ EXPLAIN SELECT * FROM books WHERE title = 'Marian Yost';
 
 上記のこのクエリを高速化するには、 `books.title`列にセカンダリインデックスを追加します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE INDEX title_idx ON books (title);
@@ -79,7 +79,7 @@ CREATE INDEX title_idx ON books (title);
 
 クエリの実行ははるかに高速です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM books WHERE title = 'Marian Yost';
@@ -101,7 +101,7 @@ Time: 0.007s
 
 パフォーマンスが向上する理由を理解するには、 `EXPLAIN`を使用して新しい実行プランを確認します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT * FROM books WHERE title = 'Marian Yost';
@@ -129,7 +129,7 @@ TiDB実行プランの詳細については、 [TiDBクエリ実行プランの�
 
 たとえば、次のクエリでは、 `title`に基づいて対応する`price`をクエリするだけで済みます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT title, price FROM books WHERE title = 'Marian Yost';
@@ -151,7 +151,7 @@ Time: 0.007s
 
 `title_idx`インデックスには`title`列のデータしか含まれていないため、TiDBは最初にインデックスデータをスキャンしてから、テーブルから`price`列をクエリする必要があります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT title, price FROM books WHERE title = 'Marian Yost';
@@ -169,13 +169,13 @@ EXPLAIN SELECT title, price FROM books WHERE title = 'Marian Yost';
 
 パフォーマンスを最適化するには、 `title_idx`のインデックスを削除し、新しいカバーインデックス`title_price_idx`を作成します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE books DROP INDEX title_idx;
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE INDEX title_price_idx ON books (title, price);
@@ -183,7 +183,7 @@ CREATE INDEX title_price_idx ON books (title, price);
 
 `price`のデータは`title_price_idx`のインデックスに格納されているため、次のクエリではインデックスデータをスキャンするだけで済みます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT title, price FROM books WHERE title = 'Marian Yost';
@@ -200,7 +200,7 @@ EXPLAIN SELECT title, price FROM books WHERE title = 'Marian Yost';
 
 これで、このクエリはより高速に実行されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT title, price FROM books WHERE title = 'Marian Yost';
@@ -222,7 +222,7 @@ Time: 0.004s
 
 `books`のテーブルは後の例で使用されるため、 `title_price_idx`のインデックスを削除します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE books DROP INDEX title_price_idx;
@@ -232,7 +232,7 @@ ALTER TABLE books DROP INDEX title_price_idx;
 
 クエリが主キーを使用してデータをフィルタリングする場合、クエリは高速に実行されます。たとえば、 `books`テーブルの主キーは`id`列であるため、 `id`列を使用してデータをクエリできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM books WHERE id = 896;
@@ -250,7 +250,7 @@ Time: 0.004s
 
 `EXPLAIN`を使用して、実行プランを確認します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT * FROM books WHERE id = 896;

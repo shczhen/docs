@@ -21,7 +21,7 @@ PolicyName ::=
 
 配置ポリシーは、テーブルまたはパーティションによって参照されていない場合にのみ削除できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE PLACEMENT POLICY p1 FOLLOWERS=4;

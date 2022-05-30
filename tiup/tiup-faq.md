@@ -49,7 +49,7 @@ TiUPクラスターコンポーネントを使用して、同じホストに複�
 
 TiUPのデフォルトの同時スレッド数がデフォルトのSSH接続の最大数を超えているため、エラーが発生する可能性があります。この問題を解決するには、SSH接続のデフォルト数を増やしてから、sshdサービスを再起動します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 vi /etc/ssh/sshd_config

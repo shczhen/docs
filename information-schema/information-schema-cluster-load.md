@@ -8,7 +8,7 @@ aliases: ['/docs/dev/system-tables/system-table-cluster-load/','/docs/dev/refere
 
 `CLUSTER_LOAD`クラスター負荷テーブルは、TiDBクラスターの各インスタンスが配置されているサーバーの現在の負荷情報を提供します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -44,7 +44,7 @@ DESC cluster_load;
 
 次の例は、 `CLUSTER_LOAD`テーブルを使用してCPUの現在の負荷情報を照会する方法を示しています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM cluster_load WHERE device_type='cpu' AND device_name='cpu';

@@ -97,7 +97,7 @@ enable-placement-rules = true
 
 ブートストラップされたクラスターの場合、pd-ctlを使用してオンラインで配置ルールを有効にすることもできます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 pd-ctl config placement-rules enable
@@ -113,7 +113,7 @@ PDは、 `max-replicas`および`location-labels`の構成に基づいてデフ�
 
 pd-ctlを使用して、配置ルール機能を無効にし、以前のスケジューリング戦略に切り替えることができます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 pd-ctl config placement-rules disable
@@ -133,7 +133,7 @@ pd-ctlは、次のメソッドを使用してシステム内のルールを表�
 
 -   すべてのルールのリストを表示するには：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     pd-ctl config placement-rules show
@@ -141,7 +141,7 @@ pd-ctlは、次のメソッドを使用してシステム内のルールを表�
 
 -   PDグループ内のすべてのルールのリストを表示するには：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     pd-ctl config placement-rules show --group=pd
@@ -149,7 +149,7 @@ pd-ctlは、次のメソッドを使用してシステム内のルールを表�
 
 -   グループ内の特定のIDのルールを表示するには：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     pd-ctl config placement-rules show --group=pd --id=default
@@ -157,7 +157,7 @@ pd-ctlは、次のメソッドを使用してシステム内のルールを表�
 
 -   リージョンに一致するルールリストを表示するには：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     pd-ctl config placement-rules show --region=2
@@ -167,7 +167,7 @@ pd-ctlは、次のメソッドを使用してシステム内のルールを表�
 
 ルールの追加とルールの編集は似ています。対応するルールをファイルに書き込んでから、 `save`コマンドを使用してルールをPDに保存する必要があります。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 cat > rules.json <<EOF
@@ -195,7 +195,7 @@ pd-ctl config placement save --in=rules.json
 
 ルールを削除するには、ルールの`count`を`0`に設定するだけで、同じ`GroupID` + `ID`のルールが削除されます。次のコマンドは、 `pd / rule2`のルールを削除します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 cat > rules.json <<EOF
@@ -213,7 +213,7 @@ pd-ctl config placement save --in=rules.json
 
 -   すべてのルールグループのリストを表示するには：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     pd-ctl config placement-rules rule-group show
@@ -221,7 +221,7 @@ pd-ctl config placement save --in=rules.json
 
 -   特定のIDのルールグループを表示するには：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     pd-ctl config placement-rules rule-group show pd
@@ -229,7 +229,7 @@ pd-ctl config placement save --in=rules.json
 
 -   ルールグループの`index`と`override`の属性を設定するには：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     pd-ctl config placement-rules rule-group set pd 100 true
@@ -237,7 +237,7 @@ pd-ctl config placement save --in=rules.json
 
 -   ルールグループの構成を削除するには（グループにルールがある場合は、デフォルトのグループ構成を使用します）：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     pd-ctl config placement-rules rule-group delete pd
@@ -249,7 +249,7 @@ pd-ctl config placement save --in=rules.json
 
 このサブコマンドでは、 `get {group_id}`を使用してグループを照会し、出力結果にルールグループとグループのルールがネストされた形式で表示されます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 pd-ctl config placement-rules rule-bundle get pd
@@ -277,7 +277,7 @@ pd-ctl config placement-rules rule-bundle get pd
 
 出力をファイルに書き込むには、 `rule-bundle get`サブコマンドに`-out`引数を追加します。これは、その後の変更と保存に便利です。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 pd-ctl config placement-rules rule-bundle get pd -out="group.json"
@@ -285,7 +285,7 @@ pd-ctl config placement-rules rule-bundle get pd -out="group.json"
 
 変更が完了したら、 `rule-bundle set`サブコマンドを使用して、ファイル内の構成をPDサーバーに保存できます。 [pd-ctlを使用してルールを設定する](#set-rules-using-pd-ctl)で説明した`save`コマンドとは異なり、このコマンドはサーバー側でこのグループのすべてのルールを置き換えます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 pd-ctl config placement-rules rule-bundle set pd -in="group.json"
@@ -297,7 +297,7 @@ pd-ctlを使用して、すべての構成を表示および変更すること�
 
 たとえば、すべての構成を`rules.json`のファイルに保存するには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 pd-ctl config placement-rules rule-bundle load --out="rules.json"
@@ -305,7 +305,7 @@ pd-ctl config placement-rules rule-bundle load --out="rules.json"
 
 ファイルを編集した後、次のコマンドを実行して構成をPDサーバーに保存します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 pd-ctl config placement-rules rule-bundle save --in="rules.json"
@@ -315,7 +315,7 @@ pd-ctl config placement-rules rule-bundle save --in="rules.json"
 
 メタデータまたは特定のテーブルの特別な構成が必要な場合は、 [tidb-ctl](https://github.com/pingcap/tidb-ctl)の[`keyrange`コマンド](https://github.com/pingcap/tidb-ctl/blob/master/doc/tidb-ctl_keyrange.md)を実行して関連するキーを照会できます。コマンドの最後に`--encode`を追加することを忘れないでください。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tidb-ctl keyrange --database test --table ttt --encode

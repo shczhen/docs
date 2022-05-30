@@ -27,7 +27,7 @@ TiDBはほとんどのMySQL構文をサポートしているため、通常、�
 
 -   再試行とEOFエラーが発生するサーバー側ノードで次のコマンドを実行します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     iperf3 -s
@@ -35,7 +35,7 @@ TiDBはほとんどのMySQL構文をサポートしているため、通常、�
 
 -   再試行とEOFエラーが発生するクライアント側ノードで次のコマンドを実行します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     iperf3 -c <server-IP>
@@ -100,7 +100,7 @@ Sqoopでは、 `--batch`は各バッチで100個の`statement`をコミットす
 
 -   次のように`-Dsqoop.export.records.per.statement=10`のオプションを追加します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     sqoop export \

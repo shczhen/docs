@@ -22,7 +22,7 @@ summary: Learn about how to insert data.
 
 -   <strong>複数行の挿入ステートメント</strong>：
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     INSERT INTO `player` (`id`, `coins`, `goods`) VALUES (1, 1000, 1), (2, 230, 2), (3, 300, 5);
@@ -30,7 +30,7 @@ summary: Learn about how to insert data.
 
 -   複数<strong>の単一行挿入ステートメント</strong>：
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     INSERT INTO `player` (`id`, `coins`, `goods`) VALUES (1, 1000, 1);
@@ -43,7 +43,7 @@ summary: Learn about how to insert data.
 <SimpleTab>
 <div label="SQL">
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE `player` (`id` INT, `coins` INT, `goods` INT);
@@ -154,7 +154,7 @@ Javaの完全な例については、以下を参照してください。
 
 この場合、次のようなSQLを使用して挿入する<strong>ことはできません</strong>。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO `bookshop`.`users` (`id`, `balance`, `nickname`) VALUES (1, 0.00, 'nicky');
@@ -172,7 +172,7 @@ ERROR 8216 (HY000): Invalid auto random: Explicit insertion on auto_random colum
 
 -   （推奨）この列を挿入ステートメントから削除し、TiDBが初期化した`AUTO_RANDOM`の値を使用します。これは`AUTO_RANDOM`のセマンティクスに適合します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     INSERT INTO `bookshop`.`users` (`balance`, `nickname`) VALUES (0.00, 'nicky');
@@ -180,7 +180,7 @@ ERROR 8216 (HY000): Invalid auto random: Explicit insertion on auto_random colum
 
 -   この列を指定する<em><strong>必要</strong></em>があることが確実な場合は、 [`SET`ステートメント](https://docs.pingcap.com/zh/tidb/stable/sql-statement-set-variable)を使用して、ユーザー変数を変更することにより、挿入時に`AUTO_RANDOM`の列を指定できるようにすることができます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SET @@allow_auto_random_explicit_insert = true;

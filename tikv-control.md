@@ -18,7 +18,7 @@ TiKV Control（ `tikv-ctl` ）は、クラスターの管理に使用されるTi
 
 `tikv-ctl`は`tiup`コマンドにも統合されています。次のコマンドを実行して、 `tikv-ctl`ツールを呼び出します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup ctl tikv
@@ -252,7 +252,7 @@ TiKVインスタンスでは、このコマンドを使用して、一部のリ�
 
 通常、 `remove-peer`コマンドを使用して、このリージョンの対応するピアを削除できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 pd-ctl operator add remove-peer <region_id> <store_id>
@@ -260,7 +260,7 @@ pd-ctl operator add remove-peer <region_id> <store_id>
 
 次に、 `tikv-ctl`ツールを使用して、対応するTiKVインスタンスのリージョンをトゥームストーンに設定し、起動時にこのリージョンのヘルスチェックをスキップします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tikv-ctl --data-dir /path/to/tikv tombstone -p 127.0.0.1:2379 -r <region_id>
@@ -272,7 +272,7 @@ success!
 
 ただし、場合によっては、このリージョンのこのピアをPDから簡単に削除できないため、 `tikv-ctl`の`--force`オプションを指定して、ピアをトゥームストーンに強制的に設定できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tikv-ctl --data-dir /path/to/tikv tombstone -p 127.0.0.1:2379 -r <region_id>,<region_id> --force
@@ -341,7 +341,7 @@ all regions are healthy
 
 `shared block cache`のサイズを設定します：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tikv-ctl --host ip:port modify-tikv-config -n storage.block-cache.capacity -v 10GB
@@ -353,7 +353,7 @@ success
 
 `shared block cache`が無効になっている場合、 `write`に`block cache size`を設定します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tikv-ctl --host ip:port modify-tikv-config -n rocksdb.writecf.block-cache-size -v 256MB
@@ -363,7 +363,7 @@ tikv-ctl --host ip:port modify-tikv-config -n rocksdb.writecf.block-cache-size -
 success
 ```
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tikv-ctl --host ip:port modify-tikv-config -n raftdb.defaultcf.disable-auto-compactions -v true
@@ -373,7 +373,7 @@ tikv-ctl --host ip:port modify-tikv-config -n raftdb.defaultcf.disable-auto-comp
 success
 ```
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tikv-ctl --host ip:port modify-tikv-config -n raftstore.sync-log -v false
@@ -385,7 +385,7 @@ success
 
 圧縮率の制限により累積圧縮保留バイトが発生する場合は、 `rate-limiter-auto-tuned`モードを無効にするか、圧縮フローの上限を設定します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tikv-ctl --host ip:port modify-tikv-config -n rocksdb.rate-limiter-auto-tuned -v false
@@ -395,7 +395,7 @@ tikv-ctl --host ip:port modify-tikv-config -n rocksdb.rate-limiter-auto-tuned -v
 success
 ```
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tikv-ctl --host ip:port modify-tikv-config -n rocksdb.rate-bytes-per-sec -v "1GB"
@@ -417,7 +417,7 @@ success
 > -   `--all-regions`オプションを使用する場合は、クラスターに接続されている残りのすべてのストアでこのコマンドを実行する必要があります。損傷した店舗を復旧する前に、これらの健全な店舗がサービスの提供を停止していることを確認する必要があります。そうしないと、リージョンレプリカのピアリストに一貫性がないため、 `split-region`または`remove-peer`を実行したときにエラーが発生します。これにより、他のメタデータ間の不整合がさらに発生し、最終的に、リージョンが使用できなくなります。
 > -   `remove-fail-stores`を実行すると、削除されたノードを再起動したり、これらのノードをクラスターに追加したりすることはできません。そうしないと、メタデータに一貫性がなくなり、最終的にリージョンが使用できなくなります。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tikv-ctl --data-dir /path/to/tikv unsafe-recover remove-fail-stores -s 3 -r 1001,1002
@@ -427,7 +427,7 @@ tikv-ctl --data-dir /path/to/tikv unsafe-recover remove-fail-stores -s 3 -r 1001
 success!
 ```
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tikv-ctl --data-dir /path/to/tikv unsafe-recover remove-fail-stores -s 4,5 --all-regions

@@ -16,7 +16,7 @@ TiDBクラスターの問題を見つけてトラブルシューティングす�
 
 `PLAN REPLAYER`を使用して、TiDBクラスターのオンサイト情報を保存できます。エクスポートインターフェイスは次のとおりです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 PLAN REPLAYER DUMP EXPLAIN [ANALYZE] sql-statement;
@@ -38,7 +38,7 @@ PLAN REPLAYER DUMP EXPLAIN [ANALYZE] sql-statement;
 
 ### クラスタ情報のエクスポートの例 {#examples-of-exporting-cluster-information}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 use test;
@@ -67,7 +67,7 @@ MySQL [test]> plan replayer dump explain select * from t;
 
 ファイルはMySQLクライアントにダウンロードできないため、ファイルをダウンロードするには、TiDBHTTPインターフェイスとファイル識別子を使用する必要があります。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 http://${tidb-server-ip}:${tidb-server-status-port}/plan_replayer/dump/${file_token}
@@ -75,7 +75,7 @@ http://${tidb-server-ip}:${tidb-server-status-port}/plan_replayer/dump/${file_to
 
 `${tidb-server-ip}:${tidb-server-status-port}`は、クラスター内の任意のTiDBサーバーのアドレスです。例えば：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl http://127.0.0.1:10080/plan_replayer/dump/replayer_single_JOGvpu4t7dssySqJfTtS4A==_1635750890568691080.zip > plan_replayer.zip
@@ -89,7 +89,7 @@ curl http://127.0.0.1:10080/plan_replayer/dump/replayer_single_JOGvpu4t7dssySqJf
 
 `PLAN REPLAYER`を使用してエクスポートされた既存の`ZIP`ファイルでは、 `PLAN REPLAYER`インポートインターフェイスを使用して、クラスターのオンサイト情報を他のTiDBクラスターに復元できます。構文は次のとおりです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 PLAN REPLAYER LOAD 'file_name';
@@ -99,7 +99,7 @@ PLAN REPLAYER LOAD 'file_name';
 
 例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 PLAN REPLAYER LOAD 'plan_replayer.zip';

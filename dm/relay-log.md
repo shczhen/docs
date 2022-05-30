@@ -97,7 +97,7 @@ v5.4.0以降のバージョンでは、 `enable-relay`を`true`に設定する�
 
 さらに、 `start-relay`または`stop-relay`コマンドを使用してデータソースの`enable-relay`構成を動的に調整し、リレーログイン時間を有効または無効にすることもできます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 » start-relay -s mysql-replica-01

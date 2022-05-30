@@ -19,7 +19,7 @@ summary: Learn about the SQL syntax, best practices, and examples for deleting d
 
 `DELETE`ステートメントは、通常、次の形式です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DELETE FROM {table} WHERE {filter}
@@ -45,7 +45,7 @@ DELETE FROM {table} WHERE {filter}
 
 特定の期間内にアプリケーションエラーが見つかり、この期間内の[評価](/develop/dev-guide-bookshop-schema-design.md#ratings-table)のすべてのデータ（たとえば、 `2022-04-15 00:00:00`から`2022-04-15 00:15:00` ）を削除する必要があるとします。この場合、 `SELECT`ステートメントを使用して、削除するレコードの数を確認できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT COUNT(*) FROM `rating` WHERE `rating_at` >= "2022-04-15 00:00:00" AND  `rating_at` <= "2022-04-15 00:15:00";
@@ -58,7 +58,7 @@ SELECT COUNT(*) FROM `rating` WHERE `rating_at` >= "2022-04-15 00:00:00" AND  `r
 <SimpleTab>
 <div label="SQL" href="delete-sql">
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DELETE FROM `rating` WHERE `rating_at` >= "2022-04-15 00:00:00" AND  `rating_at` <= "2022-04-15 00:15:00";

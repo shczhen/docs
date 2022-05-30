@@ -33,7 +33,7 @@ v6.0.0では、TiDBは、頻繁にアクセスされるがめったに更新さ�
 
 テーブル`users`があると仮定します：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE users (
@@ -45,7 +45,7 @@ CREATE TABLE users (
 
 このテーブルをキャッシュされたテーブルに設定するには、 `ALTER TABLE`ステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE users CACHE;
@@ -59,7 +59,7 @@ Query OK, 0 rows affected (0.01 sec)
 
 キャッシュされたテーブルを検証するには、 `SHOW CREATE TABLE`ステートメントを使用します。テーブルがキャッシュされている場合、返される結果には次の`CACHED ON`の属性が含まれます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW CREATE TABLE users;
@@ -80,7 +80,7 @@ SHOW CREATE TABLE users;
 
 キャッシュされたテーブルからデータを読み取った後、TiDBはデータをメモリにロードします。 `trace`ステートメントを使用して、データがメモリにロードされているかどうかを確認できます。キャッシュがロードされていない場合、返される結果には`regionRequest.SendReqCtx`属性が含まれます。これは、TiDBがTiKVからデータを読み取ることを示します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 TRACE SELECT * FROM users;
@@ -108,7 +108,7 @@ TRACE SELECT * FROM users;
 
 `trace`を再度実行すると、返される結果には`regionRequest.SendReqCtx`属性が含まれなくなります。これは、TiDBがTiKVからデータを読み取るのではなく、代わりにメモリからデータを読み取ることを示します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 +----------------------------------------+-----------------+------------+
@@ -127,7 +127,7 @@ TRACE SELECT * FROM users;
 
 キャッシュされたテーブルを読み取るために`UnionScan`演算子が使用されることに注意してください。したがって、キャッシュされたテーブルの実行プランで`UnionScan`を`explain`まで見ることができます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 +-------------------------+---------+-----------+---------------+--------------------------------+
@@ -144,7 +144,7 @@ TRACE SELECT * FROM users;
 
 キャッシュされたテーブルはデータ書き込みをサポートします。たとえば、 `users`のテーブルにレコードを挿入できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO users(id, name) VALUES(1001, 'Davis');
@@ -154,7 +154,7 @@ INSERT INTO users(id, name) VALUES(1001, 'Davis');
 Query OK, 1 row affected (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM users;
@@ -173,7 +173,7 @@ SELECT * FROM users;
 >
 > キャッシュされたテーブルにデータを挿入すると、第2レベルの書き込みレイテンシが発生する可能性があります。レイテンシーは、グローバル環境変数[`tidb_table_cache_lease`](/system-variables.md#tidb_table_cache_lease-new-in-v600)によって制御されます。アプリケーションに基づいてレイテンシが許容できるかどうかを確認することで、キャッシュテーブル機能を使用するかどうかを決定できます。たとえば、読み取り専用のシナリオでは、値を`tidb_table_cache_lease`に増やすことができます。
 >
-> {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+> {{< copyable "" >}}
 >
 > ```sql
 > set @@global.tidb_table_cache_lease = 10;
@@ -187,7 +187,7 @@ SELECT * FROM users;
 >
 > キャッシュされたテーブルでのDDLステートメントの実行は失敗します。キャッシュされたテーブルでDDLステートメントを実行する前に、まずキャッシュ属性を削除し、キャッシュされたテーブルを通常のテーブルに戻す必要があります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 TRUNCATE TABLE users;
@@ -197,7 +197,7 @@ TRUNCATE TABLE users;
 ERROR 8242 (HY000): 'Truncate Table' is unsupported on cache tables.
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 mysql> ALTER TABLE users ADD INDEX k_id(id);
@@ -209,7 +209,7 @@ ERROR 8242 (HY000): 'Alter Table' is unsupported on cache tables.
 
 キャッシュされたテーブルを通常のテーブルに戻すには、 `ALTER TABLE t NOCACHE`を使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE users NOCACHE

@@ -36,7 +36,7 @@ Store Limitのパラメーターは、 `pd-ctl`を使用して構成できます
 
 現在のストアの制限設定を表示するには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 store limit                         // Shows the speed limit of adding and deleting peers in all stores.
@@ -48,7 +48,7 @@ store limit remove-peer             // Shows the speed limit of deleting peers i
 
 すべてのストアの制限速度を設定するには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 store limit all 5                   // All stores can at most add and delete 5 peers per minute.
@@ -60,7 +60,7 @@ store limit all 5 remove-peer       // All stores can at most delete 5 peers per
 
 単一ストアの制限速度を設定するには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 store limit 1 5                     // store 1 can at most add and delete 5 peers per minute.

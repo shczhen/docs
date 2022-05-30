@@ -38,7 +38,7 @@ TiUPを使用して、TiCDCコンポーネントを既存のTiDBクラスター�
 
 PDクラスターにサービスを提供できるPDノード（クライアントURLは`10.0.10.25:2379` ）があるとします。 3つのTiCDCノードをデプロイする場合は、次のコマンドを実行してTiCDCクラスターを起動します。同じPDアドレスを指定するだけで、新しく開始されたノードが自動的にTiCDCクラスターに参加します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 cdc server --pd=http://10.0.10.25:2379 --log-file=ticdc_1.log --addr=0.0.0.0:8301 --advertise-addr=127.0.0.1:8301

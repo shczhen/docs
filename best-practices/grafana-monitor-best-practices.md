@@ -32,7 +32,7 @@ TiDBの3つのコアコンポーネント（TiDBサーバー、TiKVサーバー�
 
 次のコマンドを実行して、HTTPインターフェイスを介してSQLステートメントのQPSを確認します。例としてTiDBサーバーを取り上げます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 curl http://__tidb_ip__:10080/metrics |grep tidb_executor_statement_total
@@ -157,7 +157,7 @@ PrometheusのAPIは次のように表示されます。
 
 ![The API of Prometheus](/media/best-practices/prometheus-api-interface.jpg)
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 curl -u user:pass 'http://__grafana_ip__:3000/api/datasources/proxy/1/api/v1/query_range?query=sum(tikv_engine_size_bytes%7Binstancexxxxxxxxx20181%22%7D)%20by%20(instance)&start=1565879269&end=1565882869&step=30' |python -m json.tool

@@ -22,7 +22,7 @@ TiKVはGCI/O制限をサポートします。 `gc.max-write-bytes-per-sec`を構
 
 tikv-ctlを使用して、この構成を動的に変更できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tikv-ctl --host=ip:port modify-tikv-config -n gc.max-write-bytes-per-sec -v 10MB
@@ -49,7 +49,7 @@ enable-compaction-filter = true
 
 オンラインで構成を変更することにより、このGCメカニズムを有効にすることもできます。次の例を参照してください。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 show config where type = 'tikv' and name like '%enable-compaction-filter%';
@@ -65,7 +65,7 @@ show config where type = 'tikv' and name like '%enable-compaction-filter%';
 +------+-------------------+-----------------------------+-------+
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 set config tikv gc.enable-compaction-filter = true;

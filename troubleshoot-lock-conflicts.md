@@ -249,7 +249,7 @@ v5.1以降、TiDBはロックビュー機能をサポートしています。こ
 
 最近のデッドロックエラーの情報を取得するには、 `DEADLOCKS`または`CLUSTER_DEADLOCKS`のテーブルを照会できます。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select * from information_schema.deadlocks;
@@ -272,7 +272,7 @@ select * from information_schema.deadlocks;
 
 `DATA_LOCK_WAITS`システムテーブルは、TiKVノードのロック待機ステータスを提供します。このテーブルを照会すると、TiDBはすべてのTiKVノードからリアルタイムのロック待機情報を自動的に取得します。いくつかのホットキーが頻繁にロックされ、多くのトランザクションがブロックされる場合は、 `DATA_LOCK_WAITS`のテーブルをクエリし、キーごとに結果を集計して、問題が頻繁に発生するキーを見つけようとします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select `key`, count(*) as `count` from information_schema.data_lock_waits group by `key` order by `count` desc;
@@ -293,7 +293,7 @@ select `key`, count(*) as `count` from information_schema.data_lock_waits group 
 
 `TIDB_TRX`と`CLUSTER_TIDB_TRX`の表に表示される情報は、クエリの実行時に実行されているトランザクションの情報でもあることに注意してください。これらのテーブルには、完了したトランザクションの情報は表示されません。同時トランザクションが多数ある場合、クエリの結果セットも大きくなる可能性があります。 `limit`句または`where`句を使用して、ロック待機時間が長いトランザクションを除外できます。ロックビューで複数のテーブルを結合すると、異なるテーブルのデータが同時に取得されない可能性があるため、異なるテーブルの情報に一貫性がない可能性があることに注意してください。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select trx.* from information_schema.data_lock_waits as l left join information_schema.tidb_trx as trx on l.trx_id = trx.id where l.key = "7480000000000000415F728000000000000001"\G
@@ -333,7 +333,7 @@ CURRENT_SQL_DIGEST_TEXT: update `t` set `v` = `v` + ? where `id` = ? ;
 
 トランザクションが別のトランザクション（または複数のトランザクション）によってブロックされていることがわかっていて、現在のトランザクションの`start_ts` （トランザクションID）がわかっている場合は、次の方法を使用して、ブロックしているトランザクションの情報を取得できます。ロックビューで複数のテーブルを結合すると、異なるテーブルのデータが同時に取得されない可能性があるため、異なるテーブルの情報に一貫性がない可能性があることに注意してください。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select l.key, trx.*, tidb_decode_sql_digests(trx.all_sql_digests) as sqls from information_schema.data_lock_waits as l join information_schema.cluster_tidb_trx as trx on l.current_holding_trx_id = trx.id where l.trx_id = 426831965449355272\G

@@ -19,7 +19,7 @@ summary: Learn how to replicate data from TiDB to Apache Kafka
 
     `tiup playground`コマンドを実行すると、TiCDCをすばやく展開できます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup playground --host 0.0.0.0 --db 1 --pd 1 --kv 1 --tiflash 0 --ticdc 1
@@ -39,7 +39,7 @@ summary: Learn how to replicate data from TiDB to Apache Kafka
 
 tiup ctlを使用して、Kafkaをダウンストリームノードとして変更フィードを作成します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup ctl cdc changefeed create --pd="http://127.0.0.1:2379" --sink-uri="kafka://127.0.0.1:9092/kafka-topic-name?protocol=canal-json" --changefeed-id="kafka-changefeed"
@@ -47,7 +47,7 @@ tiup ctl cdc changefeed create --pd="http://127.0.0.1:2379" --sink-uri="kafka://
 
 コマンドが正常に実行されると、チェンジフィードIDやシンクURIなどのチェンジフィードに関する情報が表示されます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 Create changefeed successfully!
@@ -59,7 +59,7 @@ Info: {"sink-uri":"kafka://127.0.0.1:9092/kafka-topic-name?protocol=canal-json",
 
 実稼働環境では、Kafkaクラスターには複数のブローカーノードがあります。したがって、複数のブローカーのアドレスをシンクUIRに追加できます。これにより、Kafkaクラスターへの安定したアクセスが向上します。 Kafkaクラスターに障害が発生した場合でも、チェンジフィードは機能します。 Kafkaクラスターに3つのブローカーノードがあり、IPアドレスがそれぞれ127.0.0.1:9092、127.0.0.2:9092、および127.0.0.3:9092であるとします。次のシンクURIを使用してチェンジフィードを作成できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup ctl cdc changefeed create --pd="http://127.0.0.1:2379" --sink-uri="kafka://127.0.0.1:9092,127.0.0.2:9092,127.0.0.3:9092/kafka-topic-name?protocol=canal-json&partition-num=3&replication-factor=1&max-message-bytes=1048576"
@@ -67,7 +67,7 @@ tiup ctl cdc changefeed create --pd="http://127.0.0.1:2379" --sink-uri="kafka://
 
 上記のコマンドを実行した後、次のコマンドを実行して、チェンジフィードのステータスを確認します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup ctl cdc changefeed list --pd="http://127.0.0.1:2379"
@@ -83,7 +83,7 @@ tiup ctl cdc changefeed list --pd="http://127.0.0.1:2379"
 
     ラボ環境では、 `go-tpc`を使用して、チェンジフィードのソースとして使用されるTiDBクラスターにデータを書き込むことができます。具体的には、次のコマンドを実行して、アップストリームTiDBクラスターにデータベース`tpcc`を作成します。次に、 `TiUP bench`を使用してこの新しいデータベースにデータを書き込みます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     create database tpcc;
@@ -97,7 +97,7 @@ tiup ctl cdc changefeed list --pd="http://127.0.0.1:2379"
 
     チェンジフィードが正常に機能すると、Kafkaトピックにデータが書き込まれます。 `kafka-console-consumer.sh`を実行して、書き込まれたデータを表示できます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     ./bin/kafka-console-consumer.sh --bootstrap-server 127.0.0.1:9092 --from-beginning --topic `${topic-name}`

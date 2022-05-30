@@ -20,7 +20,7 @@ TiDBは完全な分散トランザクションをサポートし、 [楽観的�
 
 [書店](/develop/dev-guide-bookshop-schema-design.md)データベースの`users`テーブルを使用して、いくつかのサンプルデータをテーブルに挿入します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO users (id, nickname, balance)
@@ -31,7 +31,7 @@ INSERT INTO users (id, nickname, balance)
 
 次のトランザクションを実行し、各ステートメントの意味を説明します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 BEGIN;
@@ -56,13 +56,13 @@ COMMIT;
 
 新しいトランザクションを明示的に開始するには、 `BEGIN`または`START TRANSACTION`のいずれかを使用できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 BEGIN;
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 START TRANSACTION;
@@ -70,7 +70,7 @@ START TRANSACTION;
 
 TiDBのデフォルトのトランザクションモードは悲観的です。 [楽観的なトランザクションモデル](/develop/dev-guide-optimistic-and-pessimistic-transaction.md)を明示的に指定することもできます：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 BEGIN OPTIMISTIC;
@@ -78,7 +78,7 @@ BEGIN OPTIMISTIC;
 
 [悲観的なトランザクションモード](/develop/dev-guide-optimistic-and-pessimistic-transaction.md)を有効にします：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 BEGIN PESSIMISTIC;
@@ -90,7 +90,7 @@ BEGIN PESSIMISTIC;
 
 `COMMIT`ステートメントを使用して、現在のトランザクションでTiDBによって行われたすべての変更をコミットできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 COMMIT;
@@ -102,7 +102,7 @@ COMMIT;
 
 `ROLLBACK`ステートメントを使用して、現在のトランザクションの変更をロールバックできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ROLLBACK;
@@ -110,7 +110,7 @@ ROLLBACK;
 
 前の転送例では、トランザクション全体をロールバックすると、アリスとボブの残高は変更されず、現在のトランザクションのすべての変更がキャンセルされます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 TRUNCATE TABLE `users`;
@@ -163,7 +163,7 @@ SQL-92標準では、次の4つの分離レベルが定義されています。
 
 TiDBは、次の分離レベルをサポートしています`READ COMMITTED`および`REPEATABLE READ` ：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 mysql> SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;

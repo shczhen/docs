@@ -40,7 +40,7 @@ TiDBクラスターの容量は、オンラインサービスを中断するこ�
 
     `scale-out.yaml`のファイルにスケールアウトトポロジ構成を追加します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     vi scale-out.yaml
@@ -103,7 +103,7 @@ TiDBクラスターの容量は、オンラインサービスを中断するこ�
 
 2.  scale-outコマンドを実行します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster scale-out <cluster-name> scale-out.yaml
@@ -117,7 +117,7 @@ TiDBクラスターの容量は、オンラインサービスを中断するこ�
 
 3.  クラスタのステータスを確認します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster display <cluster-name>
@@ -161,7 +161,7 @@ TiDBクラスターの容量は、オンラインサービスを中断するこ�
 
 2.  scale-outコマンドを実行します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster scale-out <cluster-name> scale-out.yaml
@@ -173,7 +173,7 @@ TiDBクラスターの容量は、オンラインサービスを中断するこ�
 
 3.  クラスタステータスを表示します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster display <cluster-name>
@@ -213,7 +213,7 @@ TiDBクラスターの容量は、オンラインサービスを中断するこ�
 
 2.  scale-outコマンドを実行します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster scale-out <cluster-name> scale-out.yaml
@@ -225,7 +225,7 @@ TiDBクラスターの容量は、オンラインサービスを中断するこ�
 
 3.  クラスタステータスを表示します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster display <cluster-name>
@@ -258,7 +258,7 @@ TiDBクラスターの容量は、オンラインサービスを中断するこ�
 
 1.  ノードID情報を表示します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster display <cluster-name>
@@ -288,7 +288,7 @@ TiDBクラスターの容量は、オンラインサービスを中断するこ�
 
 2.  スケールインコマンドを実行します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster scale-in <cluster-name> --node 10.0.1.5:20160
@@ -304,7 +304,7 @@ TiDBクラスターの容量は、オンラインサービスを中断するこ�
 
     スケールインステータスを確認するには、次のコマンドを実行します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster display <cluster-name>
@@ -332,7 +332,7 @@ TiDBクラスターの容量は、オンラインサービスを中断するこ�
 
 1.  レプリカがクラスター内の残りのTiFlashノードの数よりも大きいすべてのテーブルに対して、TiDBクライアントで次のコマンドを実行します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     alter table <db-name>.<table-name> set tiflash replica 0;
@@ -348,7 +348,7 @@ TiDBクラスターの容量は、オンラインサービスを中断するこ�
 
 1.  まず、削除するノードの名前を確認します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster display <cluster-name>
@@ -356,7 +356,7 @@ TiDBクラスターの容量は、オンラインサービスを中断するこ�
 
 2.  TiFlashノードを削除します（ステップ1のノード名が`10.0.1.4:9000`であると想定します）。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster scale-in <cluster-name> --node 10.0.1.4:9000
@@ -372,7 +372,7 @@ TiDBクラスターの容量は、オンラインサービスを中断するこ�
 
     -   TiUPデプロイメントを使用する場合は、 `pd-ctl`を`tiup ctl pd`に置き換えます。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         tiup ctl:<cluster-version> pd -u http://<pd_ip>:<pd_port> store
@@ -388,7 +388,7 @@ TiDBクラスターの容量は、オンラインサービスを中断するこ�
 
     -   TiUPデプロイメントを使用する場合は、 `pd-ctl`を`tiup ctl pd`に置き換えます。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         tiup ctl:<cluster-version> pd -u http://<pd_ip>:<pd_port> store delete <store_id>
@@ -404,7 +404,7 @@ TiDBクラスターの容量は、オンラインサービスを中断するこ�
 
 5.  TiUPのクラスター構成ファイルを手動で更新します（編集モードでダウンするTiFlashノードの情報を削除します）。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster edit-config <cluster-name>
@@ -418,7 +418,7 @@ PDのレプリケーションルールを手動でクリーンアップする手
 
 1.  現在のPDインスタンスのTiFlashに関連するすべてのデータレプリケーションルールを表示します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     curl http://<pd_ip>:<pd_port>/pd/api/v1/config/rules/group/tiflash
@@ -449,7 +449,7 @@ PDのレプリケーションルールを手動でクリーンアップする手
 
 2.  TiFlashに関連するすべてのデータ複製ルールを削除します。例として、 `id`が`table-45-r`であるルールを取り上げます。次のコマンドで削除します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     curl -v -X DELETE http://<pd_ip>:<pd_port>/pd/api/v1/config/rule/tiflash/table-45-r
@@ -461,7 +461,7 @@ PDのレプリケーションルールを手動でクリーンアップする手
 
 1.  ノードをオフラインにします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster scale-in <cluster-name> --node 10.0.1.4:8300
@@ -469,7 +469,7 @@ PDのレプリケーションルールを手動でクリーンアップする手
 
 2.  クラスタステータスを表示します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster display <cluster-name>

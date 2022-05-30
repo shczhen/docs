@@ -56,7 +56,7 @@ ColumnPosition ::=
 
 ### メタのみの変更 {#meta-only-change}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1 (id int not null primary key AUTO_INCREMENT, col1 INT);
@@ -66,7 +66,7 @@ CREATE TABLE t1 (id int not null primary key AUTO_INCREMENT, col1 INT);
 Query OK, 0 rows affected (0.11 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO t1 (col1) VALUES (1),(2),(3),(4),(5);
@@ -77,7 +77,7 @@ Query OK, 5 rows affected (0.02 sec)
 Records: 5  Duplicates: 0  Warnings: 0
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE t1 MODIFY col1 BIGINT;
@@ -87,7 +87,7 @@ ALTER TABLE t1 MODIFY col1 BIGINT;
 Query OK, 0 rows affected (0.09 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW CREATE TABLE t1\G;
@@ -106,7 +106,7 @@ Create Table: CREATE TABLE `t1` (
 
 ### Reorg-データ変更 {#reorg-data-change}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1 (id int not null primary key AUTO_INCREMENT, col1 INT);
@@ -116,7 +116,7 @@ CREATE TABLE t1 (id int not null primary key AUTO_INCREMENT, col1 INT);
 Query OK, 0 rows affected (0.11 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO t1 (col1) VALUES (12345),(67890);
@@ -127,7 +127,7 @@ Query OK, 2 rows affected (0.00 sec)
 Records: 2  Duplicates: 0  Warnings: 0
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE t1 MODIFY col1 VARCHAR(5);
@@ -137,7 +137,7 @@ ALTER TABLE t1 MODIFY col1 VARCHAR(5);
 Query OK, 0 rows affected (2.52 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW CREATE TABLE t1\G;

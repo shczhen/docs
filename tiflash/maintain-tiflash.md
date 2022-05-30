@@ -18,7 +18,7 @@ TiFlashのバージョンを確認する方法は2つあります。
 
     たとえば、 `tiflash`と`libtiflash_proxy.so`が同じディレクトリにある場合、最初にこのディレクトリに切り替えてから、次のコマンドを使用してTiFlashのバージョンを確認できます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     LD_LIBRARY_PATH=./ ./tiflash version

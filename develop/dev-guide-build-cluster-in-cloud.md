@@ -47,7 +47,7 @@ summary: Learn how to build a TiDB cluster in TiDB Cloud (Developer Tier) and co
 
 [自作](https://brew.sh/index)がない場合はインストールし、次のコマンドを実行してMySQLクライアントをインストールします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 brew install mysql-client
@@ -69,7 +69,7 @@ For compilers to find mysql-client you may need to set:
 
 MySQLクライアントをPATHに追加するには、上記の出力で次のコマンドを見つけ（出力がドキュメントの上記の出力と矛盾する場合は、代わりに出力で対応するコマンドを使用します）、実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 echo 'export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"' >> ~/.zshrc
@@ -77,7 +77,7 @@ echo 'export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"' >> ~/.zshrc
 
 次に、 `source`コマンドでグローバル環境変数を宣言し、MySQLクライアントが正常にインストールされていることを確認します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 source ~/.zshrc
@@ -96,7 +96,7 @@ mysql  Ver 8.0.28 for macos12.0 on arm64 (Homebrew)
 
 例としてCentOS7を取り上げます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 yum install mysql
@@ -104,7 +104,7 @@ yum install mysql
 
 次に、MySQLクライアントが正常にインストールされていることを確認します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 mysql --version
@@ -122,7 +122,7 @@ mysql  Ver 15.1 Distrib 5.5.68-MariaDB, for Linux (x86_64) using readline 5.1
 
 2.  [ステップ1](#step-1-create-a-free-cluster)で取得した接続文字列を実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 mysql --connect-timeout 15 -u root -h <host> -P 4000 -p
@@ -134,7 +134,7 @@ mysql --connect-timeout 15 -u root -h <host> -P 4000 -p
 
 1.  `tidb-example-java`のプロジェクトのクローンを作成します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 git clone https://github.com/pingcap-inc/tidb-example-java.git

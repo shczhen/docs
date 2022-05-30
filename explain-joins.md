@@ -7,7 +7,7 @@ summary: Learn about the execution plan information returned by the EXPLAIN stat
 
 TiDBでは、SQLオプティマイザーは、テーブルを結合する順序と、特定のSQLステートメントに対して最も効率的な結合アルゴリズムを決定する必要があります。このドキュメントの例は、次のサンプルデータに基づいています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1 (id BIGINT NOT NULL PRIMARY KEY auto_increment, pad1 BLOB, pad2 BLOB, pad3 BLOB, int_col INT NOT NULL DEFAULT 0);
@@ -41,7 +41,7 @@ ANALYZE TABLE t1, t2;
 
 結合する必要のある推定行数が少ない場合（通常は10000行未満）、インデックス結合方式を使用することをお勧めします。この結合方法は、MySQLで使用される主要な結合方法と同様に機能します。次の例では、オペレーター`├─TableReader_28(Build)`が最初にテーブル`t1`を読み取ります。一致する行ごとに、TiDBはテーブル`t2`をプローブします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT /*+ INL_JOIN(t1, t2) */ * FROM t1 INNER JOIN t2 ON t1.id = t2.t1_id;
@@ -71,7 +71,7 @@ SELECT * FROM t1 INNER JOIN t2 ON t1.id=t2.t1_id WHERE t1.pad1 = 'value' and t2.
 
 インデックス結合は、ビルド側が小さく、プローブ側が事前にインデックス付けされていて大きい場合に効果的です。インデックス結合のパフォーマンスがハッシュ結合よりも悪く、SQLオプティマイザーによって選択されていない次のクエリについて考えてみます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 -- DROP previously added index
@@ -195,7 +195,7 @@ Query OK, 0 rows affected (3.65 sec)
 
 ハッシュ結合の例は次のとおりです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT /*+ HASH_JOIN(t1, t2) */ * FROM t1, t2 WHERE t1.id = t2.id;
@@ -273,7 +273,7 @@ Query OK, 0 rows affected (0.00 sec)
 
 次に例を示します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT /*+ MERGE_JOIN(t1, t2) */ * FROM t1, t2 WHERE t1.id = t2.id;

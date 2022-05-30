@@ -156,7 +156,7 @@ public class EffectWriteSkew {
 
 SQLログ：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 /* txn 1 */ BEGIN
@@ -171,7 +171,7 @@ SQLログ：
 
 実行結果：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 mysql> SELECT * FROM doctors;
@@ -313,7 +313,7 @@ public class EffectWriteSkew {
 
 SQLログ：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 /* txn 1 */ BEGIN
@@ -328,7 +328,7 @@ At least one doctor is on call
 
 実行結果：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 mysql> SELECT * FROM doctors;
@@ -349,7 +349,7 @@ TiDBは`savepoint`メカニズムをサポートしてい<em><strong>ない</str
 
 次の例は、 `savepoint`のメカニズムを示しています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 mysql> BEGIN;

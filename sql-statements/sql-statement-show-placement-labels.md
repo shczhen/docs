@@ -16,7 +16,7 @@ ShowStmt ::=
 
 ## 例 {#examples}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW PLACEMENT LABELS;

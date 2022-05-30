@@ -14,7 +14,7 @@ TiDBは、インデックスを使用してクエリの実行を高速化する�
 
 このドキュメントの例は、次のサンプルデータに基づいています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1 (
@@ -34,7 +34,7 @@ INSERT INTO t1 SELECT NULL, FLOOR(RAND()*1024), RANDOM_BYTES(1024) FROM t1 a JOI
 
 TiDBは、セカンダリインデックスからデータを取得するときに`IndexLookup`演算子を使用します。この場合、次のクエリはすべて`intkey`インデックスで`IndexLookup`演算子を使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT * FROM t1 WHERE intkey = 123;
@@ -107,7 +107,7 @@ EXPLAIN SELECT * FROM t1 WHERE intkey >= 99 AND intkey <= 103;
 
 `IndexLookup`つのタスクには2つのステップが必要なため、多数の行が一致するシナリオでは、SQLオプティマイザーは[統計学](/statistics.md)に基づいて`TableFullScan`の演算子を選択する場合があります。次の例では、多数の行が`intkey > 100`の条件に一致し、 `TableFullScan`が選択されています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT * FROM t1 WHERE intkey > 100;
@@ -126,7 +126,7 @@ EXPLAIN SELECT * FROM t1 WHERE intkey > 100;
 
 `IndexLookup`演算子を使用して、インデックス付き列の`LIMIT`を効率的に最適化することもできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT * FROM t1 ORDER BY intkey DESC LIMIT 10;
@@ -151,7 +151,7 @@ EXPLAIN SELECT * FROM t1 ORDER BY intkey DESC LIMIT 10;
 
 TiDBは、<em>カバーリングインデックスの最適化を</em>サポートしています。すべての行をインデックスから取得できる場合、TiDBは通常`IndexLookup`で必要とされる2番目のステップをスキップします。次の2つの例を検討してください。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT * FROM t1 WHERE intkey = 123;
@@ -184,7 +184,7 @@ EXPLAIN SELECT id FROM t1 WHERE intkey = 123;
 
 TiDBは、主キーまたは一意キーから直接データを取得するときに`Point_Get`または`Batch_Point_Get`演算子を使用します。これらの演算子は`IndexLookup`よりも効率的です。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT * FROM t1 WHERE id = 1234;
@@ -239,7 +239,7 @@ Query OK, 0 rows affected (0.37 sec)
 
 インデックスは順序付けられているため、 `IndexFullScan`演算子を使用して、インデックス値の`MIN`または`MAX`値などの一般的なクエリを最適化できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT MIN(intkey) FROM t1;
@@ -274,7 +274,7 @@ EXPLAIN SELECT MAX(intkey) FROM t1;
 
 対照的に、インデックス付けされていない値に対して`MIN`関数を実行すると、 `TableFullScan`になります。クエリではすべての行をTiKVでスキャンする必要がありますが、 `TopN`の計算を実行して、各TiKV領域がTiDBに1行のみを返すようにします。 `TopN`は、TiKVとTiDBの間で過剰な行が転送されるのを防ぎますが、このステートメントは、 `MIN`がインデックスを利用できる上記の例よりもはるかに効率が悪いと見なされます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT MIN(pad1) FROM t1;
@@ -296,7 +296,7 @@ EXPLAIN SELECT MIN(pad1) FROM t1;
 
 次のステートメントは、 `IndexFullScan`演算子を使用して、インデックス内のすべての行をスキャンします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT SUM(intkey) FROM t1;
@@ -329,7 +329,7 @@ EXPLAIN SELECT AVG(intkey) FROM t1;
 
 次のステートメントは、テーブルから追加の列が必要なため、 `IndexFullScan`演算子の使用をサポートしていません。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT AVG(intkey), ANY_VALUE(pad1) FROM t1;

@@ -48,7 +48,7 @@ v2.1.0以前のバージョン（v2.0のすべてのバージョンを含む）�
 
 -   アップグレードする前に、v2.1.0以前のバージョンでは次の操作が実行されます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     create table t(a varchar(10)) charset=utf8;
@@ -59,7 +59,7 @@ v2.1.0以前のバージョン（v2.0のすべてのバージョンを含む）�
     Time: 0.106s
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     show create table t;
@@ -79,7 +79,7 @@ v2.1.0以前のバージョン（v2.0のすべてのバージョンを含む）�
 
 -   アップグレード後、v2.1.1およびv2.1.2では次のエラーが報告されますが、v2.1.3以降のバージョンではそのようなエラーはありません。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     alter table t change column a a varchar(20);
@@ -93,7 +93,7 @@ v2.1.0以前のバージョン（v2.0のすべてのバージョンを含む）�
 
 列の文字セットを元の文字セットと同じものとして明示的に指定できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 alter table t change column a a varchar(22) character set utf8;
@@ -103,7 +103,7 @@ alter table t change column a a varchar(22) character set utf8;
 
 -   ポイント2によると、HTTP APIを介してテーブルのメタデータを取得し、列名とキーワード「Charset」を検索して列の文字セットを見つけることができます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sh
     curl "http://$IP:10080/schema/test/t" | python -m json.tool
@@ -147,7 +147,7 @@ alter table t change column a a varchar(22) character set utf8;
 
 -   アップグレードする前に、v2.1.1およびv2.1.2では次の操作が実行されます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     create table t(a varchar(10)) charset=utf8;
@@ -158,7 +158,7 @@ alter table t change column a a varchar(22) character set utf8;
     Time: 0.109s
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     show create table t;
@@ -178,7 +178,7 @@ alter table t change column a a varchar(22) character set utf8;
 
 -   アップグレード後、v2.1.3以降のバージョンでは次の操作が実行されます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     show create table t;
@@ -196,7 +196,7 @@ alter table t change column a a varchar(22) character set utf8;
     Time: 0.007s
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     alter table t change column a a varchar(20);
@@ -210,7 +210,7 @@ alter table t change column a a varchar(22) character set utf8;
 
 -   v2.1.3以降、TiDBは列とテーブルの文字セットの変更をサポートしているため、テーブルの文字セットをUTF8MB4に変更することをお勧めします。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     alter table t convert to character set utf8mb4;
@@ -218,7 +218,7 @@ alter table t change column a a varchar(22) character set utf8;
 
 -   問題＃1で行ったように列文字セットを指定して、元の列文字セット（UTF8MB4）との一貫性を保つこともできます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     alter table t change column a a varchar(20) character set utf8mb4;
@@ -230,7 +230,7 @@ TiDB v2.1.1以前のバージョンでは、文字セットがUTF-8の場合、�
 
 -   アップグレードする前に、v2.1.1以前のバージョンでは次の操作が実行されます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     create table t(a varchar(100) charset utf8);
@@ -240,7 +240,7 @@ TiDB v2.1.1以前のバージョンでは、文字セットがUTF-8の場合、�
     Query OK, 0 rows affected
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     insert t values (unhex('f09f8c80'));
@@ -252,7 +252,7 @@ TiDB v2.1.1以前のバージョンでは、文字セットがUTF-8の場合、�
 
 -   アップグレード後、v2.1.2以降のバージョンでは次のエラーが報告されます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     insert t values (unhex('f09f8c80'));
@@ -266,7 +266,7 @@ TiDB v2.1.1以前のバージョンでは、文字セットがUTF-8の場合、�
 
 -   v2.1.2の場合：このバージョンは列文字セットの変更をサポートしていないため、UTF-8チェックをスキップする必要があります。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     set @@session.tidb_skip_utf8_check=1;
@@ -276,7 +276,7 @@ TiDB v2.1.1以前のバージョンでは、文字セットがUTF-8の場合、�
     Query OK, 0 rows affected
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     insert t values (unhex('f09f8c80'));
@@ -288,7 +288,7 @@ TiDB v2.1.1以前のバージョンでは、文字セットがUTF-8の場合、�
 
 -   v2.1.3以降のバージョン：列の文字セットをUTF8MB4に変更することをお勧めします。または、UTF-8チェックをスキップするように`tidb_skip_utf8_check`を設定できます。ただし、チェックをスキップすると、MySQLがチェックを実行するため、TiDBからMySQLへのデータの複製に失敗する可能性があります。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     alter table t change column a a varchar(100) character set utf8mb4;
@@ -298,7 +298,7 @@ TiDB v2.1.1以前のバージョンでは、文字セットがUTF-8の場合、�
     Query OK, 0 rows affected
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     insert t values (unhex('f09f8c80'));
@@ -318,7 +318,7 @@ TiDB v2.1.1以前のバージョンでは、文字セットがUTF-8の場合、�
 
         -   HTTP APIを有効にするには：
 
-            {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+            {{< copyable "" >}}
 
             ```sh
             curl -X POST -d "check_mb4_value_in_utf8=1" http://{TiDBIP}:10080/settings
@@ -326,7 +326,7 @@ TiDB v2.1.1以前のバージョンでは、文字セットがUTF-8の場合、�
 
         -   HTTP APIを無効にするには：
 
-            {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+            {{< copyable "" >}}
 
             ```sh
             curl -X POST -d "check_mb4_value_in_utf8=0" http://{TiDBIP}:10080/settings
@@ -336,7 +336,7 @@ TiDB v2.1.1以前のバージョンでは、文字セットがUTF-8の場合、�
 
         -   セッション変数を有効にするには：
 
-            {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+            {{< copyable "" >}}
 
             ```sql
             set @@session.tidb_check_mb4_value_in_utf8 = 1;
@@ -344,7 +344,7 @@ TiDB v2.1.1以前のバージョンでは、文字セットがUTF-8の場合、�
 
         -   セッション変数を無効にするには：
 
-            {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+            {{< copyable "" >}}
 
             ```sql
             set @@session.tidb_check_mb4_value_in_utf8 = 0;

@@ -23,7 +23,7 @@ summary: Learn about the `CLIENT_ERRORS_SUMMARY_BY_USER` information_schema tabl
 
 要約されたカウントは、ステートメント`FLUSH CLIENT_ERRORS_SUMMARY`でリセットできます。要約は各TiDBサーバーに対してローカルであり、メモリにのみ保持されます。 TiDBサーバーが再起動すると、要約は失われます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -57,7 +57,7 @@ DESC CLIENT_ERRORS_SUMMARY_BY_USER;
 
 次の例は、クライアントがローカルTiDBサーバーに接続したときに生成される警告を示しています。要約は`FLUSH CLIENT_ERRORS_SUMMARY`を実行した後にリセットされます：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT 0/0;

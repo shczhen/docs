@@ -10,7 +10,7 @@ aliases: ['/docs/dev/system-tables/system-table-inspection-summary/','/docs/dev/
 
 `information_schema.inspection_summary`検査概要表の構成は以下のとおりです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -55,7 +55,7 @@ DESC inspection_summary;
 -   `(2020-01-16 16:00:54.933, 2020-01-16 16:10:54.933)`
 -   `(2020-01-16 16:10:54.933, 2020-01-16 16:20:54.933)`
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT

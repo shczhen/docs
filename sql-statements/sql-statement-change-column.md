@@ -55,7 +55,7 @@ ColumnPosition ::=
 
 ## 例 {#examples}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1 (id int not null primary key AUTO_INCREMENT, col1 INT);
@@ -65,7 +65,7 @@ CREATE TABLE t1 (id int not null primary key AUTO_INCREMENT, col1 INT);
 Query OK, 0 rows affected (0.11 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO t1 (col1) VALUES (1),(2),(3),(4),(5);
@@ -76,7 +76,7 @@ Query OK, 5 rows affected (0.02 sec)
 Records: 5  Duplicates: 0  Warnings: 0
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE t1 CHANGE col1 col2 INT;
@@ -86,7 +86,7 @@ ALTER TABLE t1 CHANGE col1 col2 INT;
 Query OK, 0 rows affected (0.09 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE t1 CHANGE col2 col3 BIGINT, ALGORITHM=INSTANT;
@@ -96,7 +96,7 @@ ALTER TABLE t1 CHANGE col2 col3 BIGINT, ALGORITHM=INSTANT;
 Query OK, 0 rows affected (0.08 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE t1 CHANGE col3 col4 BIGINT, CHANGE id id2 INT NOT NULL;
@@ -106,7 +106,7 @@ ALTER TABLE t1 CHANGE col3 col4 BIGINT, CHANGE id id2 INT NOT NULL;
 ERROR 1105 (HY000): can't run multi schema change
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t (a int primary key);
@@ -117,7 +117,7 @@ ALTER TABLE t CHANGE COLUMN a a VARCHAR(10);
 ERROR 8200 (HY000): Unsupported modify column: column has primary key flag
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t (c1 INT, c2 INT, c3 INT) partition by range columns(c1) ( partition p0 values less than (10), partition p1 values less than (maxvalue));
@@ -128,7 +128,7 @@ ALTER TABLE t CHANGE COLUMN c1 c1 DATETIME;
 ERROR 8200 (HY000): Unsupported modify column: table is partition table
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t (a INT, b INT as (a+1));
@@ -139,7 +139,7 @@ ALTER TABLE t CHANGE COLUMN b b VARCHAR(10);
 ERROR 8200 (HY000): Unsupported modify column: column is generated
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t (a DECIMAL(13, 7));

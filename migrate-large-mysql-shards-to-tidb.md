@@ -45,7 +45,7 @@ MySQLシャードのデータサイズが1TiB未満の場合は、 [小さなデ
 
 テーブル1〜4のテーブル構造は次のようになります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE `table1` (
@@ -60,7 +60,7 @@ CREATE TABLE `table1` (
 
 これらの4つのテーブルでは、 `id`列が主キーです。これは自動インクリメンタルであり、異なるシャードテーブルが重複した`id`の範囲を生成し、移行中にターゲットテーブルで主キーの競合が発生します。一方、 `sid`列はシャーディングキーであり、インデックスがグローバルに一意であることを保証します。したがって、データマージの競合を回避するために、ターゲット`table5`の`id`列の一意の制約を削除できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE `table5` (
@@ -83,7 +83,7 @@ CREATE TABLE `table5` (
 
 まず、次のコマンドを実行して、Dumplingを使用して`my_db1`から`table1`と`table2`をエクスポートします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dumpling -h ${ip} -P 3306 -u root -t 16 -r 200000 -F 256MB -B my_db1 -f 'my_db1.table[12]' -o ${data-path}/my_db1
@@ -108,7 +108,7 @@ tiup dumpling -h ${ip} -P 3306 -u root -t 16 -r 200000 -F 256MB -B my_db1 -f 'my
 
 次に、次のコマンドを実行して、Dumplingを使用して`my_db2`から`table3`と`table4`をエクスポートします。パスは`${data-path}/my_db1`ではなく`${data-path}/my_db2`であることに注意してください。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dumpling -h ${ip} -P 3306 -u root -t 16 -r 200000 -F 256MB -B my_db2 -f 'my_db2.table[34]' -o ${data-path}/my_db2
@@ -140,7 +140,7 @@ tiup dumpling -h ${ip} -P 3306 -u root -t 16 -r 200000 -F 256MB -B my_db2 -f 'my
 
 ダウンストリームで`mydb.table5`を作成します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE `table5` (
@@ -209,7 +209,7 @@ CREATE TABLE `table5` (
 
 2.  `tidb-lightning`を実行します。シェルでプログラム名を直接呼び出してプログラムを実行すると、SIGHUPシグナルを受信した後、プロセスが予期せず終了する場合があります。 `nohup`などのツールを使用してプログラムを実行し、プロセスをシェルのバック`tiup`に置くことをお勧めし`screen` 。 S3から移行する場合は、Amazon S3バックエンドストアにアクセスできるアカウントのSecretKeyとAccessKeyを、環境変数としてLightningノードに渡す必要があります。 `~/.aws/credentials`からのクレデンシャルファイルの読み取りもサポートされています。例えば：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     export AWS_ACCESS_KEY_ID=${access_key}
@@ -259,7 +259,7 @@ from:
 
 ターミナルで次のコマンドを実行します。 `tiup dmctl`を使用して、データソース構成をDMクラスターにロードします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dmctl --master-addr ${advertise-addr} operate-source create source1.yaml
@@ -347,7 +347,7 @@ mysql-instances:
 
 データ移行タスクを開始する前に、 `tiup dmctl`の`check-task`サブコマンドを使用して、構成がDM構成要件を満たしているかどうかを確認することをお勧めします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dmctl --master-addr ${advertise-addr} check-task task.yaml
@@ -355,7 +355,7 @@ tiup dmctl --master-addr ${advertise-addr} check-task task.yaml
 
 `tiup dmctl`を使用して次のコマンドを実行し、データ移行タスクを開始します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dmctl --master-addr ${advertise-addr} start-task task.yaml
@@ -374,7 +374,7 @@ tiup dmctl --master-addr ${advertise-addr} start-task task.yaml
 
 `tiup dmctl`で`query-status`コマンドを実行することにより、DMクラスターで実行中の移行タスクがあるかどうかとそのステータスを確認できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dmctl --master-addr ${advertise-addr} query-status ${task-name}

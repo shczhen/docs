@@ -28,7 +28,7 @@ CREATE VIEW view_name AS query;
 
 後続のクエリの便宜のために、次のステートメントを使用してクエリをビューとして定義できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE VIEW book_with_ratings AS
@@ -42,7 +42,7 @@ GROUP BY b.id;
 
 ビューが作成されると、 `SELECT`ステートメントを使用して、通常のテーブルと同じようにビューを照会できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM book_with_ratings LIMIT 10;
@@ -57,7 +57,7 @@ TiDBがビューを照会するとき、ビューに関連付けられた`SELECT
 -   `DROP VIEW view_name;`ステートメントで古いビューを削除してから、 `CREATE VIEW view_name AS query;`ステートメントで新しいビューを作成してビューを更新します。
 -   `CREATE OR REPLACE VIEW view_name AS query;`ステートメントを使用して、同じ名前の既存のビューを上書きします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE OR REPLACE VIEW book_with_ratings AS
@@ -71,7 +71,7 @@ GROUP BY b.id;
 
 ### <code>SHOW CREATE TABLE|VIEW view_name</code>ステートメントの使用 {#using-the-code-show-create-table-view-view-name-code-statement}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW CREATE VIEW book_with_ratings\G
@@ -90,7 +90,7 @@ collation_connection: utf8mb4_general_ci
 
 ### <code>INFORMATION_SCHEMA.VIEWS</code>テーブルをクエリします {#query-the-code-information-schema-views-code-table}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM information_schema.views WHERE TABLE_NAME = 'book_with_ratings'\G
@@ -117,7 +117,7 @@ COLLATION_CONNECTION: utf8mb4_general_ci
 
 ビューを削除するには、 `DROP VIEW view_name;`ステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DROP VIEW book_with_ratings;

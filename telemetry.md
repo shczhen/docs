@@ -28,7 +28,7 @@ TiDBでテレメトリ収集機能が有効になっている場合、TiDBクラ
 
 PingCAPに共有される使用情報の全内容を表示するには、次のSQLステートメントを実行します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ADMIN SHOW TELEMETRY;
@@ -54,7 +54,7 @@ TiUPでテレメトリ収集機能が有効になっている場合、TiUPを使
 
 PingCAPに共有される使用情報の全内容を表示するには、TiUPコマンドの実行時に`TIUP_CLUSTER_DEBUG=enable`環境変数を設定します。例えば：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 TIUP_CLUSTER_DEBUG=enable tiup cluster list
@@ -98,7 +98,7 @@ enable-telemetry = false
 
 TiUP Playgroundを起動するときは、上記の構成ファイルの`--db.config tidb_config.toml`コマンドラインパラメーターを指定して有効にします。例えば：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup playground --db.config tidb_config.toml
@@ -140,7 +140,7 @@ server_configs:
 
 既存のTiDBクラスターでは、システム変数[`tidb_enable_telemetry`](/system-variables.md#tidb_enable_telemetry-new-in-v402)を変更して、TiDBテレメトリコレクションを動的に無効にすることもできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET GLOBAL tidb_enable_telemetry = 0;
@@ -188,7 +188,7 @@ enable-telemetry = false
 
 TiUP Playgroundを起動するときに、有効にする`--pd.config pd_config.toml`のコマンドラインパラメーターを指定します。次に例を示します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup playground --pd.config pd_config.toml
@@ -230,7 +230,7 @@ server_configs:
 
 TiUPテレメトリ収集を無効にするには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup telemetry disable
@@ -240,7 +240,7 @@ tiup telemetry disable
 
 TiDBテレメトリの場合、次のSQLステートメントを実行してテレメトリステータスを確認します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ADMIN SHOW TELEMETRY;
@@ -250,7 +250,7 @@ ADMIN SHOW TELEMETRY;
 
 TiUPテレメトリの場合、次のコマンドを実行してテレメトリステータスを確認します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup telemetry status

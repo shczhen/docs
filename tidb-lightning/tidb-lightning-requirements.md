@@ -94,7 +94,7 @@ select table_schema,sum(data_length)/1024/1024 as data_length,sum(index_length)/
 
 最大のテーブルのサイズをMiBで計算します。 ${schema_name}をスキーマ名に置き換えます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select table_name,table_schema,sum(data_length)/1024/1024 as data_length,sum(index_length)/1024/1024 as index_length,sum(data_length+index_length)/1024/1024 as sum from information_schema.tables where table_schema = "${schema_name}" group by table_name,table_schema order by sum  desc limit 5;

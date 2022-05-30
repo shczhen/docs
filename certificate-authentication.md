@@ -25,7 +25,7 @@ TiDBは、ユーザーがTiDBにログインするための証明書ベースの
 
 1.  次のコマンドを実行して、CAキーを生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     sudo openssl genrsa 2048 > ca-key.pem
@@ -42,7 +42,7 @@ TiDBは、ユーザーがTiDBにログインするための証明書ベースの
 
 2.  次のコマンドを実行して、CAキーに対応する証明書を生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     sudo openssl req -new -x509 -nodes -days 365000 -key ca-key.pem -out ca-cert.pem
@@ -50,7 +50,7 @@ TiDBは、ユーザーがTiDBにログインするための証明書ベースの
 
 3.  詳細な証明書情報を入力します。例えば：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     Country Name (2 letter code) [AU]:US
@@ -70,7 +70,7 @@ TiDBは、ユーザーがTiDBにログインするための証明書ベースの
 
 1.  次のコマンドを実行して、サーバーキーを生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     sudo openssl req -newkey rsa:2048 -days 365000 -nodes -keyout server-key.pem -out server-req.pem
@@ -78,7 +78,7 @@ TiDBは、ユーザーがTiDBにログインするための証明書ベースの
 
 2.  詳細な証明書情報を入力します。例えば：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     Country Name (2 letter code) [AU]:US
@@ -97,7 +97,7 @@ TiDBは、ユーザーがTiDBにログインするための証明書ベースの
 
 3.  次のコマンドを実行して、サーバーのRSAキーを生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     sudo openssl rsa -in server-key.pem -out server-key.pem
@@ -111,7 +111,7 @@ TiDBは、ユーザーがTiDBにログインするための証明書ベースの
 
 4.  CA証明書の署名を使用して、署名されたサーバー証明書を生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     sudo openssl x509 -req -in server-req.pem -days 365000 -CA ca-cert.pem -CAkey ca-key.pem -set_serial 01 -out server-cert.pem
@@ -135,7 +135,7 @@ TiDBは、ユーザーがTiDBにログインするための証明書ベースの
 
 1.  次のコマンドを実行して、クライアントキーを生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     sudo openssl req -newkey rsa:2048 -days 365000 -nodes -keyout client-key.pem -out client-req.pem
@@ -143,7 +143,7 @@ TiDBは、ユーザーがTiDBにログインするための証明書ベースの
 
 2.  詳細な証明書情報を入力します。例えば：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     Country Name (2 letter code) [AU]:US
@@ -162,7 +162,7 @@ TiDBは、ユーザーがTiDBにログインするための証明書ベースの
 
 3.  次のコマンドを実行して、クライアントのRSAキーを生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     sudo openssl rsa -in client-key.pem -out client-key.pem
@@ -176,7 +176,7 @@ TiDBは、ユーザーがTiDBにログインするための証明書ベースの
 
 4.  CA証明書の署名を使用して、クライアント証明書を生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     sudo openssl x509 -req -in client-req.pem -days 365000 -CA ca-cert.pem -CAkey ca-key.pem -set_serial 01 -out client-cert.pem
@@ -198,7 +198,7 @@ TiDBは、ユーザーがTiDBにログインするための証明書ベースの
 
 次のコマンドを実行して、証明書を確認します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 openssl verify -CAfile ca-cert.pem server-cert.pem client-cert.pem
@@ -240,7 +240,7 @@ TiDBを起動し、ログを確認します。次の情報がログに表示さ�
 
 MySQLクライアントを例にとると、 `ssl-cert` 、および`ssl-key`を指定することで、新しく作成されたクライアント証明書、クライアントキー、およびCAを使用でき`ssl-ca` 。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 mysql -utest -h0.0.0.0 -P4000 --ssl-cert /path/to/client-cert.new.pem --ssl-key /path/to/client-key.new.pem --ssl-ca /path/to/ca-cert.pem
@@ -262,7 +262,7 @@ mysql -utest -h0.0.0.0 -P4000 --ssl-cert /path/to/client-cert.new.pem --ssl-key 
 
     このオプションを取得するには、次のコマンドを実行します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     openssl x509 -noout -subject -in client-cert.pem | sed 's/.\{8\}//'  | sed 's/, /\//g' | sed 's/ = /=/g' | sed 's/^/\//'
@@ -272,7 +272,7 @@ mysql -utest -h0.0.0.0 -P4000 --ssl-cert /path/to/client-cert.new.pem --ssl-key 
 
     このオプションを取得するには、次のコマンドを実行します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     openssl x509 -noout -subject -in ca-cert.pem | sed 's/.\{8\}//'  | sed 's/, /\//g' | sed 's/ = /=/g' | sed 's/^/\//'
@@ -282,7 +282,7 @@ mysql -utest -h0.0.0.0 -P4000 --ssl-cert /path/to/client-cert.new.pem --ssl-key 
 
     -   次のコマンドを実行して、生成された証明書の`require san`のアイテムの情報を取得します。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         openssl x509 -noout -extensions subjectAltName -in client.crt
@@ -296,7 +296,7 @@ mysql -utest -h0.0.0.0 -P4000 --ssl-cert /path/to/client-cert.new.pem --ssl-key 
 
     -   複数のチェック項目は、コンマで接続した後に設定できます。たとえば、 `u1`ユーザーに対して次のように`require san`を構成します。
 
-        {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```sql
         create user 'u1'@'%' require san 'DNS:d1,URI:spiffe://example.org/myservice1,URI:spiffe://example.org/myservice2'
@@ -306,7 +306,7 @@ mysql -utest -h0.0.0.0 -P4000 --ssl-cert /path/to/client-cert.new.pem --ssl-key 
 
 -   `require cipher` ：クライアントがサポートしている暗号方式を確認します。次のステートメントを使用して、サポートされている暗号化方式のリストを確認します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SHOW SESSION STATUS LIKE 'Ssl_cipher_list';
@@ -320,7 +320,7 @@ mysql -utest -h0.0.0.0 -P4000 --ssl-cert /path/to/client-cert.new.pem --ssl-key 
 
 -   ユーザーを作成するときにユーザー証明書を構成します（ `create user` ）：
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     create user 'u1'@'%' require issuer '<replaceable>' subject '<replaceable>' san '<replaceable>' cipher '<replaceable>';
@@ -328,7 +328,7 @@ mysql -utest -h0.0.0.0 -P4000 --ssl-cert /path/to/client-cert.new.pem --ssl-key 
 
 -   特権を付与するときにユーザー証明書を構成します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     grant all on *.* to 'u1'@'%' require issuer '<replaceable>' subject '<replaceable>' san '<replaceable>' cipher '<replaceable>';
@@ -336,7 +336,7 @@ mysql -utest -h0.0.0.0 -P4000 --ssl-cert /path/to/client-cert.new.pem --ssl-key 
 
 -   ユーザーを変更するときにユーザー証明書を構成します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     alter user 'u1'@'%' require issuer '<replaceable>' subject '<replaceable>' san '<replaceable>' cipher '<replaceable>';
@@ -353,7 +353,7 @@ mysql -utest -h0.0.0.0 -P4000 --ssl-cert /path/to/client-cert.new.pem --ssl-key 
 
 MySQLクライアントを接続し、次のステートメントを実行します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 \s
@@ -373,7 +373,7 @@ SSL:                 Cipher in use is TLS_AES_256_GCM_SHA384
 
 次に、次のステートメントを実行します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 show variables like '%ssl%';
@@ -404,7 +404,7 @@ CA証明書は、クライアントとサーバー間の相互検証の基礎で
 
 1.  古いCAキーと証明書をバックアップします（ `ca-key.pem`が盗まれたと仮定します）。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     mv ca-key.pem ca-key.old.pem && \
@@ -413,7 +413,7 @@ CA証明書は、クライアントとサーバー間の相互検証の基礎で
 
 2.  新しいCAキーを生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     sudo openssl genrsa 2048 > ca-key.pem
@@ -421,7 +421,7 @@ CA証明書は、クライアントとサーバー間の相互検証の基礎で
 
 3.  新しく生成されたCAキーを使用して新しいCA証明書を生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     sudo openssl req -new -x509 -nodes -days 365000 -key ca-key.pem -out ca-cert.new.pem
@@ -433,7 +433,7 @@ CA証明書は、クライアントとサーバー間の相互検証の基礎で
 
 4.  結合されたCA証明書を生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     cat ca-cert.new.pem ca-cert.old.pem > ca-cert.pem
@@ -451,7 +451,7 @@ CA証明書は、クライアントとサーバー間の相互検証の基礎で
 
 1.  クライアントの新しいRSAキーを生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     sudo openssl req -newkey rsa:2048 -days 365000 -nodes -keyout client-key.new.pem -out client-req.new.pem && \
@@ -464,7 +464,7 @@ CA証明書は、クライアントとサーバー間の相互検証の基礎で
 
 2.  結合された証明書と新しいCAキーを使用して、新しいクライアント証明書を生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     sudo openssl x509 -req -in client-req.new.pem -days 365000 -CA ca-cert.pem -CAkey ca-key.pem -set_serial 01 -out client-cert.new.pem
@@ -472,7 +472,7 @@ CA証明書は、クライアントとサーバー間の相互検証の基礎で
 
 3.  クライアント（たとえば、MySQL）がTiDBを新しいクライアントキーと証明書に接続するようにします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     mysql -utest -h0.0.0.0 -P4000 --ssl-cert /path/to/client-cert.new.pem --ssl-key /path/to/client-key.new.pem --ssl-ca /path/to/ca-cert.pem
@@ -486,7 +486,7 @@ CA証明書は、クライアントとサーバー間の相互検証の基礎で
 
 1.  サーバーの新しいRSAキーを生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     sudo openssl req -newkey rsa:2048 -days 365000 -nodes -keyout server-key.new.pem -out server-req.new.pem && \
@@ -495,7 +495,7 @@ CA証明書は、クライアントとサーバー間の相互検証の基礎で
 
 2.  結合されたCA証明書と新しいCAキーを使用して、新しいサーバー証明書を生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     sudo openssl x509 -req -in server-req.new.pem -days 365000 -CA ca-cert.pem -CAkey ca-key.pem -set_serial 01 -out server-cert.new.pem

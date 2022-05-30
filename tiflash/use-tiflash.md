@@ -22,7 +22,7 @@ TiDBを使用して中規模の分析処理用のTiFlashレプリカを読み取
 
 TiFlashがTiKVクラスターに接続された後、デフォルトではデータレプリケーションは開始されません。 MySQLクライアントを介してDDLステートメントをTiDBに送信して、特定のテーブルのTiFlashレプリカを作成できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE table_name SET TIFLASH REPLICA count;
@@ -36,7 +36,7 @@ ALTER TABLE table_name SET TIFLASH REPLICA count;
 
 テーブルのレプリカを2つ作成します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE `tpch50`.`lineitem` SET TIFLASH REPLICA 2;
@@ -44,7 +44,7 @@ ALTER TABLE `tpch50`.`lineitem` SET TIFLASH REPLICA 2;
 
 レプリカを削除します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE `tpch50`.`lineitem` SET TIFLASH REPLICA 0;
@@ -54,7 +54,7 @@ ALTER TABLE `tpch50`.`lineitem` SET TIFLASH REPLICA 0;
 
 -   テーブル`t`が上記のDDLステートメントを介してTiFlashに複製される場合、次のステートメントを使用して作成されたテーブルも自動的にTiFlashに複製されます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     CREATE TABLE table_name like t;
@@ -72,7 +72,7 @@ ALTER TABLE `tpch50`.`lineitem` SET TIFLASH REPLICA 0;
 
 次のステートメントを使用して、特定のテーブルのTiFlashレプリカのステータスを確認できます。テーブルは`WHERE`句を使用して指定されます。 `WHERE`句を削除すると、すべてのテーブルのレプリカステータスが確認されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM information_schema.tiflash_replica WHERE TABLE_SCHEMA = '<db_name>' and TABLE_NAME = '<table_name>';
@@ -87,7 +87,7 @@ SELECT * FROM information_schema.tiflash_replica WHERE TABLE_SCHEMA = '<db_name>
 
 テーブルのTiFlashレプリカを作成するのと同様に、MySQLクライアントを介してDDLステートメントをTiDBに送信して、特定のデータベース内のすべてのテーブルのTiFlashレプリカを作成できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER DATABASE db_name SET TIFLASH REPLICA count;
@@ -99,7 +99,7 @@ ALTER DATABASE db_name SET TIFLASH REPLICA count;
 
 -   データベース内のすべてのテーブルに2つのレプリカを作成します`tpch50` ：
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     ALTER DATABASE `tpch50` SET TIFLASH REPLICA 2;
@@ -107,7 +107,7 @@ ALTER DATABASE db_name SET TIFLASH REPLICA count;
 
 -   データベース用に作成されたTiFlashレプリカを削除します`tpch50` ：
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     ALTER DATABASE `tpch50` SET TIFLASH REPLICA 0;
@@ -128,7 +128,7 @@ ALTER DATABASE db_name SET TIFLASH REPLICA count;
 
 テーブルのTiFlashレプリカの作成と同様に、DDLステートメントの正常な実行は、レプリケーションの完了を意味するものではありません。次のSQLステートメントを実行して、ターゲットテーブルでのレプリケーションの進行状況を確認できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM information_schema.tiflash_replica WHERE TABLE_SCHEMA = '<db_name>';
@@ -136,7 +136,7 @@ SELECT * FROM information_schema.tiflash_replica WHERE TABLE_SCHEMA = '<db_name>
 
 データベースにTiFlashレプリカがないテーブルをチェックするには、次のSQLステートメントを実行できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT TABLE_NAME FROM information_schema.tables where TABLE_SCHEMA = "<db_name>" and TABLE_NAME not in (SELECT TABLE_NAME FROM information_schema.tiflash_replica where TABLE_SCHEMA = "<db_name>");
@@ -163,7 +163,7 @@ SELECT TABLE_NAME FROM information_schema.tables where TABLE_SCHEMA = "<db_name>
 
 2.  クラスタを起動した後、レプリカを作成するときにラベルを指定します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     ALTER TABLE table_name SET TIFLASH REPLICA count LOCATION LABELS location_labels;
@@ -171,7 +171,7 @@ SELECT TABLE_NAME FROM information_schema.tables where TABLE_SCHEMA = "<db_name>
 
     例えば：
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     ALTER TABLE t SET TIFLASH REPLICA 2 LOCATION LABELS "zone";
@@ -218,7 +218,7 @@ TiDBは、TiFlashレプリカを読み取る3つの方法を提供します。�
 
 TiFlashレプリカを含むテーブルの場合、TiDBオプティマイザは、コスト見積もりに基づいてTiFlashレプリカを使用するかどうかを自動的に決定します。 `desc`または`explain analyze`ステートメントを使用して、TiFlashレプリカが選択されているかどうかを確認できます。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 desc select count(*) from test.t;
@@ -235,7 +235,7 @@ desc select count(*) from test.t;
 3 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 explain analyze select count(*) from test.t;
@@ -270,7 +270,7 @@ explain analyze select count(*) from test.t;
 
 -   SESSIONレベル。次のステートメントを使用して構成します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     set @@session.tidb_isolation_read_engines = "engine list separated by commas";
@@ -278,7 +278,7 @@ explain analyze select count(*) from test.t;
 
     また
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     set SESSION tidb_isolation_read_engines = "engine list separated by commas";
@@ -298,7 +298,7 @@ explain analyze select count(*) from test.t;
 
 手動のヒントにより、TiDBは、エンジンの分離を満たすことを前提として、特定のテーブルに指定されたレプリカを使用するように強制できます。手動ヒントの使用例を次に示します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select /*+ read_from_storage(tiflash[table_name]) */ ... from table_name;
@@ -306,7 +306,7 @@ select /*+ read_from_storage(tiflash[table_name]) */ ... from table_name;
 
 クエリステートメントでテーブルにエイリアスを設定する場合は、ヒントを有効にするためのヒントを含むエイリアスをステートメントで使用する必要があります。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select /*+ read_from_storage(tiflash[alias_a,alias_b]) */ ... from table_name_1 as alias_a, table_name_2 as alias_b where alias_a.column_1 = alias_b.column_2;
@@ -416,7 +416,7 @@ TiFlashは、MPPモードを使用したクエリの実行をサポートしま�
 
 たとえば、MPPモードを使用したくない場合は、次のステートメントを実行できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 set @@session.tidb_allow_mpp=1;
@@ -425,7 +425,7 @@ set @@session.tidb_enforce_mpp=0;
 
 TiDBのコストベースのオプティマイザでMPPモード（デフォルト）を使用するかどうかを自動的に決定する場合は、次のステートメントを実行できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 set @@session.tidb_allow_mpp=1;
@@ -434,7 +434,7 @@ set @@session.tidb_enforce_mpp=0;
 
 TiDBでオプティマイザのコスト見積もりを無視し、MPPモードを強制的に選択する場合は、次のステートメントを実行できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 set @@session.tidb_allow_mpp=1;
@@ -449,7 +449,7 @@ set @@session.tidb_enforce_mpp=1;
 >
 > コスト見積もり以外の理由でTiDBオプティマイザがMPPモードを選択できない場合、 `EXPLAIN`ステートメントを使用して実行プランをチェックアウトすると、理由を説明する警告が返されます。例えば：
 >
-> {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+> {{< copyable "" >}}
 >
 > ```sql
 > set @@session.tidb_enforce_mpp=1;

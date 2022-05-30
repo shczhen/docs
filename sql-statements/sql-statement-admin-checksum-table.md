@@ -22,7 +22,7 @@ TableNameList ::=
 
 テーブルのチェックサムを計算します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1 (id INT NOT NULL PRIMARY KEY auto_increment);

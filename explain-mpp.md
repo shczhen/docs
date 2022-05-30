@@ -9,7 +9,7 @@ TiDBは、 [MPPモード](/tiflash/use-tiflash.md#use-the-mpp-mode)を使用し�
 
 このドキュメントの例は、次のサンプルデータに基づいています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1 (id int, value int);
@@ -23,7 +23,7 @@ SET tidb_allow_mpp = 1;
 
 MPPモードでは、クエリは論理的に複数のクエリフラグメントにスライスされます。例として、次のステートメントを取り上げます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT COUNT(*) FROM t1 GROUP BY id;
@@ -37,7 +37,7 @@ EXPLAIN SELECT COUNT(*) FROM t1 GROUP BY id;
 
 以下は、単純なMPP実行プランです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT COUNT(*) FROM t1 GROUP BY id;
@@ -78,7 +78,7 @@ MPPは、結合操作にもよく適用されます。 TiDBのMPPモードは、
 
 以下は、シャッフルハッシュ結合の一般的な実行プランです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET tidb_broadcast_join_threshold_count=0;
@@ -114,7 +114,7 @@ EXPLAIN SELECT COUNT(*) FROM t1 a JOIN t1 b ON a.id = b.id;
 
 BroadcastJoinの一般的な実行プランは次のとおりです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT COUNT(*) FROM t1 a JOIN t1 b ON a.id = b.id;
@@ -148,7 +148,7 @@ EXPLAIN SELECT COUNT(*) FROM t1 a JOIN t1 b ON a.id = b.id;
 
 以下は、単純な`EXPLAIN ANALYZE`の例の出力です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN ANALYZE SELECT COUNT(*) FROM t1 GROUP BY id;

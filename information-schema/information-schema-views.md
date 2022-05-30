@@ -7,7 +7,7 @@ summary: Learn the `VIEWS` information_schema table.
 
 `VIEWS`の表は、SQLビューに関する情報を提供します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -32,7 +32,7 @@ DESC views;
 10 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE VIEW test.v1 AS SELECT 1;

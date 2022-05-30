@@ -22,7 +22,7 @@ NumList ::=
 
 現在実行中のDDLジョブをキャンセルし、対応するジョブが正常にキャンセルされたかどうかを返すには、 `ADMIN CANCEL DDL JOBS`を使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ADMIN CANCEL DDL JOBS job_id [, job_id] ...;

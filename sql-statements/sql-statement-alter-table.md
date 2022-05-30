@@ -50,7 +50,7 @@ AlterTableSpec ::=
 
 いくつかの初期データを使用してテーブルを作成します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1 (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, c1 INT NOT NULL);
@@ -66,7 +66,7 @@ Records: 5  Duplicates: 0  Warnings: 0
 
 次のクエリでは、列c1にインデックスが付けられていないため、全表スキャンが必要です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT * FROM t1 WHERE c1 = 3;
@@ -85,7 +85,7 @@ EXPLAIN SELECT * FROM t1 WHERE c1 = 3;
 
 ステートメント[`ALTER TABLE .. ADD INDEX`](/sql-statements/sql-statement-add-index.md)を使用して、テーブルt1にインデックスを追加できます。 `EXPLAIN`は、元のクエリがインデックス範囲スキャンを使用していることを確認します。これはより効率的です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE t1 ADD INDEX (c1);
@@ -106,7 +106,7 @@ Query OK, 0 rows affected (0.30 sec)
 
 TiDBは、DDLの変更が特定の`ALTER`アルゴリズムを使用することを表明する機能をサポートしています。これは単なるアサーションであり、テーブルの変更に使用される実際のアルゴリズムを変更するものではありません。クラスタのピーク時にのみインスタントDDL変更を許可する場合に便利です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE t1 DROP INDEX c1, ALGORITHM=INSTANT;
@@ -118,7 +118,7 @@ Query OK, 0 rows affected (0.24 sec)
 
 `INPLACE`アルゴリズムを必要とする操作で`ALGORITHM=INSTANT`アサーションを使用すると、ステートメントエラーが発生します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE t1 ADD INDEX (c1), ALGORITHM=INSTANT;
@@ -130,7 +130,7 @@ ERROR 1846 (0A000): ALGORITHM=INSTANT is not supported. Reason: Cannot alter tab
 
 ただし、 `INPLACE`操作に`ALGORITHM=COPY`アサーションを使用すると、エラーではなく警告が生成されます。これは、TiDBがアサーションを<em>このアルゴリズム以上として解釈するためです</em>。 TiDBが使用するアルゴリズムはMySQLとは異なる可能性があるため、この動作の違いはMySQLの互換性に役立ちます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE t1 ADD INDEX (c1), ALGORITHM=COPY;

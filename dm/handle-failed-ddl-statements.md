@@ -117,7 +117,7 @@ Global Flags:
 
 アップストリームテーブル`db1.tbl1`をダウンストリームTiDBに移行する必要があると想定します。初期テーブルスキーマは次のとおりです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW CREATE TABLE db1.tbl1;
@@ -137,7 +137,7 @@ SHOW CREATE TABLE db1.tbl1;
 
 ここで、次のDDLステートメントがアップストリームで実行され、テーブルスキーマが変更されます（つまり、c2のDECIMAL（11、3）がDECIMAL（10、3）に変更されます）。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE db1.tbl1 CHANGE c2 c2 DECIMAL (10, 3);
@@ -240,7 +240,7 @@ ERROR 8200 (HY000): Unsupported modify column: can't change decimal column preci
 
 初期テーブルスキーマは次のとおりです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW CREATE TABLE shard_db.shard_table;
@@ -259,7 +259,7 @@ SHOW CREATE TABLE shard_db.shard_table;
 
 次に、すべてのアップストリームシャードテーブルに対して次のDDLステートメントを実行して、文字セットを変更します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE `shard_db_*`.`shard_table_*` CHARACTER SET LATIN1 COLLATE LATIN1_DANISH_CI;
@@ -474,7 +474,7 @@ Global Flags:
 
 アップストリームテーブル`db1.tbl1`をダウンストリームTiDBに移行する必要があると想定します。初期テーブルスキーマは次のとおりです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW CREATE TABLE db1.tbl1;
@@ -493,7 +493,7 @@ SHOW CREATE TABLE db1.tbl1;
 
 次に、アップストリームで次のDDL操作を実行して、UNIQUE制約を持つ新しい列を追加します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE `db1`.`tbl1` ADD COLUMN new_col INT UNIQUE;
@@ -599,7 +599,7 @@ ALTER TABLE `db1`.`tbl1` ADD COLUMN new_col INT UNIQUE;
 
 初期テーブルスキーマは次のとおりです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW CREATE TABLE shard_db.shard_table;
@@ -618,7 +618,7 @@ SHOW CREATE TABLE shard_db.shard_table;
 
 次に、すべてのアップストリームシャードテーブルに対して次のDDL操作を実行して、UNIQUE制約を持つ新しい列を追加します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE `shard_db_*`.`shard_table_*` ADD COLUMN new_col INT UNIQUE;

@@ -16,7 +16,7 @@ TiDBの使用法を従来のデータベースに近づけ、移行のコスト�
 
 [`tidb_txn_mode`](/system-variables.md#tidb_txn_mode)のシステム変数を設定することにより、トランザクションモードを設定できます。次のコマンドは、クラスター内に新しく作成されたセッションによって実行されるすべての明示的なトランザクション（つまり、非自動コミットトランザクション）を悲観的なトランザクションモードに設定します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET GLOBAL tidb_txn_mode = 'pessimistic';
@@ -24,13 +24,13 @@ SET GLOBAL tidb_txn_mode = 'pessimistic';
 
 次のSQLステートメントを実行して、ペシミスティックトランザクションモードを明示的に有効にすることもできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 BEGIN PESSIMISTIC;
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 BEGIN /*T! PESSIMISTIC */;
@@ -162,7 +162,7 @@ pipelined = false
 
 TiKVクラスターがv4.0.9以降の場合、この機能を動的に無効にすることもでき[TiKV構成をオンラインで変更する](/dynamic-config.md#modify-tikv-configuration-online) 。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 set config tikv pessimistic-txn.pipelined='false';
@@ -187,7 +187,7 @@ in-memory = false
 
 この機能を動的に無効にするには、TiKV構成をオンラインで変更します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 set config tikv pessimistic-txn.in-memory='false';

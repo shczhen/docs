@@ -9,7 +9,7 @@ summary: Learn about the execution plan information returned by the EXPLAIN stat
 
 このドキュメントで使用されているサンプルデータ：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1 (
@@ -55,7 +55,7 @@ ANALYZE TABLE t1;
 
 次の例は、新しく作成されたパーティションテーブルに対するステートメントを示しています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT COUNT(*) FROM t1 WHERE d = '2017-06-01';
@@ -83,7 +83,7 @@ EXPLAIN SELECT COUNT(*) FROM t1 WHERE d = '2017-06-01';
 
 次の例では、パーティションプルーニングはパーティションを削除しません。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT COUNT(*) FROM t1 WHERE YEAR(d) = 2017;

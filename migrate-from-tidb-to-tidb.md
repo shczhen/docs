@@ -27,7 +27,7 @@ summary: Learn how to migrate data from one TiDB cluster to another TiDB cluster
 
     tiupプレイグラウンドを使用して、2つのTiDBクラスターを1つはアップストリームに、もう1つはダウンストリームにデプロイします。詳細については、 [TiUPを使用したオンラインTiDBクラスターの展開と保守](/tiup/tiup-cluster.md)を参照してください。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     # Create an upstream cluster
@@ -42,7 +42,7 @@ summary: Learn how to migrate data from one TiDB cluster to another TiDB cluster
 
     デフォルトでは、テストデータベースは新しくデプロイされたクラスターに作成されます。したがって、 [sysbench](https://github.com/akopytov/sysbench#linux)を使用してテストデータを生成し、実際のシナリオでデータをシミュレートできます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     sysbench oltp_write_only --config-file=./tidb-config --tables=10 --table-size=10000 prepare
@@ -50,7 +50,7 @@ summary: Learn how to migrate data from one TiDB cluster to another TiDB cluster
 
     このドキュメントでは、sysbenchを使用して`oltp_write_only`のスクリプトを実行します。このスクリプトは、テストデータベースにそれぞれ10,000行の10個のテーブルを生成します。 tidb-configは次のとおりです。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     mysql-host=172.16.6.122 # Replace the value with the IP address of your upstream cluster
@@ -69,7 +69,7 @@ summary: Learn how to migrate data from one TiDB cluster to another TiDB cluster
 
     実際のシナリオでは、サービスデータは継続的にアップストリームクラスターに書き込まれます。このドキュメントでは、sysbenchを使用してこのワークロードをシミュレートします。具体的には、次のコマンドを実行して、10人のワーカーがsbtest1、sbtest2、およびsbtest3の3つのテーブルに、合計TPSが100を超えないようにデータを継続的に書き込むことができるようにします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     sysbench oltp_write_only --config-file=./tidb-config --tables=3 run
@@ -79,7 +79,7 @@ summary: Learn how to migrate data from one TiDB cluster to another TiDB cluster
 
     フルデータバックアップでは、アップストリームクラスターとダウンストリームクラスターの両方がバックアップファイルにアクセスする必要があります。バックアップファイルの保存には[外部記憶装置](/br/backup-and-restore-storages.md)を使用することをお勧めします。このドキュメントでは、Minioを使用してS3互換のストレージサービスをシミュレートします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     wget https://dl.min.io/server/minio/release/linux-amd64/minio
@@ -103,7 +103,7 @@ summary: Learn how to migrate data from one TiDB cluster to another TiDB cluster
 
     アクセスリンクは次のとおりです。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     s3://backup?access-key=minio&secret-access-key=miniostorage&endpoint=http://${HOST_IP}:6060&force-path-style=true
@@ -121,7 +121,7 @@ summary: Learn how to migrate data from one TiDB cluster to another TiDB cluster
 
     増分移行中に新しく書き込まれたデータが削除されないようにするには、バックアップの前にアップストリームクラスターのGCを無効にする必要があります。このように、履歴データは削除されません。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     MySQL [test]> SET GLOBAL tidb_gc_enable=FALSE;
@@ -143,7 +143,7 @@ summary: Learn how to migrate data from one TiDB cluster to another TiDB cluster
 
     アップストリームクラスターで`BACKUP`ステートメントを実行して、データをバックアップします。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     MySQL [(none)]> BACKUP DATABASE * TO 's3://backup?access-key=minio&secret-access-key=miniostorage&endpoint=http://${HOST_IP}:6060&force-path-style=true' RATE_LIMIT = 120 MB/SECOND;
@@ -161,7 +161,7 @@ summary: Learn how to migrate data from one TiDB cluster to another TiDB cluster
 
     ダウンストリームクラスターで`RESTORE`コマンドを実行して、データを復元します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     mysql> RESTORE DATABASE * FROM 's3://backup?access-key=minio&secret-access-key=miniostorage&endpoint=http://${HOST_IP}:6060&force-path-style=true';
@@ -177,7 +177,7 @@ summary: Learn how to migrate data from one TiDB cluster to another TiDB cluster
 
     [sync-diff-inspector](/sync-diff-inspector/sync-diff-inspector-overview.md)を使用して、特定の時間におけるアップストリームとダウンストリーム間のデータの整合性を確認できます。前の`BACKUP`の出力は、アップストリームクラスターが431434047157698561でバックアップを終了することを示しています。前の`RESTORE`の出力は、ダウンストリームが431434141450371074で復元を終了することを示しています。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     sync_diff_inspector -C ./config.yaml
@@ -185,7 +185,7 @@ summary: Learn how to migrate data from one TiDB cluster to another TiDB cluster
 
     sync-diff-inspectorの構成方法の詳細については、 [構成ファイルの説明](/sync-diff-inspector/sync-diff-inspector-overview.md#configuration-file-description)を参照してください。このドキュメントでは、構成は次のとおりです。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     # Diff Configuration.
@@ -221,7 +221,7 @@ summary: Learn how to migrate data from one TiDB cluster to another TiDB cluster
 
     アップストリームクラスターで、次のコマンドを実行して、アップストリームクラスターからダウンストリームクラスターへのチェンジフィードを作成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cdc cli changefeed create --pd=http://172.16.6.122:2379 --sink-uri="mysql://root:@172.16.6.125:4000" --changefeed-id="upstream-to-downstream" --start-ts="431434047157698561"
@@ -240,7 +240,7 @@ summary: Learn how to migrate data from one TiDB cluster to another TiDB cluster
 
     TiCDCを使用した増分移行では、GCは複製された履歴データのみを削除します。したがって、チェンジフィードを作成した後、次のコマンドを実行してGCを有効にする必要があります。詳細については、 [TiCDCガベージコレクション（GC）セーフポイントの完全な動作は何ですか？](/ticdc/troubleshoot-ticdc.md#what-is-the-complete-behavior-of-ticdc-garbage-collection-gc-safepoint)を参照してください。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     MySQL [test]> SET GLOBAL tidb_gc_enable=TRUE;
@@ -260,7 +260,7 @@ summary: Learn how to migrate data from one TiDB cluster to another TiDB cluster
 
 1.  アップストリームクラスターで書き込みサービスを停止します。チェンジフィードを停止する前に、すべてのアップストリームデータがダウンストリームに複製されていることを確認してください。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     # Stop the changefeed from the upstream cluster to the downstream cluster
@@ -283,7 +283,7 @@ summary: Learn how to migrate data from one TiDB cluster to another TiDB cluster
 
 2.  ダウンストリームからアップストリームへのチェンジフィードを作成します。アップストリームとダウンストリームのデータは一貫しており、クラスターに新しいデータが書き込まれないため、デフォルト設定を使用するために`start-ts`を未指定のままにしておくことができます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cdc cli changefeed create --pd=http://172.16.6.125:2379 --sink-uri="mysql://root:@172.16.6.122:4000" --changefeed-id="downstream -to-upstream"

@@ -23,7 +23,7 @@ MySQLと同様に、TiDBは同じTCPポートでTLS接続と非TLS接続を許�
 -   すべてのユーザーにTiDBサーバーへの安全な接続を要求するように起動パラメーター`--require-secure-transport`を構成します。
 -   ユーザーを作成するときに`REQUIRE SSL`を指定するか（ `create user` ）、既存のユーザーを変更する場合（ `alter user` ）、指定したユーザーがTiDBにアクセスするために暗号化された接続を使用する必要があることを指定します。以下は、ユーザーの作成例です。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     CREATE USER 'u1'@'%' IDENTIFIED BY 'my_random_password' REQUIRE SSL;
@@ -91,7 +91,7 @@ TiDBサーバーまたはMySQLクライアントで`ssl-ca`パラメーターが
 
 デフォルトでは、サーバーからクライアントへの認証はオプションです。クライアントがTLSハンドシェイク中に識別証明書を提示しなくても、TLS接続を確立できます。また、ユーザーの作成時（ `create user` ）、権限の付与時（ `grant` ）、または既存のユーザーの変更時（ `alter user` ）に`require x509`を指定して、クライアントの認証を要求することもできます。以下は、ユーザーの作成例です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create user 'u1'@'%'  require x509;

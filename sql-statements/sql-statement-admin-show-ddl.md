@@ -26,7 +26,7 @@ WhereClauseOptional ::=
 
 現在実行中のDDLジョブを表示するには、 `ADMIN SHOW DDL`を使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ADMIN SHOW DDL;
@@ -46,7 +46,7 @@ mysql> ADMIN SHOW DDL;
 
 現在のDDLジョブキュー内のすべての結果（実行中および実行待ちのタスクを含む）と、完了したDDLジョブキュー内の最後の10個の結果を表示するには、 `ADMIN SHOW DDL JOBS`を使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ADMIN SHOW DDL JOBS;
@@ -94,7 +94,7 @@ ADMIN SHOW DDL JOBS [NUM] [WHERE where_condition];
 
 `job_id`に対応するDDLジョブの元のSQLステートメントを表示するには、 `ADMIN SHOW DDL JOB QUERIES`を使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ADMIN SHOW DDL JOBS;

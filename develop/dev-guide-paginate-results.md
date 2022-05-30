@@ -11,7 +11,7 @@ summary: Introduce paginate result feature in TiDB.
 
 TiDBでは、 `LIMIT`ステートメントを使用してクエリ結果をページ分割できます。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM table_a t ORDER BY gmt_modified DESC LIMIT offset, row_count;
@@ -26,7 +26,7 @@ SELECT * FROM table_a t ORDER BY gmt_modified DESC LIMIT offset, row_count;
 
 たとえば、 [書店](/develop/dev-guide-bookshop-schema-design.md)のアプリケーションのユーザーが最新の出版された本をページ順に表示できるようにするには、 `LIMIT 0, 10`ステートメントを使用して、結果リストの最初のページを返し、1ページあたり最大10レコードを返すことができます。 2番目のページを取得するには、ステートメントを`LIMIT 10, 10`に変更します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT *
@@ -40,7 +40,7 @@ LIMIT 0, 10;
 
 アプリケーション開発では、バックエンドプログラムは、 `offset`パラメーターではなく、フロントエンドから`page_number`パラメーター（要求されているページの数を意味します）と`page_size`パラメーター（ページあたりのレコード数を制御します）を受け取ります。したがって、クエリを実行する前に、いくつかの変換を行う必要がありました。
 
-{{&lt;コピー可能な&quot;java&quot;&gt;}}
+{{< copyable "" >}}
 
 ```java
 public List<Book> getLatestBooksPage(Long pageNumber, Long pageSize) throws SQLException {
@@ -85,7 +85,7 @@ public List<Book> getLatestBooksPage(Long pageNumber, Long pageSize) throws SQLE
 
 まず、データを主キーで並べ替え、ウィンドウ関数`row_number()`を呼び出して、各行の行番号を生成します。次に、集計関数を呼び出して、指定されたページサイズで行番号をグループ化し、各ページの最小値と最大値を計算します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT
@@ -122,7 +122,7 @@ ORDER BY page_num;
 
 1ページのすべての書籍の基本情報を削除するには、上記の結果の`start_key`と`end_key`を1ページの値に置き換えます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DELETE FROM books
@@ -136,7 +136,7 @@ ORDER BY id;
 
 Javaでは、ページのメタ情報を格納する`PageMeta`のクラスを定義します。
 
-{{&lt;コピー可能な&quot;java&quot;&gt;}}
+{{< copyable "" >}}
 
 ```java
 public class PageMeta<K> {
@@ -152,7 +152,7 @@ public class PageMeta<K> {
 
 ページメタ情報リストを取得するための`getPageMetaList()`つのメソッドを定義してから、ページメタ情報に従ってバッチでデータを削除するための`deleteBooksByPageMeta()`のメソッドを定義します。
 
-{{&lt;コピー可能な&quot;java&quot;&gt;}}
+{{< copyable "" >}}
 
 ```java
 public class BookDAO {
@@ -198,7 +198,7 @@ public class BookDAO {
 
 次のステートメントは、1ページのデータを削除するためのものです。
 
-{{&lt;コピー可能な&quot;java&quot;&gt;}}
+{{< copyable "" >}}
 
 ```java
 List<PageMeta<Long>> pageMetaList = bookDAO.getPageMetaList();
@@ -209,7 +209,7 @@ if (pageMetaList.size() > 0) {
 
 次のステートメントは、ページングによってすべての書籍データをバッチで削除することです。
 
-{{&lt;コピー可能な&quot;java&quot;&gt;}}
+{{< copyable "" >}}
 
 ```java
 List<PageMeta<Long>> pageMetaList = bookDAO.getPageMetaList();
@@ -239,7 +239,7 @@ pageMetaList.forEach((pageMeta) -> {
 
 例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT
@@ -285,7 +285,7 @@ ORDER BY page_num;
 
 次のステートメントを使用して、メタ情報テーブルを作成します。 `bigint`種類の`book_id`と`user_id`で連結されたキーは同じ長さに変換できないため、 `LPAD`関数を使用して、 `bigint`の最大ビット19に従って長さを`0`で埋めます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT
@@ -323,7 +323,7 @@ ORDER BY page_num;
 
 1ページのすべての評価レコードを削除するには、上記の結果の`start_key`と`end_key`を1ページの値に置き換えます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM ratings

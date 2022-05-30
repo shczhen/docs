@@ -26,7 +26,7 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-config/']
 
 すべての構成を表示：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW CONFIG;
@@ -45,7 +45,7 @@ SHOW CONFIG;
 
 `type`が`tidb`である構成を表示します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW CONFIG WHERE type = 'tidb' AND name = 'advertise-address';
@@ -62,7 +62,7 @@ SHOW CONFIG WHERE type = 'tidb' AND name = 'advertise-address';
 
 `LIKE`句を使用して、 `type`が`tidb`である構成を表示することもできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW CONFIG LIKE 'tidb';

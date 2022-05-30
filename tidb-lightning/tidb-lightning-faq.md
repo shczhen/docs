@@ -119,7 +119,7 @@ sql-mode = ""
 
 `tidb-lightning`が異常終了した場合、クラスターは「インポート・モード」でスタックしている可能性があり、これは実動には適していません。現在のモードは、次のコマンドを使用して取得できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sh
 tidb-lightning-ctl --config tidb-lightning.toml --fetch-mode
@@ -127,7 +127,7 @@ tidb-lightning-ctl --config tidb-lightning.toml --fetch-mode
 
 次のコマンドを使用して、クラスターを強制的に「通常モード」に戻すことができます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sh
 tidb-lightning-ctl --config tidb-lightning.toml --fetch-mode
@@ -162,7 +162,7 @@ upload-speed-limit = "100MB"
 
 1.  チェックポイントファイルを削除します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sh
     tidb-lightning-ctl --config conf/tidb-lightning.toml --checkpoint-remove=all
@@ -181,7 +181,7 @@ upload-speed-limit = "100MB"
 
     次のコマンドを使用して、メタデータをクリーンアップします。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     DROP DATABASE IF EXISTS `lightning_metadata`;
@@ -240,7 +240,7 @@ strict-format = true
 
 1.  `tidb-lightning-ctl`を使用して破損したデータを削除し、テーブル構造とデータを確認してから、TiDB Lightningを再起動して、影響を受けるテーブルを再度インポートします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sh
     tidb-lightning-ctl --config conf/tidb-lightning.toml --checkpoint-error-destroy=all
@@ -355,7 +355,7 @@ header = false
 
     `ps`などのコマンドを使用してTiDBLightningのプロセスID（PID）を取得し、次のコマンドを実行します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sh
     kill -USR1 <lightning-pid>

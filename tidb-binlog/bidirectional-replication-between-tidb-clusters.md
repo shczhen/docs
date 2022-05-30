@@ -51,7 +51,7 @@ aliases: ['/docs/dev/tidb-binlog/bidirectional-replication-between-tidb-clusters
 
 `_drainer_repl_mark`マークテーブルの構造は次のとおりです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE `_drainer_repl_mark` (
@@ -65,7 +65,7 @@ CREATE TABLE `_drainer_repl_mark` (
 
 Drainerは次のSQLステートメントを使用して`_drainer_repl_mark`を更新します。これにより、データの変更とbinlogの生成が保証されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 update drainer_repl_mark set val = val + 1 where id = ? && channel_id = ?;

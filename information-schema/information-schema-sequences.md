@@ -7,7 +7,7 @@ summary: Learn the `SEQUENCES` information_schema table.
 
 `SEQUENCES`の表は、シーケンスに関する情報を提供します。 [シーケンス機能](/sql-statements/sql-statement-create-sequence.md)は、MariaDBの同様の機能をモデルにしています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -33,7 +33,7 @@ DESC sequences;
 11 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE SEQUENCE test.seq;

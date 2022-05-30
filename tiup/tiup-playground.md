@@ -68,7 +68,7 @@ Flags:
 
 ### 利用可能なTiDBバージョンを確認する {#check-available-tidb-versions}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup list tidb
@@ -76,7 +76,7 @@ tiup list tidb
 
 ### 特定のバージョンのTiDBクラスターを開始します {#start-a-tidb-cluster-of-a-specific-version}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup playground ${version}
@@ -86,7 +86,7 @@ tiup playground ${version}
 
 ### ナイトリーバージョンのTiDBクラスターを開始します {#start-a-tidb-cluster-of-the-nightly-version}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup playground nightly
@@ -98,7 +98,7 @@ tiup playground nightly
 
 まず、 [PD構成テンプレート](https://github.com/pingcap/pd/blob/master/conf/config.toml)をコピーする必要があります。コピーしたファイルを`~/config/pd.toml`に配置し、必要に応じていくつかの変更を加えたとすると、次のコマンドを実行して、PDのデフォルト構成を上書きできます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup playground --pd.config ~/config/pd.toml
@@ -108,7 +108,7 @@ tiup playground --pd.config ~/config/pd.toml
 
 デフォルトでは、プレイグラウンドが開始されると、各コンポーネントは公式ミラーのバイナリファイルを使用して開始されます。一時的にコンパイルされたローカルバイナリファイルをテストのためにクラスターに配置する場合は、 `--{comp}.binpath`フラグを使用して置き換えることができます。たとえば、次のコマンドを実行して、TiDBのバイナリファイルを置き換えます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup playground --db.binpath /xx/tidb-server
@@ -118,7 +118,7 @@ tiup playground --db.binpath /xx/tidb-server
 
 デフォルトでは、TiDB、TiKV、およびPDコンポーネントごとに1つのインスタンスのみが開始されます。コンポーネントごとに複数のインスタンスを開始するには、次のフラグを追加します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup playground --db 3 --pd 3 --kv 3
@@ -128,7 +128,7 @@ tiup playground --db 3 --pd 3 --kv 3
 
 TiUPは`client`つのコンポーネントを提供します。これは、プレイグラウンドによって開始されたローカルTiDBクラスターを自動的に検索して接続するために使用されます。使用法は次のとおりです。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup client
@@ -138,7 +138,7 @@ tiup client
 
 ## 開始されたクラスターの情報を表示する {#view-information-of-the-started-cluster}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup playground display
@@ -161,7 +161,7 @@ Pid    Role     Uptime
 
 クラスターをスケールアウトするためのコマンドラインパラメーターは、クラスターを開始するためのパラメーターと似ています。次のコマンドを実行すると、2つのTiDBインスタンスをスケールアウトできます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup playground scale-out --db 2
@@ -171,7 +171,7 @@ tiup playground scale-out --db 2
 
 `tiup playground scale-in`コマンドに`pid`を指定して、対応するインスタンスでスケーリングできます。 `pid`を表示するには、 `tiup playground display`を実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup playground scale-in --pid 86526

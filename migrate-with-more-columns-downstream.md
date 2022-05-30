@@ -68,7 +68,7 @@ DMがダウンストリームテーブルスキーマを使用してアップス
 
 2.  `binlog-schema`コマンドを使用して、データソースから移行するテーブルのテーブルスキーマを設定します。このとき、上記の`Column count doesn't match`のエラーにより、データ移行タスクは一時停止状態になっているはずです。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```
     tiup dmctl --master-addr ${advertise-addr} binlog-schema update -s ${source-id} ${task-name} ${database-name} ${table-name} ${schema-file}
@@ -88,7 +88,7 @@ DMがダウンストリームテーブルスキーマを使用してアップス
 
     例えば：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```
     tiup dmctl --master-addr 172.16.10.71:8261 binlog-schema update -s mysql-01 task-test -d log -t message log.message.sql
@@ -96,7 +96,7 @@ DMがダウンストリームテーブルスキーマを使用してアップス
 
 3.  `resume-task`コマンドを使用して、一時停止状態で移行タスクを再開します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```
     tiup dmctl --master-addr ${advertise-addr} resume-task ${task-name}
@@ -104,7 +104,7 @@ DMがダウンストリームテーブルスキーマを使用してアップス
 
 4.  `query-status`コマンドを使用して、データ移行タスクが正しく実行されていることを確認します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```
     tiup dmctl --master-addr ${advertise-addr} query-status resume-task ${task-name}

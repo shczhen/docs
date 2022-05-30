@@ -10,13 +10,13 @@ aliases: ['/docs/dev/sql-statements/sql-statement-recover-table/','/docs/dev/ref
 
 ## 構文 {#syntax}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 RECOVER TABLE table_name
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 RECOVER TABLE BY JOB ddl_job_id
@@ -64,13 +64,13 @@ TiDB Binlogレプリケーション中にアップストリームTiDBで`RECOVER
 
 -   テーブル名に従って、削除されたテーブルを回復します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     DROP TABLE t;
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     RECOVER TABLE t;
@@ -82,13 +82,13 @@ TiDB Binlogレプリケーション中にアップストリームTiDBで`RECOVER
 
     テーブル`t`を削除して別の`t`を作成し、新しく作成した`t`を再度削除したとします。次に、最初に削除された`t`を回復する場合は、 `DDL JOB ID`を指定するメソッドを使用する必要があります。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     DROP TABLE t;
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     ADMIN SHOW DDL JOBS 1;
@@ -104,7 +104,7 @@ TiDB Binlogレプリケーション中にアップストリームTiDBで`RECOVER
     +--------+---------+------------+------------+--------------+-----------+----------+-----------+-----------------------------------+--------+
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     RECOVER TABLE BY JOB 53;

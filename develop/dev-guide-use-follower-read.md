@@ -28,7 +28,7 @@ TiDBは、クラスター内のすべてのノードにデータを分散する�
 
 フォロワー読み取りを有効にするには、変数`tidb_replica_read` （デフォルト値は`leader` ）を`follower`または`leader-and-follower`に設定します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET [GLOBAL] tidb_replica_read = 'follower';

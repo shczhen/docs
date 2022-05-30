@@ -18,7 +18,7 @@ TiDBは、MySQL5.7で導入されたコメントのような構文に基づく�
 
 複数のヒントは、コンマで区切ることで指定できます。たとえば、次のクエリは3つの異なるヒントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT /*+ USE_INDEX(t1, idx1), HASH_AGG(), HASH_JOIN(t1) */ count(*) FROM t t1, t t2 WHERE t1.a = t2.b;
@@ -36,7 +36,7 @@ SELECT /*+ USE_INDEX(t1, idx1), HASH_AGG(), HASH_JOIN(t1) */ count(*) FROM t t1,
 
 ステートメント内の各クエリまたはサブクエリは、異なるクエリブロックに対応し、各クエリブロックには独自の名前があります。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM (SELECT * FROM t) t1, (SELECT * FROM t) t2;
@@ -50,7 +50,7 @@ SELECT * FROM (SELECT * FROM t) t1, (SELECT * FROM t) t2;
 
 例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT /*+ HASH_JOIN(@sel_1 t1@sel_1, t3) */ * FROM (SELECT t1.a, t1.b FROM t t1, t t2 WHERE t1.a = t2.a) t1, t t3 WHERE t1.b = t3.b;
@@ -73,7 +73,7 @@ SELECT /*+ HASH_JOIN(@sel_1 t1@sel_1, t3) */ * FROM (SELECT t1.a, t1.b FROM t t1
 
 `QB_NAME`はクエリブロック名を意味します。クエリブロックに新しい名前を指定できます。指定された`QB_NAME`と以前のデフォルト名は両方とも有効です。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT /*+ QB_NAME(QB1) */ * FROM (SELECT * FROM t) t1, (SELECT * FROM t) t2;
@@ -89,7 +89,7 @@ SELECT /*+ QB_NAME(QB1) */ * FROM (SELECT * FROM t) t1, (SELECT * FROM t) t2;
 
 `MERGE_JOIN(t1_name [, tl_name ...])`ヒントは、オプティマイザに、指定されたテーブルに対してソート-マージ結合アルゴリズムを使用するように指示します。一般に、このアルゴリズムはより少ないメモリを消費しますが、より長い処理時間を要します。データ量が非常に多い場合やシステムメモリが不足している場合は、このヒントを使用することをお勧めします。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select /*+ MERGE_JOIN(t1, t2) */ * from t1，t2 where t1.id = t2.id;
@@ -103,7 +103,7 @@ select /*+ MERGE_JOIN(t1, t2) */ * from t1，t2 where t1.id = t2.id;
 
 `INL_JOIN(t1_name [, tl_name ...])`ヒントは、指定されたテーブルにインデックスネストループ結合アルゴリズムを使用するようにオプティマイザに指示します。このアルゴリズムは、一部のシナリオではシステムリソースの消費量が少なく、処理時間が短くなる可能性があり、他のシナリオでは逆の結果をもたらす可能性があります。外側のテーブルが`WHERE`条件でフィルタリングされた後、結果セットが10,000行未満の場合は、このヒントを使用することをお勧めします。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select /*+ INL_JOIN(t1, t2) */ * from t1，t2 where t1.id = t2.id;
@@ -123,7 +123,7 @@ select /*+ INL_JOIN(t1, t2) */ * from t1，t2 where t1.id = t2.id;
 
 `HASH_JOIN(t1_name [, tl_name ...])`ヒントは、指定されたテーブルにハッシュ結合アルゴリズムを使用するようにオプティマイザーに指示します。このアルゴリズムを使用すると、クエリを複数のスレッドと同時に実行できます。これにより、処理速度は向上しますが、より多くのメモリを消費します。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select /*+ HASH_JOIN(t1, t2) */ * from t1，t2 where t1.id = t2.id;
@@ -137,7 +137,7 @@ select /*+ HASH_JOIN(t1, t2) */ * from t1，t2 where t1.id = t2.id;
 
 `HASH_AGG()`ヒントは、指定されたクエリブロック内のすべての集計関数でハッシュ集計アルゴリズムを使用するようにオプティマイザーに指示します。このアルゴリズムを使用すると、クエリを複数のスレッドと同時に実行できます。これにより、処理速度は向上しますが、より多くのメモリを消費します。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select /*+ HASH_AGG() */ count(*) from t1，t2 where t1.a > 10 group by t1.id;
@@ -147,7 +147,7 @@ select /*+ HASH_AGG() */ count(*) from t1，t2 where t1.a > 10 group by t1.id;
 
 `STREAM_AGG()`ヒントは、指定されたクエリブロック内のすべての集計関数でストリーム集計アルゴリズムを使用するようにオプティマイザに指示します。一般に、このアルゴリズムはより少ないメモリを消費しますが、より長い処理時間を要します。データ量が非常に多い場合やシステムメモリが不足している場合は、このヒントを使用することをお勧めします。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select /*+ STREAM_AGG() */ count(*) from t1，t2 where t1.a > 10 group by t1.id;
@@ -157,7 +157,7 @@ select /*+ STREAM_AGG() */ count(*) from t1，t2 where t1.a > 10 group by t1.id;
 
 `USE_INDEX(t1_name, idx1_name [, idx2_name ...])`ヒントは、指定された`t1_name`のテーブルに対して指定されたインデックスのみを使用するようにオプティマイザに指示します。たとえば、次のヒントを適用すると、 `select * from t t1 use index(idx1, idx2);`ステートメントを実行するのと同じ効果があります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT /*+ USE_INDEX(t1, idx1, idx2) */ * FROM t1;
@@ -175,7 +175,7 @@ SELECT /*+ USE_INDEX(t1, idx1, idx2) */ * FROM t1;
 
 次の4つのクエリは同じ効果があります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT /*+ USE_INDEX(t, idx1) */ * FROM t;
@@ -188,7 +188,7 @@ SELECT * FROM t force index(idx1);
 
 `IGNORE_INDEX(t1_name, idx1_name [, idx2_name ...])`ヒントは、指定された`t1_name`テーブルの指定されたインデックスを無視するようにオプティマイザーに指示します。たとえば、次のヒントを適用すると、 `select * from t t1 ignore index(idx1, idx2);`ステートメントを実行するのと同じ効果があります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select /*+ IGNORE_INDEX(t1, idx1, idx2) */ * from t t1;
@@ -198,7 +198,7 @@ select /*+ IGNORE_INDEX(t1, idx1, idx2) */ * from t t1;
 
 `AGG_TO_COP()`ヒントは、指定されたクエリ・ブロック内の集約操作をコプロセッサーにプッシュダウンするようにオプティマイザーに指示します。オプティマイザがプッシュダウンに適した集計関数をプッシュダウンしない場合は、このヒントを使用することをお勧めします。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select /*+ AGG_TO_COP() */ sum(t1.a) from t t1;
@@ -208,7 +208,7 @@ select /*+ AGG_TO_COP() */ sum(t1.a) from t t1;
 
 `LIMIT_TO_COP()`ヒントは、指定されたクエリ・ブロック内の`Limit`および`TopN`の演算子をコプロセッサーにプッシュダウンするようにオプティマイザーに指示します。オプティマイザがそのような操作を実行しない場合は、このヒントを使用することをお勧めします。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT /*+ LIMIT_TO_COP() */ * FROM t WHERE a = 1 AND b > 10 ORDER BY c LIMIT 1;
@@ -218,7 +218,7 @@ SELECT /*+ LIMIT_TO_COP() */ * FROM t WHERE a = 1 AND b > 10 ORDER BY c LIMIT 1;
 
 `READ_FROM_STORAGE(TIFLASH[t1_name [, tl_name ...]], TIKV[t2_name [, tl_name ...]])`ヒントは、オプティマイザに特定のストレージエンジンから特定のテーブルを読み取るように指示します。現在、このヒントは2つのストレージエンジンパラメータ（ `TIKV`と`TIFLASH` ）をサポートしています。テーブルにエイリアスがある場合は、エイリアスを`READ_FROM_STORAGE()`のパラメータとして使用します。テーブルにエイリアスがない場合は、テーブルの元の名前をパラメータとして使用します。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select /*+ READ_FROM_STORAGE(TIFLASH[t1], TIKV[t2]) */ t1.a from t t1, t t2 where t1.a = t2.a;
@@ -228,7 +228,7 @@ select /*+ READ_FROM_STORAGE(TIFLASH[t1], TIKV[t2]) */ t1.a from t t1, t t2 wher
 >
 > オプティマイザで別のスキーマのテーブルを使用する場合は、スキーマ名を明示的に指定する必要があります。例えば：
 >
-> {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+> {{< copyable "" >}}
 >
 > ```sql
 > SELECT /*+ READ_FROM_STORAGE(TIFLASH[test1.t1,test2.t2]) */ t1.a FROM test1.t t1, test2.t t2 WHERE t1.a = t2.a;
@@ -238,7 +238,7 @@ select /*+ READ_FROM_STORAGE(TIFLASH[t1], TIKV[t2]) */ t1.a from t t1, t t2 wher
 
 `USE_INDEX_MERGE(t1_name, idx1_name [, idx2_name ...])`ヒントは、オプティマイザにインデックスマージメソッドを使用して特定のテーブルにアクセスするように指示します。指定されたインデックスのリストはオプションのパラメータです。リストを明示的に指定すると、TiDBはリストからインデックスを選択してインデックスマージを構築します。インデックスのリストを指定しない場合、TiDBは使用可能なすべてのインデックスからインデックスを選択してインデックスマージを構築します。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT /*+ USE_INDEX_MERGE(t1, idx_a, idx_b, idx_c) */ * FROM t1 WHERE t1.a > 10 OR t1.b > 10;
@@ -268,7 +268,7 @@ SELECT /*+ USE_INDEX_MERGE(t1, idx_a, idx_b, idx_c) */ * FROM t1 WHERE t1.a > 10
 
 たとえば、次のクエリはインデックスマージを使用しません。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select /*+ NO_INDEX_MERGE() */ * from t where t.a > 0 or t.b > 0;
@@ -287,7 +287,7 @@ select /*+ NO_INDEX_MERGE() */ * from t where t.a > 0 or t.b > 0;
 
 たとえば、次のクエリは`in (select t2.a from t2) subq`を対応する結合および集計操作に変換します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select /*+ USE_TOJA(TRUE) */ t1.a, t1.b from t1 where t1.a in (select t2.a from t2) subq;
@@ -299,7 +299,7 @@ select /*+ USE_TOJA(TRUE) */ t1.a, t1.b from t1 where t1.a in (select t2.a from 
 
 `MAX_EXECUTION_TIME(N)`ヒントは、サーバーがステートメントを終了する前にステートメントの実行が許可される期間に制限`N` （ミリ秒単位のタイムアウト値）を設定します。次のヒントで、 `MAX_EXECUTION_TIME(1000)`は、タイムアウトが1000ミリ秒（つまり、1秒）であることを意味します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select /*+ MAX_EXECUTION_TIME(1000) */ * from t1 inner join t2 where t1.id = t2.id;
@@ -313,7 +313,7 @@ select /*+ MAX_EXECUTION_TIME(1000) */ * from t1 inner join t2 where t1.id = t2.
 
 次のヒントで、 `MEMORY_QUOTA(1024 MB)`は、メモリ使用量が1024MBに制限されていることを意味します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select /*+ MEMORY_QUOTA(1024 MB) */ * from t;
@@ -325,7 +325,7 @@ select /*+ MEMORY_QUOTA(1024 MB) */ * from t;
 
 `READ_CONSISTENT_REPLICA()`ヒントは、TiKVフォロワーノードから一貫性のあるデータを読み取る機能を有効にします。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select /*+ READ_CONSISTENT_REPLICA() */ * from t;
@@ -341,7 +341,7 @@ select /*+ READ_CONSISTENT_REPLICA() */ * from t;
 
 次の例では、 `prepare`ステートメントを実行すると、プランキャッシュが強制的に無効になります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 prepare stmt from 'select  /*+ IGNORE_PLAN_CACHE() */ * from t where t.id = ?';
@@ -357,7 +357,7 @@ prepare stmt from 'select  /*+ IGNORE_PLAN_CACHE() */ * from t where t.id = ?';
 
 次の例では、オプティマイザーは、物理最適化中に検出された3番目の物理計画を選択するように強制されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT /*+ NTH_PLAN(3) */ count(*) from t where a > 5;

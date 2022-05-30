@@ -12,7 +12,7 @@ TiDB 4.0以降、パッケージマネージャーとしてのTiUPにより、Ti
 
 DarwinオペレーティングシステムとLinuxオペレーティングシステムの両方で、1つのコマンドでTiUPをインストールできます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh | sh
@@ -22,7 +22,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh
 
 インストール後、TiUPのバージョンを確認できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup --version
@@ -40,7 +40,7 @@ TiUPは、TiDBエコシステムのパッケージマネージャーだけでは
 
 TiUPエコシステムでは、TiUP自体のヘルプ情報を取得する次のコマンドなど、任意のコマンドに`--help`を追加することで、ヘルプ情報を取得できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup --help

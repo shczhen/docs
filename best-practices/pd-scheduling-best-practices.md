@@ -269,7 +269,7 @@ PDの評価メカニズムは、異なるストアのリーダー数とリージ
 
         -   クラスタにTiDBインスタンスがなく、値[`key-type`](/pd-control.md#config-show--set-option-value--placement-rules)が`raw`または`txn`に設定されているとします。この場合、PDは、 `enable-cross-table-merge setting`の値に関係なく、テーブル間でリージョンをマージできます。 `key-type`パラメータは動的に変更できます。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```bash
         config set key-type txn
@@ -277,7 +277,7 @@ PDの評価メカニズムは、異なるストアのリーダー数とリージ
 
         -   クラスタにTiDBインスタンスがあり、値`key-type`が`table`に設定されているとします。この場合、PDは、値`enable-cross-table-merge`が`true`に設定されている場合にのみ、テーブル間でリージョンをマージできます。 `key-type`パラメータは動的に変更できます。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```bash
         config set enable-cross-table-merge true

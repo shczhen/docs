@@ -46,7 +46,7 @@ Boolean ::=
 
 ### バックアップアーカイブから復元 {#restore-from-backup-archive}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 RESTORE DATABASE * FROM 'local:///mnt/backup/2020/04/';
@@ -77,13 +77,13 @@ RESTORE DATABASE * FROM 'local:///mnt/backup/2020/04/';
 
 復元するデータベースまたはテーブルを指定できます。一部のデータベースまたはテーブルがバックアップアーカイブから欠落している場合、それらは無視されるため、 `RESTORE`は何もせずに完了します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 RESTORE DATABASE `test` FROM 'local:///mnt/backup/2020/04/';
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 RESTORE TABLE `test`.`sbtest01`, `test`.`sbtest02` FROM 'local:///mnt/backup/2020/04/';
@@ -93,7 +93,7 @@ RESTORE TABLE `test`.`sbtest01`, `test`.`sbtest02` FROM 'local:///mnt/backup/202
 
 BRは、S3またはGCSからのデータの復元をサポートしています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 RESTORE DATABASE * FROM 's3://example-bucket-2020/backup-05/?region=us-west-2';
@@ -103,7 +103,7 @@ URL構文については、 [外部ストレージ](/br/backup-and-restore-stora
 
 クレデンシャルを配布してはならないクラウド環境で実行する場合は、 `SEND_CREDENTIALS_TO_TIKV`オプションを`FALSE`に設定します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 RESTORE DATABASE * FROM 's3://example-bucket-2020/backup-05/?region=us-west-2'
@@ -118,7 +118,7 @@ RESTORE DATABASE * FROM 's3://example-bucket-2020/backup-05/?region=us-west-2'
 
 復元が完了する前に、 `RESTORE`はアーカイブからのデータに対してチェックサムを実行して、正確性を検証します。これが不要であると確信している場合は、 `CHECKSUM`オプションを使用してこの手順を無効にすることができます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 RESTORE DATABASE * FROM 's3://example-bucket-2020/backup-06/'
@@ -133,7 +133,7 @@ RESTORE DATABASE * FROM 's3://example-bucket-2020/backup-06/'
 
 たとえば、バックアップタスクが次のように作成された場合：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 BACKUP DATABASE `test` TO 's3://example-bucket/full-backup'  SNAPSHOT = 413612900352000;
@@ -143,7 +143,7 @@ BACKUP DATABASE `test` TO 's3://example-bucket/inc-backup-2' SNAPSHOT = 41635345
 
 次に、同じ順序を復元に適用する必要があります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 RESTORE DATABASE * FROM 's3://example-bucket/full-backup';

@@ -16,7 +16,7 @@ TableStmt ::=
 
 ## 例 {#examples}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1(id INT PRIMARY KEY);
@@ -26,7 +26,7 @@ CREATE TABLE t1(id INT PRIMARY KEY);
 Query OK, 0 rows affected (0.31 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO t1 VALUES (1),(2),(3);
@@ -37,7 +37,7 @@ Query OK, 3 rows affected (0.06 sec)
 Records: 3  Duplicates: 0  Warnings: 0
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 TABLE t1;
@@ -54,7 +54,7 @@ TABLE t1;
 3 rows in set (0.01 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 TABLE t1 ORDER BY id DESC;
@@ -71,7 +71,7 @@ TABLE t1 ORDER BY id DESC;
 3 rows in set (0.01 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 TABLE t1 LIMIT 1;

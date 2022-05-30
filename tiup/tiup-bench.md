@@ -8,7 +8,7 @@ aliases: ['/docs/dev/tiup/tiup-bench/','/docs/dev/reference/tools/tiup/bench/']
 
 データベースのパフォーマンスをテストする場合、データベースのストレステストが必要になることがよくあります。これを容易にするために、TiUPはベンチコンポーネントを統合しました。これは、ストレステスト用の2つのワークロードを提供します： [TPC-C](http://www.tpc.org/tpcc/)と[TPC-H](http://www.tpc.org/tpch/) 。コマンドとフラグは次のとおりです。詳細については、 [TPC公式サイト](http://www.tpc.org)を参照してください。
 
-{{&lt;コピー可能な&quot;shell-root&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup bench
@@ -74,7 +74,7 @@ Flags:
 
 1.  ハッシュを介して4つのパーティションを使用して4つのウェアハウスを作成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup bench tpcc --warehouses 4 --parts 4 prepare
@@ -82,7 +82,7 @@ Flags:
 
 2.  TPC-Cテストを実行します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup bench tpcc --warehouses 4 run
@@ -90,7 +90,7 @@ Flags:
 
 3.  データのクリーンアップ：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup bench tpcc --warehouses 4 cleanup
@@ -98,7 +98,7 @@ Flags:
 
 4.  一貫性を確認します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup bench tpcc --warehouses 4 check
@@ -106,7 +106,7 @@ Flags:
 
 5.  CSVファイルを生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup bench tpcc --warehouses 4 prepare --output data
@@ -114,7 +114,7 @@ Flags:
 
 6.  指定されたテーブルのCSVファイルを生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup bench tpcc --warehouses 4 prepare --output data --tables history,orders
@@ -122,7 +122,7 @@ Flags:
 
 7.  pprofを有効にします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup bench tpcc --warehouses 4 prepare --output data --pprof :10111
@@ -149,7 +149,7 @@ Flags:
 
 1.  データを準備する：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup bench tpch --sf=1 prepare
@@ -159,7 +159,7 @@ Flags:
 
     -   結果を確認する場合は、次のコマンドを実行します。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         tiup bench tpch --sf=1 --check=true run
@@ -167,7 +167,7 @@ Flags:
 
     -   結果を確認しない場合は、次のコマンドを実行します。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         tiup bench tpch --sf=1 run
@@ -175,7 +175,7 @@ Flags:
 
 3.  データのクリーンアップ：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup bench tpch cleanup

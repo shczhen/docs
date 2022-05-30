@@ -61,7 +61,7 @@ Top SQLを使用すると、データベース内の各SQLステートメント�
 
 UIに加えて、TiDBシステム変数[`tidb_enable_top_sql`](/system-variables.md#tidb_enable_top_sql-new-in-v540)を設定することでトップSQL機能を有効にすることもできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET GLOBAL tidb_enable_top_sql = 1;
@@ -112,7 +112,7 @@ SET GLOBAL tidb_enable_top_sql = 1;
 
 UIに加えて、TiDBシステム変数[`tidb_enable_top_sql`](/system-variables.md#tidb_enable_top_sql-new-in-v540)を設定することにより、トップSQL機能を無効にすることもできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET GLOBAL tidb_enable_top_sql = 0;

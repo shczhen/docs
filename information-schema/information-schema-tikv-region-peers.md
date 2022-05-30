@@ -7,7 +7,7 @@ summary: Learn the `TIKV_REGION_PEERS` information_schema table.
 
 `TIKV_REGION_PEERS`の表は、TiKVの単一のリージョンノードの詳細情報（学習者かリーダーかなど）を示しています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;

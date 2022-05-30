@@ -12,7 +12,7 @@ TiDBは、次の3つのコメントスタイルをサポートしています。
 
 -   `#`を使用して、行にコメントを付けます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT 1+1;     # comments
@@ -29,7 +29,7 @@ TiDBは、次の3つのコメントスタイルをサポートしています。
 
 -   `--`を使用して、行にコメントを付けます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT 1+1;     -- comments
@@ -46,7 +46,7 @@ TiDBは、次の3つのコメントスタイルをサポートしています。
 
     そして、このスタイルでは、1の後に少なくとも`--`つの空白が必要です。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT 1+1--1;
@@ -63,7 +63,7 @@ TiDBは、次の3つのコメントスタイルをサポートしています。
 
 -   `/* */`を使用して、ブロックまたは複数の行にコメントを付けます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT 1 /* this is an in-line comment */ + 1;
@@ -78,7 +78,7 @@ TiDBは、次の3つのコメントスタイルをサポートしています。
     1 row in set (0.01 sec)
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT 1+
@@ -140,7 +140,7 @@ TiDBには独自のコメント構文（つまり、TiDB固有のコメント構
 
 別のタイプのコメントは、オプティマイザーのヒントとして特別に扱われます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT /*+ hint */ FROM ...;

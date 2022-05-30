@@ -7,7 +7,7 @@ summary: Learn the `DATA_LOCK_WAITS` information_schema table.
 
 `DATA_LOCK_WAITS`の表は、クラスター内のすべてのTiKVノードで待機している進行中の悲観的なロックを示しています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -71,7 +71,7 @@ DESC data_lock_waits;
 
 ## 例 {#example}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select * from information_schema.data_lock_waits\G

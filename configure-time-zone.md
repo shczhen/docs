@@ -14,7 +14,7 @@ TiDBのタイムゾーンは、グローバル`time_zone`システム変数と�
 
 次のステートメントを使用して、実行時にグローバルサーバー`time_zone`の値を設定できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET GLOBAL time_zone = timezone;
@@ -22,7 +22,7 @@ SET GLOBAL time_zone = timezone;
 
 各クライアントには、セッション`time_zone`変数で指定された独自のタイムゾーン設定があります。最初は、セッション変数はグローバル`time_zone`変数から値を取得しますが、クライアントは次のステートメントを使用して独自のタイムゾーンを変更できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET time_zone = timezone;
@@ -30,7 +30,7 @@ SET time_zone = timezone;
 
 次のステートメントを使用して、グローバル、クライアント固有、およびシステムのタイムゾーンの現在の値を表示できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT @@global.time_zone, @@session.time_zone, @@global.system_time_zone;
@@ -48,7 +48,7 @@ SELECT @@global.time_zone, @@session.time_zone, @@global.system_time_zone;
 >
 > タイムスタンプデータ型の値のみがタイムゾーンの影響を受けます。これは、タイムスタンプデータ型がリテラル値+タイムゾーン情報を使用するためです。 Datetime / Date / Timeなどの他のデータ型にはタイムゾーン情報がないため、それらの値はタイムゾーンの変更による影響を受けません。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create table t (ts timestamp, dt datetime);
@@ -58,7 +58,7 @@ create table t (ts timestamp, dt datetime);
 Query OK, 0 rows affected (0.02 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 set @@time_zone = 'UTC';
@@ -68,7 +68,7 @@ set @@time_zone = 'UTC';
 Query OK, 0 rows affected (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 insert into t values ('2017-09-30 11:11:11', '2017-09-30 11:11:11');
@@ -78,7 +78,7 @@ insert into t values ('2017-09-30 11:11:11', '2017-09-30 11:11:11');
 Query OK, 1 row affected (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 set @@time_zone = '+8:00';
@@ -88,7 +88,7 @@ set @@time_zone = '+8:00';
 Query OK, 0 rows affected (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select * from t;

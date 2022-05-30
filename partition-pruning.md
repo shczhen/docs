@@ -9,7 +9,7 @@ summary: Learn about the usage scenarios of TiDB partition pruning.
 
 次に例を示します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1 (
@@ -51,7 +51,7 @@ EXPLAIN SELECT * FROM t1 WHERE id BETWEEN 80 AND 120;
 
 パーティションプルーニングは、ハッシュパーティションテーブルの等価比較のクエリ条件にのみ適用されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create table t (x int) partition by hash(x) partitions 4;
@@ -78,7 +78,7 @@ explain select * from t where x = 1;
 
 クエリ結果が`>` `between`の`<` （ `in`など）のみに`<=`するという条件を確認できない場合は、パーティション`>=`最適化を使用できません。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create table t (x int) partition by hash(x) partitions 4;
@@ -111,7 +111,7 @@ explain select * from t where x > 2;
 
 パーティションプルーニングのルール最適化はクエリプランの生成フェーズで実行されるため、パーティションプルーニングは、実行フェーズでのみフィルター条件を取得できるシナリオには適していません。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create table t (x int) partition by hash(x) partitions 4;
@@ -153,7 +153,7 @@ explain select * from t2 where x = (select * from t1 where t2.x = t1.x and t2.x 
 
 パーティションプルーニングは、範囲パーティションテーブルの等価比較のクエリ条件に適用されます。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create table t (x int) partition by range (x) (
@@ -176,7 +176,7 @@ explain select * from t where x = 3;
 
 パーティションプルーニングは、 `in`クエリ条件を使用する等価比較にも適用されます。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create table t (x int) partition by range (x) (
@@ -207,7 +207,7 @@ explain select * from t where x in(1,13);
 
 `>=` `<`は、 `between`などの`=`比較の`<=`条件に適用され`>` 。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create table t (x int) partition by range (x) (
@@ -245,7 +245,7 @@ to_days
 
 たとえば、パーティションのプルーニングは、パーティション式が`fn(col)`の形式である場合に有効になります。ここで、 `fn`は単調関数`to_days`です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create table t (id datetime) partition by range (to_days(id)) (
@@ -268,7 +268,7 @@ explain select * from t where id > '2020-04-18';
 
 パーティションプルーニングのルール最適化はクエリプランの生成フェーズで実行されるため、パーティションプルーニングは、実行フェーズでのみフィルター条件を取得できるシナリオには適していません。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create table t1 (x int) partition by range (x) (

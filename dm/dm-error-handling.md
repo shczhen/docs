@@ -84,7 +84,7 @@ DMの実行中にエラーが発生した場合は、次の手順を実行して
 
 4.  エラーが解決したら、dmctlを使用してタスクを再開します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     resume-task ${task name}
@@ -165,7 +165,7 @@ binlogレプリケーション処理ユニットの場合、次のソリュー�
 
     例：エラーのあるタスクの名前は`dm_test` 、対応するs `source-id`は`replica-1` 、対応するbinlogファイルは`mysql-bin|000001.004451`です。次のコマンドを実行します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     UPDATE dm_test_syncer_checkpoint SET binlog_name='mysql-bin|000001.004451', binlog_pos = 4 WHERE id='replica-1';

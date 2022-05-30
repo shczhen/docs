@@ -31,7 +31,7 @@ TiUPは、オンライン展開とオフライン展開の2つの方法のいず
 
 1.  次のコマンドを実行して、TiUPをインストールします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh | sh
@@ -41,7 +41,7 @@ TiUPは、オンライン展開とオフライン展開の2つの方法のいず
 
     グローバル環境変数を再宣言します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     source .bash_profile
@@ -49,7 +49,7 @@ TiUPは、オンライン展開とオフライン展開の2つの方法のいず
 
     TiUPがインストールされているかどうかを確認します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     which tiup
@@ -57,7 +57,7 @@ TiUPは、オンライン展開とオフライン展開の2つの方法のいず
 
 3.  TiUPクラスターコンポーネントをインストールします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster
@@ -65,7 +65,7 @@ TiUPは、オンライン展開とオフライン展開の2つの方法のいず
 
 4.  TiUPがすでにインストールされている場合は、TiUPクラスターコンポーネントを最新バージョンに更新します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup update --self && tiup update cluster
@@ -75,7 +75,7 @@ TiUPは、オンライン展開とオフライン展開の2つの方法のいず
 
 5.  TiUPクラスターの現在のバージョンを確認します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup --binary cluster
@@ -93,7 +93,7 @@ TiUPオフラインコンポーネントパッケージを準備するには、 
 
     1.  TiUPツールをインストールします。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh | sh
@@ -101,7 +101,7 @@ TiUPオフラインコンポーネントパッケージを準備するには、 
 
     2.  グローバル環境変数を再宣言します。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         source .bash_profile
@@ -109,7 +109,7 @@ TiUPオフラインコンポーネントパッケージを準備するには、 
 
     3.  TiUPがインストールされているかどうかを確認します。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         which tiup
@@ -119,7 +119,7 @@ TiUPオフラインコンポーネントパッケージを準備するには、 
 
     1.  インターネットにアクセスできるマシンで必要なコンポーネントをプルします。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         tiup mirror clone tidb-community-server-${version}-linux-amd64 ${version} --os=linux --arch=amd64
@@ -129,7 +129,7 @@ TiUPオフラインコンポーネントパッケージを準備するには、 
 
     2.  `tar`コマンドを使用してコンポーネントパッケージをパックし、分離された環境の制御マシンにパッケージを送信します。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```bash
         tar czvf tidb-community-server-${version}-linux-amd64.tar.gz tidb-community-server-${version}-linux-amd64
@@ -143,7 +143,7 @@ TiUPオフラインコンポーネントパッケージを準備するには、 
 
     1.  オフラインミラーをプルする場合、コンポーネントやバージョン情報などのパラメーターを介して特定の情報を指定することにより、不完全なオフラインミラーを取得できます。たとえば、次のコマンドを実行することにより、TiUPv1.9.3およびTiUPClusterv1.9.3のオフラインミラーのみを含むオフラインミラーをプルできます。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```bash
         tiup mirror clone tiup-custom-mirror-v1.9.3 --tiup v1.9.3 --cluster v1.9.3
@@ -155,7 +155,7 @@ TiUPオフラインコンポーネントパッケージを準備するには、 
 
     3.  隔離された環境の制御マシン上の現在のオフラインミラーのパスを確認します。 TiUPツールが最新バージョンの場合は、次のコマンドを実行して現在のミラーアドレスを取得できます。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```bash
         tiup mirror show
@@ -167,7 +167,7 @@ TiUPオフラインコンポーネントパッケージを準備するには、 
 
         まず、現在のオフラインミラーの`keys`ディレクトリを`$HOME/.tiup`ディレクトリにコピーします。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```bash
         cp -r ${base_mirror}/keys $HOME/.tiup/
@@ -175,7 +175,7 @@ TiUPオフラインコンポーネントパッケージを準備するには、 
 
         次に、TiUPコマンドを使用して、不完全なオフラインミラーを使用中のミラーにマージします。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```bash
         tiup mirror merge tiup-custom-mirror-v1.9.3
@@ -187,7 +187,7 @@ TiUPオフラインコンポーネントパッケージを準備するには、 
 
 パッケージをターゲットクラスターの制御マシンに送信した後、次のコマンドを実行してTiUPコンポーネントをインストールします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tar xzvf tidb-community-server-${version}-linux-amd64.tar.gz && \
@@ -205,7 +205,7 @@ source /home/tidb/.bash_profile
 
 クラスター初期化構成ファイルを作成するには、TiUPを使用してコントロールマシンにYAML形式の構成ファイルを作成できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup cluster template > topology.yaml
@@ -298,7 +298,7 @@ alertmanager_servers:
 
 `deploy`コマンドを実行する前に、 `check`および`check --apply`コマンドを使用して、クラスター内の潜在的なリスクを検出し、自動的に修復します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup cluster check ./topology.yaml --user root [-p] [-i /home/root/.ssh/gcp_rsa]
@@ -307,7 +307,7 @@ tiup cluster check ./topology.yaml --apply --user root [-p] [-i /home/root/.ssh/
 
 次に、 `deploy`コマンドを実行してTiDBクラスターをデプロイします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup cluster deploy tidb-test v6.0.0 ./topology.yaml --user root [-p] [-i /home/root/.ssh/gcp_rsa]
@@ -326,7 +326,7 @@ tiup cluster deploy tidb-test v6.0.0 ./topology.yaml --user root [-p] [-i /home/
 
 ## ステップ5：TiUPによって管理されているクラスターを確認します {#step-5-check-the-clusters-managed-by-tiup}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup cluster list
@@ -345,7 +345,7 @@ tidb-test         tidb  v5.3.0      /home/tidb/.tiup/storage/cluster/clusters/ti
 
 たとえば、次のコマンドを実行して、 `tidb-test`のクラスターのステータスを確認します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup cluster display tidb-test
@@ -367,7 +367,7 @@ TiUPクラスターv1.9.0以降、新しい開始方法としてセーフスタ�
 
 方法1：安全なスタート
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup cluster start tidb-test --init
@@ -375,7 +375,7 @@ tiup cluster start tidb-test --init
 
 出力が次の場合、開始は成功しています。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 Started cluster `tidb-test` successfully.
@@ -387,7 +387,7 @@ The generated password can NOT be got again in future.
 
 方法2：標準開始
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup cluster start tidb-test

@@ -25,7 +25,7 @@ TiDBクラスタートポロジが次のとおりであると想定します。
 
 ### ステップ1：バイナリパッケージをダウンロードする {#step-1-download-the-binary-package}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 # Downloads the package.
@@ -34,7 +34,7 @@ wget https://download.pingcap.org/node_exporter-0.17.0.linux-amd64.tar.gz
 wget https://download.pingcap.org/grafana-6.1.6.linux-amd64.tar.gz
 ```
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 # Extracts the package.
@@ -45,7 +45,7 @@ tar -xzf grafana-6.1.6.linux-amd64.tar.gz
 
 ### ステップ2：Node1、Node2、Node3、およびNode4で<code>node_exporter</code>を開始します {#step-2-start-code-node-exporter-code-on-node1-node2-node3-and-node4}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 cd node_exporter-0.17.0.linux-amd64
@@ -59,7 +59,7 @@ $ ./node_exporter --web.listen-address=":9100" \
 
 Prometheus構成ファイルを編集します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 cd prometheus-2.27.1.linux-amd64 &&
@@ -132,7 +132,7 @@ $ ./prometheus \
 
 Grafana構成ファイルを編集します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```ini
 cd grafana-6.1.6 &&
@@ -182,7 +182,7 @@ url = https://grafana.net
 
 Grafanaサービスを開始します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 ./bin/grafana-server \

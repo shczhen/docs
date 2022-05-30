@@ -14,7 +14,7 @@ SQLは宣言型言語です。これは、クエリの結果がどのように�
 
 `EXPLAIN`ステートメントは、特定のステートメントに対して選択された実行プランを示します。つまり、クエリを実行できる数百または数千の方法を検討した後、TiDBは、この<em>プラン</em>が最小のリソースを消費し、最短の時間で実行されると考えています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t (id INT NOT NULL PRIMARY KEY auto_increment, a INT NOT NULL, pad1 VARCHAR(255), INDEX(a));

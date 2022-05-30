@@ -7,7 +7,7 @@ summary: Learn the `TIKV_STORE_STATUS` information_schema table.
 
 `TIKV_STORE_STATUS`の表は、クラスターに割り当てられたID、アドレスとポート、ステータス、容量、現在のノードのリージョンリーダーの数など、PDのAPIを介したTiKVノードの基本情報を示しています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;

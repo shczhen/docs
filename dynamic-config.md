@@ -22,7 +22,7 @@ aliases: ['/docs/dev/dynamic-config/']
 
 クラスタ内のすべてのインスタンスの構成を表示するには、 `show config`ステートメントを使用します。結果は次のとおりです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 show config;
@@ -45,7 +45,7 @@ show config;
 
 結果をフィールドでフィルタリングできます。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 show config where type='tidb'
@@ -69,7 +69,7 @@ show config where type='tikv' and name='log.level'
 >
 > 変数名をバッククォートでラップすることをお勧めします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 set config tikv `split.qps-threshold`=1000
@@ -77,7 +77,7 @@ set config tikv `split.qps-threshold`=1000
 
 -   単一のTiKVインスタンスの構成を変更します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     set config "127.0.0.1:20180" `split.qps-threshold`=1000
@@ -91,7 +91,7 @@ Query OK, 0 rows affected (0.01 sec)
 
 バッチ変更中にエラーが発生した場合、警告が返されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 set config tikv `log-level`='warn';
@@ -101,7 +101,7 @@ set config tikv `log-level`='warn';
 Query OK, 0 rows affected, 1 warning (0.04 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 show warnings;
@@ -224,7 +224,7 @@ show warnings;
 
 次のステートメントを使用して、PD構成を変更できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 set config pd `log.level`='info'
@@ -289,7 +289,7 @@ Query OK, 0 rows affected (0.01 sec)
 
 デフォルト値の`slow-threshold`は300ミリ秒です。 `tidb_slow_log_threshold`を使用して200ミリ秒に設定できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 set tidb_slow_log_threshold = 200;
@@ -299,7 +299,7 @@ set tidb_slow_log_threshold = 200;
 Query OK, 0 rows affected (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select @@tidb_slow_log_threshold;

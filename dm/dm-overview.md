@@ -28,7 +28,7 @@ aliases: ['/docs/tidb-data-migration/dev/overview/']
 
 次のコマンドを実行してDMをインストールします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh | sh

@@ -12,7 +12,7 @@ summary: Learn the `PROCESSLIST` information_schema table.
 -   処理中のリクエストで使用されているメモリをバイト単位で表示する`MEM`列。
 -   トランザクションの開始時刻を示す`TxnStart`列
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -37,7 +37,7 @@ DESC processlist;
 10 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM processlist\G
@@ -75,7 +75,7 @@ TxnStart:
 
 `CLUSTER_PROCESSLIST`は、 `PROCESSLIST`に対応するクラスターシステムテーブルです。これは、クラスター内のすべてのTiDBノードの`PROCESSLIST`の情報を照会するために使用されます。 `CLUSTER_PROCESSLIST`のテーブルスキーマには、 `PROCESSLIST`よりも1つ多い列があります`INSTANCE`列には、このデータ行の元のTiDBノードのアドレスが格納されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM information_schema.cluster_processlist;

@@ -7,7 +7,7 @@ summary: Learn about the execution plan information returned by the `EXPLAIN` st
 
 データを集約する場合、SQLオプティマイザーはハッシュ集約またはストリーム集約演算子のいずれかを選択します。クエリの効率を向上させるために、コプロセッサ層とTiDB層の両方で集計が実行されます。次の例を考えてみましょう。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1 (id INT NOT NULL PRIMARY KEY auto_increment, pad1 BLOB, pad2 BLOB, pad3 BLOB);
@@ -33,7 +33,7 @@ ANALYZE TABLE t1;
 
 [`SHOW TABLE REGIONS`](/sql-statements/sql-statement-show-table-regions.md)の出力から、このテーブルが複数のリージョンに分割されていることがわかります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW TABLE t1 REGIONS;
@@ -53,7 +53,7 @@ SHOW TABLE t1 REGIONS;
 
 次の集計ステートメントで`EXPLAIN`を使用すると、TiKV内の各リージョンで`└─StreamAgg_8`が最初に実行されることがわかります。次に、各TiKVリージョンは1行をTiDBに送り返します。これにより、各リージョンのデータが`StreamAgg_16`つに集約されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT COUNT(*) FROM t1;
@@ -95,7 +95,7 @@ EXPLAIN ANALYZE SELECT COUNT(*) FROM t1;
 
 以下は、 `HashAgg`演算子の例です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT /*+ HASH_AGG() */ count(*) FROM t1;
@@ -121,7 +121,7 @@ Stream Aggregationアルゴリズムは通常、HashAggregationよりも少な�
 
 次の例を考えてみましょう。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t2 (id INT NOT NULL PRIMARY KEY, col1 INT NOT NULL);
@@ -149,7 +149,7 @@ Records: 5  Duplicates: 0  Warnings: 0
 
 この例では、 `col1`にインデックスを追加することで`└─Sort_13`演算子を削除できます。インデックスが追加されると、データを順番に読み取ることができ、 `└─Sort_13`演算子が削除されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE t2 ADD INDEX (col1);

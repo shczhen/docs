@@ -7,7 +7,7 @@ summary: Learn the `COLLATION_CHARACTER_SET_APPLICABILITY` information_schema ta
 
 `COLLATION_CHARACTER_SET_APPLICABILITY`の表は、照合を該当する文字セット名にマップします。 `COLLATIONS`の表と同様に、MySQLとの互換性のためにのみ含まれています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -24,7 +24,7 @@ DESC collation_character_set_applicability;
 2 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM collation_character_set_applicability WHERE character_set_name='utf8mb4';

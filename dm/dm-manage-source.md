@@ -11,7 +11,7 @@ summary: Learn how to manage upstream MySQL instances in TiDB Data Migration.
 
 DM構成ファイルでは、dmctlで暗号化されたパスワードを使用することをお勧めします。 1つの元のパスワードの場合、暗号化されたパスワードは暗号化ごとに異なります。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 ./dmctl -encrypt 'abc!@#123'

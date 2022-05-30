@@ -20,7 +20,7 @@ aliases: ['/docs/dev/sql-statements/sql-statement-trace/','/docs/dev/reference/s
 
 ## 例 {#examples}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 trace format='row' select * from mysql.user;
@@ -47,7 +47,7 @@ trace format='row' select * from mysql.user;
 13 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 trace format='json' select * from mysql.user;

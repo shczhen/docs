@@ -36,7 +36,7 @@ TiDBダッシュボードを提供しないPDインスタンスにアクセス�
 
 TiUPを使用して展開された実行中のクラスターの場合、 `tiup cluster display`コマンドを使用して、どのPDインスタンスがTiDBダッシュボードにサービスを提供しているかを確認できます。 `CLUSTER_NAME`をクラスター名に置き換えます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster display CLUSTER_NAME --dashboard
@@ -55,7 +55,7 @@ http://192.168.0.123:2379/dashboard/
 > <details>
 > <summary>Upgrade TiUP Cluster</summary>
 >
-> {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+> {{< copyable "" >}}
 >
 > ```bash
 > tiup update --self
@@ -68,7 +68,7 @@ http://192.168.0.123:2379/dashboard/
 
 TiUPを使用してデプロイされた実行中のクラスターの場合、 `tiup ctl pd`コマンドを使用してTiDBダッシュボードを提供するPDインスタンスを変更するか、無効になっているときにTiDBダッシュボードを提供するPDインスタンスを再指定できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup ctl pd -u http://127.0.0.1:2379 config set dashboard-address http://9.9.9.9:2379
@@ -81,7 +81,7 @@ tiup ctl pd -u http://127.0.0.1:2379 config set dashboard-address http://9.9.9.9
 
 `tiup cluster display`コマンドを使用して、変更が有効になっているかどうかを確認できます（ `CLUSTER_NAME`をクラスター名に置き換えます）。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster display CLUSTER_NAME --dashboard
@@ -95,7 +95,7 @@ tiup cluster display CLUSTER_NAME --dashboard
 
 TiUPを使用してデプロイされた実行中のクラスターの場合、 `tiup ctl pd`コマンドを使用してすべてのPDインスタンスでTiDBダッシュボードを無効にします（ `127.0.0.1:2379`を任意のPDインスタンスのIPとポートに置き換えます）。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup ctl pd -u http://127.0.0.1:2379 config set dashboard-address none
@@ -117,7 +117,7 @@ Dashboard is not started.
 
 TiUPを使用してデプロイされた実行中のクラスターの場合、 `tiup ctl pd`コマンドを使用してPDにインスタンスを再ネゴシエートしてTiDBダッシュボードを実行するように要求します（ `127.0.0.1:2379`を任意のPDインスタンスのIPとポートに置き換えます）。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup ctl pd -u http://127.0.0.1:2379 config set dashboard-address auto
@@ -125,7 +125,7 @@ tiup ctl pd -u http://127.0.0.1:2379 config set dashboard-address auto
 
 上記のコマンドを実行した後、 `tiup cluster display`コマンドを使用して、PDによって自動的にネゴシエートされたTiDBダッシュボードインスタンスアドレスを表示できます（ `CLUSTER_NAME`をクラスター名に置き換えます）。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster display CLUSTER_NAME --dashboard

@@ -37,7 +37,7 @@ Load Base Splitはデフォルトで有効になっていますが、パラメ�
 
 -   SQLステートメントを使用します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     set config tikv split.qps-threshold=3000
@@ -45,7 +45,7 @@ Load Base Splitはデフォルトで有効になっていますが、パラメ�
 
 -   TiKVを使用する：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     curl -X POST "http://ip:status_port/config" -H "accept: application/json" -d '{"split.qps-threshold":"3000"}'
@@ -55,7 +55,7 @@ Load Base Splitはデフォルトで有効になっていますが、パラメ�
 
 -   SQLステートメントを使用します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     show config where type='tikv' and name like '%split.qps-threshold%'
@@ -63,7 +63,7 @@ Load Base Splitはデフォルトで有効になっていますが、パラメ�
 
 -   TiKVを使用する：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     curl "http://ip:status_port/config"

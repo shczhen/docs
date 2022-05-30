@@ -14,7 +14,7 @@ HTTPインターフェイス（TiCDC OpenAPI機能）を使用して、TiCDCク�
 
 このセクションでは、TiUPを使用してTiCDCクラスターをアップグレードする方法を紹介します。次の例では、TiCDCとTiDBクラスター全体をv6.0.0にアップグレードする必要があると想定しています。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup update --self && \
@@ -33,7 +33,7 @@ tiup cluster upgrade <cluster-name> v6.0.0
 
 まず、次のコマンドを実行します。 `<cluster-name>`を実際のクラスター名に置き換える必要があります。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup cluster edit-config <cluster-name>
@@ -77,7 +77,7 @@ TiUPを使用してTiCDCをデプロイする場合は、次のコマンドの`c
 
 -   `capture`のリストを照会します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     cdc cli capture list --pd=http://10.0.10.25:2379
@@ -133,7 +133,7 @@ TiUPを使用してTiCDCをデプロイする場合は、次のコマンドの`c
 
 次のコマンドを実行して、レプリケーションタスクを作成します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 cdc cli changefeed create --pd=http://10.0.10.25:2379 --sink-uri="mysql://root:123456@127.0.0.1:3306/" --changefeed-id="simple-replication-task" --sort-engine="unified"
@@ -175,7 +175,7 @@ Info: {"sink-uri":"mysql://root:123456@127.0.0.1:3306/","opts":{},"create-time":
 
 構成例：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 --sink-uri="mysql://root:123456@127.0.0.1:3306/?worker-count=16&max-txn-row=5000"
@@ -200,7 +200,7 @@ Info: {"sink-uri":"mysql://root:123456@127.0.0.1:3306/","opts":{},"create-time":
 
 構成例：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 --sink-uri="kafka://127.0.0.1:9092/topic-name?kafka-version=2.4.0&partition-num=6&max-message-bytes=67108864&replication-factor=1"
@@ -250,7 +250,7 @@ Info: {"sink-uri":"mysql://root:123456@127.0.0.1:3306/","opts":{},"create-time":
 
 構成例：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 --sink-uri="kafka://127.0.0.1:9092/topic-name?protocol=canal-json&kafka-version=2.4.0&protocol=avro&partition-num=6&max-message-bytes=67108864&replication-factor=1"
@@ -269,7 +269,7 @@ Confluentが提供する[データコネクタ](https://docs.confluent.io/curren
 
 構成例：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 --sink-uri="pulsar://127.0.0.1:6650/topic-name?connectionTimeout=2s"
@@ -304,7 +304,7 @@ Pulsarのその他のパラメーターについては、 [pulsar-client-go Clie
 
 構成ファイルを使用して、次の方法でレプリケーションタスクを作成できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 cdc cli changefeed create --pd=http://10.0.10.25:2379 --sink-uri="mysql://root:123456@127.0.0.1:3306/" --config changefeed.toml
@@ -316,7 +316,7 @@ cdc cli changefeed create --pd=http://10.0.10.25:2379 --sink-uri="mysql://root:1
 
 次のコマンドを実行して、レプリケーションタスクリストを照会します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 cdc cli changefeed list --pd=http://10.0.10.25:2379
@@ -346,7 +346,7 @@ cdc cli changefeed list --pd=http://10.0.10.25:2379
 
 特定のレプリケーションタスクをクエリするには、 `changefeed query`コマンドを実行します。クエリ結果には、タスク情報とタスク状態が含まれます。 `--simple`または`-s`引数を指定して、基本的なレプリケーション状態とチェックポイント情報のみを含むクエリ結果を簡略化できます。この引数を指定しない場合、詳細なタスク構成、レプリケーション状態、およびレプリケーションテーブル情報が出力されます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 cdc cli changefeed query -s --pd=http://10.0.10.25:2379 --changefeed-id=simple-replication-task
@@ -368,7 +368,7 @@ cdc cli changefeed query -s --pd=http://10.0.10.25:2379 --changefeed-id=simple-r
 -   `checkpoint`は、ダウンストリームに正常に複製された、現在の`changefeed`の最大のトランザクションTSOの対応する時間を表します。
 -   `error`は、現在の`changefeed`でエラーが発生したかどうかを記録します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 cdc cli changefeed query --pd=http://10.0.10.25:2379 --changefeed-id=simple-replication-task
@@ -450,7 +450,7 @@ cdc cli changefeed query --pd=http://10.0.10.25:2379 --changefeed-id=simple-repl
 
 次のコマンドを実行して、レプリケーションタスクを一時停止します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 cdc cli changefeed pause --pd=http://10.0.10.25:2379 --changefeed-id simple-replication-task
@@ -464,7 +464,7 @@ cdc cli changefeed pause --pd=http://10.0.10.25:2379 --changefeed-id simple-repl
 
 次のコマンドを実行して、一時停止したレプリケーションタスクを再開します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 cdc cli changefeed resume --pd=http://10.0.10.25:2379 --changefeed-id simple-replication-task
@@ -478,7 +478,7 @@ cdc cli changefeed resume --pd=http://10.0.10.25:2379 --changefeed-id simple-rep
 
 次のコマンドを実行して、レプリケーションタスクを削除します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 cdc cli changefeed remove --pd=http://10.0.10.25:2379 --changefeed-id simple-replication-task
@@ -492,7 +492,7 @@ cdc cli changefeed remove --pd=http://10.0.10.25:2379 --changefeed-id simple-rep
 
 v4.0.4以降、TiCDCはレプリケーションタスクの構成の変更をサポートします（動的ではありません）。 `changefeed`の構成を変更するには、タスクを一時停止し、構成を変更してから、タスクを再開します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 cdc cli changefeed pause -c test-cf --pd=http://10.0.10.25:2379
@@ -511,7 +511,7 @@ cdc cli changefeed resume -c test-cf --pd=http://10.0.10.25:2379
 
 -   `processor`のリストを照会します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     cdc cli processor list --pd=http://10.0.10.25:2379
@@ -529,7 +529,7 @@ cdc cli changefeed resume -c test-cf --pd=http://10.0.10.25:2379
 
 -   特定のレプリケーションタスクのステータスに対応する特定の`changefeed`をクエリします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     cdc cli processor query --pd=http://10.0.10.25:2379 --changefeed-id=simple-replication-task --capture-id=b293999a-4168-4988-a4f4-35d9589b226b
@@ -653,7 +653,7 @@ v4.0.13以降に`cdc cli`を使用して作成されたチェンジフィード�
 
 チェンジフィードでユニファイドソーター機能が有効になっているかどうかを確認するには、次のコマンド例を実行できます（PDインスタンスのIPアドレスが`http://10.0.10.25:2379`であると想定）。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 cdc cli --pd="http://10.0.10.25:2379" changefeed query --changefeed-id=simple-replication-task | grep 'sort-engine'

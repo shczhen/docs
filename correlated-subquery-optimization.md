@@ -21,7 +21,7 @@ TiDBがこの書き換えを行う必要がある理由は、サブクエリが�
 
 ## 例 {#example}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create table t1(a int, b int);
@@ -50,7 +50,7 @@ explain select * from t1 where t1.a < (select sum(t2.a) from t2 where t2.b = t1.
 
 次に、サブクエリの非相関ルールをオフにします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 insert into mysql.opt_rule_blacklist values("decorrelate");

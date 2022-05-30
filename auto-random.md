@@ -16,7 +16,7 @@ TiDBに集中的にデータを書き込み、TiDBに自動インクリメント
 
 例として、次の作成されたテーブルを取り上げます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t (a bigint PRIMARY KEY AUTO_INCREMENT, b varchar(255))
@@ -24,7 +24,7 @@ CREATE TABLE t (a bigint PRIMARY KEY AUTO_INCREMENT, b varchar(255))
 
 この`t`のテーブルで、次のように主キーの値を指定しない`INSERT`のステートメントを多数実行します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO t(b) VALUES ('a'), ('b'), ('c')
@@ -32,7 +32,7 @@ INSERT INTO t(b) VALUES ('a'), ('b'), ('c')
 
 上記のステートメントでは、主キー（列`a` ）の値が指定されていないため、TiDBは行IDとして連続自動インクリメント行値を使用します。これにより、単一のTiKVノードで書き込みホットスポットが発生し、パフォーマンスに影響を与える可能性があります。このような書き込みホットスポットを回避するために、テーブルの作成時に列`a`の`AUTO_INCREMENT`属性ではなく`AUTO_RANDOM`属性を指定できます。次の例を参照してください。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t (a bigint PRIMARY KEY AUTO_RANDOM, b varchar(255))
@@ -40,7 +40,7 @@ CREATE TABLE t (a bigint PRIMARY KEY AUTO_RANDOM, b varchar(255))
 
 また
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t (a bigint AUTO_RANDOM, b varchar(255), PRIMARY KEY (a))
@@ -61,7 +61,7 @@ TiDBは、次の方法で値を自動的に割り当てます。
 
 異なる数のシャードビットを使用するには、 `AUTO_RANDOM`に括弧のペアを追加し、括弧内に必要な数のシャードビットを指定します。次の例を参照してください。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t (a bigint PRIMARY KEY AUTO_RANDOM(3), b varchar(255))
@@ -71,7 +71,7 @@ CREATE TABLE t (a bigint PRIMARY KEY AUTO_RANDOM(3), b varchar(255))
 
 テーブルを作成した後、 `SHOW WARNINGS`ステートメントを使用して、現在のテーブルでサポートされている暗黙的な割り当ての最大数を確認します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW WARNINGS
@@ -93,7 +93,7 @@ SHOW WARNINGS
 
 `AUTO_RANDOM`列に割り当てられた値は`last_insert_id()`に影響します。 `SELECT last_insert_id ()`を使用して、TiDBが最後に暗黙的に割り当てるIDを取得できます。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO t (b) VALUES ("b")
@@ -120,13 +120,13 @@ SELECT last_insert_id()
 
 TiDBは、バージョンコメント構文の解析をサポートしています。次の例を参照してください。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t (a bigint PRIMARY KEY /*T![auto_rand] auto_random */)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t (a bigint PRIMARY KEY AUTO_RANDOM)

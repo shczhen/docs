@@ -25,7 +25,7 @@ TableName ::=
 
 ## 例 {#examples}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DROP SEQUENCE seq;
@@ -35,7 +35,7 @@ DROP SEQUENCE seq;
 Query OK, 0 rows affected (0.10 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DROP SEQUENCE seq, seq2;

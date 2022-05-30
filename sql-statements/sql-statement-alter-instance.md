@@ -30,7 +30,7 @@ InstanceOption ::=
 
 ## 例 {#example}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER INSTANCE RELOAD TLS;

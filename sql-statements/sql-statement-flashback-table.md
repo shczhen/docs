@@ -10,7 +10,7 @@ aliases: ['/docs/dev/sql-statements/sql-statement-flashback-table/','/docs/dev/r
 
 システム変数[`tidb_gc_life_time`](/system-variables.md#tidb_gc_life_time-new-in-v50) （デフォルト： `10m0s` ）は、以前のバージョンの行の保持時間を定義します。ガラベージ収集が実行された現在の`safePoint`は、次のクエリで取得できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM mysql.tidb WHERE variable_name = 'tikv_gc_safe_point';
@@ -20,7 +20,7 @@ SELECT * FROM mysql.tidb WHERE variable_name = 'tikv_gc_safe_point';
 
 ## 構文 {#syntax}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 FLASHBACK TABLE table_name [TO other_table_name]
@@ -54,13 +54,13 @@ TiDB Binlogを有効にして、 `FLASHBACK TABLE`ステートメントを使用
 
 -   `DROP`の操作でドロップされたテーブルデータを回復します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     DROP TABLE t;
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     FLASHBACK TABLE t;
@@ -68,13 +68,13 @@ TiDB Binlogを有効にして、 `FLASHBACK TABLE`ステートメントを使用
 
 -   `TRUNCATE`の操作で削除されたテーブルデータを回復します。切り捨てられたテーブル`t`はまだ存在するため、回復するにはテーブル`t`の名前を変更する必要があります。そうしないと、テーブル`t`がすでに存在するため、エラーが返されます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     TRUNCATE TABLE t;
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     FLASHBACK TABLE t TO t1;

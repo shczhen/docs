@@ -8,7 +8,7 @@ aliases: ['/docs/dev/system-tables/system-table-cluster-systeminfo/','/docs/dev/
 
 `CLUSTER_SYSTEMINFO`カーネルパラメータテーブルを使用して、クラスタのすべてのインスタンスが配置されているサーバーのカーネル構成情報をクエリできます。現在、 `sysctl`システムの情報を照会することができます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;

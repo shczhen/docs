@@ -74,7 +74,7 @@ pd-addr = "${ip}:${port}"     # The address of the cluster's PD. TiDB Lightning 
 
 S3からデータをインポートする場合は、アカウントの`SecretKey`と`AccessKey`を環境変数として渡す必要があります。アカウントには、S3バックエンドストレージにアクセスするためのアクセス許可があります。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 export AWS_ACCESS_KEY_ID=${access_key}

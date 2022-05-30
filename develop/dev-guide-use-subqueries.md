@@ -35,7 +35,7 @@ summary: Learn how to use subquery in TiDB.
 
 たとえば、年齢が平均年齢よりも大きい`authors`テーブルの作成者にクエリを実行するには、比較演算子のオペランドとしてサブクエリを使用できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM authors a1 WHERE (IFNULL(a1.death_year, YEAR(NOW())) - a1.birth_year) > (
@@ -48,7 +48,7 @@ SELECT * FROM authors a1 WHERE (IFNULL(a1.death_year, YEAR(NOW())) - a1.birth_ye
 
 内部サブクエリは、TiDBが上記のクエリを実行する前に実行されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT AVG(IFNULL(a2.death_year, YEAR(NOW())) - a2.birth_year) AS average_age FROM authors a2;
@@ -56,7 +56,7 @@ SELECT AVG(IFNULL(a2.death_year, YEAR(NOW())) - a2.birth_year) AS average_age FR
 
 クエリの結果が34、つまり平均年齢が34であり、34が元のサブクエリを置き換える定数として使用されるとします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM authors a1
@@ -95,7 +95,7 @@ ExistentialTestやQuantifiedComparisonなどの自己完結型のサブクエリ
 
 次のステートメントは、同じ性別の他の著者の平均年齢よりも年上の著者にクエリを実行するためのものです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM authors a1 WHERE (IFNULL(a1.death_year, YEAR(NOW())) - a1.birth_year) > (
@@ -111,7 +111,7 @@ SELECT * FROM authors a1 WHERE (IFNULL(a1.death_year, YEAR(NOW())) - a1.birth_ye
 
 TiDBはそれを同等の`join`クエリに書き換えます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT *

@@ -128,7 +128,7 @@ Timeタイプの小数点も`.`で、小数点の後に最大6桁の精度があ
 
 定数`TRUE`と`FALSE`は、それぞれ1と0に等しく、大文字と小文字は区別されません。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT TRUE, true, tRuE, FALSE, FaLsE, false;

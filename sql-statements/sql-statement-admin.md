@@ -19,7 +19,7 @@ aliases: ['/docs/dev/sql-statements/sql-statement-admin/','/docs/dev/reference/s
 
 ## <code>ADMIN RELOAD</code>ステートメント {#code-admin-reload-code-statement}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ADMIN RELOAD expr_pushdown_blacklist;
@@ -27,7 +27,7 @@ ADMIN RELOAD expr_pushdown_blacklist;
 
 上記のステートメントは、式によってプッシュダウンされたブロックリストを再ロードするために使用されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ADMIN RELOAD opt_rule_blacklist;
@@ -37,7 +37,7 @@ ADMIN RELOAD opt_rule_blacklist;
 
 ## <code>ADMIN PLUGINS</code>関連のステートメント {#code-admin-plugins-code-related-statement}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ADMIN PLUGINS ENABLE plugin_name [, plugin_name] ...;
@@ -45,7 +45,7 @@ ADMIN PLUGINS ENABLE plugin_name [, plugin_name] ...;
 
 上記のステートメントは、 `plugin_name`プラグインを有効にするために使用されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ADMIN PLUGINS DISABLE plugin_name [, plugin_name] ...;
@@ -55,7 +55,7 @@ ADMIN PLUGINS DISABLE plugin_name [, plugin_name] ...;
 
 ## <code>ADMIN BINDINGS</code>関連ステートメント {#code-admin-bindings-code-related-statement}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ADMIN FLUSH bindings;
@@ -63,7 +63,7 @@ ADMIN FLUSH bindings;
 
 上記のステートメントは、SQLプランのバインディング情報を永続化するために使用されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ADMIN CAPTURE bindings;
@@ -71,7 +71,7 @@ ADMIN CAPTURE bindings;
 
 上記のステートメントは、複数回発生する`SELECT`のステートメントからSQLプランのバインディングを生成できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ADMIN EVOLVE bindings;
@@ -79,7 +79,7 @@ ADMIN EVOLVE bindings;
 
 自動バインド機能を有効にすると、SQLプランのバインド情報の展開が`bind-info-leave`ごとにトリガーされます（デフォルト値は`3s` ）。上記のステートメントは、この進化を積極的にトリガーするために使用されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ADMIN RELOAD bindings;
@@ -91,7 +91,7 @@ ADMIN RELOAD bindings;
 
 極端な場合に信頼できない方法で保存されたテーブルのメタデータを上書きするには、 `ADMIN REPAIR TABLE`を使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ADMIN REPAIR TABLE tbl_name CREATE TABLE STATEMENT;
@@ -101,13 +101,13 @@ ADMIN REPAIR TABLE tbl_name CREATE TABLE STATEMENT;
 
 ## <code>ADMIN SHOW SLOW</code>ステートメント {#code-admin-show-slow-code-statement}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ADMIN SHOW SLOW RECENT N;
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ADMIN SHOW SLOW TOP [INTERNAL | ALL] N;
@@ -126,7 +126,7 @@ AdminStmt ::=
 
 次のコマンドを実行して、現在実行中のDDLジョブキュー内の最後の10個の完了したDDLジョブを表示します。 `NUM`が指定されていない場合、デフォルトでは、最後に完了した10個のDDLジョブのみが表示されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 admin show ddl jobs;
@@ -152,7 +152,7 @@ admin show ddl jobs;
 
 次のコマンドを実行して、現在実行中のDDLジョブキューで最後に完了した5つのDDLジョブを表示します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 admin show ddl jobs 5;
@@ -173,7 +173,7 @@ admin show ddl jobs 5;
 
 次のコマンドを実行して、テストデータベース内の未完了のDDLジョブを表示します。結果には、実行中のDDLジョブと、完了したが失敗した最後の5つのDDLジョブが含まれます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 admin show ddl jobs 5 where state!='synced' and db_name='test';

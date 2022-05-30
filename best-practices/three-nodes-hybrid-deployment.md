@@ -107,7 +107,7 @@ TiDBはマルチバージョン同時実行制御（MVCC）モデルを使用す
 
 構成ファイルでこのパラメーター値を設定することに加えて、tikv-ctlでこの値を動的に調整することもできます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup ctl tikv --host=${ip:port} modify-tikv-config -n gc.max_write_bytes_per_sec -v ${limit}

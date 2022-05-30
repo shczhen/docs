@@ -19,7 +19,7 @@ summary: Learn how to use the BR command line to backup and restore cluster data
 
 これは完全な`br`のコマンドです。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 br backup full --pd "${PDIP}:2379" -s "local:///tmp/backup"
@@ -85,7 +85,7 @@ br backup full --pd "${PDIP}:2379" -s "local:///tmp/backup"
 >
 > -   バックアップディスクとサービスディスクが同じである場合、バックアップはI/Oリソースを求めてサービスと競合します。これにより、読み取り専用オンラインサービスのQPSが半分以上低下する可能性があります。したがって、オンラインサービスデータをTiKVデータディスクにバックアップすることは<strong>強くお勧め</strong>しません。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 br backup full \
@@ -119,7 +119,7 @@ Full Backup <---------/................................................> 17.12%.
 
 `test`のデータベースのデータを各TiKVノードの`/tmp/backup`のパスにバックアップし、 `backupmeta`のファイルをこのパスに書き込みます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 br backup db \
@@ -142,7 +142,7 @@ br backup db \
 
 `test.usertable`のテーブルのデータを各TiKVノードの`/tmp/backup`のパスにバックアップし、 `backupmeta`のファイルをこのパスに書き込みます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 br backup table \
@@ -171,7 +171,7 @@ br backup table \
 
 次のコマンドは、フォーム`db*.tbl*`のすべてのテーブルのデータを各TiKVノードの`/tmp/backup`パスにバックアップし、 `backupmeta`ファイルをこのパスに書き込みます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 br backup full \
@@ -194,7 +194,7 @@ br backup full \
 
 S3バックエンドにアクセスする権限を持つアカウントの`SecretKey`と`AccessKey`をBRノードに渡します。ここでは、 `SecretKey`と`AccessKey`が環境変数として渡されます。次に、BRを介して特権をTiKVノードに渡します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 export AWS_ACCESS_KEY_ID=${AccessKey}
@@ -203,7 +203,7 @@ export AWS_SECRET_ACCESS_KEY=${SecretKey}
 
 BRを使用してバックアップする場合は、パラメーター`--s3.region`と`--send-credentials-to-tikv`を明示的に指定してください。 `--s3.region`はS3が配置されている領域を示し、 `--send-credentials-to-tikv`はS3にアクセスする特権をTiKVノードに渡すことを意味します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 br backup full \
@@ -226,7 +226,7 @@ br backup full \
 
 `(LAST_BACKUP_TS, current PD timestamp]`の間の増分データをバックアップするには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 br backup full\
@@ -238,7 +238,7 @@ br backup full\
 
 最後のバックアップのタイムスタンプを取得するには、 `validate`コマンドを実行します。例えば：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 LAST_BACKUP_TS=`br validate decode --field="end-version" -s local:///home/tidb/backupdata | tail -n1`
@@ -262,7 +262,7 @@ TiDB v5.3.0以降、TiDBはバックアップ暗号化をサポートしてい�
 
 バックアップ暗号化の設定例は次のとおりです。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 br backup full\
@@ -282,7 +282,7 @@ br backup full\
 
 たとえば、次のコマンドを実行して、デフォルトCFの`[0x31, 0x3130303030303030)`から`$BACKUP_DIR`までのすべてのキーをバックアップできます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 br backup raw --pd $PD_ADDR \
@@ -325,7 +325,7 @@ br backup raw --pd $PD_ADDR \
 
 クラスタへの`/tmp/backup`のパスにあるすべてのバックアップデータを復元します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 br restore full \
@@ -359,7 +359,7 @@ Full Restore <---------/...............................................> 17.12%.
 
 クラスタへの`/tmp/backup`のパスでバックアップされたデータベースを復元します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 br restore db \
@@ -384,7 +384,7 @@ br restore db \
 
 クラスタへの`/tmp/backup`のパスでバックアップされたテーブルを復元します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 br restore table \
@@ -406,7 +406,7 @@ br restore table \
 
 次のコマンドは、クラスターへの`/tmp/backup`のパスでバックアップされたテーブルのサブセットを復元します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 br restore full \
@@ -426,7 +426,7 @@ br restore full \
 
 S3バックエンドにアクセスする権限を持つアカウントの`SecretKey`と`AccessKey`をBRノードに渡します。ここでは、 `SecretKey`と`AccessKey`が環境変数として渡されます。次に、BRを介して特権をTiKVノードに渡します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 export AWS_ACCESS_KEY_ID=${AccessKey}
@@ -437,7 +437,7 @@ BRを使用してデータを復元する場合は、パラメータ`--s3.region
 
 `--storage`パラメーターの`Bucket`と`Folder`は、S3バケットと、復元するデータが配置されているフォルダーを表します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 br restore full \
@@ -461,7 +461,7 @@ BRは、デフォルトで`mysql`スキーマで作成されたテーブルを�
 
 BRを使用してデータを復元する場合、 `mysql`スキーマで作成されたテーブルはデフォルトでは復元されません。これらのテーブルを復元する必要がある場合は、 [テーブルフィルター](/table-filter.md#syntax)を使用して明示的に含めることができます。次の例では、 `mysql`スキーマで作成された`mysql.usertable`を復元します。このコマンドは、他のデータとともに`mysql.usertable`を復元します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 br restore full -f '*.*' -f '!mysql.*' -f 'mysql.usertable' -s $external_storage_url --ratelimit 128
@@ -471,7 +471,7 @@ br restore full -f '*.*' -f '!mysql.*' -f 'mysql.usertable' -s $external_storage
 
 `mysql.usertable`のみを復元する必要がある場合は、次のコマンドを使用します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 br restore full -f 'mysql.usertable' -s $external_storage_url --ratelimit 128
@@ -496,7 +496,7 @@ br restore full -f 'mysql.usertable' -s $external_storage_url --ratelimit 128
 
 以下は、バックアップデータを復号化する例です。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 br restore full\
@@ -514,7 +514,7 @@ br restore full\
 
 [RawKVのバックアップ](#back-up-raw-kv-experimental-feature)と同様に、次のコマンドを実行してRawKVを復元できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 br restore raw --pd $PD_ADDR \
@@ -538,7 +538,7 @@ br restore raw --pd $PD_ADDR \
 
 1.  PDを構成し、配置ルールを開始します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     echo "config set enable-placement-rules true" | pd-ctl
@@ -555,7 +555,7 @@ br restore raw --pd $PD_ADDR \
 
 3.  「復元ノード」のTiKVを起動し、BRを使用してバックアップファイルを復元します。オフライン復元と比較すると、 `--online`のフラグを追加するだけで済みます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```
     br restore full \

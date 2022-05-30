@@ -281,7 +281,7 @@ TiDBエラーログのスタック情報は1行形式です。 `tidb-ctl log`を
 
 -   `tidb-ctl keyrange`コマンドを実行して、グローバルキー範囲情報を確認します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tidb-ctl keyrange
@@ -295,7 +295,7 @@ TiDBエラーログのスタック情報は1行形式です。 `tidb-ctl log`を
 
 -   エンコードされたキーを表示する`--encode`のオプションを追加します（TiKVおよびPDと同じ形式で）。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tidb-ctl keyrange --encode
@@ -309,7 +309,7 @@ TiDBエラーログのスタック情報は1行形式です。 `tidb-ctl log`を
 
 -   `tidb-ctl keyrange --database={db} --table={tbl}`コマンドを実行して、グローバルおよびテーブル関連のキー範囲情報を確認します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tidb-ctl keyrange --database test --table ttt

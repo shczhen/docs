@@ -43,7 +43,7 @@ IdentListWithParenOpt ::=
 
 非再帰CTE：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 WITH CTE AS (SELECT 1, 2) SELECT * FROM cte t1, cte t2;
@@ -60,7 +60,7 @@ WITH CTE AS (SELECT 1, 2) SELECT * FROM cte t1, cte t2;
 
 再帰CTE：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 WITH RECURSIVE cte(a) AS (SELECT 1 UNION SELECT a+1 FROM cte WHERE a < 5) SELECT * FROM cte;

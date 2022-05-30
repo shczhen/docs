@@ -7,7 +7,7 @@ summary: Learn the `TIDB_HOT_REGIONS_HISTORY` information_schema table.
 
 `TIDB_HOT_REGIONS_HISTORY`の表は、PDによってローカルに定期的に記録される履歴ホットリージョンに関する情報を提供します。 [`hot-regions-write-interval`](/pd-configuration-file.md#hot-regions-write-interval-new-in-v540)を設定することにより、レコード間隔を指定できます。デフォルト値は10分です。 [`hot-regions-reserved-days`](/pd-configuration-file.md#hot-regions-reserved-days-new-in-v540)を設定することにより、ホットリージョンに関する履歴情報を予約する期間を指定できます。デフォルト値は7日です。詳細については、 [PD構成ファイルの説明](/pd-configuration-file.md#hot-regions-write-interval-new-in-v540)を参照してください。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -65,7 +65,7 @@ DESC tidb_hot_regions_history;
 
 -   特定の期間内にホットリージョンをクエリします。 `update_time`を実際の時間に置き換えます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT * FROM INFORMATION_SCHEMA.TIDB_HOT_REGIONS_HISTORY WHERE update_time >'2021-08-18 21:40:00' and update_time <'2021-09-19 00:00:00';
@@ -77,7 +77,7 @@ DESC tidb_hot_regions_history;
 
 -   特定の期間内にテーブル内のホットリージョンをクエリします。 `update_time`と`table_name`を実際の値に置き換えます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```SQL
     SELECT * FROM INFORMATION_SCHEMA.TIDB_HOT_REGIONS_HISTORY WHERE update_time >'2021-08-18 21:40:00' and update_time <'2021-09-19 00:00:00' and TABLE_NAME = 'table_name';
@@ -85,7 +85,7 @@ DESC tidb_hot_regions_history;
 
 -   特定の期間内のホットリージョンの分布をクエリします。 `update_time`と`table_name`を実際の値に置き換えます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT count(region_id) cnt, store_id FROM INFORMATION_SCHEMA.TIDB_HOT_REGIONS_HISTORY WHERE update_time >'2021-08-18 21:40:00' and update_time <'2021-09-19 00:00:00' and table_name = 'table_name' GROUP BY STORE_ID ORDER BY cnt DESC;
@@ -93,7 +93,7 @@ DESC tidb_hot_regions_history;
 
 -   特定の期間内のホットリーダーリージョンの分布をクエリします。 `update_time`と`table_name`を実際の値に置き換えます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT count(region_id) cnt, store_id FROM INFORMATION_SCHEMA.TIDB_HOT_REGIONS_HISTORY WHERE update_time >'2021-08-18 21:40:00' and update_time <'2021-09-19 00:00:00' and table_name = 'table_name' and is_leader=1 GROUP BY STORE_ID ORDER BY cnt DESC;
@@ -101,7 +101,7 @@ DESC tidb_hot_regions_history;
 
 -   特定の期間内のホットインデックスリージョンの分布をクエリします。 `update_time`と`table_name`を実際の値に置き換えます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT count(region_id) cnt, index_name, store_id FROM INFORMATION_SCHEMA.TIDB_HOT_REGIONS_HISTORY WHERE update_time >'2021-08-18 21:40:00' and update_time <'2021-09-19 00:00:00' and table_name = 'table_name' group by index_name, store_id order by index_name,cnt desc;
@@ -109,7 +109,7 @@ DESC tidb_hot_regions_history;
 
 -   特定の期間内のホットインデックスリーダーリージョンの分布をクエリします。 `update_time`と`table_name`を実際の値に置き換えます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT count(region_id) cnt, index_name, store_id FROM INFORMATION_SCHEMA.TIDB_HOT_REGIONS_HISTORY WHERE update_time >'2021-08-18 21:40:00' and update_time <'2022-09-19 00:00:00' and table_name = 'table_name' and is_leader=1 group by index_name, store_id order by index_name,cnt desc;

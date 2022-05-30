@@ -19,7 +19,7 @@ Bookshopのテーブル構造とデータは[TiUP経由](#via-tiup-demo)また�
 
 TiDBクラスターが[TiUP](/tiup/tiup-reference.md#tiup-reference)を使用してデプロイされている場合、またはTiDBサーバーに接続できる場合は、次のコマンドを実行することで、Bookshopアプリケーションのサンプルデータをすばやく生成してインポートできます。
 
-{{&lt;コピー可能な「シェル」&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup demo bookshop prepare
@@ -41,7 +41,7 @@ tiup demo bookshop prepare
 
 たとえば、TiDBクラウド上のデータベースに接続する場合は、次のように接続情報を指定できます。
 
-{{&lt;コピー可能な「シェル」&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup demo bookshop prepare -U root -H tidb.xxx.yyy.ap-northeast-1.prod.aws.tidbcloud.com -P 4000 -p
@@ -67,7 +67,7 @@ tiup demo bookshop prepare -U root -H tidb.xxx.yyy.ap-northeast-1.prod.aws.tidbc
 -   `--ratings`パラメータによる1,000,000行の評価レコード
 -   `--orders`パラメータによる1,000,000行の注文レコード
 
-{{&lt;コピー可能な「シェル」&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup demo bookshop prepare --users=200000 --books=500000 --authors=100000 --ratings=1000000 --orders=1000000 --drop-tables
@@ -132,7 +132,7 @@ TiDB Cloudの詳細については、 [TiDBクラウドドキュメント](https
 
 インポートが完了したら、次のSQLステートメントを実行して、各テーブルのデータボリューム情報を表示できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT
@@ -240,7 +240,7 @@ WHERE table_schema LIKE 'bookshop';
 
 Bookshopアプリケーションでデータベーステーブル構造を手動で作成する場合は、次のSQLステートメントを実行します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE DATABASE IF NOT EXISTS `bookshop`;

@@ -24,7 +24,7 @@ SQLのパフォーマンスの問題をより適切に処理するために、My
 
 ここでの「SQLダイジェスト」とは、低速ログで使用されるものと同じ意味であり、正規化されたSQLステートメントによって計算される一意の識別子です。正規化プロセスでは、定数の空白文字は無視され、大文字と小文字は区別されません。したがって、構文が一貫しているステートメントのダイジェストは同じです。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM employee WHERE id IN (1, 2, 3) AND salary BETWEEN 1000 AND 2000;
@@ -33,7 +33,7 @@ select * from EMPLOYEE where ID in (4, 5) and SALARY between 3000 and 4000;
 
 正規化後、これらは両方とも次のカテゴリになります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select * from employee where id in (...) and salary between ? and ?;
@@ -119,7 +119,7 @@ select * from employee where id in (...) and salary between ? and ?;
 
 ステートメントの要約構成の例を以下に示します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 set global tidb_enable_stmt_summary = true;
@@ -193,7 +193,7 @@ select * from information_schema.statements_summary_evicted;
 
 この例では、クライアントは`employee`テーブルのポイントクエリでパフォーマンスが低下しています。 SQLテキストに対してあいまい検索を実行できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT avg_latency, exec_count, query_sample_text
@@ -203,7 +203,7 @@ SELECT avg_latency, exec_count, query_sample_text
 
 `1ms`と`0.3ms`は、通常の`avg_latency`の範囲内と見なされます。したがって、サーバー側が原因ではないと結論付けることができます。クライアントまたはネットワークでトラブルシューティングできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 +-------------+------------+------------------------------------------+
@@ -219,7 +219,7 @@ SELECT avg_latency, exec_count, query_sample_text
 
 QPSが10:00から10:30に大幅に減少した場合は、履歴テーブルから、消費時間が最も長いSQLステートメントの3つのカテゴリを見つけることができます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT sum_latency, avg_latency, exec_count, query_sample_text
@@ -230,7 +230,7 @@ SELECT sum_latency, avg_latency, exec_count, query_sample_text
 
 この結果は、次の3つのカテゴリのSQLステートメントが合計で最も長い時間を消費することを示しています。これらは、高い優先度で最適化する必要があります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 +-------------+-------------+------------+-----------------------------------------------------------------------+

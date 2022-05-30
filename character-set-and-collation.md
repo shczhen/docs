@@ -14,7 +14,7 @@ aliases: ['/docs/dev/character-set-and-collation/','/docs/dev/reference/sql/char
 
 照合は、文字セット内の文字を比較するための一連のルール、および文字の並べ替え順序です。たとえば、バイナリ照合では、 `A`と`a`は等しいと比較されません。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET NAMES utf8mb4 COLLATE utf8mb4_bin;
@@ -50,7 +50,7 @@ TiDBは、デフォルトでバイナリ照合を使用します。これは、�
 
 現在、TiDBは次の文字セットをサポートしています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW CHARACTER SET;
@@ -97,7 +97,7 @@ mysql> show collation;
 
 次のステートメントを使用して、文字セットに対応する照合（ [照合のための新しいフレームワーク](#new-framework-for-collations)の下）を表示できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW COLLATION WHERE Charset = 'utf8mb4';
@@ -174,7 +174,7 @@ ALTER DATABASE db_name
 
 異なるデータベースは、異なる文字セットと照合を使用できます。 `character_set_database`と`collation_database`を使用して、現在のデータベースの文字セットと照合を確認します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE SCHEMA test1 CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
@@ -184,7 +184,7 @@ CREATE SCHEMA test1 CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 Query OK, 0 rows affected (0.09 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE test1;
@@ -194,7 +194,7 @@ USE test1;
 Database changed
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT @@character_set_database, @@collation_database;
@@ -209,7 +209,7 @@ SELECT @@character_set_database, @@collation_database;
 1 row in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE SCHEMA test2 CHARACTER SET latin1 COLLATE latin1_bin;
@@ -219,7 +219,7 @@ CREATE SCHEMA test2 CHARACTER SET latin1 COLLATE latin1_bin;
 Query OK, 0 rows affected (0.09 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE test2;
@@ -229,7 +229,7 @@ USE test2;
 Database changed
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT @@character_set_database, @@collation_database;
@@ -246,7 +246,7 @@ SELECT @@character_set_database, @@collation_database;
 
 `INFORMATION_SCHEMA`の2つの値も確認できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT DEFAULT_CHARACTER_SET_NAME, DEFAULT_COLLATION_NAME
@@ -269,7 +269,7 @@ ALTER TABLE tbl_name
 
 例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1(a int) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
@@ -301,7 +301,7 @@ col_name {ENUM | SET} (val_list)
 
 各文字列は、文字セットと照合に対応しています。文字列を使用する場合、次のオプションを使用できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 [_charset_name]'string' [COLLATE collation_name]
@@ -309,7 +309,7 @@ col_name {ENUM | SET} (val_list)
 
 例：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT 'string';
@@ -388,7 +388,7 @@ v4.0以降、TiDBは[照合のための新しいフレームワーク](#new-fram
 
 v4.0より前では、TiDBでほとんどのMySQL照合を指定でき、これらの照合はデフォルトの照合に従って処理されます。つまり、バイト順序によって文字の順序が決まります。 MySQLとは異なり、TiDBは、文字を比較する前に、照合の`PADDING`属性に従って文字の末尾のスペースを削除します。これにより、次の動作の違いが発生します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t(a varchar(20) charset utf8mb4 collate utf8mb4_general_ci PRIMARY KEY);
@@ -405,7 +405,7 @@ Query OK, 1 row affected # In TiDB, it is successfully executed. In MySQL, becau
 
 TiDB 4.0では、照合のための完全なフレームワークが導入されています。この新しいフレームワークは、セマンティック解析の照合をサポートし、クラスターが最初に初期化されるときに新しいフレームワークを有効にするかどうかを決定する`new_collations_enabled_on_first_bootstrap`の構成項目を導入します。新しいフレームワークを有効にするには、 `new_collations_enabled_on_first_bootstrap`を`true`に設定します。詳細については、 [`new_collations_enabled_on_first_bootstrap`](/tidb-configuration-file.md#new_collations_enabled_on_first_bootstrap)を参照してください。構成項目を有効にした後でクラスターを初期化すると、 `mysql`の`new_collation_enabled`変数を使用して新しい照合が有効になっているかどうかを確認できます。 `tidb`テーブル：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT VARIABLE_VALUE FROM mysql.tidb WHERE VARIABLE_NAME='new_collation_enabled';
@@ -424,7 +424,7 @@ SELECT VARIABLE_VALUE FROM mysql.tidb WHERE VARIABLE_NAME='new_collation_enabled
 
 `utf8_general_ci` 、および`utf8mb4_general_ci`の`utf8mb4_unicode_ci` `gbk_chinese_ci`が使用されている場合、文字列の比較では大文字と小文字が区別されず、アクセントも区別され`utf8_unicode_ci`ん。同時に、TiDBは照合の`PADDING`の動作も修正します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t(a varchar(20) charset utf8mb4 collate utf8mb4_general_ci PRIMARY KEY);
@@ -466,7 +466,7 @@ TiDBは照合を推測できず、次の状況でエラーを報告します。
 
 TiDBは、式の照合を指定するための`COLLATE`句の使用をサポートしています。この式の強制力の値は`0`であり、これが最も優先度が高くなります。次の例を参照してください。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT 'a' = _utf8mb4 'A' collate utf8mb4_general_ci;

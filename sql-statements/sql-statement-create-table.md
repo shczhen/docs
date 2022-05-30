@@ -108,7 +108,7 @@ OnCommitOpt ::=
 
 単純なテーブルを作成し、1つの行を挿入します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1 (a int);
@@ -155,7 +155,7 @@ mysql> SELECT * FROM t1;
 
 テーブルが存在する場合はドロップし、存在しない場合は条件付きでテーブルを作成します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DROP TABLE IF EXISTS t1;

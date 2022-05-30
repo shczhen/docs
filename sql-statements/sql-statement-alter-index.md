@@ -46,7 +46,7 @@ IndexInvisible ::=
 
 `ALTER TABLE ... ALTER INDEX ...`ステートメントを使用して、インデックスの表示を変更できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1 (c1 INT, UNIQUE(c1));
@@ -57,7 +57,7 @@ ALTER TABLE t1 ALTER INDEX c1 INVISIBLE;
 Query OK, 0 rows affected (0.02 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW CREATE TABLE t1;
@@ -78,7 +78,7 @@ SHOW CREATE TABLE t1;
 
 オプティマイザは、非表示の<strong>インデックス</strong>`c1`を使用できません。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT c1 FROM t1 ORDER BY c1;
@@ -97,7 +97,7 @@ EXPLAIN SELECT c1 FROM t1 ORDER BY c1;
 
 比較すると、 `c2`は<strong>表示可能なインデックス</strong>であり、オプティマイザで使用できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT c2 FROM t1 ORDER BY c2;
@@ -115,7 +115,7 @@ EXPLAIN SELECT c2 FROM t1 ORDER BY c2;
 
 `USE INDEX` SQLヒントを使用してインデックスを強制的に使用しても、オプティマイザーは非表示のインデックスを使用できません。それ以外の場合は、エラーが返されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM t1 USE INDEX(c1);
@@ -129,7 +129,7 @@ ERROR 1176 (42000): Key 'c1' doesn't exist in table 't1'
 >
 > ここでの「不可視」とは、オプティマイザにのみ不可視であることを意味します。非表示のインデックスは引き続き変更または削除できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE t1 DROP INDEX c1;

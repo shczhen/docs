@@ -7,7 +7,7 @@ summary: Learn the `TABLE_STORAGE_STATS` information_schema table.
 
 `TABLE_STORAGE_STATS`テーブルは、ストレージエンジン（TiKV）によって格納されたテーブルサイズに関する情報を提供します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -30,7 +30,7 @@ DESC table_storage_stats;
 8 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE test.t1 (id INT);

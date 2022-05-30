@@ -21,7 +21,7 @@ TiUPクラスターコンポーネントを使用して、複数のTiDBクラス
 
 リストを表示するには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster list
@@ -35,7 +35,7 @@ TiDBクラスターのコンポーネントは、次の順序で開始されま�
 
 クラスタを起動するには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster start ${cluster-name}
@@ -49,7 +49,7 @@ tiup cluster start ${cluster-name}
 
 -   このコマンドは、PDコンポーネントのみを起動します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup cluster start ${cluster-name} -R pd
@@ -57,7 +57,7 @@ tiup cluster start ${cluster-name}
 
 -   このコマンドは、 `1.2.3.4`および`1.2.3.5`ホスト上のPDコンポーネントのみを開始します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup cluster start ${cluster-name} -N 1.2.3.4:2379,1.2.3.5:2379
@@ -71,7 +71,7 @@ tiup cluster start ${cluster-name}
 
 クラスタを起動した後、各コンポーネントのステータスをチェックして、それらが正常に機能していることを確認します。 TiUPは`display`コマンドを提供するため、コンポーネントのステータスを表示するためにすべてのマシンにログインする必要はありません。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster display ${cluster-name}
@@ -83,7 +83,7 @@ tiup cluster display ${cluster-name}
 
 1.  クラスターの構成ファイルを編集モードで開きます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup cluster edit-config ${cluster-name}
@@ -117,7 +117,7 @@ tiup cluster display ${cluster-name}
 
 3.  `reload`コマンドを実行して、構成をローリング更新し、対応するコンポーネントを再起動します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup cluster reload ${cluster-name} [-N <nodes>] [-R <roles>]
@@ -139,7 +139,7 @@ server_configs:
 
 通常のアップグレードについては、 [TiUPを使用してTiDBをアップグレードする](/upgrade-tidb-using-tiup.md)を参照してください。ただし、デバッグなどの一部のシナリオでは、現在実行中のコンポーネントを一時パッケージに置き換える必要がある場合があります。これを実現するには、次の`patch`のコマンドを使用します。
 
-{{&lt;コピー可能な&quot;shell-root&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster patch --help
@@ -168,7 +168,7 @@ Global Flags:
 
 TiDBホットフィックスパッケージが`/tmp/tidb-hotfix.tar.gz`に含まれていて、クラスター内のすべてのTiDBパッケージを置き換える場合は、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster patch test-cluster /tmp/tidb-hotfix.tar.gz -R tidb
@@ -176,7 +176,7 @@ tiup cluster patch test-cluster /tmp/tidb-hotfix.tar.gz -R tidb
 
 クラスタ内の1つのTiDBパッケージのみを置き換えることもできます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster patch test-cluster /tmp/tidb-hotfix.tar.gz -N 172.16.4.5:4000
@@ -186,7 +186,7 @@ tiup cluster patch test-cluster /tmp/tidb-hotfix.tar.gz -N 172.16.4.5:4000
 
 クラスターをデプロイして開始した後、 `tiup cluster rename`コマンドを使用してクラスターの名前を変更できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster rename ${cluster-name} ${new-name}
@@ -205,7 +205,7 @@ TiDBクラスター内のコンポーネントは、次の順序で停止しま�
 
 クラスタを停止するには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster stop ${cluster-name}
@@ -215,7 +215,7 @@ tiup cluster stop ${cluster-name}
 
 -   このコマンドは、TiDBコンポーネントのみを停止します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup cluster stop ${cluster-name} -R tidb
@@ -223,7 +223,7 @@ tiup cluster stop ${cluster-name}
 
 -   このコマンドは、 `1.2.3.4`および`1.2.3.5`ホスト上のTiDBコンポーネントのみを停止します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup cluster stop ${cluster-name} -N 1.2.3.4:4000,1.2.3.5:4000
@@ -235,7 +235,7 @@ tiup cluster stop ${cluster-name}
 
 -   クラスタ内のすべてのサービスのデータをクリーンアップしますが、ログは保持します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup cluster clean ${cluster-name} --data
@@ -243,7 +243,7 @@ tiup cluster stop ${cluster-name}
 
 -   クラスタ内のすべてのサービスのログをクリーンアップしますが、データは保持します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup cluster clean ${cluster-name} --log
@@ -251,7 +251,7 @@ tiup cluster stop ${cluster-name}
 
 -   クラスタ内のすべてのサービスのデータとログをクリーンアップします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup cluster clean ${cluster-name} --all
@@ -259,7 +259,7 @@ tiup cluster stop ${cluster-name}
 
 -   Prometheusを除くすべてのサービスのログとデータをクリーンアップします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup cluster clean ${cluster-name} --all --ignore-role prometheus
@@ -267,7 +267,7 @@ tiup cluster stop ${cluster-name}
 
 -   `172.16.13.11:9000`つのインスタンスを除くすべてのサービスのログとデータをクリーンアップします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup cluster clean ${cluster-name} --all --ignore-node 172.16.13.11:9000
@@ -275,7 +275,7 @@ tiup cluster stop ${cluster-name}
 
 -   `172.16.13.12`のノードを除くすべてのサービスのログとデータをクリーンアップします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup cluster clean ${cluster-name} --all --ignore-node 172.16.13.12
@@ -285,7 +285,7 @@ tiup cluster stop ${cluster-name}
 
 破棄操作はサービスを停止し、データディレクトリとデプロイメントディレクトリをクリアします。操作を元に戻すことはできませんので<strong>、注意して進めてください</strong>。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster destroy ${cluster-name}

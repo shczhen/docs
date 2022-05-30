@@ -27,7 +27,7 @@ aliases: ['/docs/dev/generate-self-signed-certificates/','/docs/dev/how-to/secur
 
 -   DebianまたはUbuntuOSの場合：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     apt install openssl
@@ -35,7 +35,7 @@ aliases: ['/docs/dev/generate-self-signed-certificates/','/docs/dev/how-to/secur
 
 -   RedHatまたはCentOSOSの場合：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     yum install openssl
@@ -49,7 +49,7 @@ aliases: ['/docs/dev/generate-self-signed-certificates/','/docs/dev/how-to/secur
 
 1.  ルートキーを生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     openssl genrsa -out root.key 4096
@@ -57,7 +57,7 @@ aliases: ['/docs/dev/generate-self-signed-certificates/','/docs/dev/how-to/secur
 
 2.  ルート証明書を生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     openssl req -new -x509 -days 1000 -key root.key -out root.crt
@@ -65,7 +65,7 @@ aliases: ['/docs/dev/generate-self-signed-certificates/','/docs/dev/how-to/secur
 
 3.  ルート証明書を検証します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     openssl x509 -text -in root.crt -noout
@@ -88,7 +88,7 @@ TiKVインスタンスに証明書を発行するには、次の手順を実行�
 
 1.  証明書に対応する秘密鍵を生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     openssl genrsa -out tikv.key 2048
@@ -96,7 +96,7 @@ TiKVインスタンスに証明書を発行するには、次の手順を実行�
 
 2.  OpenSSL構成テンプレートファイルのコピーを作成します（テンプレートファイルには複数の場所がある可能性があるため、テンプレートファイルの実際の場所を参照してください）。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     cp /usr/lib/ssl/openssl.cnf .
@@ -120,7 +120,7 @@ TiKVインスタンスに証明書を発行するには、次の手順を実行�
 
 4.  `openssl.cnf`のファイルを保存し、証明書要求ファイルを生成します（このステップでは、サーバーがクライアントのIDを検証できるようにするために使用される、証明書に共通名を割り当てることもできます。各コンポーネントは、デフォルトであり、構成ファイルで有効にできます）：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     openssl req -new -key tikv.key -out tikv.csr -config openssl.cnf
@@ -128,7 +128,7 @@ TiKVインスタンスに証明書を発行するには、次の手順を実行�
 
 5.  証明書を発行して生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     openssl x509 -req -days 365 -CA root.crt -CAkey root.key -CAcreateserial -in tikv.csr -out tikv.crt -extensions v3_req -extfile openssl.cnf
@@ -136,7 +136,7 @@ TiKVインスタンスに証明書を発行するには、次の手順を実行�
 
 6.  証明書にSANフィールドが含まれていることを確認します（オプション）。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     openssl x509 -text -in tikv.crt -noout
@@ -158,7 +158,7 @@ TiKVインスタンスに証明書を発行するには、次の手順を実行�
 
 1.  証明書に対応する秘密鍵を生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     openssl genrsa -out client.key 2048
@@ -166,7 +166,7 @@ TiKVインスタンスに証明書を発行するには、次の手順を実行�
 
 2.  証明書要求ファイルを生成します（このステップでは、サーバーがクライアントのIDを検証できるようにするために使用される共通名を証明書に割り当てることもできます。各コンポーネントはデフォルトで検証を有効にせず、有効にすることができます構成ファイルにあります）：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     openssl req -new -key client.key -out client.csr
@@ -174,7 +174,7 @@ TiKVインスタンスに証明書を発行するには、次の手順を実行�
 
 3.  証明書を発行して生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     openssl x509 -req -days 365 -CA root.crt -CAkey root.key -CAcreateserial -in client.csr -out client.crt

@@ -24,25 +24,25 @@ TiDBは、 [悲観的](/pessimistic-transaction.md)または[楽観的](/optimis
 
 構文：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 BEGIN;
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 START TRANSACTION;
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 START TRANSACTION WITH CONSISTENT SNAPSHOT;
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 START TRANSACTION WITH CAUSAL CONSISTENCY ONLY;
@@ -60,7 +60,7 @@ START TRANSACTION WITH CAUSAL CONSISTENCY ONLY;
 
 構文：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 COMMIT;
@@ -76,7 +76,7 @@ COMMIT;
 
 構文：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ROLLBACK;
@@ -162,13 +162,13 @@ Empty set (0.00 sec)
 
 例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET autocommit = 0;
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET GLOBAL autocommit = 0;
@@ -192,7 +192,7 @@ DDLステートメントの場合、トランザクションは自動的にコ�
 
 例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1 (id INT NOT NULL PRIMARY KEY);
@@ -242,7 +242,7 @@ mysql> SELECT * FROM t1; -- MySQL returns 1 2; TiDB returns 1.
 
 TiDBは、ステートメントの実行が失敗した後のアトミックロールバックをサポートします。ステートメントにエラーが発生した場合、ステートメントが行った変更は有効になりません。トランザクションは開いたままになり、 `COMMIT`または`ROLLBACK`ステートメントを発行する前に追加の変更を行うことができます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE test (id INT NOT NULL PRIMARY KEY);
@@ -311,7 +311,7 @@ TiDBは以前、1つのトランザクションのキーと値のペアの総数
 
 TiDBは、トランザクションの因果整合性の有効化をサポートしています。因果整合性のあるトランザクションは、コミットされると、PDからタイムスタンプを取得する必要がなく、コミットの待ち時間が短くなります。因果整合性を有効にする構文は次のとおりです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 START TRANSACTION WITH CAUSAL CONSISTENCY ONLY;

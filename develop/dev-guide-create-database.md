@@ -24,7 +24,7 @@ TiDBの[データベース](/develop/dev-guide-schema-design-overview.md)個の�
 
 たとえば、データベースが存在しない場合に`bookshop`という名前のデータベースを作成するには、次のステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE DATABASE IF NOT EXISTS `bookshop`;
@@ -34,7 +34,7 @@ CREATE DATABASE IF NOT EXISTS `bookshop`;
 
 ライブラリビルドステートメントを`root`ユーザーとして実行するには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 mysql
@@ -51,7 +51,7 @@ mysql
 
 例えば：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 mysql

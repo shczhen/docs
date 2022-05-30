@@ -13,7 +13,7 @@ TiDBクラスターには多くの監視メトリックがあります。異常�
 
 2つの表は、各監視メトリックを効率的にチェックするためのすべての監視データをまとめたものです。 `information_schema.metrics_summary`と比較すると、 `information_schema.metrics_summary_by_label`テーブルには追加の`label`列があり、さまざまなラベルに従って差別化された統計を実行します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -48,7 +48,7 @@ DESC metrics_summary;
 
 `'2020-03-08 13:23:00', '2020-03-08 13: 33: 00'`の時間範囲内でTiDBクラスター内の平均時間が最も高い監視項目の3つのグループを照会するには、 `information_schema.metrics_summary`テーブルを直接照会し、 `/*+ time_range() */`ヒントを使用して時間範囲を指定します。 SQLステートメントは次のとおりです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT /*+ time_range('2020-03-08 13:23:00','2020-03-08 13:33:00') */ *
@@ -89,7 +89,7 @@ COMMENT      | The quantile of kv requests durations by store
 
 同様に、次の例では、 `metrics_summary_by_label`の監視要約テーブルを照会します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT /*+ time_range('2020-03-08 13:23:00','2020-03-08 13:33:00') */ *
@@ -143,7 +143,7 @@ COMMENT      | The quantile of TiDB query durations(second)
 
 2つの期間の監視項目は、 `METRICS_NAME`に従って結合され、差の値に従ってソートされます。 `TIME_RANGE`は、クエリ時間を指定するヒントです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT GREATEST(t1.avg_value,t2.avg_value)/LEAST(t1.avg_value,

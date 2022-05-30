@@ -208,7 +208,7 @@ TiCDC Open Protocolは、イベントを基本ユニットとして使用して�
 
 アップストリームで次のSQLステートメントを実行し、MQパーティション番号が2であるとします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE test.t1(id int primary key, val varchar(16));
@@ -225,7 +225,7 @@ CREATE TABLE test.t1(id int primary key, val varchar(16));
 
 アップストリームで次のSQLステートメントを実行します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 BEGIN;
@@ -249,7 +249,7 @@ COMMIT;
 
 アップストリームで次のSQLステートメントを実行します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 BEGIN;

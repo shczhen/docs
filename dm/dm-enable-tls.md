@@ -51,7 +51,7 @@ summary: Learn how to enable TLS for DM connections.
 
         DMクラスターで暗号化された送信を有効にした後、dmctlを使用してクラスターに接続する必要がある場合は、クライアント証明書を指定します。例えば：
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```bash
         ./dmctl --master-addr=127.0.0.1:8261 --ssl-ca /path/to/ca.pem --ssl-cert /path/to/client-cert.pem --ssl-key /path/to/client-key.pem

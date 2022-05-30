@@ -29,7 +29,7 @@ TiUPを使用してTiDBBinlogをデプロイすることをお勧めします。
 
 次のコマンドを実行して、パッケージをダウンロードします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 version="latest" for nightly builds &&
@@ -38,7 +38,7 @@ wget https://download.pingcap.org/tidb-latest-linux-amd64.{tar.gz,sha256}
 
 ファイルの整合性を確認してください。結果に問題がなければ、ファイルは正しいです。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 sha256sum -c tidb-latest-linux-amd64.sha256
@@ -46,7 +46,7 @@ sha256sum -c tidb-latest-linux-amd64.sha256
 
 TiDB v2.1.0 GA以降のバージョンでは、PumpとDrainerはすでにTiDBダウンロードパッケージに含まれています。他のTiDBバージョンの場合、次のコマンドを使用して、PumpとDrainerを別々にダウンロードする必要があります。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 wget https://download.pingcap.org/tidb-binlog-$version-linux-amd64.{tar.gz,sha256}
@@ -54,7 +54,7 @@ wget https://download.pingcap.org/tidb-binlog-$version-linux-amd64.{tar.gz,sha25
 
 ファイルの整合性を確認してください。結果に問題がなければ、ファイルは正しいです。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 sha256sum -c tidb-binlog-$version-linux-amd64.sha256
@@ -170,7 +170,7 @@ sha256sum -c tidb-binlog-$version-linux-amd64.sha256
 
     -   ポンプの起動例：
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```bash
         ./pump -config pump.toml
@@ -388,7 +388,7 @@ sha256sum -c tidb-binlog-$version-linux-amd64.sha256
 
         Drainerを初めて起動するときは、 `initial-commit-ts`パラメーターを使用します。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```bash
         ./drainer -config drainer.toml -initial-commit-ts {initial-commit-ts}

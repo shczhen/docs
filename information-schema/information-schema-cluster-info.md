@@ -8,7 +8,7 @@ aliases: ['/docs/dev/system-tables/system-table-cluster-info/','/docs/dev/refere
 
 `CLUSTER_INFO`クラスタートポロジテーブルは、クラスターの現在のトポロジ情報、各インスタンスのバージョン情報、インスタンスバージョンに対応するGitハッシュ、各インスタンスの開始時間、および各インスタンスの実行時間を提供します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -40,7 +40,7 @@ desc cluster_info;
 -   `START_TIME` ：対応するインスタンスの開始時刻。
 -   `UPTIME` ：対応するインスタンスの稼働時間。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM cluster_info;

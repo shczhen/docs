@@ -25,7 +25,7 @@ aliases: ['/docs/dev/get-started-with-tidb-lightning/','/docs/dev/how-to/get-sta
 
 まず、 [`dumpling`](/dumpling-overview.md)を使用してMySQLからデータをエクスポートします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sh
 ./dumpling -h 127.0.0.1 -P 3306 -u root -t 16 -F 256MB -B test -f 'test.t[12]' -o /data/my_database/
@@ -98,7 +98,7 @@ aliases: ['/docs/dev/get-started-with-tidb-lightning/','/docs/dev/how-to/get-sta
 
 4.  パラメータを適切に設定した後、 `nohup`コマンドを使用して`tidb-lightning`プロセスを開始します。コマンドラインでコマンドを直接実行すると、SIGHUP信号を受信したためにプロセスが終了する場合があります。代わりに、 `nohup`コマンドを含むbashスクリプトを実行することをお勧めします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sh
     #!/bin/bash

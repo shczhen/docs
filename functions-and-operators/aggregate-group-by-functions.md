@@ -40,7 +40,7 @@ aliases: ['/docs/dev/functions-and-operators/aggregate-group-by-functions/','/do
 
     次の例は、 `INT`列の50パーセンタイルを計算する方法を示しています。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     drop table if exists t;
@@ -48,7 +48,7 @@ aliases: ['/docs/dev/functions-and-operators/aggregate-group-by-functions/','/do
     insert into t values(1), (2), (3);
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     select approx_percentile(a, 50) from t;

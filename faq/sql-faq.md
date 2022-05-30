@@ -101,7 +101,7 @@ Sqoopでは、 `--batch`は各バッチで100個のステートメントをコ�
 
 -   次のように`-Dsqoop.export.records.per.statement=10`のオプションを追加します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     sqoop export \
@@ -151,7 +151,7 @@ TiDB1の表示内容は`SHOW PROCESSLIST`とほぼ同じ`SHOW PROCESSLIST` 。 `
 
 1.  データベースにSQLステートメントを記述して、優先度を調整します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     select HIGH_PRIORITY | LOW_PRIORITY count(*) from table_name;
@@ -173,7 +173,7 @@ TiDB1の表示内容は`SHOW PROCESSLIST`とほぼ同じ`SHOW PROCESSLIST` 。 `
 
 TiDBは、 [ヒント](/optimizer-hints.md)と[SQL計画管理](/sql-plan-management.md)を含む、デフォルトのクエリオプティマイザの動作をオーバーライドする複数の方法をサポートしています。基本的な使用法はMySQLに似ていますが、いくつかのTiDB固有の拡張機能があります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT column_name FROM table_name USE INDEX（index_name）WHERE where_condition;
@@ -235,7 +235,7 @@ DMLステートメントを実行するときに、TiDBがDDLリース内の最�
 
 `admin show ddl`を使用して、現在のDDLジョブの進行状況を表示できます。操作は次のとおりです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 admin show ddl;

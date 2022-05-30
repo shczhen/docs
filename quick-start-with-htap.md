@@ -28,7 +28,7 @@ TiDB HTAPを使用する前に、TiDBオンライントランザクション処�
 
 TiDB HTAPを使用する前に、 [TiDBデータベースプラットフォームのクイックスタートガイド](/quick-start-with-tidb.md)の手順に従ってローカルテスト環境を準備し、次のコマンドを実行してTiDBクラスターを展開します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup playground
@@ -48,7 +48,7 @@ tiup playground
 
 1.  次のコマンドを実行して、テストデータ生成ツールをインストールします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup install bench
@@ -56,7 +56,7 @@ tiup playground
 
 2.  次のコマンドを実行して、テストデータを生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup bench tpch --sf=1 prepare
@@ -66,7 +66,7 @@ tiup playground
 
 3.  次のSQLステートメントを実行して、生成されたデータを表示します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT
@@ -105,7 +105,7 @@ tiup playground
 
 行ベースのストレージエンジンのみを使用したTiDBのパフォーマンスを知るには、次のSQLステートメントを実行します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT
@@ -141,7 +141,7 @@ limit 10;
 
 TiFlashが展開された後、TiKVはデータをTiFlashにすぐに複製しません。 TiDBのMySQLクライアントで次のDDLステートメントを実行して、複製する必要のあるテーブルを指定する必要があります。その後、TiDBはそれに応じてTiFlashに指定されたレプリカを作成します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE test.customer SET TIFLASH REPLICA 1;
@@ -151,7 +151,7 @@ ALTER TABLE test.lineitem SET TIFLASH REPLICA 1;
 
 特定のテーブルのレプリケーションステータスを確認するには、次のステートメントを実行します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM information_schema.tiflash_replica WHERE TABLE_SCHEMA = 'test' and TABLE_NAME = 'customer';
@@ -170,7 +170,7 @@ SELECT * FROM information_schema.tiflash_replica WHERE TABLE_SCHEMA = 'test' and
 
 TiFlashレプリカを含むテーブルの場合、TiDBオプティマイザは、コスト見積もりに基づいてTiFlashレプリカを使用するかどうかを自動的に決定します。 TiFlashレプリカが選択されているかどうかを確認するには、 `desc`または`explain analyze`ステートメントを使用できます。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 explain analyze SELECT

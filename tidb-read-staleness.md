@@ -27,7 +27,7 @@ summary: Learn how to read historical data using the `tidb_read_staleness` syste
 
 1.  テーブルを作成し、テーブルに数行のデータを挿入します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     create table t (c int);
@@ -37,7 +37,7 @@ summary: Learn how to read historical data using the `tidb_read_staleness` syste
     Query OK, 0 rows affected (0.01 sec)
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     insert into t values (1), (2), (3);
@@ -49,7 +49,7 @@ summary: Learn how to read historical data using the `tidb_read_staleness` syste
 
 2.  表のデータを確認してください。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     select * from t;
@@ -68,7 +68,7 @@ summary: Learn how to read historical data using the `tidb_read_staleness` syste
 
 3.  行のデータを更新します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     update t set c=22 where c=2;
@@ -80,7 +80,7 @@ summary: Learn how to read historical data using the `tidb_read_staleness` syste
 
 4.  データが更新されたことを確認します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     select * from t;
@@ -103,7 +103,7 @@ summary: Learn how to read historical data using the `tidb_read_staleness` syste
 
     次の設定は、TiDBが5秒前から現在までの時間範囲内で可能な限り新しいタイムスタンプを選択し、それを履歴データを読み取るためのタイムスタンプとして使用することを示しています。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     set @@tidb_read_staleness="-5";
@@ -120,7 +120,7 @@ summary: Learn how to read historical data using the `tidb_read_staleness` syste
 
     ここで読み取られるデータは、更新前のデータ、つまり履歴データです。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     select * from t;
@@ -139,7 +139,7 @@ summary: Learn how to read historical data using the `tidb_read_staleness` syste
 
 6.  この変数の設定を次のように解除すると、TiDBは最新のデータを読み取ることができます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     set @@tidb_read_staleness="";
@@ -149,7 +149,7 @@ summary: Learn how to read historical data using the `tidb_read_staleness` syste
     Query OK, 0 rows affected (0.00 sec)
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     select * from t;

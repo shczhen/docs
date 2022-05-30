@@ -28,7 +28,7 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-bindings/']
 
 ## 構文の説明 {#syntax-description}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW [GLOBAL | SESSION] BINDINGS [ShowLikeOrWhereOpt];
@@ -50,7 +50,7 @@ SHOW [GLOBAL | SESSION] BINDINGS [ShowLikeOrWhereOpt];
 
 ## 例 {#examples}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 mysql> CREATE TABLE t1 (

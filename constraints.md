@@ -14,7 +14,7 @@ TiDBでサポートされているNOTNULL制約は、MySQLでサポートされ�
 
 例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE users (
@@ -24,7 +24,7 @@ CREATE TABLE users (
 );
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO users (id,age,last_login) VALUES (NULL,123,NOW());
@@ -34,7 +34,7 @@ INSERT INTO users (id,age,last_login) VALUES (NULL,123,NOW());
 Query OK, 1 row affected (0.02 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO users (id,age,last_login) VALUES (NULL,NULL,NOW());
@@ -44,7 +44,7 @@ INSERT INTO users (id,age,last_login) VALUES (NULL,NULL,NOW());
 ERROR 1048 (23000): Column 'age' cannot be null
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO users (id,age,last_login) VALUES (NULL,123,NULL);
@@ -64,7 +64,7 @@ TiDBは解析しますが、 `CHECK`の制約を無視します。これはMySQL
 
 例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DROP TABLE IF EXISTS users;
@@ -84,7 +84,7 @@ SELECT * FROM users;
 
 例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DROP TABLE IF EXISTS users;
@@ -98,7 +98,7 @@ INSERT INTO users (username) VALUES ('dave'), ('sarah'), ('bill');
 
 悲観的ロックのデフォルトでは：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 BEGIN;
@@ -111,7 +111,7 @@ ERROR 1062 (23000): Duplicate entry 'bill' for key 'username'
 
 楽観的なロックと`tidb_constraint_check_in_place=0` ：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 BEGIN OPTIMISTIC;
@@ -125,7 +125,7 @@ Query OK, 3 rows affected (0.00 sec)
 Records: 3  Duplicates: 0  Warnings: 0
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO users (username) VALUES ('steve'),('elizabeth');
@@ -136,7 +136,7 @@ Query OK, 2 rows affected (0.00 sec)
 Records: 2  Duplicates: 0  Warnings: 0
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 COMMIT;
@@ -162,7 +162,7 @@ CREATE TABLE users (
 INSERT INTO users (username) VALUES ('dave'), ('sarah'), ('bill');
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET tidb_constraint_check_in_place = 1;
@@ -172,7 +172,7 @@ SET tidb_constraint_check_in_place = 1;
 Query OK, 0 rows affected (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 BEGIN OPTIMISTIC;
@@ -182,7 +182,7 @@ BEGIN OPTIMISTIC;
 Query OK, 0 rows affected (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO users (username) VALUES ('jane'), ('chris'), ('bill');
@@ -201,7 +201,7 @@ MySQLと同様に、主キー制約には一意の制約が含まれます。つ
 
 例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1 (a INT NOT NULL PRIMARY KEY);
@@ -211,7 +211,7 @@ CREATE TABLE t1 (a INT NOT NULL PRIMARY KEY);
 Query OK, 0 rows affected (0.12 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t2 (a INT NULL PRIMARY KEY);
@@ -221,7 +221,7 @@ CREATE TABLE t2 (a INT NULL PRIMARY KEY);
 ERROR 1171 (42000): All parts of a PRIMARY KEY must be NOT NULL; if you need NULL in a key, use UNIQUE instead
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t3 (a INT NOT NULL PRIMARY KEY, b INT NOT NULL PRIMARY KEY);
@@ -231,7 +231,7 @@ CREATE TABLE t3 (a INT NOT NULL PRIMARY KEY, b INT NOT NULL PRIMARY KEY);
 ERROR 1068 (42000): Multiple primary key defined
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t4 (a INT NOT NULL, b INT NOT NULL, PRIMARY KEY (a,b));
@@ -247,7 +247,7 @@ Query OK, 0 rows affected (0.10 sec)
 
 上記のルールに加えて、TiDBは現在、 `NONCLUSTERED`タイプの主キーの追加と削除のみをサポートしています。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t5 (a INT NOT NULL, b INT NOT NULL, PRIMARY KEY (a,b) CLUSTERED);
@@ -258,7 +258,7 @@ ALTER TABLE t5 DROP PRIMARY KEY;
 ERROR 8200 (HY000): Unsupported drop primary key when the table is using clustered index
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t5 (a INT NOT NULL, b INT NOT NULL, PRIMARY KEY (a,b) NONCLUSTERED);
@@ -294,7 +294,7 @@ CREATE TABLE orders (
 );
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT table_name, column_name, constraint_name, referenced_table_name, referenced_column_name
@@ -314,7 +314,7 @@ FROM information_schema.key_column_usage WHERE table_name IN ('users', 'orders')
 
 TiDBは、 `ALTER TABLE`コマンドを介した`DROP FOREIGN KEY`および`ADD FOREIGN KEY`の構文もサポートしています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE orders DROP FOREIGN KEY fk_user_id;

@@ -7,7 +7,7 @@ summary: Learn the `USER_PRIVILEGES` information_schema table.
 
 `USER_PRIVILEGES`の表は、グローバル特権に関する情報を提供します。この情報は、 `mysql.user`のシステムテーブルから取得されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -26,7 +26,7 @@ DESC user_privileges;
 4 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM user_privileges;

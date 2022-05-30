@@ -13,7 +13,7 @@ TiDB側でログ編集を有効にするには、 [`global.tidb_redact_log`](/sy
 
 `set`構文を使用して、グローバル変数`tidb_redact_log`を設定できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 set @@global.tidb_redact_log=1;

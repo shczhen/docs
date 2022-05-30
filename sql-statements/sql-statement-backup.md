@@ -47,7 +47,7 @@ BackupTSO ::=
 
 ### データベースをバックアップする {#back-up-databases}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 BACKUP DATABASE `test` TO 'local:///mnt/backup/2020/04/';
@@ -76,13 +76,13 @@ BACKUP DATABASE `test` TO 'local:///mnt/backup/2020/04/';
 
 ### テーブルをバックアップする {#back-up-tables}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 BACKUP TABLE `test`.`sbtest01` TO 'local:///mnt/backup/sbtest01/';
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 BACKUP TABLE sbtest02, sbtest03, sbtest04 TO 'local:///mnt/backup/sbtest/';
@@ -90,7 +90,7 @@ BACKUP TABLE sbtest02, sbtest03, sbtest04 TO 'local:///mnt/backup/sbtest/';
 
 ### クラスタ全体をバックアップする {#back-up-the-entire-cluster}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 BACKUP DATABASE * TO 'local:///mnt/backup/full/';
@@ -102,7 +102,7 @@ BACKUP DATABASE * TO 'local:///mnt/backup/full/';
 
 BRは、S3またはGCSへのデータのバックアップをサポートしています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 BACKUP DATABASE `test` TO 's3://example-bucket-2020/backup-05/?region=us-west-2&access-key={YOUR_ACCESS_KEY}&secret-access-key={YOUR_SECRET_KEY}';
@@ -112,7 +112,7 @@ URL構文については、 [外部ストレージ](/br/backup-and-restore-stora
 
 クレデンシャルを配布してはならないクラウド環境で実行する場合は、 `SEND_CREDENTIALS_TO_TIKV`オプションを`FALSE`に設定します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 BACKUP DATABASE `test` TO 's3://example-bucket-2020/backup-05/?region=us-west-2'
@@ -127,7 +127,7 @@ BACKUP DATABASE `test` TO 's3://example-bucket-2020/backup-05/?region=us-west-2'
 
 バックアップが完了する前に、 `BACKUP`はクラスター上のデータに対してチェックサムを実行して、正確性を検証します。これが不要であると確信している場合は、 `CHECKSUM`オプションを使用してこの手順を無効にすることができます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 BACKUP DATABASE `test` TO 's3://example-bucket-2020/backup-06/'
@@ -140,7 +140,7 @@ BACKUP DATABASE `test` TO 's3://example-bucket-2020/backup-06/'
 
 履歴データをバックアップするためのタイムスタンプ、TSO、または相対時間を指定します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 -- relative time
@@ -171,7 +171,7 @@ SQL標準に従って、単位は常に特異であることに注意してく�
 
 最後のバックアップから現在のスナップショットまでの変更のみをバックアップする`LAST_BACKUP`のオプションを指定します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 -- timestamp (in current time zone)

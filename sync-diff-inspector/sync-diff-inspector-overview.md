@@ -13,7 +13,7 @@ aliases: ['/docs/dev/sync-diff-inspector/sync-diff-inspector-overview/','/docs/d
 -   バイナリパッケージ。 [tidb-enterprise-tools-nightly-linux-amd64](https://download.pingcap.org/tidb-enterprise-tools-nightly-linux-amd64.tar.gz)をクリックしてダウンロードします。
 -   Dockerイメージ。次のコマンドを実行してダウンロードします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     docker pull pingcap/tidb-enterprise-tools:nightly
@@ -157,7 +157,7 @@ collation = ""
 
 次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 ./sync_diff_inspector --config=./config.toml

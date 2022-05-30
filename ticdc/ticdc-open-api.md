@@ -57,7 +57,7 @@ APIリクエストを送信した後、エラーが発生した場合、返さ�
 
 次のリクエストは、IPアドレスが`127.0.0.1`でポート番号が`8300`のTiCDCノードのステータス情報を取得します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X GET http://127.0.0.1:8300/api/v1/status
@@ -91,7 +91,7 @@ curl -X GET http://127.0.0.1:8300/api/v1/status
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X GET http://127.0.0.1:8300/api/v1/health
@@ -154,7 +154,7 @@ curl -X GET http://127.0.0.1:8300/api/v1/health
 
 次のリクエストは、IDが`test5`で`sink_uri`が`blackhome://`のレプリケーションタスクを作成します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X POST -H "'Content-type':'application/json'" http://127.0.0.1:8300/api/v1/changefeeds -d '{"changefeed_id":"test5","sink_uri":"blackhole://"}'
@@ -182,7 +182,7 @@ curl -X POST -H "'Content-type':'application/json'" http://127.0.0.1:8300/api/v1
 
 次のリクエストは、 `test1`のレプリケーションタスクを削除します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X DELETE http://127.0.0.1:8300/api/v1/changefeeds/test1
@@ -220,7 +220,7 @@ curl -X DELETE http://127.0.0.1:8300/api/v1/changefeeds/test1
 
 次のリクエストは、 `test1`から`32`のレプリケーションタスクの`mounter_worker_num`を更新します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
  curl -X PUT -H "'Content-type':'application/json'" http://127.0.0.1:8300/api/v1/changefeeds/test1 -d '{"mounter_worker_num":32}'
@@ -250,7 +250,7 @@ curl -X DELETE http://127.0.0.1:8300/api/v1/changefeeds/test1
 
 次のリクエストは、状態が`normal`であるすべてのレプリケーションタスクの基本情報を照会します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X GET http://127.0.0.1:8300/api/v1/changefeeds?state=normal
@@ -303,7 +303,7 @@ curl -X GET http://127.0.0.1:8300/api/v1/changefeeds?state=normal
 
 次のリクエストは、 `test1`のレプリケーションタスクの詳細情報を照会します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X GET http://127.0.0.1:8300/api/v1/changefeeds/test1
@@ -356,7 +356,7 @@ curl -X GET http://127.0.0.1:8300/api/v1/changefeeds/test1
 
 次のリクエストは、 `test1`のレプリケーションタスクを一時停止します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X POST http://127.0.0.1:8300/api/v1/changefeeds/test1/pause
@@ -384,7 +384,7 @@ curl -X POST http://127.0.0.1:8300/api/v1/changefeeds/test1/pause
 
 次のリクエストは、 `test1`でレプリケーションタスクを再開します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X POST http://127.0.0.1:8300/api/v1/changefeeds/test1/resume
@@ -402,7 +402,7 @@ curl -X POST http://127.0.0.1:8300/api/v1/changefeeds/test1/resume
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X GET http://127.0.0.1:8300/api/v1/processors
@@ -438,7 +438,7 @@ curl -X GET http://127.0.0.1:8300/api/v1/processors
 
 次のリクエストは、 `changefeed_id`が`test`で`capture_id`が`561c3784-77f0-4863-ad52-65a3436db6af`のサブタスクの詳細情報を照会します。サブタスクは`changefeed_id`と`capture_id`で識別できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X GET http://127.0.0.1:8300/api/v1/processors/test1/561c3784-77f0-4863-ad52-65a3436db6af
@@ -466,7 +466,7 @@ curl -X GET http://127.0.0.1:8300/api/v1/processors/test1/561c3784-77f0-4863-ad5
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X GET http://127.0.0.1:8300/api/v1/captures
@@ -494,7 +494,7 @@ curl -X GET http://127.0.0.1:8300/api/v1/captures
 
 次のリクエストは、TiCDCの現在の所有者ノードを削除し、新しい所有者ノードを生成するために新しいラウンドの選挙をトリガーします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X POST http://127.0.0.1:8300/api/v1/owner/resign
@@ -522,7 +522,7 @@ curl -X POST http://127.0.0.1:8300/api/v1/owner/resign
 
 次のリクエストは、 `test1`のチェンジフィード内のすべてのテーブルの負荷分散をトリガーします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
  curl -X POST http://127.0.0.1:8300/api/v1/changefeeds/test1/tables/rebalance_table
@@ -557,7 +557,7 @@ curl -X POST http://127.0.0.1:8300/api/v1/owner/resign
 
 次のリクエストは、 `test1`のチェンジフィードにある`49`のテーブルを、 `6f19a6d9-0f8c-4dc9-b299-3ba7c0f216f5`のキャプチャにスケジュールします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X POST -H "'Content-type':'application/json'" http://127.0.0.1:8300/api/v1/changefeeds/changefeed-test1/tables/move_table -d '{"capture_id":"6f19a6d9-0f8c-4dc9-b299-3ba7c0f216f5","table_id":49}'
@@ -586,7 +586,7 @@ curl -X POST -H "'Content-type':'application/json'" http://127.0.0.1:8300/api/v1
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X POST -H "'Content-type':'application/json'" http://127.0.0.1:8300/api/v1/log -d '{"log_level":"debug"}'

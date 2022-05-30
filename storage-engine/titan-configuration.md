@@ -13,7 +13,7 @@ TitanはRocksDBと互換性があるため、RocksDBを使用する既存のTiKV
 
 -   方法1：TiUPを使用してクラスターをデプロイした場合は、次の例に示すように、 `tiup cluster edit-config ${cluster-name}`コマンドを実行してTiKV構成ファイルを編集できます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
       tikv:
@@ -22,7 +22,7 @@ TitanはRocksDBと互換性があるため、RocksDBを使用する既存のTiKV
 
     構成をリロードすると、TiKVはオンラインでローリングリスタートされます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster reload ${cluster-name} -R tikv

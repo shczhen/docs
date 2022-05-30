@@ -36,7 +36,7 @@ Prometheusインスタンスがデプロイされたときにこの問題が引�
 
 1.  TiUPおよびTiUPクラスターのアップグレード：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup update --self
@@ -47,7 +47,7 @@ Prometheusインスタンスがデプロイされたときにこの問題が引�
 
 3.  アップグレード後、既存のクラスターの場合、このクラスターを再起動してメトリックアドレスをレポートできます。 `CLUSTER_NAME`を実際のクラスター名に置き換えます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup cluster start CLUSTER_NAME
@@ -72,7 +72,7 @@ Webページに`required component NgMonitoring is not started`が表示され�
 
 1.  TiUPクラスターのバージョンを確認してください。 NgMonitoringは、TiUPがv1.9.0以降の場合にのみ展開されます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster --version
@@ -88,7 +88,7 @@ Webページに`required component NgMonitoring is not started`が表示され�
 
 2.  TiUPクラスターのバージョンがv1.9.0より前の場合は、TiUPおよびTiUPクラスターを最新バージョンにアップグレードします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup update --all
@@ -98,7 +98,7 @@ Webページに`required component NgMonitoring is not started`が表示され�
 
 1.  クラスター構成ファイルを編集モードで開きます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster edit-config ${cluster-name}
@@ -114,7 +114,7 @@ Webページに`required component NgMonitoring is not started`が表示され�
 
 3.  プロメテウスをリロードします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster reload ${cluster-name} --role prometheus

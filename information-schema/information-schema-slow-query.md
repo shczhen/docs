@@ -7,7 +7,7 @@ summary: Learn the `SLOW_QUERY` information_schema table.
 
 `SLOW_QUERY`テーブルは、現在のノードの低速クエリ情報を提供します。これは、TiDB低速ログファイルの解析結果です。表の列名は、低速ログのフィールド名に対応しています。このテーブルを使用して問題のあるステートメントを特定し、クエリのパフォーマンスを向上させる方法については、 [遅いクエリログドキュメント](/identify-slow-queries.md)を参照してください。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -80,7 +80,7 @@ DESC slow_query;
 
 `CLUSTER_SLOW_QUERY`テーブルは、クラスター内のすべてのノードの低速クエリ情報を提供します。これは、TiDB低速ログファイルの解析結果です。 `CLUSTER_SLOW_QUERY`テーブルは`SLOW_QUERY`と同じように使用できます。 `CLUSTER_SLOW_QUERY`テーブルのテーブルスキーマは、 `INSTANCE`列が`CLUSTER_SLOW_QUERY`に追加されるという点で`SLOW_QUERY`テーブルのテーブルスキーマとは異なります。 `INSTANCE`列は、低速クエリの行情報のTiDBノードアドレスを表します。このテーブルを使用して問題のあるステートメントを特定し、クエリのパフォーマンスを向上させる方法については、 [遅いクエリログドキュメント](/identify-slow-queries.md)を参照してください。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 desc cluster_slow_query;
@@ -151,7 +151,7 @@ desc cluster_slow_query;
 
 クラスタシステムテーブルが照会されると、TiDBはすべてのノードからデータを取得するのではなく、関連する計算を他のノードにプッシュダウンします。実行計画は次のとおりです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 desc SELECT count(*) FROM cluster_slow_query WHERE user = 'u1';
@@ -173,7 +173,7 @@ desc SELECT count(*) FROM cluster_slow_query WHERE user = 'u1';
 
 現在、システムテーブルの統計が収集されていないため、一部の集計演算子をプッシュダウンできず、実行が遅くなることがあります。この場合、SQL HINTを手動で指定して、集計演算子をプッシュダウンできます。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT /*+ AGG_TO_COP() */ count(*) FROM cluster_slow_query GROUP BY user;

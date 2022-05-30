@@ -27,7 +27,7 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-table-next-rowid/']
 
 新しく作成されたテーブルの場合、行IDが割り当てられていないため、 `NEXT_GLOBAL_ROW_ID`は`1`です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create table t(a int);

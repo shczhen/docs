@@ -20,7 +20,7 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-plugins/']
 
 ## 例 {#examples}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW PLUGINS;
@@ -35,7 +35,7 @@ SHOW PLUGINS;
 1 row in set (0.000 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW PLUGINS LIKE 'a%';

@@ -53,7 +53,7 @@ Dumplingを使用する場合は、実行中のクラスターでexportコマン
 
 餃子はデフォルトでデータをSQLファイルにエクスポートします。 `--filetype sql`フラグを追加して、データをSQLファイルにエクスポートすることもできます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 dumpling \
@@ -85,7 +85,7 @@ dumpling \
 
 データをCSVファイルにエクスポートする場合、 `--sql <SQL>`を使用してSQLステートメントでレコードをフィルタリングできます。たとえば、次のコマンドを使用して、 `test.sbtest1`分の`id < 100`に一致するすべてのレコードをエクスポートできます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 ./dumpling \
@@ -113,7 +113,7 @@ dumpling \
 
 -   `metadata` ：エクスポートされたファイルの開始時刻とマスターバイナリログの位置。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     cat metadata
@@ -129,7 +129,7 @@ dumpling \
 
 -   `{schema}-schema-create.sql` ：スキーマの作成に使用されるSQLファイル
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     cat test-schema-create.sql
@@ -141,7 +141,7 @@ dumpling \
 
 -   `{schema}.{table}-schema.sql` ：テーブルの作成に使用されるSQLファイル
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     cat test.t1-schema.sql
@@ -155,7 +155,7 @@ dumpling \
 
 -   `{schema}.{table}.{0001}.{sql|csv` }：日付ソースファイル
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     cat test.t1.0.sql
@@ -177,7 +177,7 @@ v4.0.8以降、Dumplingはクラウドストレージへのデータのエクス
 
 S3バックエンドストレージにアクセスする権限を持つアカウントの`SecretKey`と`AccessKey`を、環境変数としてDumplingノードに渡します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 export AWS_ACCESS_KEY_ID=${AccessKey}
@@ -188,7 +188,7 @@ export AWS_SECRET_ACCESS_KEY=${SecretKey}
 
 Dumplingを使用してデータをバックアップする場合は、 `--s3.region`パラメーターを明示的に指定します。これは、S3ストレージの領域（たとえば、 `ap-northeast-1` ）を意味します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 ./dumpling \
@@ -206,7 +206,7 @@ Dumplingを使用してデータをバックアップする場合は、 `--s3.re
 
 デフォルトでは、 `PERFORMANCE_SCHEMA`はシステムデータベース（ `mysql` 、 `METRICS_SCHEMA` `sys`を`INSPECTION_SCHEMA` ）を除くすべてのデータベースをエクスポートし`INFORMATION_SCHEMA` 。 `--where <SQL where expression>`を使用して、エクスポートするレコードを選択できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 ./dumpling \
@@ -223,7 +223,7 @@ Dumplingを使用してデータをバックアップする場合は、 `--s3.re
 
 餃子は、 `--filter`オプションでテーブルフィルターを指定することにより、特定のデータベースまたはテーブルをフィルター処理できます。テーブルフィルターの構文は、 `.gitignore`の構文と似ています。詳細については、 [テーブルフィルター](/table-filter.md)を参照してください。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 ./dumpling \
@@ -278,7 +278,7 @@ Dumplingを使用してデータをバックアップする場合は、 `--s3.re
 
 すべてが完了すると、エクスポートされたファイルを`/tmp/test`で確認できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 ls -lh /tmp/test | awk '{print $5 "\t" $9}'
@@ -301,7 +301,7 @@ ls -lh /tmp/test | awk '{print $5 "\t" $9}'
 
 `--snapshot`オプションは、TSO（ `SHOW MASTER STATUS`コマンドによって出力される`Position`フィールド）または`datetime`データ型の有効時間（ `YYYY-MM-DD hh:mm:ss`の形式）に設定できます。次に例を示します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 ./dumpling --snapshot 417773951312461825
@@ -324,7 +324,7 @@ TiDBからデータをエクスポートするときに、TiDBのバージョン
 
 他のシナリオでは、データサイズが非常に大きい場合、エクスポートプロセス中のGCによるエクスポートの失敗を回避するために、事前にGC時間を延長できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET GLOBAL tidb_gc_life_time = '720h';
@@ -332,7 +332,7 @@ SET GLOBAL tidb_gc_life_time = '720h';
 
 操作が完了したら、GC時間を元に戻します（デフォルト値は`10m`です）。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET GLOBAL tidb_gc_life_time = '10m';

@@ -25,7 +25,7 @@ TiDBをConfluentPlatformと統合するには、TiCDCコンポーネントをAvr
 
 -   次のコマンドを実行して、JDBCシンクコネクタがインストールされていることを確認します。結果には`jdbc-sink`が含まれている必要があります。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     confluent local services connect connector list
@@ -55,7 +55,7 @@ TiDBをConfluentPlatformと統合するには、TiCDCコンポーネントをAvr
 
 2.  次のコマンドを実行して、JDBCシンクコネクタのインスタンスを作成します（Kafkaが`127.0.0.1:8083`をリッスンしていると仮定します）。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     curl -X POST -H "Content-Type: application/json" -d @jdbc-sink-connector.json http://127.0.0.1:8083/connectors
@@ -71,7 +71,7 @@ TiDBをConfluentPlatformと統合するには、TiCDCコンポーネントをAvr
 
 4.  `cdc cli`コマンドを実行して`changefeed`を作成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     ./cdc cli changefeed create --pd="http://127.0.0.1:2379" --sink-uri="kafka://127.0.0.1:9092/testdb_test?protocol=avro" --opts "registry=http://127.0.0.1:8081"
@@ -87,7 +87,7 @@ TiDBがConfluentPlatformと統合された後、以下の手順例に従って�
 
 1.  TiDBクラスターに`testdb`のデータベースを作成します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     CREATE DATABASE IF NOT EXISTS testdb;
@@ -95,7 +95,7 @@ TiDBがConfluentPlatformと統合された後、以下の手順例に従って�
 
     `testdb`で`test`のテーブルを作成します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     USE testdb;
@@ -111,7 +111,7 @@ TiDBがConfluentPlatformと統合された後、以下の手順例に従って�
 
 2.  TiDBにデータを挿入します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     INSERT INTO test (id, v) values (1, 'a');
@@ -122,7 +122,7 @@ TiDBがConfluentPlatformと統合された後、以下の手順例に従って�
 
 3.  データがダウンストリームに複製されるまでしばらく待ちます。次に、ダウンストリームでデータを確認します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     sqlite3 test.db

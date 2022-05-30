@@ -55,7 +55,7 @@ LINES TERMINATED BY '\n'
 
 ## 例 {#examples}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE trips (
@@ -80,7 +80,7 @@ Query OK, 0 rows affected (0.14 sec)
 
 エラーメッセージ`ERROR 1148 (42000): the used command is not allowed with this TiDB version`が表示された場合は、 [エラー1148（42000）：使用されたコマンドはこのTiDBバージョンでは許可されていません](/faq/tidb-faq.md#error-1148-42000-the-used-command-is-not-allowed-with-this-tidb-version)を参照してください。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```
 LOAD DATA LOCAL INFILE '/mnt/evo970/data-sets/bikeshare-data/2017Q4-capitalbikeshare-tripdata.csv' INTO TABLE trips FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES (duration, start_date, end_date, start_station_number, start_station, end_station_number, end_station, bike_number, member_type);
@@ -93,7 +93,7 @@ Records: 815264  Deleted: 0  Skipped: 0  Warnings: 0
 
 `LOAD DATA`は、 `FIELDS ENCLOSED BY`および`FIELDS TERMINATED BY`のパラメーターとして16進ASCII文字式または2進ASCII文字式の使用もサポートします。次の例を参照してください。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 LOAD DATA LOCAL INFILE '/mnt/evo970/data-sets/bikeshare-data/2017Q4-capitalbikeshare-tripdata.csv' INTO TABLE trips FIELDS TERMINATED BY x'2c' ENCLOSED BY b'100010' LINES TERMINATED BY '\r\n' IGNORE 1 LINES (duration, start_date, end_date, start_station_number, start_station, end_station_number, end_station, bike_number, member_type);

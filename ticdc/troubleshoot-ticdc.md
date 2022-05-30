@@ -29,7 +29,7 @@ aliases: ['/docs/dev/ticdc/troubleshoot-ticdc/']
 
 TiCDCレプリケーションタスクのステータスを表示するには、 `cdc cli`を使用します。例えば：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 cdc cli changefeed list --pd=http://10.0.10.25:2379
@@ -72,7 +72,7 @@ cdc cli changefeed list --pd=http://10.0.10.25:2379
 
 `cdc cli`を実行すると、レプリケーションタスクが手動で停止されているかどうかを確認できます。例えば：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 cdc cli changefeed query --pd=http://10.0.10.25:2379 --changefeed-id 28c43ffc-2316-4f4f-a70b-d1a7c59ba79f
@@ -116,7 +116,7 @@ cdc cli changefeed query --pd=http://10.0.10.25:2379 --changefeed-id 28c43ffc-23
 
 -   上記の更新バージョンでは、ユニファイドソーターを有効にして、システムメモリが不足しているときにディスク内のデータを並べ替えることができます。この機能を有効にするには、レプリケーションタスクを作成するときに`--sort-engine=unified`から`cdc cli`のコマンドを渡すことができます。例えば：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 cdc cli changefeed update -c <changefeed-id> --sort-engine="unified" --pd=http://10.0.10.25:2379
@@ -124,7 +124,7 @@ cdc cli changefeed update -c <changefeed-id> --sort-engine="unified" --pd=http:/
 
 クラスタを上記の新しいバージョンに更新できない場合でも、<strong>以前のバージョン</strong>でユニファイドソーターを有効にすることができます。レプリケーションタスクを作成するときに、 `--sort-engine=unified`と`--sort-dir=/path/to/sort_dir`を`cdc cli`コマンドに渡すことができます。例えば：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 cdc cli changefeed update -c <changefeed-id> --sort-engine="unified" --sort-dir="/data/cdc/sort" --pd=http://10.0.10.25:2379
@@ -166,7 +166,7 @@ TiCDCがサービスGCセーフポイントに設定するTime-To-Live（TTL）�
 
 このエラーは、ダウンストリームのMySQLがタイムゾーンをロードしない場合に返されます。 [`mysql_tzinfo_to_sql`](https://dev.mysql.com/doc/refman/8.0/en/mysql-tzinfo-to-sql.html)を実行すると、タイムゾーンを読み込むことができます。タイムゾーンを読み込んだ後、タスクを作成してデータを通常どおりに複製できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql -p
@@ -186,7 +186,7 @@ Warning: Unable to load '/usr/share/zoneinfo/zone1970.tab' as time zone. Skippin
 
 1.  MySQLで使用されるタイムゾーンをクエリします。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     show variables like '%time_zone%';
@@ -203,7 +203,7 @@ Warning: Unable to load '/usr/share/zoneinfo/zone1970.tab' as time zone. Skippin
 
 2.  レプリケーションタスクを作成してTiCDCサービスを作成するときに、タイムゾーンを指定します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     cdc cli changefeed create --sink-uri="mysql://root@127.0.0.1:3306/?time-zone=CST" --pd=http://10.0.10.25:2379
@@ -251,7 +251,7 @@ Warning: Unable to load '/usr/share/zoneinfo/zone1970.tab' as time zone. Skippin
 
 はい。 Canal出力を有効にするには、 `--sink-uri`パラメーターでプロトコルを`canal`として指定します。例えば：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 cdc cli changefeed create --pd=http://10.0.10.25:2379 --sink-uri="kafka://127.0.0.1:9092/cdc-test?kafka-version=2.4.0&protocol=canal" --config changefeed.toml
@@ -367,7 +367,7 @@ v4.0.8以降、チェンジフィードの出力に`canal-json` 、または`can
 
 2.  `cdc cli changefeed pause`を実行して、レプリケーションタスクを一時停止します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     cdc cli changefeed pause -c test-cf --pd=http://10.0.10.25:2379
@@ -375,7 +375,7 @@ v4.0.8以降、チェンジフィードの出力に`canal-json` 、または`can
 
 3.  `cdc cli changefeed update`を実行して、元のチェンジフィード構成を更新します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     cdc cli changefeed update -c test-cf --pd=http://10.0.10.25:2379 --sink-uri="mysql://127.0.0.1:3306/?max-txn-row=20&worker-number=8" --config=changefeed.toml
@@ -383,7 +383,7 @@ v4.0.8以降、チェンジフィードの出力に`canal-json` 、または`can
 
 4.  `cdc cli changfeed resume`を実行して、レプリケーションタスクを再開します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     cdc cli changefeed resume -c test-cf --pd=http://10.0.10.25:2379
@@ -421,7 +421,7 @@ fetch.message.max.bytes=2147483648
 
 DDLステートメントの実行に失敗すると、レプリケーションタスク（changefeed）は自動的に停止します。 checkpoint-tsは、DDLステートメントのfinish-tsから1を引いたものです。 TiCDCがダウンストリームでこのステートメントの実行を再試行する場合は、 `cdc cli changefeed resume`を使用してレプリケーションタスクを再開します。例えば：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 cdc cli changefeed resume -c test-cf --pd=http://10.0.10.25:2379
@@ -429,7 +429,7 @@ cdc cli changefeed resume -c test-cf --pd=http://10.0.10.25:2379
 
 失敗するこのDDLステートメントをスキップする場合は、changefeedのstart-tsをcheckpoint-ts（DDLステートメントが失敗するタイムスタンプ）に1を加えた値に設定します。たとえば、DDLステートメントが失敗するチェックポイント-tsが`415241823337054209`の場合、次のコマンドを実行して、このDDLステートメントをスキップします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 cdc cli changefeed update -c test-cf --pd=http://10.0.10.25:2379 --start-ts 415241823337054210
@@ -440,7 +440,7 @@ cdc cli changefeed resume -c test-cf --pd=http://10.0.10.25:2379
 
 `create table test (id int primary key, ts timestamp)`ステートメントがアップストリームTiDBで実行されると仮定します。 TiCDCがこのステートメントをダウンストリームのMySQL5.7に複製する場合、MySQLはデフォルト構成を使用します。レプリケーション後のテーブルスキーマは次のとおりです。 `timestamp`フィールドのデフォルト値は`CURRENT_TIMESTAMP`になります：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 mysql root@127.0.0.1:test> show create table test;

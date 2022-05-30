@@ -26,7 +26,7 @@ aliases: ['/docs/dev/tidb-binlog/binlog-control/']
 >
 > 使用する制御ツールのバージョンは、クラスターのバージョンと一致していることをお勧めします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 wget https://download.pingcap.org/tidb-{version}-linux-amd64.tar.gz &&
@@ -35,7 +35,7 @@ wget https://download.pingcap.org/tidb-{version}-linux-amd64.sha256
 
 ファイルの整合性を確認するには、次のコマンドを実行します。結果に問題がなければ、ファイルは正しいです。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 sha256sum -c tidb-{version}-linux-amd64.sha256
@@ -43,7 +43,7 @@ sha256sum -c tidb-{version}-linux-amd64.sha256
 
 ファイルの整合性を確認するには、次のコマンドを実行します。結果に問題がなければ、ファイルは正しいです。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 sha256sum -c tidb-enterprise-tools-latest-linux-amd64.sha256
@@ -86,7 +86,7 @@ Usage of binlogctl:
 
     `cmd`を`pumps`または`drainers`に設定します。例えば：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     bin/binlogctl -pd-urls=http://127.0.0.1:2379 -cmd pumps
@@ -96,7 +96,7 @@ Usage of binlogctl:
     [2019/04/28 09:29:59.016 +00:00] [INFO] [nodes.go:48] ["query node"] [type=pump] [node="{NodeID: 1.1.1.1:8250, Addr: pump:8250, State: online, MaxCommitTS: 408012403141509121, UpdateTime: 2019-04-28 09:29:57 +0000 UTC}"]
     ```
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     bin/binlogctl -pd-urls=http://127.0.0.1:2379 -cmd drainers
@@ -125,7 +125,7 @@ Usage of binlogctl:
 
     PumpまたはDrainerノードの状態を更新するには、 `cmd`を`update-pump`または`update-drainer`に設定します。状態は`paused`または`offline`にすることができます。例えば：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     bin/binlogctl -pd-urls=http://127.0.0.1:2379 -cmd update-pump -node-id ip-127-0-0-1:8250 -state paused

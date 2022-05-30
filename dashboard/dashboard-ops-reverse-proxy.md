@@ -15,7 +15,7 @@ aliases: ['/docs/dev/dashboard/dashboard-ops-reverse-proxy/']
 
 展開にTiUPツールを使用する場合は、次のコマンドを実行して、実際のTiDBダッシュボードアドレスを取得します（ `CLUSTER_NAME`をクラスター名に置き換えます）。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup cluster display CLUSTER_NAME --dashboard
@@ -34,7 +34,7 @@ http://192.168.0.123:2379/dashboard/
 > <details>
 > <summary>Upgrade TiUP Cluster</summary>
 >
-> {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+> {{< copyable "" >}}
 >
 > ```bash
 > tiup update --self
@@ -102,7 +102,7 @@ http://192.168.0.123:2379/dashboard/
 
 2.  構成を有効にするためにNGINXをリロードします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     sudo nginx -s reload
@@ -145,7 +145,7 @@ server_configs:
 
 1.  クラスターの構成ファイルを編集モードで開きます（ `CLUSTER_NAME`をクラスター名に置き換えます）。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster edit-config CLUSTER_NAME
@@ -195,7 +195,7 @@ server_configs:
 
 3.  変更した構成を有効にするために、すべてのPDインスタンスに対してローリングリスタートを実行します（ `CLUSTER_NAME`をクラスター名に置き換えます）。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster reload CLUSTER_NAME -R pd
@@ -298,7 +298,7 @@ server {
 
 構成を変更し、変更した構成を有効にするためにNGINXを再起動します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 sudo nginx -s reload

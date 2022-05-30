@@ -44,7 +44,7 @@ summary: Understand optimizations related to subqueries.
 
 たとえば、 `select * from t1 where t1.a in (select t2.a from t2)`は`select t1.* from t1, (select distinct(a) a from t2) t2 where t1.a = t2. The form of a`に書き換えられます。 `t2.a`に`UNIQUE`属性がある場合、ここでの`DISTINCT`属性は自動的に削除できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 explain select * from t1 where t1.a in (select t2.a from t2);
@@ -69,7 +69,7 @@ explain select * from t1 where t1.a in (select t2.a from t2);
 
 現在、このようなシナリオのサブクエリでは、サブクエリが相関サブクエリでない場合、TiDBは最適化段階で事前に評価し、結果セットに直接置き換えます。次の図に示すように、 `EXISTS`のサブクエリは事前に最適化段階で`TRUE`と評価されるため、最終的な実行結果には表示されません。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create table t1(a int);

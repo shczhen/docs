@@ -59,7 +59,7 @@ MySQLホストに必要な特権のリストは、 [事前チェック](/dm/dm-p
 
 2.  ターミナルで次のコマンドを実行し、 `tiup dmctl`を使用してMySQL-1データソース構成をDMクラスターにロードします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup dmctl --master-addr 172.16.10.71:8261 operate-source create conf/source1.yaml

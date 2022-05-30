@@ -31,7 +31,7 @@ TiDB v4.0以降、TiUPは、TiDBエコシステム内のさまざまなクラス
 
 ### 手順1.TiUPをインストールします {#step-1-install-tiup}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh | sh
@@ -39,7 +39,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh
 
 グローバル環境変数を再宣言します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 source ~/.bash_profile
@@ -49,7 +49,7 @@ source ~/.bash_profile
 
 次のコマンドを使用して、使用可能なすべてのコンポーネントを表示できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup list
@@ -79,7 +79,7 @@ tiup            pingcap  TiUP is a command-line component management tool that c
 
 インストールするコンポーネントを選択します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup install dumpling tidb-lightning
@@ -93,7 +93,7 @@ tiup install dumpling tidb-lightning
 
 新しいバージョンのリリースログと互換性に関する注意事項を確認することをお勧めします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup update --self && tiup update dm

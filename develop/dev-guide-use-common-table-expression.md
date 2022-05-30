@@ -23,7 +23,7 @@ Common Table Expression（CTE）は、SQLステートメント内で複数回参
 
 非再帰CTEは、次の構文を使用して定義できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 WITH <query_name> AS (
@@ -39,7 +39,7 @@ SELECT ... FROM <query_name>;
 
 [一時テーブル](/develop/dev-guide-use-temporary-tables.md)のステートメントを次のように変更します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 WITH top_50_eldest_authors_cte AS (
@@ -76,7 +76,7 @@ GROUP BY ta.id;
 </div>
 <div label="Java">
 
-{{&lt;コピー可能な&quot;java&quot;&gt;}}
+{{< copyable "" >}}
 
 ```java
 public List<Author> getTop50EldestAuthorInfoByCTE() throws SQLException {
@@ -117,7 +117,7 @@ public List<Author> getTop50EldestAuthorInfoByCTE() throws SQLException {
 
 著者「RayMacejkovic」が4冊の本を書いたことがわかります。 CTEクエリを使用すると、次のようにこれら4冊の本の注文と評価の情報をさらに取得できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 WITH books_authored_by_rm AS (
@@ -185,7 +185,7 @@ SELECT ... FROM <query_name>;
 
 典型的な例は、再帰CTEを使用して[フィボナッチ数](https://en.wikipedia.org/wiki/Fibonacci_number)のセットを生成することです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 WITH RECURSIVE fibonacci (n, fib_n, next_fib_n) AS

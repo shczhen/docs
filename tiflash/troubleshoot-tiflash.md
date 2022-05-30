@@ -16,7 +16,7 @@ aliases: ['/docs/dev/tiflash/troubleshoot-tiflash/']
 
     CentOS8には`libnsl.so`のシステムライブラリがありません。次のコマンドを使用して手動でインストールできます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     dnf install libnsl
@@ -24,7 +24,7 @@ aliases: ['/docs/dev/tiflash/troubleshoot-tiflash/']
 
 2.  システムの`ulimit`パラメータ設定を確認してください。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     ulimit -n 1000000
@@ -40,7 +40,7 @@ aliases: ['/docs/dev/tiflash/troubleshoot-tiflash/']
 
 1.  PDが`Placement Rules`つの機能を有効にしているかどうかを確認します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     echo 'config show replication' | /path/to/pd-ctl -u http://${pd-ip}:${pd-port}
@@ -53,7 +53,7 @@ aliases: ['/docs/dev/tiflash/troubleshoot-tiflash/']
 
 3.  TiFlashプロキシのステータスが`pd-ctl`まで正常かどうかを確認します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     echo "store" | /path/to/pd-ctl -u http://${pd-ip}:${pd-port}
@@ -65,7 +65,7 @@ aliases: ['/docs/dev/tiflash/troubleshoot-tiflash/']
 
 5.  構成されたレプリカの数がクラスター内のTiKVノードの数以下であるかどうかを確認します。そうでない場合、PDはデータをTiFlashに複製できません。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     echo 'config placement-rules show' | /path/to/pd-ctl -u http://${pd-ip}:${pd-port}
@@ -103,7 +103,7 @@ TiFlashの負荷圧力が大きすぎて、TiFlashデータレプリケーショ
 
 ステートメントにMPPモードでサポートされていない演算子または関数が含まれている場合、TiDBはMPPモードを選択しません。したがって、ステートメントの分析は遅くなります。この場合、 `EXPLAIN`ステートメントを実行して、MPPモードでサポートされていない演算子または関数をチェックできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create table t(a datetime);
@@ -142,7 +142,7 @@ TiFlashノードをデプロイしてレプリケーションを開始した後�
 
 3.  pd-ctlを使用して、 [配置ルール](/configure-placement-rules.md)の機能が有効になっているかどうかを確認します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     echo 'config show replication' | /path/to/pd-ctl -u http://<pd-ip>:<pd-port>
@@ -161,7 +161,7 @@ TiFlashノードをデプロイしてレプリケーションを開始した後�
     >
     > `max-replicas`はデフォルトで3に設定されます。実稼働環境では、値は通常、TiKVノードの数よりも少なくなります。テスト環境では、値は1にすることができます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
         curl -X POST -d '{

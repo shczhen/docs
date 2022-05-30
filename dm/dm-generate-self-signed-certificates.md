@@ -22,7 +22,7 @@ summary: Use `openssl` to generate self-signed certificates.
 
 -   DebianまたはUbuntuOSの場合：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     apt install openssl
@@ -30,7 +30,7 @@ summary: Use `openssl` to generate self-signed certificates.
 
 -   RedHatまたはCentOSOSの場合：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     yum install openssl
@@ -44,7 +44,7 @@ summary: Use `openssl` to generate self-signed certificates.
 
 1.  CAキーを生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     openssl genrsa -out ca-key.pem 4096
@@ -52,7 +52,7 @@ summary: Use `openssl` to generate self-signed certificates.
 
 2.  CA証明書を生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     openssl req -new -x509 -days 1000 -key ca-key.pem -out ca.pem
@@ -60,7 +60,7 @@ summary: Use `openssl` to generate self-signed certificates.
 
 3.  CA証明書を検証します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     openssl x509 -text -in ca.pem -noout
@@ -80,7 +80,7 @@ DMマスターインスタンスに証明書を発行するには、次の手順
 
 1.  証明書に対応する秘密鍵を生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     openssl genrsa -out master-key.pem 2048
@@ -88,7 +88,7 @@ DMマスターインスタンスに証明書を発行するには、次の手順
 
 2.  OpenSSL構成テンプレートファイルのコピーを作成します（テンプレートファイルには複数の場所がある可能性があるため、テンプレートファイルの実際の場所を参照してください）。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     cp /usr/lib/ssl/openssl.cnf .
@@ -124,7 +124,7 @@ DMマスターインスタンスに証明書を発行するには、次の手順
 
 4.  `openssl.cnf`のファイルを保存し、証明書要求ファイルを生成します。（ `Common Name (e.g. server FQDN or YOUR name) []:`に入力を与える場合、 `dm`などの共通名（CN）を証明書に割り当てます。これはサーバーがクライアントのIDを検証するために使用します。それぞれコンポーネントはデフォルトでは検証を有効にしません。構成ファイルで有効にできます。）
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     openssl req -new -key master-key.pem -out master-cert.pem -config openssl.cnf
@@ -132,7 +132,7 @@ DMマスターインスタンスに証明書を発行するには、次の手順
 
 5.  証明書を発行して生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     openssl x509 -req -days 365 -CA ca.pem -CAkey ca-key.pem -CAcreateserial -in master-cert.pem -out master-cert.pem -extensions v3_req -extfile openssl.cnf
@@ -140,7 +140,7 @@ DMマスターインスタンスに証明書を発行するには、次の手順
 
 6.  証明書にSANフィールドが含まれていることを確認します（オプション）。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     openssl x509 -text -in master-cert.pem -noout
@@ -164,7 +164,7 @@ DMマスターインスタンスに証明書を発行するには、次の手順
 
 1.  証明書に対応する秘密鍵を生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     openssl genrsa -out client-key.pem 2048
@@ -172,7 +172,7 @@ DMマスターインスタンスに証明書を発行するには、次の手順
 
 2.  証明書要求ファイルを生成します（このステップでは、サーバーがクライアントのIDを検証できるようにするために使用される共通名を証明書に割り当てることもできます。各コンポーネントはデフォルトで検証を有効にせず、有効にすることができます構成ファイルにあります）：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     openssl req -new -key client-key.pem -out client-cert.pem
@@ -180,7 +180,7 @@ DMマスターインスタンスに証明書を発行するには、次の手順
 
 3.  証明書を発行して生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     openssl x509 -req -days 365 -CA ca.pem -CAkey ca-key.pem -CAcreateserial -in client-cert.pem -out client-cert.pem

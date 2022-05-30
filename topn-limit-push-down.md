@@ -19,7 +19,7 @@ TiDB実行プランツリーでは、SQLの`LIMIT`句はLimit演算子ノード�
 
 ### 例1：ストレージレイヤーのコプロセッサーにプッシュダウン {#example-1-push-down-to-the-coprocessors-in-the-storage-layer}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create table t(id int primary key, a int not null);
@@ -42,7 +42,7 @@ explain select * from t order by a limit 10;
 
 ### 例2：TopNをJoinにプッシュダウンできます（並べ替えルールは外部テーブルの列にのみ依存します） {#example-2-topn-can-be-pushed-down-into-join-the-sorting-rule-only-depends-on-the-columns-in-the-outer-table}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create table t(id int primary key, a int not null);
@@ -70,7 +70,7 @@ explain select * from t left join s on t.a = s.a order by t.a limit 10;
 
 ### 例3：参加する前にTopNをプッシュダウンすることはできません {#example-3-topn-cannot-be-pushed-down-before-join}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create table t(id int primary key, a int not null);
@@ -98,7 +98,7 @@ TopNは`Inner Join`より前にプッシュダウンすることはできませ�
 
 ### 例4：TopNを制限に変換する {#example-4-convert-topn-to-limit}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create table t(id int primary key, a int not null);

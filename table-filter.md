@@ -18,7 +18,7 @@ TiDB 4.0以降、すべてのTiDBエコシステムツールは、サブセッ�
 
 -   [BR](/br/backup-and-restore-tool.md) ：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     ./br backup full -f 'foo*.*' -f 'bar*.*' -s 'local:///tmp/backup'
@@ -29,7 +29,7 @@ TiDB 4.0以降、すべてのTiDBエコシステムツールは、サブセッ�
 
 -   [団子](/dumpling-overview.md) ：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     ./dumpling -f 'foo*.*' -f 'bar*.*' -P 3306 -o /tmp/data/
@@ -38,7 +38,7 @@ TiDB 4.0以降、すべてのTiDBエコシステムツールは、サブセッ�
 
 -   [TiDB Lightning](/tidb-lightning/tidb-lightning-overview.md) ：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     ./tidb-lightning -f 'foo*.*' -f 'bar*.*' -d /tmp/data/ --backend tidb

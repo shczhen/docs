@@ -7,7 +7,7 @@ summary: Learn the `SESSION_VARIABLES` information_schema table.
 
 `SESSION_VARIABLES`の表は、セッション変数に関する情報を提供します。テーブルデータは、 `SHOW SESSION VARIABLES`ステートメントの結果と同様です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -24,7 +24,7 @@ DESC session_variables;
 2 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM session_variables ORDER BY variable_name LIMIT 10;

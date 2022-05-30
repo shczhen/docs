@@ -50,7 +50,7 @@ ExplainableStmt ::=
 
 ## 例 {#examples}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT 1;
@@ -66,7 +66,7 @@ EXPLAIN SELECT 1;
 2 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1 (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, c1 INT NOT NULL);
@@ -76,7 +76,7 @@ CREATE TABLE t1 (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, c1 INT NOT NULL);
 Query OK, 0 rows affected (0.10 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO t1 (c1) VALUES (1), (2), (3);
@@ -87,7 +87,7 @@ Query OK, 3 rows affected (0.02 sec)
 Records: 3  Duplicates: 0  Warnings: 0
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT * FROM t1 WHERE id = 1;
@@ -102,7 +102,7 @@ EXPLAIN SELECT * FROM t1 WHERE id = 1;
 1 row in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DESC SELECT * FROM t1 WHERE id = 1;
@@ -117,7 +117,7 @@ DESC SELECT * FROM t1 WHERE id = 1;
 1 row in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DESCRIBE SELECT * FROM t1 WHERE id = 1;
@@ -132,7 +132,7 @@ DESCRIBE SELECT * FROM t1 WHERE id = 1;
 1 row in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN INSERT INTO t1 (c1) VALUES (4);
@@ -147,7 +147,7 @@ EXPLAIN INSERT INTO t1 (c1) VALUES (4);
 1 row in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN UPDATE t1 SET c1=5 WHERE c1=3;
@@ -165,7 +165,7 @@ EXPLAIN UPDATE t1 SET c1=5 WHERE c1=3;
 4 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN DELETE FROM t1 WHERE c1=3;
@@ -187,7 +187,7 @@ EXPLAIN DELETE FROM t1 WHERE c1=3;
 
 MySQLの標準結果形式に加えて、TiDBはDotGraphもサポートしているため、次の例のように`FORMAT = "dot"`を指定する必要があります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create table t(a bigint, b bigint);

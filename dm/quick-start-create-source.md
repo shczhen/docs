@@ -19,7 +19,7 @@ summary: Learn how to create a data source for Data Migration (DM).
 
     DM構成ファイルでは、dmctlで暗号化されたパスワードを使用することをお勧めします。以下の例に従って、データソースの暗号化されたパスワードを取得できます。このパスワードは、後で構成ファイルを書き込むために使用できます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup dmctl encrypt 'abc!@#123'
@@ -51,7 +51,7 @@ summary: Learn how to create a data source for Data Migration (DM).
 
 次のコマンドを使用して、データソースを作成できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup dmctl --master-addr <master-addr> operate-source create ./source-mysql-01.yaml
@@ -84,7 +84,7 @@ tiup dmctl --master-addr <master-addr> operate-source create ./source-mysql-01.y
 
 -   データソースの`source-id`を知っている場合は、 `dmctl config source <source-id>`コマンドを使用して、データソースの構成を直接確認できます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup dmctl --master-addr <master-addr> config source mysql-01
@@ -107,7 +107,7 @@ tiup dmctl --master-addr <master-addr> operate-source create ./source-mysql-01.y
 
 -   `source-id`がわからない場合は、 `dmctl operate-source show`コマンドを使用して、対応するデータソースを見つけることができるソースデータベースリストを確認できます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup dmctl --master-addr <master-addr> operate-source show

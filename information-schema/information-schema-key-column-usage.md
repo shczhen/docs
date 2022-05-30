@@ -7,7 +7,7 @@ summary: Learn the `KEY_COLUMN_USAGE` information_schema table.
 
 `KEY_COLUMN_USAGE`の表は、主キー制約などの列のキー制約を示しています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -34,7 +34,7 @@ DESC key_column_usage;
 12 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM key_column_usage WHERE table_schema='mysql' and table_name='user';

@@ -8,7 +8,7 @@ aliases: ['/docs/dev/system-tables/system-table-metrics-tables/','/docs/dev/refe
 
 `METRICS_TABLES`の表は、 [メトリックススキーマ](/metrics-schema.md)のデータベースの各ビューのPromQL（Prometheusクエリ言語）定義を提供します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -35,7 +35,7 @@ DESC metrics_tables;
 -   `QUANTILE` ：パーセンタイル。ヒストグラムタイプのデータを監視するために、デフォルトのパーセンタイルが指定されています。このフィールドの値が`0`の場合、監視テーブルに対応する監視項目がヒストグラムではないことを意味します。
 -   `COMMENT` ：監視テーブルに関するコメント。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM metrics_tables LIMIT 5\G

@@ -48,7 +48,7 @@ TiDBダッシュボードは、PDクライアントポートを介してサー�
 
 TiUPデプロイメントツールを使用する場合、次のコマンドを実行することにより、実際にTiDBダッシュボードを実行するPDインスタンスのアドレスを表示できます（ `CLUSTER_NAME`をクラスター名に置き換えます）。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster display CLUSTER_NAME --dashboard
@@ -63,7 +63,7 @@ tiup cluster display CLUSTER_NAME --dashboard
 > <details>
 > <summary>Upgrade TiUP Cluster</summary>
 >
-> {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+> {{< copyable "" >}}
 >
 > ```bash
 > tiup update --self

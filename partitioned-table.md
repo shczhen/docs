@@ -20,7 +20,7 @@ aliases: ['/docs/dev/partitioned-table/','/docs/dev/reference/sql/partitioning/'
 
 次のように、人事レコードを含むテーブルを作成する必要があると想定します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE employees (
@@ -36,7 +36,7 @@ CREATE TABLE employees (
 
 必要に応じて、さまざまな方法で範囲ごとにテーブルを分割できます。たとえば、 `store_id`列を使用してパーティション化できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE employees (
@@ -61,7 +61,7 @@ PARTITION BY RANGE (store_id) (
 
 データ`(72, 'Tom', 'John', '2015-06-25', NULL, NULL, 15)`の行を挿入すると、その行は`p2`パーティションに分類されます。ただし、 `store_id`が20より大きいレコードを挿入すると、TiDBはこのレコードを挿入するパーティションを認識できないため、エラーが報告されます。この場合、テーブルを作成するときに`MAXVALUE`を使用できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE employees (
@@ -86,7 +86,7 @@ PARTITION BY RANGE (store_id) (
 
 `job_code`列の値である従業員のジョブコードでテーブルを分割することもできます。 2桁のジョブコードは正社員を表し、3桁のコードはオフィスおよびカスタマーサポート担当者を表し、4桁のコードは管理者を表すと想定します。次に、次のようなパーティションテーブルを作成できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE employees (
@@ -110,7 +110,7 @@ PARTITION BY RANGE (job_code) (
 
 テーブルを`store_id`で分割するだけでなく、テーブルを日付で分割することもできます。たとえば、従業員の離職年ごとに分割できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE employees (
@@ -133,7 +133,7 @@ PARTITION BY RANGE ( YEAR(separated) ) (
 
 範囲分割では、 `timestamp`列の値に基づいて分割し、 `unix_timestamp()`関数を使用できます。次に例を示します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE quarterly_report_status (
@@ -172,7 +172,7 @@ PARTITION BY RANGE ( UNIX_TIMESTAMP(report_updated) ) (
 
 リストパーティションテーブルを作成する前に、セッション変数`tidb_enable_list_partition`の値を`ON`に設定する必要があります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 set @@session.tidb_enable_list_partition = ON
@@ -184,7 +184,7 @@ set @@session.tidb_enable_list_partition = ON
 
 人事記録テーブルを作成するとします。次のようにテーブルを作成できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE employees (
@@ -207,7 +207,7 @@ CREATE TABLE employees (
 
 同じ地域の従業員の人事データを同じパーティションに保存する場合は、 `store_id`に基づいてリストパーティションテーブルを作成できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE employees (
@@ -286,7 +286,7 @@ List COLUMNSパーティショニングは、Listパーティショニングの�
 
 以下に示すように、List COLUMNSパーティション化を使用してテーブルを作成し、従業員の都市に対応するパーティションに各行を格納できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE employees_1 (
@@ -311,7 +311,7 @@ PARTITION BY LIST COLUMNS(city) (
 
 次の例に示すように、リストCOLUMNSパーティショニングは、 `DATE`タイプと`DATETIME`タイプの列を使用して実装することもできます。この例では、前の`employees_1`の表と同じ名前と列を使用していますが、 `hired`の列に基づいてListCOLUMNSパーティションを使用しています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE employees_2 (
@@ -338,7 +338,7 @@ PARTITION BY LIST COLUMNS(hired) (
 
 さらに、 `COLUMNS()`句に複数の列を追加することもできます。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t (
@@ -360,7 +360,7 @@ PARTITION BY LIST COLUMNS(id,name) (
 
 次の操作により、ハッシュパーティションテーブルが作成されます。このテーブルは、 `store_id`で4つのパーティションに分割されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE employees (
@@ -381,7 +381,7 @@ PARTITIONS 4;
 
 `expr`の整数を返すSQL式を使用することもできます。たとえば、雇用年ごとにテーブルを分割できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE employees (
@@ -410,7 +410,7 @@ PARTITIONS 4;
 
 `PARTITION BY HASH`を使用する場合、TiDBは、式の結果のモジュラスに基づいて、データがどのパーティションに分類されるかを決定します。つまり、パーティショニング式が`expr`で、パーティション数が`num`の場合、 `MOD(expr, num)`がデータを格納するパーティションを決定します。 `t1`が次のように定義されていると仮定します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1 (col1 INT, col2 CHAR(5), col3 DATE)
@@ -438,7 +438,7 @@ TiDBでは、パーティショニング式の計算結果として`NULL`を使�
 
 Rangeでパーティション化されたテーブルに行を挿入し、パーティションの決定に使用される列の値が`NULL`の場合、この行は最下位のパーティションに挿入されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1 (
@@ -457,7 +457,7 @@ PARTITION BY RANGE(c1) (
 Query OK, 0 rows affected (0.09 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select * from t1 partition(p0);
@@ -472,7 +472,7 @@ select * from t1 partition(p0);
 1 row in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select * from t1 partition(p1);
@@ -482,7 +482,7 @@ select * from t1 partition(p1);
 Empty set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select * from t1 partition(p2);
@@ -494,7 +494,7 @@ Empty set (0.00 sec)
 
 `p0`つのパーティションを削除し、結果を確認します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 alter table t1 drop partition p0;
@@ -504,7 +504,7 @@ alter table t1 drop partition p0;
 Query OK, 0 rows affected (0.08 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select * from t1;
@@ -518,7 +518,7 @@ Empty set (0.00 sec)
 
 ハッシュでテーブルを分割する場合、 `NULL`の値を処理する別の方法があります。分割式の計算結果が`NULL`の場合、 `0`と見なされます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE th (
@@ -534,7 +534,7 @@ PARTITIONS 2;
 Query OK, 0 rows affected (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO th VALUES (NULL, 'mothra'), (0, 'gigan');
@@ -544,7 +544,7 @@ INSERT INTO th VALUES (NULL, 'mothra'), (0, 'gigan');
 Query OK, 2 rows affected (0.04 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select * from th partition (p0);
@@ -560,7 +560,7 @@ select * from th partition (p0);
 2 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select * from th partition (p1);
@@ -598,7 +598,7 @@ Empty set (0.00 sec)
 
 パーティションテーブルを作成します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE members (
@@ -617,7 +617,7 @@ PARTITION BY RANGE( YEAR(dob) ) (
 
 パーティションを削除します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE members DROP PARTITION p2;
@@ -629,7 +629,7 @@ Query OK, 0 rows affected (0.03 sec)
 
 パーティションを空にします：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE members TRUNCATE PARTITION p1;
@@ -645,7 +645,7 @@ Query OK, 0 rows affected (0.03 sec)
 
 パーティションを追加します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE members ADD PARTITION (PARTITION p3 VALUES LESS THAN (2010));
@@ -653,7 +653,7 @@ ALTER TABLE members ADD PARTITION (PARTITION p3 VALUES LESS THAN (2010));
 
 テーブルを範囲でパーティション化する場合、 `ADD PARTITION`はパーティションリストの最後にのみ追加できます。既存の範囲パーティションに追加されている場合、エラーが報告されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE members
@@ -672,7 +672,7 @@ ERROR 1463 (HY000): VALUES LESS THAN value must be strictly »
 
 現在、 `ALTER TABLE ... COALESCE PARTITION`はTiDBでもサポートされていません。現在サポートされていないパーティション管理ステートメントの場合、TiDBはエラーを返します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 alter table members optimize partition p0;
@@ -688,7 +688,7 @@ ERROR 8200 (HY000): Unsupported optimize partition
 
 パーティションテーブルを作成するとします`t1` ：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1 (
@@ -708,7 +708,7 @@ PARTITION BY RANGE( region_code ) (
 
 この`SELECT`のステートメントの結果を取得する場合：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT fname, lname, region_code, dob
@@ -729,7 +729,7 @@ SELECT fname, lname, region_code, dob
 
     例えば：
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     create table t1 (x int) partition by range (x) (
@@ -738,7 +738,7 @@ SELECT fname, lname, region_code, dob
     create table t2 (x int);
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     explain select * from t1 left join t2 on t1.x = t2.x where t2.x > 5;
@@ -756,7 +756,7 @@ SELECT fname, lname, region_code, dob
 
     例えば：
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     create table t1 (x int) partition by range (x) (
@@ -764,7 +764,7 @@ SELECT fname, lname, region_code, dob
             partition p1 values less than (10));
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     explain select * from t2 where x < (select * from t1 where t2.x < t1.x and t2.x < 2);
@@ -793,7 +793,7 @@ SELECT fname, lname, region_code, dob
 
     たとえば、パーティション式は単純な列です。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     create table t (id int) partition by range (id) (
@@ -804,7 +804,7 @@ SELECT fname, lname, region_code, dob
 
     または、パーティション式は`fn(col)`の形式で、 `fn`は`to_days`です。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     create table t (dt datetime) partition by range (to_days(id)) (
@@ -815,7 +815,7 @@ SELECT fname, lname, region_code, dob
 
     例外は、パーティション式としての`floor(unix_timestamp())`です。 TiDBはそのケースバイケースでいくつかの最適化を行うため、パーティションプルーニングによってサポートされます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     create table t (ts timestamp(3) not null default current_timestamp(3))
@@ -829,7 +829,7 @@ SELECT fname, lname, region_code, dob
 
 `SELECT`ステートメントは、 `PARTITION`オプションを使用して実装されるパーティション選択をサポートします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE employees  (
@@ -861,7 +861,7 @@ INSERT INTO employees VALUES
 
 `p1`つのパーティションに格納されている行を表示できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM employees PARTITION (p1);
@@ -884,7 +884,7 @@ SELECT * FROM employees PARTITION (p1);
 
 パーティション選択を使用する場合でも、 `WHERE`の条件と`ORDER BY`や`LIMIT`などのオプションを使用できます。 `HAVING`や`GROUP BY`などの集計オプションの使用もサポートされています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM employees PARTITION (p0, p2)
@@ -901,7 +901,7 @@ SELECT * FROM employees PARTITION (p0, p2)
 2 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT id, CONCAT(fname, ' ', lname) AS name
@@ -920,7 +920,7 @@ SELECT id, CONCAT(fname, ' ', lname) AS name
 4 rows in set (0.06 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT store_id, COUNT(department_id) AS c
@@ -952,7 +952,7 @@ SELECT store_id, COUNT(department_id) AS c
 
 たとえば、次のテーブル作成ステートメントは無効です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1 (
@@ -983,7 +983,7 @@ PARTITIONS 4;
 
 有効なステートメントは次のとおりです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1 (
@@ -1011,7 +1011,7 @@ PARTITIONS 4;
 
 次の例はエラーを表示します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t3 (
@@ -1033,7 +1033,7 @@ ERROR 1491 (HY000): A PRIMARY KEY must include all columns in the table's partit
 
 提案されたパーティショニングキーに`col1`と`col3`の両方が含まれているため、 `CREATE TABLE`ステートメントは失敗しますが、これらの列はどちらもテーブル上の両方の一意のキーの一部ではありません。次の変更を行うと、 `CREATE TABLE`ステートメントが有効になります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t3 (
@@ -1050,7 +1050,7 @@ PARTITION BY HASH(col1 + col3)
 
 次のテーブルは、パーティション化キーに両方の一意のキーに属する列を含める方法がないため、パーティション化できません。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t4 (
@@ -1065,7 +1065,7 @@ CREATE TABLE t4 (
 
 すべての主キーは定義上一意のキーであるため、次の2つのステートメントは無効です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t5 (
@@ -1094,7 +1094,7 @@ PARTITIONS 4;
 
 上記の例では、主キーにパーティショニング式で参照されているすべての列が含まれているわけではありません。主キーに欠落している列を追加すると、 `CREATE TABLE`ステートメントが有効になります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t5 (
@@ -1122,7 +1122,7 @@ PARTITIONS 4;
 
 DDLステートメントを使用してテーブルを変更する場合、一意のインデックスを追加するときにこの制限も考慮する必要があります。たとえば、次のようにパーティションテーブルを作成する場合：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t_no_pk (c1 INT, c2 INT)
@@ -1142,7 +1142,7 @@ Query OK, 0 rows affected (0.12 sec)
 
 パーティションテーブルを使用する場合、プレフィックスインデックスを一意の属性として指定することはできません。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t (a varchar(20), b blob,
@@ -1199,7 +1199,7 @@ YEARWEEK()
 
 `LOAD DATA`構文は、現在TiDBでのパーティション選択をサポートしていません。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create table t (id int, val int) partition by hash(id) partitions 4;
@@ -1207,7 +1207,7 @@ create table t (id int, val int) partition by hash(id) partitions 4;
 
 通常の`LOAD DATA`操作がサポートされています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 load local data infile "xxx" into t ...
@@ -1215,7 +1215,7 @@ load local data infile "xxx" into t ...
 
 ただし、 `Load Data`はパーティションの選択をサポートしていません。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 load local data infile "xxx" into t partition (p1)...
@@ -1223,7 +1223,7 @@ load local data infile "xxx" into t partition (p1)...
 
 パーティションテーブルの場合、 `select * from t`によって返される結果は、パーティション間で順序付けられていません。これは、パーティション間で順序付けられているが、パーティション内では順序付けされていないMySQLの結果とは異なります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create table t (id int, val int) partition by range (id) (
@@ -1236,7 +1236,7 @@ create table t (id int, val int) partition by range (id) (
 Query OK, 0 rows affected (0.10 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 insert into t values (1, 2), (3, 4),(5, 6),(7,8),(9,10);
@@ -1249,7 +1249,7 @@ Records: 5  Duplicates: 0  Warnings: 0
 
 TiDBは、毎回異なる結果を返します。次に例を示します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select * from t;
@@ -1270,7 +1270,7 @@ select * from t;
 
 MySQLで返される結果：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select * from t;
@@ -1301,7 +1301,7 @@ select * from t;
 
 TiDBは、 `dynamic`モードと`static`モードの2つのモードのいずれかでパーティションテーブルにアクセスします。現在、デフォルトで`static`モードが使用されています。 `dynamic`モードを有効にする場合は、 `tidb_partition_prune_mode`変数を手動で`dynamic`に設定する必要があります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 set @@session.tidb_partition_prune_mode = 'dynamic'
@@ -1309,7 +1309,7 @@ set @@session.tidb_partition_prune_mode = 'dynamic'
 
 `static`モードでは、TiDBは複数の演算子を使用して各パーティションに個別にアクセスし、 `Union`を使用して結果をマージします。次の例は、TiDBが`Union`を使用して2つの対応するパーティションの結果をマージする単純な読み取り操作です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 mysql> create table t1(id int, age int, key(id)) partition by range(id) (
@@ -1336,7 +1336,7 @@ mysql> explain select * from t1 where id < 150;
 
 `dynamic`モードでは、各オペレーターが複数のパーティションへの直接アクセスをサポートするため、TiDBは`Union`を使用しなくなります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 mysql> set @@session.tidb_partition_prune_mode = 'dynamic';
@@ -1362,7 +1362,7 @@ mysql> explain select * from t1 where id < 150;
 
 <strong>例1</strong> ：次の例では、構成ファイルでプランキャッシュ機能が有効になっており、同じクエリが`static`モードで2回実行されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 mysql> set @a=150;
@@ -1394,7 +1394,7 @@ mysql> select @@last_plan_from_cache;
 
 <strong>例2</strong> ：次の例では、例1と同じ操作が`dynamic`モードで実行されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 mysql> set @@tidb_partition_prune_mode = 'dynamic';
@@ -1423,7 +1423,7 @@ mysql> select @@last_plan_from_cache;
 
 <strong>例3</strong> ：次の例では、IndexJoinを使用して実行プランを使用して`static`モードでクエリを実行します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 mysql> create table t2(id int, code int);
@@ -1461,7 +1461,7 @@ mysql> explain select /*+ TIDB_INLJ(t1, t2) */ t1.* from t1, t2 where t2.code = 
 
 <strong>例4</strong> ：次の例では、クエリはIndexJoinで実行プランを使用して`dynamic`モードで実行されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 mysql> set @@tidb_partition_prune_mode = 'dynamic';

@@ -13,7 +13,7 @@ TiDBは[MySQLクライアント/サーバープロトコル](https://dev.mysql.c
 
 TiDBのコマンドラインツールとして使用できるMySQLシェルを使用してTiDBに接続できます。 MySQL Shellをインストールするには、 [MySQLシェルのドキュメント](https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-shell-install.html)の手順に従います。インストール後、次のコマンドを使用してTiDBに接続できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 mysql --host <tidb_server_host> --port 4000 -u root -p --comments

@@ -58,7 +58,7 @@ TiDB Binlogを手動でデプロイする場合は、このセクションの手
 
     Drainerの`status`のインターフェースを照会し、次のようにコマンドを実行します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     curl 'http://172.16.10.49:8249/status'

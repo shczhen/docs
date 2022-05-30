@@ -38,7 +38,7 @@ CSVファイルにはスキーマ情報が含まれていないため、CSVフ�
 
 次の内容で`tidb-lightning.toml`のファイルを作成します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```toml
 [lightning]
@@ -115,7 +115,7 @@ strict-format = true
 
 インポートを開始するには、 `tidb-lightning`を実行します。コマンドラインでプログラムを起動すると、SIGHUPシグナルを受信した後、プロセスが予期せず終了する場合があります。この場合、 `nohup`または`screen`ツールを使用してプログラムを実行することをお勧めします。例えば：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 nohup tiup tidb-lightning -config tidb-lightning.toml > nohup.out 2>&1 &

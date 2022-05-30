@@ -99,7 +99,7 @@ SHARD_ROW_ID_BITS = 0 # Represents the default 1 shard.
 
 ステートメントの例：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE：CREATE TABLE t (c int) SHARD_ROW_ID_BITS = 4;
@@ -130,7 +130,7 @@ TiDBによって生成された主キーは、主キーの自動インクリメ�
 
 例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t (a BIGINT PRIMARY KEY AUTO_RANDOM, b varchar(255));
@@ -146,7 +146,7 @@ SELECT * FROM t;
 +------------+---+
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT LAST_INSERT_ID();

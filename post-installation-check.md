@@ -16,7 +16,7 @@ TiDBクラスターをデプロイした後、クラスターが正常に実行�
 
 `tiup cluster display <cluster-name>`コマンドを使用して、クラスターのステータスを確認します。例えば：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup cluster display tidb-test
@@ -50,7 +50,7 @@ tiup cluster display tidb-test
 
 次のコマンドを実行して、データベースにログインします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 mysql -u root -h ${tidb_server_host_IP_address} -P 4000
@@ -76,7 +76,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 -   TiDBのバージョンを確認してください。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     select tidb_version()\G
@@ -100,7 +100,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 -   `pingcap`という名前のデータベースを作成します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     create database pingcap;
@@ -114,7 +114,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
     `pingcap`のデータベースに切り替えます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     use pingcap;
@@ -128,7 +128,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 -   `tab_tidb`という名前のテーブルを作成します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     CREATE TABLE `tab_tidb` (
@@ -148,7 +148,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 -   データの挿入：
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     insert into `tab_tidb` values (1,'TiDB',5,'TiDB-v5.0.0');
@@ -162,7 +162,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 -   `tab_tidb`のエントリを表示します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     select * from tab_tidb;
@@ -181,7 +181,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 -   TiKVのストアの状態、 `store_id` 、容量、および稼働時間を表示します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     select STORE_ID,ADDRESS,STORE_STATE,STORE_STATE_NAME,CAPACITY,AVAILABLE,UPTIME from INFORMATION_SCHEMA.TIKV_STORE_STATUS;
@@ -202,7 +202,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 -   TiDBを終了します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     exit

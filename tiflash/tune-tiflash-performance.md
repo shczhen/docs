@@ -16,7 +16,7 @@ aliases: ['/docs/dev/tiflash/tune-tiflash-performance/','/docs/dev/reference/tif
 
 1.  OLAP / TiFlash専用のTiDBノードの場合、このノードの[`tidb_distsql_scan_concurrency`](/system-variables.md#tidb_distsql_scan_concurrency)構成項目の値を`80`に増やすことをお勧めします。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     set @@tidb_distsql_scan_concurrency = 80;
@@ -28,7 +28,7 @@ aliases: ['/docs/dev/tiflash/tune-tiflash-performance/','/docs/dev/reference/tif
 
     クエリに関係するリージョンの数が比較的多い場合は、この変数を`1` （TiFlashにプッシュダウンされる`aggregation`のオペレーターを持つコプロセッサー要求に有効）に設定するか、この変数を`2` （すべてのコプロセッサー要求に有効）に設定してみてください。 TiFlashにプッシュダウン）。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     set @@tidb_allow_batch_cop = 1;
@@ -38,7 +38,7 @@ aliases: ['/docs/dev/tiflash/tune-tiflash-performance/','/docs/dev/reference/tif
 
     [`tidb_opt_agg_push_down`](/system-variables.md#tidb_opt_agg_push_down)変数を使用してオプティマイザーを制御し、この最適化を実行できます。クエリで集計操作が非常に遅い場合は、この変数を`1`に設定してみてください。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     set @@tidb_opt_agg_push_down = 1;
@@ -48,7 +48,7 @@ aliases: ['/docs/dev/tiflash/tune-tiflash-performance/','/docs/dev/reference/tif
 
     [`tidb_opt_distinct_agg_push_down`](/system-variables.md#tidb_opt_distinct_agg_push_down)変数を使用してオプティマイザーを制御し、この最適化を実行できます。クエリで`Distinct`の集計操作が非常に遅い場合は、この変数を`1`に設定してみてください。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     set @@tidb_opt_distinct_agg_push_down = 1;

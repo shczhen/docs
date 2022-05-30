@@ -7,7 +7,7 @@ summary: Learn the `STATISTICS` information_schema table.
 
 `STATISTICS`テーブルは、テーブルインデックスに関する情報を提供します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;

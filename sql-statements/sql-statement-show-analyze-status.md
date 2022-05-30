@@ -20,7 +20,7 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-analyze-status/']
 
 ## 例 {#examples}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create table t(x int, index idx(x)) partition by hash(x) partition 4;

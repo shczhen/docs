@@ -25,7 +25,7 @@ summary: Learn the definitions, rules, and guidelines in table creation.
 
 `CREATE TABLE`ステートメントは通常、次の形式を取ります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE {table_name} ( {elements} );
@@ -40,7 +40,7 @@ CREATE TABLE {table_name} ( {elements} );
 
 単一の列が追加されていないため、次のSQLステートメントはまだ実行できないことに注意してください。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE `bookshop`.`users` (
@@ -65,7 +65,7 @@ CREATE TABLE `bookshop`.`users` (
 
 `nickname`の識別子`id`など、いくつかの列を`users`テーブルに追加でき`balance` 。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE `bookshop`.`users` (
@@ -85,7 +85,7 @@ CREATE TABLE `bookshop`.`users` (
 
 もう少し複雑にするために、 `bookshop`のデータのコアとなる`books`のテーブルを定義できます。 `books`の表には、本のID、タイトル、タイプ（たとえば、雑誌、小説、生活、芸術）、株価、価格、および発行日のフィールドが含まれています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE `bookshop`.`books` (
@@ -126,7 +126,7 @@ CREATE TABLE `bookshop`.`books` (
 
 [主キーを選択するためのガイドライン](#guidelines-to-follow-when-selecting-primary-key)に続いて、次の例は、 `users`テーブルで`AUTO_RANDOM`主キーがどのように定義されているかを示しています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE `bookshop`.`users` (
@@ -159,7 +159,7 @@ TiDBは、v5.0以降の[クラスター化されたインデックス](/clustere
 
 [クラスタ化インデックスを選択するためのガイドライン](#guidelines-to-follow-when-selecting-clustered-index)に続いて、次の例では、 `books`と`users`の間の関連付けを持つテーブルを作成します。これは、 `book`の`ratings`を`users`ます。この例では、テーブルを作成し、 `book_id`と`user_id`を使用して複合主キーを作成し、その<strong>主キー</strong>に<strong>クラスター化インデックス</strong>を作成します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE `bookshop`.`ratings` (
@@ -181,7 +181,7 @@ CREATE TABLE `bookshop`.`ratings` (
 
 `DEFAULT`と[サポートされているSQL関数](/basic-features.md#data-types-functions-and-operators)を併用して、デフォルトの計算をアプリケーション層の外に移動し、アプリケーション層のリソースを節約できます。計算によって消費されたリソースは消えず、TiDBクラスターに移動されます。通常、デフォルトの時刻でデータを挿入できます。以下は、 `rating`テーブルのデフォルト値の設定の例です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE `bookshop`.`ratings` (
@@ -195,7 +195,7 @@ CREATE TABLE `bookshop`.`ratings` (
 
 さらに、データの更新時にデフォルトで現在時刻も入力される場合は、次のステートメントを使用できます（ただし、 `ON UPDATE`の後には[現在の時間に関連するステートメント](https://pingcap.github.io/sqlgram/#NowSymOptionFraction)のみを入力でき、 `DEFAULT`の後には[より多くのオプション](https://pingcap.github.io/sqlgram/#DefaultValueExpr)がサポートされます）。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE `bookshop`.`ratings` (
@@ -213,7 +213,7 @@ CREATE TABLE `bookshop`.`ratings` (
 
 たとえば、ユーザーのニックネームが一意であることを確認するには、次のように`users`のテーブルのテーブル作成SQLステートメントを書き直すことができます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE `bookshop`.`users` (
@@ -232,7 +232,7 @@ CREATE TABLE `bookshop`.`users` (
 
 例としてユーザーのニックネームを取り上げます。ニックネームが一意であるだけでなくnullでもないことを確認するには、次のように`users`テーブルを作成するためのSQLステートメントを書き直します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE `bookshop`.`users` (
@@ -261,7 +261,7 @@ CREATE TABLE `bookshop`.`users` (
 
 TiFlashは、展開後にデータを自動的に複製しません。したがって、複製するテーブルを手動で指定する必要があります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE {table_name} SET TIFLASH REPLICA {count};
@@ -278,7 +278,7 @@ ALTER TABLE {table_name} SET TIFLASH REPLICA {count};
 
 `ratings`のテーブルは、TiFlashの`1`のレプリカを開きます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE `bookshop`.`ratings` SET TIFLASH REPLICA 1;
@@ -290,7 +290,7 @@ ALTER TABLE `bookshop`.`ratings` SET TIFLASH REPLICA 1;
 
 次に、次のクエリを実行できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT HOUR(`rated_at`), AVG(`score`) FROM `bookshop`.`ratings` GROUP BY HOUR(`rated_at`);
@@ -298,7 +298,7 @@ SELECT HOUR(`rated_at`), AVG(`score`) FROM `bookshop`.`ratings` GROUP BY HOUR(`r
 
 [`EXPLAIN ANALYZE`](/sql-statements/sql-statement-explain-analyze.md)ステートメントを実行して、このステートメントが<strong>TiFlash</strong>を使用しているかどうかを確認することもできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN ANALYZE SELECT HOUR(`rated_at`), AVG(`score`) FROM `bookshop`.`ratings` GROUP BY HOUR(`rated_at`);
@@ -326,7 +326,7 @@ EXPLAIN ANALYZE SELECT HOUR(`rated_at`), AVG(`score`) FROM `bookshop`.`ratings` 
 
 データベース初期化スクリプト`init.sql`に名前を付けて保存するには、次のステートメントを実行してデータベースを初期化します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 mysql
@@ -339,7 +339,7 @@ mysql
 
 `bookshop`データベースの下にあるすべてのテーブルを表示するには、 [`SHOW TABLES`](/sql-statements/sql-statement-show-tables.md#show-full-tables)ステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW TABLES IN `bookshop`;

@@ -64,7 +64,7 @@ Flags:
 
 クラスタが正常にデプロイされたら、次のコマンドを実行してクラスタリストを表示します。
 
-{{&lt;コピー可能な&quot;shell-root&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup dm list
@@ -80,7 +80,7 @@ prod-cluster  tidb  ${version}  /root/.tiup/storage/dm/clusters/test  /root/.tiu
 
 クラスタが正常にデプロイされたら、次のコマンドを実行してクラスタを起動します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dm start prod-cluster
@@ -92,7 +92,7 @@ tiup dm start prod-cluster
 
 TiUPは、クラスター内の各コンポーネントのステータスを表示するための`tiup dm display`のコマンドを提供します。このコマンドを使用すると、コンポーネントのステータスを確認するために各マシンにログインする必要はありません。コマンドの使用法は次のとおりです。
 
-{{&lt;コピー可能な&quot;shell-root&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup dm display prod-cluster
@@ -138,7 +138,7 @@ tiup dm scale-in <cluster-name> -N <node-id>
 
 たとえば、 `172.16.5.140`のDM-workerノードでスケーリングするには（DM-masterでのスケーリングと同様）、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup dm scale-in prod-cluster -N 172.16.5.140:8262
@@ -166,7 +166,7 @@ tiup dm scale-in prod-cluster -N 172.16.5.140:8262
 
 2.  スケールアウト操作を実行します。 TiUP DMは、ポート、ディレクトリ、および`scale.yaml`で説明されているその他の情報に従って、対応するノードをクラスターに追加します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup dm scale-out prod-cluster scale.yaml
@@ -192,7 +192,7 @@ tiup dm scale-in prod-cluster -N 172.16.5.140:8262
 
 `tiup dm upgrade`コマンドを実行して、DMクラスターをアップグレードできます。たとえば、次のコマンドはクラスターを`${version}`にアップグレードします。このコマンドを実行する前に、 `${version}`を必要なバージョンに変更してください。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup dm upgrade prod-cluster ${version}
@@ -202,7 +202,7 @@ tiup dm upgrade prod-cluster ${version}
 
 コンポーネント構成を動的に更新する場合、TiUPDMコンポーネントは各クラスターの現在の構成を保存します。この構成を編集するには、 `tiup dm edit-config <cluster-name>`コマンドを実行します。例えば：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup dm edit-config prod-cluster
@@ -210,7 +210,7 @@ tiup dm edit-config prod-cluster
 
 TiUP DMは、viエディターで構成ファイルを開きます。他のエディターを使用する場合は、 `EDITOR`環境変数を使用して、 `export EDITOR=nano`などのエディターをカスタマイズします。ファイルを編集した後、変更を保存します。新しい構成をクラスターに適用するには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup dm reload prod-cluster
@@ -222,7 +222,7 @@ tiup dm reload prod-cluster
 
 通常のアップグレードでは、 `upgrade`コマンドを使用できます。ただし、デバッグなどの一部のシナリオでは、現在実行中のコンポーネントを一時パッケージに置き換える必要がある場合があります。これを実現するには、次の`patch`のコマンドを使用します。
 
-{{&lt;コピー可能な&quot;shell-root&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup dm patch --help
@@ -250,7 +250,7 @@ Global Flags:
 
 DM-masterホットフィックスパッケージが`/tmp/dm-master-hotfix.tar.gz`に含まれていて、クラスター内のすべてのDM-masterパッケージを置き換える場合は、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup dm patch prod-cluster /tmp/dm-master-hotfix.tar.gz -R dm-master
@@ -258,7 +258,7 @@ tiup dm patch prod-cluster /tmp/dm-master-hotfix.tar.gz -R dm-master
 
 クラスタ内のDMマスターパッケージを1つだけ置き換えることもできます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup dm patch prod-cluster /tmp/dm--hotfix.tar.gz -N 172.16.4.5:8261
@@ -281,7 +281,7 @@ TiUPがリリースされる前は、DM-Ansibleを使用してDMクラスター�
 
 たとえば、DM Ansibleを使用してデプロイされたクラスターをインポートするには、次のようにします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup dm import --dir=/path/to/dm-ansible --cluster-version ${version}
@@ -310,7 +310,7 @@ Flags:
 
 `[audit-id]`引数が指定されていない場合、コマンドは実行されたコマンドのリストを表示します。例えば：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup dm audit
@@ -326,7 +326,7 @@ ID      Time                  Command
 
 最初の列は`audit-id`です。特定のコマンドの実行ログを表示するには、次のように`audit-id`引数を渡します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup dm audit 4D5kQY
@@ -350,7 +350,7 @@ Flags:
 
 たとえば、すべてのDMノードで`ls /tmp`を実行するには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup dm exec prod-cluster --command='ls /tmp'
@@ -374,7 +374,7 @@ tiup dmctl:${version} [args]
 
 ソースを追加するための以前のdmctlコマンドは`dmctl --master-addr master1:8261 operate-source create /tmp/source1.yml`です。 dmctlがTiUPに統合された後、コマンドは次のようになります。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup dmctl --master-addr master1:8261 operate-source create /tmp/source1.yml

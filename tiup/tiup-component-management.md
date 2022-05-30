@@ -31,7 +31,7 @@ aliases: ['/tidb/dev/manage-tiup-component','/docs/dev/tiup/manage-tiup-componen
 
 例1：現在インストールされているすべてのコンポーネントを表示します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup list --installed
@@ -39,7 +39,7 @@ tiup list --installed
 
 例2：サーバーからインストール可能なすべてのバージョンのTiKVコンポーネントのリストを取得します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup list tikv
@@ -54,7 +54,7 @@ tiup list tikv
 
 例1：TiUPを使用して、最新の安定バージョンのTiDBをインストールします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup install tidb
@@ -62,7 +62,7 @@ tiup install tidb
 
 例2：TiUPを使用して、ナイトリーバージョンのTiDBをインストールします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup install tidb:nightly
@@ -70,7 +70,7 @@ tiup install tidb:nightly
 
 例3：TiUPを使用してTiKVv6.0.0をインストールします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup install tikv:v6.0.0
@@ -87,7 +87,7 @@ tiup install tikv:v6.0.0
 
 例1：すべてのコンポーネントを最新バージョンにアップグレードします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup update --all
@@ -95,7 +95,7 @@ tiup update --all
 
 例2：すべてのコンポーネントをナイトリーバージョンにアップグレードします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup update --all --nightly
@@ -103,7 +103,7 @@ tiup update --all --nightly
 
 例3：TiUPを最新バージョンにアップグレードします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup update --self
@@ -128,7 +128,7 @@ Flags:
 
 例1：TiDBv6.0.0を操作します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup tidb:v6.0.0
@@ -136,7 +136,7 @@ tiup tidb:v6.0.0
 
 例2：TiKVが動作するタグを指定します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup --tag=experiment tikv
@@ -146,7 +146,7 @@ tiup --tag=experiment tikv
 
 `tiup status`コマンドを使用して、コンポーネントの動作ステータスを確認できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup status
@@ -167,7 +167,7 @@ tiup status
 
 `tiup clean`コマンドを使用して、コンポーネントインスタンスをクリーンアップし、作業ディレクトリを削除できます。クリーニングの前にインスタンスがまだ動作している場合は、関連するプロセスが最初に強制終了されます。コマンドの使用法は次のとおりです。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup clean [tag] [flags]
@@ -181,7 +181,7 @@ tiup clean [tag] [flags]
 
 例1： `experiment`のタグ名でコンポーネントインスタンスをクリーンアップします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup clean experiment
@@ -189,7 +189,7 @@ tiup clean experiment
 
 例2：すべてのコンポーネントインスタンスをクリーンアップします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup clean --all
@@ -201,7 +201,7 @@ TiUPを使用してインストールされたコンポーネントは、ロー�
 
 `tiup uninstall`コマンドを使用して、コンポーネントのすべてのバージョンまたは特定のバージョンをアンインストールできます。このコマンドは、すべてのコンポーネントのアンインストールもサポートします。コマンドの使用法は次のとおりです。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup uninstall [component][:version] [flags]
@@ -219,7 +219,7 @@ tiup uninstall [component][:version] [flags]
 
 例1：TiDBv6.0.0をアンインストールします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup uninstall tidb:v6.0.0
@@ -227,7 +227,7 @@ tiup uninstall tidb:v6.0.0
 
 例2：すべてのバージョンのTiKVをアンインストールします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup uninstall tikv --all
@@ -235,7 +235,7 @@ tiup uninstall tikv --all
 
 例3：インストールされているすべてのコンポーネントをアンインストールします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup uninstall --all

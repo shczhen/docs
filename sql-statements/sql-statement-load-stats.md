@@ -23,7 +23,7 @@ LoadStatsStmt ::=
 
 `${stats_path}`は、絶対パスまたは相対パスにすることができます。相対パスを使用する場合、対応するファイルは`tidb-server`が開始されたパスから始まります。次に例を示します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 LOAD STATS '/tmp/stats.json';

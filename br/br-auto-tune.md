@@ -27,7 +27,7 @@ TiDB v5.4.0以降、クラスターへのバックアップタスクの影響を
 
 TiKVは、自動調整機能の動的構成をサポートしています。クラスタを再起動せずに、この機能を有効または無効にできます。自動調整機能を動的に有効または無効にするには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tikv-ctl modify-tikv-config -n backup.enable-auto-tune -v <true|false>

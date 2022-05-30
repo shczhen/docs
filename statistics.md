@@ -14,7 +14,7 @@ TiDBは統計を使用して[どのインデックスを選択するか](/choose
 >
 > -   `ANALYZE`ステートメントを手動で実行する場合は、分析するすべてのテーブルを手動で分析します。
 >
->     {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+>     {{< copyable "" >}}
 >
 >     ```sql
 >     select distinct(concat('ANALYZE ',table_schema, '.', table_name,';')) from information_schema.tables, mysql.stats_histograms where stats_ver = 2 and table_id = tidb_table_id ;
@@ -22,7 +22,7 @@ TiDBは統計を使用して[どのインデックスを選択するか](/choose
 >
 > -   自動分析が有効になっているためにTiDBが`ANALYZE`ステートメントを自動的に実行する場合は、 `DROP STATS`ステートメントを生成する次のステートメントを実行します。
 >
->     {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+>     {{< copyable "" >}}
 >
 >     ```sql
 >     select distinct(concat('DROP STATS ',table_schema, '.', table_name,';')) from information_schema.tables, mysql.stats_histograms where stats_ver = 2 and table_id = tidb_table_id ;
@@ -93,7 +93,7 @@ Top-N値は、列またはインデックスの上位N個の値です。 TiDBは
 
 -   `TableNameList`のすべてのテーブルの統計を収集するには：
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     ANALYZE TABLE TableNameList [WITH NUM BUCKETS|TOPN|CMSKETCH DEPTH|CMSKETCH WIDTH]|[WITH NUM SAMPLES|WITH FLOATNUM SAMPLERATE];
@@ -136,7 +136,7 @@ v5.3.0より前では、TiDBはリザーバーサンプリング方式を使用�
 
 -   特定の列の統計を収集するには、次の構文を使用します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     ANALYZE TABLE TableName COLUMNS ColumnNameList [WITH NUM BUCKETS|TOPN|CMSKETCH DEPTH|CMSKETCH WIDTH]|[WITH NUM SAMPLES|WITH FLOATNUM SAMPLERATE];
@@ -160,7 +160,7 @@ v5.3.0より前では、TiDBはリザーバーサンプリング方式を使用�
 
     2.  ビジネスのクエリパターンが比較的安定したら、次の構文を使用して`PREDICATE COLUMNS`の統計を収集します。
 
-        {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```sql
         ANALYZE TABLE TableName PREDICATE COLUMNS [WITH NUM BUCKETS|TOPN|CMSKETCH DEPTH|CMSKETCH WIDTH]|[WITH NUM SAMPLES|WITH FLOATNUM SAMPLERATE];
@@ -175,7 +175,7 @@ v5.3.0より前では、TiDBはリザーバーサンプリング方式を使用�
 
 -   すべての列とインデックスの統計を収集するには、次の構文を使用します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     ANALYZE TABLE TableName ALL COLUMNS [WITH NUM BUCKETS|TOPN|CMSKETCH DEPTH|CMSKETCH WIDTH]|[WITH NUM SAMPLES|WITH FLOATNUM SAMPLERATE];
@@ -188,7 +188,7 @@ v5.3.0より前では、TiDBはリザーバーサンプリング方式を使用�
 
 統計が収集された`PREDICATE COLUMNS`列と列を見つけるには、次の構文を使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW COLUMN_STATS_USAGE [ShowLikeOrWhere];
@@ -207,7 +207,7 @@ SHOW COLUMN_STATS_USAGE [ShowLikeOrWhere];
 
 次の例では、 `ANALYZE TABLE t PREDICATE COLUMNS;`を実行した後、 `d`は列`b` 、および`c`の統計を収集します。ここで、列`d`は`b`で、列`PREDICATE COLUMN`および`c`はインデックス列です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET GLOBAL tidb_enable_column_tracking = ON;
@@ -249,7 +249,7 @@ SHOW COLUMN_STATS_USAGE WHERE db_name = 'test' AND table_name = 't' AND last_ana
 
 `TableName`の`IndexNameList`のすべてのインデックスの統計を収集するには、次の構文を使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ANALYZE TABLE TableName INDEX [IndexNameList] [WITH NUM BUCKETS|TOPN|CMSKETCH DEPTH|CMSKETCH WIDTH]|[WITH NUM SAMPLES|WITH FLOATNUM SAMPLERATE];
@@ -265,7 +265,7 @@ ANALYZE TABLE TableName INDEX [IndexNameList] [WITH NUM BUCKETS|TOPN|CMSKETCH DE
 
 -   `TableName`の`PartitionNameList`のすべてのパーティションの統計を収集するには、次の構文を使用します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     ANALYZE TABLE TableName PARTITION PartitionNameList [WITH NUM BUCKETS|TOPN|CMSKETCH DEPTH|CMSKETCH WIDTH]|[WITH NUM SAMPLES|WITH FLOATNUM SAMPLERATE];
@@ -273,7 +273,7 @@ ANALYZE TABLE TableName INDEX [IndexNameList] [WITH NUM BUCKETS|TOPN|CMSKETCH DE
 
 -   `TableName`の`PartitionNameList`のすべてのパーティションのインデックス統計を収集するには、次の構文を使用します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     ANALYZE TABLE TableName PARTITION PartitionNameList INDEX [IndexNameList] [WITH NUM BUCKETS|TOPN|CMSKETCH DEPTH|CMSKETCH WIDTH]|[WITH NUM SAMPLES|WITH FLOATNUM SAMPLERATE];
@@ -285,7 +285,7 @@ ANALYZE TABLE TableName INDEX [IndexNameList] [WITH NUM BUCKETS|TOPN|CMSKETCH DE
     >
     > 現在、 `PREDICATE COLUMNS`に関する統計の収集は実験的な機能です。実稼働環境で使用することはお勧めしません。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     ANALYZE TABLE TableName PARTITION PartitionNameList [COLUMNS ColumnNameList|PREDICATE COLUMNS|ALL COLUMNS] [WITH NUM BUCKETS|TOPN|CMSKETCH DEPTH|CMSKETCH WIDTH]|[WITH NUM SAMPLES|WITH FLOATNUM SAMPLERATE];
@@ -304,7 +304,7 @@ ANALYZE TABLE TableName INDEX [IndexNameList] [WITH NUM BUCKETS|TOPN|CMSKETCH DE
 
 -   `TableName`分の`IndexNameLists`すべてのインデックス列の統計を段階的に収集するには：
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     ANALYZE INCREMENTAL TABLE TableName INDEX [IndexNameList] [WITH NUM BUCKETS|TOPN|CMSKETCH DEPTH|CMSKETCH WIDTH]|[WITH NUM SAMPLES|WITH FLOATNUM SAMPLERATE];
@@ -312,7 +312,7 @@ ANALYZE TABLE TableName INDEX [IndexNameList] [WITH NUM BUCKETS|TOPN|CMSKETCH DE
 
 -   `TableName`分の`PartitionNameLists`すべてのパーティションのインデックス列の統計を段階的に収集するには：
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     ANALYZE INCREMENTAL TABLE TableName PARTITION PartitionNameList INDEX [IndexNameList] [WITH NUM BUCKETS|TOPN|CMSKETCH DEPTH|CMSKETCH WIDTH]|[WITH NUM SAMPLES|WITH FLOATNUM SAMPLERATE];
@@ -342,7 +342,7 @@ TiDB v6.0以降、TiDBは`KILL`ステートメントを使用してバックグ�
 
 1.  次のSQLステートメントを実行して、TiDBインスタンスアドレスとバックグラウンド`ANALYZE`タスクの`ID`を取得します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT ci.instance as instance, cp.id as id FROM information_schema.cluster_info ci, information_schema.cluster_processlist cp WHERE ci.status_address = cp.instance and ci.type = 'tidb' and cp.info like 'analyze table %' and cp.user = '' and cp.host = '';
@@ -352,7 +352,7 @@ TiDB v6.0以降、TiDBは`KILL`ステートメントを使用してバックグ�
 
 2.  クライアントを使用して、バックグラウンド`ANALYZE`タスクが実行されているTiDBインスタンスに接続してから、次の`KILL`のステートメントを実行します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     KILL TIDB ${id};
@@ -415,7 +415,7 @@ v5.4.0以降、TiDBはいくつかの`ANALYZE`構成の永続化をサポート�
 
 `ANALYZE`ステートメントを実行する場合、次のSQLステートメントを使用して`ANALYZE`の現在の状態を表示できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW ANALYZE STATUS [ShowLikeOrWhere]
@@ -445,7 +445,7 @@ SHOW ANALYZE STATUS [ShowLikeOrWhere]
 
 `ShowLikeOrWhereOpt`の構文は次のとおりです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW STATS_META [ShowLikeOrWhere]
@@ -493,7 +493,7 @@ SHOW STATS_META [ShowLikeOrWhere]
 
 構文は次のとおりです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW STATS_HISTOGRAMS [ShowLikeOrWhere]
@@ -522,7 +522,7 @@ SHOW STATS_HISTOGRAMS [ShowLikeOrWhere]
 
 構文は次のとおりです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW STATS_BUCKETS [ShowLikeOrWhere]
@@ -556,7 +556,7 @@ SHOW STATS_BUCKETS [ShowLikeOrWhere]
 
 構文は次のとおりです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW STATS_TOPN [ShowLikeOrWhere];
@@ -580,7 +580,7 @@ SHOW STATS_TOPN [ShowLikeOrWhere];
 
 構文は次のとおりです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DROP STATS TableName
@@ -649,7 +649,7 @@ v5.4.0以降、TiDBは同期ロード統計機能を導入しています。こ�
 
 構文：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```
 LOAD STATS 'file_name'

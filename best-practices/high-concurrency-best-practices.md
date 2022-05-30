@@ -51,7 +51,7 @@ TiDBは、データをリージョンに分割します。各リージョンは�
 
 次のケースは、ホットスポットがどのように生成されるかを説明しています。以下の表を例として取り上げます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE IF NOT EXISTS TEST_HOTSPOT(
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS TEST_HOTSPOT(
 
 このテーブルは構造が単純です。主キーとしての`id`に加えて、副次インデックスは存在しません。次のステートメントを実行して、このテーブルにデータを書き込みます。 `id`はランダムな数として離散的に生成されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET SESSION cte_max_recursion_depth = 1000000;
@@ -136,13 +136,13 @@ PDの監視メトリックは、ホットスポットが発生したことも確
 
 v3.0.x、v2.1.13以降のバージョンでは、TiDBは[スプリットリージョン](/sql-statements/sql-statement-split-region.md)と呼ばれる新機能をサポートします。この新機能は、次の新しい構文を提供します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SPLIT TABLE table_name [INDEX index_name] BETWEEN (lower_value) AND (upper_value) REGIONS region_num
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SPLIT TABLE table_name [INDEX index_name] BY (value_list) [, (value_list)]
@@ -162,7 +162,7 @@ TiDBは一般的な使用のためのデータベースであり、データの�
 
 テストで書き込まれるデータは正の範囲内で完全に離散的であるため、次のステートメントを使用して、テーブルを`minInt64`から`maxInt64`の範囲内の128の領域に事前に分割できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SPLIT TABLE TEST_HOTSPOT BETWEEN (0) AND (9223372036854775807) REGIONS 128;
@@ -212,7 +212,7 @@ SPLIT TABLE TEST_HOTSPOT BETWEEN (0) AND (9223372036854775807) REGIONS 128;
 
 例：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create table t (a int, b int) SHARD_ROW_ID_BITS = 4 PRE_SPLIT_REGIONS=3;

@@ -65,7 +65,7 @@ TiKVがバックアップディレクトリにアクセスできるかどうか�
 
 1.  プロセスクエリに対してLinuxネイティブコマンドを実行します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     ps aux | grep tikv-server
@@ -80,7 +80,7 @@ TiKVがバックアップディレクトリにアクセスできるかどうか�
 
     または、次のコマンドを実行できます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     ps aux | grep tikv-server | awk '{print $1}'
@@ -95,7 +95,7 @@ TiKVがバックアップディレクトリにアクセスできるかどうか�
 
 2.  TiUPコマンドを使用して、クラスターのスタートアップ情報を照会します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup cluster list
@@ -113,7 +113,7 @@ TiKVがバックアップディレクトリにアクセスできるかどうか�
 
 3.  バックアップディレクトリの権限を確認してください。たとえば、 `backup`はバックアップデータストレージ用です。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     ls -al backup

@@ -7,7 +7,7 @@ summary: Learn the `ANALYZE_STATUS` information_schema table.
 
 `ANALYZE_STATUS`の表は、統計を収集する実行中のタスクと限られた数の履歴タスクに関する情報を提供します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -29,7 +29,7 @@ DESC analyze_status;
 7 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM `ANALYZE_STATUS`;

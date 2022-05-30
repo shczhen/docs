@@ -164,7 +164,7 @@ cat rule.json
 
 `rule.json`の構成を使用するには、次のコマンドを実行して既存の構成を`default.json`ファイルにバックアップし、既存の構成を`rule.json`で上書きします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 pd-ctl config placement-rules rule-bundle load --out="default.json"
@@ -238,13 +238,13 @@ cat default.json
 
 クラスタの現在のレプリケーションステータスを確認するには、次のAPIを使用します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 curl http://pd_ip:pd_port/pd/api/v1/replication_mode/status
 ```
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 {

@@ -39,7 +39,7 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-stats-meta/']
 
 ## 例 {#examples}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 show stats_meta;
@@ -58,7 +58,7 @@ show stats_meta;
 5 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 show stats_meta where table_name = 't2';

@@ -26,7 +26,7 @@ DMが完全なデータレプリケーションタスクを実行する場合、
 
 1.  次のコマンドを実行して、TiUPをインストールします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh | sh
@@ -36,7 +36,7 @@ DMが完全なデータレプリケーションタスクを実行する場合、
 
 2.  TiUPDMコンポーネントをインストールします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup install dm dmctl
@@ -156,7 +156,7 @@ alertmanager_servers:
 > -   パスワードを使用する場合は、 `-p`フラグを追加して、パスワード操作ウィンドウに入ります。
 > -   ターゲットマシンへのパスワードなしのログインが設定されている場合、認証は必要ありません。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dm deploy ${name} ${version} ./topology.yaml -u ${ssh_user} [-p] [-i /home/root/.ssh/gcp_rsa]
@@ -177,7 +177,7 @@ tiup dm deploy ${name} ${version} ./topology.yaml -u ${ssh_user} [-p] [-i /home/
 
 ## ステップ4：TiUPによって管理されているクラスターを確認します {#step-4-check-the-clusters-managed-by-tiup}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dm list
@@ -195,7 +195,7 @@ dm-test  tidb  ${version}  /root/.tiup/storage/dm/clusters/dm-test  /root/.tiup/
 
 `dm-test`のクラスターのステータスを確認するには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dm display dm-test
@@ -205,7 +205,7 @@ tiup dm display dm-test
 
 ## ステップ6：TiDBクラスターを開始します {#step-6-start-the-tidb-cluster}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dm start dm-test
@@ -217,7 +217,7 @@ tiup dm start dm-test
 
 TiUPを使用してDMクラスターのステータスを確認します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dm display dm-test

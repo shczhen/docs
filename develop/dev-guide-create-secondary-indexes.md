@@ -26,7 +26,7 @@ TiDBでは、 [既存のテーブルにセカンダリインデックスを追�
 
 既存のテーブルにセカンダリインデックスを追加するには、次のように[インデックスの作成](/sql-statements/sql-statement-create-index.md)ステートメントを使用できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE INDEX {index_name} ON {table_name} ({column_names});
@@ -42,7 +42,7 @@ CREATE INDEX {index_name} ON {table_name} ({column_names});
 
 テーブルの作成と同時にセカンダリインデックスを作成するには、 [CREATE TABLE](/sql-statements/sql-statement-create-table.md)ステートメントの最後に`KEY`キーワードを含む句を追加します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 KEY `{index_name}` (`{column_names}`)
@@ -74,7 +74,7 @@ KEY `{index_name}` (`{column_names}`)
 
 `books`テーブルは、次のSQLステートメントを使用して作成されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE `bookshop`.`books` (
@@ -90,7 +90,7 @@ CREATE TABLE `bookshop`.`books` (
 
 年による検索機能をサポートする<strong>には、特定の年に発行されたすべての書籍を検索</strong>するSQLステートメントを作成する必要があります。 2022を例にとると、次のようにSQLステートメントを記述します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM `bookshop`.`books` WHERE `published_at` >= '2022-01-01 00:00:00' AND `published_at` < '2023-01-01 00:00:00';
@@ -98,7 +98,7 @@ SELECT * FROM `bookshop`.`books` WHERE `published_at` >= '2022-01-01 00:00:00' A
 
 SQLステートメントの実行プランを確認するには、 [`EXPLAIN`](/sql-statements/sql-statement-explain.md)ステートメントを使用できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT * FROM `bookshop`.`books` WHERE `published_at` >= '2022-01-01 00:00:00' AND `published_at` < '2023-01-01 00:00:00';
@@ -121,7 +121,7 @@ EXPLAIN SELECT * FROM `bookshop`.`books` WHERE `published_at` >= '2022-01-01 00:
 
 このような影響を回避するために、次のように`published_at`列のインデックスを`books`テーブルに追加できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE INDEX `idx_book_published_at` ON `bookshop`.`books` (`bookshop`.`books`.`published_at`);
@@ -154,7 +154,7 @@ CREATE INDEX `idx_book_published_at` ON `bookshop`.`books` (`bookshop`.`books`.`
 
 テーブルのインデックスをクエリするには、次の[インデックスを表示](/sql-statements/sql-statement-show-indexes.md)ステートメントを使用できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW INDEXES FROM `bookshop`.`books`;

@@ -7,7 +7,7 @@ summary: Learn the `COLUMNS` information_schema table.
 
 `COLUMNS`テーブルは、テーブルの列に関する詳細情報を提供します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -43,7 +43,7 @@ DESC columns;
 21 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE test.t1 (a int);
@@ -106,7 +106,7 @@ CHARACTER_MAXIMUM_LENGTH: NULL
 
 対応する`SHOW`ステートメントは次のとおりです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW COLUMNS FROM t1 FROM test;

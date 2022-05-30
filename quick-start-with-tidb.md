@@ -32,7 +32,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
 1.  TiUPをダウンロードしてインストールします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh | sh
@@ -60,7 +60,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
     >
     > インストール後、TiUPは対応するシェルプロファイルファイルの絶対パスを表示します。パスに応じて、次の`source`のコマンドで`${your_shell_profile}`を変更する必要があります。この場合、 `${your_shell_profile}`はステップ1の出力からの`/Users/user/.zshrc`です。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     source ${your_shell_profile}
@@ -70,7 +70,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
     -   1つのTiDBインスタンス、1つのTiKVインスタンス、1つのPDインスタンス、および1つのTiFlashインスタンスを使用して最新バージョンのTiDBクラスターを起動する場合は、次のコマンドを実行します。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         tiup playground
@@ -78,7 +78,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
     -   TiDBのバージョンと各コンポーネントのインスタンス数を指定する場合は、次のようなコマンドを実行します。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         tiup playground v6.0.0 --db 2 --pd 3 --kv 3
@@ -108,7 +108,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
     -   TiUPクライアントを使用してTiDBに接続します。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         tiup client
@@ -116,7 +116,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
     -   MySQLクライアントを使用してTiDBに接続することもできます。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         mysql --host 127.0.0.1 --port 4000 -u root
@@ -136,7 +136,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
     2.  サービスが停止した後、次のコマンドを実行します。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         tiup clean --all
@@ -153,7 +153,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
 1.  TiUPをダウンロードしてインストールします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh | sh
@@ -181,7 +181,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
     >
     > インストール後、TiUPは対応するシェルプロファイルファイルの絶対パスを表示します。パスに応じて、次の`source`のコマンドで`${your_shell_profile}`を変更する必要があります。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     source ${your_shell_profile}
@@ -191,7 +191,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
     -   1つのTiDBインスタンス、1つのTiKVインスタンス、1つのPDインスタンス、および1つのTiFlashインスタンスを使用して最新バージョンのTiDBクラスターを起動する場合は、次のコマンドを実行します。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         tiup playground
@@ -199,7 +199,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
     -   TiDBのバージョンと各コンポーネントのインスタンス数を指定する場合は、次のようなコマンドを実行します。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         tiup playground v6.0.0 --db 2 --pd 3 --kv 3
@@ -226,7 +226,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
     -   TiUPクライアントを使用してTiDBに接続します。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         tiup client
@@ -234,7 +234,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
     -   MySQLクライアントを使用してTiDBに接続することもできます。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         mysql --host 127.0.0.1 --port 4000 -u root
@@ -254,7 +254,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
     2.  サービスが停止した後、次のコマンドを実行します。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         tiup clean --all
@@ -311,7 +311,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
 1.  TiUPをダウンロードしてインストールします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh | sh
@@ -323,7 +323,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
     >
     > インストール後、TiUPは対応するシェルプロファイルファイルの絶対パスを表示します。パスに応じて、次の`source`のコマンドで`${your_shell_profile}`を変更する必要があります。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     source ${your_shell_profile}
@@ -331,7 +331,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
 3.  TiUPのクラスターコンポーネントをインストールします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster
@@ -339,7 +339,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
 4.  TiUPクラスターがすでにマシンにインストールされている場合は、ソフトウェアバージョンを更新します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup update --self && tiup update cluster
@@ -350,7 +350,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
     1.  `/etc/ssh/sshd_config`を変更し、 `MaxSessions`を`20`に設定します。
     2.  `sshd`のサービスを再起動します。
 
-        {{&lt;コピー可能な&quot;shell-root&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         service sshd restart
@@ -429,7 +429,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
 7.  clusterdeploymentコマンドを実行します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster deploy <cluster-name> <tidb-version> ./topo.yaml --user root -p
@@ -452,7 +452,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
 8.  クラスターを開始します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster start <cluster-name>
@@ -462,7 +462,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
     -   MySQLクライアントをインストールします。すでにインストールされている場合は、この手順をスキップしてください。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         yum -y install mysql
@@ -470,7 +470,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
     -   TiDBにアクセスします。パスワードは空です：
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         mysql -h 10.0.1.1 -P 4000 -u root
@@ -482,7 +482,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
     -   現在デプロイされているクラスターリストを表示するには：
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         tiup cluster list
@@ -490,7 +490,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
     -   クラスタのトポロジとステータスを表示するには：
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         tiup cluster display <cluster-name>

@@ -24,7 +24,7 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-histograms/']
 
 ## 例 {#examples}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 show stats_histograms;
@@ -41,7 +41,7 @@ show stats_histograms;
 3 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 show stats_histograms where table_name = 't2';

@@ -38,7 +38,7 @@ SequenceOption ::=
 
 ## 構文 {#syntax}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE [TEMPORARY] SEQUENCE [IF NOT EXISTS] sequence_name
@@ -87,7 +87,7 @@ CREATE [TEMPORARY] SEQUENCE [IF NOT EXISTS] sequence_name
 
 -   デフォルトのパラメータを使用してシーケンスオブジェクトを作成します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     CREATE SEQUENCE seq;
@@ -99,7 +99,7 @@ CREATE [TEMPORARY] SEQUENCE [IF NOT EXISTS] sequence_name
 
 -   `nextval()`関数を使用して、シーケンスオブジェクトの次の値を取得します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT nextval(seq);
@@ -116,7 +116,7 @@ CREATE [TEMPORARY] SEQUENCE [IF NOT EXISTS] sequence_name
 
 -   `lastval()`関数を使用して、このセッションでのシーケンスオブジェクトへの最後の呼び出しによって生成された値を取得します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT lastval(seq);
@@ -133,7 +133,7 @@ CREATE [TEMPORARY] SEQUENCE [IF NOT EXISTS] sequence_name
 
 -   `setval()`関数を使用して、シーケンスオブジェクトの現在の値（または現在の位置）を設定します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT setval(seq, 10);
@@ -150,7 +150,7 @@ CREATE [TEMPORARY] SEQUENCE [IF NOT EXISTS] sequence_name
 
 -   `next value for`構文を使用して、シーケンスの次の値を取得することもできます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT next value for seq;
@@ -167,7 +167,7 @@ CREATE [TEMPORARY] SEQUENCE [IF NOT EXISTS] sequence_name
 
 -   デフォルトのカスタムパラメータを使用してシーケンスオブジェクトを作成します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     CREATE SEQUENCE seq2 start 3 increment 2 minvalue 1 maxvalue 10 cache 3;
@@ -179,7 +179,7 @@ CREATE [TEMPORARY] SEQUENCE [IF NOT EXISTS] sequence_name
 
 -   このセッションでシーケンスオブジェクトが使用されていない場合、 `lastval()`関数は`NULL`の値を返します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT lastval(seq2);
@@ -196,7 +196,7 @@ CREATE [TEMPORARY] SEQUENCE [IF NOT EXISTS] sequence_name
 
 -   シーケンスオブジェクトの`nextval()`関数の最初の有効な値は、 `START`パラメーターの値です。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT nextval(seq2);
@@ -213,7 +213,7 @@ CREATE [TEMPORARY] SEQUENCE [IF NOT EXISTS] sequence_name
 
 -   `setval()`関数はシーケンスオブジェクトの現在の値を変更できますが、次の値の等差数列ルールを変更することはできません。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT setval(seq2, 6);
@@ -230,7 +230,7 @@ CREATE [TEMPORARY] SEQUENCE [IF NOT EXISTS] sequence_name
 
 -   `nextval()`を使用して次の値を取得すると、次の値はシーケンスで定義された等差数列の規則に従います。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT next value for seq2;
@@ -247,7 +247,7 @@ CREATE [TEMPORARY] SEQUENCE [IF NOT EXISTS] sequence_name
 
 -   次の例のように、シーケンスの次の値を列のデフォルト値として使用できます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     CREATE table t(a int default next value for seq2);
@@ -259,7 +259,7 @@ CREATE [TEMPORARY] SEQUENCE [IF NOT EXISTS] sequence_name
 
 -   次の例では、値が指定されていないため、デフォルト値の`seq2`が使用されます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     INSERT into t values();
@@ -269,7 +269,7 @@ CREATE [TEMPORARY] SEQUENCE [IF NOT EXISTS] sequence_name
     Query OK, 1 row affected (0.00 sec)
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT * from t;
@@ -286,7 +286,7 @@ CREATE [TEMPORARY] SEQUENCE [IF NOT EXISTS] sequence_name
 
 -   次の例では、値が指定されていないため、デフォルト値の`seq2`が使用されます。ただし、次の値`seq2`は、上記の例（ `CREATE SEQUENCE seq2 start 3 increment 2 minvalue 1 maxvalue 10 cache 3;` ）で定義された範囲内にないため、エラーが返されます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     INSERT into t values();

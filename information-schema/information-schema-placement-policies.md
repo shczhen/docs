@@ -8,7 +8,7 @@ aliases: ['/tidb/dev/information-schema-placement-rules']
 
 `PLACEMENT_POLICIES`の表は、すべての配置ポリシーに関する情報を提供します。詳しくは[SQLの配置ルール](/placement-rules-in-sql.md)をご覧ください。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -39,7 +39,7 @@ DESC placement_policies;
 
 `PLACEMENT_POLICIES`の表には、すべての配置ポリシーのみが表示されます。配置ルールの正規バージョン（すべての配置ポリシーと配置ポリシーが割り当てられたオブジェクトを含む）を表示するには、代わりにステートメント`SHOW PLACEMENT`を使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1 (a INT); 

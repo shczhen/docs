@@ -28,7 +28,7 @@ Bookshopアプリケーションのデータベースでは、 `authors`テー�
 
 MySQLクライアントで次のSQLステートメントを実行します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT id, name FROM authors;
@@ -66,7 +66,7 @@ Javaでは、クラス`Author`を宣言することにより、作成者の基�
 -   タイプ`String`の変数を使用して、タイプ`varchar`のデータを格納します。
 -   ..。
 
-{{&lt;コピー可能な&quot;java&quot;&gt;}}
+{{< copyable "" >}}
 
 ```java
 public class Author {
@@ -82,7 +82,7 @@ public class Author {
 }
 ```
 
-{{&lt;コピー可能な&quot;java&quot;&gt;}}
+{{< copyable "" >}}
 
 ```java
 public class AuthorDAO {
@@ -125,7 +125,7 @@ public class AuthorDAO {
 
 `WHERE`ステートメントにフィルター条件を追加します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM authors WHERE birth_year = 1998;
@@ -140,7 +140,7 @@ Javaでは、同じSQLを使用して、動的パラメーターを使用した�
 
 このようなクエリを処理するには、通常のステートメントの代わりに[プリペアドステートメント](/develop/dev-guide-prepared-statement.md)を使用します。
 
-{{&lt;コピー可能な&quot;java&quot;&gt;}}
+{{< copyable "" >}}
 
 ```java
 public List<Author> getAuthorsByBirthYear(Short birthYear) throws SQLException {
@@ -171,7 +171,7 @@ public List<Author> getAuthorsByBirthYear(Short birthYear) throws SQLException {
 
 たとえば、次のSQLステートメントは、 `authors`のテーブルを`birth_year`列に従って降順（ `DESC` ）に並べ替えることにより、最年少の作成者のリストを取得します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT id, name, birth_year
@@ -203,7 +203,7 @@ ORDER BY birth_year DESC;
 
 `LIMIT`ステートメントを使用して、クエリ結果の数を制限できます。
 
-{{&lt;コピー可能な&quot;java&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT id, name, birth_year
@@ -240,7 +240,7 @@ LIMIT 10;
 
 たとえば、著者がさらに生まれた年を知りたい場合は、 `authors`のテーブルを`birth_year`の列でグループ化し、各年を数えることができます。
 
-{{&lt;コピー可能な&quot;java&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT birth_year, COUNT (DISTINCT id) AS author_count

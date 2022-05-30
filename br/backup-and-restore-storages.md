@@ -26,7 +26,7 @@ S3、GCS、Azblobなどのクラウドストレージでは、接続のために
 
 -   Dumplingを使用してデータをS3にエクスポートします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     ./dumpling -u root -h 127.0.0.1 -P 3306 -B mydb -F 256MiB \
@@ -35,7 +35,7 @@ S3、GCS、Azblobなどのクラウドストレージでは、接続のために
 
 -   TiDB Lightningを使用して、S3からデータをインポートします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     ./tidb-lightning --tidb-port=4000 --pd-urls=127.0.0.1:2379 --backend=local --sorted-kv-dir=/tmp/sorted-kvs \
@@ -44,7 +44,7 @@ S3、GCS、Azblobなどのクラウドストレージでは、接続のために
 
 -   TiDB Lightningを使用して、S3からデータをインポートします（リクエストモードでパススタイルを使用）。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     ./tidb-lightning --tidb-port=4000 --pd-urls=127.0.0.1:2379 --backend=local --sorted-kv-dir=/tmp/sorted-kvs \
@@ -53,7 +53,7 @@ S3、GCS、Azblobなどのクラウドストレージでは、接続のために
 
 -   BRを使用してデータをGCSにバックアップします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     ./br backup full -u 127.0.0.1:2379 \
@@ -62,7 +62,7 @@ S3、GCS、Azblobなどのクラウドストレージでは、接続のために
 
 -   BRを使用してデータをAzblobにバックアップします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     ./br backup full -u 127.0.0.1:2379 \
@@ -134,7 +134,7 @@ TiKVとBRが同じストレージアカウントを使用することを保証�
 
 URLパラメーターに加えて、BRとDumplingは、コマンドラインパラメーターを使用したこれらの構成の指定もサポートしています。例えば：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 ./dumpling -u root -h 127.0.0.1 -P 3306 -B mydb -F 256MiB \
@@ -160,7 +160,7 @@ AWS S3以外のクラウドストレージにデータをエクスポートす�
 
 -   Dumplingを使用してAlibabaCloudOSSにデータをエクスポートします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     ./dumpling -h 127.0.0.1 -P 3306 -B mydb -F 256MiB \
@@ -172,7 +172,7 @@ AWS S3以外のクラウドストレージにデータをエクスポートす�
 
 -   BRを使用してAlibabaCloudOSSにデータをバックアップします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     ./br backup full --pd "127.0.0.1:2379" \
@@ -211,7 +211,7 @@ AWS S3以外のクラウドストレージにデータをエクスポートす�
 
 ただし、これは、すべてのノードが独自の役割と権限を持っているクラウド環境には適していません。このような場合、 `--send-credentials-to-tikv=false` （または短縮形`-c=0` ）で送信する資格情報を無効にする必要があります。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 ./br backup full -c=0 -u pd-service:2379 -s 's3://bucket-name/prefix'
@@ -219,7 +219,7 @@ AWS S3以外のクラウドストレージにデータをエクスポートす�
 
 [バックアップ](/sql-statements/sql-statement-backup.md)および[戻す](/sql-statements/sql-statement-restore.md)データにSQLステートメントを使用する場合、 `SEND_CREDENTIALS_TO_TIKV = FALSE`のオプションを追加できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 BACKUP DATABASE * TO 's3://bucket-name/prefix' SEND_CREDENTIALS_TO_TIKV = FALSE;

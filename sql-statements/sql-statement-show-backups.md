@@ -29,7 +29,7 @@ ShowLikeOrWhere ::=
 
 1つの接続で、次のステートメントを実行します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 BACKUP DATABASE `test` TO 's3://example-bucket/backup-01/?region=us-west-1';
@@ -37,7 +37,7 @@ BACKUP DATABASE `test` TO 's3://example-bucket/backup-01/?region=us-west-1';
 
 バックアップが完了する前に、新しい接続で`SHOW BACKUPS`を実行します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW BACKUPS;
@@ -75,7 +75,7 @@ SHOW BACKUPS;
 
 接続IDを使用して、 [`KILL TIDB QUERY`](/sql-statements/sql-statement-kill.md)ステートメントを介してバックアップ/復元タスクをキャンセルできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 KILL TIDB QUERY 4;
@@ -89,7 +89,7 @@ Query OK, 0 rows affected (0.00 sec)
 
 `LIKE`句を使用して、宛先URLをワイルドカード式と照合することにより、タスクを除外します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW BACKUPS LIKE 's3://%';
@@ -97,7 +97,7 @@ SHOW BACKUPS LIKE 's3://%';
 
 `WHERE`句を使用して、列でフィルタリングします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW BACKUPS WHERE `Progress` < 25.0;

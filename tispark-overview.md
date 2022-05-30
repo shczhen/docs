@@ -80,7 +80,7 @@ TiSparkのjarパッケージ[ここ](https://github.com/pingcap/tispark/releases
 
 以下は、TiSparkv2.4.1をインストールする方法の簡単な例です。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 wget https://github.com/pingcap/tispark/releases/download/v2.4.1/tispark-assembly-2.4.1.jar
@@ -89,7 +89,7 @@ mv tispark-assembly-2.4.1.jar $SPARKPATH/jars/
 
 `spark-defaults.conf.template`ファイルから`spark-defaults.conf`をコピーします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 cp conf/spark-defaults.conf.template conf/spark-defaults.conf
@@ -112,7 +112,7 @@ spark.sql.extensions org.apache.spark.sql.TiExtensions
 
 既存のSparkクラスターでTiSparkを実行する場合、クラスターを再起動する必要はありません。 Sparkの`--jars`パラメーターを使用して、依存関係としてTiSparkを導入できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 spark-shell --jars $TISPARK_FOLDER/tispark-${name_with_version}.jar
@@ -128,7 +128,7 @@ Sparkクラスターがない場合は、スタンドアロンモードを使用
 
 `192.168.1.101`で利用可能なTiDBサーバーを介してテストデータを生成するには：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup bench tpch prepare --host 192.168.1.101 --user root
@@ -145,7 +145,7 @@ spark.sql.extensions org.apache.spark.sql.TiExtensions
 
 SparkShellを起動します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 ./bin/spark-shell
@@ -172,7 +172,7 @@ spark.sql("select count(*) from lineitem").show
 
 Spark Shellの他に、SparkSQLも利用できます。 Spark SQLを使用するには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 ./bin/spark-sql
@@ -198,7 +198,7 @@ Time taken: 0.673 seconds, Fetched 1 row(s)
 
 JDBCサポートなしでSparkShellまたはSparkSQLを使用できます。ただし、beelineなどのツールにはJDBCサポートが必要です。 JDBCサポートは、Thriftサーバーによって提供されます。 SparkのThriftサーバーを使用するには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 ./sbin/start-thriftserver.sh
@@ -208,7 +208,7 @@ JDBCをThriftサーバーに接続するには、beelineなどのJDBC対応ツ�
 
 たとえば、beelineで使用するには：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 ./bin/beeline jdbc:hive2://localhost:10000

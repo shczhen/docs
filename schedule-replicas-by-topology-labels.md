@@ -64,7 +64,7 @@ TiDBクラスターの高可用性と障害復旧機能を向上させるため�
 
 -   PDクラスターがすでに初期化されている場合は、pd-ctlツールを使用してオンラインで変更を加えます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     pd-ctl config set location-labels zone,rack,host
@@ -85,7 +85,7 @@ isolation-level = "zone"
 
 PDクラスターがすでに初期化されている場合は、pd-ctlツールを使用してオンラインで変更を加える必要があります。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 pd-ctl config set isolation-level zone

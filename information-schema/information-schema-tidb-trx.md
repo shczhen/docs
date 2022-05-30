@@ -7,7 +7,7 @@ summary: Learn the `TIDB_TRX` information_schema table.
 
 `TIDB_TRX`の表は、TiDBノードで現在実行されているトランザクションに関する情報を提供します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -62,7 +62,7 @@ DESC tidb_trx;
 
 ## 例 {#example}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select * from information_schema.tidb_trx\G
@@ -100,7 +100,7 @@ CURRENT_SQL_DIGEST_TEXT: update `t` set `v` = `v` + ? where `id` = ?
 
 この例のクエリ結果から、次のことがわかります。現在のノードには2つの進行中のトランザクションがあります。 1つのトランザクションがアイドル状態（ `STATE`は`Idle`は`NULL` ）であり、このトランザクションは3 `CURRENT_SQL_DIGEST`のステートメントを実行しました（ `ALL_SQL_DIGESTS`つのリストには実行された3つのSQLステートメントのダイジェストである3つのレコードがあります）。別のトランザクションは、ステートメントを実行してロックを待機しています（ `STATE`は`LockWaiting`で、 `WAITING_START_TIME`は待機中のロックの開始時刻を示しています）。トランザクションは2つのステートメントを実行し、現在実行されているステートメントは``"update `t` set `v` = `v` + ? where `id` = ?"``の形式です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select id, all_sql_digests, tidb_decode_sql_digests(all_sql_digests) as all_sqls from information_schema.tidb_trx\G
@@ -123,7 +123,7 @@ all_sql_digests: ["e6f07d43b5c21db0fbb9a31feac2dc599787763393dd5acbfad80e247eb02
 
 `TIDB_TRX`の表は、単一のTiDBノードで実行されているトランザクションに関する情報のみを提供します。クラスタ全体のすべてのTiDBノードで実行されているトランザクションの情報を表示する場合は、 `CLUSTER_TIDB_TRX`テーブルをクエリする必要があります。 `TIDB_TRX`テーブルのクエリ結果と比較すると、 `CLUSTER_TIDB_TRX`テーブルのクエリ結果には追加の`INSTANCE`フィールドが含まれています。 `INSTANCE`フィールドには、クラスター内の各ノードのIPアドレスとポートが表示されます。これは、トランザクションが配置されているTiDBノードを区別するために使用されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;

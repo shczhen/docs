@@ -83,7 +83,7 @@ curl http://{TiDBIP}:10080/db-table/{tableID}
 
 `indexID`とテーブル名を使用して、関連するインデックスの名前を見つけることができます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM INFORMATION_SCHEMA.TIDB_INDEXES WHERE TABLE_SCHEMA='{db_name}' AND TABLE_NAME='{table_name}' AND INDEX_ID={indexID};

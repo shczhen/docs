@@ -8,7 +8,7 @@ aliases: ['/docs/dev/system-tables/system-table-cluster-hardware/','/docs/dev/re
 
 `CLUSTER_HARDWARE`ハードウェアシステムテーブルは、クラスターの各インスタンスが配置されているサーバーのハードウェア情報を提供します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -44,7 +44,7 @@ DESC cluster_hardware;
 
 次の例は、 `CLUSTER_HARDWARE`テーブルを使用してCPU情報を照会する方法を示しています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM cluster_hardware WHERE device_type='cpu' AND device_name='cpu' AND name LIKE '%cores';

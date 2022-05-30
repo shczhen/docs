@@ -40,7 +40,7 @@ MySQLインスタンス1とMySQLインスタンス2の両方に、次のスキ�
 
 この例では、 `sale_01`と`sale_02`は次のように同じテーブル構造を持っています
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE `sale_01` (
@@ -55,7 +55,7 @@ CREATE TABLE `sale_01` (
 
 `id`列が主キーで、 `sid`列がシャーディングキーです。 `id`列は自動増分であり、複数のシャーディングされたテーブル範囲が重複すると、データの競合が発生します。 `sid`は、インデックスがグローバルに一意であることを保証できるため、 [自動インクリメント主キーの主キー属性を削除します](/dm/shard-merge-best-practices.md#remove-the-primary-key-attribute-from-the-column)の手順に従って、 `id`列をバイパスできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE `sale` (
@@ -72,7 +72,7 @@ CREATE TABLE `sale` (
 
 DMへのアップストリームデータソースを構成する`source1.yaml`という名前の新しいデータソースファイルを作成し、次のコンテンツを追加します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```yaml
 # Configuration.
@@ -90,7 +90,7 @@ from:
 
 ターミナルで次のコマンドを実行します。 `tiup dmctl`を使用して、データソース構成をDMクラスターにロードします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dmctl --master-addr ${advertise-addr} operate-source create source1.yaml
@@ -109,7 +109,7 @@ tiup dmctl --master-addr ${advertise-addr} operate-source create source1.yaml
 
 `task1.yaml`という名前のタスク構成ファイルを作成し、それに次のコンテンツを書き込みます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```yaml
 name: "shard_merge"               # The name of the task. Should be globally unique.
@@ -182,7 +182,7 @@ block-allow-list:           # filter or only migrate all operations of some data
 
 移行タスクを開始する前に、 `tiup dmctl`の`check-task`サブコマンドを実行して、考えられるエラーを回避するために、構成がDMの要件を満たしているかどうかを確認してください。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dmctl --master-addr ${advertise-addr} check-task task.yaml
@@ -190,7 +190,7 @@ tiup dmctl --master-addr ${advertise-addr} check-task task.yaml
 
 次のコマンドを`tiup dmctl`で実行して、移行タスクを開始します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dmctl --master-addr ${advertise-addr} start-task task.yaml
@@ -207,7 +207,7 @@ tiup dmctl --master-addr ${advertise-addr} start-task task.yaml
 
 移行タスクを開始した後、 `dmtcl tiup`を使用して`query-status`を実行し、タスクのステータスを表示できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dmctl --master-addr ${advertise-addr} query-status ${task-name}

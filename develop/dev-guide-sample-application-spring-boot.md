@@ -41,7 +41,7 @@ summary: Learn an example of how to build a TiDB application using Spring Boot.
 
 -   マックOS：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     brew install maven
@@ -49,7 +49,7 @@ summary: Learn an example of how to build a TiDB application using Spring Boot.
 
 -   DebianベースのLinuxディストリビューション（Ubuntuなど）：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     apt-get install maven
@@ -59,7 +59,7 @@ summary: Learn an example of how to build a TiDB application using Spring Boot.
 
     -   dnf：
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         dnf install maven
@@ -67,7 +67,7 @@ summary: Learn an example of how to build a TiDB application using Spring Boot.
 
     -   yum：
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         yum install maven
@@ -198,7 +198,7 @@ spring:
 
 パスワードを`123456`に設定すると、TiDBCloudで取得する接続文字列は次のようになります。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 mysql --connect-timeout 15 -u root -h tidb.e049234d.d40d1f8b.us-east-1.prod.aws.tidbcloud.com -P 4000 -p
@@ -226,7 +226,7 @@ spring:
 
 ターミナルセッションを開き、 `spring-jpa-hibernate`ディレクトリにいることを確認します。まだこのディレクトリにいない場合は、次のコマンドを使用してディレクトリに移動します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 cd <path>/tidb-example-java/spring-jpa-hibernate
@@ -234,7 +234,7 @@ cd <path>/tidb-example-java/spring-jpa-hibernate
 
 #### Makeでビルドして実行する（推奨） {#build-and-run-with-make-recommended}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 make
@@ -246,7 +246,7 @@ make
 
 1.  キャッシュとパッケージをクリアします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     mvn clean package
@@ -254,7 +254,7 @@ make
 
 2.  JARファイルを使用してアプリケーションを実行します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     java -jar target/spring-jpa-hibernate-0.0.1.jar
@@ -362,7 +362,7 @@ curlを使用して直接リクエストを行うこともできます。
 
 プレーヤーを作成するには、 <strong>POST</strong>リクエストを`/player`エンドポイントに送信できます。例えば：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl --location --request POST 'http://localhost:8080/player/' --header 'Content-Type: application/json' --data-raw '[{"coins":100,"goods":20}]'
@@ -378,7 +378,7 @@ curl --location --request POST 'http://localhost:8080/player/' --header 'Content
 
 プレーヤー情報を取得するために、 <strong>GET</strong>リクエストを`/player`エンドポイントに送信できます。次のように、pathパラメーターでプレーヤーの`id`を指定する必要があります`/player/{id}` 。次の例は、91のプレーヤーの情報を取得する方法を示してい`id` 。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl --location --request GET 'http://localhost:8080/player/1'
@@ -398,7 +398,7 @@ curl --location --request GET 'http://localhost:8080/player/1'
 
 プレーヤー情報をまとめて取得するには、 <strong>GET</strong>リクエストを`/player/limit`エンドポイントに送信します。次のように、pathパラメーターでプレーヤーの総数を指定する必要があります`/player/limit/{limit}` 。次の例は、最大3人のプレーヤーの情報を取得する方法を示しています。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl --location --request GET 'http://localhost:8080/player/limit/3'
@@ -430,7 +430,7 @@ curl --location --request GET 'http://localhost:8080/player/limit/3'
 
 ページ付けされたプレーヤー情報を取得するには、 `/player/page`エンドポイントに<strong>GET</strong>リクエストを送信できます。追加のパラメーターを指定するには、URLパラメーターを使用する必要があります。次の例は、 `index`が0で、各ページに最大`size`人のプレーヤーがいるページから情報を取得する方法を示しています。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl --location --request GET 'http://localhost:8080/player/page?index=0&size=2'
@@ -484,7 +484,7 @@ curl --location --request GET 'http://localhost:8080/player/page?index=0&size=2'
 
 プレーヤーの数を取得するには、 `/player/count`のエンドポイントに<strong>GET</strong>リクエストを送信できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl --location --request GET 'http://localhost:8080/player/count'
@@ -500,7 +500,7 @@ curl --location --request GET 'http://localhost:8080/player/count'
 
 プレーヤー間のトランザクションを開始するには、 `/player/trade`エンドポイントに<strong>PUT</strong>リクエストを送信できます。例えば：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl --location --request PUT 'http://localhost:8080/player/trade' \

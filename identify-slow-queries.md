@@ -139,7 +139,7 @@ TiKVコプロセッサータスクフィールド：
 
 パフォーマンステストを実施している場合は、オペレーターの実行情報を自動的に収集する機能を無効にすることができます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 set @@tidb_enable_collect_execution_info=0;
@@ -161,7 +161,7 @@ TiDB 4.0の場合、 `SLOW_QUERY`は、ローテーションされた低速ロ�
 
 -   時間範囲を指定しない場合、TiDBは、TiDBが低速ログファイルに書き込んでいる低速クエリデータのみを解析します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     select count(*),
@@ -180,7 +180,7 @@ TiDB 4.0の場合、 `SLOW_QUERY`は、ローテーションされた低速ロ�
 
 -   たとえば`2020-03-10 00:00:00`の時間範囲を指定すると、 `2020-03-11 00:00:00`は最初に指定された時間範囲の低速ログファイルを検索し、次に低速クエリ情報を解析します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     select count(*),
@@ -213,7 +213,7 @@ TiDB 4.0は、すべてのTiDBノードの低速クエリ情報をクエリす�
 
 ユーザーの上位2つの遅いクエリをクエリします。 `Is_internal=false`は、TiDB内の遅いクエリを除外し、ユーザーの遅いクエリのみをクエリすることを意味します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select query_time, query
@@ -238,7 +238,7 @@ limit 2;
 
 次の例では、 `test`人のユーザーによって実行された低速クエリが照会され、最初の2つの結果が実行時間の逆の順序で表示されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select query_time, query, user
@@ -265,7 +265,7 @@ Top-N SQLステートメントをクエリした後、同じフィンガープ�
 
 1.  Top-Nの低速クエリと対応するSQLフィンガープリントを取得します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     select query_time, query, digest
@@ -287,7 +287,7 @@ Top-N SQLステートメントをクエリした後、同じフィンガープ�
 
 2.  フィンガープリントを使用して、同様の低速クエリをクエリします。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     select query, query_time
@@ -308,7 +308,7 @@ Top-N SQLステートメントをクエリした後、同じフィンガープ�
 
 ## 疑似<code>stats</code>を使用して低速クエリをクエリする {#query-slow-queries-with-pseudo-code-stats-code}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select query, query_time, stats
@@ -335,7 +335,7 @@ where is_internal = false
 
 同じカテゴリのSQLステートメントの実行プランが変更されると、統計が古くなっているか、統計が実際のデータ分布を反映するのに十分正確でないため、実行が遅くなります。次のSQLステートメントを使用して、さまざまな実行プランでSQLステートメントをクエリできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select count(distinct plan_digest) as count,
@@ -366,7 +366,7 @@ min(query) | SELECT DISTINCT c FROM sbtest11 WHERE id BETWEEN ? AND ? ORDER BY c
 
 次に、上記のクエリ結果のSQLフィンガープリントを使用してさまざまなプランをクエリできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select min(plan),
@@ -395,7 +395,7 @@ plan_digest: 6afbbd21f60ca6c6fdf3d3cd94f7c7a49dd93c00fcf8774646da492e50e204ee
 
 ### クラスター内の各TiDBノードの低速クエリの数をクエリする {#query-the-number-of-slow-queries-for-each-tidb-node-in-a-cluster}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select instance, count(*) from information_schema.cluster_slow_query where time >= "2020-03-06 00:00:00" and time < now() group by instance;
@@ -416,7 +416,7 @@ select instance, count(*) from information_schema.cluster_slow_query where time 
 
 QPSの低下や`2020-03-10 13:24:00`から`2020-03-10 13:27:00`までの期間の遅延の増加などの問題が見つかった場合は、大きなクエリが発生することが原因である可能性があります。次のSQLステートメントを実行して、異常な期間にのみ発生する低速ログをクエリします。 `2020-03-10 13:20:00`の時間範囲は、通常の期間を指し`2020-03-10 13:23:00` 。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM
@@ -469,7 +469,7 @@ digest             | 24bd6d8a9b238086c9b8c3d240ad4ef32f79ce94cf5a468c0b8fe1eb5f8
 
 TiDBは、セッション変数`tidb_slow_query_file`を使用して、 `INFORMATION_SCHEMA.SLOW_QUERY`を照会するときに読み取られて解析されるファイルを制御します。セッション変数の値を変更することにより、他の低速クエリログファイルのコンテンツをクエリできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 set tidb_slow_query_file = "/path-to-log/tidb-slow.log"
@@ -485,7 +485,7 @@ set tidb_slow_query_file = "/path-to-log/tidb-slow.log"
 
 例えば：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 pt-query-digest --report tidb-slow.log
@@ -527,7 +527,7 @@ pt-query-digest --report tidb-slow.log
 
 TiDBログファイルに加えて、 `admin show slow`コマンドを実行することで遅いクエリを特定できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 admin show slow recent N
@@ -536,7 +536,7 @@ admin show slow top [internal | all] N
 
 `recent N`は、最近のN個の低速クエリレコードを示します。次に例を示します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 admin show slow recent 10
@@ -544,7 +544,7 @@ admin show slow recent 10
 
 `top N`は、最近（数日以内）最も遅いN個のクエリレコードを示します。 `internal`オプションが指定されている場合、返される結果はシステムによって実行される内部SQLになります。 `all`オプションが指定されている場合、返される結果は、ユーザーのSQLと内部SQLの組み合わせになります。それ以外の場合、このコマンドはユーザーのSQLから遅いクエリレコードのみを返します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 admin show slow top 3

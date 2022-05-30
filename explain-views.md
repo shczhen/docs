@@ -9,7 +9,7 @@ summary: Learn about the execution plan information returned by the `EXPLAIN` st
 
 [バイクシェアのサンプルデータベース](/import-example-data.md)から、次の2つのクエリが同様の方法で実行されていることがわかります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE trips ADD INDEX (duration);
@@ -44,7 +44,7 @@ Query OK, 0 rows affected (0.13 sec)
 
 同様に、ビューの述語はベーステーブルにプッシュダウンされます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT * FROM long_trips WHERE bike_number = 'W00950';
@@ -76,7 +76,7 @@ EXPLAIN SELECT * FROM trips WHERE bike_number = 'W00950';
 
 TiDBは、ビュー定義とステートメント自体の両方を満たすインデックスを利用します。次の複合インデックスについて考えてみます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE trips ADD INDEX (bike_number, duration);

@@ -15,7 +15,7 @@ summary: Introduces the best practices for tuning TiDB performance.
 
 テーブルの複数の行を変更する必要がある場合は、複数行のステートメントを使用することをお勧めします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO t VALUES (1, 'a'), (2, 'b'), (3, 'c');
@@ -25,7 +25,7 @@ DELETE FROM t WHERE id IN (1, 2, 3);
 
 複数の単一行ステートメントを使用することはお勧めしません。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO t VALUES (1, 'a');
@@ -92,7 +92,7 @@ public void batchInsert(Connection connection) throws SQLException {
 
 すべての列のデータが必要ない場合は、 `SELECT *`を使用してすべての列のデータを返さないでください。次のクエリは非効率的です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM books WHERE title = 'Marian Yost';
@@ -100,7 +100,7 @@ SELECT * FROM books WHERE title = 'Marian Yost';
 
 必要な列のみを照会する必要があります。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT title, price FROM books WHERE title = 'Marian Yost';
@@ -118,7 +118,7 @@ SELECT title, price FROM books WHERE title = 'Marian Yost';
 
 テーブルからすべてのデータを削除する必要がある場合は、次の`TRUNCATE`ステートメントを使用することをお勧めします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 TRUNCATE TABLE t;
@@ -126,7 +126,7 @@ TRUNCATE TABLE t;
 
 完全なテーブルデータに`DELETE`を使用することはお勧めしません。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DELETE FROM t;
@@ -153,7 +153,7 @@ TiDBはオンライン`ADD INDEX`操作をサポートし、テーブル内の�
 
 オンラインアプリケーションへの影響を減らすために、デフォルトの速度`ADD INDEX`は遅いです。 `ADD INDEX`のターゲット列に読み取り負荷のみが含まれる場合、またはオンラインワークロードに直接関連しない場合は、上記の変数の値を適切に増やして、 `ADD INDEX`の操作を高速化できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET @@global.tidb_ddl_reorg_worker_cnt = 16;
@@ -162,7 +162,7 @@ SET @@global.tidb_ddl_reorg_batch_size = 4096;
 
 `ADD INDEX`のターゲット列が頻繁に更新される場合（ `UPDATE` 、および`INSERT`を含む）、上記の変数を増やすと、書き込みの競合が増え、オンラインワークロードに影響を与え`DELETE` 。したがって、 `ADD INDEX`は再試行が繰り返されるため、完了するまでに長い時間がかかる場合があります。この場合、オンラインアプリケーションとの書き込みの競合を回避するために、上記の変数の値を減らすことをお勧めします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET @@global.tidb_ddl_reorg_worker_cnt = 4;

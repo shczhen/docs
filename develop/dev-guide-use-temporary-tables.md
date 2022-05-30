@@ -11,7 +11,7 @@ summary: Learn how to create, view, query, and delete temporary tables.
 
 たとえば、次のステートメントを使用して、 `authors`のテーブルから上位50人の最年長の著者を取得できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT a.id, a.name, (IFNULL(a.death_year, YEAR(NOW())) - a.birth_year) AS age
@@ -61,7 +61,7 @@ TiDBの一時テーブルは、ローカル一時テーブルとグローバル�
 
 `CREATE TEMPORARY TABLE <table_name>`ステートメントを使用して一時テーブルを作成できます。デフォルトのタイプはローカル一時テーブルで、現在のセッションにのみ表示されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TEMPORARY TABLE top_50_eldest_authors (
@@ -74,7 +74,7 @@ CREATE TEMPORARY TABLE top_50_eldest_authors (
 
 一時テーブルを作成したら、 `INSERT INTO table_name SELECT ...`ステートメントを使用して、上記のクエリの結果を作成した一時テーブルに挿入できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO top_50_eldest_authors
@@ -94,7 +94,7 @@ Records: 50  Duplicates: 0  Warnings: 0
 </div>
 <div label="Java" href="local-java">
 
-{{&lt;コピー可能な&quot;java&quot;&gt;}}
+{{< copyable "" >}}
 
 ```java
 public List<Author> getTop50EldestAuthorInfo() throws SQLException {
@@ -143,7 +143,7 @@ public List<Author> getTop50EldestAuthorInfo() throws SQLException {
 
 グローバル一時テーブルを作成するには、 `GLOBAL`キーワードを追加し、 `ON COMMIT DELETE ROWS`で終了します。これは、現在のトランザクションが終了した後にテーブルが削除されることを意味します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE GLOBAL TEMPORARY TABLE IF NOT EXISTS top_50_eldest_authors_global (
@@ -161,7 +161,7 @@ CREATE GLOBAL TEMPORARY TABLE IF NOT EXISTS top_50_eldest_authors_global (
 
 グローバル一時テーブルを使用する場合は、最初に自動コミットモードをオフにする必要があります。 Javaでは、これは`conn.setAutoCommit(false);`ステートメントで実行でき、トランザクションは`conn.commit();`で明示的にコミットできます。トランザクション中にグローバル一時テーブルに追加されたデータは、トランザクションがコミットまたはキャンセルされた後にクリアされます。
 
-{{&lt;コピー可能な&quot;java&quot;&gt;}}
+{{< copyable "" >}}
 
 ```java
 public List<Author> getTop50EldestAuthorInfo() throws SQLException {
@@ -231,7 +231,7 @@ public List<Author> getTop50EldestAuthorInfo() throws SQLException {
 
 一時テーブルの準備ができたら、通常のデータテーブルとしてクエリを実行できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM top_50_eldest_authors;
@@ -239,7 +239,7 @@ SELECT * FROM top_50_eldest_authors;
 
 [マルチテーブル結合クエリ](/develop/dev-guide-join-tables.md)を介して、一時テーブルからクエリにデータを参照できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT ANY_VALUE(ta.id) AS author_id, ANY_VALUE(ta.age), ANY_VALUE(ta.name), COUNT(*) AS books
@@ -256,7 +256,7 @@ GROUP BY ta.id;
 
 ローカル一時テーブルを手動で削除するには、 `DROP TABLE`または`DROP TEMPORARY TABLE`構文を使用します。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DROP TEMPORARY TABLE top_50_eldest_authors;
@@ -264,7 +264,7 @@ DROP TEMPORARY TABLE top_50_eldest_authors;
 
 グローバル一時テーブルを手動で削除するには、 `DROP TABLE`または`DROP GLOBAL TEMPORARY TABLE`構文を使用します。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DROP GLOBAL TEMPORARY TABLE top_50_eldest_authors_global;

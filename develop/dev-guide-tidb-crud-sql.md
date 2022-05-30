@@ -43,7 +43,7 @@ SQLは、その機能に応じて次の4つのタイプに分類されます。
 
 テーブルにデータを挿入するには、次の`INSERT`ステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO person VALUES(1,'tom','20170912');
@@ -51,7 +51,7 @@ INSERT INTO person VALUES(1,'tom','20170912');
 
 一部のフィールドのデータを含むレコードをテーブルに挿入するには、次の`INSERT`ステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO person(id,name) VALUES('2','bob');
@@ -59,7 +59,7 @@ INSERT INTO person(id,name) VALUES('2','bob');
 
 テーブル内のレコードの一部のフィールドを更新するには、 `UPDATE`ステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 UPDATE person SET birthday='20180808' WHERE id=2;
@@ -67,7 +67,7 @@ UPDATE person SET birthday='20180808' WHERE id=2;
 
 テーブル内のデータを削除するには、次の`DELETE`ステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DELETE FROM person WHERE id=2;
@@ -83,7 +83,7 @@ DQLは、1つまたは複数のテーブルから目的のデータ行を取得�
 
 テーブル内のデータを表示するには、 `SELECT`ステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM person;
@@ -91,7 +91,7 @@ SELECT * FROM person;
 
 特定の列を照会するには、 `SELECT`キーワードの後に列名を追加します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT name FROM person;
@@ -110,7 +110,7 @@ SELECT name FROM person;
 
 `WHERE`句を使用して、条件に一致するすべてのレコードをフィルタリングし、結果を返します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM person WHERE id < 5;

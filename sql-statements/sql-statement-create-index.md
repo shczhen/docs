@@ -108,7 +108,7 @@ Query OK, 0 rows affected (0.31 sec)
 
 たとえば、 `lower(col1)`に基づいてインデックスを作成する場合は、次のSQLステートメントを実行します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE INDEX idx1 ON t1 ((lower(col1)));
@@ -116,7 +116,7 @@ CREATE INDEX idx1 ON t1 ((lower(col1)));
 
 または、次の同等のステートメントを実行できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE t1 ADD INDEX idx1((lower(col1)));
@@ -124,7 +124,7 @@ ALTER TABLE t1 ADD INDEX idx1((lower(col1)));
 
 テーブルを作成するときに、式インデックスを指定することもできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1(col1 char(10), col2 char(10), index((lower(col1))));
@@ -136,7 +136,7 @@ CREATE TABLE t1(col1 char(10), col2 char(10), index((lower(col1))));
 
 通常のインデックスを削除するのと同じ方法で、式インデックスを削除できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DROP INDEX idx1 ON t1;
@@ -146,7 +146,7 @@ DROP INDEX idx1 ON t1;
 >
 > 式インデックスには、さまざまな種類の式が含まれます。正確性を確保するために、完全にテストされた一部の関数のみが式インデックスの作成を許可されています。これは、これらの関数のみが実稼働環境の式で許可されることを意味します。これらの関数は、 `tidb_allow_function_for_expression_index`の変数をクエリすることで取得できます。将来のバージョンでは、さらに多くの機能がリストに追加される可能性があります。
 >
-> {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+> {{< copyable "" >}}
 >
 > ```sql
 > mysql> select @@tidb_allow_function_for_expression_index;
@@ -160,7 +160,7 @@ DROP INDEX idx1 ON t1;
 >
 > 上記の戻り結果に含まれていない関数の場合、これらの関数は十分にテストされておらず、実験的なものと見なすことができる実稼働環境には推奨されません。演算子、 `cast`などの他の式も実験的なものと見`case when` 、本番環境には推奨されません。ただし、それでもこれらの式を使用する場合は、 [TiDB構成ファイル](/tidb-configuration-file.md#allow-expression-index-new-in-v400)で次の構成を行うことができます。
 >
-> {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+> {{< copyable "" >}}
 >
 > ```sql
 > allow-expression-index = true
@@ -190,7 +190,7 @@ DROP INDEX idx1 ON t1;
 
 クエリステートメントの結果が同じ式である場合、式インデックスが適用されます。例として、次のステートメントを取り上げます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT lower(col1) FROM t;
@@ -198,7 +198,7 @@ SELECT lower(col1) FROM t;
 
 同じ式がフィルタリング条件に含まれている場合、式インデックスが適用されます。例として、次のステートメントを取り上げます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM t WHERE lower(col1) = "a";
@@ -211,7 +211,7 @@ SELECT * FROM t WHERE lower(col1) > "b" OR lower(col1) < "a";
 
 クエリが同じ式でソートされている場合、式インデックスが適用されます。例として、次のステートメントを取り上げます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM t ORDER BY lower(col1);
@@ -219,7 +219,7 @@ SELECT * FROM t ORDER BY lower(col1);
 
 同じ式がaggregate（ `GROUP BY` ）関数に含まれている場合、式インデックスが適用されます。例として、次のステートメントを取り上げます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT max(lower(col1)) FROM t；

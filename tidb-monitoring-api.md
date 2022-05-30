@@ -37,7 +37,7 @@ curl http://127.0.0.1:10080/status
 
 次の例では、 `http://${host}:${port}/schema_storage/${db}/${table}`を使用して特定のデータテーブルのストレージ情報を取得します。結果は<strong>JSON</strong>形式で返されます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 curl http://127.0.0.1:10080/schema_storage/mysql/stats_histograms

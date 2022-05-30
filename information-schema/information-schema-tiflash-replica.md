@@ -7,7 +7,7 @@ summary: Learn the `TIFLASH_REPLICA` information_schema table.
 
 `TIFLASH_REPLICA`の表は、使用可能なTiFlashレプリカに関する情報を提供します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;

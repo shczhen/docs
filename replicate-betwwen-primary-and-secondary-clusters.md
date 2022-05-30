@@ -26,7 +26,7 @@ aliases: ['/docs/dev/incremental-replication-between-clusters/']
 
     -   ノードB：172.16.6.124、ダウンストリームTiDBクラスターをデプロイするため
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     # Create an upstream cluster on Node A
@@ -41,7 +41,7 @@ aliases: ['/docs/dev/incremental-replication-between-clusters/']
 
     デフォルトでは、テストデータベースは新しくデプロイされたクラスターに作成されます。したがって、 [sysbench](https://github.com/akopytov/sysbench#linux)を使用してテストデータを生成し、実際のシナリオでデータをシミュレートできます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     sysbench oltp_write_only --config-file=./tidb-config --tables=10 --table-size=10000 prepare
@@ -49,7 +49,7 @@ aliases: ['/docs/dev/incremental-replication-between-clusters/']
 
     このドキュメントでは、sysbenchを使用して`oltp_write_only`のスクリプトを実行します。このスクリプトは、アップストリームデータベースにそれぞれ10,000行の10個のテーブルを生成します。 tidb-configは次のとおりです。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     mysql-host=172.16.6.122 # Replace it with the IP address of your upstream cluster
@@ -68,7 +68,7 @@ aliases: ['/docs/dev/incremental-replication-between-clusters/']
 
     実際のシナリオでは、サービスデータは継続的にアップストリームクラスターに書き込まれます。このドキュメントでは、sysbenchを使用してこのワークロードをシミュレートします。具体的には、次のコマンドを実行して、10人のワーカーがsbtest1、sbtest2、およびsbtest3の3つのテーブルに、合計TPSが100を超えないようにデータを継続的に書き込むことができるようにします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     sysbench oltp_write_only --config-file=./tidb-config --tables=3 run
@@ -78,7 +78,7 @@ aliases: ['/docs/dev/incremental-replication-between-clusters/']
 
     フルデータバックアップでは、アップストリームクラスターとダウンストリームクラスターの両方がバックアップファイルにアクセスする必要があります。バックアップファイルの保存には[外部記憶装置](/br/backup-and-restore-storages.md#external-storages)を使用することをお勧めします。この例では、Minioを使用してS3互換のストレージサービスをシミュレートしています。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     wget https://dl.min.io/server/minio/release/linux-amd64/minio
@@ -103,7 +103,7 @@ aliases: ['/docs/dev/incremental-replication-between-clusters/']
 
     リンクは次のとおりです。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     s3://backup?access-key=minio&secret-access-key=miniostorage&endpoint=http://${HOST_IP}:6060&force-path-style=true
@@ -121,7 +121,7 @@ aliases: ['/docs/dev/incremental-replication-between-clusters/']
 
     増分移行中に新しく書き込まれたデータが削除されないようにするには、バックアップの前にアップストリームクラスターのGCを無効にする必要があります。このように、履歴データは削除されません。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     MySQL [test]> SET GLOBAL tidb_gc_enable=FALSE;
@@ -143,7 +143,7 @@ aliases: ['/docs/dev/incremental-replication-between-clusters/']
 
     アップストリームクラスターで`BACKUP`ステートメントを実行して、データをバックアップします。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     MySQL [(none)]> BACKUP DATABASE * TO 's3://backup?access-key=minio&secret-access-key=miniostorage&endpoint=http://${HOST_IP}:6060&force-path-style=true' RATE_LIMIT = 120 MB/SECOND;
@@ -161,7 +161,7 @@ aliases: ['/docs/dev/incremental-replication-between-clusters/']
 
     ダウンストリームクラスターで`RESTORE`コマンドを実行して、データを復元します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     mysql> RESTORE DATABASE * FROM 's3://backup?access-key=minio&secret-access-key=miniostorage&endpoint=http://${HOST_IP}:6060&force-path-style=true';
@@ -177,7 +177,7 @@ aliases: ['/docs/dev/incremental-replication-between-clusters/']
 
     [sync-diff-inspector](/sync-diff-inspector/sync-diff-inspector-overview.md)を使用して、特定の時間におけるアップストリームとダウンストリーム間のデータの整合性を確認します。前の`BACKUP`の出力は、アップストリームクラスターが431434047157698561でバックアップを終了することを示しています。前の`RESTORE`の出力は、ダウンストリームが431434141450371074で復元を終了することを示しています。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     sync_diff_inspector -C ./config.yaml
@@ -185,7 +185,7 @@ aliases: ['/docs/dev/incremental-replication-between-clusters/']
 
     sync-diff-inspectorの構成方法の詳細については、 [構成ファイルの説明](/sync-diff-inspector/sync-diff-inspector-overview.md#configuration-file-description)を参照してください。このドキュメントでは、構成は次のとおりです。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     # Diff Configuration.
@@ -227,7 +227,7 @@ aliases: ['/docs/dev/incremental-replication-between-clusters/']
 
     チェンジフィード構成ファイルを作成します`changefeed.toml` 。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     [consistent]
@@ -239,7 +239,7 @@ aliases: ['/docs/dev/incremental-replication-between-clusters/']
 
     アップストリームクラスターで、次のコマンドを実行して、アップストリームクラスターからダウンストリームクラスターへのチェンジフィードを作成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cdc cli changefeed create --pd=http://172.16.6.122:2379 --sink-uri="mysql://root:@172.16.6.125:4000" --changefeed-id="primary-to-secondary" --start-ts="431434047157698561"
@@ -257,7 +257,7 @@ aliases: ['/docs/dev/incremental-replication-between-clusters/']
 
     TiCDCを使用した増分移行では、GCは複製された履歴データのみを削除します。したがって、チェンジフィードを作成した後、次のコマンドを実行してGCを有効にする必要があります。詳細については、 [TiCDCガベージコレクション（GC）セーフポイントの完全な動作は何ですか？](/ticdc/troubleshoot-ticdc.md#what-is-the-complete-behavior-of-ticdc-garbage-collection-gc-safepoint)を参照してください。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     MySQL [test]> SET GLOBAL tidb_gc_enable=TRUE;
@@ -279,7 +279,7 @@ aliases: ['/docs/dev/incremental-replication-between-clusters/']
 
 通常、TiCDCはトランザクションをダウンストリームに同時に書き込み、全体を増やします。チェンジフィードが予期せず中断された場合、ダウンストリームはアップストリームにあるため、最新のデータを持っていない可能性があります。不整合に対処するには、次のコマンドを実行して、ダウンストリームデータがアップストリームデータと整合していることを確認します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup cdc redo apply --storage "s3://redo?access-key=minio&secret-access-key=miniostorage&endpoint=http://172.16.6.123:6060&force-path-style=true" --tmp-dir /tmp/redo --sink-uri "mysql://root:@172.16.6.124:4000"
@@ -295,7 +295,7 @@ tiup cdc redo apply --storage "s3://redo?access-key=minio&secret-access-key=mini
 
 1.  新しいプライマリクラスターとして、ノードAに新しいTiDBクラスターを展開します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup --tag upstream playground v5.4.0 --host 0.0.0.0 --db 1 --pd 1 --kv 1 --tiflash 0 --ticdc 1
@@ -303,7 +303,7 @@ tiup cdc redo apply --storage "s3://redo?access-key=minio&secret-access-key=mini
 
 2.  BRを使用して、セカンダリクラスターからプライマリクラスターにデータを完全にバックアップおよび復元します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     # Back up full data of the secondary cluster
@@ -314,7 +314,7 @@ tiup cdc redo apply --storage "s3://redo?access-key=minio&secret-access-key=mini
 
 3.  新しいチェンジフィードを作成して、プライマリクラスターからセカンダリクラスターにデータをバックアップします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     # Create a changefeed

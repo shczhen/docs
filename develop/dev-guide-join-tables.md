@@ -24,7 +24,7 @@ summary: This document describes how to use multi-table join queries.
 
 次のSQLステートメントで、キーワード`JOIN`を使用して、左側のテーブル`authors`と右側のテーブル`book_authors`の行を、結合条件`a.id = ba.author_id`との内部結合として結合することを宣言します。結果セットには、結合条件を満たす行のみが含まれます。著者が本を書いたことがない場合、 `authors`テーブルの彼のレコードは結合条件を満たさないため、結果セットに表示されません。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT ANY_VALUE(a.id) AS author_id, ANY_VALUE(a.name) AS author_name, COUNT(ba.book_id) AS books
@@ -58,7 +58,7 @@ LIMIT 10;
 </div>
 <div label="Java" href="inner-join-java">
 
-{{&lt;コピー可能な&quot;java&quot;&gt;}}
+{{< copyable "" >}}
 
 ```java
 public List<Author> getTop10AuthorsOrderByBooks() throws SQLException {
@@ -103,7 +103,7 @@ public List<Author> getTop10AuthorsOrderByBooks() throws SQLException {
 
 次のSQLステートメントで、 `LEFT JOIN`キーワードを使用して、左側のテーブル`books`が左側の外部結合で右側のテーブル`ratings`に結合されることを宣言します。これにより、 `books`のテーブルのすべての行が返されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT b.id AS book_id, ANY_VALUE(b.title) AS book_title, AVG(r.score) AS average_score
@@ -136,7 +136,7 @@ LIMIT 10;
 
 最新の出版された本はすでに多くの評価を持っているようです。上記の方法を確認するために、SQLステートメントを使用して本<em>The Documentaryoflionの</em>すべての評価を削除しましょう。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DELETE FROM ratings WHERE book_id = 3438991610;
@@ -167,7 +167,7 @@ DELETE FROM ratings WHERE book_id = 3438991610;
 </div>
 <div label="Java" href="left-join-java">
 
-{{&lt;コピー可能な&quot;java&quot;&gt;}}
+{{< copyable "" >}}
 
 ```java
 public List<Book> getLatestBooksWithAverageScore() throws SQLException {
@@ -235,7 +235,7 @@ TiDBのオプティマイザが最適な結合アルゴリズムに従って実�
 
 たとえば、上記の左結合クエリの例が、オプティマイザによって選択されていないハッシュ結合アルゴリズムを使用してより高速に実行されると仮定すると、 `SELECT`キーワードの後にヒント`/*+ HASH_JOIN(b, r) */`を追加できます。テーブルにエイリアスがある場合は、ヒントでエイリアスを使用することに注意してください。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT /*+ HASH_JOIN(b, r) */ b.id AS book_id, ANY_VALUE(b.title) AS book_title, AVG(r.score) AS average_score
@@ -259,7 +259,7 @@ LIMIT 10;
 
 オプティマイザによって選択された結合順序が期待どおりに最適でない場合は、 `STRAIGHT_JOIN`を使用して、 `FROM`句で使用されているテーブルの順序でクエリを結合するようにTiDBを強制できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT *

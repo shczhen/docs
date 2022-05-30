@@ -12,7 +12,7 @@ aliases: ['/docs/dev/keywords-and-reserved-words/','/docs/dev/reference/sql/lang
 
 予約されたキーワードを識別子として使用するには、それらをバッククォート`` ` ``で囲む必要があります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE select (a INT);
@@ -22,7 +22,7 @@ CREATE TABLE select (a INT);
 ERROR 1105 (HY000): line 0 column 19 near " (a INT)" (total length 27)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE `select` (a INT);
@@ -34,7 +34,7 @@ Query OK, 0 rows affected (0.09 sec)
 
 予約されていないキーワードには、 `BEGIN`や`END`などのバッククォートは必要ありません。これらは、次のステートメントで識別子として正常に使用できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE `select` (BEGIN int, END int);
@@ -46,7 +46,7 @@ Query OK, 0 rows affected (0.09 sec)
 
 特別な場合、予約されたキーワードが`.`の区切り文字とともに使用される場合、バッククォートは必要ありません。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE test.select (BEGIN int, END int);

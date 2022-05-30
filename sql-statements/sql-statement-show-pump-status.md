@@ -10,7 +10,7 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-pump-status/']
 
 ## 例 {#examples}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW PUMP STATUS;

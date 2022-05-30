@@ -7,7 +7,7 @@ summary: Learn the `TABLES` information_schema table.
 
 `TABLES`テーブルは、データベース内のテーブルに関する情報を提供します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -45,7 +45,7 @@ DESC tables;
 23 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM tables WHERE table_schema='mysql' AND table_name='user'\G

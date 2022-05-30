@@ -83,13 +83,13 @@ tidb_retry_limit = 10
 
 1.  セッションレベル：
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SET tidb_disable_txn_auto_retry = OFF;
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SET tidb_retry_limit = 10;
@@ -97,13 +97,13 @@ tidb_retry_limit = 10
 
 2.  グローバルレベル：
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SET GLOBAL tidb_disable_txn_auto_retry = OFF;
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SET GLOBAL tidb_retry_limit = 10;

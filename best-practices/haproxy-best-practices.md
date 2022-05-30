@@ -65,7 +65,7 @@ HAProxyをデプロイする前に、ハードウェアとソフトウェアの�
 
 上記の依存関係をインストールするには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 yum -y install epel-release gcc systemd-devel
@@ -79,7 +79,7 @@ HAProxyを使用して、負荷分散されたデータベース環境を簡単�
 
 1.  HAProxy2.5.0ソースコードのパッケージをダウンロードします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     wget https://github.com/haproxy/haproxy/archive/refs/tags/v2.5.0.zip
@@ -87,7 +87,7 @@ HAProxyを使用して、負荷分散されたデータベース環境を簡単�
 
 2.  パッケージを解凍します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     unzip v2.5.0.zip
@@ -95,7 +95,7 @@ HAProxyを使用して、負荷分散されたデータベース環境を簡単�
 
 3.  ソースコードからアプリケーションをコンパイルします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     cd haproxy-2.5.0
@@ -106,7 +106,7 @@ HAProxyを使用して、負荷分散されたデータベース環境を簡単�
 
 4.  プロファイルを再構成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     echo 'export PATH=/app/haproxy/bin:$PATH' >> /etc/profile
@@ -114,7 +114,7 @@ HAProxyを使用して、負荷分散されたデータベース環境を簡単�
 
 5.  インストールが成功したかどうかを確認します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     which haproxy
@@ -124,7 +124,7 @@ HAProxyを使用して、負荷分散されたデータベース環境を簡単�
 
 次のコマンドを実行して、キーワードとその基本的な使用法のリストを出力します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 haproxy --help
@@ -209,7 +209,7 @@ listen tidb-cluster                        # Database load balancing.
 
 HAProxyを起動するには、 `haproxy`を実行します。デフォルトでは`/etc/haproxy/haproxy.cfg`が読み取られます（推奨）。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 haproxy -f /etc/haproxy/haproxy.cfg
@@ -221,7 +221,7 @@ HAProxyを停止するには、 `kill -9`コマンドを使用します。
 
 1.  次のコマンドを実行します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     ps -ef | grep haproxy
@@ -229,7 +229,7 @@ HAProxyを停止するには、 `kill -9`コマンドを使用します。
 
 2.  HAProxyのプロセスを終了します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     kill -9 ${haproxy.pid}

@@ -8,7 +8,7 @@ aliases: ['/docs/dev/system-tables/system-table-cluster-config/','/docs/dev/refe
 
 `CLUSTER_CONFIG`クラスター構成テーブルを使用して、クラスター内のすべてのサーバーコンポーネントの現在の構成を取得できます。これにより、TiDBの以前のリリースよりも使用が簡素化され、同様の情報を取得するには、各インスタンスのHTTPAPIエンドポイントにアクセスする必要があります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -35,7 +35,7 @@ DESC cluster_config;
 
 次の例は、 `CLUSTER_CONFIG`テーブルを使用してTiKVインスタンスの`coprocessor`構成を照会する方法を示しています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM cluster_config WHERE type='tikv' AND `key` LIKE 'coprocessor%';

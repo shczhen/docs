@@ -7,7 +7,7 @@ summary: Learn the `TIDB_SERVERS_INFO` information_schema table.
 
 `TIDB_SERVERS_INFO`の表は、TiDBクラスター内のTiDBサーバー（つまり、tidb-serverプロセス）に関する情報を提供します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -30,7 +30,7 @@ DESC tidb_servers_info;
 8 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM tidb_servers_info\G

@@ -50,7 +50,7 @@ AdvancedPlacementOption ::=
 >
 > 使用可能なリージョンが表示されない場合は、TiKVインストールでラベルが正しく設定されていない可能性があります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE PLACEMENT POLICY p1 PRIMARY_REGION="us-east-1" REGIONS="us-east-1,us-west-1" FOLLOWERS=4;

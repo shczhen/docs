@@ -26,7 +26,7 @@ summary: Learn about the usage of TiDB specific functions.
 
 次の例では、テーブル`t1`にTiDBによって生成された非表示の`rowid`があります。ステートメントでは`TIDB_DECODE_KEY`が使用されています。結果から、非表示の`rowid`がデコードされて出力されていることがわかります。これは、クラスター化されていない主キーの一般的な結果です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT START_KEY, TIDB_DECODE_KEY(START_KEY) FROM information_schema.tikv_region_status WHERE table_name='t1' AND REGION_ID=2\G
@@ -41,7 +41,7 @@ TIDB_DECODE_KEY(START_KEY): {"_tidb_rowid":1958897,"table_id":"59"}
 
 次の例では、表`t2`に複合クラスター主キーがあります。 JSON出力から、主キーの一部である両方の列の名前と値を含む`handle`を確認できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 show create table t2\G
@@ -59,7 +59,7 @@ Create Table: CREATE TABLE `t2` (
 1 row in set (0.001 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select * from information_schema.tikv_region_status where table_name='t2' limit 1\G
@@ -87,7 +87,7 @@ REPLICATIONSTATUS_STATEID: NULL
 1 row in set (0.005 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select tidb_decode_key('7480000000000000FF3E5F720400000000FF0000000601633430FF3338646232FF2D64FF3531632D3131FF65FF622D386337352DFFFF3830653635303138FFFF61396265000000FF00FB000000000000F9');
@@ -108,7 +108,7 @@ select tidb_decode_key('7480000000000000FF3E5F720400000000FF0000000601633430FF33
 
 この関数は、ステートメントの実行時にプランがキャプチャされるため便利です。 `EXPLAIN`でステートメントを再実行すると、データの分散と統計が時間の経過とともに変化するため、異なる結果が生成される可能性があります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT tidb_decode_plan('8QIYMAkzMV83CQEH8E85LjA0CWRhdGE6U2VsZWN0aW9uXzYJOTYwCXRpbWU6NzEzLjHCtXMsIGxvb3BzOjIsIGNvcF90YXNrOiB7bnVtOiAxLCBtYXg6IDU2OC41wgErRHByb2Nfa2V5czogMCwgcnBjXxEpAQwFWBAgNTQ5LglZyGNvcHJfY2FjaGVfaGl0X3JhdGlvOiAwLjAwfQkzLjk5IEtCCU4vQQoxCTFfNgkxXzAJMwm2SGx0KHRlc3QudC5hLCAxMDAwMCkNuQRrdgmiAHsFbBQzMTMuOMIBmQnEDDk2MH0BUgEEGAoyCTQzXzUFVwX1oGFibGU6dCwga2VlcCBvcmRlcjpmYWxzZSwgc3RhdHM6cHNldWRvCTk2ISE2aAAIMTUzXmYA')\G
@@ -131,7 +131,7 @@ TSOは、次の2つの部分で構成される数値です。
 -   物理的なタイムスタンプ
 -   論理カウンター
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 BEGIN;
@@ -154,7 +154,7 @@ ROLLBACK;
 
 `TIDB_VERSION`関数を使用して、接続しているTiDBサーバーのバージョンとビルドの詳細を取得できます。この関数は、GitHubで問題を報告するときに使用できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT TIDB_VERSION()\G
@@ -190,7 +190,7 @@ Check Table Before Drop: false
 > -   この関数はオーバーヘッドが高くなります。行数が多いクエリ（たとえば、大規模でビジーなクラスタで`information_schema.cluster_tidb_trx`のテーブル全体をクエリする場合）では、この関数を使用すると、クエリの実行時間が長すぎる可能性があります。注意して使用してください。
 >     -   この関数は、呼び出されるたびに`STATEMENTS_SUMMARY` 、および`STATEMENTS_SUMMARY_HISTORY`のテーブルを内部的にクエリし、クエリには`CLUSTER_STATEMENTS_SUMMARY`の操作が含まれるため、オーバーヘッドが高く`UNION` `CLUSTER_STATEMENTS_SUMMARY_HISTORY` 。この関数は現在、ベクトル化をサポートしていません。つまり、データの複数の行に対してこの関数を呼び出す場合、上記のクエリは行ごとに個別に実行されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 set @digests = '["e6f07d43b5c21db0fbb9a31feac2dc599787763393dd5acbfad80e247eb02ad5","38b03afa5debbdf0326a014dbe5012a62c51957f1982b3093e748460f8b00821","e5796985ccafe2f71126ed6c0ac939ffa015a8c0744a24b7aee6d587103fd2f7"]';
@@ -209,7 +209,7 @@ select tidb_decode_sql_digests(@digests);
 
 上記の例では、パラメーターは3つのSQLダイジェストを含むJSON配列であり、対応するSQLステートメントはクエリ結果の3つの項目です。ただし、2番目のSQLダイジェストに対応するSQLステートメントがクラスターから見つからないため、結果の2番目の項目は`null`です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select tidb_decode_sql_digests(@digests, 10);

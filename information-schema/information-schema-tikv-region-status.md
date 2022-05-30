@@ -7,7 +7,7 @@ summary: Learn the `TIKV_REGION_STATUS` information_schema table.
 
 `TIKV_REGION_STATUS`の表は、リージョンID、開始キー値と終了キー値、読み取りおよび書き込みトラフィックなど、PDのAPIを介したTiKVリージョンの基本情報を示しています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;

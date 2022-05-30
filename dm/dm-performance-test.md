@@ -23,7 +23,7 @@ summary: Learn how to test the performance of DM clusters.
 
 パフォーマンステストには、次のスキーマのテーブルを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE `sbtest` (
@@ -42,7 +42,7 @@ CREATE TABLE `sbtest` (
 
 `sysbench`を使用して、アップストリームでテストテーブルを作成し、完全にインポートするためのテストデータを生成します。次の`sysbench`のコマンドを実行して、テストデータを生成します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 sysbench --test=oltp_insert --tables=4 --mysql-host=172.16.4.40 --mysql-port=3306 --mysql-user=root --mysql-db=dm_benchmark --db-driver=mysql --table-size=50000000 prepare
@@ -152,7 +152,7 @@ syncers:
 
 アップストリームでインクリメンタルデータを継続的に生成するには、次の`sysbench`コマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 sysbench --test=oltp_insert --tables=4 --num-threads=32 --mysql-host=172.17.4.40 --mysql-port=3306 --mysql-user=root --mysql-db=dm_benchmark --db-driver=mysql --report-interval=10 --time=1800 run

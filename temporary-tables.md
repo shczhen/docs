@@ -48,7 +48,7 @@ MySQLとは異なり、TiDBのローカル一時テーブルはすべて外部�
 
 通常のテーブルがあると仮定します`users` ：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE users (
@@ -60,7 +60,7 @@ CREATE TABLE users (
 
 セッションAでは、ローカル一時テーブル`users`を作成しても、通常のテーブル`users`と競合しません。セッションAが`users`テーブルにアクセスすると、ローカル一時テーブル`users`にアクセスします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TEMPORARY TABLE users (
@@ -77,7 +77,7 @@ Query OK, 0 rows affected (0.01 sec)
 
 `users`にデータを挿入すると、セッションAのローカル一時テーブル`users`にデータが挿入されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO users(id, name, city) VALUES(1001, 'Davis', 'LosAngeles');
@@ -87,7 +87,7 @@ INSERT INTO users(id, name, city) VALUES(1001, 'Davis', 'LosAngeles');
 Query OK, 1 row affected (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM users;
@@ -104,7 +104,7 @@ SELECT * FROM users;
 
 セッションBでは、ローカル一時テーブル`users`を作成しても、セッションAの通常のテーブル`users`またはローカル一時テーブル`users`と競合しません。セッションBが`users`テーブルにアクセスすると、セッションBのローカル一時テーブル`users`にアクセスします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TEMPORARY TABLE users (
@@ -121,7 +121,7 @@ Query OK, 0 rows affected (0.01 sec)
 
 `users`にデータを挿入すると、セッションBのローカル一時テーブル`users`にデータが挿入されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO users(id, name, city) VALUES(1001, 'James', 'NewYork');
@@ -131,7 +131,7 @@ INSERT INTO users(id, name, city) VALUES(1001, 'James', 'NewYork');
 Query OK, 1 row affected (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM users;
@@ -186,7 +186,7 @@ TiDBのローカル一時テーブルは、次の点でMySQL一時テーブル�
 
 セッションAでグローバル一時テーブル`users`を作成します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE GLOBAL TEMPORARY TABLE users (
@@ -203,7 +203,7 @@ Query OK, 0 rows affected (0.01 sec)
 
 `users`に書き込まれたデータは、現在のトランザクションに表示されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 BEGIN;
@@ -213,7 +213,7 @@ BEGIN;
 Query OK, 0 rows affected (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO users(id, name, city) VALUES(1001, 'Davis', 'LosAngeles');
@@ -223,7 +223,7 @@ INSERT INTO users(id, name, city) VALUES(1001, 'Davis', 'LosAngeles');
 Query OK, 1 row affected (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM users;
@@ -240,7 +240,7 @@ SELECT * FROM users;
 
 トランザクションが終了すると、データは自動的にクリアされます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 COMMIT;
@@ -250,7 +250,7 @@ COMMIT;
 Query OK, 0 rows affected (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM users;
@@ -262,7 +262,7 @@ Empty set (0.00 sec)
 
 セッションAで`users`が作成された後、セッションBは3テーブルからの読み取りと`users`テーブルへの書き込みもできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM users;
@@ -284,7 +284,7 @@ Empty set (0.00 sec)
 
 たとえば、一時テーブルの最大サイズを`256MB`に設定します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET GLOBAL tidb_tmp_table_max_size=268435456;

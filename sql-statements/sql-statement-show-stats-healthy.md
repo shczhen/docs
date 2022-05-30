@@ -27,7 +27,7 @@ summary: An overview of the usage of SHOW STATS_HEALTHY for TiDB database.
 
 サンプルデータをロードして`ANALYZE`を実行します：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t1 (
@@ -62,7 +62,7 @@ mysql> SHOW STATS_HEALTHY;
 
 一括更新を実行して、レコードの約30％を削除します。統計の状態を確認します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DELETE FROM t1 WHERE id BETWEEN 101010 AND 201010; # delete about 30% of records

@@ -54,7 +54,7 @@ AuroraのスナップショットファイルにはDDLステートメントが�
 
 次のコマンドを実行して、Dumplingを使用してスキーマをエクスポートします。このコマンドには、目的のテーブルスキーマのみをエクスポートするための`--filter`つのパラメーターが含まれています。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dumpling --host ${host} --port 3306 --user root --password ${password} --filter 'my_db1.table[12]' --no-data --output 's3://my-bucket/schema-backup?region=us-west-2' --filter "mydb.*"
@@ -81,7 +81,7 @@ tiup dumpling --host ${host} --port 3306 --user root --password ${password} --fi
 
 次のように`tidb-lightning.toml`の構成ファイルを作成します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 vim tidb-lightning.toml
@@ -126,7 +126,7 @@ TiDBクラスターでTLSを有効にする必要がある場合は、 [TiDBLigh
 
 1.  TiDB Lightningを使用して、ターゲットデータベースにテーブルを作成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup tidb-lightning -config tidb-lightning.toml -d 's3://my-bucket/schema-backup?region=us-west-2'
@@ -136,7 +136,7 @@ TiDBクラスターでTLSを有効にする必要がある場合は、 [TiDBLigh
 
     S3ストレージパスにアクセスできるSecretKeyとAccessKeyを環境変数としてDumplingノードに渡します。 `~/.aws/credentials`からクレデンシャルを読み取ることもできます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     export AWS_ACCESS_KEY_ID=${access_key}
@@ -186,7 +186,7 @@ TiDBクラスターでTLSを有効にする必要がある場合は、 [TiDBLigh
 
 2.  次のコマンドを実行して、 `tiup dmctl`を使用してデータソース構成をDMクラスターにロードします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup dmctl --master-addr ${advertise-addr} operate-source create source1.yaml
@@ -250,7 +250,7 @@ mysql-instances:
 
 移行タスクを開始する前に、エラーの可能性を減らすために、次の`check-task`コマンドを実行して、構成がDMの要件を満たしていることを確認することをお勧めします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dmctl --master-addr ${advertise-addr} check-task task.yaml
@@ -258,7 +258,7 @@ tiup dmctl --master-addr ${advertise-addr} check-task task.yaml
 
 その後、 `tiup dmctl`を実行して移行タスクを開始します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dmctl --master-addr ${advertise-addr} start-task task.yaml
@@ -279,7 +279,7 @@ tiup dmctl --master-addr ${advertise-addr} start-task task.yaml
 
 DMクラスターに進行中の移行タスクがあるかどうかとタスクのステータスを確認するには、 `tiup dmctl`を使用して`query-status`コマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dmctl --master-addr ${advertise-addr} query-status ${task-name}

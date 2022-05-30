@@ -22,7 +22,7 @@ DatabaseOption ::=
 
 utf8mb4文字セットを使用するようにテストデータベーススキーマを変更します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER DATABASE test DEFAULT CHARACTER SET = utf8mb4;

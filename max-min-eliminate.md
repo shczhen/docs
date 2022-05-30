@@ -21,7 +21,7 @@ SQLステートメントが次の条件を満たす場合、このルールが�
 
 例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select max(a) from t
@@ -29,7 +29,7 @@ select max(a) from t
 
 最適化ルールは、ステートメントを次のように書き直します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select max(a) from (select a from t where a is not null order by a desc limit 1) t
@@ -63,7 +63,7 @@ SQLステートメントが次の条件を満たす場合、このルールが�
 
 例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select max(a) - min(a) from t
@@ -71,7 +71,7 @@ select max(a) - min(a) from t
 
 最適化ルールは、最初に列`a`にその順序を保持するためのインデックスがあるかどうかをチェックします。はいの場合、SQLステートメントは2つのサブクエリのデカルト積として書き直されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select max_a - min_a
@@ -82,7 +82,7 @@ from
 
 書き換えにより、オプティマイザは、2つのサブクエリにそれぞれ`min`関数が`max`つしかないステートメントのルールを適用できます。次に、ステートメントは次のように書き直されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select max_a - min_a

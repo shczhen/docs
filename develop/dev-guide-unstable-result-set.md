@@ -18,7 +18,7 @@ summary: Learn how to handle the error of an unstable result set.
 
 次に、次のようなSQLクエリステートメントを記述できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT
@@ -53,7 +53,7 @@ ORDER BY
 
 反例は`NON-FULL GROUP BY`構文です。たとえば、これら2つのテーブルに、次のSQLクエリを記述します（ `GROUP BY`の`stuname`を削除し`a` ）。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT
@@ -98,7 +98,7 @@ ORDER BY
 
 MySQLには、構文をチェックするかどうかを制御するための`sql_mode`スイッチ`ONLY_FULL_GROUP_BY`が用意されて`FULL GROUP BY`ます。 TiDBはこの`sql_mode`スイッチとも互換性があります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 mysql> select a.class, a.stuname, max(b.courscore) from stu_info a join stu_score b on a.stuno=b.stuno group by a.class order by a.class, a.stuname;
@@ -127,7 +127,7 @@ SQLセマンティクスでは、 `ORDER BY`構文が使用されている場合
 
 次の例では、 `ORDER BY`句に1つのフィールドのみが追加され、TiDBはその1つのフィールドで結果のみを並べ替えます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 mysql> select a.class, a.stuname, b.course, b.courscore from stu_info a join stu_score b on a.stuno=b.stuno order by a.class;
@@ -187,7 +187,7 @@ TiDBはストレージレイヤーからデータを並行して読み取るた�
 
     最初のクエリ：
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     mysql>  select GROUP_CONCAT( customer_id SEPARATOR ',' ) FROM customer where customer_id like '200002%';
@@ -200,7 +200,7 @@ TiDBはストレージレイヤーからデータを並行して読み取るた�
 
     2番目のクエリ：
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     mysql>  select GROUP_CONCAT( customer_id SEPARATOR ',' ) FROM customer where customer_id like '200002%';
@@ -215,7 +215,7 @@ TiDBはストレージレイヤーからデータを並行して読み取るた�
 
     最初のクエリ：
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     mysql>  select GROUP_CONCAT( customer_id order by customer_id SEPARATOR ',' ) FROM customer where customer_id like '200002%';
@@ -228,7 +228,7 @@ TiDBはストレージレイヤーからデータを並行して読み取るた�
 
     2番目のクエリ：
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     mysql>  select GROUP_CONCAT( customer_id order by customer_id SEPARATOR ',' ) FROM customer where customer_id like '200002%';

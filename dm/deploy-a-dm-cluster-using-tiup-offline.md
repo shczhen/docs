@@ -13,7 +13,7 @@ summary: Introduce how to deploy a DM cluster offline using TiUP.
 
     1.  TiUPツールをインストールします。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh | sh
@@ -21,7 +21,7 @@ summary: Introduce how to deploy a DM cluster offline using TiUP.
 
     2.  グローバル環境変数を再宣言します。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         source .bash_profile
@@ -29,7 +29,7 @@ summary: Introduce how to deploy a DM cluster offline using TiUP.
 
     3.  TiUPがインストールされているかどうかを確認します。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```shell
         which tiup
@@ -39,7 +39,7 @@ summary: Introduce how to deploy a DM cluster offline using TiUP.
 
     1.  インターネットにアクセスできるマシンで必要なコンポーネントをプルします。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```bash
         # You can modify ${version} to the needed version.
@@ -53,7 +53,7 @@ summary: Introduce how to deploy a DM cluster offline using TiUP.
 
     2.  `tar`コマンドを使用してコンポーネントパッケージをパックし、分離された環境の制御マシンにパッケージを送信します。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```bash
         tar czvf tidb-dm-${version}-linux-amd64.tar.gz tidb-dm-${version}-linux-amd64
@@ -65,7 +65,7 @@ summary: Introduce how to deploy a DM cluster offline using TiUP.
 
 パッケージをターゲットクラスターの制御マシンに送信した後、次のコマンドを実行してTiUPコンポーネントをインストールします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 # You can modify ${version} to the needed version.
@@ -146,7 +146,7 @@ alertmanager_servers:
 > -   パスワードを使用する場合は、 `-p`フラグを追加して、パスワード操作ウィンドウに入ります。
 > -   ターゲットマシンへのパスワードなしのログインが設定されている場合、認証は必要ありません。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dm deploy dm-test ${version} ./topology.yaml --user root [-p] [-i /home/root/.ssh/gcp_rsa]
@@ -165,7 +165,7 @@ tiup dm deploy dm-test ${version} ./topology.yaml --user root [-p] [-i /home/roo
 
 ## ステップ5：TiUPによって管理されているクラスターを確認します {#step-5-check-the-clusters-managed-by-tiup}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dm list
@@ -183,7 +183,7 @@ dm-test  tidb  ${version}  /root/.tiup/storage/dm/clusters/dm-test  /root/.tiup/
 
 `dm-test`のクラスターのステータスを確認するには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dm display dm-test
@@ -193,7 +193,7 @@ tiup dm display dm-test
 
 ## ステップ7：クラスターを開始します {#step-7-start-the-cluster}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dm start dm-test
@@ -205,7 +205,7 @@ tiup dm start dm-test
 
 TiUPを使用してDMクラスターのステータスを確認します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dm display dm-test

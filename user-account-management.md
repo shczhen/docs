@@ -33,7 +33,7 @@ TiDBアカウントは、次の2つの方法で作成できます。
 
 特権テーブルを直接操作すると更新が不完全になる可能性があるため、アカウント管理ステートメントを使用することをお勧めします。サードパーティのGUIツールを使用してアカウントを作成することもできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE USER [IF NOT EXISTS] user [IDENTIFIED BY 'auth_string'];
@@ -41,7 +41,7 @@ CREATE USER [IF NOT EXISTS] user [IDENTIFIED BY 'auth_string'];
 
 パスワードを割り当てた後、TiDBは`auth_string`を暗号化して`mysql.user`テーブルに保存します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE USER 'test'@'127.0.0.1' IDENTIFIED BY 'xxx';
@@ -55,7 +55,7 @@ TiDBアカウントの名前は、ユーザー名とホスト名で構成され�
 
 ホストはファジーマッチングをサポートしています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE USER 'test'@'192.168.10.%';
@@ -65,7 +65,7 @@ CREATE USER 'test'@'192.168.10.%';
 
 ホストが指定されていない場合、ユーザーは任意のIPからログインできます。パスワードが指定されていない場合、デフォルトは空のパスワードです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE USER 'test';
@@ -73,7 +73,7 @@ CREATE USER 'test';
 
 に相当：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE USER 'test'@'%' IDENTIFIED BY '';
@@ -83,43 +83,43 @@ CREATE USER 'test'@'%' IDENTIFIED BY '';
 
 たとえば、 `sql_mode`に`NO_AUTO_CREATE_USER`が含まれておらず、次の`CREATE USER`および`GRANT`ステートメントを使用して4つのアカウントを作成するとします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE USER 'finley'@'localhost' IDENTIFIED BY 'some_pass';
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 GRANT ALL PRIVILEGES ON *.* TO 'finley'@'localhost' WITH GRANT OPTION;
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE USER 'finley'@'%' IDENTIFIED BY 'some_pass';
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 GRANT ALL PRIVILEGES ON *.* TO 'finley'@'%' WITH GRANT OPTION;
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin_pass';
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 GRANT RELOAD,PROCESS ON *.* TO 'admin'@'localhost';
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE USER 'dummy'@'localhost';
@@ -127,7 +127,7 @@ CREATE USER 'dummy'@'localhost';
 
 アカウントに付与されている権限を確認するには、次の`SHOW GRANTS`のステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW GRANTS FOR 'admin'@'localhost';
@@ -145,7 +145,7 @@ SHOW GRANTS FOR 'admin'@'localhost';
 
 ユーザーアカウントを削除するには、次の`DROP USER`のステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DROP USER 'test'@'localhost';

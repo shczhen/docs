@@ -7,7 +7,7 @@ summary: Learn the `TABLE_CONSTRAINTS` information_schema table.
 
 `TABLE_CONSTRAINTS`の表は、どの表に制約があるかを示しています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -28,7 +28,7 @@ DESC table_constraints;
 6 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM table_constraints WHERE constraint_type='UNIQUE';

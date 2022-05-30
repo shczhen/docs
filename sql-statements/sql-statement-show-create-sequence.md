@@ -20,7 +20,7 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-create-sequence/','/docs/
 
 ## 例 {#examples}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE SEQUENCE seq;
@@ -30,7 +30,7 @@ CREATE SEQUENCE seq;
 Query OK, 0 rows affected (0.03 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW CREATE SEQUENCE seq;

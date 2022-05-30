@@ -60,7 +60,7 @@ binlog関連の状態を表示または変更するには、TiDBで対応するS
 
 -   binlogが有効になっているかどうかを確認します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     show variables like "log_bin";
@@ -78,7 +78,7 @@ binlog関連の状態を表示または変更するには、TiDBで対応するS
 
 -   すべてのポンプノードまたはドレイナーノードのステータスを確認します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     show pump status;
@@ -94,7 +94,7 @@ binlog関連の状態を表示または変更するには、TiDBで対応するS
     +--------|----------------|--------|--------------------|---------------------|
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     show drainer status;
@@ -112,7 +112,7 @@ binlog関連の状態を表示または変更するには、TiDBで対応するS
 
 -   異常な状況でポンプまたはドレイナーノードの状態を変更します
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     change pump to node_state ='paused' for node_id 'pump1';
@@ -122,7 +122,7 @@ binlog関連の状態を表示または変更するには、TiDBで対応するS
     Query OK, 0 rows affected (0.01 sec)
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     change drainer to node_state ='paused' for node_id 'drainer1';

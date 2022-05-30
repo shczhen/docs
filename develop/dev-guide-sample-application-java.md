@@ -31,7 +31,7 @@ summary: Learn how to build a simple CRUD application with TiDB and Java.
 
 ## ステップ2.コードを取得する {#step-2-get-the-code}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 git clone https://github.com/pingcap-inc/tidb-example-java.git
@@ -43,7 +43,7 @@ git clone https://github.com/pingcap-inc/tidb-example-java.git
 
 `plain-java-jdbc`ディレクトリに移動します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 cd plain-java-jdbc
@@ -68,7 +68,7 @@ cd plain-java-jdbc
 
 テーブル作成の初期化ステートメントは`dbinit.sql`にあります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE test;
@@ -523,7 +523,7 @@ Hibernateは人気のあるオープンソースのJavaORMであり、TiDBの機
 
 `plain-java-hibernate`ディレクトリに移動します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 cd plain-java-hibernate
@@ -828,7 +828,7 @@ public class HibernateExample
 
 JDBCを使用する場合は、データベーステーブルを手動で初期化する必要があります。ローカルクラスターを使用していて、MySQLクライアントがローカルにインストールされている場合は、次の`plain-java-jdbc`のディレクトリで直接実行できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 make mysql
@@ -836,7 +836,7 @@ make mysql
 
 または、次のコマンドを実行できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 mysql --host 127.0.0.1 --port 4000 -u root<src/main/resources/dbinit.sql
@@ -926,7 +926,7 @@ mysqlDataSource.setPassword("123456");
 
 設定したパスワードが`123456`で、TiDBCloudから取得した接続文字列が次のとおりであるとします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 mysql --connect-timeout 15 -u root -h tidb.e049234d.d40d1f8b.us-east-1.prod.aws.tidbcloud.com -P 4000 -p
@@ -974,7 +974,7 @@ mysql --connect-timeout 15 -u root -h tidb.e049234d.d40d1f8b.us-east-1.prod.aws.
 
 コードを実行するには、それぞれ`make build`と`make run`を実行します。
 
-{{&lt;コピー可能な「シェル」&gt;}}
+{{< copyable "" >}}
 
 ```shell
 make build # this command executes `mvn clean package`
@@ -983,7 +983,7 @@ make run # this command executes `java -jar target/plain-java-jdbc-0.0.1-jar-wit
 
 または、ネイティブコマンドを使用できます。
 
-{{&lt;コピー可能な「シェル」&gt;}}
+{{< copyable "" >}}
 
 ```shell
 mvn clean package
@@ -998,7 +998,7 @@ java -jar target/plain-java-jdbc-0.0.1-jar-with-dependencies.jar
 
 コードを実行するには、それぞれ`make build`と`make run`を実行します。
 
-{{&lt;コピー可能な「シェル」&gt;}}
+{{< copyable "" >}}
 
 ```shell
 make build # this command executes `mvn clean package`
@@ -1007,7 +1007,7 @@ make run # this command executes `java -jar target/plain-java-jdbc-0.0.1-jar-wit
 
 または、ネイティブコマンドを使用できます。
 
-{{&lt;コピー可能な「シェル」&gt;}}
+{{< copyable "" >}}
 
 ```shell
 mvn clean package

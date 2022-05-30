@@ -23,7 +23,7 @@ TiDBの役割ベースのアクセス制御（RBAC）システムの実装は、
 
 たとえば、次のステートメントを使用して、ロール`app_developer` 、および`app_read`を作成でき`app_write` 。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE ROLE 'app_developer', 'app_read', 'app_write';
@@ -41,7 +41,7 @@ CREATE ROLE 'app_developer', 'app_read', 'app_write';
 
 たとえば、次のステートメントを使用して、 `app_read`の役割に`app_db`のデータベースを読み取る特権を付与できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 GRANT SELECT ON app_db.* TO 'app_read'@'%';
@@ -49,7 +49,7 @@ GRANT SELECT ON app_db.* TO 'app_read'@'%';
 
 次のステートメントを使用して、 `app_write`の役割に`app_db`のデータベースにデータを書き込む特権を付与できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 GRANT INSERT, UPDATE, DELETE ON app_db.* TO 'app_write'@'%';;
@@ -57,7 +57,7 @@ GRANT INSERT, UPDATE, DELETE ON app_db.* TO 'app_write'@'%';;
 
 次のステートメントを使用して、 `app_developer`の役割に`app_db`のデータベースに対するすべての特権を付与できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 GRANT ALL ON app_db.* TO 'app_developer';
@@ -69,7 +69,7 @@ GRANT ALL ON app_db.* TO 'app_developer';
 
 `CREATE USER`を使用してユーザーを作成します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE USER 'dev1'@'localhost' IDENTIFIED BY 'dev1pass';
@@ -111,7 +111,7 @@ TiDBは、このマルチレベルの認証関係をサポートしています�
 
 別のユーザーの特権関連情報を確認するには、 `mysql`のデータベースで`SELECT`の特権が必要です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW GRANTS FOR 'dev1'@'localhost';
@@ -128,7 +128,7 @@ SHOW GRANTS FOR 'dev1'@'localhost';
 
 `SHOW GRANTS`の`USING`オプションを使用して、役割の特権を確認できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW GRANTS FOR 'dev1'@'localhost' USING 'app_developer';
@@ -144,7 +144,7 @@ SHOW GRANTS FOR 'dev1'@'localhost' USING 'app_developer';
 +----------------------------------------------------------+
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW GRANTS FOR 'rw_user1'@'localhost' USING 'app_read', 'app_write';
@@ -160,7 +160,7 @@ SHOW GRANTS FOR 'rw_user1'@'localhost' USING 'app_read', 'app_write';
 +------------------------------------------------------------------------------+
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW GRANTS FOR 'read_user1'@'localhost' USING 'app_read';
@@ -187,7 +187,7 @@ SHOW GRANTS FOR 'read_user1'@'localhost' USING 'app_read';
 
 ユーザーのデフォルトの役割を設定できます。ユーザーがログインすると、デフォルトの役割が自動的に有効になります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET DEFAULT ROLE
@@ -197,7 +197,7 @@ SET DEFAULT ROLE
 
 たとえば、次のステートメントを使用して、デフォルトの役割を`rw_user1@localhost`から`app_read`および`app_write`に設定できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET DEFAULT ROLE app_read, app_write TO 'rw_user1'@'localhost';
@@ -205,7 +205,7 @@ SET DEFAULT ROLE app_read, app_write TO 'rw_user1'@'localhost';
 
 次のステートメントを使用して、デフォルトの役割`dev1@localhost`をすべての役割に設定できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET DEFAULT ROLE ALL TO 'dev1'@'localhost';
@@ -213,7 +213,7 @@ SET DEFAULT ROLE ALL TO 'dev1'@'localhost';
 
 次のステートメントを使用して、 `dev1@localhost`のすべてのデフォルトの役割を無効にすることができます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET DEFAULT ROLE NONE TO 'dev1'@'localhost';
@@ -239,7 +239,7 @@ SET ROLE {
 
 たとえば、 `rw_user1`ログインした後、次のステートメントを使用して、現在のセッションでのみ有効なロール`app_read`と`app_write`を有効にできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET ROLE 'app_read', 'app_write';
@@ -247,7 +247,7 @@ SET ROLE 'app_read', 'app_write';
 
 次のステートメントを使用して、現在のユーザーのデフォルトの役割を有効にすることができます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET ROLE DEFAULT
@@ -255,7 +255,7 @@ SET ROLE DEFAULT
 
 次のステートメントを使用して、現在のユーザーに付与されているすべての役割を有効にすることができます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET ROLE ALL
@@ -263,7 +263,7 @@ SET ROLE ALL
 
 次のステートメントを使用して、すべての役割を無効にすることができます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET ROLE NONE
@@ -271,7 +271,7 @@ SET ROLE NONE
 
 次のステートメントを使用して、 `app_read`以外の役割を有効にできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET ROLE ALL EXCEPT 'app_read'
@@ -287,7 +287,7 @@ SET ROLE ALL EXCEPT 'app_read'
 
 たとえば、デフォルトの役割を`rw_user1'@'localhost`に付与できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET DEFAULT ROLE ALL TO 'rw_user1'@'localhost';
@@ -295,7 +295,7 @@ SET DEFAULT ROLE ALL TO 'rw_user1'@'localhost';
 
 `rw_user1@localhost`ログインした後、次のステートメントを実行できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT CURRENT_ROLE();
@@ -309,7 +309,7 @@ SELECT CURRENT_ROLE();
 +--------------------------------+
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET ROLE 'app_read'; SELECT CURRENT_ROLE();
@@ -327,7 +327,7 @@ SET ROLE 'app_read'; SELECT CURRENT_ROLE();
 
 次のステートメントを使用して、ユーザー`read_user1@localhost`および`read_user2@localhost`に付与された`app_read`の役割を取り消すことができます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 REVOKE 'app_read' FROM 'read_user1'@'localhost', 'read_user2'@'localhost';
@@ -335,7 +335,7 @@ REVOKE 'app_read' FROM 'read_user1'@'localhost', 'read_user2'@'localhost';
 
 次のステートメントを使用して、 `rw_user1@localhost`のユーザーに付与された役割`app_read`および`app_write`を取り消すことができます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 REVOKE 'app_read', 'app_write' FROM 'rw_user1'@'localhost';
@@ -347,7 +347,7 @@ REVOKE 'app_read', 'app_write' FROM 'rw_user1'@'localhost';
 
 `REVOKE`ステートメントは`GRANT`と逆になります。 `REVOKE`を使用して、 `app_write`の特権を取り消すことができます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 REVOKE INSERT, UPDATE, DELETE ON app_db.* FROM 'app_write';
@@ -359,7 +359,7 @@ REVOKE INSERT, UPDATE, DELETE ON app_db.* FROM 'app_write';
 
 次のステートメントを使用して、役割`app_read`および`app_write`を削除できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DROP ROLE 'app_read', 'app_write';
@@ -380,7 +380,7 @@ DROP ROLE 'app_read', 'app_write';
 
 `mysql.role_edges`には次のデータが含まれます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM mysql.role_edges;
@@ -402,7 +402,7 @@ SELECT * FROM mysql.role_edges;
 
 `mysql.default_roles`は、各ユーザーに対してデフォルトで有効になっている役割を示します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM mysql.default_roles;

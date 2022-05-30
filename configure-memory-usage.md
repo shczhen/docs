@@ -39,21 +39,21 @@ mem-quota-query = 34359738368
 
 いくつかの使用例：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 -- Set the threshold value of memory quota for a single SQL query to 8GB:
 set @@tidb_mem_quota_query = 8 << 30;
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 -- Set the threshold value of memory quota for a single SQL query to 8MB:
 set @@tidb_mem_quota_query = 8 << 20;
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 -- Set the threshold value of memory quota for a single SQL query to 8KB:
@@ -146,7 +146,7 @@ TiDBは、実行オペレーターのディスクスピルをサポートしま�
 
 1.  SQLステートメントのメモリクォータを1GB（デフォルトでは1 GB）に構成します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     set tidb_mem_quota_query = 1 << 30;
@@ -156,7 +156,7 @@ TiDBは、実行オペレーターのディスクスピルをサポートしま�
 
 3.  次のSQLステートメントを実行します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     [tidb]> explain analyze select /*+ HASH_AGG() */ count(*) from t t1 join t t2 join t t3 group by t1.a, t2.a, t3.a;
@@ -170,7 +170,7 @@ TiDBは、実行オペレーターのディスクスピルをサポートしま�
 
 4.  システム変数`tidb_executor_concurrency`を1に構成します。この構成では、メモリが不足すると、HashAggは自動的にディスクスピルをトリガーしようとします。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     set tidb_executor_concurrency = 1;
@@ -178,7 +178,7 @@ TiDBは、実行オペレーターのディスクスピルをサポートしま�
 
 5.  同じSQLステートメントを実行します。今回は、ステートメントが正常に実行され、エラーメッセージが返されないことがわかります。次の詳細な実行プランから、HashAggが600MBのハードディスク領域を使用していることがわかります。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     [tidb]> explain analyze select /*+ HASH_AGG() */ count(*) from t t1 join t t2 join t t3 group by t1.a, t2.a, t3.a;

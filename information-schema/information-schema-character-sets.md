@@ -7,7 +7,7 @@ summary: Learn the `CHARACTER_SETS` information_schema table.
 
 `CHARACTER_SETS`の表は、 [文字セット](/character-set-and-collation.md)に関する情報を提供します。現在、TiDBは一部の文字セットのみをサポートしています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -26,7 +26,7 @@ DESC character_sets;
 4 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM `character_sets`;

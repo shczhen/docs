@@ -7,7 +7,7 @@ summary: Learn the `TIDB_INDEXES` information_schema table.
 
 `TIDB_INDEXES`テーブルは、すべてのテーブルのINDEX情報を提供します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;

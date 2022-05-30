@@ -12,7 +12,7 @@ aliases: ['/docs/tidb-data-migration/dev/get-started/']
 
 1.  TiUPをインストールし、TiUPを使用して[`dmctl`](/dm/dmctl-introduction.md)をインストールします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh | sh
@@ -21,7 +21,7 @@ aliases: ['/docs/tidb-data-migration/dev/get-started/']
 
 2.  DMクラスターの最小デプロイメントトポロジーファイルを生成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```
     tiup dm template
@@ -29,7 +29,7 @@ aliases: ['/docs/tidb-data-migration/dev/get-started/']
 
 3.  出力の構成情報をコピーし、変更したIPアドレスを持つ`topology.yaml`ファイルとして保存します。 TiUPを使用して、 `topology.yaml`のファイルでDMクラスターをデプロイします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup dm deploy dm-test 6.0.0 topology.yaml -p
@@ -41,7 +41,7 @@ aliases: ['/docs/tidb-data-migration/dev/get-started/']
 
 1.  次のように、各データソースの構成ファイルを作成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```yaml
     source-id: "mysql-01"
@@ -54,7 +54,7 @@ aliases: ['/docs/tidb-data-migration/dev/get-started/']
 
 2.  次のコマンドを実行して、ソースをDMクラスターに追加します。 `mysql-01.yaml`は、前の手順で作成した構成ファイルです。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup dmctl --master-addr=127.0.0.1:8261 operate-source create mysql-01.yaml # use one of master_servers as the argument of --master-addr
@@ -64,7 +64,7 @@ aliases: ['/docs/tidb-data-migration/dev/get-started/']
 
 1.  MySQL構成ファイルを作成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     mkdir -p /tmp/mysqltest && cd /tmp/mysqltest
@@ -85,7 +85,7 @@ aliases: ['/docs/tidb-data-migration/dev/get-started/']
 
 2.  Dockerを使用してMySQLインスタンスを起動します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     docker run --name mysql-01 -v /tmp/mysqltest:/etc/mysql/conf.d -e MYSQL_ROOT_PASSWORD=my-secret-pw -d -p 3306:3306 mysql:5.7
@@ -97,7 +97,7 @@ aliases: ['/docs/tidb-data-migration/dev/get-started/']
     >
     > このコマンドは、データ移行の試行にのみ適しており、実稼働環境やストレステストでは使用できません。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     mysql -uroot -p -h 127.0.0.1 -P 3306
@@ -109,7 +109,7 @@ aliases: ['/docs/tidb-data-migration/dev/get-started/']
 
 テスト用のTiDBクラスターがない場合は、次のコマンドを実行してデモ環境をすばやく構築できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup playground
@@ -119,7 +119,7 @@ tiup playground
 
 1つまたは複数のデータソースにテストテーブルとデータを作成します。既存のMySQLデータベースを使用していて、データベースに使用可能なデータが含まれている場合は、この手順をスキップできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 drop database if exists `testdm`;
@@ -159,7 +159,7 @@ insert into t2 (id, uid, name) values (3, 20001, 'José Arcadio Buendía'), (4, 
 
 2.  dmctlを使用してタスクを作成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup dmctl --master-addr 127.0.0.1:8261 start-task testdm-task.yaml
@@ -171,7 +171,7 @@ insert into t2 (id, uid, name) values (3, 20001, 'José Arcadio Buendía'), (4, 
 
 タスクが作成されたら、 `dmctl query-status`コマンドを使用してタスクのステータスを確認できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup dmctl --master-addr 127.0.0.1:8261 query-status testdm

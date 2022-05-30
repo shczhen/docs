@@ -115,7 +115,7 @@ tidb_servers:
 
 ファイルを`/tmp/topology.yaml`として保存します。 TiDB v6.0.0を使用する場合で、クラスター名が`prod-cluster`の場合は、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup cluster deploy -p prod-cluster v6.0.0 /tmp/topology.yaml
@@ -156,7 +156,7 @@ Deployed cluster `prod-cluster` successfully
 
 クラスタが正常にデプロイされたら、次のコマンドを実行してクラスタリストを表示します。
 
-{{&lt;コピー可能な&quot;shell-root&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster list
@@ -173,7 +173,7 @@ prod-cluster  tidb  v6.0.0    /root/.tiup/storage/cluster/clusters/prod-cluster 
 
 クラスタが正常にデプロイされたら、次のコマンドを実行してクラスタを起動します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup cluster start prod-cluster
@@ -187,7 +187,7 @@ TiUPは`systemd`を使用してデーモンプロセスを開始します。プ�
 
 TiUPは、クラスター内の各コンポーネントのステータスを表示するための`tiup cluster display`のコマンドを提供します。このコマンドを使用すると、コンポーネントのステータスを確認するために各マシンにログインする必要はありません。コマンドの使用法は次のとおりです。
 
-{{&lt;コピー可能な&quot;shell-root&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster display prod-cluster
@@ -250,7 +250,7 @@ tiup cluster scale-in <cluster-name> -N <node-id>
 
 たとえば、 `172.16.5.140`のTiKVノードをオフラインにするには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster scale-in prod-cluster -N 172.16.5.140:20160
@@ -258,7 +258,7 @@ tiup cluster scale-in prod-cluster -N 172.16.5.140:20160
 
 `tiup cluster display`を実行すると、TiKVノードが`Offline`とマークされていることがわかります。
 
-{{&lt;コピー可能な&quot;shell-root&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster display prod-cluster
@@ -317,7 +317,7 @@ PDをスケールアウトすると、ノードが`join`ずつクラスターに
 
 2.  スケールアウト操作を実行します。 TiUPクラスターは、ポート、ディレクトリ、および`scale.yaml`で説明されているその他の情報に従って、対応するノードをクラスターに追加します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster scale-out tidb-test scale.yaml
@@ -377,7 +377,7 @@ Global Flags:
 
 たとえば、次のコマンドはクラスターをv6.0.0にアップグレードします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster upgrade tidb-test v6.0.0
@@ -387,7 +387,7 @@ tiup cluster upgrade tidb-test v6.0.0
 
 コンポーネント構成を動的に更新する場合、TiUPクラスターコンポーネントは各クラスターの現在の構成を保存します。この構成を編集するには、 `tiup cluster edit-config <cluster-name>`コマンドを実行します。例えば：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster edit-config prod-cluster
@@ -397,7 +397,7 @@ TiUPクラスターは、viエディターで構成ファイルを開きます�
 
 ファイルを編集した後、変更を保存します。新しい構成をクラスターに適用するには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster reload prod-cluster
@@ -445,7 +445,7 @@ alertmanager_servers:
 
 通常のアップグレードでは、 `upgrade`コマンドを使用できます。ただし、デバッグなどの一部のシナリオでは、現在実行中のコンポーネントを一時パッケージに置き換える必要がある場合があります。これを実現するには、次の`patch`のコマンドを使用します。
 
-{{&lt;コピー可能な&quot;shell-root&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster patch --help
@@ -473,7 +473,7 @@ Global Flags:
 
 TiDBホットフィックスパッケージが`/tmp/tidb-hotfix.tar.gz`に含まれていて、クラスター内のすべてのTiDBパッケージを置き換える場合は、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster patch test-cluster /tmp/tidb-hotfix.tar.gz -R tidb
@@ -481,7 +481,7 @@ tiup cluster patch test-cluster /tmp/tidb-hotfix.tar.gz -R tidb
 
 クラスタ内の1つのTiDBパッケージのみを置き換えることもできます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster patch test-cluster /tmp/tidb-hotfix.tar.gz -N 172.16.4.5:4000
@@ -497,7 +497,7 @@ TiUPがリリースされる前は、TiDBAnsibleを使用してTiDBクラスタ�
 
 `import`コマンドの使用法は次のとおりです。
 
-{{&lt;コピー可能な&quot;shell-root&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster import --help
@@ -525,14 +525,14 @@ Global Flags:
 
 次のコマンドのいずれかを使用して、TiDBAnsibleクラスターをインポートできます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 cd tidb-ansible
 tiup cluster import
 ```
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster import --dir=/path/to/tidb-ansible
@@ -552,7 +552,7 @@ Flags:
 
 `[audit-id]`フラグが指定されていない場合、コマンドは実行されたコマンドのリストを表示します。例えば：
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster audit
@@ -571,7 +571,7 @@ ID      Time                       Command
 
 最初の列は`audit-id`です。特定のコマンドの実行ログを表示するには、次のようにコマンドの`audit-id`をフラグとして渡します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster audit 4BLhr0
@@ -599,7 +599,7 @@ Global Flags:
 
 たとえば、すべてのTiDBノードで`ls /tmp`を実行するには、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup cluster exec test-cluster --command='ls /tmp'
@@ -629,7 +629,7 @@ etcdctl [args] = tiup ctl etcd [args]
 
 たとえば、以前に`pd-ctl -u http://127.0.0.1:2379 store`を実行してストアを表示していた場合、TiUPで次のコマンドを実行できるようになりました。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup ctl pd -u http://127.0.0.1:2379 store

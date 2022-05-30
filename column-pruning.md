@@ -9,7 +9,7 @@ summary: Learn about the usage of column pruning in TiDB.
 
 テーブルtに4つの列（a、b、c、およびd）があるとします。次のステートメントを実行できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select a from t where b> 5

@@ -56,7 +56,7 @@ MySQLクライアントまたはドライバーでサポートされている任
 
 TiDBがサポートするすべてのストレージエンジンを確認するには、次のコマンドを使用します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 ./bin/tidb-server -h
@@ -149,7 +149,7 @@ TiKVサーバーがビジーです。これは通常、データベースの負�
 
 `GC Life Time`の間隔が短すぎます。長いトランザクションで読み取られるはずだったデータが削除される可能性があります。次のコマンドを使用して[`tidb_gc_life_time`](/system-variables.md#tidb_gc_life_time-new-in-v50)を調整できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET GLOBAL tidb_gc_life_time = '30m';

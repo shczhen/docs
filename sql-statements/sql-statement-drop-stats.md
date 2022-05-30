@@ -20,7 +20,7 @@ TableName ::=
 
 ## 例 {#examples}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t(a INT);
@@ -30,7 +30,7 @@ CREATE TABLE t(a INT);
 Query OK, 0 rows affected (0.01 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW STATS_META WHERE db_name='test' and table_name='t';
@@ -45,7 +45,7 @@ SHOW STATS_META WHERE db_name='test' and table_name='t';
 1 row in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DROP STATS t;
@@ -55,7 +55,7 @@ DROP STATS t;
 Query OK, 0 rows affected (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW STATS_META WHERE db_name='test' and table_name='t';

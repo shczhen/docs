@@ -174,7 +174,7 @@ CREATE TABLE conflict_error_v1 (
 
 1.  データベースとテーブルスキーマを準備します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     mkdir example && cd example
@@ -185,7 +185,7 @@ CREATE TABLE conflict_error_v1 (
 
 2.  データを準備します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     cat <<EOF > example.t.1.sql
@@ -206,7 +206,7 @@ CREATE TABLE conflict_error_v1 (
 
 3.  厳密なSQLモードを有効にするようにTiDBLightningを構成し、ローカルバックエンドを使用してデータをインポートし、重複を削除し、最大10個のエラーをスキップします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     cat <<EOF > config.toml
@@ -233,7 +233,7 @@ CREATE TABLE conflict_error_v1 (
 
 4.  TiDBLightningを実行します。すべてのエラーがスキップされるため、このコマンドは正常に終了します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup tidb-lightning -c config.toml

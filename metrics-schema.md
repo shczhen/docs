@@ -8,7 +8,7 @@ aliases: ['/docs/dev/system-tables/system-table-metrics-schema/','/docs/dev/refe
 
 `METRICS_SCHEMA`は、Prometheusに保存されているTiDBメトリックの上部にある一連のビューです。各テーブルのPromQL（Prometheus Query Language）のソースは、 [`INFORMATION_SCHEMA.METRICS_TABLES`](/information-schema/information-schema-metrics-tables.md)で利用できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE metrics_schema;
@@ -40,7 +40,7 @@ TABLE_NAME: uptime
 1 row in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW TABLES;
@@ -102,7 +102,7 @@ SHOW TABLES;
 
 `information_schema.metrics_tables`の`tidb_query_duration`テーブルに関連する情報を照会します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM information_schema.metrics_tables WHERE table_name='tidb_query_duration';
@@ -126,7 +126,7 @@ SELECT * FROM information_schema.metrics_tables WHERE table_name='tidb_query_dur
 
 `tidb_query_duration`テーブルのスキーマを照会するには、次のステートメントを実行します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW CREATE TABLE metrics_schema.tidb_query_duration;
@@ -153,7 +153,7 @@ SHOW CREATE TABLE metrics_schema.tidb_query_duration;
 
 次のステートメントは、[ `2020-03-25 23:40:00` ]の範囲内でP99時間を照会し`2020-03-25 23:42:00` 。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM metrics_schema.tidb_query_duration WHERE value is not null AND time>='2020-03-25 23:40:00' AND time <= '2020-03-25 23:42:00' AND quantile=0.99;
@@ -182,7 +182,7 @@ SELECT * FROM metrics_schema.tidb_query_duration WHERE value is not null AND tim
 
 上記のステートメントの実行プランを表示するには、次のステートメントを実行します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DESC SELECT * FROM metrics_schema.tidb_query_duration WHERE value is not null AND time>='2020-03-25 23:40:00' AND time <= '2020-03-25 23:42:00' AND quantile=0.99;
@@ -212,7 +212,7 @@ DESC SELECT * FROM metrics_schema.tidb_query_duration WHERE value is not null AN
     >
     > Prometheusでサポートされている最小の粒度は30秒です。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     set @@tidb_metric_query_step=30;
@@ -221,7 +221,7 @@ DESC SELECT * FROM metrics_schema.tidb_query_duration WHERE value is not null AN
 
 2.  次のように`tidb_query_duration`の監視項目を照会します。結果から、3分の時間範囲内で、各ラベルには6つの時間値があり、各値の間隔は30秒であることがわかります。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     select * from metrics_schema.tidb_query_duration where value is not null and time>='2020-03-25 23:40:00' and time <= '2020-03-25 23:42:00' and quantile=0.99;
@@ -251,7 +251,7 @@ DESC SELECT * FROM metrics_schema.tidb_query_duration WHERE value is not null AN
 
 3.  実行プランを表示します。この結果から、実行プランの`PromQL`と`step`の値が30秒に変更されていることもわかります。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     desc select * from metrics_schema.tidb_query_duration where value is not null and time>='2020-03-25 23:40:00' and time <= '2020-03-25 23:42:00' and quantile=0.99;

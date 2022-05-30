@@ -15,7 +15,7 @@ TiDBは、ステートメントレベル、トランザクションレベル、�
 
 [書店](/develop/dev-guide-bookshop-schema-design.md)のアプリケーションでは、次のSQLステートメントを使用して、最新の出版された書籍とその価格を照会できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT id, title, type, price FROM books ORDER BY published_at DESC LIMIT 5;
@@ -40,7 +40,7 @@ SELECT id, title, type, price FROM books ORDER BY published_at DESC LIMIT 5;
 
 同時に、売り手はその本が非常に人気があることを発見し、次のSQLステートメントを通じて本の価格を150.0に引き上げました。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 UPDATE books SET price = 150 WHERE id = 3181093216;
@@ -79,7 +79,7 @@ Bookshopアプリケーションでは、書籍のリアルタイム価格は書
 
 特定の時間より前の本の価格をクエリするには、上記のクエリステートメントに`AS OF TIMESTAMP <datetime>`句を追加します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT id, title, type, price FROM books AS OF TIMESTAMP '2022-04-20 15:20:00' ORDER BY published_at DESC LIMIT 5;
@@ -241,7 +241,7 @@ WARN: GC life time is shorter than transaction duration.
 
 例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 START TRANSACTION READ ONLY AS OF TIMESTAMP NOW() - INTERVAL 5 SECOND;
@@ -249,7 +249,7 @@ START TRANSACTION READ ONLY AS OF TIMESTAMP NOW() - INTERVAL 5 SECOND;
 
 この本の最新の価格を照会すると、 <em>The Story of Droolius Caesar</em>の価格がまだ100.0であることがわかります。これは、更新前の値です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT id, title, type, price FROM books ORDER BY published_at DESC LIMIT 5;
@@ -477,7 +477,7 @@ public class BookDAO {
 
 セッションでStaleReadを有効にします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET @@tidb_read_staleness="-5";
@@ -487,7 +487,7 @@ SET @@tidb_read_staleness="-5";
 
 セッションでStaleReadを無効にします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 set @@tidb_read_staleness="";

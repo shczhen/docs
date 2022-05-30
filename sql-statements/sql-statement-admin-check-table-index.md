@@ -22,7 +22,7 @@ TableNameList ::=
 
 `tbl_name`テーブル内のすべてのデータと対応するインデックスの整合性を確認するには、 `ADMIN CHECK TABLE`を使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ADMIN CHECK TABLE tbl_name [, tbl_name] ...;
@@ -30,7 +30,7 @@ ADMIN CHECK TABLE tbl_name [, tbl_name] ...;
 
 整合性チェックに合格すると、空の結果が返されます。それ以外の場合は、データに一貫性がないことを示すエラーメッセージが返されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ADMIN CHECK INDEX tbl_name idx_name;
@@ -38,7 +38,7 @@ ADMIN CHECK INDEX tbl_name idx_name;
 
 上記のステートメントは、 `tbl_name`テーブルの`idx_name`インデックスに対応する列データとインデックスデータの整合性をチェックするために使用されます。整合性チェックに合格すると、空の結果が返されます。それ以外の場合は、データに一貫性がないことを示すエラーメッセージが返されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ADMIN CHECK INDEX tbl_name idx_name (lower_val, upper_val) [, (lower_val, upper_val)] ...;

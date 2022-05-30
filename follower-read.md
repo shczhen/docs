@@ -20,7 +20,7 @@ aliases: ['/docs/dev/follower-read/','/docs/dev/reference/performance/follower-r
 
 TiDBのフォロワー読み取り機能を有効にするには、 `tidb_replica_read`変数の値を`follower`または`leader-and-follower`に変更します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 set [session | global] tidb_replica_read = '<target value>';

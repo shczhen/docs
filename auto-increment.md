@@ -16,13 +16,13 @@ aliases: ['/docs/dev/auto-increment/']
 
 以下は`AUTO_INCREMENT`の基本的な例です：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t(id int PRIMARY KEY AUTO_INCREMENT, c int);
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO t(c) VALUES (1);
@@ -46,7 +46,7 @@ mysql> SELECT * FROM t;
 
 さらに、 `AUTO_INCREMENT`は、列の値を明示的に指定する`INSERT`のステートメントもサポートします。このような場合、TiDBは明示的に指定された値を格納します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO t(id, c) VALUES (6, 6);
@@ -105,7 +105,7 @@ INSERT INTO t (c) VALUES (1)
 
 TiDBは、サーバーごとに`AUTO_INCREMENT`の値が単調（常に増加）であることを保証します。 1〜3の連続する`AUTO_INCREMENT`の値が生成される次の例を考えてみます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t (a int PRIMARY KEY AUTO_INCREMENT, b timestamp NOT NULL DEFAULT NOW());
@@ -131,7 +131,7 @@ Records: 3  Duplicates: 0  Warnings: 0
 
 単調性は、連続と同じ保証ではありません。次の例を考えてみましょう。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t (id INT NOT NULL PRIMARY KEY auto_increment, a VARCHAR(10), cnt INT NOT NULL DEFAULT 1, UNIQUE KEY (a));
@@ -174,7 +174,7 @@ Records: 2  Duplicates: 1  Warnings: 0
 
 別のTiDBサーバーに対して`INSERT`の操作を実行すると、 `AUTO_INCREMENT`のシーケンスが劇的に<em>ジャンプ</em>するように見える場合があります。これは、各サーバーが`AUTO_INCREMENT`の値の独自のキャッシュを持っているという事実が原因です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t (a int PRIMARY KEY AUTO_INCREMENT, b timestamp NOT NULL DEFAULT NOW());

@@ -122,7 +122,7 @@ BRツールはすでにGCへの自己適応をサポートしています。 `ba
 
 `br backup`コマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 bin/br backup table \
@@ -212,7 +212,7 @@ bin/br backup table \
 
 バックアッププロセス中にTiKVのリソース使用量が明らかなボトルネックにならない場合（たとえば、 [バックアップの監視メトリック](#monitoring-metrics-for-the-backup)では、バックアップワーカーの最大CPU使用率は約`1500%`であり、全体的なI / O使用率は`30%`未満です）、パフォーマンスを調整するために、 `--concurrency` （デフォルトでは`4` ）の値を増やすことを試みることができます。ただし、このパフォーマンス調整方法は、多くの小さなテーブルのユースケースには適していません。次の例を参照してください。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 bin/br backup table \
@@ -254,7 +254,7 @@ bin/br backup table \
 
 `br restore`コマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 bin/br restore table --db batchmark --table order_line -s local:///br_data --pd 172.16.5.198:2379 --log-file restore-nfs.log
@@ -333,7 +333,7 @@ SSTの処理<strong>期間</strong>：SSTファイルの処理の遅延。テー
 
 復元プロセス中にTiKVのリソース使用量が明らかなボトルネックにならない場合は、デフォルトで`128`である`--concurrency`の値を増やすことを試みることができます。次の例を参照してください。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 bin/br restore table --db batchmark --table order_line -s local:///br_data/ --pd 172.16.5.198:2379 --log-file restore-concurrency.log --concurrency 1024
@@ -371,7 +371,7 @@ bin/br restore table --db batchmark --table order_line -s local:///br_data/ --pd
 
 `br backup`コマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 bin/br backup table \
@@ -429,7 +429,7 @@ bin/br backup table \
 
 `br restore`コマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 bin/br restore table --db batchmark --table order_line -s local:///home/tidb/backup_local/ --pd 172.16.5.198:2379 --log-file restore_local.log

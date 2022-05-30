@@ -9,7 +9,7 @@ SQLは宣言型言語であるため、クエリが効率的に実行されて�
 
 [バイクシェアのサンプルデータベース](/import-example-data.md)からの次のステートメントは、2017年7月1日に行われた旅行の数をカウントします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT count(*) FROM trips WHERE start_date BETWEEN '2017-07-01 00:00:00' AND '2017-07-01 23:59:59';
@@ -44,7 +44,7 @@ EXPLAIN SELECT count(*) FROM trips WHERE start_date BETWEEN '2017-07-01 00:00:00
 
 `EXPLAIN`はクエリ実行プランを返すだけで、クエリは実行しません。実際の実行時間を取得するには、クエリを実行するか、 `EXPLAIN ANALYZE`を使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN ANALYZE SELECT count(*) FROM trips WHERE start_date BETWEEN '2017-07-01 00:00:00' AND '2017-07-01 23:59:59';
@@ -67,7 +67,7 @@ EXPLAIN ANALYZE SELECT count(*) FROM trips WHERE start_date BETWEEN '2017-07-01 
 
 上記の`EXPLAIN ANALYZE`の結果から、 `actRows`は、推定値（ `estRows` ）の一部が不正確であることを示しています（1万行を期待していますが、1900万行が見つかります）。これは、 `└─TableFullScan_18`の`operator info` （ `stats:pseudo` ）ですでに示されています。最初に[`ANALYZE TABLE`](/sql-statements/sql-statement-analyze-table.md)を実行し、次に`EXPLAIN ANALYZE`を再度実行すると、見積もりがはるかに近いことがわかります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ANALYZE TABLE trips;
@@ -93,7 +93,7 @@ Query OK, 0 rows affected (10.22 sec)
 
 `ANALYZE TABLE`に加えて、TiDBは、しきい値[`tidb_auto_analyze_ratio`](/system-variables.md#tidb_auto_analyze_ratio)に達した後、バックグラウンド操作として統計を自動的に再生成します。 [`SHOW STATS_HEALTHY`](/sql-statements/sql-statement-show-stats-healthy.md)ステートメントを実行すると、TiDBがこのしきい値にどれだけ近いか（TiDBが統計をどの程度健全であると見なすか）を確認できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW STATS_HEALTHY;
@@ -118,7 +118,7 @@ SHOW STATS_HEALTHY;
 
 現在の実行プランの最大の問題は、述語`start_date BETWEEN '2017-07-01 00:00:00' AND '2017-07-01 23:59:59'`がすぐには適用されないことです。すべての行は最初に`TableFullScan`演算子で読み取られ、次に選択が適用されます。 `SHOW CREATE TABLE trips`の出力から原因を見つけることができます：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW CREATE TABLE trips\G
@@ -145,7 +145,7 @@ Create Table: CREATE TABLE `trips` (
 
 `start_date`には<strong>インデックス</strong>がありません。この述語をインデックスリーダー演算子にプッシュするには、インデックスが必要になります。次のようにインデックスを追加します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE trips ADD INDEX (start_date);
@@ -161,7 +161,7 @@ Query OK, 0 rows affected (2 min 10.23 sec)
 
 インデックスを追加した後、 `EXPLAIN`でクエリを繰り返すことができます。次の出力では、新しい実行プランが選択され、 `TableFullScan`つと`Selection`の演算子が削除されていることがわかります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT count(*) FROM trips WHERE start_date BETWEEN '2017-07-01 00:00:00' AND '2017-07-01 23:59:59';
@@ -181,7 +181,7 @@ EXPLAIN SELECT count(*) FROM trips WHERE start_date BETWEEN '2017-07-01 00:00:00
 
 実際の実行時間を比較するために、もう一度[`EXPLAIN ANALYZE`](/sql-statements/sql-statement-explain-analyze.md)を使用できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN ANALYZE SELECT count(*) FROM trips WHERE start_date BETWEEN '2017-07-01 00:00:00' AND '2017-07-01 23:59:59';

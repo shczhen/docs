@@ -10,7 +10,7 @@ aliases: ['/docs/dev/join-reorder/','/docs/dev/reference/performance/join-reorde
 
 例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM t1, t2, t3 WHERE t1.a=t2.a AND t3.a=t2.a;

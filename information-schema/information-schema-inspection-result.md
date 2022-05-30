@@ -17,7 +17,7 @@ TiDB には、システムの障害や隠れた問題を検出するための診
 
 `information_schema.inspection_result`診断結果表`information_schema.inspection_result`の構成は次のとおりです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -62,7 +62,7 @@ DESC inspection_result;
 
 クラスタに現在存在する問題を診断します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM information_schema.inspection_result\G
@@ -115,7 +115,7 @@ DETAILS   | max duration of 172.16.5.40:20151 tikv rocksdb-write-duration was to
 
 また、「2020-03-2600:03:00」から「2020-03-2600:08:00」など、指定した範囲内に存在する問題を診断することもできます。時間範囲を指定するには、SQL ヒント`/*+ time_range() */`を使用します。次のクエリ例を参照してください。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select /*+ time_range("2020-03-26 00:03:00", "2020-03-26 00:08:00") */ * from information_schema.inspection_result\G
@@ -149,7 +149,7 @@ DETAILS   | max duration of 172.16.5.40:10089 tidb get-token-duration is too slo
 
 たとえば、条件を指定して、 `critical`レベルの診断結果を照会することもできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select * from information_schema.inspection_result where severity='critical';
@@ -157,7 +157,7 @@ select * from information_schema.inspection_result where severity='critical';
 
 `critical-error`のルールの診断結果のみを照会します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select * from information_schema.inspection_result where rule='critical-error';
@@ -169,7 +169,7 @@ select * from information_schema.inspection_result where rule='critical-error';
 
 `inspection_rules`のシステムテーブルをクエリすることにより、既存の診断ルールをクエリできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select * from information_schema.inspection_rules where type='inspection';
@@ -237,7 +237,7 @@ select * from information_schema.inspection_rules where type='inspection';
 
 `version`診断ルールは、 `CLUSTER_INFO`システムテーブルを照会することにより、同じコンポーネントのバージョンハッシュが一貫しているかどうかをチェックします。次の例を参照してください。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM information_schema.inspection_result WHERE rule='version'\G

@@ -39,7 +39,7 @@ summary: Learn about the blocklist to control the optimization rules and the beh
 
 -   一部のルールを無効にする場合は、その名前を`mysql.opt_rule_blacklist`テーブルに書き込みます。例えば：
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     INSERT INTO mysql.opt_rule_blacklist VALUES("join_reorder"), ("topn_push_down");
@@ -47,7 +47,7 @@ summary: Learn about the blocklist to control the optimization rules and the beh
 
     次のSQLステートメントを実行すると、上記の操作をすぐに有効にすることができます。有効範囲には、対応するTiDBサーバーのすべての古い接続が含まれます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     admin reload opt_rule_blacklist;
@@ -59,13 +59,13 @@ summary: Learn about the blocklist to control the optimization rules and the beh
 
 -   ルールを再度有効にする場合は、テーブル内の対応するデータを削除してから、次の`admin reload`のステートメントを実行します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     DELETE FROM mysql.opt_rule_blacklist WHERE name IN ("join_reorder", "topn_push_down");
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     admin reload opt_rule_blacklist;
@@ -92,7 +92,7 @@ summary: Learn about the blocklist to control the optimization rules and the beh
 
 `mysql.expr_pushdown_blacklist`のスキーマは次のように表示されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DESC mysql.expr_pushdown_blacklist;
@@ -150,7 +150,7 @@ DESC mysql.expr_pushdown_blacklist;
 
 1.  次のSQLステートメントの`WHERE`節の述語`a < 2`と`a > 2`は、TiKVにプッシュダウンできます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     EXPLAIN SELECT * FROM t WHERE a < 2 AND a > 2;
@@ -169,7 +169,7 @@ DESC mysql.expr_pushdown_blacklist;
 
 2.  式を`mysql.expr_pushdown_blacklist`テーブルに挿入し、 `admin reload expr_pushdown_blacklist`を実行します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     INSERT INTO mysql.expr_pushdown_blacklist VALUES('<','tikv',''), ('>','tikv','');
@@ -180,7 +180,7 @@ DESC mysql.expr_pushdown_blacklist;
     Records: 2  Duplicates: 0  Warnings: 0
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     admin reload expr_pushdown_blacklist;
@@ -192,7 +192,7 @@ DESC mysql.expr_pushdown_blacklist;
 
 3.  実行プランをもう一度観察すると、 `<`と`>`の両方のオペレーターがTiKVコプロセッサーにプッシュダウンされていないことがわかります。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     EXPLAIN SELECT * FROM t WHERE a < 2 and a > 2;
@@ -211,7 +211,7 @@ DESC mysql.expr_pushdown_blacklist;
 
 4.  ブロックリストから1つの式（ここでは`>` ）を削除し、 `admin reload expr_pushdown_blacklist`を実行します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     DELETE FROM mysql.expr_pushdown_blacklist WHERE name = '>';
@@ -221,7 +221,7 @@ DESC mysql.expr_pushdown_blacklist;
     Query OK, 1 row affected (0.01 sec)
     ```
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     admin reload expr_pushdown_blacklist;
@@ -233,7 +233,7 @@ DESC mysql.expr_pushdown_blacklist;
 
 5.  実行プランをもう一度観察すると、 `>`がTiKVコプロセッサーにプッシュダウンされている間、 `<`はプッシュダウンされていないことがわかります。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     EXPLAIN SELECT * FROM t WHERE a < 2 AND a > 2;

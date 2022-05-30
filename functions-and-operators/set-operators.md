@@ -24,7 +24,7 @@ select 1 union select 2;
 
 TiDBは、 `UNION DISTINCT`つと`UNION ALL`のオペレーターの両方をサポートします。 `UNION DISTINCT`は結果セットから重複レコードを削除し、 `UNION ALL`は重複を含むすべてのレコードを保持します。 TiDBではデフォルトで`UNION DISTINCT`が使用されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create table t1 (a int);

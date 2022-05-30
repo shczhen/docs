@@ -61,7 +61,7 @@ TiDBオプティマイザは、これら2つのタイプのクエリを同じ方
 
 実行プランのキャッシュ機能を有効にした後、セッションレベルのシステム変数`last_plan_from_cache`を使用して、前の`Execute`のステートメントがキャッシュされた実行プランを使用したかどうかを確認できます。次に例を示します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 MySQL [test]> create table t(a int);
@@ -96,7 +96,7 @@ MySQL [test]> select @@last_plan_from_cache;
 
 実行プランキャッシュが原因で`Prepare`の特定のセットが予期しない動作をすることがわかった場合は、 `Execute` SQLヒントを使用して、現在のステートメントの実行プランキャッシュの使用をスキップでき`ignore_plan_cache()` 。それでも、例として上記のステートメントを使用してください。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 MySQL [test]> prepare stmt from 'select /*+ ignore_plan_cache() */ * from t where a = ?';
@@ -131,7 +131,7 @@ MySQL [test]> select @@last_plan_from_cache;
 
 次に、 `SESSION`の実行プランのキャッシュをクリアする例を示します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 MySQL [test]> create table t (a int);
@@ -171,7 +171,7 @@ MySQL [test]> select @@last_plan_from_cache; -- The cached plan cannot be select
 
 現在、TiDBは`GLOBAL`の実行プランキャッシュのクリアをサポートしていません。つまり、TiDBクラスター全体のキャッシュされたプランをクリアすることはできません。 `GLOBAL`実行プランのキャッシュをクリアしようとすると、次のエラーが報告されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 MySQL [test]> admin flush global plan_cache;
@@ -182,7 +182,7 @@ ERROR 1105 (HY000): Do not support the 'admin flush global scope.'
 
 SQLステートメントの構文解析コストを削減するために、 `deallocate prepare`を実行する前に`prepare stmt`回実行し、次に`execute stmt`回実行することをお勧めします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 MySQL [test]> prepare stmt from '...'; -- Prepare once
@@ -194,7 +194,7 @@ MySQL [test]> deallocate prepare stmt; -- Release the prepared statement
 
 実際には、以下に示すように、 `execute stmt`を実行した後は毎回`deallocate prepare`を実行することに慣れている可能性があります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 MySQL [test]> prepare stmt from '...'; -- Prepare once
@@ -209,7 +209,7 @@ MySQL [test]> deallocate prepare stmt; -- Release the prepared statement
 
 この問題に対処するには、システム変数を[`tidb_ignore_prepared_cache_close_stmt`](/system-variables.md#tidb_ignore_prepared_cache_close_stmt-new-in-v600)から`ON`に設定して、TiDBが`prepare stmt`を閉じるコマンドを無視するようにします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 mysql> set @@tidb_ignore_prepared_cache_close_stmt=1;  -- Enable the variable

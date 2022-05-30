@@ -128,7 +128,7 @@ Usage of dm-master:
 
 2.  ターミナルで次のコマンドを実行して、DM-masterを実行します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     ./dm-master -config conf/dm-master1.toml
@@ -148,7 +148,7 @@ Usage of dm-master:
 
 以下は、DM-workerコマンドラインパラメーターの説明です。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 ./dm-worker --help
@@ -204,7 +204,7 @@ Usage of worker:
 
 2.  ターミナルで次のコマンドを実行して、DM-workerを実行します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     ./dm-worker -config conf/dm-worker1.toml

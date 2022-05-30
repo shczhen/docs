@@ -7,7 +7,7 @@ summary: Learn the `ENGINES` information_schema table.
 
 `ENGINES`の表は、ストレージエンジンに関する情報を提供します。互換性のために、TiDBは常にInnoDBを唯一のサポートされているエンジンとして記述します。また、 `ENGINES`の表の他の列の値も固定値です。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -28,7 +28,7 @@ DESC engines;
 6 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM engines;

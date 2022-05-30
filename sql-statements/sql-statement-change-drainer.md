@@ -14,7 +14,7 @@ aliases: ['/docs/dev/sql-statements/sql-statement-change-drainer/']
 
 ## 例 {#examples}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW DRAINER STATUS;
@@ -33,7 +33,7 @@ SHOW DRAINER STATUS;
 
 ドレイナー1の状態が1日以上更新されておらず、ドレイナーが異常な状態になっていることがわかりますが、 `State`は`Online`のままです。 `CHANGE DRAINER`を使用した後、Drainerの`State`は「一時停止」に変更されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CHANGE DRAINER TO NODE_STATE ='paused' FOR NODE_ID 'drainer1';
@@ -43,7 +43,7 @@ CHANGE DRAINER TO NODE_STATE ='paused' FOR NODE_ID 'drainer1';
 Query OK, 0 rows affected (0.01 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW DRAINER STATUS;

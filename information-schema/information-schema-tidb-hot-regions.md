@@ -7,7 +7,7 @@ summary: Learn the `TIDB_HOT_REGIONS` information_schema table.
 
 `TIDB_HOT_REGIONS`の表は、現在のホットリージョンに関する情報を提供します。歴史的なホットリージョンについては、 `[TIDB_HOT_REGIONS_HISTORY](/information-schema/information-schema-tidb-hot-regions-history.md)`を参照してください。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;

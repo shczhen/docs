@@ -30,7 +30,7 @@ aliases: ['/docs/tidb-data-migration/dev/create-task-and-verify/']
 
 2つの実行可能なMySQLインスタンスを準備します。 Dockerを使用してMySQLをすばやく起動することもできます。コマンドは次のとおりです。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 docker run --rm --name mysql-3306 -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=true mysql:5.7.22 --log-bin=mysql-bin --port=3306 --bind-address=0.0.0.0 --binlog-format=ROW --server-id=1 --gtid_mode=ON --enforce-gtid-consistency=true > mysql.3306.log 2>&1 &
@@ -41,7 +41,7 @@ docker run --rm --name mysql-3307 -p 3307:3307 -e MYSQL_ALLOW_EMPTY_PASSWORD=tru
 
 -   サンプルデータをmysql-3306に書き込みます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     drop database if exists `sharding1`;
@@ -55,7 +55,7 @@ docker run --rm --name mysql-3307 -p 3307:3307 -e MYSQL_ALLOW_EMPTY_PASSWORD=tru
 
 -   サンプルデータをmysql-3307に書き込みます。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     drop database if exists `sharding2`;
@@ -71,7 +71,7 @@ docker run --rm --name mysql-3307 -p 3307:3307 -e MYSQL_ALLOW_EMPTY_PASSWORD=tru
 
 TiDBサーバーを実行するには、次のコマンドを使用します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 wget https://download.pingcap.org/tidb-latest-linux-amd64.tar.gz
@@ -97,7 +97,7 @@ mv tidb-latest-linux-amd64/bin/tidb-server ./
 
 安全上の理由から、暗号化されたパスワードを構成して使用することをお勧めします。 dmctlを使用して、MySQL/TiDBパスワードを暗号化できます。パスワードが「123456」であるとします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 ./dmctl encrypt "123456"
@@ -134,7 +134,7 @@ MySQL2データソースで、上記の構成を`conf/source2.yaml`にコピー�
 
 dmctlを使用してMySQL1のデータソース構成をDMクラスターにロードするには、ターミナルで次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 ./dmctl --master-addr=127.0.0.1:8261 operate-source create conf/source1.yaml
@@ -195,7 +195,7 @@ MySQL2の場合、上記のコマンドの構成ファイルをMySQL2の構成�
 
 2.  dmctlを使用してタスクを作成するには、上記の構成を`conf/task.yaml`のファイルに書き込みます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     ./dmctl --master-addr 127.0.0.1:8261 start-task conf/task.yaml

@@ -10,7 +10,7 @@ aliases: ['/docs/dev/system-tables/system-table-cluster-log/','/docs/dev/referen
 
 v4.0より前のTiDBクラスターのログを取得するには、各インスタンスにログインしてログを要約する必要があります。 4.0のこのクラスターログテーブルは、グローバルで時間順に並べられたログ検索結果を提供します。これにより、フルリンクイベントの追跡が容易になります。たとえば、 `region id`に従ってログを検索することにより、このリージョンのライフサイクル内のすべてのログをクエリできます。同様に、低速ログの`txn id`を介して完全なリンクログを検索することにより、各インスタンスでこのトランザクションによってスキャンされたフローとキーの数を照会できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -46,7 +46,7 @@ DESC cluster_log;
 
 次の例は、 `CLUSTER_LOG`テーブルを使用してDDLステートメントの実行プロセスを照会する方法を示しています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT time,instance,left(message,150) FROM cluster_log WHERE message LIKE '%ddl%job%ID.80%' AND type='tidb' AND time > '2020-05-18 20:40:00' AND time < '2020-05-18 21:40:00'

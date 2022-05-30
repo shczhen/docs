@@ -18,7 +18,7 @@ binlogを複製する場合、Drainerはトランザクションをアップス�
 
 次のように、ダウンストリームチェックポイントテーブルをクエリできます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select * from tidb_binlog.checkpoint;

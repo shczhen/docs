@@ -7,7 +7,7 @@ summary: Learn the `REFERENTIAL_CONSTRAINTS` information_schema table.
 
 `REFERENTIAL_CONSTRAINTS`のテーブルは、テーブル間の`FOREIGN KEY`の関係に関する情報を提供します。 TiDBは現在、 `FOREIGN KEY`の制約を適用したり、 `ON DELETE CASCADE`などのアクションを実行したりしないことに注意してください。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -33,7 +33,7 @@ DESC referential_constraints;
 11 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE test.parent (

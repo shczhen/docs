@@ -136,7 +136,7 @@ Global Flags:
 
 以下は、 `shard-ddl-lock unlock`コマンドの例です。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 shard-ddl-lock unlock test-`shard_db`.`shard_table`
@@ -239,7 +239,7 @@ MySQLとDMの操作プロセスは次のとおりです。
     -   DDLロックの所有者がオフラインになった場合は、パラメーター`--owner`を使用して、DDLを実行するための新しい所有者として別のDMワーカーを指定できます。
     -   いずれかのMySQLソースがエラーを報告した場合、 `result`は`false`に設定されます。この時点で、各MySQLソースのエラーが許容可能であり、期待範囲内であるかどうかを注意深く確認する必要があります。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```bash
         shard-ddl-lock unlock test-`shard_db`.`shard_table`

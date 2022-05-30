@@ -38,7 +38,7 @@ DMを使用してテーブルを移行する場合、DMはテーブルスキー�
 
 ## 指示 {#command}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 help binlog-schema
@@ -103,7 +103,7 @@ Global Flags:
 
 `db_single`タスクの`mysql-replica-01`ソースに対応する`` `db_single`.`t1` ``テーブルのテーブルスキーマを取得する場合は、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 binlog-schema list -s mysql-replica-01 task_single db_single t1
@@ -128,7 +128,7 @@ binlog-schema list -s mysql-replica-01 task_single db_single t1
 
 テーブルスキーマを更新するには、次の`binlog-schema update`コマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 help binlog-schema update
@@ -163,7 +163,7 @@ CREATE TABLE `t1` (
 
 上記の`CREATE TABLE`のステートメントをファイル（たとえば、 `db_single.t1-schema.sql` ）として保存し、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 operate-schema set -s mysql-replica-01 task_single -d db_single -t t1 db_single.t1-schema.sql
@@ -215,7 +215,7 @@ Global Flags:
 
 `db_single`タスクの`mysql-replica-01`ソースに対応する`` `db_single`.`t1` ``テーブルのテーブルスキーマを削除する場合は、次のコマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 binlog-schema delete -s mysql-replica-01 task_single db_single t1

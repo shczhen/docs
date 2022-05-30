@@ -140,7 +140,7 @@ pstmt.executeBatch();
 
 `Batch`のメソッドが使用されますが、TiDBに送信されるSQLステートメントは依然として個別の`INSERT`のステートメントです。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 insert into t(a) values(10);
@@ -150,7 +150,7 @@ insert into t(a) values(12);
 
 ただし、 `rewriteBatchedStatements=true`を設定すると、TiDBに送信されるSQLステートメントは単一の`INSERT`ステートメントになります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 insert into t(a) values(10),(11),(12);
@@ -158,7 +158,7 @@ insert into t(a) values(10),(11),(12);
 
 `INSERT`ステートメントの書き直しは、複数の「values」キーワードの後の値をSQLステートメント全体に連結することであることに注意してください。 `INSERT`のステートメントに他の違いがある場合、次のように書き換えることはできません。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 insert into t (a) values (10) on duplicate key update a = 10;
@@ -168,7 +168,7 @@ insert into t (a) values (12) on duplicate key update a = 12;
 
 上記の`INSERT`つのステートメントを1つのステートメントに書き換えることはできません。ただし、3つのステートメントを次のステートメントに変更した場合：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 insert into t (a) values (10) on duplicate key update a = values(a);
@@ -178,7 +178,7 @@ insert into t (a) values (12) on duplicate key update a = values(a);
 
 次に、それらは書き換え要件を満たします。上記の`INSERT`つのステートメントは、次の1つのステートメントに書き換えられます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 insert into t (a) values (10), (11), (12) on duplicate key update a = values(a);
@@ -186,7 +186,7 @@ insert into t (a) values (10), (11), (12) on duplicate key update a = values(a);
 
 バッチ更新中に3つ以上の更新がある場合、SQLステートメントは書き換えられ、複数のクエリとして送信されます。これにより、クライアントからサーバーへの要求のオーバーヘッドが効果的に削減されますが、副作用として、より大きなSQLステートメントが生成されます。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 update t set a = 10 where id = 1; update t set a = 11 where id = 2; update t set a = 12 where id = 3;

@@ -51,7 +51,7 @@ TiDBクラスターをアップグレードする前に、まずTiUPまたはTiU
 
 1.  TiUPバージョンをアップグレードします。 TiUPのバージョンは`1.9.3`以降にすることをお勧めします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup update --self
@@ -60,7 +60,7 @@ TiDBクラスターをアップグレードする前に、まずTiUPまたはTiU
 
 2.  TiUPクラスターのバージョンをアップグレードします。 TiUPクラスターのバージョンは`1.9.3`以降にすることをお勧めします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup update cluster
@@ -75,7 +75,7 @@ TiDBクラスターをアップグレードする前に、まずTiUPまたはTiU
 
 [TiUPを使用してTiDBクラスターをデプロイする-TiUPをオフラインでデプロイする](/production-deployment-using-tiup.md#method-2-deploy-tiup-offline)を参照して、新しいバージョンのTiUPミラーをダウンロードし、制御マシンにアップロードします。 `local_install.sh`を実行した後、TiUPは上書きアップグレードを完了します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tar xzvf tidb-community-server-${version}-linux-amd64.tar.gz
@@ -85,7 +85,7 @@ source /home/tidb/.bash_profile
 
 上書きアップグレード後、次のコマンドを実行してTiUPクラスターコンポーネントをアップグレードします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup update cluster
@@ -104,7 +104,7 @@ tiup update cluster
 
 1.  `vi`編集モードに入り、トポロジファイルを編集します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster edit-config <cluster-name>
@@ -128,7 +128,7 @@ tiup update cluster
 
 アップグレード中の未定義の動作やその他の問題を回避するために、アップグレードの前に現在のクラスターのリージョンのヘルスステータスを確認することをお勧めします。これを行うには、 `check`サブコマンドを使用できます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup cluster check <cluster-name> --cluster
@@ -153,7 +153,7 @@ tiup cluster check <cluster-name> --cluster
 
 #### オンラインアップグレード {#online-upgrade}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup cluster upgrade <cluster-name> <version>
@@ -161,7 +161,7 @@ tiup cluster upgrade <cluster-name> <version>
 
 たとえば、クラスターをv6.0.0にアップグレードする場合は、次のようにします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup cluster upgrade <cluster-name> v6.0.0
@@ -183,7 +183,7 @@ tiup cluster upgrade <cluster-name> v6.0.0
 
 1.  オフラインアップグレードの前に、まずクラスター全体を停止する必要があります。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster stop <cluster-name>
@@ -191,7 +191,7 @@ tiup cluster upgrade <cluster-name> v6.0.0
 
 2.  オフラインアップグレードを実行するには、 `upgrade`コマンドと`--offline`オプションを使用します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster upgrade <cluster-name> <version> --offline
@@ -199,7 +199,7 @@ tiup cluster upgrade <cluster-name> v6.0.0
 
 3.  アップグレード後、クラスターは自動的に再起動されません。再起動するには、 `start`コマンドを使用する必要があります。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster start <cluster-name>
@@ -209,7 +209,7 @@ tiup cluster upgrade <cluster-name> v6.0.0
 
 `display`コマンドを実行して、最新のクラスターバージョン`TiDB Version`を表示します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup cluster display <cluster-name>
@@ -235,7 +235,7 @@ Cluster version:    v6.0.0
 
 1.  `tiup cluster audit`を実行して、操作レコードを確認します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster audit
@@ -245,7 +245,7 @@ Cluster version:    v6.0.0
 
 2.  `tiup cluster replay <audit-id>`を実行して、対応する操作を再試行します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup cluster replay <audit-id>
@@ -255,7 +255,7 @@ Cluster version:    v6.0.0
 
 `--force`を指定できます。その後、PDリーダーの転送とTiKVリーダーの削除のプロセスは、アップグレード中にスキップされます。クラスターを直接再起動してバージョンを更新します。これは、オンラインで実行されるクラスターに大きな影響を与えます。コマンドは次のとおりです。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup cluster upgrade <cluster-name> <version> --force
@@ -265,7 +265,7 @@ tiup cluster upgrade <cluster-name> <version> --force
 
 TiUPを使用してツールのバージョンをアップグレードし、対応するバージョンの`ctl`つのコンポーネントをインストールできます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup install ctl:v6.0.0

@@ -7,7 +7,7 @@ summary: Learn the `COLLATIONS` information_schema table.
 
 `COLLATIONS`の表は、 `CHARACTER_SETS`の表の文字セットに対応する照合のリストを提供します。現在、このテーブルはMySQLとの互換性のためにのみ含まれています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -28,7 +28,7 @@ DESC collations;
 6 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM collations WHERE character_set_name='utf8mb4';

@@ -32,7 +32,7 @@ TiDBのデータベースは、テーブルやインデックスなどのオブ�
 
 データベースのリストを表示するには、次の`SHOW DATABASES`のステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW DATABASES;
@@ -40,7 +40,7 @@ SHOW DATABASES;
 
 `mysql`という名前のデータベースを使用するには、次のステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE mysql;
@@ -48,7 +48,7 @@ USE mysql;
 
 データベース内のすべてのテーブルを表示するには、次の`SHOW TABLES`のステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW TABLES FROM mysql;
@@ -56,7 +56,7 @@ SHOW TABLES FROM mysql;
 
 データベースを作成するには、次の`CREATE DATABASE`のステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE DATABASE db_name [options];
@@ -64,7 +64,7 @@ CREATE DATABASE db_name [options];
 
 `samp_db`という名前のデータベースを作成するには、次のステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE DATABASE IF NOT EXISTS samp_db;
@@ -74,7 +74,7 @@ CREATE DATABASE IF NOT EXISTS samp_db;
 
 データベースを削除するには、次の`DROP DATABASE`のステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DROP DATABASE samp_db;
@@ -84,7 +84,7 @@ DROP DATABASE samp_db;
 
 テーブルを作成するには、次の`CREATE TABLE`のステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE table_name column_name data_type constraint;
@@ -92,7 +92,7 @@ CREATE TABLE table_name column_name data_type constraint;
 
 たとえば、number、name、birthdayなどのフィールドを含む`person`という名前のテーブルを作成するには、次のステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE person (
@@ -104,7 +104,7 @@ CREATE TABLE person (
 
 テーブル（DDL）を作成するステートメントを表示するには、次の`SHOW CREATE`のステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW CREATE table person;
@@ -112,7 +112,7 @@ SHOW CREATE table person;
 
 テーブルを削除するには、 `DROP TABLE`ステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DROP TABLE person;
@@ -122,7 +122,7 @@ DROP TABLE person;
 
 インデックスは、インデックス付きの列に対するクエリを高速化するために使用されます。値が一意でない列のインデックスを作成するには、 `CREATE INDEX`ステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE INDEX person_id ON person (id);
@@ -130,7 +130,7 @@ CREATE INDEX person_id ON person (id);
 
 または、 `ALTER TABLE`のステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE person ADD INDEX person_id (id);
@@ -138,7 +138,7 @@ ALTER TABLE person ADD INDEX person_id (id);
 
 値が一意である列の一意のインデックスを作成するには、 `CREATE UNIQUE INDEX`ステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE UNIQUE INDEX person_unique_id ON person (id);
@@ -146,7 +146,7 @@ CREATE UNIQUE INDEX person_unique_id ON person (id);
 
 または、 `ALTER TABLE`のステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE person ADD UNIQUE person_unique_id (id);
@@ -154,7 +154,7 @@ ALTER TABLE person ADD UNIQUE person_unique_id (id);
 
 テーブル内のすべてのインデックスを表示するには、 `SHOW INDEX`ステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW INDEX FROM person;
@@ -162,13 +162,13 @@ SHOW INDEX FROM person;
 
 インデックスを削除するには、 `DROP INDEX`または`ALTER TABLE`ステートメントを使用します。 `DROP INDEX`は`ALTER TABLE`にネストできます：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DROP INDEX person_id ON person;
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE person DROP INDEX person_unique_id;
@@ -184,7 +184,7 @@ ALTER TABLE person DROP INDEX person_unique_id;
 
 テーブルにデータを挿入するには、次の`INSERT`ステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO person VALUES(1,'tom','20170912');
@@ -192,7 +192,7 @@ INSERT INTO person VALUES(1,'tom','20170912');
 
 一部のフィールドのデータを含むレコードをテーブルに挿入するには、次の`INSERT`ステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO person(id,name) VALUES('2','bob');
@@ -200,7 +200,7 @@ INSERT INTO person(id,name) VALUES('2','bob');
 
 テーブル内のレコードの一部のフィールドを更新するには、 `UPDATE`ステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 UPDATE person SET birthday='20180808' WHERE id=2;
@@ -208,7 +208,7 @@ UPDATE person SET birthday='20180808' WHERE id=2;
 
 テーブル内のデータを削除するには、次の`DELETE`ステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DELETE FROM person WHERE id=2;
@@ -224,7 +224,7 @@ DQLは、1つまたは複数のテーブルから目的のデータ行を取得�
 
 テーブル内のデータを表示するには、 `SELECT`ステートメントを使用します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM person;
@@ -232,7 +232,7 @@ SELECT * FROM person;
 
 特定の列を照会するには、 `SELECT`キーワードの後に列名を追加します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT name FROM person;
@@ -249,7 +249,7 @@ SELECT name FROM person;
 
 `WHERE`句を使用して、条件に一致するすべてのレコードをフィルタリングし、結果を返します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM person where id<5;
@@ -261,7 +261,7 @@ DCLは通常、ユーザーの作成または削除、およびユーザー特�
 
 ユーザーを作成するには、 `CREATE USER`ステートメントを使用します。次の例では、パスワード`123456`を使用して`tiuser`という名前のユーザーを作成します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE USER 'tiuser'@'localhost' IDENTIFIED BY '123456';
@@ -269,7 +269,7 @@ CREATE USER 'tiuser'@'localhost' IDENTIFIED BY '123456';
 
 `samp_db`データベース内のテーブルを取得する特権を`tiuser`に付与するには、次のようにします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 GRANT SELECT ON samp_db.* TO 'tiuser'@'localhost';
@@ -277,7 +277,7 @@ GRANT SELECT ON samp_db.* TO 'tiuser'@'localhost';
 
 `tiuser`の特権を確認するには：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW GRANTS for tiuser@localhost;
@@ -285,7 +285,7 @@ SHOW GRANTS for tiuser@localhost;
 
 `tiuser`を削除するには：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DROP USER 'tiuser'@'localhost';

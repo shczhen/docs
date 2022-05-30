@@ -26,7 +26,7 @@ aliases: ['/docs/dev/generated-columns/','/docs/dev/reference/sql/generated-colu
 
 MySQL 5.7とTiDBの両方で、JSON型の列に直接インデックスを付けることはできません。つまり、次のテーブルスキーマは<strong>サポートされていません</strong>。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE person (
@@ -41,7 +41,7 @@ JSON列にインデックスを付けるには、最初に生成された列と�
 
 例として`address_info`の`city`フィールドを使用すると、仮想的に生成された列を作成し、そのインデックスを追加できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE person (
@@ -55,13 +55,13 @@ CREATE TABLE person (
 
 この表では、 `city`列は<strong>仮想的に生成された列</strong>であり、インデックスがあります。次のクエリでは、インデックスを使用して実行を高速化できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT name, id FROM person WHERE city = 'Beijing';
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXPLAIN SELECT name, id FROM person WHERE city = 'Beijing';
@@ -82,7 +82,7 @@ EXPLAIN SELECT name, id FROM person WHERE city = 'Beijing';
 
 パス`$.city`にデータが存在しない場合、 `JSON_EXTRACT`は`NULL`を返します。 `city`が`NOT NULL`でなければならないという制約を適用する場合は、仮想生成列を次のように定義できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE person (
@@ -98,7 +98,7 @@ CREATE TABLE person (
 
 `INSERT`ステートメントと`UPDATE`ステートメントの両方が仮想列の定義をチェックします。検証に合格しない行はエラーを返します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 mysql> INSERT INTO person (name, address_info) VALUES ('Morgan', JSON_OBJECT('Country', 'Canada'));

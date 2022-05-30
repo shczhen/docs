@@ -7,7 +7,7 @@ summary: Learn the `DEADLOCKS` information_schema table.
 
 `DEADLOCKS`の表は、現在のTiDBノードで最近発生したいくつかのデッドロックエラーの情報を示しています。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -91,7 +91,7 @@ DESC deadlocks;
 
 ケース2の場合、トランザクションAで現在実行されているステートメントは、TiDBで自動的に再試行されます。たとえば、トランザクションAが次のステートメントを実行するとします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 update t set v = v + 1 where id = 1 or id = 2;
@@ -99,7 +99,7 @@ update t set v = v + 1 where id = 1 or id = 2;
 
 トランザクションBは、次の2つのステートメントを連続して実行します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 update t set v = 4 where id = 2;
@@ -121,7 +121,7 @@ update t set v = 2 where id = 1;
 
 テーブル定義と初期データは次のとおりであると想定します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 create table t (id int primary key, v int);
@@ -139,7 +139,7 @@ insert into t values (1, 10), (2, 20);
 
 次に、トランザクション2はデッドロックエラーを報告します。このとき、 `DEADLOCKS`のテーブルをクエリします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 select * from information_schema.deadlocks;
@@ -182,7 +182,7 @@ select * from information_schema.deadlocks;
 
 `DEADLOCK_ID`はグローバルな一意性を保証しないため、 `CLUSTER_DEADLOCKS`テーブルのクエリ結果では、 `INSTANCE`と`DEADLOCK_ID`を一緒に使用して、結果セット内のさまざまなデッドロックエラーの情報を区別する必要があることに注意してください。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;

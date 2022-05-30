@@ -30,7 +30,7 @@ summary: Learn about how to update data and batch update data.
 
 SQLでは、 `UPDATE`ステートメントは通常次の形式になります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 UPDATE {table} SET {update_column} = {update_value} WHERE {filter_column} = {filter_value}
@@ -60,7 +60,7 @@ UPDATE {table} SET {update_column} = {update_value} WHERE {filter_column} = {fil
 <SimpleTab>
 <div label="SQL" href="update-sql">
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 UPDATE `authors` SET `name` = "Helen Haruki" WHERE `id` = 1;
@@ -95,7 +95,7 @@ try (Connection connection = ds.getConnection()) {
 
 SQLでは、 `INSERT ... ON DUPLICATE KEY UPDATE ...`ステートメントは通常次の形式になります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO {table} ({columns}) VALUES ({values})
@@ -124,7 +124,7 @@ INSERT INTO {table} ({columns}) VALUES ({values})
 <SimpleTab>
 <div label="SQL" href="upsert-sql">
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 INSERT INTO `ratings`
@@ -179,7 +179,7 @@ VALUES (?, ?, ?, NOW()) ON DUPLICATE KEY UPDATE `score` = ?, `rated_at` = NOW()"
 
 たとえば、10ポイントスケールであるかどうかの識別子としてデータ型[BOOL](/data-type-numeric.md#boolean-type)を使用して`ten_point`という名前の列を作成します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 ALTER TABLE `bookshop`.`ratings` ADD COLUMN `ten_point` BOOL NOT NULL DEFAULT FALSE;

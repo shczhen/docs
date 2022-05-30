@@ -55,7 +55,7 @@ SELECT table_name,table_schema,SUM(data_length)/1024/1024 AS data_length,SUM(ind
 
 1.  次のコマンドを実行して、MySQLからすべてのデータをエクスポートします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup dumpling -h ${ip} -P 3306 -u root -t 16 -r 200000 -F 256MiB -B my_db1 -f 'my_db1.table[12]' -o 's3://my-bucket/sql-backup?region=us-west-2'
@@ -128,7 +128,7 @@ SELECT table_name,table_schema,SUM(data_length)/1024/1024 AS data_length,SUM(ind
 
     S3からデータをインポートする場合は、S3ストレージパスにアクセスできるSecretKeyとAccessKeyを環境変数としてTiDBLightningノードに渡します。 `~/.aws/credentials`からクレデンシャルを読み取ることもできます。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     export AWS_ACCESS_KEY_ID=${access_key}
@@ -174,7 +174,7 @@ SELECT table_name,table_schema,SUM(data_length)/1024/1024 AS data_length,SUM(ind
 
 2.  次のコマンドを実行して、 `tiup dmctl`を使用してデータソース構成をDMクラスターにロードします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup dmctl --master-addr ${advertise-addr} operate-source create source1.yaml
@@ -191,7 +191,7 @@ SELECT table_name,table_schema,SUM(data_length)/1024/1024 AS data_length,SUM(ind
 
 1.  `task.yaml`のファイルを編集します。インクリメンタルレプリケーションモードと各データソースの開始点を構成します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```yaml
     name: task-test                      # Task name. Must be globally unique.
@@ -230,7 +230,7 @@ SELECT table_name,table_schema,SUM(data_length)/1024/1024 AS data_length,SUM(ind
 
     移行タスクを開始する前に、エラーの可能性を減らすために、次の`check-task`コマンドを実行して、構成がDMの要件を満たしていることを確認することをお勧めします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup dmctl --master-addr ${advertise-addr} check-task task.yaml
@@ -238,7 +238,7 @@ SELECT table_name,table_schema,SUM(data_length)/1024/1024 AS data_length,SUM(ind
 
 2.  次のコマンドを実行して、移行タスクを開始します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```shell
     tiup dmctl --master-addr ${advertise-addr} start-task task.yaml
@@ -259,7 +259,7 @@ SELECT table_name,table_schema,SUM(data_length)/1024/1024 AS data_length,SUM(ind
 
 DMクラスターに進行中の移行タスクがあるかどうかを確認し、タスクステータスを表示するには、 `tiup dmctl`を使用して`query-status`コマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dmctl --master-addr ${advertise-addr} query-status ${task-name}

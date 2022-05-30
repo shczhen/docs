@@ -14,7 +14,7 @@ SQLバインディングはSPMの基礎です。 [オプティマイザーのヒ
 
 ### バインディングを作成する {#create-a-binding}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE [GLOBAL | SESSION] BINDING FOR BindableStmt USING BindableStmt
@@ -164,7 +164,7 @@ explain SELECT * FROM t1, t2 WHERE t1.id = t2.id;
 
 ### バインディングを削除します {#remove-binding}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DROP [GLOBAL | SESSION] BINDING FOR BindableStmt;
@@ -192,7 +192,7 @@ explain SELECT * FROM t1,t2 WHERE t1.id = t2.id;
 
 ## バインディングステータスの変更 {#change-binding-status}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET BINDING [ENABLED | DISABLED] FOR BindableStmt;
@@ -204,7 +204,7 @@ SET BINDING [ENABLED | DISABLED] FOR BindableStmt;
 
 ### バインディングを表示 {#view-bindings}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SHOW [GLOBAL | SESSION] BINDINGS [ShowLikeOrWhere]
@@ -230,7 +230,7 @@ SHOW [GLOBAL | SESSION] BINDINGS [ShowLikeOrWhere]
 
 -   システム変数[`last_plan_from_binding`](/system-variables.md#last_plan_from_binding-new-in-v40)を使用して、最後に実行されたステートメントで使用された実行プランがバインディングからのものであるかどうかを示します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     -- Create a global binding
@@ -287,7 +287,7 @@ SHOW [GLOBAL | SESSION] BINDINGS [ShowLikeOrWhere]
 
 バインディングのキャッシュステータスを表示するには、 `SHOW binding_cache status`ステートメントを実行します。このステートメントでは、有効なスコープはデフォルトでGLOBALであり、変更できません。このステートメントは、キャッシュで使用可能なバインディングの数、システムで使用可能なバインディングの総数、キャッシュされたすべてのバインディングのメモリ使用量、およびキャッシュの合計メモリを返します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 
@@ -415,7 +415,7 @@ TiDBクラスターをアップグレードする前に、ベースラインキ�
 
 次のステートメントを使用して、自動バインディングエボリューションを有効にします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET GLOBAL tidb_evolve_plan_baselines = ON;
@@ -432,7 +432,7 @@ SET GLOBAL tidb_evolve_plan_baselines = ON;
 
 表`t`が次のように定義されていると仮定します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE TABLE t(a INT, b INT, KEY(a), KEY(b));
@@ -440,7 +440,7 @@ CREATE TABLE t(a INT, b INT, KEY(a), KEY(b));
 
 表`t`で次のクエリを実行します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM t WHERE a < 100 AND b < 100;
@@ -448,7 +448,7 @@ SELECT * FROM t WHERE a < 100 AND b < 100;
 
 上で定義した表では、 `a < 100`の条件を満たす行はほとんどありません。しかし、何らかの理由で、オプティマイザは、インデックス`a`を使用する最適な実行プランではなく、誤って全表スキャンを選択します。最初に次のステートメントを使用してバインディングを作成できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE GLOBAL BINDING for SELECT * FROM t WHERE a < 100 AND b < 100 using SELECT * FROM t use index(a) WHERE a < 100 AND b < 100;
@@ -492,7 +492,7 @@ CREATE GLOBAL BINDING for SELECT * FROM t WHERE a < 100 AND b < 100 using SELECT
 
 -   v5.2.0より前のバージョン（つまり、v4.0、v5.0、およびv5.1）から現在のバージョンにアップグレードする場合は、アップグレードする前に`tidb_evolve_plan_baselines`が無効になっていることを確認してください。この変数を無効にするには、次の手順を実行します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     -- Check whether `tidb_evolve_plan_baselines` is disabled in the earlier version.
@@ -506,7 +506,7 @@ CREATE GLOBAL BINDING for SELECT * FROM t WHERE a < 100 AND b < 100 using SELECT
 
 -   v4.0から現在のバージョンにアップグレードする前に、使用可能なSQLバインディングに対応するすべてのクエリの構文が新しいバージョンで正しいかどうかを確認する必要があります。構文エラーが存在する場合は、対応するSQLバインディングを削除します。これを行うには、次の手順を実行します。
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     -- Check the query corresponding to the available SQL binding in the version to be upgraded.

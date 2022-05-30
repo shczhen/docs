@@ -32,7 +32,7 @@ TiDBでの暗黙的な型変換の規則は次のとおりです。
 
 次の場合、 `account_id`が主キーであり、そのデータ型は`varchar`です。実行プランでは、このSQLステートメントには暗黙的な型変換があり、インデックスを使用できません。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DESC SELECT * FROM `account` WHERE `account_id`=6010000000009801;
@@ -52,7 +52,7 @@ DESC SELECT * FROM `account` WHERE `account_id`=6010000000009801;
 
 次の場合、 `a`フィールドのデータ型は`decimal(32,0)`です。実行プランでは、暗黙的な型変換が行われ、10進フィールドと文字列定数の両方がdouble型に変換されます。ダブルタイプの精度は10進数ほど高くないため、精度が低下します。この場合、SQLステートメントは結果セットを範囲外に誤ってフィルタリングします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DESC SELECT * FROM `t1` WHERE `a` BETWEEN '12123123' AND '1111222211111111200000';
@@ -68,7 +68,7 @@ DESC SELECT * FROM `t1` WHERE `a` BETWEEN '12123123' AND '1111222211111111200000
 
 <strong>実行結果の簡単な説明</strong>：上記の実行プランから、 `Cast`演算子が表示されます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM `t1` WHERE `a` BETWEEN '12123123' AND '1111222211111111200000';

@@ -24,7 +24,7 @@ summary: Learn about the SQL development specifications for TiDB.
 
     推奨されません：
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT gmt_create
@@ -34,7 +34,7 @@ summary: Learn about the SQL development specifications for TiDB.
 
     おすすめされた：
 
-    {{&lt;コピー可能な&quot;sql&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```sql
     SELECT DATE_FORMAT(gmt_create，'%Y%m%d %H:%i:%s')

@@ -262,7 +262,7 @@ public class TxnExample {
 
 サンプルプログラムを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 mvn clean package
@@ -271,7 +271,7 @@ java -jar target/plain-java-txn-0.0.1-jar-with-dependencies.jar ALICE_NUM=4 BOB_
 
 SQLログ：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 /* txn 1 */ BEGIN PESSIMISTIC
@@ -324,14 +324,14 @@ mysql> SELECT * FROM users;
 
 サンプルプログラムを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 mvn clean package
 java -jar target/plain-java-txn-0.0.1-jar-with-dependencies.jar ALICE_NUM=4 BOB_NUM=7
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 /* txn 1 */ BEGIN PESSIMISTIC
@@ -565,7 +565,7 @@ public class TxnExample {
 
 サンプルプログラムを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 mvn clean package
@@ -574,7 +574,7 @@ java -jar target/plain-java-txn-0.0.1-jar-with-dependencies.jar ALICE_NUM=4 BOB_
 
 SQLステートメントの実行プロセス：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
     /* txn 2 */ BEGIN OPTIMISTIC
@@ -635,14 +635,14 @@ mysql> SELECT * FROM users;
 
 サンプルプログラムを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 mvn clean package
 java -jar target/plain-java-txn-0.0.1-jar-with-dependencies.jar ALICE_NUM=4 BOB_NUM=7
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 /* txn 1 */ BEGIN OPTIMISTIC

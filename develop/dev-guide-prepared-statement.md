@@ -18,7 +18,7 @@ summary: Learn about how to use the TiDB prepared statements.
 
 ### プリペアドステートメントを作成する {#create-a-prepared-statement}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 PREPARE {prepared_statement_name} FROM '{prepared_statement_sql}';
@@ -35,7 +35,7 @@ PREPARE {prepared_statement_name} FROM '{prepared_statement_sql}';
 
 プリペアドステートメントはパラメータとして<strong>ユーザー変数</strong>のみを使用できるため、 [`EXECUTE`ステートメント](/sql-statements/sql-statement-execute.md)がプリペアドステートメントを呼び出す前に、 [`SET`ステートメント](/sql-statements/sql-statement-set-variable.md)を使用して変数を設定します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET @{parameter_name} = {parameter_value};
@@ -52,7 +52,7 @@ EXECUTE {prepared_statement_name} USING @{parameter_name};
 
 ### プリペアドステートメントを削除します {#delete-the-prepared-statement}
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 DEALLOCATE PREPARE {prepared_statement_name};
@@ -76,7 +76,7 @@ DEALLOCATE PREPARE {prepared_statement_name};
 
 <div label="SQL" href="read-sql">
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 PREPARE `books_query` FROM 'SELECT * FROM `books` WHERE `id` = ?';
@@ -88,7 +88,7 @@ PREPARE `books_query` FROM 'SELECT * FROM `books` WHERE `id` = ?';
 Query OK, 0 rows affected (0.01 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET @id = 1;
@@ -100,7 +100,7 @@ SET @id = 1;
 Query OK, 0 rows affected (0.04 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXECUTE `books_query` USING @id;
@@ -155,7 +155,7 @@ try (Connection connection = ds.getConnection()) {
 
 <div label="SQL" href="write-sql">
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 PREPARE `books_insert` FROM 'INSERT INTO `books` (`title`, `type`, `stock`, `price`, `published_at`) VALUES (?, ?, ?, ?, ?);';
@@ -167,7 +167,7 @@ PREPARE `books_insert` FROM 'INSERT INTO `books` (`title`, `type`, `stock`, `pri
 Query OK, 0 rows affected (0.03 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET @title = 'TiDB Developer Guide';
@@ -183,7 +183,7 @@ SET @published_at = NOW();
 Query OK, 0 rows affected (0.04 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 EXECUTE `books_insert` USING @title, @type, @stock, @price, @published_at;

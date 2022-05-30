@@ -39,7 +39,7 @@ from:
 
 次に、次のコマンドを実行して、 `tiup dmctl`を使用してデータソース構成をDMクラスターにロードします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dmctl --master-addr ${advertise-addr} operate-source create source1.yaml
@@ -96,7 +96,7 @@ block-allow-list:
 
 エラーを回避するために、移行タスクを開始する前に、 `check-task`コマンドを使用して、構成がDM構成の要件を満たしているかどうかを確認することをお勧めします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dmctl --master-addr ${advertise-addr} check-task task.yaml
@@ -104,7 +104,7 @@ tiup dmctl --master-addr ${advertise-addr} check-task task.yaml
 
 次のコマンドを`tiup dmctl`で実行して、移行タスクを開始します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dmctl --master-addr ${advertise-addr} start-task task.yaml
@@ -123,7 +123,7 @@ tiup dmctl --master-addr ${advertise-addr} start-task task.yaml
 
 DMクラスターに進行中の移行タスク、タスクステータス、およびその他の情報があるかどうかを確認するには、 `tiup dmctl`を使用して`query-status`コマンドを実行します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 tiup dmctl --master-addr ${advertise-addr} query-status ${task-name}

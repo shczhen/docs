@@ -97,7 +97,7 @@ APIリクエストを送信した後、エラーが発生した場合、返さ�
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'GET' \
@@ -129,7 +129,7 @@ curl -X 'GET' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'DELETE' \
@@ -147,7 +147,7 @@ curl -X 'DELETE' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'GET' \
@@ -179,7 +179,7 @@ curl -X 'GET' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'DELETE' \
@@ -197,7 +197,7 @@ curl -X 'DELETE' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'POST' \
@@ -278,7 +278,7 @@ curl -X 'POST' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'GET' \
@@ -346,7 +346,7 @@ curl -X 'GET' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'DELETE' \
@@ -368,7 +368,7 @@ curl -X 'DELETE' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'PUT' \
@@ -446,7 +446,7 @@ curl -X 'PUT' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'POST' \
@@ -465,7 +465,7 @@ curl -X 'POST' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'POST' \
@@ -484,7 +484,7 @@ curl -X 'POST' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'GET' \
@@ -538,7 +538,7 @@ curl -X 'GET' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'GET' \
@@ -577,7 +577,7 @@ curl -X 'GET' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'POST' \
@@ -604,7 +604,7 @@ curl -X 'POST' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'POST' \
@@ -628,7 +628,7 @@ curl -X 'POST' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'POST' \
@@ -651,7 +651,7 @@ curl -X 'POST' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'POST' \
@@ -673,7 +673,7 @@ curl -X 'POST' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'GET' \
@@ -697,7 +697,7 @@ curl -X 'GET' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'GET' \
@@ -721,7 +721,7 @@ curl -X 'GET' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'POST' \
@@ -917,7 +917,7 @@ curl -X 'POST' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'GET' \
@@ -1024,7 +1024,7 @@ curl -X 'GET' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'DELETE' \
@@ -1046,7 +1046,7 @@ curl -X 'DELETE' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'PUT' \
@@ -1242,7 +1242,7 @@ curl -X 'PUT' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'POST' \
@@ -1260,7 +1260,7 @@ curl -X 'POST' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'POST' \
@@ -1278,7 +1278,7 @@ curl -X 'POST' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'GET' \
@@ -1349,7 +1349,7 @@ curl -X 'GET' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'GET' \
@@ -1461,7 +1461,7 @@ curl -X 'GET' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'GET' \
@@ -1493,7 +1493,7 @@ curl -X 'GET' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'GET' \
@@ -1517,7 +1517,7 @@ curl -X 'GET' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'GET' \
@@ -1541,7 +1541,7 @@ curl -X 'GET' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'GET' \
@@ -1567,7 +1567,7 @@ curl -X 'GET' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'PUT' \
@@ -1591,7 +1591,7 @@ curl -X 'PUT' \
 
 ### 例 {#example}
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 curl -X 'DELETE' \

@@ -26,7 +26,7 @@ aliases: ['/docs/dev/sql-statements/sql-statement-set-role/']
 
 ユーザー`'u1'@'%'`と3 `'r3'@'%'`の役割を作成し`'r2'@'%'` ： `'r1'@'%'` 。これらの役割を`'u1'@'%'`に付与し、 `'r1'@'%'`をデフォルトの役割`'u1'@'%'`として設定します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 CREATE USER 'u1'@'%';
@@ -37,7 +37,7 @@ SET DEFAULT ROLE 'r1' TO 'u1'@'%';
 
 `'u1'@'%'`としてログインし、次の`SET ROLE`のステートメントを実行して、すべての役割を有効にします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET ROLE ALL;
@@ -55,7 +55,7 @@ SELECT CURRENT_ROLE();
 
 次の`SET ROLE`のステートメントを実行して、 `'r2'`と`'r3'`を有効にします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET ROLE 'r2', 'r3';
@@ -73,7 +73,7 @@ SELECT CURRENT_ROLE();
 
 次の`SET ROLE`のステートメントを実行して、デフォルトの役割を有効にします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET ROLE DEFAULT;
@@ -91,7 +91,7 @@ SELECT CURRENT_ROLE();
 
 次の`SET ROLE`のステートメントを実行して、有効なすべての役割をキャンセルします。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET ROLE NONE;

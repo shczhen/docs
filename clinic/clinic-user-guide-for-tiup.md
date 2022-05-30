@@ -32,7 +32,7 @@ PingCAP Clinicを使用する前に、Diag（PingCAP Clinicが提供するデー
 
     -   制御マシンにTiUPをインストールした場合は、次のコマンドを実行してDiagをインストールします。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```bash
         tiup install diag
@@ -40,7 +40,7 @@ PingCAP Clinicを使用する前に、Diag（PingCAP Clinicが提供するデー
 
     -   Diagをインストールしている場合は、次のコマンドを使用してDiagを最新バージョンにアップグレードできます。
 
-        {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+        {{< copyable "" >}}
 
         ```bash
         tiup update diag
@@ -67,7 +67,7 @@ PingCAP Clinicを使用する前に、Diag（PingCAP Clinicが提供するデー
 
     次に、Diagでトークンを設定します。例えば：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup diag config clinic.token ${token-value}
@@ -97,7 +97,7 @@ Diagを使用すると、TiUPを使用してデプロイされたTiDBクラス�
 
     たとえば、現在の時刻に基づいて4時間前から2時間前までの診断データを収集するには、次のコマンドを実行します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup diag collect ${cluster-name} -f="-4h" -t="-2h"
@@ -125,7 +125,7 @@ Diagを使用すると、TiUPを使用してデプロイされたTiDBクラス�
 
     コマンドを実行した後、Diagはすぐにデータの収集を開始しません。代わりに、Diagは、続行するかどうかを確認するために、出力に推定データサイズとターゲットデータストレージパスを提供します。例えば：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     Estimated size of data to collect:
@@ -146,7 +146,7 @@ Diagを使用すると、TiUPを使用してデプロイされたTiDBクラス�
 
     収集が完了すると、Diagは収集されたデータが配置されているフォルダーパスを提供します。例えば：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     Collected data are stored in /home/qiaodan/diag-fNTnz5MGhr6
@@ -158,7 +158,7 @@ Diagを使用すると、TiUPを使用してデプロイされたTiDBクラス�
 
     たとえば、現在の時刻に基づいて4時間前から2時間前までの診断データを収集するには、次のコマンドを実行します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup diag collectdm ${cluster-name} -f="-4h" -t="-2h"
@@ -174,7 +174,7 @@ Diagを使用すると、TiUPを使用してデプロイされたTiDBクラス�
 
     収集が完了すると、Diagは収集されたデータが配置されているフォルダーパスを提供します。例えば：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     Collected data are stored in /home/qiaodan/diag-fNTnz5MGhr6
@@ -210,7 +210,7 @@ Diagを使用すると、TiUPを使用してデプロイされたTiDBクラス�
 
 クラスタが配置されているネットワークがインターネットにアクセスできる場合は、次のコマンドを使用して、 [ステップ2：データを収集する](#step-2-collect-data)で取得した収集データを含むフォルダを直接アップロードできます。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 tiup diag upload
@@ -218,7 +218,7 @@ tiup diag upload
 
 次に、出力例を示します。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 [root@Copy-of-VM-EE-CentOS76-v1 qiaodan]# tiup diag upload /home/qiaodan/diag-fNTnz5MGhr6
@@ -236,7 +236,7 @@ Download URL: "https://clinic.pingcap.com.cn/portal/#/orgs/4/clusters/XXXX"
 
 1.  次のコマンドを実行して、 [ステップ2.データを収集する](#step-2-collect-data)で取得した収集データをパックします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup diag package ${filepath}
@@ -253,7 +253,7 @@ Download URL: "https://clinic.pingcap.com.cn/portal/#/orgs/4/clusters/XXXX"
 
 2.  インターネットにアクセスできるマシンから、圧縮データパッケージをアップロードします。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup diag upload ${filepath}
@@ -261,7 +261,7 @@ Download URL: "https://clinic.pingcap.com.cn/portal/#/orgs/4/clusters/XXXX"
 
     次に、出力例を示します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     [root@Copy-of-VM-EE-CentOS76-v1 qiaodan]# tiup diag upload /home/qiaodan/diag-fNTnz5MGhr6
@@ -279,7 +279,7 @@ Diagを使用して、ローカルでクラスターステータスをすばや�
 
 1.  構成データを収集します。
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup diag collect ${cluster-name} --include="config"
@@ -289,7 +289,7 @@ Diagを使用して、ローカルでクラスターステータスをすばや�
 
 2.  構成データの診断：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     tiup diag check ${subdir-in-output-data}
@@ -301,7 +301,7 @@ Diagを使用して、ローカルでクラスターステータスをすばや�
 
     診断結果はコマンドラインに返されます。例えば：
 
-    {{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     Starting component `diag`: /root/.tiup/components/diag/v0.7.0/diag check diag-fNTnz5MGhr6

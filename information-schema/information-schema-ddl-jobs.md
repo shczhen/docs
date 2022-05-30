@@ -7,7 +7,7 @@ summary: Learn the `DDL_JOBS` information_schema table.
 
 `DDL_JOBS`テーブルは、 `ADMIN SHOW DDL JOBS`コマンドへの`INFORMATION_SCHEMA`インターフェイスを提供します。これは、TiDBクラスター全体のDDL操作の現在のステータスと短い履歴の両方を提供します。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 USE information_schema;
@@ -34,7 +34,7 @@ DESC ddl_jobs;
 12 rows in set (0.00 sec)
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * FROM ddl_jobs LIMIT 3\G

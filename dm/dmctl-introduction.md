@@ -20,7 +20,7 @@ DMマスターと対話するには、対話モードに入ります。
 >
 > インタラクティブモードはBash機能をサポートしていません。たとえば、文字列フラグを引用符で囲むのではなく、直接渡す必要があります。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 ./dmctl --master-addr 172.16.30.14:8261
@@ -81,7 +81,7 @@ Use "dmctl [command] --help" for more information about a command.
 > -   dmctlコマンドの後には、1つのタスク操作のみを続ける必要があります。
 > -   v2.0.4以降、DMは環境変数`DM_MASTER_ADDR`からの`-master-addr`パラメーターの読み取りをサポートします。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 ./dmctl --master-addr 172.16.30.14:8261 start-task task.yaml

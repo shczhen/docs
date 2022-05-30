@@ -20,13 +20,13 @@ aliases: ['/docs/dev/user-defined-variables/','/docs/dev/reference/sql/language-
 
 `SET`ステートメントを使用してユーザー定義変数を設定できます。構文は`SET @var_name = expr [, @var_name = expr] ...;`です。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET @favorite_db = 'TiDB';
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET @a = 'a', @b = 'b', @c = 'c';
@@ -34,7 +34,7 @@ SET @a = 'a', @b = 'b', @c = 'c';
 
 代入演算子には、 `:=`を使用することもできます。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET @favorite_db := 'TiDB';
@@ -42,13 +42,13 @@ SET @favorite_db := 'TiDB';
 
 代入演算子の右側の内容は、任意の有効な式にすることができます。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET @c = @a + @b;
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 set @c = b'1000001' + b'1000001';
@@ -58,7 +58,7 @@ set @c = b'1000001' + b'1000001';
 
 ユーザー定義変数を読み取るには、 `SELECT`ステートメントを使用して次のクエリを実行できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT @a1, @a2, @a3
@@ -90,7 +90,7 @@ SELECT @a1, @a2, @a3, @a4 := @a1+@a2+@a3;
 
 ユーザー定義変数の設定時に16進リテラルまたは2進リテラルが使用されている場合、TiDBはそれを2進ストリングとして扱います。数値に設定する場合は、手動で`CAST`変換を追加するか、式で数値演算子を使用できます。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET @v1 = b'1000001';
@@ -98,7 +98,7 @@ SET @v2 = b'1000001'+0;
 SET @v3 = CAST(b'1000001' AS UNSIGNED);
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT @v1, @v2, @v3;
@@ -114,7 +114,7 @@ SELECT @v1, @v2, @v3;
 
 初期化されていないユーザー定義変数を参照する場合、その変数の値はNULLであり、文字列のタイプがあります。
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT @not_exist;
@@ -130,7 +130,7 @@ SELECT @not_exist;
 
 `SELECT`ステートメントを使用してユーザー定義変数を読み取ることに加えて、別の一般的な使用法は`PREPARE`ステートメントです。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET @s = 'SELECT SQRT(POW(?,2) + POW(?,2)) AS hypotenuse';
@@ -150,7 +150,7 @@ EXECUTE stmt USING @a, @b;
 
 ユーザー定義変数の内容は、SQLステートメントでは識別子として認識されません。例えば：
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SELECT * from t;
@@ -164,7 +164,7 @@ SELECT * from t;
 +---+
 ```
 
-{{&lt;コピー可能な&quot;sql&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 SET @col = "`a`";

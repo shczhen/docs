@@ -26,7 +26,7 @@ BRは、デフォルトでバッチ作成テーブル機能を有効にします
 
 この機能を無効にするには、 `--ddl-batch-size`から`0`に設定します。次のコマンド例を参照してください。
 
-{{&lt;コピー可能な&quot;shell-regular&quot;&gt;}}
+{{< copyable "" >}}
 
 ```shell
 br restore full -s local:///br_data/ --pd 172.16.5.198:2379 --log-file restore.log --ddl-batch-size=0
