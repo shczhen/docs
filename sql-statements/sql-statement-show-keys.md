@@ -4,6 +4,6 @@ summary: An overview of the usage of SHOW KEYS [FROM|IN] for the TiDB database.
 aliases: ['/docs/dev/sql-statements/sql-statement-show-keys/','/docs/dev/reference/sql/statements/show-keys/']
 ---
 
-# SHOW KEYS [FROM|IN]
+# キーを表示[FROM|IN] {#show-keys-from-in}
 
-This statement is an alias to [`SHOW INDEXES [FROM|IN]`](/sql-statements/sql-statement-show-indexes.md). It is included for compatibility with MySQL.
+このステートメントは[`SHOW INDEXES [FROM|IN]`](/sql-statements/sql-statement-show-indexes.md)のエイリアスです。 MySQLとの互換性のために含まれています。

@@ -3,13 +3,13 @@ title: Prerequisites for using TiDB Lightning
 summary: Learn prerequisites for running TiDB Lightning.
 ---
 
-# Prerequisites for using TiDB Lightning
+# TiDBLightningを使用するための前提条件 {#prerequisites-for-using-tidb-lightning}
 
-Before using TiDB Lightning, you need to check whether the environment meets the requirements. This helps reduce errors during import and ensures import success.
+TiDB Lightningを使用する前に、環境が要件を満たしているかどうかを確認する必要があります。これにより、インポート中のエラーが減り、インポートが確実に成功します。
 
-## Downstream privilege requirements
+## ダウンストリーム特権要件 {#downstream-privilege-requirements}
 
-Based on the import mode and features enabled, downstream database users should be granted with different privileges. The following table provides a reference.
+インポートモードと有効な機能に基づいて、ダウンストリームデータベースユーザーに異なる権限を付与する必要があります。次の表に参照を示します。
 
 <table border="1">
    <tr>
@@ -77,44 +77,44 @@ Based on the import mode and features enabled, downstream database users should 
    </tr>
 </table>
 
-## Downstream storage space requirements
+## ダウンストリームストレージスペースの要件 {#downstream-storage-space-requirements}
 
-The target TiKV cluster must have enough disk space to store the imported data. In addition to the [standard hardware requirements](/hardware-and-software-requirements.md), the storage space of the target TiKV cluster must be larger than **the size of the data source x the number of replicas x 2**. For example, if the cluster uses 3 replicas by default, the target TiKV cluster must have a storage space larger than 6 times the size of the data source. The formula has x 2 because:
+ターゲットTiKVクラスターには、インポートされたデータを格納するのに十分なディスク容量が必要です。 [標準のハードウェア要件](/hardware-and-software-requirements.md)に加えて、ターゲットTiKVクラスターのストレージスペースは<strong>、データソースのサイズxレプリカの数x2</strong>よりも大きくする必要があります。たとえば、クラスターがデフォルトで3つのレプリカを使用する場合、ターゲットTiKVクラスターには、データソースのサイズの6倍を超えるストレージスペースが必要です。数式にはx2があります。理由は次のとおりです。
 
-- Indexes might take extra space.
-- RocksDB has a space amplification effect.
+-   インデックスは余分なスペースを必要とする場合があります。
+-   RocksDBにはスペース増幅効果があります。
 
-It is difficult to calculate the exact data volume exported by Dumpling from MySQL. However, you can estimate the data volume by using the following SQL statement to summarize the data-length field in the information_schema.tables table:
+MySQLからDumplingによってエクスポートされた正確なデータ量を計算することは困難です。ただし、次のSQLステートメントを使用してinformation_schema.tablesテーブルのdata-lengthフィールドを要約することにより、データ量を見積もることができます。
 
-Calculate the size of all schemas, in MiB. Replace ${schema_name} with your schema name.
+MiBですべてのスキーマのサイズを計算します。 ${schema_name}をスキーマ名に置き換えます。
 
 ```sql
 select table_schema,sum(data_length)/1024/1024 as data_length,sum(index_length)/1024/1024 as index_length,sum(data_length+index_length)/1024/1024 as sum from information_schema.tables where table_schema = "${schema_name}" group by table_schema;
 ```
 
-Calculate the size of the largest table, in MiB. Replace ${schema_name} with your schema name.
+最大のテーブルのサイズをMiBで計算します。 ${schema_name}をスキーマ名に置き換えます。
 
-{{< copyable "sql" >}}
+{{&lt;コピー可能な&quot;sql&quot;&gt;}}
 
 ```sql
 select table_name,table_schema,sum(data_length)/1024/1024 as data_length,sum(index_length)/1024/1024 as index_length,sum(data_length+index_length)/1024/1024 as sum from information_schema.tables where table_schema = "${schema_name}" group by table_name,table_schema order by sum  desc limit 5;
 ```
 
-## Resource requirements
+## リソース要件 {#resource-requirements}
 
-**Operating system**: The example in this document uses fresh CentOS 7 instances. You can deploy a virtual machine either on your local host or in the cloud. Because TiDB Lightning consumes as much CPU resources as needed by default, it is recommended that you deploy it on a dedicated server. If this is not possible, you can deploy it on a single server together with other TiDB components (for example, tikv-server) and then configure `region-concurrency` to limit the CPU usage from TiDB Lightning. Usually, you can configure the size to 75% of the logical CPU.
+<strong>オペレーティングシステム</strong>：このドキュメントの例では、新しいCentOS7インスタンスを使用しています。仮想マシンは、ローカルホストまたはクラウドのいずれかにデプロイできます。 TiDB Lightningはデフォルトで必要なだけのCPUリソースを消費するため、専用サーバーにデプロイすることをお勧めします。これが不可能な場合は、他のTiDBコンポーネント（tikv-serverなど）と一緒に単一のサーバーにデプロイしてから、TiDBLightningからのCPU使用率を制限するように`region-concurrency`を構成できます。通常、サイズは論理CPUの75％に設定できます。
 
-**Memory and CPU**:
+<strong>メモリとCPU</strong> ：
 
-The CPU and memory consumed by TiDB Lightning vary with the backend mode. Run TiDB Lightning in an environment that supports the optimal import performance based on the backend you use.
+TiDB Lightningが消費するCPUとメモリは、バックエンドモードによって異なります。使用するバックエンドに基づいて最適なインポートパフォーマンスをサポートする環境でTiDBLightningを実行します。
 
-- Local-backend: TiDB lightning consumes much CPU and memory in this mode. It is recommended that you allocate CPU higher than 32 cores and memory greater than 64 GiB.
+-   ローカルバックエンド：TiDB lightningは、このモードで多くのCPUとメモリを消費します。 32コアを超えるCPUと64GiBを超えるメモリを割り当てることをお勧めします。
 
-> **Note**:
+> <strong>注</strong>：
 >
-> When data to be imported is large, one parallel import may consume about 2 GiB memory. In this case, the total memory usage can be `region-concurrency` x 2 GiB. `region-concurrency` is the same as the number of logical CPUs. If the memory size (GiB) is less than twice of the CPU or OOM occurs during the import, you can decrease `region-concurrency` to address OOM.
+> インポートするデータが大きい場合、1回の並列インポートで約2GiBのメモリを消費する可能性があります。この場合、合計メモリ使用量は`region-concurrency` x2GiBになります。 `region-concurrency`は論理CPUの数と同じです。メモリサイズ（GiB）がCPUの2倍未満であるか、インポート中にOOMが発生する場合は、 `region-concurrency`を減らしてOOMをアドレス指定できます。
 
-- TiDB-backend: In this mode, the performance bottleneck lies in TiDB. It is recommended that you allocate 4-core CPU and 8 GiB memory for TiDB Lightning. If the TiDB cluster does not reach the write threshold in an import, you can increase `region-concurrency`.
-- Importer-backend: In this mode, resource consumption is nearly the same as that in Local-backend. Importer-backend is not recommended and you are advised to use Local-backend if you have no particular requirements.
+-   TiDBバックエンド：このモードでは、パフォーマンスのボトルネックはTiDBにあります。 TiDBLightningには4コアCPUと8GiBメモリを割り当てることをお勧めします。 TiDBクラスターがインポートで書き込みしきい値に達しない場合は、 `region-concurrency`を増やすことができます。
+-   インポーターバックエンド：このモードでは、リソース消費量はローカルバックエンドの場合とほぼ同じです。インポーターバックエンドは推奨されません。特に要件がない場合は、ローカルバックエンドを使用することをお勧めします。
 
-**Storage space**: The `sorted-kv-dir` configuration item specifies the temporary storage directory for the sorted key-value files. The directory must be empty, and the storage space must be greater than the size of the dataset to be imported. For better import performance, it is recommended to use a directory different from `data-source-dir` and use flash storage and exclusive I/O for the directory.
+<strong>記憶域スペース</strong>： `sorted-kv-dir`構成項目は、ソートされたキー値ファイルの一時記憶域ディレクトリーを指定します。ディレクトリは空である必要があり、ストレージスペースはインポートするデータセットのサイズよりも大きい必要があります。インポートのパフォーマンスを向上させるには、 `data-source-dir`とは異なるディレクトリを使用し、そのディレクトリにフラッシュストレージと排他的I/Oを使用することをお勧めします。

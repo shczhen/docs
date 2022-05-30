@@ -4,11 +4,11 @@ summary: An overview of the usage of DEALLOCATE for the TiDB database.
 aliases: ['/docs/dev/sql-statements/sql-statement-deallocate/','/docs/dev/reference/sql/statements/deallocate/']
 ---
 
-# DEALLOCATE
+# 割り当て解除 {#deallocate}
 
-The `DEALLOCATE` statement provides an SQL interface to server-side prepared statements.
+`DEALLOCATE`ステートメントは、サーバー側のプリペアドステートメントへのSQLインターフェイスを提供します。
 
-## Synopsis
+## あらすじ {#synopsis}
 
 ```ebnf+diagram
 DeallocateStmt ::=
@@ -25,7 +25,7 @@ Identifier ::=
 |   TiDBKeyword
 ```
 
-## Examples
+## 例 {#examples}
 
 ```sql
 mysql> PREPARE mystmt FROM 'SELECT ? as num FROM DUAL';
@@ -46,11 +46,11 @@ mysql> DEALLOCATE PREPARE mystmt;
 Query OK, 0 rows affected (0.00 sec)
 ```
 
-## MySQL compatibility
+## MySQLの互換性 {#mysql-compatibility}
 
-This statement is understood to be fully compatible with MySQL. Any compatibility differences should be [reported via an issue](https://github.com/pingcap/tidb/issues/new/choose) on GitHub.
+このステートメントは、MySQLと完全に互換性があると理解されています。互換性の違いは、GitHubでは[問題を介して報告](https://github.com/pingcap/tidb/issues/new/choose)である必要があります。
 
-## See also
+## も参照してください {#see-also}
 
-* [PREPARE](/sql-statements/sql-statement-prepare.md)
-* [EXECUTE](/sql-statements/sql-statement-execute.md)
+-   [準備](/sql-statements/sql-statement-prepare.md)
+-   [実行する](/sql-statements/sql-statement-execute.md)

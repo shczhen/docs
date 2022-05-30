@@ -4,17 +4,17 @@ summary: An overview of the usage of MODIFY COLUMN for the TiDB database.
 aliases: ['/docs/dev/sql-statements/sql-statement-modify-column/','/docs/dev/reference/sql/statements/modify-column/']
 ---
 
-# MODIFY COLUMN
+# 列の変更 {#modify-column}
 
-The `ALTER TABLE.. MODIFY COLUMN` statement modifies a column on an existing table. The modification can include changing the data type and attributes. To rename at the same time, use the [`CHANGE COLUMN`](/sql-statements/sql-statement-change-column.md) statement instead.
+`ALTER TABLE.. MODIFY COLUMN`ステートメントは、既存のテーブルの列を変更します。変更には、データ型と属性の変更を含めることができます。同時に名前を変更するには、代わりに[`CHANGE COLUMN`](/sql-statements/sql-statement-change-column.md)ステートメントを使用してください。
 
-Since v5.1.0, TiDB has supported changes of data types for Reorg data, including but not limited to:
+v5.1.0以降、TiDBはReorgデータのデータ型の変更をサポートしています。これには以下が含まれますが、これらに限定されません。
 
-- Changing `VARCHAR` to `BIGINT`
-- Modifying the `DECIMAL` precision
-- Compressing the length of `VARCHAR(10)` to `VARCHAR(5)`
+-   `VARCHAR`から`BIGINT`に変更
+-   `DECIMAL`精度の変更
+-   `VARCHAR(10)`から`VARCHAR(5)`の長さを圧縮します
 
-## Synopsis
+## あらすじ {#synopsis}
 
 ```ebnf+diagram
 AlterTableStmt ::=
@@ -52,11 +52,11 @@ ColumnPosition ::=
     ( 'FIRST' | 'AFTER' ColumnName )?
 ```
 
-## Examples
+## 例 {#examples}
 
-### Meta-Only Change
+### メタのみの変更 {#meta-only-change}
 
-{{< copyable "sql" >}}
+{{&lt;コピー可能な&quot;sql&quot;&gt;}}
 
 ```sql
 CREATE TABLE t1 (id int not null primary key AUTO_INCREMENT, col1 INT);
@@ -66,7 +66,7 @@ CREATE TABLE t1 (id int not null primary key AUTO_INCREMENT, col1 INT);
 Query OK, 0 rows affected (0.11 sec)
 ```
 
-{{< copyable "sql" >}}
+{{&lt;コピー可能な&quot;sql&quot;&gt;}}
 
 ```sql
 INSERT INTO t1 (col1) VALUES (1),(2),(3),(4),(5);
@@ -77,7 +77,7 @@ Query OK, 5 rows affected (0.02 sec)
 Records: 5  Duplicates: 0  Warnings: 0
 ```
 
-{{< copyable "sql" >}}
+{{&lt;コピー可能な&quot;sql&quot;&gt;}}
 
 ```sql
 ALTER TABLE t1 MODIFY col1 BIGINT;
@@ -87,7 +87,7 @@ ALTER TABLE t1 MODIFY col1 BIGINT;
 Query OK, 0 rows affected (0.09 sec)
 ```
 
-{{< copyable "sql" >}}
+{{&lt;コピー可能な&quot;sql&quot;&gt;}}
 
 ```sql
 SHOW CREATE TABLE t1\G;
@@ -104,9 +104,9 @@ Create Table: CREATE TABLE `t1` (
 1 row in set (0.00 sec)
 ```
 
-### Reorg-Data Change
+### Reorg-データ変更 {#reorg-data-change}
 
-{{< copyable "sql" >}}
+{{&lt;コピー可能な&quot;sql&quot;&gt;}}
 
 ```sql
 CREATE TABLE t1 (id int not null primary key AUTO_INCREMENT, col1 INT);
@@ -116,7 +116,7 @@ CREATE TABLE t1 (id int not null primary key AUTO_INCREMENT, col1 INT);
 Query OK, 0 rows affected (0.11 sec)
 ```
 
-{{< copyable "sql" >}}
+{{&lt;コピー可能な&quot;sql&quot;&gt;}}
 
 ```sql
 INSERT INTO t1 (col1) VALUES (12345),(67890);
@@ -127,7 +127,7 @@ Query OK, 2 rows affected (0.00 sec)
 Records: 2  Duplicates: 0  Warnings: 0
 ```
 
-{{< copyable "sql" >}}
+{{&lt;コピー可能な&quot;sql&quot;&gt;}}
 
 ```sql
 ALTER TABLE t1 MODIFY col1 VARCHAR(5);
@@ -137,7 +137,7 @@ ALTER TABLE t1 MODIFY col1 VARCHAR(5);
 Query OK, 0 rows affected (2.52 sec)
 ```
 
-{{< copyable "sql" >}}
+{{&lt;コピー可能な&quot;sql&quot;&gt;}}
 
 ```sql
 SHOW CREATE TABLE t1\G;
@@ -154,31 +154,31 @@ CREATE TABLE `t1` (
 1 row in set (0.00 sec)
 ```
 
-> **Note:**
+> <strong>ノート：</strong>
 >
-> - TiDB returns an error when the changed data type conflicts with an existing data row. In the above example, TiDB returns the following error:
+> -   変更されたデータ型が既存のデータ行と競合する場合、TiDBはエラーを返します。上記の例では、TiDBは次のエラーを返します。
 >
->    ```
->    alter table t1 modify column col1 varchar(4);
->    ERROR 1406 (22001): Data Too Long, field len 4, data len 5
->    ```
+>     ```
+>     alter table t1 modify column col1 varchar(4);
+>     ERROR 1406 (22001): Data Too Long, field len 4, data len 5
+>     ```
 >
-> - Due to the compatibility with the Async Commit feature, the DDL statement waits for a period of time (about 2.5s) before starting to process into Reorg Data.
+> -   非同期コミット機能との互換性により、DDLステートメントはReorg Dataへの処理を開始する前に一定期間（約2.5秒）待機します。
 >
->    ```
->    Query OK, 0 rows affected (2.52 sec)
->    ```
+>     ```
+>     Query OK, 0 rows affected (2.52 sec)
+>     ```
 
-## MySQL compatibility
+## MySQLの互換性 {#mysql-compatibility}
 
-* Does not support modifying multiple columns using a single `ALTER TABLE` statement. For example:
+-   単一の`ALTER TABLE`ステートメントを使用した複数の列の変更はサポートされていません。例えば：
 
     ```sql
     ALTER TABLE t1 MODIFY col1 BIGINT, MODIFY id BIGINT NOT NULL;
     ERROR 1105 (HY000): Unsupported multi schema change
     ```
 
-* Does not support modifying the Reorg-Data types on the primary key columns but supports modifying the Meta-Only types. For example:
+-   主キー列のReorg-Dataタイプの変更はサポートしていませんが、Meta-Onlyタイプの変更はサポートしています。例えば：
 
     ```sql
     CREATE TABLE t (a int primary key);
@@ -198,7 +198,7 @@ CREATE TABLE `t1` (
     Query OK, 0 rows affected (0.01 sec)
     ```
 
-* Does not support modifying the column types on generated columns. For example:
+-   生成された列の列タイプの変更はサポートされていません。例えば：
 
     ```sql
     CREATE TABLE t (a INT, b INT as (a+1));
@@ -206,7 +206,7 @@ CREATE TABLE `t1` (
     ERROR 8200 (HY000): Unsupported modify column: column is generated
     ```
 
-* Does not support modifying the column types on the partitioned tables. For example:
+-   パーティションテーブルの列タイプの変更はサポートされていません。例えば：
 
     ```sql
     CREATE TABLE t (c1 INT, c2 INT, c3 INT) partition by range columns(c1) ( partition p0 values less than (10), partition p1 values less than (maxvalue));
@@ -214,7 +214,7 @@ CREATE TABLE `t1` (
     ERROR 8200 (HY000): Unsupported modify column: table is partition table
     ```
 
-* Does not support modifying some data types (for example, some TIME types, Bit, Set, Enum, JSON) are not supported due to some compatibility issues of the `cast` function's behavior between TiDB and MySQL.
+-   一部のデータ型（たとえば、一部のTIME型、ビット、セット、列挙型、JSON）の変更はサポートされていません。これは、TiDBとMySQL間の`cast`関数の動作の互換性の問題のためです。
 
     ```sql
     CREATE TABLE t (a DECIMAL(13, 7));
@@ -222,10 +222,10 @@ CREATE TABLE `t1` (
     ERROR 8200 (HY000): Unsupported modify column: change from original type decimal(13,7) to datetime is currently unsupported yet
     ```
 
-## See also
+## も参照してください {#see-also}
 
-* [CREATE TABLE](/sql-statements/sql-statement-create-table.md)
-* [SHOW CREATE TABLE](/sql-statements/sql-statement-show-create-table.md)
-* [ADD COLUMN](/sql-statements/sql-statement-add-column.md)
-* [DROP COLUMN](/sql-statements/sql-statement-drop-column.md)
-* [CHANGE COLUMN](/sql-statements/sql-statement-change-column.md)
+-   [CREATE TABLE](/sql-statements/sql-statement-create-table.md)
+-   [CREATETABLEを表示する](/sql-statements/sql-statement-show-create-table.md)
+-   [列を追加](/sql-statements/sql-statement-add-column.md)
+-   [ドロップ列](/sql-statements/sql-statement-drop-column.md)
+-   [列を変更する](/sql-statements/sql-statement-change-column.md)

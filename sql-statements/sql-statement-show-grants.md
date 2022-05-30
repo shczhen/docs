@@ -4,33 +4,33 @@ summary: An overview of the usage of SHOW GRANTS for the TiDB database.
 aliases: ['/docs/dev/sql-statements/sql-statement-show-grants/','/docs/dev/reference/sql/statements/show-grants/']
 ---
 
-# SHOW GRANTS
+# 助成金を表示 {#show-grants}
 
-This statement shows a list of privileges associated with a user. As in MySQL, the `USAGE` privileges denotes the ability to login to TiDB.
+このステートメントは、ユーザーに関連付けられている特権のリストを示しています。 MySQLと同様に、 `USAGE`特権はTiDBにログインする機能を示します。
 
-## Synopsis
+## あらすじ {#synopsis}
 
-**ShowGrantsStmt:**
+<strong>ShowGrantsStmt：</strong>
 
 ![ShowGrantsStmt](/media/sqlgram/ShowGrantsStmt.png)
 
-**Username:**
+<strong>ユーザー名：</strong>
 
 ![Username](/media/sqlgram/Username.png)
 
-**UsingRoles:**
+<strong>UsingRoles：</strong>
 
 ![UsingRoles](/media/sqlgram/UsingRoles.png)
 
-**RolenameList:**
+<strong>RolenameList：</strong>
 
 ![RolenameList](/media/sqlgram/RolenameList.png)
 
-**Rolename:**
+<strong>役割名：</strong>
 
 ![Rolename](/media/sqlgram/Rolename.png)
 
-## Examples
+## 例 {#examples}
 
 ```sql
 mysql> SHOW GRANTS;
@@ -59,11 +59,11 @@ mysql> SHOW GRANTS FOR u1;
 2 rows in set (0.00 sec)
 ```
 
-## MySQL compatibility
+## MySQLの互換性 {#mysql-compatibility}
 
-This statement is understood to be fully compatible with MySQL. Any compatibility differences should be [reported via an issue](https://github.com/pingcap/tidb/issues/new/choose) on GitHub.
+このステートメントは、MySQLと完全に互換性があると理解されています。互換性の違いは、GitHubでは[問題を介して報告](https://github.com/pingcap/tidb/issues/new/choose)である必要があります。
 
-## See also
+## も参照してください {#see-also}
 
-* [SHOW CREATE USER](/sql-statements/sql-statement-show-create-user.md)
-* [GRANT](/sql-statements/sql-statement-grant-privileges.md)
+-   [CREATEUSERを表示する](/sql-statements/sql-statement-show-create-user.md)
+-   [許す](/sql-statements/sql-statement-grant-privileges.md)

@@ -4,11 +4,11 @@ summary: Learn the `PLACEMENT_POLICIES` information_schema table.
 aliases: ['/tidb/dev/information-schema-placement-rules']
 ---
 
-# PLACEMENT_POLICIES
+# PLACEMENT_POLICIES {#placement-policies}
 
-The `PLACEMENT_POLICIES` table provides information on all placement policies. For details, refer to [Placement Rules in SQL](/placement-rules-in-sql.md).
+`PLACEMENT_POLICIES`の表は、すべての配置ポリシーに関する情報を提供します。詳しくは[SQLの配置ルール](/placement-rules-in-sql.md)をご覧ください。
 
-{{< copyable "sql" >}}
+{{&lt;コピー可能な&quot;sql&quot;&gt;}}
 
 ```sql
 USE information_schema;
@@ -35,11 +35,11 @@ DESC placement_policies;
 12 rows in set (0.00 sec)
 ```
 
-## Examples
+## 例 {#examples}
 
-The `PLACEMENT_POLICIES` table only shows all placement policies. To view the canonical version of placement rules (including all placement policies and objects assigned placement policies), use the statement `SHOW PLACEMENT` instead:
+`PLACEMENT_POLICIES`の表には、すべての配置ポリシーのみが表示されます。配置ルールの正規バージョン（すべての配置ポリシーと配置ポリシーが割り当てられたオブジェクトを含む）を表示するには、代わりにステートメント`SHOW PLACEMENT`を使用します。
 
-{{< copyable "sql" >}}
+{{&lt;コピー可能な&quot;sql&quot;&gt;}}
 
 ```sql
 CREATE TABLE t1 (a INT); 

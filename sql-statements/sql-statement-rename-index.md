@@ -4,11 +4,11 @@ summary: An overview of the usage of RENAME INDEX for the TiDB database.
 aliases: ['/docs/dev/sql-statements/sql-statement-rename-index/','/docs/dev/reference/sql/statements/rename-index/']
 ---
 
-# RENAME INDEX
+# インデックスの名前を変更 {#rename-index}
 
-The statement `ALTER TABLE .. RENAME INDEX` renames an existing index to a new name. This operation is instant in TiDB, and requires only a meta data change.
+ステートメント`ALTER TABLE .. RENAME INDEX`は、既存のインデックスの名前を新しい名前に変更します。この操作はTiDBで瞬時に行われ、メタデータの変更のみが必要です。
 
-## Synopsis
+## あらすじ {#synopsis}
 
 ```ebnf+diagram
 AlterTableStmt ::=
@@ -19,7 +19,7 @@ KeyOrIndex ::=
 |   'INDEX'
 ```
 
-## Examples
+## 例 {#examples}
 
 ```sql
 mysql> CREATE TABLE t1 (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, c1 INT NOT NULL, INDEX col1 (c1));
@@ -51,14 +51,14 @@ Create Table: CREATE TABLE `t1` (
 1 row in set (0.00 sec)
 ```
 
-## MySQL compatibility
+## MySQLの互換性 {#mysql-compatibility}
 
-This statement is understood to be fully compatible with MySQL. Any compatibility differences should be [reported via an issue](https://github.com/pingcap/tidb/issues/new/choose) on GitHub.
+このステートメントは、MySQLと完全に互換性があると理解されています。互換性の違いは、GitHubでは[問題を介して報告](https://github.com/pingcap/tidb/issues/new/choose)である必要があります。
 
-## See also
+## も参照してください {#see-also}
 
-* [SHOW CREATE TABLE](/sql-statements/sql-statement-show-create-table.md)
-* [CREATE INDEX](/sql-statements/sql-statement-create-index.md)
-* [DROP INDEX](/sql-statements/sql-statement-drop-index.md)
-* [SHOW INDEX](/sql-statements/sql-statement-show-index.md)
-* [ALTER INDEX](/sql-statements/sql-statement-alter-index.md)
+-   [CREATETABLEを表示する](/sql-statements/sql-statement-show-create-table.md)
+-   [インデックスの作成](/sql-statements/sql-statement-create-index.md)
+-   [ドロップインデックス](/sql-statements/sql-statement-drop-index.md)
+-   [インデックスを表示](/sql-statements/sql-statement-show-index.md)
+-   [ALTER INDEX](/sql-statements/sql-statement-alter-index.md)

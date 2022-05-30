@@ -4,41 +4,41 @@ summary: An overview of the usage of SET [NAMES|CHARACTER SET] for the TiDB data
 aliases: ['/docs/dev/sql-statements/sql-statement-set-names/','/docs/dev/reference/sql/statements/set-names/']
 ---
 
-# SET [NAMES|CHARACTER SET]
+# SET [NAMES | CHARACTER SET] {#set-names-character-set}
 
-The statements `SET NAMES`, `SET CHARACTER SET` and `SET CHARSET` modify the variables `character_set_client`, `character_set_results` and `character_set_connection` for the current connection.
+ステートメント`SET NAMES` 、および`SET CHARACTER SET`は、現在の接続の変数`character_set_client` 、および`SET CHARSET`を`character_set_connection`し`character_set_results` 。
 
-## Synopsis
+## あらすじ {#synopsis}
 
-**SetNamesStmt:**
+<strong>SetNamesStmt：</strong>
 
 ![SetNamesStmt](/media/sqlgram/SetNamesStmt.png)
 
-**VariableAssignmentList:**
+<strong>VariableAssignmentList：</strong>
 
 ![VariableAssignmentList](/media/sqlgram/VariableAssignmentList.png)
 
-**VariableAssignment:**
+<strong>VariableAssignment：</strong>
 
 ![VariableAssignment](/media/sqlgram/VariableAssignment.png)
 
-**CharsetName:**
+<strong>CharsetName：</strong>
 
 ![CharsetName](/media/sqlgram/CharsetName.png)
 
-**StringName:**
+<strong>StringName：</strong>
 
 ![StringName](/media/sqlgram/StringName.png)
 
-**CharsetKw:**
+<strong>CharsetKw：</strong>
 
 ![CharsetKw](/media/sqlgram/CharsetKw.png)
 
-**CharsetNameOrDefault:**
+<strong>CharsetNameOrDefault：</strong>
 
 ![CharsetNameOrDefault](/media/sqlgram/CharsetNameOrDefault.png)
 
-## Examples
+## 例 {#examples}
 
 ```sql
 mysql> SHOW VARIABLES LIKE 'character_set%';
@@ -93,12 +93,12 @@ mysql> SHOW VARIABLES LIKE 'character_set%';
 8 rows in set (0.00 sec)
 ```
 
-## MySQL compatibility
+## MySQLの互換性 {#mysql-compatibility}
 
-This statement is understood to be fully compatible with MySQL. Any compatibility differences should be [reported via an issue](https://github.com/pingcap/tidb/issues/new/choose) on GitHub.
+このステートメントは、MySQLと完全に互換性があると理解されています。互換性の違いは、GitHubでは[問題を介して報告](https://github.com/pingcap/tidb/issues/new/choose)である必要があります。
 
-## See also
+## も参照してください {#see-also}
 
-* [SHOW \[GLOBAL|SESSION\] VARIABLES](/sql-statements/sql-statement-show-variables.md)
-* [`SET <variable>`](/sql-statements/sql-statement-set-variable.md)
-* [Character Set and Collation Support](/character-set-and-collation.md)
+-   [[グローバル|セッション]変数を表示](/sql-statements/sql-statement-show-variables.md)
+-   [`SET &#x3C;variable>`](/sql-statements/sql-statement-set-variable.md)
+-   [文字セットと照合のサポート](/character-set-and-collation.md)

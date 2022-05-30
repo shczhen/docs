@@ -29,21 +29,21 @@ aliases: ['/docs/dev/basic-features/']
 | [ウィンドウ関数](/functions-and-operators/window-functions.md)                        |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    Y    |
 | [その他の機能](/functions-and-operators/miscellaneous-functions.md)                  |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    Y    |
 | [オペレーター](/functions-and-operators/operators.md)                                |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    Y    |
-| [キャラクターセットと照合](/character-set-and-collation.md) [^ 1]                          |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    Y    |
+| [^1] [キャラクターセットと照合](/character-set-and-collation.md)                           |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    Y    |
 
 ## インデックス作成と制約 {#indexing-and-constraints}
 
-| インデックス作成と制約                                                                | 6.0 | 5.4 | 5.3 | 5.2 | 5.1 | 5.0 | 4.0 4.0 |
-| -------------------------------------------------------------------------- | :-: | --- | :-: | :-: | :-: | :-: | :-----: |
-| [式のインデックス](/sql-statements/sql-statement-create-index.md#expression-index) | 実験的 | 実験的 | 実験的 | 実験的 | 実験的 | 実験的 |   実験的   |
-| [列型ストレージ（TiFlash）](/tiflash/tiflash-overview.md)                           |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    Y    |
-| [RocksDBエンジン](/storage-engine/rocksdb-overview.md)                         |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    Y    |
-| [Titanプラグイン](/storage-engine/titan-overview.md)                            |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    Y    |
-| [見えないインデックス](/sql-statements/sql-statement-add-index.md)                   |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    N    |
-| [複合`PRIMARY KEY`](/constraints.md)                                         |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    Y    |
-| [一意のインデックス](/constraints.md)                                               |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    Y    |
-| [整数の`PRIMARY KEY`のクラスター化インデックス](/constraints.md)                           |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    Y    |
-| [複合キーまたは非整数キーのクラスター化されたインデックス](/constraints.md)                            |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    N    |
+| インデックス作成と制約                                                               | 6.0 | 5.4 | 5.3 | 5.2 | 5.1 | 5.0 | 4.0 4.0 |
+| ------------------------------------------------------------------------- | :-: | --- | :-: | :-: | :-: | :-: | :-----: |
+| [式インデックス](/sql-statements/sql-statement-create-index.md#expression-index) | 実験的 | 実験的 | 実験的 | 実験的 | 実験的 | 実験的 |   実験的   |
+| [列型ストレージ（TiFlash）](/tiflash/tiflash-overview.md)                          |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    Y    |
+| [RocksDBエンジン](/storage-engine/rocksdb-overview.md)                        |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    Y    |
+| [Titanプラグイン](/storage-engine/titan-overview.md)                           |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    Y    |
+| [見えないインデックス](/sql-statements/sql-statement-add-index.md)                  |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    N    |
+| [複合`PRIMARY KEY`](/constraints.md)                                        |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    Y    |
+| [一意のインデックス](/constraints.md)                                              |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    Y    |
+| [整数の`PRIMARY KEY`のクラスター化インデックス](/constraints.md)                          |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    Y    |
+| [複合キーまたは非整数キーのクラスター化されたインデックス](/constraints.md)                           |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    N    |
 
 ## SQLステートメント {#sql-statements}
 
@@ -75,7 +75,7 @@ aliases: ['/docs/dev/basic-features/']
 | [フォロワーの読み取り](/follower-read.md)                       |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    Y    |
 | [履歴データの読み取り（tidb_snapshot）](/read-historical-data.md) |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    Y    |
 | [オプティマイザーのヒント](/optimizer-hints.md)                   |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    Y    |
-| [MPP Exection Engine](/explain-mpp.md)                |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    N    |
+| [MPP実行エンジン](/explain-mpp.md)                          |  Y  | Y   |  Y  |  Y  |  Y  |  Y  |    N    |
 | [インデックスマージ](/explain-index-merge.md)                  |  Y  | Y   | 実験的 | 実験的 | 実験的 | 実験的 |   実験的   |
 | [SQLの配置ルール](/placement-rules-in-sql.md)               |  Y  | 実験的 | 実験的 |  N  |  N  |  N  |    N    |
 
@@ -148,7 +148,7 @@ aliases: ['/docs/dev/basic-features/']
 | [Fast Importer（TiDB Lightning）](/tidb-lightning/tidb-lightning-overview.md) |  Y  |  Y  |  Y  |  Y  |  Y  |  Y  |    Y    |
 | mydumper論理ダンパー                                                              | 非推奨 | 非推奨 | 非推奨 | 非推奨 | 非推奨 | 非推奨 |   非推奨   |
 | [餃子論理ダンパー](/dumpling-overview.md)                                           |  Y  |  Y  |  Y  |  Y  |  Y  |  Y  |    Y    |
-| [トランザクション`LOAD DATA`](/sql-statements/sql-statement-load-data.md)           |  Y  |  Y  |  Y  |  Y  |  Y  |  Y  | N [^ 3] |
+| [トランザクション`LOAD DATA`](/sql-statements/sql-statement-load-data.md)           |  Y  |  Y  |  Y  |  Y  |  Y  |  Y  |  N [^3] |
 | [データベース移行ツールキット（DM）](/migration-overview.md)                                |  Y  |  Y  |  Y  |  Y  |  Y  |  Y  |    Y    |
 | [TiDB Binlog](/tidb-binlog/tidb-binlog-overview.md)                         |  Y  |  Y  |  Y  |  Y  |  Y  |  Y  |    Y    |
 | [変更データキャプチャ（CDC）](/ticdc/ticdc-overview.md)                                 |  Y  |  Y  |  Y  |  Y  |  Y  |  Y  |    Y    |

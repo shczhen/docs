@@ -4,27 +4,27 @@ summary: An overview of the usage of SHOW HISTOGRAMS for TiDB database.
 aliases: ['/docs/dev/sql-statements/sql-statement-show-histograms/']
 ---
 
-# SHOW STATS_HISTOGRAMS
+# SHOW STATS_HISTOGRAMS {#show-stats-histograms}
 
-This statement shows the histogram information collected by the `ANALYZE` statement.
+このステートメントは、 `ANALYZE`ステートメントによって収集されたヒストグラム情報を示しています。
 
-## Synopsis
+## あらすじ {#synopsis}
 
-**ShowStmt**
+<strong>ShowStmt</strong>
 
 ![ShowStmt](/media/sqlgram/ShowStmt.png)
 
-**ShowTargetFiltertable**
+<strong>ShowTargetFiltertable</strong>
 
 ![ShowTargetFilterable](/media/sqlgram/ShowTargetFilterable.png)
 
-**ShowLikeOrWhereOpt**
+<strong>ShowLikeOrWhereOpt</strong>
 
 ![ShowLikeOrWhereOpt](/media/sqlgram/ShowLikeOrWhereOpt.png)
 
-## Examples
+## 例 {#examples}
 
-{{< copyable "sql" >}}
+{{&lt;コピー可能な&quot;sql&quot;&gt;}}
 
 ```sql
 show stats_histograms;
@@ -41,7 +41,7 @@ show stats_histograms;
 3 rows in set (0.00 sec)
 ```
 
-{{< copyable "sql" >}}
+{{&lt;コピー可能な&quot;sql&quot;&gt;}}
 
 ```sql
 show stats_histograms where table_name = 't2';
@@ -57,11 +57,11 @@ show stats_histograms where table_name = 't2';
 2 rows in set (0.00 sec)
 ```
 
-## MySQL compatibility
+## MySQLの互換性 {#mysql-compatibility}
 
-This statement is a TiDB extension to MySQL syntax.
+このステートメントは、MySQL構文のTiDB拡張です。
 
-## See also
+## も参照してください {#see-also}
 
-* [ANALYZE](/sql-statements/sql-statement-analyze-table.md)
-* [Introduction to Statistics](/statistics.md)
+-   [分析する](/sql-statements/sql-statement-analyze-table.md)
+-   [統計入門](/statistics.md)

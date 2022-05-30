@@ -4,37 +4,37 @@ summary: An overview of the usage of UPDATE for the TiDB database.
 aliases: ['/docs/dev/sql-statements/sql-statement-update/','/docs/dev/reference/sql/statements/update/']
 ---
 
-# UPDATE
+# アップデート {#update}
 
-The `UPDATE` statement is used to modify data in a specified table.
+`UPDATE`ステートメントは、指定されたテーブルのデータを変更するために使用されます。
 
-## Synopsis
+## あらすじ {#synopsis}
 
-**UpdateStmt:**
+<strong>UpdateStmt：</strong>
 
 ![UpdateStmt](/media/sqlgram/UpdateStmt.png)
 
-**PriorityOpt:**
+<strong>PriorityOpt：</strong>
 
 ![PriorityOpt](/media/sqlgram/PriorityOpt.png)
 
-**TableRef:**
+<strong>TableRef：</strong>
 
 ![TableRef](/media/sqlgram/TableRef.png)
 
-**TableRefs:**
+<strong>TableRefs：</strong>
 
 ![TableRefs](/media/sqlgram/TableRefs.png)
 
-**AssignmentList:**
+<strong>AssignmentList：</strong>
 
 ![AssignmentList](/media/sqlgram/AssignmentList.png)
 
-**WhereClauseOptional:**
+<strong>WhereClauseOptional：</strong>
 
 ![WhereClauseOptional](/media/sqlgram/WhereClauseOptional.png)
 
-## Examples
+## 例 {#examples}
 
 ```sql
 mysql> CREATE TABLE t1 (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, c1 INT NOT NULL);
@@ -69,13 +69,23 @@ mysql> SELECT * FROM t1;
 3 rows in set (0.00 sec)
 ```
 
-## MySQL compatibility
+## MySQLの互換性 {#mysql-compatibility}
 
-This statement is understood to be fully compatible with MySQL. Any compatibility differences should be [reported via an issue](https://github.com/pingcap/tidb/issues/new/choose) on GitHub.
+TiDBは、式を評価するときに常に列の元の値を使用します。例えば：
 
-## See also
+```sql
+CREATE TABLE t (a int, b int);
+INSERT INTO t VALUES (1,2);
+UPDATE t SET a = a+1,b=a;
+```
 
-* [INSERT](/sql-statements/sql-statement-insert.md)
-* [SELECT](/sql-statements/sql-statement-select.md)
-* [DELETE](/sql-statements/sql-statement-delete.md)
-* [REPLACE](/sql-statements/sql-statement-replace.md)
+MySQLでは、同じステートメントで列1が値`a`に設定されているため、列`b`が2に更新され、値`a` （1）が`a+1` （2）に更新されます。
+
+TiDBは、より標準的なSQLの動作に従い、 `b`から1に更新します。
+
+## も参照してください {#see-also}
+
+-   [入れる](/sql-statements/sql-statement-insert.md)
+-   [選択する](/sql-statements/sql-statement-select.md)
+-   [消去](/sql-statements/sql-statement-delete.md)
+-   [交換](/sql-statements/sql-statement-replace.md)

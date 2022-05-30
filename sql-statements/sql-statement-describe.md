@@ -4,6 +4,6 @@ summary: An overview of the usage of DESCRIBE for the TiDB database.
 aliases: ['/docs/dev/sql-statements/sql-statement-describe/','/docs/dev/reference/sql/statements/describe/']
 ---
 
-# DESCRIBE
+# 説明 {#describe}
 
-This statement is an alias to [`EXPLAIN`](/sql-statements/sql-statement-explain.md). It is included for compatibility with MySQL.
+このステートメントは[`EXPLAIN`](/sql-statements/sql-statement-explain.md)のエイリアスです。 MySQLとの互換性のために含まれています。

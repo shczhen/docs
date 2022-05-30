@@ -4,31 +4,31 @@ summary: An overview of the usage of SHOW [FULL] TABLES for the TiDB database.
 aliases: ['/docs/dev/sql-statements/sql-statement-show-tables/','/docs/dev/reference/sql/statements/show-tables/']
 ---
 
-# SHOW [FULL] TABLES
+# [フル]テーブルを表示 {#show-full-tables}
 
-This statement shows a list of tables and views in the currently selected database. The optional keyword `FULL` indicates if a table is of type `BASE TABLE` or `VIEW`.
+このステートメントは、現在選択されているデータベース内のテーブルとビューのリストを示しています。オプションのキーワード`FULL`は、テーブルのタイプが`BASE TABLE`か`VIEW`かを示します。
 
-To show tables in a different database, use `SHOW TABLES IN DatabaseName`.
+別のデータベースのテーブルを表示するには、 `SHOW TABLES IN DatabaseName`を使用します。
 
-## Synopsis
+## あらすじ {#synopsis}
 
-**ShowTablesStmt:**
+<strong>ShowTablesStmt：</strong>
 
 ![ShowTablesStmt](/media/sqlgram/ShowTablesStmt.png)
 
-**OptFull:**
+<strong>OptFull：</strong>
 
 ![OptFull](/media/sqlgram/OptFull.png)
 
-**ShowDatabaseNameOpt:**
+<strong>ShowDatabaseNameOpt：</strong>
 
 ![ShowDatabaseNameOpt](/media/sqlgram/ShowDatabaseNameOpt.png)
 
-**ShowLikeOrWhereOpt:**
+<strong>ShowLikeOrWhereOpt：</strong>
 
 ![ShowLikeOrWhereOpt](/media/sqlgram/ShowLikeOrWhereOpt.png)
 
-## Examples
+## 例 {#examples}
 
 ```sql
 mysql> CREATE TABLE t1 (a int);
@@ -83,12 +83,12 @@ mysql> SHOW TABLES IN mysql;
 20 rows in set (0.00 sec)
 ```
 
-## MySQL compatibility
+## MySQLの互換性 {#mysql-compatibility}
 
-This statement is understood to be fully compatible with MySQL. Any compatibility differences should be [reported via an issue](https://github.com/pingcap/tidb/issues/new/choose) on GitHub.
+このステートメントは、MySQLと完全に互換性があると理解されています。互換性の違いは、GitHubでは[問題を介して報告](https://github.com/pingcap/tidb/issues/new/choose)である必要があります。
 
-## See also
+## も参照してください {#see-also}
 
-* [CREATE TABLE](/sql-statements/sql-statement-create-table.md)
-* [DROP TABLE](/sql-statements/sql-statement-drop-table.md)
-* [SHOW CREATE TABLE](/sql-statements/sql-statement-show-create-table.md)
+-   [CREATE TABLE](/sql-statements/sql-statement-create-table.md)
+-   [ドロップテーブル](/sql-statements/sql-statement-drop-table.md)
+-   [CREATETABLEを表示する](/sql-statements/sql-statement-show-create-table.md)

@@ -4,23 +4,23 @@ summary: An overview of the usage of SHOW ANALYZE STATUS for the TiDB database.
 aliases: ['/docs/dev/sql-statements/sql-statement-show-analyze-status/']
 ---
 
-# SHOW ANALYZE STATUS
+# ステータスの分析を表示 {#show-analyze-status}
 
-The `SHOW ANALYZE STATUS` statement shows the statistics collection tasks being executed by TiDB and a limited number of historical task records.
+`SHOW ANALYZE STATUS`ステートメントは、TiDBによって実行されている統計収集タスクと、限られた数の履歴タスクレコードを示しています。
 
-## Synopsis
+## あらすじ {#synopsis}
 
-**ShowStmt:**
+<strong>ShowStmt：</strong>
 
 ![ShowStmt](/media/sqlgram/ShowStmt.png)
 
-**ShowTargetFilterable:**
+<strong>ShowTargetFilterable：</strong>
 
 ![ShowTargetFilterable](/media/sqlgram/ShowTargetFilterable.png)
 
-## Examples
+## 例 {#examples}
 
-{{< copyable "sql" >}}
+{{&lt;コピー可能な&quot;sql&quot;&gt;}}
 
 ```sql
 create table t(x int, index idx(x)) partition by hash(x) partition 4;
@@ -44,10 +44,10 @@ show analyze status;
 8 rows in set (0.00 sec)
 ```
 
-## MySQL compatibility
+## MySQLの互換性 {#mysql-compatibility}
 
-This statement is a TiDB extension to MySQL syntax.
+このステートメントは、MySQL構文のTiDB拡張です。
 
-## See also
+## も参照してください {#see-also}
 
-* [ANALYZE_STATUS table](/information-schema/information-schema-analyze-status.md)
+-   [ANALYZE_STATUSテーブル](/information-schema/information-schema-analyze-status.md)

@@ -4,21 +4,21 @@ summary: An overview of the usage of USE for the TiDB database.
 aliases: ['/docs/dev/sql-statements/sql-statement-use/','/docs/dev/reference/sql/statements/use/']
 ---
 
-# USE
+# 使用する {#use}
 
-The `USE` statement selects a current database for the user session.
+`USE`ステートメントは、ユーザーセッションの現在のデータベースを選択します。
 
-## Synopsis
+## あらすじ {#synopsis}
 
-**UseStmt:**
+<strong>UseStmt：</strong>
 
 ![UseStmt](/media/sqlgram/UseStmt.png)
 
-**DBName:**
+<strong>DBName：</strong>
 
 ![DBName](/media/sqlgram/DBName.png)
 
-## Examples
+## 例 {#examples}
 
 ```sql
 mysql> USE mysql;
@@ -73,11 +73,11 @@ mysql> SHOW TABLES;
 1 row in set (0.00 sec)
 ```
 
-## MySQL compatibility
+## MySQLの互換性 {#mysql-compatibility}
 
-This statement is understood to be fully compatible with MySQL. Any compatibility differences should be [reported via an issue](https://github.com/pingcap/tidb/issues/new/choose) on GitHub.
+このステートメントは、MySQLと完全に互換性があると理解されています。互換性の違いは、GitHubでは[問題を介して報告](https://github.com/pingcap/tidb/issues/new/choose)である必要があります。
 
-## See also
+## も参照してください {#see-also}
 
-* [CREATE DATABASE](/sql-statements/sql-statement-create-database.md)
-* [SHOW TABLES](/sql-statements/sql-statement-show-tables.md)
+-   [データベースの作成](/sql-statements/sql-statement-create-database.md)
+-   [テーブルを表示](/sql-statements/sql-statement-show-tables.md)
