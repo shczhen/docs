@@ -142,7 +142,8 @@ git clone https://github.com/pingcap-inc/tidb-example-java.git
 
 2.  接続パラメータを変更します。
 
-  <SimpleTab>
+
+<SimpleTab>
 
   <div label="Local default cluster">
 
