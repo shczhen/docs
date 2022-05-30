@@ -1,36 +1,47 @@
 ---
 title: TiDB Lightning Import Mode
 summary: Learn how to choose different import modes of TiDB Lightning.
-aliases: ['/docs/dev/tidb-lightning/tidb-lightning-tidb-backend/','/docs/dev/reference/tools/tidb-lightning/tidb-backend/','/tidb/dev/tidb-lightning-tidb-backend','/docs/dev/loader-overview/','/docs/dev/reference/tools/loader/','/docs/dev/load-misuse-handling/','/docs/dev/reference/tools/error-case-handling/load-misuse-handling/','/tidb/dev/load-misuse-handling','/tidb/dev/loader-overview/']
+aliases:
+  [
+    "/docs/dev/tidb-lightning/tidb-lightning-tidb-backend/",
+    "/docs/dev/reference/tools/tidb-lightning/tidb-backend/",
+    "/tidb/dev/tidb-lightning-tidb-backend",
+    "/docs/dev/loader-overview/",
+    "/docs/dev/reference/tools/loader/",
+    "/docs/dev/load-misuse-handling/",
+    "/docs/dev/reference/tools/error-case-handling/load-misuse-handling/",
+    "/tidb/dev/load-misuse-handling",
+    "/tidb/dev/loader-overview/",
+  ]
 ---
 
-# TiDBLightningインポートモード {#tidb-lightning-import-modes}
+# TiDBLightning インポートモード {#tidb-lightning-import-modes}
 
-TiDB Lightningは、2つの[バックエンド](/tidb-lightning/tidb-lightning-glossary.md#back-end)で2つのインポートモードをサポートします。バックエンドは、TiDBLightningがデータをターゲットクラスターにインポートする方法を決定します。
+TiDB Lightning は、2 つの[バックエンド](/tidb-lightning/tidb-lightning-glossary.md#back-end)で 2 つのインポートモードをサポートします。バックエンドは、TiDBLightning がデータをターゲットクラスターにインポートする方法を決定します。
 
--   <strong>ローカルバックエンド</strong>：TiDB Lightningは、最初にデータをキーと値のペアにエンコードし、並べ替えてローカルの一時ディレクトリに保存し、これらのキーと値のペアを各TiKVノードに<em>アップロード</em>します。次に、TiDB LightningはTiKV取り込みインターフェイスを呼び出して、TiKVのRocksDBにデータを書き込みます。初期化されたデータのインポートについては、インポート速度が速いため、ローカルバックエンドを検討してください。
+- <strong>ローカルバックエンド</strong>：TiDB Lightning は、最初にデータをキーと値のペアにエンコードし、並べ替えてローカルの一時ディレクトリに保存し、これらのキーと値のペアを各 TiKV ノードに<em>アップロード</em>します。次に、TiDB Lightning は TiKV 取り込みインターフェイスを呼び出して、TiKV の RocksDB にデータを書き込みます。初期化されたデータのインポートについては、インポート速度が速いため、ローカルバックエンドを検討してください。
 
--   <strong>TiDBバックエンド</strong>：TiDB Lightningは、最初にデータをSQLステートメントにエンコードし、次にこれらのステートメントを実行してデータをインポートします。ターゲットクラスターが実稼働環境にある場合、またはターゲットテーブルにすでにデータがある場合は、TiDBバックエンドを検討してください。
+- <strong>TiDB バックエンド</strong>：TiDB Lightning は、最初にデータを SQL ステートメントにエンコードし、次にこれらのステートメントを実行してデータをインポートします。ターゲットクラスターが実稼働環境にある場合、またはターゲットテーブルにすでにデータがある場合は、TiDB バックエンドを検討してください。
 
-| バックエンド                  | ローカルバックエンド      | TiDB-バックエンド     |
-| :---------------------- | :-------------- | :-------------- |
-| スピード                    | 高速（〜500GB /時）   | 遅い（〜50 GB / hr） |
-| リソースの使用                 | 高い              | 低い              |
-| ネットワーク帯域幅の使用            | 高い              | 低い              |
-| インポート中のACIDコンプライアンス     | いいえ             | はい              |
-| ターゲットテーブル               | 空である必要があります     | 移入可能            |
-| サポートされているTiDBバージョン      | <p>= v4.0.0</p> | 全て              |
-| TiDBはインポート中にサービスを提供できます | いいえ             | はい              |
+| バックエンド                                | ローカルバックエンド   | TiDB-バックエンド    |
+| :------------------------------------------ | :--------------------- | :------------------- |
+| スピード                                    | 高速（〜500GB /時）    | 遅い（〜50 GB / hr） |
+| リソースの使用                              | 高い                   | 低い                 |
+| ネットワーク帯域幅の使用                    | 高い                   | 低い                 |
+| インポート中の ACID コンプライアンス        | いいえ                 | はい                 |
+| ターゲットテーブル                          | 空である必要があります | 移入可能             |
+| サポートされている TiDB バージョン          | = v4.0.0               | 全て                 |
+| TiDB はインポート中にサービスを提供できます | いいえ                 | はい                 |
 
 > <strong>注</strong>：
 >
-> -   ローカルバックエンドモードで本番環境のTiDBクラスターにデータをインポートしないでください。これは、オンラインアプリケーションに深刻な影響を及ぼします。
-> -   デフォルトでは、複数のTiDB Lightningインスタンスを起動して、同じTiDBクラスターにデータをインポートすることはできません。代わりに、 [並列インポート](/tidb-lightning/tidb-lightning-distributed-import.md)つの機能を使用する必要があります。
-> -   複数のTiDBLightningインスタンスを使用して同じターゲットデータベースにデータをインポートする場合は、複数のバックエンドを使用しないでください。たとえば、ローカルバックエンドとTiDBバックエンドの両方を使用してデータをTiDBクラスターにインポートしないでください。
+> - ローカルバックエンドモードで本番環境の TiDB クラスターにデータをインポートしないでください。これは、オンラインアプリケーションに深刻な影響を及ぼします。
+> - デフォルトでは、複数の TiDB Lightning インスタンスを起動して、同じ TiDB クラスターにデータをインポートすることはできません。代わりに、 [並列インポート](/tidb-lightning/tidb-lightning-distributed-import.md)つの機能を使用する必要があります。
+> - 複数の TiDBLightning インスタンスを使用して同じターゲットデータベースにデータをインポートする場合は、複数のバックエンドを使用しないでください。たとえば、ローカルバックエンドと TiDB バックエンドの両方を使用してデータを TiDB クラスターにインポートしないでください。
 
 ## ローカルバックエンド {#local-backend}
 
-TiDB Lightningでは、TiDBv4.0.3にローカルバックエンドが導入されています。ローカルバックエンドを使用すると、データをTiDBクラスター&gt;=v4.0.0にインポートできます。
+TiDB Lightning では、TiDBv4.0.3 にローカルバックエンドが導入されています。ローカルバックエンドを使用すると、データを TiDB クラスター&gt;=v4.0.0 にインポートできます。
 
 ### 構成と例 {#configuration-and-examples}
 
@@ -80,13 +91,13 @@ pd-addr = "172.16.31.4:2379"
 
 ### 紛争解決 {#conflict-resolution}
 
-`duplicate-resolution`つの構成は、競合する可能性のあるデータを解決するための3つの戦略を提供します。
+`duplicate-resolution`つの構成は、競合する可能性のあるデータを解決するための 3 つの戦略を提供します。
 
--   `none` （デフォルト）：重複レコードを検出しません。これは、3つの戦略で最高のパフォーマンスを発揮しますが、ターゲットTiDBのデータに一貫性がなくなる可能性があります。
--   `record` ：競合するレコードのみをターゲットTiDBの`lightning_task_info.conflict_error_v1`テーブルに記録します。ターゲットTiKVの必要なバージョンはv5.2.0より前ではないことに注意してください。それ以外の場合は、「none」にフォールバックします。
--   `remove` ：「レコード」戦略のように、競合するすべてのレコードを記録します。ただし、ターゲットテーブルから競合するすべてのレコードを削除して、ターゲットTiDBで一貫した状態を確保します。
+- `none` （デフォルト）：重複レコードを検出しません。これは、3 つの戦略で最高のパフォーマンスを発揮しますが、ターゲット TiDB のデータに一貫性がなくなる可能性があります。
+- `record` ：競合するレコードのみをターゲット TiDB の`lightning_task_info.conflict_error_v1`テーブルに記録します。ターゲット TiKV の必要なバージョンは v5.2.0 より前ではないことに注意してください。それ以外の場合は、「none」にフォールバックします。
+- `remove` ：「レコード」戦略のように、競合するすべてのレコードを記録します。ただし、ターゲットテーブルから競合するすべてのレコードを削除して、ターゲット TiDB で一貫した状態を確保します。
 
-データソースに競合するデータがあるかどうかわからない場合は、 `remove`の戦略をお勧めします。 `none`と`record`の戦略では、競合するデータがターゲットテーブルから削除されません。つまり、TiDBLightningによって生成された一意のインデックスがデータと矛盾している可能性があります。
+データソースに競合するデータがあるかどうかわからない場合は、 `remove`の戦略をお勧めします。 `none`と`record`の戦略では、競合するデータがターゲットテーブルから削除されません。つまり、TiDBLightning によって生成された一意のインデックスがデータと矛盾している可能性があります。
 
 ## TiDB-バックエンド {#tidb-backend}
 
@@ -106,14 +117,14 @@ backend = "tidb"
 
 ### 紛争解決 {#conflict-resolution}
 
-TiDBバックエンドは、すでに入力されている（空でない）テーブルへのインポートをサポートします。ただし、新しいデータにより、古いデータとの一意のキーの競合が発生する可能性があります。 `on-duplicate`の構成を使用して、競合を解決する方法を制御できます。
+TiDB バックエンドは、すでに入力されている（空でない）テーブルへのインポートをサポートします。ただし、新しいデータにより、古いデータとの一意のキーの競合が発生する可能性があります。 `on-duplicate`の構成を使用して、競合を解決する方法を制御できます。
 
-| 価値        | 競合時のデフォルトの動作          | SQLステートメント               |
-| :-------- | :-------------------- | :----------------------- |
+| 価値      | 競合時のデフォルトの動作                   | SQL ステートメント       |
+| :-------- | :----------------------------------------- | :----------------------- |
 | `replace` | 新しいレコードが古いレコードを置き換えます | `REPLACE INTO ...`       |
-| `ignore`  | 古い記録を保持し、新しい記録を無視します  | `INSERT IGNORE INTO ...` |
-| `error`   | インポートを中止する            | `INSERT INTO ...`        |
+| `ignore`  | 古い記録を保持し、新しい記録を無視します   | `INSERT IGNORE INTO ...` |
+| `error`   | インポートを中止する                       | `INSERT INTO ...`        |
 
 ## も参照してください {#see-also}
 
--   [データを並行してインポートする](/tidb-lightning/tidb-lightning-distributed-import.md)
+- [データを並行してインポートする](/tidb-lightning/tidb-lightning-distributed-import.md)
