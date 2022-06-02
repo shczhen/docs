@@ -1,6 +1,6 @@
 ---
-title: Dumplingの概要
-summary: Dumplingツールを使用して、TiDBからデータをエクスポートします。
+title: Dumpling Overview
+summary: Use the Dumpling tool to export data from TiDB.
 ---
 
 # Dumplingの概要 {#dumpling-overview}
@@ -100,7 +100,7 @@ dumpling \
 
 上記のコマンドでは：
 
--   `--sql`オプションは、CSVファイルへのエクスポートにのみ使用できます。上記のコマンドは、エクスポートされるすべてのテーブルに対して`SELECT * FROM <table-name> WHERE id <100`ステートメントを実行します。テーブルに指定されたフィールドがない場合、エクスポートは失敗します。
+-   `--sql`オプションは、CSVファイルへのエクスポートにのみ使用できます。上記のコマンドは、エクスポートされるすべてのテーブルで`SELECT * FROM <table-name> WHERE id <100`ステートメントを実行します。テーブルに指定されたフィールドがない場合、エクスポートは失敗します。
 -   `--sql`オプションを使用すると、 Dumplingはエクスポートされたテーブルおよびスキーマ情報を取得できません。 `--output-filename-template`オプションを使用してCSVファイルのファイル名形式を指定できます。これにより、後で[TiDB Lightning](/tidb-lightning/tidb-lightning-overview.md)を使用してデータファイルをインポートしやすくなります。たとえば、 `--output-filename-template='test.sbtest1.{{.Index}}'`は、エクスポートされたCSVファイルの名前が`test.sbtest1.000000000`または`test.sbtest1.000000001`であることを指定します。
 -   `--csv-separator`や`--csv-delimiter`などのオプションを使用して、CSVファイル形式を構成できます。詳しくは[Dumplingオプションリスト](#option-list-of-dumpling)をご覧ください。
 

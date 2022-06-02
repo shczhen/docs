@@ -1,6 +1,6 @@
 ---
-title: TiDBアーキテクチャ
-summary: TiDBプラットフォームの主要なアーキテクチャコンポーネント
+title: TiDB Architecture
+summary: The key architecture components of the TiDB platform
 ---
 
 # TiDBアーキテクチャ {#tidb-architecture}

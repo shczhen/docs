@@ -1,6 +1,6 @@
 ---
-title: CREATE TABLE LIKE | TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのCREATETABLELIKEの使用法の概要。
+title: CREATE TABLE LIKE | TiDB SQL Statement Reference
+summary: An overview of the usage of CREATE TABLE LIKE for the TiDB database.
 ---
 
 # テーブルのようなものを作成 {#create-table-like}

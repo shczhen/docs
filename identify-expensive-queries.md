@@ -1,5 +1,5 @@
 ---
-title: 高価なクエリを特定する
+title: Identify Expensive Queries
 ---
 
 # 高価なクエリを特定する {#identify-expensive-queries}

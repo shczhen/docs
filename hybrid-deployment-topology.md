@@ -1,6 +1,6 @@
 ---
-title: ハイブリッド展開トポロジ
-summary: TiDBクラスターのハイブリッドデプロイメントトポロジを学習します。
+title: Hybrid Deployment Topology
+summary: Learn the hybrid deployment topology of TiDB clusters.
 ---
 
 # ハイブリッド展開トポロジ {#hybrid-deployment-topology}

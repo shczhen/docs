@@ -1,6 +1,6 @@
 ---
-title: DM5.4.0ベンチマークレポート
-summary: 5.4.0のパフォーマンスについて学びます。
+title: DM 5.4.0 Benchmark Report
+summary: Learn about the performance of 5.4.0.
 ---
 
 # DM5.4.0ベンチマークレポート {#dm-5-4-0-benchmark-report}

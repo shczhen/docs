@@ -1,6 +1,6 @@
 ---
-title: TiDBとConfluentプラットフォームの統合に関するクイックスタートガイド
-summary: TiCDCを使用してTiDBデータをConfluentプラットフォームにストリーミングする方法を学びます。
+title: Quick Start Guide on Integrating TiDB with Confluent Platform
+summary: Learn how to stream TiDB data to the Confluent Platform using TiCDC.
 ---
 
 # TiDBとConfluentプラットフォームの統合に関するクイックスタートガイド {#quick-start-guide-on-integrating-tidb-with-confluent-platform}

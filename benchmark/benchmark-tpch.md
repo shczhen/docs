@@ -1,5 +1,5 @@
 ---
-title: TiDBTPC-H50GパフォーマンステストレポートV2.0
+title: TiDB TPC-H 50G Performance Test Report V2.0
 ---
 
 # TiDBTPC-H50Gパフォーマンステストレポート {#tidb-tpc-h-50g-performance-test-report}

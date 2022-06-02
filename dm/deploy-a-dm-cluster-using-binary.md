@@ -1,6 +1,6 @@
 ---
-title: DMバイナリを使用したデータ移行のデプロイ
-summary: DMバイナリを使用してデータ移行クラスタを展開する方法を学びます。
+title: Deploy Data Migration Using DM Binary
+summary: Learn how to deploy a Data Migration cluster using DM binary.
 ---
 
 # DMバイナリを使用したデータ移行のデプロイ {#deploy-data-migration-using-dm-binary}

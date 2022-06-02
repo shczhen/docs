@@ -1,6 +1,6 @@
 ---
-title: 3つのデータセンター展開でのローカル読み取り
-summary: Stale Read機能を使用して、3つのDC展開でローカルデータを読み取り、クロスセンターリクエストを減らす方法を学びます。
+title: Local Read under Three Data Centers Deployment
+summary: Learn how to use the Stale Read feature to read local data under three DCs deployment and thus reduce cross-center requests.
 ---
 
 # 3つのデータセンター展開でのローカル読み取り {#local-read-under-three-data-centers-deployment}

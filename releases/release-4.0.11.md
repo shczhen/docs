@@ -1,5 +1,5 @@
 ---
-title: TiDB4.0.11リリースノート
+title: TiDB 4.0.11 Release Notes
 ---
 
 # TiDB4.0.11リリースノート {#tidb-4-0-11-release-notes}
@@ -146,7 +146,7 @@ TiDBバージョン：4.0.11
 
     -   TiCDC
 
-        -   `ErrTaskStatusNotExists`と`capture`のセッションの終了が同時に発生したときにTiCDCサービスが予期せず終了する可能性があるバグを修正します[＃1240](https://github.com/pingcap/tiflow/pull/1240)
+        -   `ErrTaskStatusNotExists`セッションと`capture`セッションの終了が同時に発生した場合にTiCDCサービスが予期せず終了する可能性があるバグを修正します[＃1240](https://github.com/pingcap/tiflow/pull/1240)
         -   `changefeed`が別の[＃1347](https://github.com/pingcap/tiflow/pull/1347)の影響を受ける可能性があるという古い値スイッチの問題を修正し`changefeed`
         -   無効な`sort-engine`パラメータ[＃1309](https://github.com/pingcap/tiflow/pull/1309)を使用して新しい`changefeed`を処理するときにTiCDCサービスがハングする可能性があるバグを修正します。
         -   非所有者ノードでデバッグ情報を取得するときに発生するパニックの問題を修正します[＃1349](https://github.com/pingcap/tiflow/pull/1349)

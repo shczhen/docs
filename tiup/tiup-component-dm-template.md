@@ -1,5 +1,5 @@
 ---
-title: tiupdmテンプレート
+title: tiup dm template
 ---
 
 # tiupdmテンプレート {#tiup-dm-template}

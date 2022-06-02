@@ -1,6 +1,6 @@
 ---
-title: エラーの処理
-summary: エラーシステムと、DMを使用する際の一般的なエラーの処理方法について説明します。
+title: Handle Errors
+summary: Learn about the error system and how to handle common errors when you use DM.
 ---
 
 # エラーの処理 {#handle-errors}

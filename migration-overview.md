@@ -1,6 +1,6 @@
 ---
-title: データ移行の概要
-summary: データ移行シナリオとソリューションの概要を学びます。
+title: Data Migration Overview
+summary: Learn the overview of data migration scenarios and the solutions.
 ---
 
 # データ移行の概要 {#data-migration-overview}

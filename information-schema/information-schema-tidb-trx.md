@@ -1,6 +1,6 @@
 ---
 title: TIDB_TRX
-summary: `TIDB_TRX`information_schemaテーブルを学びます。
+summary: Learn the `TIDB_TRX` information_schema table.
 ---
 
 # TIDB_TRX {#tidb-trx}

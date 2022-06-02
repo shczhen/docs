@@ -1,6 +1,6 @@
 ---
-title: 大規模なリージョンでのTiKV性能チューニングのベストプラクティス
-summary: 大量のリージョンでTiKVのパフォーマンスを調整する方法を学びます。
+title: Best Practices for TiKV Performance Tuning with Massive Regions
+summary: Learn how to tune the performance of TiKV with a massive amount of Regions.
 ---
 
 # 大規模なリージョンでのTiKV性能チューニングのベストプラクティス {#best-practices-for-tikv-performance-tuning-with-massive-regions}

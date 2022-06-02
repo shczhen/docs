@@ -1,6 +1,6 @@
 ---
-title: PDConfiguration / コンフィグレーションフラグ
-summary: PDのいくつかの構成フラグを学びます。
+title: PD Configuration Flags
+summary: Learn some configuration flags of PD.
 ---
 
 # PDConfiguration / コンフィグレーションフラグ {#pd-configuration-flags}

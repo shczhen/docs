@@ -1,6 +1,6 @@
 ---
-title: sync-diff-inspectorユーザーガイド
-summary: sync-diff-inspectorを使用して、データを比較し、一貫性のないデータを修復します。
+title: sync-diff-inspector User Guide
+summary: Use sync-diff-inspector to compare data and repair inconsistent data.
 ---
 
 # sync-diff-inspectorユーザーガイド {#sync-diff-inspector-user-guide}

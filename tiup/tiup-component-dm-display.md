@@ -1,5 +1,5 @@
 ---
-title: tiupdmディスプレイ
+title: tiup dm display
 ---
 
 # tiupdmディスプレイ {#tiup-dm-display}

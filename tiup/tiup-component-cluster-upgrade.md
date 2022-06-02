@@ -1,5 +1,5 @@
 ---
-title: tiupクラスタのアップグレード
+title: tiup cluster upgrade
 ---
 
 # tiupクラスタのアップグレード {#tiup-cluster-upgrade}

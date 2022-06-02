@@ -1,6 +1,6 @@
 ---
-title: バックアップと復元にBRコマンドラインを使用する
-summary: BRコマンドラインを使用してクラスタデータをバックアップおよび復元する方法を学習します。
+title: Use BR Command-line for Backup and Restoration
+summary: Learn how to use the BR command line to backup and restore cluster data.
 ---
 
 # バックアップと復元にBRコマンドラインを使用する {#use-br-command-line-for-backup-and-restoration}

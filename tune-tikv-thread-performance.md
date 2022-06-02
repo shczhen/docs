@@ -1,6 +1,6 @@
 ---
-title: TiKVスレッドプールのパフォーマンスを調整する
-summary: 最適なパフォーマンスを得るためにTiKVスレッドプールを調整する方法を学びます。
+title: Tune TiKV Thread Pool Performance
+summary: Learn how to tune TiKV thread pools for optimal performance.
 ---
 
 # TiKVスレッドプールのパフォーマンスを調整する {#tune-tikv-thread-pool-performance}

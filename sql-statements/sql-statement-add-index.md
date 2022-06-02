@@ -1,6 +1,6 @@
 ---
-title: インデックスを追加| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのADDINDEXの使用法の概要。
+title: ADD INDEX | TiDB SQL Statement Reference
+summary: An overview of the usage of ADD INDEX for the TiDB database.
 ---
 
 # インデックスを追加 {#add-index}

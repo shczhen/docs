@@ -1,6 +1,6 @@
 ---
-title: データソース構成の管理
-summary: TiDBデータ移行でアップストリームMySQLインスタンスを管理する方法を学びます。
+title: Manage Data Source Configurations
+summary: Learn how to manage upstream MySQL instances in TiDB Data Migration.
 ---
 
 # データソース構成の管理 {#manage-data-source-configurations}

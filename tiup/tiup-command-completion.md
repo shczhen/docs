@@ -1,5 +1,5 @@
 ---
-title: tiup完了
+title: tiup completion
 ---
 
 # tiup完了 {#tiup-completion}

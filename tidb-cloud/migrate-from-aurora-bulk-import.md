@@ -1,6 +1,6 @@
 ---
-title: AuroraからTiDBクラウドに一括で移行する
-summary: AuroraからTiDBCloudにデータを一括で移行する方法を学びます。
+title: Migrate from Amazon Aurora MySQL to TiDB Cloud in Bulk
+summary: Learn how to migrate data from Amazon Aurora MySQL to TiDB Cloud in bulk.
 ---
 
 # AuroraからTiDBクラウドに一括で移行する {#migrate-from-amazon-aurora-mysql-to-tidb-cloud-in-bulk}

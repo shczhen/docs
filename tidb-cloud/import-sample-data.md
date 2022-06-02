@@ -1,6 +1,6 @@
 ---
-title: サンプルデータのインポート
-summary: UIを介してサンプルデータをTiDBクラウドにインポートする方法を学びます。
+title: Import Sample Data
+summary: Learn how to import sample data into TiDB Cloud via UI.
 ---
 
 # サンプルデータのインポート {#import-sample-data}
@@ -15,7 +15,7 @@ summary: UIを介してサンプルデータをTiDBクラウドにインポー�
 
     -   TiDBクラスタがAWSによってホストされている場合は、[**データソースタイプ**]に[ <strong>AWS S3</strong> ]を選択し、[<strong>バケットURL</strong> ]フィールドにサンプルデータURL `s3://tidbcloud-samples/data-ingestion/`を入力してから、[<strong>バケットリージョン</strong>]に[ <strong>US West（オレゴン）]</strong>を選択します。サンプルデータバケットは、AWSの米国西部（オレゴン）リージョンでホストされています。
 
-    -   TiDBクラスタがGCPでホストされている場合は、[**データソースの種類**]に[ <strong>Google Cloud Storage</strong> ]を選択し、[<strong>バケットURL</strong> ]フィールドにサンプルデータのURL `gcs://tidbcloud-samples-us-west1`を入力して、[<strong>バケット</strong>領域]に[ <strong>US-West1（オレゴン）]</strong>を選択します。サンプルデータバケットは、GCPのUS-West1（オレゴン）でホストされています。
+    -   TiDBクラスタがGCPでホストされている場合は、[**データソースの種類**]に[ <strong>Google Cloud Storage</strong> ]を選択し、[<strong>バケットURL</strong> ]フィールドにサンプルデータのURL `gcs://tidbcloud-samples-us-west1`を入力して、[<strong>バケットリージョン</strong>]に[ <strong>US-West1（オレゴン）]</strong>を選択します。サンプルデータバケットは、GCPのUS-West1（オレゴン）でホストされています。
 
 4.  [**データ形式]**で、[ <strong>TiDBDumpling</strong>]を選択します。
 

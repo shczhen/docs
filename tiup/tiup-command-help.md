@@ -1,5 +1,5 @@
 ---
-title: tiupヘルプ
+title: tiup help
 ---
 
 # tiupヘルプ {#tiup-help}

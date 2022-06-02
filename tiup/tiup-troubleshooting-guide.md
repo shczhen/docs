@@ -1,6 +1,6 @@
 ---
-title: TiUPトラブルシューティングガイド
-summary: TiUPの使用中に問題が発生した場合は、トラブルシューティングの方法と解決策を紹介します。
+title: TiUP Troubleshooting Guide
+summary: Introduce the troubleshooting methods and solutions if you encounter issues when using TiUP.
 ---
 
 # TiUPトラブルシューティングガイド {#tiup-troubleshooting-guide}

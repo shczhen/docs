@@ -1,6 +1,6 @@
 ---
-title: インデックスの選択
-summary: TiDBクエリの最適化に最適なインデックスを選択してください。
+title: Index Selection
+summary: Choose the best indexes for TiDB query optimization.
 ---
 
 # インデックスの選択 {#index-selection}
@@ -9,7 +9,7 @@ summary: TiDBクエリの最適化に最適なインデックスを選択して�
 
 このドキュメントでは、テーブルにアクセスするためのインデックスを選択する方法と、インデックスの選択を制御するためのいくつかの関連する方法を紹介します。
 
-## テーブルにアクセス {#access-tables}
+## テーブルにアクセスする {#access-tables}
 
 インデックスの選択を導入する前に、TiDBがテーブルにアクセスする方法、各方法でトリガーされるもの、各方法でどのような違いが生じるか、および長所と短所を理解することが重要です。
 

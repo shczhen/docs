@@ -1,6 +1,6 @@
 ---
-title: TiDBLightningエラー解決
-summary: データのインポート中に型変換と重複エラーを解決する方法を学びます。
+title: TiDB Lightning Error Resolution
+summary: Learn how to resolve type conversion and duplication errors during data import.
 ---
 
 # TiDBLightningエラー解決 {#tidb-lightning-error-resolution}

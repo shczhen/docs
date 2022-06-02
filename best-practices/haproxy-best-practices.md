@@ -1,6 +1,6 @@
 ---
-title: TiDBでHAProxyを使用するためのベストプラクティス
-summary: このドキュメントでは、TiDBでのHAProxyの設定と使用に関するベストプラクティスについて説明します。
+title: Best Practices for Using HAProxy in TiDB
+summary: This document describes best practices for configuration and usage of HAProxy in TiDB.
 ---
 
 # TiDBでHAProxyを使用するためのベストプラクティス {#best-practices-for-using-haproxy-in-tidb}

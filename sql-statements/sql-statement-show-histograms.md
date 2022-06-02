@@ -1,6 +1,6 @@
 ---
 title: SHOW STATS_HISTOGRAMS
-summary: TiDBデータベースのSHOWHISTOGRAMSの使用法の概要。
+summary: An overview of the usage of SHOW HISTOGRAMS for TiDB database.
 ---
 
 # SHOW STATS_HISTOGRAMS {#show-stats-histograms}

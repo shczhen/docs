@@ -1,6 +1,6 @@
 ---
 title: PLACEMENT_RULES
-summary: `PLACEMENT_RULES`information_schemaテーブルを学びます。
+summary: Learn the `PLACEMENT_RULES` information_schema table.
 ---
 
 # PLACEMENT_RULES {#placement-rules}

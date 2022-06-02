@@ -1,6 +1,6 @@
 ---
-title: チェンジフィード請求
-summary: TiDBCloudでのチェンジフィードの請求について説明します。
+title: Changefeed Billing
+summary: Learn about billing for changefeeds in TiDB Cloud.
 ---
 
 # チェンジフィード請求 {#changefeed-billing}

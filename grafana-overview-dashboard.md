@@ -1,6 +1,6 @@
 ---
-title: 主要な指標
-summary: Grafanaの概要ダッシュボードに表示されるいくつかの主要な指標について説明します。
+title: Key Metrics
+summary: Learn some key metrics displayed on the Grafana Overview dashboard.
 ---
 
 # 主要な指標 {#key-metrics}

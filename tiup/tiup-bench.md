@@ -1,6 +1,6 @@
 ---
-title: TiUPベンチコンポーネントを使用したTiDBのストレステスト
-summary: TiUPを使用してTPC-CおよびTPC-HワークロードでTiDBのストレステストを行う方法を学習します。
+title: Stress Test TiDB Using TiUP Bench Component
+summary: Learns how to stress test TiDB with TPC-C and TPC-H workloads using TiUP.
 ---
 
 # TiUPベンチコンポーネントを使用したTiDBのストレステスト {#stress-test-tidb-using-tiup-bench-component}

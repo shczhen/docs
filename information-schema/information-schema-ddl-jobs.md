@@ -1,6 +1,6 @@
 ---
 title: DDL_JOBS
-summary: `DDL_JOBS`information_schemaテーブルを学びます。
+summary: Learn the `DDL_JOBS` information_schema table.
 ---
 
 # DDL_JOBS {#ddl-jobs}

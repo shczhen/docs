@@ -1,6 +1,6 @@
 ---
-title: テーブルの作成| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのCREATETABLEの使用法の概要。
+title: CREATE TABLE | TiDB SQL Statement Reference
+summary: An overview of the usage of CREATE TABLE for the TiDB database.
 ---
 
 # CREATE TABLE {#create-table}

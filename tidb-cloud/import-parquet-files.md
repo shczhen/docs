@@ -1,6 +1,6 @@
 ---
-title: AmazonS3またはGCSからTiDBクラウドにApacheParquetファイルをインポートします
-summary: AmazonS3またはGCSからTiDBクラウドにApacheParquetファイルをインポートする方法を学びます。
+title:  Import Apache Parquet Files from Amazon S3 or GCS into TiDB Cloud
+summary: Learn how to import Apache Parquet files from Amazon S3 or GCS into TiDB Cloud.
 ---
 
 # AmazonS3またはGCSからTiDBクラウドにApacheParquetファイルをインポートします {#import-apache-parquet-files-from-amazon-s3-or-gcs-into-tidb-cloud}

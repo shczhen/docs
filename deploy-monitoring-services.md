@@ -1,6 +1,6 @@
 ---
-title: TiDBクラスターの監視サービスをデプロイ
-summary: TiDBクラスタの監視サービスを展開する方法を学びます。
+title: Deploy Monitoring Services for the TiDB Cluster
+summary: Learn how to deploy monitoring services for the TiDB cluster.
 ---
 
 # TiDBクラスターの監視サービスをデプロイ {#deploy-monitoring-services-for-the-tidb-cluster}

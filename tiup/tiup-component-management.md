@@ -1,6 +1,6 @@
 ---
-title: TiUPコマンドを使用したTiUPコンポーネントの管理
-summary: TiUPコマンドを使用してTiUPコンポーネントを管理する方法を学びます。
+title: Manage TiUP Components with TiUP Commands
+summary: Learn how to manage TiUP components using TiUP commands.
 ---
 
 # TiUPコマンドを使用したTiUPコンポーネントの管理 {#manage-tiup-components-with-tiup-commands}

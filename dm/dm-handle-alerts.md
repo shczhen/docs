@@ -1,6 +1,6 @@
 ---
-title: アラートを処理する
-summary: DMでアラート情報を処理する方法を理解します。
+title: Handle Alerts
+summary: Understand how to deal with the alert information in DM.
 ---
 
 # アラートを処理する {#handle-alerts}

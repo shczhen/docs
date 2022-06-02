@@ -1,5 +1,5 @@
 ---
-title: 実行計画の管理
+title: Control Execution Plan
 ---
 
 # 実行計画の管理 {#control-execution-plan}

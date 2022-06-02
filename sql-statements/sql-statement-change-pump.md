@@ -1,6 +1,6 @@
 ---
-title: ポンプの交換
-summary: TiDBデータベースでのCHANGEPUMPの使用法の概要。
+title: CHANGE PUMP
+summary: An overview of the usage of CHANGE PUMP for the TiDB database.
 ---
 
 # ポンプの交換 {#change-pump}

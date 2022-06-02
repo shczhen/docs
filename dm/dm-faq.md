@@ -1,6 +1,6 @@
 ---
-title: TiDBデータ移行FAQ
-summary: TiDBデータ移行（DM）に関するよくある質問（FAQ）について説明します。
+title: TiDB Data Migration FAQ
+summary: Learn about frequently asked questions (FAQs) about TiDB Data Migration (DM).
 ---
 
 # TiDBデータ移行FAQ {#tidb-data-migration-faq}

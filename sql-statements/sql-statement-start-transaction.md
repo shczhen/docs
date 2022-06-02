@@ -1,6 +1,6 @@
 ---
-title: トランザクションを開始| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのSTARTTRANSACTIONの使用法の概要。
+title: START TRANSACTION | TiDB SQL Statement Reference
+summary: An overview of the usage of START TRANSACTION for the TiDB database.
 ---
 
 # トランザクションを開始します {#start-transaction}

@@ -1,6 +1,6 @@
 ---
-title: キャスト関数と演算子
-summary: キャスト関数と演算子について学びます。
+title: Cast Functions and Operators
+summary: Learn about the cast functions and operators.
 ---
 
 # キャスト関数と演算子 {#cast-functions-and-operators}

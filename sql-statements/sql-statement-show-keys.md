@@ -1,6 +1,6 @@
 ---
-title: キーを表示[FROM|IN] | TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのSHOWKEYS[FROM|IN]の使用法の概要。
+title: SHOW KEYS [FROM|IN] | TiDB SQL Statement Reference
+summary: An overview of the usage of SHOW KEYS [FROM|IN] for the TiDB database.
 ---
 
 # キーを表示[FROM|IN] {#show-keys-from-in}

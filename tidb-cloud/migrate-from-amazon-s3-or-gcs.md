@@ -1,6 +1,6 @@
 ---
-title: AmazonS3またはGCSからTiDBクラウドへのインポートまたは移行
-summary: Amazon Simple Storage Service（Amazon S3）またはGoogle Cloud Storage（GCS）からTiDBCloudにデータをインポートまたは移行する方法を学びます。
+title: Import or Migrate from Amazon S3 or GCS to TiDB Cloud
+summary: Learn how to import or migrate data from Amazon Simple Storage Service (Amazon S3) or Google Cloud Storage (GCS) to TiDB Cloud.
 ---
 
 # AmazonS3またはGCSからTiDBクラウドへのインポートまたは移行 {#import-or-migrate-from-amazon-s3-or-gcs-to-tidb-cloud}

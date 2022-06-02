@@ -1,6 +1,6 @@
 ---
-title: PDの主要な監視指標
-summary: GrafanaPDダッシュボードに表示されるいくつかの主要なメトリックを学びます。
+title: Key Monitoring Metrics of PD
+summary: Learn some key metrics displayed on the Grafana PD dashboard.
 ---
 
 # PDの主要な監視指標 {#key-monitoring-metrics-of-pd}

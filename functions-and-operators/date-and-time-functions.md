@@ -1,6 +1,6 @@
 ---
-title: 日付と時刻の関数
-summary: データ関数と時間関数の使用方法を学びます。
+title: Date and Time Functions
+summary: Learn how to use the data and time functions.
 ---
 
 # 日付と時刻の関数 {#date-and-time-functions}

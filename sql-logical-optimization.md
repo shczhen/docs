@@ -1,5 +1,5 @@
 ---
-title: SQL論理最適化
+title: SQL Logical Optimization
 ---
 
 # SQL論理最適化 {#sql-logical-optimization}

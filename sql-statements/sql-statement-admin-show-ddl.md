@@ -1,6 +1,6 @@
 ---
-title: ADMIN SHOW DDL [JOBS | QUERIES] | TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのADMINの使用法の概要。
+title: ADMIN SHOW DDL [JOBS|QUERIES] | TiDB SQL Statement Reference
+summary: An overview of the usage of ADMIN for the TiDB database.
 ---
 
 # ADMIN SHOW DDL [JOBS | QUERIES] {#admin-show-ddl-jobs-queries}

@@ -1,6 +1,6 @@
 ---
-title: 列の変更| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのCHANGECOLUMNの使用法の概要。
+title: CHANGE COLUMN | TiDB SQL Statement Reference
+summary: An overview of the usage of CHANGE COLUMN for the TiDB database.
 ---
 
 # 列を変更する {#change-column}

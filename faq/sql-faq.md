@@ -1,6 +1,6 @@
 ---
-title: SQLのFAQ
-summary: TiDBSQLに関連するFAQについて学びます。
+title: SQL FAQs
+summary: Learn about the FAQs related to TiDB SQL.
 ---
 
 # SQLのFAQ {#sql-faqs}

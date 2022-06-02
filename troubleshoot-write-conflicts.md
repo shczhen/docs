@@ -1,6 +1,6 @@
 ---
-title: 楽観的なトランザクションでの書き込みの競合のトラブルシューティング
-summary: 楽観的なトランザクションで競合を書き込む理由と解決策について学びます。
+title: Troubleshoot Write Conflicts in Optimistic Transactions
+summary: Learn about the reason of and solutions to write conflicts in optimistic transactions.
 ---
 
 # 楽観的なトランザクションでの書き込みの競合のトラブルシューティング {#troubleshoot-write-conflicts-in-optimistic-transactions}

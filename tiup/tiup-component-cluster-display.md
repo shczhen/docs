@@ -1,5 +1,5 @@
 ---
-title: tiupクラスタ表示
+title: tiup cluster display
 ---
 
 # tiupクラスタ表示 {#tiup-cluster-display}

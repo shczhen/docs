@@ -1,6 +1,6 @@
 ---
-title: 統計学
-summary: `STATISTICS`information_schemaテーブルを学びます。
+title: STATISTICS
+summary: Learn the `STATISTICS` information_schema table.
 ---
 
 # 統計学 {#statistics}

@@ -1,6 +1,6 @@
 ---
-title: TiDBデータ移行用語集
-summary: TiDBデータ移行で使用される用語を学びます。
+title: TiDB Data Migration Glossary
+summary: Learn the terms used in TiDB Data Migration.
 ---
 
 # TiDBデータ移行用語集 {#tidb-data-migration-glossary}

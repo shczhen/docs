@@ -1,6 +1,6 @@
 ---
-title: 文字列関数
-summary: TiDBの文字列関数について学びます。
+title: String Functions
+summary: Learn about the string functions in TiDB.
 ---
 
 # 文字列関数 {#string-functions}

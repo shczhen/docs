@@ -1,6 +1,6 @@
 ---
-title: 小さなデータセットのMySQLシャードをTiDBに移行およびマージする
-summary: シャードの小さなデータセットをMySQLからTiDBに移行してマージする方法を学びます。
+title: Migrate and Merge MySQL Shards of Small Datasets to TiDB
+summary: Learn how to migrate and merge small datasets of shards from MySQL to TiDB.
 ---
 
 # 小さなデータセットのMySQLシャードをTiDBに移行およびマージする {#migrate-and-merge-mysql-shards-of-small-datasets-to-tidb}

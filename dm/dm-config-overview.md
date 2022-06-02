@@ -1,6 +1,6 @@
 ---
-title: データ移行Configuration / コンフィグレーションファイルの概要
-summary: このドキュメントでは、データ移行構成ファイルの概要を説明します。
+title: Data Migration Configuration File Overview
+summary: This document gives an overview of Data Migration configuration files.
 ---
 
 # データ移行Configuration / コンフィグレーションファイルの概要 {#data-migration-configuration-file-overview}

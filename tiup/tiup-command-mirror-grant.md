@@ -1,5 +1,5 @@
 ---
-title: tiupミラーグラント
+title: tiup mirror grant
 ---
 
 # tiupミラーグラント {#tiup-mirror-grant}

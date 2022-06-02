@@ -1,6 +1,6 @@
 ---
-title: TiDB Cloudで概念実証（PoC）を実行する
-summary: TiDB Cloudで概念実証（PoC）を実行する方法について説明します。
+title: Perform a Proof of Concept (PoC) with TiDB Cloud
+summary: Learn about how to perform a Proof of Concept (PoC) with TiDB Cloud.
 ---
 
 # TiDB Cloudで概念実証（PoC）を実行する {#perform-a-proof-of-concept-poc-with-tidb-cloud}
@@ -84,7 +84,7 @@ TiDB Cloudの使用を開始するには、次の手順を実行します。
 
 次に、テーブルとインデックスを含むデータベーススキーマをTiDBクラスタにロードできます。
 
-PoCトライアルポイントの数には限りがあるため、トライアルポイントの価値を最大化するには、TiDB Cloudでの互換性テストと予備分析のために[開発者層クラスタ](/tidb-cloud/select-cluster-tier.md#developer-tier) （1年間の無料トライアル）を作成することをお勧めします。
+PoCトライアルポイントの数には限りがあるため、トライアルポイントの価値を最大化するには、TiDB Cloudでの互換性テストと予備分析用に[開発者層クラスタ](/tidb-cloud/select-cluster-tier.md#developer-tier) （1年間の無料トライアル）を作成することをお勧めします。
 
 TiDBCloudはMySQL5.7と高い互換性があります。データがMySQLと互換性がある場合、またはMySQLと互換性があるように適合できる場合は、データをTiDBに直接インポートできます。
 
@@ -131,7 +131,7 @@ SQLステートメントの場合、データソースとTiDBとの互換性の�
 
 ワークロードを開始した後、次の方法を使用してシステムを監視できます。
 
--   クラスタの一般的に使用されるメトリックは、**概要**ページにあります。これには、合計QPS、レイテンシー、接続、TiFlash<sup>ベータ</sup>リクエストQPS、TiFlash<sup>ベータ</sup>リクエスト期間、TiFlash<sup>ベータ</sup>ストレージサイズ、TiKVストレージサイズ、TiDB CPU、TiKV CPU、TiKVIOが含まれます。読み取り、およびTiKVIO書き込み。 [TiDBクラスターを監視する](/tidb-cloud/monitor-tidb-cluster.md)を参照してください。
+-   クラスタの一般的に使用されるメトリックは、[**概要**]ページにあります。これには、合計QPS、レイテンシー、接続、TiFlash<sup>ベータ</sup>リクエストQPS、TiFlash<sup>ベータ</sup>リクエスト期間、TiFlash<sup>ベータ</sup>ストレージサイズ、TiKVストレージサイズ、TiDB CPU、TiKV CPU、TiKVIOが含まれます。読み取り、およびTiKVIO書き込み。 [TiDBクラスターを監視する](/tidb-cloud/monitor-tidb-cluster.md)を参照してください。
 -   **[診断]&gt;[ステートメント]**に移動します。ここで、SQLの実行を監視し、システムテーブルを照会せずにパフォーマンスの問題を簡単に見つけることができます。 [ステートメント分析](/tidb-cloud/tune-performance.md)を参照してください。
 -   **[診断]&gt;[キービジュア**ライザー]に移動します。ここで、TiDBデータアクセスパターンとデータホットスポットを表示できます。 [キービジュアライザー](/tidb-cloud/tune-performance.md#key-visualizer)を参照してください。
 -   これらのメトリックを独自のDatadogおよびPrometheusに統合することもできます。 [サードパーティの統合](/tidb-cloud/monitor-tidb-cluster.md#third-party-integrations)を参照してください。

@@ -1,6 +1,6 @@
 ---
-title: TiDBLightningの概要
-summary: Lightningとアーキテクチャ全体について学びます。
+title: TiDB Lightning Overview
+summary: Learn about Lightning and the whole architecture.
 ---
 
 # TiDBLightningの概要 {#tidb-lightning-overview}

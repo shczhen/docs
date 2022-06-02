@@ -1,5 +1,5 @@
 ---
-title: tiupクラスタデプロイ
+title: tiup cluster deploy
 ---
 
 # tiupクラスタデプロイ {#tiup-cluster-deploy}

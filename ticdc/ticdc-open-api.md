@@ -1,6 +1,6 @@
 ---
 title: TiCDC OpenAPI
-summary: OpenAPIインターフェースを使用して、クラスタのステータスとデータ複製を管理する方法を学びます。
+summary: Learn how to use the OpenAPI interface to manage the cluster status and data replication.
 ---
 
 # TiCDC OpenAPI {#ticdc-openapi}

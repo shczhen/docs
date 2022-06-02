@@ -1,5 +1,5 @@
 ---
-title: tiupミラークローン
+title: tiup mirror clone
 ---
 
 # tiupミラークローン {#tiup-mirror-clone}

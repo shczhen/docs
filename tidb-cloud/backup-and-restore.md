@@ -1,6 +1,6 @@
 ---
-title: TiDBクラスターデータのバックアップと復元
-summary: TiDBクラウドクラスタをバックアップおよび復元する方法を学びます。
+title: Back up and Restore TiDB Cluster Data
+summary: Learn how to back up and restore your TiDB Cloud cluster.
 aliases: ['/tidbcloud/restore-deleted-tidb-cluster']
 ---
 

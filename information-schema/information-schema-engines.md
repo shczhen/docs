@@ -1,6 +1,6 @@
 ---
-title: エンジン
-summary: `ENGINES`information_schemaテーブルを学びます。
+title: ENGINES
+summary: Learn the `ENGINES` information_schema table.
 ---
 
 # エンジン {#engines}

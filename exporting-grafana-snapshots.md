@@ -1,6 +1,6 @@
 ---
-title: Grafanaスナップショットのエクスポート
-summary: Grafanaダッシュボードのスナップショットをエクスポートする方法と、これらのファイルを視覚化する方法を学びます。
+title: Export Grafana Snapshots
+summary: Learn how to export snapshots of Grafana Dashboard, and how to visualize these files.
 ---
 
 # Grafanaスナップショットのエクスポート {#export-grafana-snapshots}

@@ -1,6 +1,6 @@
 ---
-title: 1 つの地域展開における複数のデータセンター
-summary: 1つの都市のマルチデータセンターへの導入ソリューションを学びます。
+title: Multiple Data Centers in One City Deployment
+summary: Learn the deployment solution to multi-data centers in one city.
 ---
 
 # 1 つの地域展開における複数のデータセンター {#multiple-data-centers-in-one-city-deployment}

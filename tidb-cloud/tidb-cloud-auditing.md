@@ -1,6 +1,6 @@
 ---
-title: 監査ログ
-summary: TiDBCloudでクラスタを監査する方法について説明します。
+title: Audit Logging
+summary: Learn about how to audit a cluster in TiDB Cloud.
 ---
 
 # 監査ログ {#audit-logging}
@@ -174,7 +174,7 @@ TiDB Cloudコンソールで、 **TiDBCloud**アカウントIDを取得した[Au
 
 > **ノート：**
 >
-> -   監査ログを有効にした後、バケットのURLまたは場所に新しい変更を加えた場合は、[**再起動**]をクリックして変更を読み込み、[<strong>接続のテスト</strong>]チェックを再実行して変更を有効にする必要があります。
+> -   監査ログを有効にした後、バケットのURLまたは場所に新しい変更を加えた場合は、[**再起動**]をクリックして変更をロードし、[<strong>接続のテスト</strong>]チェックを再実行して変更を有効にする必要があります。
 > -   TiDB CloudからGCSアクセスを削除するには、追加したプリンシパルを削除するだけです。
 
 </div>

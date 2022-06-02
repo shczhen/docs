@@ -1,6 +1,6 @@
 ---
 title: CLIENT_ERRORS_SUMMARY_BY_HOST
-summary: `CLIENT_ERRORS_SUMMARY_BY_HOST`information_schemaテーブルについて学びます。
+summary: Learn about the `CLIENT_ERRORS_SUMMARY_BY_HOST` information_schema table.
 ---
 
 # CLIENT_ERRORS_SUMMARY_BY_HOST {#client-errors-summary-by-host}

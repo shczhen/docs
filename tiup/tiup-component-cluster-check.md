@@ -1,5 +1,5 @@
 ---
-title: tiupクラスタチェック
+title: tiup cluster check
 ---
 
 # tiupクラスタチェック {#tiup-cluster-check}

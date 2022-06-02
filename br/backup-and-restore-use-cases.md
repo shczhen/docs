@@ -1,6 +1,6 @@
 ---
-title: BRのユースケース
-summary: BRを使用してデータをバックアップおよび復元するユースケースを学びます。
+title: BR Use Cases
+summary: Learn the use cases of backing up and restoring data using BR.
 ---
 
 # BRのユースケース {#br-use-cases}

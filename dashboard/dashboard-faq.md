@@ -1,6 +1,6 @@
 ---
-title: TiDBダッシュボードFAQ
-summary: TiDBダッシュボードに関するよくある質問（FAQ）と回答について説明します。
+title: TiDB Dashboard FAQ
+summary: Learn about the frequently asked questions (FAQs) and answers about TiDB Dashboard.
 aliases: ['/docs/dev/dashboard/dashboard-faq/']
 ---
 

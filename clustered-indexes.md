@@ -1,6 +1,6 @@
 ---
-title: クラスター化インデックス
-summary: クラスタ化インデックスの概念、ユーザーシナリオ、使用法、制限、および互換性について説明します。
+title: Clustered Indexes
+summary: Learn the concept, user scenarios, usages, limitations, and compatibility of clustered indexes.
 ---
 
 # クラスター化インデックス {#clustered-indexes}

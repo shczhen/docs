@@ -1,6 +1,6 @@
 ---
-title: TiKVConfiguration / コンフィグレーションファイル
-summary: TiKV構成ファイルを学びます。
+title: TiKV Configuration File
+summary: Learn the TiKV configuration file.
 ---
 
 # TiKVConfiguration / コンフィグレーションファイル {#tikv-configuration-file}
@@ -473,7 +473,7 @@ Raftstoreに関連するConfiguration / コンフィグレーションアイテ�
 
 ### <code>raft-election-timeout-ticks</code> {#code-raft-election-timeout-ticks-code}
 
--   いかだ選挙が開始されたときに渡されたティックの数。これは、Raftグループがリーダーを失った場合、リーダー選出がほぼ`raft-base-tick-interval` * `raft-election-timeout-ticks`の時間間隔の後に開始されることを意味します。
+-   いかだ選挙が開始されたときに渡されたティックの数。これは、Raftグループがリーダーを失った場合、リーダー選出が`raft-base-tick-interval` * `raft-election-timeout-ticks`の時間間隔のほぼ後に開始されることを意味します。
 -   デフォルト値： `10`
 -   最小値： `raft-heartbeat-ticks`
 

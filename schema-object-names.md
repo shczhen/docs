@@ -1,6 +1,6 @@
 ---
-title: スキーマオブジェクト名
-summary: TiDBSQLステートメントのスキーマオブジェクト名について学習します。
+title: Schema Object Names
+summary: Learn about schema object names in TiDB SQL statements.
 ---
 
 # スキーマオブジェクト名 {#schema-object-names}

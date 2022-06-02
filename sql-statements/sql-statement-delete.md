@@ -1,6 +1,6 @@
 ---
-title: 削除| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのDELETEの使用法の概要。
+title: DELETE | TiDB SQL Statement Reference
+summary: An overview of the usage of DELETE for the TiDB database.
 ---
 
 # 消去 {#delete}

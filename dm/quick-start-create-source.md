@@ -1,6 +1,6 @@
 ---
-title: データソースを作成する
-summary: データ移行（DM）用のデータソースを作成する方法を学びます。
+title: Create a Data Source
+summary: Learn how to create a data source for Data Migration (DM).
 ---
 
 # データソースを作成する {#create-a-data-source}

@@ -1,6 +1,6 @@
 ---
-title: オプティマイザーのヒント
-summary: オプティマイザーヒントを使用して、クエリ実行計画に影響を与える
+title: Optimizer Hints
+summary: Use Optimizer Hints to influence query execution plans
 ---
 
 # オプティマイザーのヒント {#optimizer-hints}

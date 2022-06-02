@@ -1,6 +1,6 @@
 ---
-title: 遅いクエリを特定する
-summary: 遅いクエリログを使用して、問題のあるSQLステートメントを特定します。
+title: Identify Slow Queries
+summary: Use the slow query log to identify problematic SQL statements.
 ---
 
 # 遅いクエリを特定する {#identify-slow-queries}

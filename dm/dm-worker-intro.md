@@ -1,6 +1,6 @@
 ---
-title: DMワーカーの紹介
-summary: DM-workerの機能を学びます。
+title: DM-worker Introduction
+summary: Learn the features of DM-worker.
 ---
 
 # DMワーカーの紹介 {#dm-worker-introduction}

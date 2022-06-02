@@ -1,6 +1,6 @@
 ---
-title: TiDBサイズを決定する
-summary: TiDBクラウドクラスタのサイズを決定する方法を学びます。
+title: Determine Your TiDB Size
+summary: Learn how to determine the size of your TiDB Cloud cluster.
 ---
 
 # TiDBサイズを決定する {#determine-your-tidb-size}

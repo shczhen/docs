@@ -1,5 +1,5 @@
 ---
-title: tiupクラスタクリーン
+title: tiup cluster clean
 ---
 
 # tiupクラスタクリーン {#tiup-cluster-clean}

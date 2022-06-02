@@ -1,6 +1,6 @@
 ---
-title: テーブルフィルター
-summary: TiDBツールでのテーブルフィルター機能の使用。
+title: Table Filter
+summary: Usage of table filter feature in TiDB tools.
 ---
 
 # テーブルフィルター {#table-filter}

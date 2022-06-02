@@ -1,6 +1,6 @@
 ---
-title: BRオートチューン
-summary: クラスタリソースの使用率が高い場合にクラスタへの影響を減らすために、バックアップで使用されるリソースを自動的に制限するBRの自動機能について説明します。
+title: BR Auto-Tune
+summary: Learn about the auto-feature of BR, which automatically limits the resources used by backups to reduce the impact on the cluster in case of high cluster resource usage.
 ---
 
 # BRAuto- <span class="version-mark">Tunev5.4.0の新機能</span> {#br-auto-tune-span-class-version-mark-new-in-v5-4-0-span}

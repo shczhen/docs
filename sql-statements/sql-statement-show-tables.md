@@ -1,6 +1,6 @@
 ---
-title: [フル]テーブルを表示| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのSHOW[FULL]TABLESの使用法の概要。
+title: SHOW [FULL] TABLES | TiDB SQL Statement Reference
+summary: An overview of the usage of SHOW [FULL] TABLES for the TiDB database.
 ---
 
 # [フル]テーブルを表示 {#show-full-tables}

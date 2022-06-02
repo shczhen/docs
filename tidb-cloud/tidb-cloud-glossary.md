@@ -1,6 +1,6 @@
 ---
-title: TiDBクラウド用語集
-summary: TiDBCloudで使用される用語を学びます。
+title: TiDB Cloud Glossary
+summary: Learn the terms used in TiDB Cloud.
 category: glossary
 aliases: ['/tidbcloud/glossary']
 ---

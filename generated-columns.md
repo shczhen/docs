@@ -1,6 +1,6 @@
 ---
-title: 生成された列
-summary: 生成された列の使用方法を学びます。
+title: Generated Columns
+summary: Learn how to use generated columns.
 ---
 
 # 生成された列 {#generated-columns}

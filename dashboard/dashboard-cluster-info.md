@@ -1,6 +1,6 @@
 ---
-title: TiDBダッシュボードクラスター情報ページ
-summary: クラスタ全体のTiDB、TiKV、PD、TiFlashコンポーネントの実行ステータスと、これらのコンポーネントが配置されているホストの実行ステータスを表示します。
+title: TiDB Dashboard Cluster Information Page
+summary: View the running status of TiDB, TiKV, PD, TiFlash components in the entire cluster and the running status of the host on which these components are located.
 ---
 
 # TiDBダッシュボードクラスター情報ページ {#tidb-dashboard-cluster-information-page}

@@ -1,5 +1,5 @@
 ---
-title: tiupステータス
+title: tiup status
 ---
 
 # tiupステータス {#tiup-status}

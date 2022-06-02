@@ -1,6 +1,6 @@
 ---
-title: TiDBユーザーアカウント管理
-summary: TiDBユーザーアカウントを管理する方法を学びます。
+title: TiDB User Account Management
+summary: Learn how to manage a TiDB user account.
 ---
 
 # TiDBユーザーアカウント管理 {#tidb-user-account-management}

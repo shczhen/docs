@@ -1,6 +1,6 @@
 ---
-title: TiFlashクラスターを監視する
-summary: TiFlashの監視項目を学びます。
+title: Monitor the TiFlash Cluster
+summary: Learn the monitoring items of TiFlash.
 ---
 
 # TiFlashクラスターを監視する {#monitor-the-tiflash-cluster}

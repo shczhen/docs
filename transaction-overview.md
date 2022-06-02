@@ -1,6 +1,6 @@
 ---
-title: トランザクション
-summary: TiDBでトランザクションを学びます。
+title: Transactions
+summary: Learn transactions in TiDB.
 ---
 
 # トランザクション {#transactions}

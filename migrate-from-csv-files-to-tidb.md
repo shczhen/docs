@@ -1,6 +1,6 @@
 ---
-title: CSVファイルからTiDBへのデータの移行
-summary: CSVファイルからTiDBにデータを移行する方法を学びます。
+title: Migrate Data from CSV Files to TiDB
+summary: Learn how to migrate data from CSV files to TiDB.
 ---
 
 # CSVファイルからTiDBへのデータの移行 {#migrate-data-from-csv-files-to-tidb}

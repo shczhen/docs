@@ -1,6 +1,6 @@
 ---
-title: TiDBダッシュボードの紹介
-summary: TiDBダッシュボードを紹介します。
+title: TiDB Dashboard Introduction
+summary: Introduce TiDB Dashboard.
 ---
 
 # TiDBダッシュボードの紹介 {#tidb-dashboard-introduction}

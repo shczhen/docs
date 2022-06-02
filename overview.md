@@ -1,6 +1,6 @@
 ---
-title: TiDBの紹介
-summary: TiDBの主な機能と使用シナリオについて学びます。
+title: TiDB Introduction
+summary: Learn about the key features and usage scenarios of TiDB.
 ---
 
 # TiDBの紹介 {#tidb-introduction}

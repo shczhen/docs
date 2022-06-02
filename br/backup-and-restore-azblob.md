@@ -1,6 +1,6 @@
 ---
-title: AzureBlobStorageでのデータのバックアップと復元
-summary: BRを使用してAzureBlobStorageのデータをバックアップおよび復元する方法を学びます。
+title: Back up and Restore Data on Azure Blob Storage
+summary: Learn how to use BR to back up and restore data on Azure Blob Storage.
 ---
 
 # AzureBlobStorageでのデータのバックアップと復元 {#back-up-and-restore-data-on-azure-blob-storage}

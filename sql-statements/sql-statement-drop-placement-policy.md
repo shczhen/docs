@@ -1,6 +1,6 @@
 ---
-title: ドロッププレースメントポリシー
-summary: TiDBでのALTERPLACEMENTPOLICYの使用。
+title: DROP PLACEMENT POLICY
+summary: The usage of ALTER PLACEMENT POLICY in TiDB.
 ---
 
 # ドロッププレースメントポリシー {#drop-placement-policy}

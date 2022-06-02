@@ -1,6 +1,6 @@
 ---
-title: TiDBのベストプラクティス
-summary: TiDBを使用するためのベストプラクティスを学びます。
+title: TiDB Best Practices
+summary: Learn the best practices of using TiDB.
 ---
 
 # TiDBのベストプラクティス {#tidb-best-practices}

@@ -1,6 +1,6 @@
 ---
-title: インデックスを表示[FROM|IN] | TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのSHOWINDEX[FROM|IN]の使用法の概要。
+title: SHOW INDEX [FROM|IN] | TiDB SQL Statement Reference
+summary: An overview of the usage of SHOW INDEX [FROM|IN] for the TiDB database.
 ---
 
 # インデックスを表示[FROM|IN] {#show-index-from-in}

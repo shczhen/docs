@@ -1,6 +1,6 @@
 ---
-title: 小さなデータセットのMySQLをTiDBに移行する
-summary: 小さなデータセットのMySQLをTiDBに移行する方法を学びます。
+title: Migrate MySQL of Small Datasets to TiDB
+summary: Learn how to migrate MySQL of small datasets to TiDB.
 ---
 
 # 小さなデータセットのMySQLをTiDBに移行する {#migrate-mysql-of-small-datasets-to-tidb}

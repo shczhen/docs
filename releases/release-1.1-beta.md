@@ -1,5 +1,5 @@
 ---
-title: TiDB1.1ベータリリースノート
+title: TiDB 1.1 Beta Release Notes
 ---
 
 # TiDB1.1ベータリリースノート {#tidb-1-1-beta-release-notes}

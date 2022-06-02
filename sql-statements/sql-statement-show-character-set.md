@@ -1,6 +1,6 @@
 ---
-title: 文字セットを表示| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのSHOWCHARACTERSETの使用法の概要。
+title: SHOW CHARACTER SET | TiDB SQL Statement Reference
+summary: An overview of the usage of SHOW CHARACTER SET for the TiDB database.
 ---
 
 # 文字セットを表示 {#show-character-set}

@@ -1,6 +1,6 @@
 ---
-title: トランザクションの設定| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのSETTRANSACTIONの使用法の概要。
+title: SET TRANSACTION | TiDB SQL Statement Reference
+summary: An overview of the usage of SET TRANSACTION for the TiDB database.
 ---
 
 # トランザクションの設定 {#set-transaction}

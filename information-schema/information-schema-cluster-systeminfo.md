@@ -1,6 +1,6 @@
 ---
 title: CLUSTER_SYSTEMINFO
-summary: `CLUSTER_SYSTEMINFO`カーネルパラメータテーブルを学びます。
+summary: Learn the `CLUSTER_SYSTEMINFO` kernel parameter table.
 ---
 
 # CLUSTER_SYSTEMINFO {#cluster-systeminfo}

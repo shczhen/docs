@@ -1,6 +1,6 @@
 ---
-title: TiUPを使用してDMクラスターをデプロイする
-summary: TiUPDMを使用してTiDBデータ移行を展開する方法を学びます。
+title: Deploy a DM Cluster Using TiUP
+summary: Learn how to deploy TiDB Data Migration using TiUP DM.
 ---
 
 # TiUPを使用してDMクラスターをデプロイする {#deploy-a-dm-cluster-using-tiup}

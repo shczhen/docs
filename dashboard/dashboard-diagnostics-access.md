@@ -1,6 +1,6 @@
 ---
-title: TiDBダッシュボードクラスター診断ページ
-summary: クラスタ診断ページの使用方法を学びます。
+title: TiDB Dashboard Cluster Diagnostic Page
+summary: Learn how to use the cluster diagnostic page.
 ---
 
 # TiDBダッシュボードクラスター診断ページ {#tidb-dashboard-cluster-diagnostics-page}

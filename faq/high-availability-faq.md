@@ -1,6 +1,6 @@
 ---
-title: 高可用性に関するFAQ
-summary: TiDBの高可用性に関連するFAQについて学びます。
+title: High Availability FAQs
+summary: Learn about the FAQs related to high availability of TiDB.
 ---
 
 # 高可用性に関するFAQ {#high-availability-faqs}

@@ -1,6 +1,6 @@
 ---
-title: TiDBダッシュボードセッションを共有する
-summary: 現在のTiDBダッシュボードセッションを他のユーザーと共有する方法を学びます。
+title: Share TiDB Dashboard Sessions
+summary: Learn how to share the current TiDB Dashboard session to other users.
 ---
 
 # TiDBダッシュボードセッションを共有する {#share-tidb-dashboard-sessions}

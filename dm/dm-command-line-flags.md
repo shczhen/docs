@@ -1,6 +1,6 @@
 ---
-title: コマンドラインフラグ
-summary: DMのコマンドラインフラグについて学習します。
+title: Command-line Flags
+summary: Learn about the command-line flags in DM.
 ---
 
 # コマンドラインフラグ {#command-line-flags}

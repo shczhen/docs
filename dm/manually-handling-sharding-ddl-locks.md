@@ -1,6 +1,6 @@
 ---
-title: DMでシャーディングDDLロックを手動で処理する
-summary: DMでシャーディングDDLロックを手動で処理する方法を学びます。
+title: Handle Sharding DDL Locks Manually in DM
+summary: Learn how to handle sharding DDL locks manually in DM.
 ---
 
 # DMでシャーディングDDLロックを手動で処理する {#handle-sharding-ddl-locks-manually-in-dm}

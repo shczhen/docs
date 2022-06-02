@@ -1,6 +1,6 @@
 ---
-title: 2つの都市に配置された3つのデータセンター
-summary: 2つの都市にある3つのデータセンターへの導入ソリューションについて学びます。
+title: Three Data Centers in Two Cities Deployment
+summary: Learn the deployment solution to three data centers in two cities.
 ---
 
 # 2つの都市に配置された3つのデータセンター {#three-data-centers-in-two-cities-deployment}

@@ -1,6 +1,6 @@
 ---
-title: TiDBダッシュボードメトリクス関係グラフ
-summary: TiDBダッシュボードメトリック関係グラフを学びます。
+title: TiDB Dashboard Metrics Relation Graph
+summary: Learn TiDB Dashboard metrics relation graph.
 ---
 
 # TiDBダッシュボードメトリクス関係グラフ {#tidb-dashboard-metrics-relation-graph}

@@ -1,6 +1,6 @@
 ---
-title: TiDBクラスターに接続する
-summary: SQLクライアントまたはSQLシェルを介してTiDBクラスタに接続します。
+title: Connect to Your TiDB Cluster
+summary: Connect to your TiDB cluster via a SQL client or SQL shell.
 ---
 
 # TiDBクラスターに接続する {#connect-to-your-tidb-cluster}

@@ -1,6 +1,6 @@
 ---
-title: テーブルステータスを表示| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのSHOWTABLESTATUSの使用法の概要。
+title: SHOW TABLE STATUS | TiDB SQL Statement Reference
+summary: An overview of the usage of SHOW TABLE STATUS for the TiDB database.
 ---
 
 # テーブルステータスを表示 {#show-table-status}

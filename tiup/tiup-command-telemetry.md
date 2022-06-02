@@ -1,5 +1,5 @@
 ---
-title: tiupテレメトリ
+title: tiup telemetry
 ---
 
 # tiupテレメトリ {#tiup-telemetry}

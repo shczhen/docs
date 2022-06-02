@@ -1,6 +1,6 @@
 ---
-title: その他の機能
-summary: TiDBのその他の機能について学びます。
+title: Miscellaneous Functions
+summary: Learn about miscellaneous functions in TiDB.
 ---
 
 # その他の機能 {#miscellaneous-functions}

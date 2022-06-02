@@ -1,6 +1,6 @@
 ---
-title: Binlogコンシューマークライアントユーザーガイド
-summary: Binlog Consumer Clientを使用して、KafkaからのTiDBセカンダリbinlogデータを消費し、特定の形式でデータを出力します。
+title: Binlog Consumer Client User Guide
+summary: Use Binlog Consumer Client to consume TiDB secondary binlog data from Kafka and output the data in a specific format.
 ---
 
 # Binlogコンシューマークライアントユーザーガイド {#binlog-consumer-client-user-guide}

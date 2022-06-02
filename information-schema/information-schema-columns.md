@@ -1,6 +1,6 @@
 ---
-title: 列
-summary: `COLUMNS`information_schemaテーブルを学びます。
+title: COLUMNS
+summary: Learn the `COLUMNS` information_schema table.
 ---
 
 # 列 {#columns}

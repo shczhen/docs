@@ -1,6 +1,6 @@
 ---
-title: アップストリームMySQLインスタンス構成を事前に確認します
-summary: DMが提供する事前チェック機能を使用して、アップストリームのMySQLインスタンス構成のエラーを検出する方法を学びます。
+title: Precheck the Upstream MySQL Instance Configurations
+summary: Learn how to use the precheck feature provided by DM to detect errors in the upstream MySQL instance configurations.
 ---
 
 # アップストリームMySQLインスタンス構成を事前に確認します {#precheck-the-upstream-mysql-instance-configurations}

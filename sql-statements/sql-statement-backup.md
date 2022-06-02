@@ -1,6 +1,6 @@
 ---
-title: バックアップ| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのBACKUPの使用法の概要。
+title: BACKUP | TiDB SQL Statement Reference
+summary: An overview of the usage of BACKUP for the TiDB database.
 ---
 
 # バックアップ {#backup}

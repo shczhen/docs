@@ -1,6 +1,6 @@
 ---
-title: クエリの最適化
-summary: TiDBクエリオプティマイザに`distinct`最適化を導入します。
+title: Distinct Optimization
+summary: Introduce the `distinct` optimization in the TiDB query optimizer.
 ---
 
 # クエリの最適化 {#distinct-optimization}

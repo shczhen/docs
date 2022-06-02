@@ -1,6 +1,6 @@
 ---
-title: データ移行タスクを停止する
-summary: データ移行タスクを停止する方法を学びます。
+title: Stop a Data Migration Task
+summary: Learn how to stop a data migration task.
 ---
 
 # データ移行タスクを停止する {#stop-a-data-migration-task}

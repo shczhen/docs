@@ -1,6 +1,6 @@
 ---
-title: ドレイナーステータスを表示
-summary: TiDBデータベースのSHOWDRAINERSTATUSの使用法の概要。
+title: SHOW DRAINER STATUS
+summary: An overview of the usage of SHOW DRAINER STATUS for the TiDB database.
 ---
 
 # ドレイナーステータスを表示 {#show-drainer-status}

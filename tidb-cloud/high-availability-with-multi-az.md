@@ -1,6 +1,6 @@
 ---
-title: マルチAZ展開による高可用性
-summary: TiDBクラウドは、マルチAZ展開による高可用性をサポートします。
+title: High Availability with Multi-AZ Deployments
+summary: TiDB Cloud supports high availability with Multi-AZ deployments.
 ---
 
 # マルチAZ展開による高可用性 {#high-availability-with-multi-az-deployments}

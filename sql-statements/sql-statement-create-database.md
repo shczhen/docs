@@ -1,6 +1,6 @@
 ---
-title: データベースの作成| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのCREATEDATABASEの使用法の概要。
+title: CREATE DATABASE | TiDB SQL Statement Reference
+summary: An overview of the usage of CREATE DATABASE for the TiDB database.
 ---
 
 # データベースの作成 {#create-database}

@@ -1,6 +1,6 @@
 ---
-title: TiDBクラウドサポート
-summary: TiDBCloudのサポートチームに連絡する方法を学びます。
+title: TiDB Cloud Support
+summary: Learn how to contact the support team of TiDB Cloud.
 ---
 
 # TiDBクラウドサポート {#tidb-cloud-support}

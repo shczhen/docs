@@ -1,6 +1,6 @@
 ---
-title: TiDBコンピューティング
-summary: TiDBデータベースのコンピューティングレイヤーを理解します。
+title: TiDB Computing
+summary: Understand the computing layer of the TiDB database.
 ---
 
 # TiDBコンピューティング {#tidb-computing}

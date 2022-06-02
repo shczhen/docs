@@ -1,6 +1,6 @@
 ---
 title: INSPECTION_SUMMARY
-summary: `INSPECTION_SUMMARY`検査要約表をご覧ください。
+summary: Learn the `INSPECTION_SUMMARY` inspection summary table.
 ---
 
 # INSPECTION_SUMMARY {#inspection-summary}

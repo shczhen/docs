@@ -1,6 +1,6 @@
 ---
-title: TiDBクラウドレプリケーション
-summary: プライマリTiDBクラスタからセカンダリTiDBクラスタにデータをストリーミングするためのレプリカを作成する方法を学びます。
+title: TiDB Cloud Replication
+summary: Learn how to create a replica to stream data from a primary TiDB cluster to a secondary TiDB cluster.
 ---
 
 # TiDBクラウドレプリケーション {#tidb-cloud-replication}

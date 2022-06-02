@@ -1,5 +1,5 @@
 ---
-title: tiupクラスタパッチ
+title: tiup cluster patch
 ---
 
 # tiupクラスタパッチ {#tiup-cluster-patch}

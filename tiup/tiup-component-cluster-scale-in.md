@@ -1,5 +1,5 @@
 ---
-title: tiupクラスタのスケールイン
+title: tiup cluster scale-in
 ---
 
 # tiupクラスタのスケールイン {#tiup-cluster-scale-in}

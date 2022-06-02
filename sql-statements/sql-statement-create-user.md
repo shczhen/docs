@@ -1,6 +1,6 @@
 ---
-title: ユーザーの作成| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのCREATEUSERの使用法の概要。
+title: CREATE USER | TiDB SQL Statement Reference
+summary: An overview of the usage of CREATE USER for the TiDB database.
 ---
 
 # ユーザーを作成 {#create-user}

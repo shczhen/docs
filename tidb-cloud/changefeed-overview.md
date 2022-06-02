@@ -1,5 +1,5 @@
 ---
-title: チェンジフィード
+title: Changefeed
 ---
 
 # チェンジフィード {#changefeed}

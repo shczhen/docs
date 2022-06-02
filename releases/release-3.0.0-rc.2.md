@@ -1,5 +1,5 @@
 ---
-title: TiDB3.0.0-rc.2リリースノート
+title: TiDB 3.0.0-rc.2 Release Notes
 ---
 
 # TiDB3.0.0-rc.2リリースノート {#tidb-3-0-0-rc-2-release-notes}

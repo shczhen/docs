@@ -1,6 +1,6 @@
 ---
-title: オンラインの安全でない回復
-summary: OnlineUnsafeRecoveryの使用方法を学びます。
+title: Online Unsafe Recovery
+summary: Learn how to use Online Unsafe Recovery.
 ---
 
 # オンラインの安全でない回復 {#online-unsafe-recovery}

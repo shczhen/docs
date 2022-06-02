@@ -1,6 +1,6 @@
 ---
-title: 説明| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのDESCRIBEの使用法の概要。
+title: DESCRIBE | TiDB SQL Statement Reference
+summary: An overview of the usage of DESCRIBE for the TiDB database.
 ---
 
 # 説明 {#describe}

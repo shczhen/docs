@@ -1,6 +1,6 @@
 ---
-title: JSON関数
-summary: JSON関数について学びます。
+title: JSON Functions
+summary: Learn about JSON functions.
 ---
 
 # JSON関数 {#json-functions}

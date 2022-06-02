@@ -1,6 +1,6 @@
 ---
 title: CLUSTER_LOAD
-summary: `CLUSTER_LOAD`information_schemaテーブルを学びます。
+summary: Learn the `CLUSTER_LOAD` information_schema table.
 ---
 
 # CLUSTER_LOAD {#cluster-load}

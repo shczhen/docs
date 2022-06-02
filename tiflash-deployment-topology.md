@@ -1,6 +1,6 @@
 ---
-title: TiFlash展開トポロジ
-summary: 最小限のTiDBトポロジに基づいたTiFlashの展開トポロジを学習します。
+title: TiFlash Deployment Topology
+summary: Learn the deployment topology of TiFlash based on the minimal TiDB topology.
 ---
 
 # TiFlash展開トポロジ {#tiflash-deployment-topology}

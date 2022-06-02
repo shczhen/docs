@@ -1,6 +1,6 @@
 ---
-title: ALTER TABLE | TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのALTERTABLEの使用法の概要。
+title: ALTER TABLE | TiDB SQL Statement Reference
+summary: An overview of the usage of ALTER TABLE for the TiDB database.
 ---
 
 # 他の机 {#alter-table}

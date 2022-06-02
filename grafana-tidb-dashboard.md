@@ -1,6 +1,6 @@
 ---
-title: TiDBモニタリングメトリクス
-summary: GrafanaTiDBダッシュボードに表示されるいくつかの主要なメトリックを学びます。
+title: TiDB Monitoring Metrics
+summary: Learn some key metrics displayed on the Grafana TiDB dashboard.
 ---
 
 # TiDBモニタリングメトリクス {#tidb-monitoring-metrics}

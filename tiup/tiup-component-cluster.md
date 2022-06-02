@@ -1,5 +1,5 @@
 ---
-title: TiUPクラスター
+title: TiUP Cluster
 ---
 
 # TiUPクラスター {#tiup-cluster}

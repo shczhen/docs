@@ -1,5 +1,5 @@
 ---
-title: TiDB2.1RC5リリースノート
+title: TiDB 2.1 RC5 Release Notes
 ---
 
 <!-- markdownlint-disable MD032 -->

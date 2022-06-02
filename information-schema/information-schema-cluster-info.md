@@ -1,6 +1,6 @@
 ---
 title: CLUSTER_INFO
-summary: `CLUSTER_INFO`クラスタトポロジ情報テーブルをご覧ください。
+summary: Learn the `CLUSTER_INFO` cluster topology information table.
 ---
 
 # CLUSTER_INFO {#cluster-info}

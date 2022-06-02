@@ -1,6 +1,6 @@
 ---
-title: カラムの剪定
-summary: TiDBでの列プルーニングの使用法について説明します。
+title: Column Pruning
+summary: Learn about the usage of column pruning in TiDB.
 ---
 
 # カラムの剪定 {#column-pruning}

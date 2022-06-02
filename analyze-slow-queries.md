@@ -1,6 +1,6 @@
 ---
-title: 遅いクエリを分析する
-summary: 遅いクエリを見つけて分析する方法を学びます。
+title: Analyze Slow Queries
+summary: Learn how to locate and analyze slow queries.
 ---
 
 # 遅いクエリを分析する {#analyze-slow-queries}

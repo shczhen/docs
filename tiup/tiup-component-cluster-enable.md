@@ -1,5 +1,5 @@
 ---
-title: tiup クラスタ enable
+title: tiup cluster enable
 ---
 
 # tiup クラスタ enable {#tiup-cluster-enable}

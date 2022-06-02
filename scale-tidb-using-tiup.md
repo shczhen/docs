@@ -1,6 +1,6 @@
 ---
-title: TiUPを使用してTiDBクラスターをスケーリングする
-summary: TiUPを使用してTiDBクラスタをスケーリングする方法を学びます。
+title: Scale the TiDB Cluster Using TiUP
+summary: Learn how to scale the TiDB cluster using TiUP.
 ---
 
 # TiUPを使用してTiDBクラスターをスケーリングする {#scale-the-tidb-cluster-using-tiup}

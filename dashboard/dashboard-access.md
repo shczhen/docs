@@ -1,6 +1,6 @@
 ---
-title: TiDBダッシュボードにアクセスする
-summary: TiDBダッシュボードにアクセスする方法を学びます。
+title: Access TiDB Dashboard
+summary: Learn how to access TiDB Dashboard.
 ---
 
 # TiDBダッシュボードにアクセスする {#access-tidb-dashboard}

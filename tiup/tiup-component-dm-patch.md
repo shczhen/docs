@@ -1,5 +1,5 @@
 ---
-title: tiupdmパッチ
+title: tiup dm patch
 ---
 
 # tiupdmパッチ {#tiup-dm-patch}

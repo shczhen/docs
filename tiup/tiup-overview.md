@@ -1,6 +1,6 @@
 ---
-title: TiUPの概要
-summary: TiUPツールとそのエコシステムを紹介します。
+title: TiUP Overview
+summary: Introduce the TiUP tool and its ecosystem.
 ---
 
 # TiUPの概要 {#tiup-overview}

@@ -1,6 +1,6 @@
 ---
-title: 古い読み取りの使用シナリオ
-summary: StaleReadとその使用シナリオについて学びます。
+title: Usage Scenarios of Stale Read
+summary: Learn about Stale Read and its usage scenarios.
 ---
 
 # 古い読み取りの使用シナリオ {#usage-scenarios-of-stale-read}

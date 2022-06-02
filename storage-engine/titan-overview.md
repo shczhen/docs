@@ -1,6 +1,6 @@
 ---
-title: Titanの概要
-summary: Titanストレージエンジンの概要を学びます。
+title: Titan Overview
+summary: Learn the overview of the Titan storage engine.
 ---
 
 # Titanの概要 {#titan-overview}

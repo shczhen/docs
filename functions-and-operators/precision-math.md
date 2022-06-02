@@ -1,6 +1,6 @@
 ---
-title: 精密計算
-summary: TiDBの精密数学について学びます。
+title: Precision Math
+summary: Learn about the precision math in TiDB.
 ---
 
 # 精密計算 {#precision-math}

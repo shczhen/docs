@@ -1,6 +1,6 @@
 ---
-title: パフォーマンスの問題を処理する
-summary: DMに存在する可能性のある一般的なパフォーマンスの問題と、それらに対処する方法について説明します。
+title: Handle Performance Issues
+summary: Learn about common performance issues that might exist in DM and how to deal with them.
 ---
 
 # パフォーマンスの問題を処理する {#handle-performance-issues}

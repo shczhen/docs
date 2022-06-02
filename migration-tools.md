@@ -1,6 +1,6 @@
 ---
-title: TiDBエコシステムツールの概要
-summary: TiDBエコシステムツールの概要を学びます。
+title: TiDB Ecosystem Tools Overview
+summary: Learn an overview of the TiDB ecosystem tools.
 ---
 
 # TiDBエコシステムツールの概要 {#tidb-ecosystem-tools-overview}

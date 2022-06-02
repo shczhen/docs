@@ -1,6 +1,6 @@
 ---
-title: ロールベースのアクセス制御
-summary: このドキュメントでは、TiDBRBACの操作と実装を紹介します。
+title: Role-Based Access Control
+summary: This document introduces TiDB RBAC operations and implementation.
 ---
 
 # ロールベースのアクセス制御 {#role-based-access-control}
@@ -236,7 +236,7 @@ SET ROLE {
 }
 ```
 
-たとえば、 `rw_user1`がログインした後、次のステートメントを使用して、現在のセッションでのみ有効なロール`app_read`と`app_write`を有効にできます。
+たとえば、 `rw_user1`ログインした後、次のステートメントを使用して、現在のセッションでのみ有効なロール`app_read`と`app_write`を有効にできます。
 
 {{< copyable "" >}}
 

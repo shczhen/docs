@@ -1,6 +1,6 @@
 ---
-title: TiCDC用語集
-summary: TiCDCとその定義に関する用語を学びます。
+title: TiCDC Glossary
+summary: Learn the terms about TiCDC and their definitions.
 ---
 
 # TiCDC用語集 {#ticdc-glossary}

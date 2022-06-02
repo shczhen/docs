@@ -1,6 +1,6 @@
 ---
-title: SQL診断
-summary: TiDBのSQL診断を理解します。
+title: SQL Diagnostics
+summary: Understand SQL diagnostics in TiDB.
 ---
 
 # SQL診断 {#sql-diagnostics}

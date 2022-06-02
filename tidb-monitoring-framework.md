@@ -1,6 +1,6 @@
 ---
-title: TiDBモニタリングフレームワークの概要
-summary: PrometheusとGrafanaを使用して、TiDB監視フレームワークを構築します。
+title: TiDB Monitoring Framework Overview
+summary: Use Prometheus and Grafana to build the TiDB monitoring framework.
 ---
 
 # TiDBモニタリングフレームワークの概要 {#tidb-monitoring-framework-overview}

@@ -1,5 +1,5 @@
 ---
-title: TiDBSysbenchパフォーマンステストレポート-v2.1とv2.0
+title: TiDB Sysbench Performance Test Report -- v2.1 vs. v2.0
 ---
 
 # TiDBSysbenchパフォーマンステストレポート-v2.1とv2.0 {#tidb-sysbench-performance-test-report-v2-1-vs-v2-0}

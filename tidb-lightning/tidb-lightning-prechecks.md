@@ -1,6 +1,6 @@
 ---
-title: TiDBLightningの事前チェック
-summary: このドキュメントでは、データ移行タスクを実行する前にTiDBLightningが実行するチェックについて説明します。これらの事前チェックにより、TiDBLightningがタスクをスムーズに実行できることが保証されます。
+title: TiDB Lightning Prechecks
+summary: This document describes the checks that TiDB Lightning performs before performing a data migration task. These precheckes ensure that TiDB Lightning can perform the task smoothly.
 ---
 
 # TiDBLightningの事前チェック {#tidb-lightning-prechecks}

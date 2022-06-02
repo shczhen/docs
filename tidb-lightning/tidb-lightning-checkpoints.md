@@ -1,6 +1,6 @@
 ---
-title: TiDBLightningチェックポイント
-summary: チェックポイントを使用して、クラッシュする前に以前に完了したタスクをやり直さないようにします。
+title: TiDB Lightning Checkpoints
+summary: Use checkpoints to avoid redoing the previously completed tasks before the crash.
 ---
 
 # TiDBLightningチェックポイント {#tidb-lightning-checkpoints}

@@ -1,6 +1,6 @@
 ---
-title: TiSparkユーザーガイド
-summary: TiSparkを使用して、オンライントランザクションと分析の両方のワンストップソリューションとして機能するHTAPソリューションを提供します。
+title: TiSpark User Guide
+summary: Use TiSpark to provide an HTAP solution to serve as a one-stop solution for both online transactions and analysis.
 ---
 
 # TiSparkユーザーガイド {#tispark-user-guide}

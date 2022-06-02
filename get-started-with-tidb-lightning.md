@@ -1,6 +1,6 @@
 ---
-title: TiDBLightningチュートリアル
-summary: TiDB Lightningをデプロイし、完全バックアップデータをTiDBにインポートする方法を学びます。
+title: TiDB Lightning Tutorial
+summary: Learn how to deploy TiDB Lightning and import full backup data to TiDB.
 ---
 
 # TiDBLightningチュートリアル {#tidb-lightning-tutorial}

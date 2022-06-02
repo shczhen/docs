@@ -1,6 +1,6 @@
 ---
-title: RocksDBの概要
-summary: RocksDBの基本的な概念と動作原理を学びます。
+title: RocksDB Overview
+summary: Learn the basic concepts and working principles of RocksDB.
 category: reference
 ---
 

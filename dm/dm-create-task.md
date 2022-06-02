@@ -1,6 +1,6 @@
 ---
-title: データ移行タスクを作成する
-summary: TiDBデータ移行でデータ移行タスクを作成する方法を学びます。
+title: Create a Data Migration Task
+summary: Learn how to create a data migration task in TiDB Data Migration.
 ---
 
 # データ移行タスクを作成する {#create-a-data-migration-task}

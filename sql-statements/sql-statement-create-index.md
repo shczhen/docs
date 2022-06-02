@@ -1,6 +1,6 @@
 ---
-title: インデックスの作成| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのCREATEINDEXの使用法の概要。
+title: CREATE INDEX | TiDB SQL Statement Reference
+summary: An overview of the usage of CREATE INDEX for the TiDB database.
 ---
 
 # インデックスの作成 {#create-index}

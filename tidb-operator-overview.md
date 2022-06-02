@@ -1,6 +1,6 @@
 ---
 title: TiDB Operator
-summary: KubernetesのTiDBクラスターの自動オペレーティングシステムであるTiDB Operatorについて学びます。
+summary: Learn about TiDB Operator, the automatic operation system for TiDB clusters in Kubernetes.
 ---
 
 # TiDB Operator {#tidb-operator}

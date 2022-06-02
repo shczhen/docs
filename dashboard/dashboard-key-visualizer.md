@@ -1,6 +1,6 @@
 ---
-title: キービジュアライザーページ
-summary: KeyVisualizerを使用してトラフィックを監視する方法を学びます。
+title: Key Visualizer Page
+summary: Learn how to use Key Visualizer to monitor traffic.
 ---
 
 # キービジュアライザーページ {#key-visualizer-page}

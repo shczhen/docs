@@ -1,6 +1,6 @@
 ---
-title: TiKVControlユーザーガイド
-summary: TiKVコントロールを使用してTiKVクラスタを管理します。
+title: TiKV Control User Guide
+summary: Use TiKV Control to manage a TiKV cluster.
 ---
 
 # TiKVControlユーザーガイド {#tikv-control-user-guide}

@@ -1,6 +1,6 @@
 ---
-title: データ型
-summary: TiDBでサポートされているデータ型について学びます。
+title: Data Types
+summary: Learn about the data types supported in TiDB.
 ---
 
 # データ型 {#data-types}

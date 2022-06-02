@@ -1,6 +1,6 @@
 ---
-title: データ移行の概要
-summary: データ移行ツール、アーキテクチャ、主要コンポーネント、および機能について学習します。
+title: Data Migration Overview
+summary: Learn about the Data Migration tool, the architecture, the key components, and features.
 ---
 
 <!-- markdownlint-disable MD007 -->

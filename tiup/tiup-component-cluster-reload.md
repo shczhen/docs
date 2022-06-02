@@ -1,5 +1,5 @@
 ---
-title: tiupクラスタのリロード
+title: tiup cluster reload
 ---
 
 # tiupクラスタのリロード {#tiup-cluster-reload}

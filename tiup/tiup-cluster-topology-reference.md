@@ -1,5 +1,5 @@
 ---
-title: TiUPを使用したTiDB展開用のトポロジConfiguration / コンフィグレーションファイル
+title: Topology Configuration File for TiDB Deployment Using TiUP
 ---
 
 # TiUPを使用したTiDB展開用のトポロジConfiguration / コンフィグレーションファイル {#topology-configuration-file-for-tidb-deployment-using-tiup}

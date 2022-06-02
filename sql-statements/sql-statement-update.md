@@ -1,6 +1,6 @@
 ---
-title: 更新| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのUPDATEの使用法の概要。
+title: UPDATE | TiDB SQL Statement Reference
+summary: An overview of the usage of UPDATE for the TiDB database.
 ---
 
 # アップデート {#update}

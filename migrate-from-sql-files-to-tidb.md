@@ -1,6 +1,6 @@
 ---
-title: SQLファイルからTiDBへのデータの移行
-summary: SQLファイルからTiDBにデータを移行する方法を学びます。
+title: Migrate Data from SQL Files to TiDB
+summary: Learn how to migrate data from SQL files to TiDB.
 ---
 
 # SQLファイルからTiDBへのデータの移行 {#migrate-data-from-sql-files-to-tidb}

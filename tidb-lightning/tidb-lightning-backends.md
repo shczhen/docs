@@ -1,6 +1,6 @@
 ---
-title: TiDBLightningバックエンド
-summary: TiDBLightningのバックエンドについて学びます。
+title: TiDB Lightning Backends
+summary: Learn the backends of TiDB Lightning.
 ---
 
 # TiDBLightningバックエンド {#tidb-lightning-backends}

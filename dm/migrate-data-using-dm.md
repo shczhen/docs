@@ -1,6 +1,6 @@
 ---
-title: データ移行を使用してデータを移行する
-summary: データ移行ツールを使用して、完全なデータと増分データを移行します。
+title: Migrate Data Using Data Migration
+summary: Use the Data Migration tool to migrate the full data and the incremental data.
 ---
 
 # データ移行を使用してデータを移行する {#migrate-data-using-data-migration}

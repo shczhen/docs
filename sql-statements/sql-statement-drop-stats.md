@@ -1,6 +1,6 @@
 ---
-title: ドロップ統計
-summary: TiDBデータベースのDROPSTATSの使用法の概要。
+title: DROP STATS
+summary: An overview of the usage of DROP STATS for the TiDB database.
 ---
 
 # ドロップ統計 {#drop-stats}

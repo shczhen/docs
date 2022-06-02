@@ -1,6 +1,6 @@
 ---
-title: ポンプステータスを表示
-summary: TiDBデータベースのSHOWPUMPSTATUSの使用法の概要。
+title: SHOW PUMP STATUS
+summary: An overview of the usage of SHOW PUMP STATUS for the TiDB database.
 ---
 
 # ポンプステータスを表示 {#show-pump-status}

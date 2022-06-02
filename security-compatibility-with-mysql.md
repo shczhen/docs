@@ -1,6 +1,6 @@
 ---
-title: MySQLとのセキュリティの互換性
-summary: TiDBのMySQLとのセキュリティ互換性について学びます。
+title: Security Compatibility with MySQL
+summary: Learn TiDB's security compatibilities with MySQL.
 ---
 
 # MySQLとのセキュリティの互換性 {#security-compatibility-with-mysql}

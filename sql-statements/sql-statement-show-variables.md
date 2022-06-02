@@ -1,6 +1,6 @@
 ---
-title: [グローバル|セッション]変数を表示| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのSHOW[GLOBAL|SESSION]VARIABLESの使用法の概要。
+title: SHOW [GLOBAL|SESSION] VARIABLES | TiDB SQL Statement Reference
+summary: An overview of the usage of SHOW [GLOBAL|SESSION] VARIABLES for the TiDB database.
 ---
 
 # [グローバル|セッション]変数を表示 {#show-global-session-variables}

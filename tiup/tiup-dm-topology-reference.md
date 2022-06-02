@@ -1,5 +1,5 @@
 ---
-title: TiUPを使用したDMクラスター展開用のトポロジーConfiguration / コンフィグレーションファイル
+title: Topology Configuration File for DM Cluster Deployment Using TiUP
 ---
 
 # TiUPを使用したDMクラスター展開用のトポロジーConfiguration / コンフィグレーションファイル {#topology-configuration-file-for-dm-cluster-deployment-using-tiup}

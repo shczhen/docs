@@ -1,6 +1,6 @@
 ---
-title: TiDBの制限
-summary: TiDBの使用制限について学びます。
+title: TiDB Limitations
+summary: Learn the usage limitations of TiDB.
 ---
 
 # TiDBの制限 {#tidb-limitations}

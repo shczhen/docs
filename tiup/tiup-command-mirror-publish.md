@@ -1,5 +1,5 @@
 ---
-title: tiupミラー公開
+title: tiup mirror publish
 ---
 
 # tiupミラー公開 {#tiup-mirror-publish}

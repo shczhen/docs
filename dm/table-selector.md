@@ -1,6 +1,6 @@
 ---
-title: テーブルセレクター
-summary: データ移行のテーブルルーティング、binlogイベントフィルタリング、および列マッピングルールで使用されるテーブルセレクターについて説明します。
+title: Table Selector
+summary: Learn about Table Selector used by the table routing, binlog event filtering, and column mapping rule of Data Migration.
 ---
 
 # テーブルセレクター {#table-selector}

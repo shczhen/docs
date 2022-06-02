@@ -1,6 +1,6 @@
 ---
-title: ドロップ列| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのDROPCOLUMNの使用法の概要。
+title: DROP COLUMN | TiDB SQL Statement Reference
+summary: An overview of the usage of DROP COLUMN for the TiDB database.
 ---
 
 # ドロップ列 {#drop-column}

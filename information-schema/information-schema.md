@@ -1,6 +1,6 @@
 ---
-title: 情報スキーマ
-summary: TiDBは、システムメタデータを表示するためのANSI標準のinformation_schemaを実装しています。
+title: Information Schema
+summary: TiDB implements the ANSI-standard information_schema for viewing system metadata.
 ---
 
 # 情報スキーマ {#information-schema}

@@ -1,6 +1,6 @@
 ---
-title: TiUPの用語と概念
-summary: TiUPの用語と概念を説明します。
+title: TiUP Terminology and Concepts
+summary: Explain the terms and concepts of TiUP.
 ---
 
 # TiUPの用語と概念 {#tiup-terminology-and-concepts}

@@ -1,6 +1,6 @@
 ---
-title: 特権を表示する| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのSHOWPRIVILEGESの使用法の概要。
+title: SHOW PRIVILEGES | TiDB SQL Statement Reference
+summary: An overview of the usage of SHOW PRIVILEGES for the TiDB database.
 ---
 
 # 特権を表示する {#show-privileges}

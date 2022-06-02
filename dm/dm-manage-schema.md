@@ -1,6 +1,6 @@
 ---
-title: 移行するテーブルのテーブルスキーマを管理する
-summary: DMで移行するテーブルのスキーマを管理する方法を学びます。
+title: Manage Table Schemas of Tables to be Migrated
+summary: Learn how to manage the schema of the table to be migrated in DM.
 ---
 
 # 移行するテーブルのテーブルスキーマを管理する {#manage-table-schemas-of-tables-to-be-migrated}

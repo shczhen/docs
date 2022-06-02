@@ -1,6 +1,6 @@
 ---
-title: 制御フロー機能
-summary: 制御フロー機能について学びます。
+title: Control Flow Functions
+summary: Learn about the Control Flow functions.
 ---
 
 # 制御フロー機能 {#control-flow-functions}

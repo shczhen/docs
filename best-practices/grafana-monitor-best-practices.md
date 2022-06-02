@@ -1,6 +1,6 @@
 ---
-title: Grafanaを使用してTiDBを監視するためのベストプラクティス
-summary: Grafanaを効率的に使用してTiDBを監視するための7つのヒントを学びます。
+title: Best Practices for Monitoring TiDB Using Grafana
+summary: Learn seven tips for efficiently using Grafana to monitor TiDB.
 ---
 
 # Grafanaを使用してTiDBを監視するためのベストプラクティス {#best-practices-for-monitoring-tidb-using-grafana}

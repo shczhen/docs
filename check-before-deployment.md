@@ -1,6 +1,6 @@
 ---
-title: TiDB環境とシステムConfiguration / コンフィグレーションのチェック
-summary: TiDBをデプロイする前に、環境チェックの操作を学びます。
+title: TiDB Environment and System Configuration Check
+summary: Learn the environment check operations before deploying TiDB.
 ---
 
 # TiDB環境とシステムConfiguration / コンフィグレーションのチェック {#tidb-environment-and-system-configuration-check}

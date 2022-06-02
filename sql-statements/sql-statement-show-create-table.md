@@ -1,6 +1,6 @@
 ---
-title: 作成テーブルを表示| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのSHOWCREATETABLEの使用法の概要。
+title: SHOW CREATE TABLE | TiDB SQL Statement Reference
+summary: An overview of the usage of SHOW CREATE TABLE for the TiDB database.
 ---
 
 # CREATETABLEを表示する {#show-create-table}

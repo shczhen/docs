@@ -1,6 +1,6 @@
 ---
-title: ビット関数と演算子
-summary: ビット関数と演算子について学びます。
+title: Bit Functions and Operators
+summary: Learn about the bit functions and operators.
 ---
 
 # ビット関数と演算子 {#bit-functions-and-operators}

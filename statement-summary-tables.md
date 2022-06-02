@@ -1,6 +1,6 @@
 ---
-title: ステートメント要約表
-summary: TiDBのステートメント要約テーブルについて学習します。
+title: Statement Summary Tables
+summary: Learn about Statement Summary Table in TiDB.
 ---
 
 # ステートメント要約表 {#statement-summary-tables}

@@ -1,6 +1,6 @@
 ---
-title: TiDBクライアントとサーバー間のTLSを有効にする
-summary: 暗号化された接続を使用して、データのセキュリティを確保します。
+title: Enable TLS Between TiDB Clients and Servers
+summary: Use the encrypted connection to ensure data security.
 ---
 
 # TiDBクライアントとサーバー間のTLSを有効にする {#enable-tls-between-tidb-clients-and-servers}

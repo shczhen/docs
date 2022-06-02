@@ -1,6 +1,6 @@
 ---
-title: フラッシュテーブル| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのFLUSHTABLESの使用法の概要。
+title: FLUSH TABLES | TiDB SQL Statement Reference
+summary: An overview of the usage of FLUSH TABLES for the TiDB database.
 ---
 
 # フラッシュテーブル {#flush-tables}

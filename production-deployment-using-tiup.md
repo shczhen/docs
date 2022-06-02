@@ -1,6 +1,6 @@
 ---
-title: TiUPを使用してTiDBクラスターをデプロイする
-summary: TiUPを使用してTiDBクラスタを簡単にデプロイする方法を学びます。
+title: Deploy a TiDB Cluster Using TiUP
+summary: Learn how to easily deploy a TiDB cluster using TiUP.
 ---
 
 # TiUPを使用してTiDBクラスターをデプロイする {#deploy-a-tidb-cluster-using-tiup}

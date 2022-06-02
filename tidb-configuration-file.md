@@ -1,6 +1,6 @@
 ---
-title: TiDBConfiguration / コンフィグレーションファイル
-summary: コマンドラインオプションに関係のないTiDB構成ファイルオプションについて説明します。
+title: TiDB Configuration File
+summary: Learn the TiDB configuration file options that are not involved in command line options.
 ---
 
 <!-- markdownlint-disable MD001 -->

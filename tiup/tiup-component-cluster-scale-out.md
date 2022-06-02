@@ -1,5 +1,5 @@
 ---
-title: tiupクラスタのスケールアウト
+title: tiup cluster scale-out
 ---
 
 # tiupクラスタのスケールアウト {#tiup-cluster-scale-out}

@@ -1,5 +1,5 @@
 ---
-title: TiDB4.0ベータリリースノート
+title: TiDB 4.0 Beta Release Notes
 ---
 
 # TiDB4.0ベータリリースノート {#tidb-4-0-beta-release-notes}
@@ -22,7 +22,7 @@ TiDB Ansibleバージョン：4.0.0-ベータ版
 -   インデックスマージ機能をサポートすることにより、テーブルクエリのパフォーマンスを向上させます[＃10121](https://github.com/pingcap/tidb/pull/10121) [＃10512](https://github.com/pingcap/tidb/pull/10512) [＃11245](https://github.com/pingcap/tidb/pull/11245) [＃12225](https://github.com/pingcap/tidb/pull/12225) [＃12248](https://github.com/pingcap/tidb/pull/12248) [＃12305](https://github.com/pingcap/tidb/pull/12305) [＃12843](https://github.com/pingcap/tidb/pull/12843)
 -   インデックス結果をキャッシュし、重複する結果を排除することで、範囲計算のパフォーマンスを向上させ、CPUオーバーヘッドを削減します[＃12856](https://github.com/pingcap/tidb/pull/12856)
 -   遅いログのレベルを通常のログのレベルから切り離します[＃12359](https://github.com/pingcap/tidb/pull/12359)
--   `oom-use-tmp-storage`つのパラメーター（デフォルトでは`true` ）を追加して、単一のSQLステートメントの実行のメモリ使用量が`mem-quota-query`を超え、SQLに`Hash Join` [＃11832](https://github.com/pingcap/tidb/pull/11832) [＃11937](https://github.com/pingcap/tidb/pull/11937) [＃12116](https://github.com/pingcap/tidb/pull/12116) [＃12067](https://github.com/pingcap/tidb/pull/12067)が含まれている場合に、一時ファイルを使用して中間結果をキャッシュするかどうかを制御します。
+-   `oom-use-tmp-storage`つのパラメーター（デフォルトでは`true` ）を追加して、単一のSQLステートメントの実行のメモリ使用量が`mem-quota-query`を超え、SQLに`Hash Join` [＃11832](https://github.com/pingcap/tidb/pull/11832) [＃11937](https://github.com/pingcap/tidb/pull/11937) [＃12116](https://github.com/pingcap/tidb/pull/12116) [＃12067](https://github.com/pingcap/tidb/pull/12067)が含まれている場合に、一時ファイルを使用して中間結果をキャッシュするかどうかを制御します
 -   `create index`を使用して式インデックスを作成し、 `alter table`を使用して式インデックスを削除することをサポートし`drop index` [＃14117](https://github.com/pingcap/tidb/pull/14117)
 -   `query-log-max-len`パラメーターのデフォルト値を`4096`に増やして、切り捨てられたSQL出力の数を減らします。このパラメータは動的に調整できます。 [＃12491](https://github.com/pingcap/tidb/pull/12491)
 -   列属性に`AutoRandom`キーワードを追加して、システムがランダムな整数を主キーに自動的に割り当てるかどうかを制御することをサポートします。これにより、 `AUTO_INCREMENT`主キー[＃13127](https://github.com/pingcap/tidb/pull/13127)によって引き起こされるホットスポットの問題が回避されます。

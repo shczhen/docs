@@ -1,6 +1,6 @@
 ---
-title: チェンジドレイナー
-summary: TiDBデータベースのCHANGEDRAINERの使用法の概要。
+title: CHANGE DRAINER
+summary: An overview of the usage of CHANGE DRAINER for the TiDB database.
 ---
 
 # チェンジドレイナー {#change-drainer}

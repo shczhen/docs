@@ -1,5 +1,5 @@
 ---
-title: クラスタの名前変更
+title: tiup cluster rename
 ---
 
 # クラスタの名前変更 {#tiup-cluster-rename}

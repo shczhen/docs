@@ -1,6 +1,6 @@
 ---
 title: Top SQL
-summary: このドキュメントでは、Top SQLを使用して、高負荷の原因となるSQLクエリを見つける方法について説明します。
+summary: This document describes how to use Top SQL to locate SQL queries that contribute to a high load.
 ---
 
 # Top SQL {#top-sql}

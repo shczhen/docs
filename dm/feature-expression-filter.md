@@ -1,5 +1,5 @@
 ---
-title: SQL式を使用してDMLをフィルタリングする
+title: Filter DMLs Using SQL Expressions
 ---
 
 # SQL式を使用してDMLをフィルタリングする {#filter-dmls-using-sql-expressions}

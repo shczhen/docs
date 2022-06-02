@@ -1,6 +1,6 @@
 ---
-title: [グローバル|セッション]ステータスを表示| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのSHOW[GLOBAL|SESSION]STATUSの使用法の概要。
+title: SHOW [GLOBAL|SESSION] STATUS | TiDB SQL Statement Reference
+summary: An overview of the usage of SHOW [GLOBAL|SESSION] STATUS for the TiDB database.
 ---
 
 # [グローバル|セッション]ステータスを表示 {#show-global-session-status}

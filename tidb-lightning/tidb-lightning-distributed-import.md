@@ -1,6 +1,6 @@
 ---
-title: TiDBLightningを使用してデータを並行してインポートする
-summary: TiDB Lightningを使用する場合のデータの並列インポートの概念、ユーザーシナリオ、使用法、および制限について説明します。
+title: Use TiDB Lightning to Import Data in Parallel
+summary: Learn the concept, user scenarios, usages, and limitations of importing data in parallel when using TiDB Lightning.
 ---
 
 # TiDBLightningを使用してデータを並行してインポートする {#use-tidb-lightning-to-import-data-in-parallel}

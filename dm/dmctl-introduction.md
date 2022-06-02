@@ -1,6 +1,6 @@
 ---
-title: dmctlを使用してDMクラスターを管理する
-summary: dmctlを使用してDMクラスタを維持する方法を学びます。
+title: Maintain DM Clusters Using dmctl
+summary: Learn how to maintain a DM cluster using dmctl.
 ---
 
 # dmctlを使用してDMクラスターを管理する {#maintain-dm-clusters-using-dmctl}

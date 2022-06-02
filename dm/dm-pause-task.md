@@ -1,6 +1,6 @@
 ---
-title: データ移行タスクを一時停止します
-summary: TiDBデータ移行でデータ移行タスクを一時停止する方法を学びます。
+title: Pause a Data Migration Task
+summary: Learn how to pause a data migration task in TiDB Data Migration.
 ---
 
 # データ移行タスクを一時停止します {#pause-a-data-migration-task}

@@ -1,6 +1,6 @@
 ---
-title: TiCDC展開トポロジ
-summary: 最小限のTiDBトポロジに基づいたTiCDCの展開トポロジを学習します。
+title: TiCDC Deployment Topology
+summary: Learn the deployment topology of TiCDC based on the minimal TiDB topology.
 ---
 
 # TiCDC展開トポロジ {#ticdc-deployment-topology}

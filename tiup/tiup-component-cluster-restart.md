@@ -1,5 +1,5 @@
 ---
-title: tiupクラスタの再起動
+title: tiup cluster restart
 ---
 
 # tiupクラスタの再起動 {#tiup-cluster-restart}

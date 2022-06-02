@@ -1,6 +1,6 @@
 ---
-title: TiDBコンポーネント間のTLSを有効にする
-summary: TiDBコンポーネント間でTLS認証を有効にする方法を学びます。
+title: Enable TLS Between TiDB Components
+summary: Learn how to enable TLS authentication between TiDB components.
 ---
 
 # TiDBコンポーネント間のTLSを有効にする {#enable-tls-between-tidb-components}

@@ -1,6 +1,6 @@
 ---
-title: 作成ユーザーを表示| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのSHOWCREATEUSERの使用法の概要。
+title: SHOW CREATE USER | TiDB SQL Statement Reference
+summary: An overview of the usage of SHOW CREATE USER for the TiDB database.
 ---
 
 # CREATEUSERを表示する {#show-create-user}

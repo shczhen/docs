@@ -1,6 +1,6 @@
 ---
-title: TiCDCの主要な監視指標
-summary: GrafanaTiCDCダッシュボードに表示されるいくつかの主要な指標について説明します。
+title: Key Monitoring Metrics of TiCDC
+summary: Learn some key metrics displayed on the Grafana TiCDC dashboard.
 ---
 
 # TiCDCの主要な監視指標 {#key-monitoring-metrics-of-ticdc}

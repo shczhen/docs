@@ -1,6 +1,6 @@
 ---
 title: TiDB Binlog FAQ
-summary: TiDB Binlogに関するよくある質問（FAQ）と回答について学びます。
+summary: Learn about the frequently asked questions (FAQs) and answers about TiDB Binlog.
 ---
 
 # TiDB Binlog FAQ {#tidb-binlog-faq}

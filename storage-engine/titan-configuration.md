@@ -1,6 +1,6 @@
 ---
-title: タイタンConfiguration / コンフィグレーション
-summary: Titanを構成する方法を学びます。
+title: Titan Configuration
+summary: Learn how to configure Titan.
 ---
 
 # タイタンConfiguration / コンフィグレーション {#titan-configuration}

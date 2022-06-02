@@ -1,6 +1,6 @@
 ---
-title: オプティミスティックモードでシャードテーブルからデータをマージおよび移行する
-summary: DMがオプティミスティックモードでシャーディングされたテーブルからデータをマージおよび移行する方法を学びます。
+title: Merge and Migrate Data from Sharded Tables in Optimistic Mode
+summary: Learn how DM merges and migrates data from sharded tables in the optimistic mode.
 ---
 
 # オプティミスティックモードでシャードテーブルからデータをマージおよび移行する {#merge-and-migrate-data-from-sharded-tables-in-optimistic-mode}

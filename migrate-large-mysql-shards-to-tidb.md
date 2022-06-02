@@ -1,6 +1,6 @@
 ---
-title: 大規模なデータセットのMySQLシャードをTiDBに移行およびマージする
-summary: DumplingとTiDBLightningを使用してMySQLからTiDBにシャードの大規模なデータセットを移行およびマージする方法と、さまざまなMySQLシャードからTiDBに増分データ変更を複製するようにDMタスクを構成する方法を学びます。
+title: Migrate and Merge MySQL Shards of Large Datasets to TiDB
+summary: Learn how to migrate and merge large datasets of shards from MySQL into TiDB using Dumpling and TiDB Lightning, as well as how to configure the DM task to replicate incremental data changes from different MySQL shards into TiDB.
 ---
 
 # 大規模なデータセットのMySQLシャードをTiDBに移行およびマージする {#migrate-and-merge-mysql-shards-of-large-datasets-to-tidb}

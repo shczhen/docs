@@ -1,6 +1,6 @@
 ---
-title: 2020年のTiDBクラウドリリースノート
-summary: 2020年のTiDBCloudのリリースノートについて学びます。
+title: TiDB Cloud Release Notes in 2020
+summary: Learn about the release notes of TiDB Cloud in 2020.
 ---
 
 # 2020年のTiDBクラウドリリースノート {#tidb-cloud-release-notes-in-2020}

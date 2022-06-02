@@ -1,6 +1,6 @@
 ---
-title: TiDBリリースタイムライン
-summary: TiDBのリリースタイムラインについて学びます。
+title: TiDB Release Timeline
+summary: Learn about the TiDB release timeline.
 ---
 
 # TiDBリリースタイムライン {#tidb-release-timeline}

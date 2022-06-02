@@ -1,6 +1,6 @@
 ---
-title: クラスタステータスを確認する
-summary: TiDBクラスタの実行ステータスを確認する方法を学びます。
+title: Check Cluster Status
+summary: Learn how to check the running status of the TiDB cluster.
 ---
 
 # クラスタステータスを確認する {#check-cluster-status}

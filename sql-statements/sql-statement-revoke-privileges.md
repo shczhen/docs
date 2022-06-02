@@ -1,6 +1,6 @@
 ---
-title: REVOKE<特権>| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのREVOKE<privileges>の使用法の概要。
+title: REVOKE <privileges> | TiDB SQL Statement Reference
+summary: An overview of the usage of REVOKE <privileges> for the TiDB database.
 ---
 
 # <code>REVOKE &#x3C;privileges></code> {#code-revoke-x3c-privileges-code}

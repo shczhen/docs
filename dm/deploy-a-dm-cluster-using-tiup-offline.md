@@ -1,6 +1,6 @@
 ---
-title: TiUPを使用してDMクラスターをオフラインでデプロイする
-summary: TiUPを使用してDMクラスタをオフラインでデプロイする方法を紹介します。
+title: Deploy a DM Cluster Offline Using TiUP
+summary: Introduce how to deploy a DM cluster offline using TiUP.
 ---
 
 # TiUPを使用してDMクラスターをオフラインでデプロイする {#deploy-a-dm-cluster-offline-using-tiup}

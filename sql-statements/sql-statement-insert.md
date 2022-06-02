@@ -1,6 +1,6 @@
 ---
-title: 挿入| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのINSERTの使用法の概要。
+title: INSERT | TiDB SQL Statement Reference
+summary: An overview of the usage of INSERT for the TiDB database.
 ---
 
 # 入れる {#insert}

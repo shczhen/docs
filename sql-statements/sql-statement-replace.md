@@ -1,6 +1,6 @@
 ---
-title: 交換| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのREPLACEの使用法の概要。
+title: REPLACE | TiDB SQL Statement Reference
+summary: An overview of the usage of REPLACE for the TiDB database.
 ---
 
 # 交換 {#replace}

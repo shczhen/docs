@@ -1,6 +1,6 @@
 ---
 title: ALTER INDEX
-summary: TiDBデータベースでのALTERINDEXの使用法の概要。
+summary: An overview of the usage of ALTER INDEX for the TiDB database.
 ---
 
 # ALTER INDEX {#alter-index}

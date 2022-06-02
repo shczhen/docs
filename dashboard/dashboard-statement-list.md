@@ -1,6 +1,6 @@
 ---
-title: TiDBダッシュボードのSQLステートメントページ
-summary: TiDBクラスタのすべてのSQLステートメントの実行ステータスを表示します。
+title: SQL Statements Page of TiDB Dashboard
+summary: View the execution status of all SQL statements in the TiDB cluster.
 ---
 
 # TiDBダッシュボードのSQLステートメントページ {#sql-statements-page-of-tidb-dashboard}

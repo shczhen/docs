@@ -1,6 +1,6 @@
 ---
-title: シーケンスの作成を表示
-summary: TiDBデータベースでのSHOWCREATESEQUENCEの使用法の概要。
+title: SHOW CREATE SEQUENCE
+summary: An overview of the usage of SHOW CREATE SEQUENCE for the TiDB database.
 ---
 
 # シーケンスの作成を表示 {#show-create-sequence}

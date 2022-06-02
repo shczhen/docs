@@ -1,6 +1,6 @@
 ---
-title: オペレーティングシステムのチューニング
-summary: オペレーティングシステムのパラメータを調整する方法を学びます。
+title: Operating System Tuning
+summary: Learn how to tune the parameters of the operating system.
 ---
 
 # オペレーティングシステムのチューニング {#operating-system-tuning}

@@ -1,6 +1,6 @@
 ---
-title: 権限管理
-summary: 特権を管理する方法を学びます。
+title: Privilege Management
+summary: Learn how to manage the privilege.
 ---
 
 # 権限管理 {#privilege-management}

@@ -1,6 +1,6 @@
 ---
-title: 読み取りと書き込みの待ち時間の増加のトラブルシューティング
-summary: 読み取りと書き込みの待ち時間の増加の問題をトラブルシューティングする方法を学びます。
+title: Troubleshoot Increased Read and Write Latency
+summary: Learn how to troubleshoot the issue of increased read and write latency.
 ---
 
 # 読み取りと書き込みの待ち時間の増加のトラブルシューティング {#troubleshoot-increased-read-and-write-latency}

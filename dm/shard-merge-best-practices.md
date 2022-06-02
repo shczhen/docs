@@ -1,6 +1,6 @@
 ---
-title: シャードマージシナリオでのデータ移行のベストプラクティス
-summary: シャードマージシナリオでのデータ移行のベストプラクティスを学びます。
+title: Best Practices of Data Migration in the Shard Merge Scenario
+summary: Learn the best practices of data migration in the shard merge scenario.
 ---
 
 # シャードマージシナリオでのデータ移行のベストプラクティス {#best-practices-of-data-migration-in-the-shard-merge-scenario}

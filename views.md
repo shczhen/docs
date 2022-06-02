@@ -1,6 +1,6 @@
 ---
-title: ビュー
-summary: TiDBでビューを使用する方法を学びます。
+title: Views
+summary: Learn how to use views in TiDB.
 ---
 
 # ビュー {#views}

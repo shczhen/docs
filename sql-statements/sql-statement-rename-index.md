@@ -1,6 +1,6 @@
 ---
-title: インデックスの名前変更| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのRENAMEINDEXの使用法の概要。
+title: RENAME INDEX | TiDB SQL Statement Reference
+summary: An overview of the usage of RENAME INDEX for the TiDB database.
 ---
 
 # インデックスの名前を変更 {#rename-index}

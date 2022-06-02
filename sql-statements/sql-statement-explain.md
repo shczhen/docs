@@ -1,6 +1,6 @@
 ---
-title: 説明| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのEXPLAINの使用法の概要。
+title: EXPLAIN | TiDB SQL Statement Reference
+summary: An overview of the usage of EXPLAIN for the TiDB database.
 ---
 
 # <code>EXPLAIN</code> {#code-explain-code}

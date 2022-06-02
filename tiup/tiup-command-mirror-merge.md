@@ -1,5 +1,5 @@
 ---
-title: tiupミラーマージ
+title: tiup mirror merge
 ---
 
 # tiupミラーマージ {#tiup-mirror-merge}

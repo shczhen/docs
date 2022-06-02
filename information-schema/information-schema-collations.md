@@ -1,6 +1,6 @@
 ---
-title: コレクション
-summary: `COLLATIONS`information_schemaテーブルを学びます。
+title: COLLATIONS
+summary: Learn the `COLLATIONS` information_schema table.
 ---
 
 # コレクション {#collations}

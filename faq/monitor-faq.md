@@ -1,6 +1,6 @@
 ---
-title: モニタリングに関するFAQ
-summary: TiDBモニタリングに関連するFAQについて学びます。
+title: Monitoring FAQs
+summary: Learn about the FAQs related to TiDB Monitoring.
 ---
 
 # モニタリングに関するFAQ {#monitoring-faqs}

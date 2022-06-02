@@ -1,6 +1,6 @@
 ---
-title: TiDBControlユーザーガイド
-summary: TiDB Controlを使用して、デバッグ用のTiDBステータス情報を取得します。
+title: TiDB Control User Guide
+summary: Use TiDB Control to obtain TiDB status information for debugging.
 ---
 
 # TiDBControlユーザーガイド {#tidb-control-user-guide}

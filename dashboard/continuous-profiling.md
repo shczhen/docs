@@ -1,6 +1,6 @@
 ---
-title: TiDBダッシュボードの継続的なプロファイリング
-summary: この機能を使用して、継続的なプロファイリングを有効にし、システムの状態を監視する方法を学びます。
+title: TiDB Dashboard Continuous Profiling
+summary: Learn how to enable Continuous Profiling and observe system conditions by using this feature.
 ---
 
 # TiDBダッシュボードインスタンスプロファイリング-継続的なプロファイリング {#tidb-dashboard-instance-profiling-continuous-profiling}

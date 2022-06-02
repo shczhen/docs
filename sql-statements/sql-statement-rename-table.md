@@ -1,6 +1,6 @@
 ---
-title: テーブルの名前を変更| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのRENAMETABLEの使用法の概要。
+title: RENAME TABLE | TiDB SQL Statement Reference
+summary: An overview of the usage of RENAME TABLE for the TiDB database.
 ---
 
 # テーブルの名前を変更 {#rename-table}

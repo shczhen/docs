@@ -1,6 +1,6 @@
 ---
-title: TiDBBinlogデプロイメントトポロジ
-summary: 最小限のTiDBトポロジに基づいて、TiDBBinlogの展開トポロジを学習します。
+title: TiDB Binlog Deployment Topology
+summary: Learn the deployment topology of TiDB Binlog based on the minimal TiDB topology.
 ---
 
 # TiDBBinlogデプロイメントトポロジ {#tidb-binlog-deployment-topology}

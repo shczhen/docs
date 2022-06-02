@@ -1,5 +1,5 @@
 ---
-title: tiupdmリスト
+title: tiup dm list
 ---
 
 # tiupdmリスト {#tiup-dm-list}

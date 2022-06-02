@@ -1,6 +1,6 @@
 ---
-title: 式評価における型変換
-summary: 式の評価における型変換について学びます。
+title: Type Conversion in Expression Evaluation
+summary: Learn about the type conversion in expression evaluation.
 ---
 
 # 式評価における型変換 {#type-conversion-in-expression-evaluation}

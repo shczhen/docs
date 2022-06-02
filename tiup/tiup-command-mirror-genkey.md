@@ -1,5 +1,5 @@
 ---
-title: tiupミラーゲンキー
+title: tiup mirror genkey
 ---
 
 # tiupミラーゲンキー {#tiup-mirror-genkey}

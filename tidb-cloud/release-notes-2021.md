@@ -1,6 +1,6 @@
 ---
-title: 2021年のTiDBクラウドリリースノート
-summary: 2021年のTiDBCloudのリリースノートについて学びます。
+title: TiDB Cloud Release Notes in 2021
+summary: Learn about the release notes of TiDB Cloud in 2021.
 ---
 
 # 2021年のTiDBクラウドリリースノート {#tidb-cloud-release-notes-in-2021}

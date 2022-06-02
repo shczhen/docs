@@ -1,6 +1,6 @@
 ---
-title: TiDBデータ移行クイックスタート
-summary: バイナリパッケージを使用してDMクラスタをすばやく展開する方法を学びます。
+title: TiDB Data Migration Quick Start
+summary: Learn how to quickly deploy a DM cluster using binary packages.
 ---
 
 # TiDBデータ移行のクイックスタートガイド {#quick-start-guide-for-tidb-data-migration}

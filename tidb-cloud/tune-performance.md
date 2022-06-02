@@ -1,6 +1,6 @@
 ---
-title: パフォーマンスの分析と調整
-summary: TiDBクラウドクラスタのパフォーマンスを分析および調整する方法を学びます。
+title: Analyze and Tune Performance
+summary: Learn how to analyze and tune performance of your TiDB Cloud cluster.
 ---
 
 # パフォーマンスの分析と調整 {#analyze-and-tune-performance}

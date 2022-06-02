@@ -1,6 +1,6 @@
 ---
-title: TiUPを使用したオンラインTiDBクラスターのデプロイと管理
-summary: TiUPを使用してオンラインTiDBクラスタを展開および保守する方法を学習します。
+title: Deploy and Maintain an Online TiDB Cluster Using TiUP
+summary: Learns how to deploy and maintain an online TiDB cluster using TiUP.
 ---
 
 # TiUPを使用したオンラインTiDBクラスターのデプロイと管理 {#deploy-and-maintain-an-online-tidb-cluster-using-tiup}

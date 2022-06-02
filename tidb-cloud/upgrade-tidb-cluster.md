@@ -1,6 +1,6 @@
 ---
-title: TiDBクラスターをアップグレードする
-summary: TiDBクラスタをアップグレードする方法を学びます。
+title: Upgrade a TiDB Cluster
+summary: Learn how to upgrade a TiDB cluster.
 ---
 
 # TiDBクラスターをアップグレードする {#upgrade-a-tidb-cluster}

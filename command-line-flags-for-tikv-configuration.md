@@ -1,6 +1,6 @@
 ---
-title: TiKVConfiguration / コンフィグレーションフラグ
-summary: TiKVのいくつかの構成フラグを学びます。
+title: TiKV Configuration Flags
+summary: Learn some configuration flags of TiKV.
 ---
 
 # TiKVConfiguration / コンフィグレーションフラグ {#tikv-configuration-flags}
@@ -39,7 +39,7 @@ TiKVは、コマンドラインパラメータの読み取り可能な単位変�
 
 ## <code>-C, --config</code> {#code-c-config-code}
 
--   設定ファイル
+-   構成ファイル
 -   デフォルト： `""`
 -   コマンドラインを使用して構成を設定すると、構成ファイルの同じ設定が上書きされます。
 

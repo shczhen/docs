@@ -1,6 +1,6 @@
 ---
-title: PLAN REPLAYERを使用して、クラスターのオンサイト情報を保存および復元します
-summary: PLAN REPLAYERを使用して、クラスタのオンサイト情報を保存および復元する方法を学びます。
+title: Use PLAN REPLAYER to Save and Restore the On-Site Information of a Cluster
+summary: Learn how to use PLAN REPLAYER to save and restore the on-site information of a cluster.
 ---
 
 # PLAN REPLAYERを使用して、クラスターのオンサイト情報を保存および復元します {#use-plan-replayer-to-save-and-restore-the-on-site-information-of-a-cluster}

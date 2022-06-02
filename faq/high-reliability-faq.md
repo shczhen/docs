@@ -1,6 +1,6 @@
 ---
-title: 信頼性の高いFAQ
-summary: TiDBの高い信頼性に関連するFAQについて学びます。
+title: High Reliability FAQs
+summary: Learn about the FAQs related to high reliability of TiDB.
 ---
 
 # 信頼性の高いFAQ {#high-reliability-faqs}

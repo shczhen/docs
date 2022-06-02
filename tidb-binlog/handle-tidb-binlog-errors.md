@@ -1,6 +1,6 @@
 ---
-title: TiDBBinlogエラー処理
-summary: TiDBBinlogエラーを処理する方法を学びます。
+title: TiDB Binlog Error Handling
+summary: Learn how to handle TiDB Binlog errors.
 ---
 
 # TiDBBinlogエラー処理 {#tidb-binlog-error-handling}

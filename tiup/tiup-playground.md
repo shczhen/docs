@@ -1,6 +1,6 @@
 ---
-title: ローカルTiDBクラスターをすばやくデプロイする
-summary: TiUPのプレイグラウンドコンポーネントを使用して、ローカルTiDBクラスタをすばやく展開する方法を学びます。
+title: Quickly Deploy a Local TiDB Cluster
+summary: Learn how to quickly deploy a local TiDB cluster using the playground component of TiUP.
 ---
 
 # ローカルTiDBクラスターをすばやくデプロイする {#quickly-deploy-a-local-tidb-cluster}

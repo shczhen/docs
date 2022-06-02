@@ -1,6 +1,6 @@
 ---
-title: の配置を表示
-summary: TiDBでのSHOWPLACEMENTFORの使用法。
+title: SHOW PLACEMENT FOR
+summary: The usage of SHOW PLACEMENT FOR in TiDB.
 ---
 
 # の配置を表示 {#show-placement-for}

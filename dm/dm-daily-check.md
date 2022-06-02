@@ -1,6 +1,6 @@
 ---
-title: デイリーチェック
-summary: TiDBデータ移行（DM）の毎日のチェックについて学びます。
+title: Daily Check
+summary: Learn about the daily check of TiDB Data Migration (DM).
 ---
 
 # デイリーチェック {#daily-check}

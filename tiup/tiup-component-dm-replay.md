@@ -1,5 +1,5 @@
 ---
-title: tiupdmリプレイ
+title: tiup dm replay
 ---
 
 # tiupdmリプレイ {#tiup-dm-replay}

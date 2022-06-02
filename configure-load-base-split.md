@@ -1,6 +1,6 @@
 ---
-title: ロードベーススプリット
-summary: ロードベース分割の機能を学びます。
+title: Load Base Split
+summary: Learn the feature of Load Base Split.
 ---
 
 # ロードベーススプリット {#load-base-split}

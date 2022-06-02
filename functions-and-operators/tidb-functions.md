@@ -1,6 +1,6 @@
 ---
-title: TiDB固有の機能
-summary: TiDB固有の機能の使用法について学びます。
+title: TiDB Specific Functions
+summary: Learn about the usage of TiDB specific functions.
 ---
 
 # TiDB固有の機能 {#tidb-specific-functions}

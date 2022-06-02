@@ -1,6 +1,6 @@
 ---
-title: TiDBクラスターを作成する
-summary: TiDBクラスタを作成する方法を学びます。
+title: Create a TiDB Cluster
+summary: Learn how to create your TiDB cluster.
 ---
 
 # TiDBクラスターを作成する {#create-a-tidb-cluster}

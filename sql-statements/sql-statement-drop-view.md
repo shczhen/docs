@@ -1,6 +1,6 @@
 ---
-title: ドロップビュー| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのDROPVIEWの使用法の概要。
+title: DROP VIEW | TiDB SQL Statement Reference
+summary: An overview of the usage of DROP VIEW for the TiDB database.
 ---
 
 # ドロップビュー {#drop-view}

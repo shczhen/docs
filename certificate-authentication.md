@@ -1,6 +1,6 @@
 ---
-title: ログイン用の証明書ベースの認証
-summary: ログインに使用される証明書ベースの認証について説明します。
+title: Certificate-Based Authentication for Login
+summary: Learn the certificate-based authentication used for login.
 ---
 
 # ログイン用の証明書ベースの認証 {#certificate-based-authentication-for-login}
@@ -341,7 +341,7 @@ mysql -utest -h0.0.0.0 -P4000 --ssl-cert /path/to/client-cert.new.pem --ssl-key 
     alter user 'u1'@'%' require issuer '<replaceable>' subject '<replaceable>' san '<replaceable>' cipher '<replaceable>';
     ```
 
-上記の設定後、ログイン時に以下の項目が確認されます。
+上記の設定後、ログイン時に次の項目が確認されます。
 
 -   SSLが使用されます。クライアント証明書を発行するCAは、サーバで設定されているCAと一致しています。
 -   クライアント証明書の`issuer`情報は、 `require issuer`で指定された情報と一致します。

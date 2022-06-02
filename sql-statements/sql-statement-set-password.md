@@ -1,6 +1,6 @@
 ---
-title: パスワードの設定| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのSETPASSWORDの使用法の概要。
+title: SET PASSWORD | TiDB SQL Statement Reference
+summary: An overview of the usage of SET PASSWORD for the TiDB database.
 ---
 
 # パスワードを設定してください {#set-password}

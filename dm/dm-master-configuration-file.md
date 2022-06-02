@@ -1,6 +1,6 @@
 ---
-title: DMマスターConfiguration / コンフィグレーションファイル
-summary: DM-masterの設定ファイルをご覧ください。
+title: DM-master Configuration File
+summary: Learn the configuration file of DM-master.
 ---
 
 # DMマスターConfiguration / コンフィグレーションファイル {#dm-master-configuration-file}

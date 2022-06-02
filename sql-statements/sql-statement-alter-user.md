@@ -1,6 +1,6 @@
 ---
-title: ALTER USER | TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのALTERUSERの使用法の概要。
+title: ALTER USER | TiDB SQL Statement Reference
+summary: An overview of the usage of ALTER USER for the TiDB database.
 ---
 
 # ALTER USER {#alter-user}

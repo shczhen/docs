@@ -1,5 +1,5 @@
 ---
-title: SQLチューニングの概要
+title: SQL Tuning Overview
 ---
 
 # SQLチューニングの概要 {#sql-tuning-overview}

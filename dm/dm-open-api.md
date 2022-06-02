@@ -1,6 +1,6 @@
 ---
-title: OpenAPIを使用してDMクラスターを管理する
-summary: OpenAPIインターフェイスを使用してクラスタのステータスとデータレプリケーションを管理する方法について説明します。
+title: Maintain DM Clusters Using OpenAPI
+summary: Learn about how to use OpenAPI interface to manage the cluster status and data replication.
 ---
 
 # OpenAPIを使用してDMクラスターを管理する {#maintain-dm-clusters-using-openapi}

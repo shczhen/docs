@@ -1,5 +1,5 @@
 ---
-title: tiupdmヘルプ
+title: tiup dm help
 ---
 
 # tiupdmヘルプ {#tiup-dm-help}

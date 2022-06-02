@@ -1,6 +1,6 @@
 ---
-title: BRツールの概要
-summary: BRとは何か、ツールの使用方法を学びます。
+title: BR Tool Overview
+summary: Learn what is BR and how to use the tool.
 ---
 
 # BRツールの概要 {#br-tool-overview}

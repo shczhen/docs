@@ -1,6 +1,6 @@
 ---
-title: コメント構文
-summary: このドキュメントでは、TiDBでサポートされているコメント構文を紹介します。
+title: Comment Syntax
+summary: This document introduces the comment syntax supported by TiDB.
 ---
 
 # コメント構文 {#comment-syntax}

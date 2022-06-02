@@ -1,6 +1,6 @@
 ---
-title: パーティションの剪定
-summary: TiDBパーティションプルーニングの使用シナリオについて説明します。
+title: Partition Pruning
+summary: Learn about the usage scenarios of TiDB partition pruning.
 ---
 
 # パーティションの剪定 {#partition-pruning}
@@ -76,7 +76,7 @@ explain select * from t where x = 1;
 
 ##### シナリオ1 {#scenario-one}
 
-クエリ結果が`>` `between`の`<` （ `in`など）のみに`<=`するという条件を確認できない場合、パーティション`>=`最適化を使用することはできません。例えば：
+クエリ結果が`>` `between`の`<` （ `in`など）のみに`<=`するという条件を確認できない場合は、パーティション`>=`最適化を使用できません。例えば：
 
 {{< copyable "" >}}
 

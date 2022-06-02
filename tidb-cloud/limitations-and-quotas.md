@@ -1,6 +1,6 @@
 ---
-title: TiDBクラウドの制限と割り当て
-summary: TiDBCloudの制限と割り当てについて学びます。
+title: Limitations and Quotas in TiDB Cloud
+summary: Learn the limitations and quotas in TiDB Cloud.
 ---
 
 # TiDBクラウドの制限と割り当て {#limitations-and-quotas-in-tidb-cloud}

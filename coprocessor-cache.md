@@ -1,6 +1,6 @@
 ---
-title: コプロセッサーキャッシュ
-summary: コプロセッサーキャッシュの機能を学びます。
+title: Coprocessor Cache
+summary: Learn the features of Coprocessor Cache.
 ---
 
 # コプロセッサーキャッシュ {#coprocessor-cache}

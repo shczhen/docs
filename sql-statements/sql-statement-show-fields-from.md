@@ -1,6 +1,6 @@
 ---
-title: [フル]フィールドを表示| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのSHOW[FULL]FIELDSFROMの使用法の概要。
+title: SHOW [FULL] FIELDS FROM | TiDB SQL Statement Reference
+summary: An overview of the usage of SHOW [FULL] FIELDS FROM for the TiDB database.
 ---
 
 # [フル]フィールドを表示 {#show-full-fields-from}

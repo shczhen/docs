@@ -1,6 +1,6 @@
 ---
-title: 情報機能
-summary: 情報機能について学びます。
+title: Information Functions
+summary: Learn about the information functions.
 ---
 
 # 情報機能 {#information-functions}

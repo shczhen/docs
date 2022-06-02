@@ -1,6 +1,6 @@
 ---
-title: テレメトリー
-summary: テレメトリ機能、機能を無効にしてそのステータスを表示する方法を学びます。
+title: Telemetry
+summary: Learn the telemetry feature, how to disable the feature and view its status.
 ---
 
 # テレメトリー {#telemetry}

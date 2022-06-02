@@ -1,6 +1,6 @@
 ---
-title: TiKVメモリパラメータのパフォーマンスを調整する
-summary: 最適なパフォーマンスを得るためにTiKVパラメーターを調整する方法を学びます。
+title: Tune TiKV Memory Parameter Performance
+summary: Learn how to tune the TiKV parameters for optimal performance.
 ---
 
 # TiKVメモリパラメータのパフォーマンスを調整する {#tune-tikv-memory-parameter-performance}

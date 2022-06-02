@@ -1,6 +1,6 @@
 ---
-title: DM-workerConfiguration / コンフィグレーションファイル
-summary: DM-workerの設定ファイルをご覧ください。
+title: DM-worker Configuration File
+summary: Learn the configuration file of DM-worker.
 ---
 
 # DM-workerConfiguration / コンフィグレーションファイル {#dm-worker-configuration-file}

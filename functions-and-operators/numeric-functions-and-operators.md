@@ -1,6 +1,6 @@
 ---
-title: 数値関数と演算子
-summary: 数値関数と演算子について学びます。
+title: Numeric Functions and Operators
+summary: Learn about the numeric functions and operators.
 ---
 
 # 数値関数と演算子 {#numeric-functions-and-operators}

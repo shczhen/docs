@@ -1,5 +1,5 @@
 ---
-title: TiDBRC1リリースノート
+title: TiDB RC1 Release Notes
 ---
 
 # TiDBRC1リリースノート {#tidb-rc1-release-notes}

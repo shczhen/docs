@@ -1,6 +1,6 @@
 ---
-title: ディスク流出時の暗号化機能を有効にする
-summary: TiDBでディスクスピルの暗号化を有効にする方法を学びます。
+title: Enable Encryption for Disk Spill
+summary: Learn how to enable encryption for disk spill in TiDB.
 ---
 
 # ディスク流出時の暗号化機能を有効にする {#enable-encryption-for-disk-spill}

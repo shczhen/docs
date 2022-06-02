@@ -1,6 +1,6 @@
 ---
-title: 集計を使用するステートメントを説明する
-summary: TiDBの`EXPLAIN`ステートメントによって返される実行プラン情報について学びます。
+title: Explain Statements That Use Aggregation
+summary: Learn about the execution plan information returned by the `EXPLAIN` statement in TiDB.
 ---
 
 # 集計を使用してステートメントを説明する {#explain-statements-using-aggregation}

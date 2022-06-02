@@ -1,6 +1,6 @@
 ---
-title: 式の構文
-summary: TiDBの式の構文について学びます。
+title: Expression Syntax
+summary: Learn about the expression syntax in TiDB.
 ---
 
 # 式の構文 {#expression-syntax}

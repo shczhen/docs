@@ -1,6 +1,6 @@
 ---
-title: TiDBデータ型
-summary: TiDBのJSONデータ型について学びます。
+title: TiDB Data Type
+summary: Learn about the JSON data type in TiDB.
 ---
 
 # JSONタイプ {#json-type}

@@ -1,6 +1,6 @@
 ---
-title: プロファイルを表示
-summary: TiDBデータベースのSHOWPROFILESの使用法の概要。
+title: SHOW PROFILES
+summary: An overview of the usage of SHOW PROFILES for the TiDB database.
 ---
 
 # プロファイルを表示 {#show-profiles}

@@ -1,6 +1,6 @@
 ---
 title: INSPECTION_RULES
-summary: `INSPECTION_RULES`information_schemaテーブルを学びます。
+summary: Learn the `INSPECTION_RULES` information_schema table.
 ---
 
 # INSPECTION_RULES {#inspection-rules}

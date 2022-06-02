@@ -1,5 +1,5 @@
 ---
-title: DM高度なタスクConfiguration / コンフィグレーションファイル
+title: DM Advanced Task Configuration File
 ---
 
 # DM高度なタスクConfiguration / コンフィグレーションファイル {#dm-advanced-task-configuration-file}

@@ -1,6 +1,6 @@
 ---
-title: TiDBペシミスティックトランザクションモード
-summary: TiDBの悲観的なトランザクションモードを学びます。
+title: TiDB Pessimistic Transaction Mode
+summary: Learn the pessimistic transaction mode in TiDB.
 ---
 
 # TiDBペシミスティックトランザクションモード {#tidb-pessimistic-transaction-mode}

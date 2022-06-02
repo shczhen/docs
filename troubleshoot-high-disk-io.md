@@ -1,6 +1,6 @@
 ---
-title: TiDBでのディスクI/Oの使用率が高い場合のトラブルシューティング
-summary: TiDBストレージのI/O使用率が高い問題を見つけて対処する方法を学びます。
+title: Troubleshoot High Disk I/O Usage in TiDB
+summary: Learn how to locate and address the issue of high TiDB storage I/O usage.
 ---
 
 # TiDBでのディスクI/Oの使用率が高い場合のトラブルシューティング {#troubleshoot-high-disk-i-o-usage-in-tidb}

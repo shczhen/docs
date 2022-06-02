@@ -1,6 +1,6 @@
 ---
-title: 監視サーバーの構成をカスタマイズする
-summary: TiUPによって管理される監視サーバーの構成をカスタマイズする方法を学ぶ
+title: Customize Configurations of Monitoring Servers
+summary: Learn how to customize the configurations of monitoring servers managed by TiUP
 ---
 
 # 監視サーバーの構成をカスタマイズする {#customize-configurations-of-monitoring-servers}

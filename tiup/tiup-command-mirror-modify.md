@@ -1,5 +1,5 @@
 ---
-title: tiupミラー変更
+title: tiup mirror modify
 ---
 
 # tiupミラー変更 {#tiup-mirror-modify}

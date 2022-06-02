@@ -1,6 +1,6 @@
 ---
-title: データのロード| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのLOADDATAの使用法の概要。
+title: LOAD DATA | TiDB SQL Statement Reference
+summary: An overview of the usage of LOAD DATA for the TiDB database.
 ---
 
 # データを読み込む {#load-data}

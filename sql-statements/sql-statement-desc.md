@@ -1,6 +1,6 @@
 ---
-title: DESC | TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでの`DESC`の使用法の概要。
+title: DESC | TiDB SQL Statement Reference
+summary: An overview of the usage of `DESC` for the TiDB database.
 ---
 
 # DESC {#desc}

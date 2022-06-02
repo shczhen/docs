@@ -1,6 +1,6 @@
 ---
-title: 準備| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのPREPAREの使用法の概要。
+title: PREPARE | TiDB SQL Statement Reference
+summary: An overview of the usage of PREPARE for the TiDB database.
 ---
 
 # 準備 {#prepare}

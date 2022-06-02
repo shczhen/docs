@@ -1,5 +1,5 @@
 ---
-title: データ移行アーキテクチャ
+title: Data Migration Architecture
 ---
 
 # データ移行アーキテクチャ {#data-migration-architecture}

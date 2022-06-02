@@ -1,6 +1,6 @@
 ---
-title: エンジンを表示| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのSHOWENGINESの使用法の概要。
+title: SHOW ENGINES | TiDB SQL Statement Reference
+summary: An overview of the usage of SHOW ENGINES for the TiDB database.
 ---
 
 # エンジンを表示 {#show-engines}

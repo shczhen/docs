@@ -1,5 +1,5 @@
 ---
-title: tiupクラスタリスト
+title: tiup cluster list
 ---
 
 # tiupクラスタリスト {#tiup-cluster-list}

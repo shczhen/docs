@@ -1,6 +1,6 @@
 ---
-title: スキーマ名またはテーブル名が異なるテーブルのデータチェック
-summary: さまざまなデータベース名またはテーブル名のデータチェックについて説明します。
+title: Data Check for Tables with Different Schema or Table Names
+summary: Learn the data check for different database names or table names.
 ---
 
 # スキーマ名またはテーブル名が異なるテーブルのデータチェック {#data-check-for-tables-with-different-schema-or-table-names}

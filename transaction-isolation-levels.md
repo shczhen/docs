@@ -1,6 +1,6 @@
 ---
-title: TiDBトランザクション分離レベル
-summary: TiDBのトランザクション分離レベルについて学びます。
+title: TiDB Transaction Isolation Levels
+summary: Learn about the transaction isolation levels in TiDB.
 ---
 
 # TiDBトランザクション分離レベル {#tidb-transaction-isolation-levels}

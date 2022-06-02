@@ -1,5 +1,5 @@
 ---
-title: TiDB5.2.4リリースノート
+title: TiDB 5.2.4 Release Notes
 category: Releases
 ---
 

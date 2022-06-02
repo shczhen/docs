@@ -1,6 +1,6 @@
 ---
-title: TiCDCオープンプロトコル
-summary: TiCDCOpenProtocolの概念とその使用方法を学びます。
+title: TiCDC Open Protocol
+summary: Learn the concept of TiCDC Open Protocol and how to use it.
 ---
 
 # TiCDCオープンプロトコル {#ticdc-open-protocol}

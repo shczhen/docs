@@ -1,6 +1,6 @@
 ---
-title: TiCDCの概要
-summary: TiCDCとは何か、TiCDCが提供する機能などを学びます。
+title: TiCDC Overview
+summary: Learn what TiCDC is, what features TiCDC provides, etc.
 ---
 
 # TiCDCの概要 {#ticdc-overview}

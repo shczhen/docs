@@ -1,6 +1,6 @@
 ---
-title: ビューを使用したEXPLAINステートメント
-summary: TiDBの`EXPLAIN`ステートメントによって返される実行プラン情報について学びます。
+title: EXPLAIN Statements Using Views
+summary: Learn about the execution plan information returned by the `EXPLAIN` statement in TiDB.
 ---
 
 # ビューを使用したEXPLAINステートメント {#explain-statements-using-views}

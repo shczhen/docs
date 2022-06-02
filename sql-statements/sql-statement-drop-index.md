@@ -1,6 +1,6 @@
 ---
-title: ドロップインデックス| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのDROPINDEXの使用法の概要。
+title: DROP INDEX | TiDB SQL Statement Reference
+summary: An overview of the usage of DROP INDEX for the TiDB database.
 ---
 
 # ドロップインデックス {#drop-index}

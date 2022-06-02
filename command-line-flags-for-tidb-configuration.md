@@ -1,6 +1,6 @@
 ---
-title: Configuration / コンフィグレーションオプション
-summary: TiDBの構成オプションについて説明します。
+title: Configuration Options
+summary: Learn the configuration options in TiDB.
 ---
 
 # Configuration / コンフィグレーションオプション {#configuration-options}

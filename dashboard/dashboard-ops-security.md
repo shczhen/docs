@@ -1,6 +1,6 @@
 ---
-title: セキュリティTiDBダッシュボード
-summary: TiDBダッシュボードのセキュリティを向上させる方法を学びます。
+title: Secure TiDB Dashboard
+summary: Learn how to improve the security of TiDB Dashboard.
 ---
 
 # セキュリティTiDBダッシュボード {#secure-tidb-dashboard}

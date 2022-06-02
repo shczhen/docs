@@ -1,6 +1,6 @@
 ---
-title: シャットダウン
-summary: TiDBデータベースのSHUTDOWNの使用法の概要。
+title: SHUTDOWN
+summary: An overview of the usage of SHUTDOWN for the TiDB database.
 ---
 
 # シャットダウン {#shutdown}

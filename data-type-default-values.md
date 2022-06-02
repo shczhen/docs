@@ -1,6 +1,6 @@
 ---
-title: TiDBデータ型
-summary: TiDBのデータ型のデフォルト値について学びます。
+title: TiDB Data Type
+summary: Learn about default values for data types in TiDB.
 ---
 
 # デフォルト値 {#default-values}

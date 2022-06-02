@@ -1,6 +1,6 @@
 ---
 title: TiUP FAQ
-summary: TiUPユーザーからのよくある質問への回答を提供します。
+summary: Provide answers to common questions asked by TiUP users.
 ---
 
 # TiUP FAQ {#tiup-faq}

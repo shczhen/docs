@@ -1,6 +1,6 @@
 ---
-title: 日付と時刻のタイプ
-summary: サポートされている日付と時刻のタイプについて説明します。
+title: Date and Time Types
+summary: Learn about the supported date and time types.
 ---
 
 # 日付と時刻のタイプ {#date-and-time-types}

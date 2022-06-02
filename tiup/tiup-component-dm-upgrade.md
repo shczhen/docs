@@ -1,5 +1,5 @@
 ---
-title: tiupdmアップグレード
+title: tiup dm upgrade
 ---
 
 # tiupdmアップグレード {#tiup-dm-upgrade}

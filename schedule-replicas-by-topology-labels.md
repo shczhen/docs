@@ -1,6 +1,6 @@
 ---
-title: トポロジラベルごとにレプリカをスケジュールする
-summary: トポロジラベルごとにレプリカをスケジュールする方法を学びます。
+title: Schedule Replicas by Topology Labels
+summary: Learn how to schedule replicas by topology labels.
 ---
 
 # トポロジラベルごとにレプリカをスケジュールする {#schedule-replicas-by-topology-labels}

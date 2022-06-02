@@ -1,5 +1,5 @@
 ---
-title: tiupミラーセット
+title: tiup mirror set
 ---
 
 # tiupミラーセット {#tiup-mirror-set}

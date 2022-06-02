@@ -1,6 +1,6 @@
 ---
-title: TiDBデータ移行をv1.0.xからv2.0+に手動でアップグレードする
-summary: TiDBデータ移行をv1.0.xからv2.0+に手動でアップグレードする方法を学びます。
+title: Manually Upgrade TiDB Data Migration from v1.0.x to v2.0+
+summary: Learn how to manually upgrade TiDB data migration from v1.0.x to v2.0+.
 ---
 
 # TiDBデータ移行をv1.0.xからv2.0+に手動でアップグレードする {#manually-upgrade-tidb-data-migration-from-v1-0-x-to-v2-0}

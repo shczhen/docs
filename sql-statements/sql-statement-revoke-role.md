@@ -1,6 +1,6 @@
 ---
-title: REVOKE<役割>| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのREVOKE<role>の使用法の概要。
+title: REVOKE <role> | TiDB SQL Statement Reference
+summary: An overview of the usage of REVOKE <role> for the TiDB database.
 ---
 
 # <code>REVOKE &#x3C;role></code> {#code-revoke-x3c-role-code}

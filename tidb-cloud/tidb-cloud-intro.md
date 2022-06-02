@@ -1,6 +1,6 @@
 ---
-title: TiDBクラウドの紹介
-summary: TiDBCloudとそのアーキテクチャについて学びます。
+title: TiDB Cloud Introduction
+summary: Learn about TiDB Cloud and its architecture.
 category: intro
 ---
 

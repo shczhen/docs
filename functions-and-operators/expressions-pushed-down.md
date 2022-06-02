@@ -1,6 +1,6 @@
 ---
-title: プッシュダウンの式のリスト
-summary: TiKVおよび関連する操作にプッシュダウンできる式のリストを学びます。
+title: List of Expressions for Pushdown
+summary: Learn a list of expressions that can be pushed down to TiKV and the related operations.
 ---
 
 # プッシュダウンの式のリスト {#list-of-expressions-for-pushdown}

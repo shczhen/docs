@@ -1,5 +1,5 @@
 ---
-title: tiupクラスタのインポート
+title: tiup cluster import
 ---
 
 # tiupクラスタのインポート {#tiup-cluster-import}

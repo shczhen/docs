@@ -1,6 +1,6 @@
 ---
-title: Reparoユーザーガイド
-summary: Reparoの使い方を学びましょう。
+title: Reparo User Guide
+summary: Learn to use Reparo.
 ---
 
 # Reparoユーザーガイド {#reparo-user-guide}

@@ -1,6 +1,6 @@
 ---
-title: TiDBダッシュボードのSSOを構成する
-summary: SSOがTiDBダッシュボードにサインインできるようにする方法を学びます。
+title: Configure SSO for TiDB Dashboard
+summary: Learn how to enable SSO to sign into TiDB Dashboard.
 ---
 
 # TiDBダッシュボードのSSOを構成する {#configure-sso-for-tidb-dashboard}

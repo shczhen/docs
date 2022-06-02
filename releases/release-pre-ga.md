@@ -1,5 +1,5 @@
 ---
-title: GA以前のリリースノート
+title: Pre-GA release notes
 ---
 
 # GA以前のリリースノート {#pre-ga-release-notes}

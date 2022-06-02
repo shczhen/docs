@@ -1,5 +1,5 @@
 ---
-title: リバースプロキシの背後でTiDBダッシュボードを使用する
+title: Use TiDB Dashboard behind a Reverse Proxy
 ---
 
 # リバースプロキシの背後でTiDBダッシュボードを使用する {#use-tidb-dashboard-behind-a-reverse-proxy}

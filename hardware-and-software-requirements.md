@@ -1,6 +1,6 @@
 ---
-title: ソフトウェアとハードウェアの推奨事項
-summary: TiDBを展開および実行するためのソフトウェアとハードウェアの推奨事項について説明します。
+title: Software and Hardware Recommendations
+summary: Learn the software and hardware recommendations for deploying and running TiDB.
 ---
 
 # ソフトウェアとハードウェアの推奨事項 {#software-and-hardware-recommendations}

@@ -1,5 +1,5 @@
 ---
-title: tiupdmスケールアウト
+title: tiup dm scale-out
 ---
 
 # tiupdmスケールアウト {#tiup-dm-scale-out}

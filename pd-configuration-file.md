@@ -1,6 +1,6 @@
 ---
-title: PDConfiguration / コンフィグレーションファイル
-summary: PD構成ファイルを学習します。
+title: PD Configuration File
+summary: Learn the PD configuration file.
 ---
 
 # PDConfiguration / コンフィグレーションファイル {#pd-configuration-file}

@@ -1,6 +1,6 @@
 ---
-title: プライベートミラーを作成する
-summary: プライベートミラーを作成する方法を学びます。
+title: Create a Private Mirror
+summary: Learn how to create a private mirror.
 ---
 
 # プライベートミラーを作成する {#create-a-private-mirror}

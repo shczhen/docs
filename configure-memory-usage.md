@@ -1,6 +1,6 @@
 ---
-title: TiDBメモリ制御
-summary: クエリのメモリクォータを構成し、OOM（メモリ不足）を回避する方法を学びます。
+title: TiDB Memory Control
+summary: Learn how to configure the memory quota of a query and avoid OOM (out of memory).
 ---
 
 # TiDBメモリ制御 {#tidb-memory-control}

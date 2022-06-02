@@ -1,6 +1,6 @@
 ---
-title: [フル]プロセスリストを表示| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのSHOW[FULL]PROCESSLISTの使用法の概要。
+title: SHOW [FULL] PROCESSLIST | TiDB SQL Statement Reference
+summary: An overview of the usage of SHOW [FULL] PROCESSLIST for the TiDB database.
 ---
 
 # [完全な]プロセスリストを表示する {#show-full-processlist}

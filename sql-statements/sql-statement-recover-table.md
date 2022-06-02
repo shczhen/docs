@@ -1,6 +1,6 @@
 ---
-title: 回復表
-summary: TiDBデータベースのRECOVERTABLEの使用法の概要。
+title: RECOVER TABLE
+summary: An overview of the usage of RECOVER TABLE for the TiDB database.
 ---
 
 # 回復表 {#recover-table}

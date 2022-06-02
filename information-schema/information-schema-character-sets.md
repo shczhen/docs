@@ -1,6 +1,6 @@
 ---
 title: CHARACTER_SETS
-summary: `CHARACTER_SETS`information_schemaテーブルを学びます。
+summary: Learn the `CHARACTER_SETS` information_schema table.
 ---
 
 # CHARACTER_SETS {#character-sets}

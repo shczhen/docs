@@ -1,6 +1,6 @@
 ---
-title: Binlogイベントをフィルタリングする
-summary: データを移行するときにbinlogイベントをフィルタリングする方法を学びます。
+title: Filter Binlog Events
+summary: Learn how to filter binlog events when migrating data.
 ---
 
 # Binlogイベントをフィルタリングする {#filter-binlog-events}

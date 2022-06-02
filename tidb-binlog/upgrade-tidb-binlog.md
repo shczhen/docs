@@ -1,6 +1,6 @@
 ---
-title: TiDBBinlogをアップグレードする
-summary: TiDBBinlogを最新のクラスタバージョンにアップグレードする方法を学びます。
+title: Upgrade TiDB Binlog
+summary: Learn how to upgrade TiDB Binlog to the latest cluster version.
 ---
 
 # TiDBBinlogをアップグレードする {#upgrade-tidb-binlog}

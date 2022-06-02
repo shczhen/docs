@@ -1,5 +1,5 @@
 ---
-title: TiDBSysbenchパフォーマンステストレポート-v5.0とv4.0
+title: TiDB Sysbench Performance Test Report -- v5.0 vs. v4.0
 ---
 
 # TiDBSysbenchパフォーマンステストレポート-v5.0とv4.0 {#tidb-sysbench-performance-test-report-v5-0-vs-v4-0}

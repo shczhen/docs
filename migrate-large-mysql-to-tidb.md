@@ -1,6 +1,6 @@
 ---
-title: 大規模なデータセットのMySQLをTiDBに移行する
-summary: 大規模なデータセットのMySQLをTiDBに移行する方法を学びます。
+title: Migrate MySQL of Large Datasets to TiDB
+summary: Learn how to migrate MySQL of large datasets to TiDB.
 ---
 
 # 大規模なデータセットのMySQLをTiDBに移行する {#migrate-mysql-of-large-datasets-to-tidb}

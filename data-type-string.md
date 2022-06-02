@@ -1,6 +1,6 @@
 ---
-title: 文字列タイプ
-summary: TiDBでサポートされている文字列タイプについて学びます。
+title: String types
+summary: Learn about the string types supported in TiDB.
 ---
 
 # 文字列タイプ {#string-types}

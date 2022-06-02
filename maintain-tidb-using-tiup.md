@@ -1,6 +1,6 @@
 ---
-title: TiUPの一般的な操作
-summary: TiUPを使用してTiDBクラスタを操作および保守するための一般的な操作について説明します。
+title: TiUP Common Operations
+summary: Learn the common operations to operate and maintain a TiDB cluster using TiUP.
 ---
 
 # TiUPの一般的な操作 {#tiup-common-operations}

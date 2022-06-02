@@ -1,6 +1,6 @@
 ---
-title: ホットスポットの問題のトラブルシューティング
-summary: TiDBで読み取りまたは書き込みホットスポットの問題を見つけて解決する方法を学びます。
+title: Troubleshoot Hotspot Issues
+summary: Learn how to locate and resolve read or write hotspot issues in TiDB.
 ---
 
 # ホットスポットの問題のトラブルシューティング {#troubleshoot-hotspot-issues}
@@ -61,7 +61,7 @@ TiDBコーディング規則によれば、同じテーブルのデータはTabl
 
 パフォーマンスの問題は、必ずしもホットスポットが原因であるとは限らず、複数の要因が原因である可能性があります。問題のトラブルシューティングを行う前に、それがホットスポットに関連しているかどうかを確認してください。
 
--   書き込みホットスポットを判断するには、 **TiKV-Trouble-Shooting**監視パネルで<strong>Hot Write</strong>を開き、TiKVノードのRaftstoreCPUメトリック値が他のノードのメトリック値よりも大幅に高いかどうかを確認します。
+-   書き込みホットスポットを判断するには、 **TiKV-Trouble-Shooting**監視パネルで<strong>Hot Write</strong>を開き、TiKVノードのRaftstoreCPUメトリック値が他のノードの値よりも大幅に高いかどうかを確認します。
 
 -   読み取りホットスポットを判断するには、 **TiKV-Details**監視パネルで<strong>Thread_CPU</strong>を開いて、任意のTiKVノードのコプロセッサーCPUメトリック値が特に高いかどうかを確認します。
 

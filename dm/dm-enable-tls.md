@@ -1,6 +1,6 @@
 ---
-title: DM接続のTLSを有効にする
-summary: DM接続でTLSを有効にする方法を学びます。
+title: Enable TLS for DM Connections
+summary: Learn how to enable TLS for DM connections.
 ---
 
 # DM接続のTLSを有効にする {#enable-tls-for-dm-connections}

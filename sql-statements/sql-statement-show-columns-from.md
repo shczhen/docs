@@ -1,6 +1,6 @@
 ---
-title: [フル]列を表示| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのSHOW[FULL]COLUMNSFROMの使用法の概要。
+title: SHOW [FULL] COLUMNS FROM | TiDB SQL Statement Reference
+summary: An overview of the usage of SHOW [FULL] COLUMNS FROM for the TiDB database.
 ---
 
 # [フル]列を表示 {#show-full-columns-from}

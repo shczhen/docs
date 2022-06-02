@@ -1,6 +1,6 @@
 ---
-title: より多くの列を持つダウンストリームTiDBテーブルにデータを移行する
-summary: 対応するアップストリームテーブルよりも多くの列を持つダウンストリームTiDBテーブルにデータを移行する方法を学びます。
+title: Migrate Data to a Downstream TiDB Table with More Columns
+summary: Learn how to migrate data to a downstream TiDB table with more columns than the corresponding upstream table.
 ---
 
 # より多くの列を持つダウンストリームTiDBテーブルにデータを移行する {#migrate-data-to-a-downstream-tidb-table-with-more-columns}

@@ -1,6 +1,6 @@
 ---
-title: セットロール| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのSETROLEの使用法の概要。
+title: SET ROLE | TiDB SQL Statement Reference
+summary: An overview of the usage of SET ROLE for the TiDB database.
 ---
 
 # 役割を設定する {#set-role}

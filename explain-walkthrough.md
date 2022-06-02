@@ -1,6 +1,6 @@
 ---
-title: EXPLAIN コマンド / EXPLAIN機能
-summary: ステートメントの例を見て、EXPLAINの使用方法を学びます
+title: EXPLAIN Walkthrough
+summary: Learn how to use EXPLAIN by walking through an example statement
 ---
 
 # <code>EXPLAIN</code>ウォークスルー {#code-explain-code-walkthrough}

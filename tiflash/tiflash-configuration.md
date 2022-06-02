@@ -1,6 +1,6 @@
 ---
-title: TiFlashを構成する
-summary: TiFlashを構成する方法を学びます。
+title: Configure TiFlash
+summary: Learn how to configure TiFlash.
 ---
 
 # TiFlashを構成する {#configure-tiflash}

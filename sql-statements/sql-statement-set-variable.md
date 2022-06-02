@@ -1,6 +1,6 @@
 ---
-title: SET [GLOBAL |SESSION]<変数>| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのSET[GLOBAL|SESSION]<variable>の使用法の概要。
+title: SET [GLOBAL|SESSION] <variable> | TiDB SQL Statement Reference
+summary: An overview of the usage of SET [GLOBAL|SESSION] <variable> for the TiDB database.
 ---
 
 # <code>SET [GLOBAL|SESSION] &#x3C;variable></code> {#code-set-global-session-x3c-variable-code}

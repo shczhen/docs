@@ -1,6 +1,6 @@
 ---
-title: TiDBLightningCSVのサポートと制限
-summary: TiDBLightningを介してCSVファイルをインポートする方法を学びます。
+title: TiDB Lightning CSV Support and Restrictions
+summary: Learn how to import CSV files via TiDB Lightning.
 ---
 
 # TiDBLightningCSVのサポートと制限 {#tidb-lightning-csv-support-and-restrictions}

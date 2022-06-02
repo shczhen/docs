@@ -1,6 +1,6 @@
 ---
-title: プレースメントポリシーの作成を表示
-summary: TiDBでのSHOWCREATEPLACEMENTPOLICYの使用法。
+title: SHOW CREATE PLACEMENT POLICY
+summary: The usage of SHOW CREATE PLACEMENT POLICY in TiDB.
 ---
 
 # プレースメントポリシーの作成を表示 {#show-create-placement-policy}

@@ -1,5 +1,5 @@
 ---
-title: TiDB4.0GAリリースノート
+title: TiDB 4.0 GA Release Notes
 ---
 
 # TiDB4.0GAリリースノート {#tidb-4-0-ga-release-notes}

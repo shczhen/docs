@@ -1,6 +1,6 @@
 ---
-title: TiDBクラスターを監視する
-summary: TiDBクラスタを監視する方法を学びます。
+title: Monitor a TiDB Cluster
+summary: Learn how to monitor your TiDB cluster.
 ---
 
 # TiDBクラスターを監視する {#monitor-a-tidb-cluster}
@@ -67,7 +67,7 @@ TiDB Cloudには、いくつかのアラート条件が組み込まれていま�
 
 ### サードパーティの統合を表示または変更する {#view-or-modify-third-party-integrations}
 
-1.  TiDB Cloudコンソールで、表示または変更するターゲットプロジェクトを選択し、左上隅にある歯車のアイコンをクリックしてプロジェクト設定を開きます。
+1.  TiDB Cloudコンソールで、表示または変更するターゲットプロジェクトを選択し、左上隅の歯車アイコンをクリックしてプロジェクト設定を開きます。
 2.  左側のペインで、[**統合**]をクリックします。利用可能なサードパーティの統合が表示されます。
 
 ### 利用可能な統合 {#available-integrations}

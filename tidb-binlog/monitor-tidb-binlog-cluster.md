@@ -1,6 +1,6 @@
 ---
-title: TiDBBinlogモニタリング
-summary: TiDBBinlogのクラスタバージョンを監視する方法を学びます。
+title: TiDB Binlog Monitoring
+summary: Learn how to monitor the cluster version of TiDB Binlog.
 ---
 
 # TiDBBinlogモニタリング {#tidb-binlog-monitoring}

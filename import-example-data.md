@@ -1,6 +1,6 @@
 ---
-title: サンプルデータベースのインポート
-summary: Bikeshareサンプルデータベースをインストールします。
+title: Import Example Database
+summary: Install the Bikeshare example database.
 ---
 
 # サンプルデータベースのインポート {#import-example-database}

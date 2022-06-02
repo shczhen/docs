@@ -1,5 +1,5 @@
 ---
-title: tiupミラーが回転します
+title: tiup mirror rotate
 ---
 
 # tiupミラーが回転します {#tiup-mirror-rotate}

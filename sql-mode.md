@@ -1,6 +1,6 @@
 ---
-title: SQLモード
-summary: SQLモードを学びます。
+title: SQL Mode
+summary: Learn SQL mode.
 ---
 
 # SQLモード {#sql-mode}

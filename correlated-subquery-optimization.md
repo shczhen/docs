@@ -1,6 +1,6 @@
 ---
-title: 相関サブクエリの無相関化
-summary: 相関するサブクエリを非相関化する方法を理解します。
+title: Decorrelation of Correlated Subquery
+summary: Understand how to decorrelate correlated subqueries.
 ---
 
 # 相関サブクエリの無相関化 {#decorrelation-of-correlated-subquery}

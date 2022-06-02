@@ -1,6 +1,6 @@
 ---
-title: DMアラート情報
-summary: DMのアラート情報を紹介します。
+title: DM Alert Information
+summary: Introduce the alert information of DM.
 ---
 
 # DMアラート情報 {#dm-alert-information}

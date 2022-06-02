@@ -1,6 +1,6 @@
 ---
-title: 集約（GROUP BY）関数
-summary: TiDBでサポートされている集計関数について説明します。
+title: Aggregate (GROUP BY) Functions
+summary: Learn about the supported aggregate functions in TiDB.
 ---
 
 # 集約（GROUP BY）関数 {#aggregate-group-by-functions}

@@ -1,6 +1,6 @@
 ---
-title: TiDBダッシュボードの診断レポートを使用して問題を特定する
-summary: TiDBダッシュボードの診断レポートを使用して問題を特定する方法を学びます。
+title: Locate Problems Using Diagnostic Report of TiDB Dashboard
+summary: Learn how to locate problems using diagnostic report of TiDB Dashboard.
 ---
 
 # TiDBダッシュボードの診断レポートを使用して問題を特定する {#locate-problems-using-diagnostic-report-of-tidb-dashboard}

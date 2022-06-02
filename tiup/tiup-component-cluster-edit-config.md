@@ -1,5 +1,5 @@
 ---
-title: tiup クラスタ edit-config
+title: tiup cluster edit-config
 ---
 
 # tiup クラスタ edit-config {#tiup-cluster-edit-config}

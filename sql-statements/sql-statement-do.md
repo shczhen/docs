@@ -1,6 +1,6 @@
 ---
-title: 行う| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのDOの使用法の概要。
+title: DO | TiDB SQL Statement Reference
+summary: An overview of the usage of DO for the TiDB database.
 ---
 
 # 行う {#do}

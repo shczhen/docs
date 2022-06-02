@@ -1,6 +1,6 @@
 ---
-title: TiUPミラーリファレンスガイド
-summary: TiUPミラーの一般的な情報を学びます。
+title: TiUP Mirror Reference Guide
+summary: Learn the general information of TiUP mirrors.
 ---
 
 # TiUPミラーリファレンスガイド {#tiup-mirror-reference-guide}

@@ -1,5 +1,5 @@
 ---
-title: tiupアップデート
+title: tiup update
 ---
 
 # tiupアップデート {#tiup-update}

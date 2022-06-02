@@ -1,5 +1,5 @@
 ---
-title: tiupクラスタの無効化
+title: tiup cluster disable
 ---
 
 # tiupクラスタの無効化 {#tiup-cluster-disable}

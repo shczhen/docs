@@ -1,5 +1,5 @@
 ---
-title: tiupdmインポート
+title: tiup dm import
 ---
 
 # tiupdmインポート {#tiup-dm-import}

@@ -1,6 +1,6 @@
 ---
-title: TiDBBinlogクラスターの展開
-summary: TiDBBinlogクラスタをデプロイする方法を学びます。
+title: TiDB Binlog Cluster Deployment
+summary: Learn how to deploy TiDB Binlog cluster.
 ---
 
 # TiDBBinlogクラスターの展開 {#tidb-binlog-cluster-deployment}
@@ -409,7 +409,7 @@ sha256sum -c tidb-binlog-$version-linux-amd64.sha256
 > **ノート：**
 >
 > -   TiDBが実行されているときは、少なくとも1つのポンプが正常に実行されていることを保証する必要があります。
-> -   TiDBサーバーでTiDBBinlogサービスを有効にするには、TiDBで`-enable-binlog`スタートアップパラメータを使用するか、TiDBサーバー構成ファイルの[binlog]セクションにenable=trueを追加します。
+> -   TiDBサーバーでTiDBBinlogサービスを有効にするには、TiDBで`-enable-binlog`スタートアップパラメーターを使用するか、TiDBサーバー構成ファイルの[binlog]セクションにenable=trueを追加します。
 > -   同じクラスタのすべてのTiDBインスタンスでTiDBBinlogサービスが有効になっていることを確認してください。有効になっていないと、データレプリケーション中にアップストリームとダウンストリームのデータの不整合が発生する可能性があります。 TiDB Binlogサービスが有効になっていないTiDBインスタンスを一時的に実行する場合は、TiDB構成ファイルに`run_ddl=false`を設定します。
 > -   Drainerは、 `ignore schemas`のテーブル（フィルターリスト内のスキーマ）での`rename`操作をサポートしていません。
 > -   既存のTiDBクラスタでDrainerを起動する場合は、通常、クラスタデータの完全バックアップを作成し、**スナップショットタイムスタンプ**を取得し、データをターゲットデータベースにインポートしてから、Drainerを起動して、対応する<strong>スナップショット</strong>から増分データを複製する必要があります。<strong>タイムスタンプ</strong>。

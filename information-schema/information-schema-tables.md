@@ -1,6 +1,6 @@
 ---
-title: テーブル
-summary: `TABLES`information_schemaテーブルを学びます。
+title: TABLES
+summary: Learn the `TABLES` information_schema table.
 ---
 
 # テーブル {#tables}

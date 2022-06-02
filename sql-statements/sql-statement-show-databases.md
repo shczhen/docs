@@ -1,6 +1,6 @@
 ---
-title: データベースを表示する| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのSHOWDATABASESの使用法の概要。
+title: SHOW DATABASES | TiDB SQL Statement Reference
+summary: An overview of the usage of SHOW DATABASES for the TiDB database.
 ---
 
 # データベースを表示する {#show-databases}

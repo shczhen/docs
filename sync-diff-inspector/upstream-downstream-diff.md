@@ -1,6 +1,6 @@
 ---
-title: TiDBアップストリームおよびダウンストリームクラスターのデータチェック
-summary: TiDBアップストリームおよびダウンストリームクラスターのデータを確認する方法を学びます。
+title: Data Check for TiDB Upstream and Downstream Clusters
+summary: Learn how to check data for TiDB upstream and downstream clusters.
 ---
 
 # TiDBアップストリームおよびダウンストリームクラスターのデータチェック {#data-check-for-tidb-upstream-and-downstream-clusters}

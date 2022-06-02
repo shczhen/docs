@@ -1,6 +1,6 @@
 ---
-title: ログ編集
-summary: TiDBコンポーネントのログ編集について学びます。
+title: Log Redaction
+summary: Learn the log redaction in TiDB components.
 ---
 
 # ログ編集 {#log-redaction}

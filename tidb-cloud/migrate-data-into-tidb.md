@@ -1,6 +1,6 @@
 ---
-title: MySQL互換データベースからの移行
-summary: DumplingおよびTiDBLightningツールを使用して、MySQL互換データベースからTiDBクラウドにデータを移行する方法を学びます。
+title: Migrate from MySQL-Compatible Databases
+summary: Learn how to migrate data from MySQL-compatible databases to TiDB Cloud using the Dumpling and TiDB Lightning tools.
 ---
 
 # MySQL互換データベースからデータを移行する {#migrate-data-from-mysql-compatible-databases}

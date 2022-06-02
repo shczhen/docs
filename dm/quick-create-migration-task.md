@@ -1,6 +1,6 @@
 ---
-title: データ移行シナリオ
-summary: さまざまなシナリオでデータ移行タスクを構成する方法を学びます。
+title: Data Migration Scenarios
+summary: Learn how to configure a data migration task in different scenarios.
 ---
 
 # データ移行シナリオの概要 {#data-migration-scenario-overview}

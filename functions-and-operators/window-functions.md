@@ -1,6 +1,6 @@
 ---
-title: ウィンドウ関数
-summary: このドキュメントでは、TiDBでサポートされているウィンドウ関数を紹介します。
+title: Window Functions
+summary: This document introduces window functions supported in TiDB.
 ---
 
 # ウィンドウ関数 {#window-functions}

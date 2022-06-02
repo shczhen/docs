@@ -1,6 +1,6 @@
 ---
-title: TiUPを使用してDMクラスターを管理する
-summary: TiUPを使用してDMクラスタを維持する方法を学びます。
+title: Maintain a DM Cluster Using TiUP
+summary: Learn how to maintain a DM cluster using TiUP.
 ---
 
 # TiUPを使用してDMクラスターを管理する {#maintain-a-dm-cluster-using-tiup}

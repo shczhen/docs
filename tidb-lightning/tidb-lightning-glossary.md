@@ -1,6 +1,6 @@
 ---
-title: TiDBLightning用語集
-summary: TiDBLightningで使用される特別な用語のリスト。
+title: TiDB Lightning Glossary
+summary: List of special terms used in TiDB Lightning.
 ---
 
 # TiDBLightning用語集 {#tidb-lightning-glossary}
@@ -191,4 +191,4 @@ KVペアをTiKVImporterに送信する前にTiDBLightning自体によって計�
 
 SSTは、「sortedstringtable」の略語です。 SSTファイルは、KVペアのコレクションのRocksDB（したがってTiKV）のネイティブストレージ形式です。
 
-TiKV Importerは、閉じた[エンジン](/tidb-lightning/tidb-lightning-glossary.md#engine)からSSTファイルを生成します。これらのSSTファイルはアップロードされてからTiKVストアに[摂取](/tidb-lightning/tidb-lightning-glossary.md#ingest)アップロードされます。
+TiKV Importerは、閉じた[エンジン](/tidb-lightning/tidb-lightning-glossary.md#engine)からSSTファイルを生成します。これらのSSTファイルはアップロードされてからTiKVストアに[摂取した](/tidb-lightning/tidb-lightning-glossary.md#ingest)アップロードされます。

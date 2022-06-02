@@ -1,6 +1,6 @@
 ---
-title: タイムゾーンのサポート
-summary: タイムゾーンとその形式を設定する方法を学びます。
+title: Time Zone Support
+summary: Learn how to set the time zone and its format.
 ---
 
 # タイムゾーンのサポート {#time-zone-support}

@@ -1,5 +1,5 @@
 ---
-title: Sysbenchを使用してTiDBをテストする方法
+title: How to Test TiDB Using Sysbench
 ---
 
 # Sysbenchを使用してTiDBをテストする方法 {#how-to-test-tidb-using-sysbench}

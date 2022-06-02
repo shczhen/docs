@@ -1,6 +1,6 @@
 ---
-title: クラスタ層を選択してください
-summary: TiDBクラウドでクラスタ層を選択する方法を学びます。
+title: Select Your Cluster Tier
+summary: Learn how to select your cluster tier on TiDB Cloud.
 aliases: ['/tidbcloud/public-preview/developer-tier-cluster']
 ---
 

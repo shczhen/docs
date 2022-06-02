@@ -1,6 +1,6 @@
 ---
-title: TiFlashクラスターを管理する
-summary: TiFlashクラスタを保守する際の一般的な操作について説明します。
+title: Maintain a TiFlash Cluster
+summary: Learn common operations when you maintain a TiFlash cluster.
 ---
 
 # TiFlashクラスターを管理する {#maintain-a-tiflash-cluster}

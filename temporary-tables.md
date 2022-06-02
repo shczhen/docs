@@ -1,6 +1,6 @@
 ---
-title: 一時的なテーブル
-summary: TiDBの一時テーブル機能を学び、一時テーブルを使用してアプリケーションの中間データを格納する方法を学びます。これにより、テーブル管理のオーバーヘッドが削減され、パフォーマンスが向上します。
+title: Temporary Tables
+summary: Learn the temporary tables feature in TiDB, and learn how to use temporary tables to store intermediate data of an application, which helps reduce table management overhead and improve performance.
 ---
 
 # 一時的なテーブル {#temporary-tables}

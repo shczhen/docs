@@ -1,6 +1,6 @@
 ---
-title: TiDBダッシュボードをデプロイ
-summary: TiDBダッシュボードを展開する方法を学びます。
+title: Deploy TiDB Dashboard
+summary: Learn how to deploy TiDB Dashboard.
 ---
 
 # TiDBダッシュボードをデプロイ {#deploy-tidb-dashboard}

@@ -1,6 +1,6 @@
 ---
-title: スキーマを表示| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのSHOWSCHEMASの使用法の概要。
+title: SHOW SCHEMAS | TiDB SQL Statement Reference
+summary: An overview of the usage of SHOW SCHEMAS for the TiDB database.
 ---
 
 # スキーマを表示 {#show-schemas}

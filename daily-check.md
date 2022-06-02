@@ -1,6 +1,6 @@
 ---
-title: デイリーチェック
-summary: TiDBクラスタのパフォーマンス指標について学習します。
+title: Daily Check
+summary: Learn about performance indicators of the TiDB cluster.
 ---
 
 # デイリーチェック {#daily-check}

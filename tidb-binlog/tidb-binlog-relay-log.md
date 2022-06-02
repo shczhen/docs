@@ -1,6 +1,6 @@
 ---
-title: TiDBBinlogリレーログ
-summary: 極端な場合にデータの一貫性を維持するためにリレーログを使用する方法を学びます。
+title: TiDB Binlog Relay Log
+summary: Learn how to use relay log to maintain data consistency in extreme cases.
 ---
 
 # TiDBBinlogリレーログ {#tidb-binlog-relay-log}

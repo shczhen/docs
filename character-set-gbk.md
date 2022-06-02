@@ -1,6 +1,6 @@
 ---
 title: GBK
-summary: このドキュメントでは、GBK文字セットのTiDBサポートについて詳しく説明します。
+summary: This document provides details about the TiDB support of the GBK character set.
 ---
 
 # GBK {#gbk}

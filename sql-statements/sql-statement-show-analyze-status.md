@@ -1,6 +1,6 @@
 ---
-title: ステータスの分析を表示
-summary: TiDBデータベースのSHOWANALYZESTATUSの使用法の概要。
+title: SHOW ANALYZE STATUS
+summary: An overview of the usage of SHOW ANALYZE STATUS for the TiDB database.
 ---
 
 # ステータスの分析を表示 {#show-analyze-status}

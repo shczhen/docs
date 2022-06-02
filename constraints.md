@@ -1,6 +1,6 @@
 ---
-title: 制約
-summary: SQL制約がTiDBにどのように適用されるかを学びます。
+title: Constraints
+summary: Learn how SQL Constraints apply to TiDB.
 ---
 
 # 制約 {#constraints}

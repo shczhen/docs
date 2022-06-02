@@ -1,5 +1,5 @@
 ---
-title: TiDBでTPC-Cテストを実行する方法
+title: How to Run TPC-C Test on TiDB
 ---
 
 # TiDBでTPC-Cテストを実行する方法 {#how-to-run-tpc-c-test-on-tidb}

@@ -1,6 +1,6 @@
 ---
-title: HTAPを探索する
-summary: TiDBHTAPの機能を調べて使用する方法を学びます。
+title: Explore HTAP
+summary: Learn how to explore and use the features of TiDB HTAP.
 ---
 
 # HTAPを探索する {#explore-htap}

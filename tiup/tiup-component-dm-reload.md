@@ -1,5 +1,5 @@
 ---
-title: tiupdmリロード
+title: tiup dm reload
 ---
 
 # tiupdmリロード {#tiup-dm-reload}

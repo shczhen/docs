@@ -1,6 +1,6 @@
 ---
-title: TiDBダッシュボードのステートメント実行の詳細
-summary: TiDBダッシュボードで単一のSQLステートメントの実行の詳細を表示します。
+title: Statement Execution Details of TiDB Dashboard
+summary: View the execution details of a single SQL statement in TiDB Dashboard.
 ---
 
 # TiDBダッシュボードのステートメント実行の詳細 {#statement-execution-details-of-tidb-dashboard}
@@ -25,7 +25,7 @@ summary: TiDBダッシュボードで単一のSQLステートメントの実行�
 
 ### 基本タブ {#basic-tab}
 
-SQL実行の基本情報には、テーブル名、インデックス名、実行カウント、および合計待機時間が含まれます。 [**説明**]列には、各フィールドの詳細な説明が表示されます。
+SQL実行の基本情報には、テーブル名、インデックス名、実行カウント、および合計レイテンシが含まれます。 [**説明**]列には、各フィールドの詳細な説明が表示されます。
 
 ![Basic information](/media/dashboard/dashboard-statement-plans-basic.png)
 

@@ -1,5 +1,5 @@
 ---
-title: TiDB2.1.14リリースノート
+title: TiDB 2.1.14 Release Notes
 ---
 
 # TiDB2.1.14リリースノート {#tidb-2-1-14-release-notes}

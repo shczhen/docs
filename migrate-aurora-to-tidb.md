@@ -1,6 +1,6 @@
 ---
-title: AuroraからTiDBへのデータの移行
-summary: DBスナップショットを使用してAuroraからTiDBにデータを移行する方法を学びます。
+title: Migrate Data from Amazon Aurora to TiDB
+summary: Learn how to migrate data from Amazon Aurora to TiDB using DB snapshot.
 ---
 
 # AuroraからTiDBへのデータの移行 {#migrate-data-from-amazon-aurora-to-tidb}

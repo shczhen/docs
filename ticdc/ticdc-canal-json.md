@@ -1,6 +1,6 @@
 ---
-title: TiCDC運河-JSONプロトコル
-summary: TiCDCCanal-JSONプロトコルの概念とその使用方法を学びます。
+title: TiCDC Canal-JSON Protocol
+summary: Learn the concept of TiCDC Canal-JSON Protocol and how to use it.
 ---
 
 # TiCDC運河-JSONプロトコル {#ticdc-canal-json-protocol}

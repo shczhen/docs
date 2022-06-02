@@ -1,6 +1,6 @@
 ---
-title: TiCDCをデプロイ
-summary: TiCDCを展開する方法と、TiCDCを展開および実行するためのハードウェアとソフトウェアの推奨事項について説明します。
+title: Deploy TiCDC
+summary: Learn how to deploy TiCDC and the hardware and software recommendations for deploying and running it.
 ---
 
 # TiCDCをデプロイ {#deploy-ticdc}

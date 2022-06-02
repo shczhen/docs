@@ -1,6 +1,6 @@
 ---
-title: データ移行タスクを作成する
-summary: DMクラスタのデプロイ後に移行タスクを作成する方法を学びます。
+title: Create a Data Migration Task
+summary: Learn how to create a migration task after the DM cluster is deployed.
 ---
 
 # データ移行タスクを作成する {#create-a-data-migration-task}

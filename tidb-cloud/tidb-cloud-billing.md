@@ -1,6 +1,6 @@
 ---
-title: TiDBクラウド請求
-summary: TiDBCloudの請求について学びます。
+title: TiDB Cloud Billing
+summary: Learn about TiDB Cloud billing.
 ---
 
 # TiDBクラウド請求 {#tidb-cloud-billing}
@@ -58,7 +58,7 @@ AWSとGCPはどちらも、データがクラウド内を移動したりクラ�
 -   TiCDCを使用してクラスタとの間でデータをストリーミングする場合
 -   ロードバランサーの固定費
 
-TiDB Cloudは、これらの料金を発生時に顧客に渡します。これは、公開されている[AWS](https://aws.amazon.com/ec2/pricing/on-demand/)および[GCP](https://cloud.google.com/vpc/network-pricing)の価格表を使用して計算され、追加料金は発生しません。
+TiDB Cloudは、これらの料金が発生したときに、公開されている[AWS](https://aws.amazon.com/ec2/pricing/on-demand/)および[GCP](https://cloud.google.com/vpc/network-pricing)の価格表を使用して計算され、追加料金なしで顧客に渡します。
 
 このコストポリシーは、クラスターのライセンス方法に関係なく、クラスターが[専用層](/tidb-cloud/select-cluster-tier.md#dedicated-tier)つあるすべてのTiDBクラウドのお客様に適用されます。
 

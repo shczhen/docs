@@ -1,6 +1,6 @@
 ---
-title: 3ノードハイブリッド展開のベストプラクティス
-summary: 3ノードハイブリッド展開のベストプラクティスを学びます。
+title: Best Practices for Three-Node Hybrid Deployment
+summary: Learn the best practices for three-node hybrid deployment.
 ---
 
 # 3ノードハイブリッド展開のベストプラクティス {#best-practices-for-three-node-hybrid-deployment}

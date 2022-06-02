@@ -1,6 +1,6 @@
 ---
-title: 表| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのTABLEの使用法の概要。
+title: TABLE | TiDB SQL Statement Reference
+summary: An overview of the usage of TABLE for the TiDB database.
 ---
 
 # テーブル {#table}

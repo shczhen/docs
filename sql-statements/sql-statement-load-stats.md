@@ -1,6 +1,6 @@
 ---
-title: 統計の読み込み
-summary: TiDBデータベースのLOADSTATSの使用法の概要。
+title: LOAD STATS
+summary: An overview of the usage of LOAD STATS for the TiDB database.
 ---
 
 # 統計の読み込み {#load-stats}

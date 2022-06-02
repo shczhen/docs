@@ -1,6 +1,6 @@
 ---
-title: DMレプリケーションシナリオでのデータチェック
-summary: データチェックを実行するために`DM-master`から特定の`task-name`構成を設定する方法について学びます。
+title: Data Check in the DM Replication Scenario
+summary: Learn about how to set a specific `task-name` configuration from `DM-master` to perform a data check.
 ---
 
 # DMレプリケーションシナリオでのデータチェック {#data-check-in-the-dm-replication-scenario}

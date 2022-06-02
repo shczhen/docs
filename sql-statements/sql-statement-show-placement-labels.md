@@ -1,6 +1,6 @@
 ---
-title: 配置ラベルを表示する
-summary: TiDBでのSHOWPLACEMENTLABELSの使用法。
+title: SHOW PLACEMENT LABELS
+summary: The usage of SHOW PLACEMENT LABELS in TiDB.
 ---
 
 # 配置ラベルを表示する {#show-placement-labels}

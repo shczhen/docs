@@ -1,6 +1,6 @@
 ---
-title: TiDBバージョニング
-summary: TiDBのバージョン番号付けシステムを学びます。
+title: TiDB Versioning
+summary: Learn the version numbering system of TiDB.
 ---
 
 # TiDBバージョニング {#tidb-versioning}

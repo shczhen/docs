@@ -1,5 +1,5 @@
 ---
-title: tiupミラー初期化
+title: tiup mirror init
 ---
 
 # tiupミラー初期化 {#tiup-mirror-init}

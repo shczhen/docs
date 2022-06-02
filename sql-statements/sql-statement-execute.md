@@ -1,6 +1,6 @@
 ---
-title: 実行| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのEXECUTEの使用法の概要。
+title: EXECUTE | TiDB SQL Statement Reference
+summary: An overview of the usage of EXECUTE for the TiDB database.
 ---
 
 # 実行する {#execute}

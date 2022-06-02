@@ -1,6 +1,6 @@
 ---
-title: 切り捨て| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのTRUNCATEの使用法の概要。
+title: TRUNCATE | TiDB SQL Statement Reference
+summary: An overview of the usage of TRUNCATE for the TiDB database.
 ---
 
 # 切り捨てる {#truncate}

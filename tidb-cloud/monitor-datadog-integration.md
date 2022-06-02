@@ -1,6 +1,6 @@
 ---
-title: Datadog統合（サードパーティの監視サービス）
-summary: Datadog統合を使用してTiDBクラスタを監視する方法を学びます。
+title: Datadog Integration (Third-Party Monitoring Service)
+summary: Learn how to monitor your TiDB cluster with the Datadog integration.
 ---
 
 # Datadog統合 {#datadog-integration}

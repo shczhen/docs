@@ -1,5 +1,5 @@
 ---
-title: ApacheKafkaにシンクします
+title: Sink to Apache Kafka
 Summary: Learn how to create a changefeed to stream data from TiDB Cloud to Apache Kafka. 
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: TiDBSysbenchパフォーマンステストレポート-v4.0とv3.0
-summary: TiDB4.0とTiDB3.0のSysbenchパフォーマンスを比較します。
+title: TiDB Sysbench Performance Test Report -- v4.0 vs. v3.0
+summary: Compare the Sysbench performance of TiDB 4.0 and TiDB 3.0.
 ---
 
 # TiDBSysbenchパフォーマンステストレポート-v4.0とv3.0 {#tidb-sysbench-performance-test-report-v4-0-vs-v3-0}

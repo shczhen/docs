@@ -1,5 +1,5 @@
 ---
-title: tiupクラスタ停止
+title: tiup cluster stop
 ---
 
 # tiupクラスタ停止 {#tiup-cluster-stop}

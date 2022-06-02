@@ -1,6 +1,6 @@
 ---
-title: TiDBBinlogクラスターの操作
-summary: TiDBBinlogのクラスタバージョンを操作する方法を学びます。
+title: TiDB Binlog Cluster Operations
+summary: Learn how to operate the cluster version of TiDB Binlog.
 ---
 
 # TiDBBinlogクラスターの操作 {#tidb-binlog-cluster-operations}

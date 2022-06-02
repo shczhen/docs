@@ -1,6 +1,6 @@
 ---
-title: データ移行タスクConfiguration / コンフィグレーションガイド
-summary: データ移行（DM）でデータ移行タスクを構成する方法を学びます。
+title: Data Migration Task Configuration Guide
+summary: Learn how to configure a data migration task in Data Migration (DM).
 ---
 
 # データ移行タスクConfiguration / コンフィグレーションガイド {#data-migration-task-configuration-guide}

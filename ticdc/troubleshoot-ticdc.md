@@ -1,6 +1,6 @@
 ---
-title: TiCDCのトラブルシューティング
-summary: TiCDCを使用するときに発生する可能性のある問題のトラブルシューティング方法を学びます。
+title: Troubleshoot TiCDC
+summary: Learn how to troubleshoot issues you might encounter when you use TiCDC.
 ---
 
 # TiCDCのトラブルシューティング {#troubleshoot-ticdc}

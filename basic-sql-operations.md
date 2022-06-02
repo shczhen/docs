@@ -1,6 +1,6 @@
 ---
-title: TiDBでSQLを探索する
-summary: TiDBデータベースの基本的なSQLステートメントについて学習します。
+title: Explore SQL with TiDB
+summary: Learn about the basic SQL statements for the TiDB database.
 ---
 
 # TiDBでSQLを探索する {#explore-sql-with-tidb}

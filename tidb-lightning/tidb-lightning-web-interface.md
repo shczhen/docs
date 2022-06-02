@@ -1,6 +1,6 @@
 ---
-title: TiDBLightningWebインターフェイス
-summary: Webインターフェイスを介してTiDBLightningを制御します。
+title: TiDB Lightning Web Interface
+summary: Control TiDB Lightning through the web interface.
 ---
 
 # TiDBLightningWebインターフェイス {#tidb-lightning-web-interface}

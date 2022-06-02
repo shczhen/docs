@@ -1,6 +1,6 @@
 ---
-title: ユーザー定義変数
-summary: ユーザー定義変数の使用方法を学びます。
+title: User-Defined Variables
+summary: Learn how to use user-defined variables.
 ---
 
 # ユーザー定義変数 {#user-defined-variables}

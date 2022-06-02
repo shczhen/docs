@@ -1,6 +1,6 @@
 ---
-title: SQL最適化プロセス
-summary: TiDBでのSQLの論理的および物理的最適化について学びます。
+title: SQL Optimization Process
+summary: Learn about the logical and physical optimization of SQL in TiDB.
 ---
 
 # SQL最適化プロセス {#sql-optimization-process}

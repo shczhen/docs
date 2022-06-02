@@ -1,11 +1,11 @@
 ---
-title: TiDBクラウドビルトインアラート
-summary: TiDBクラウドからアラート通知メールを取得して、TiDBクラスタを監視する方法を学びます。
+title: TiDB Cloud Built-in Alerting
+summary: Learn how to monitor your TiDB cluster by getting alert notification emails from TiDB Cloud.
 ---
 
 # TiDBクラウドビルトインアラート {#tidb-cloud-built-in-alerting}
 
-TiDB Cloudの組み込みアラート機能は、プロジェクト内のTiDBCloudクラスタがTiDBCloudの組み込みアラート条件の1つをトリガーするたびに、電子メールで通知を受ける簡単な方法を提供します。
+TiDB Cloudの組み込みアラート機能は、プロジェクト内のTiDBCloudクラスタがTiDBCloudの組み込みアラート条件の1つをトリガーするたびに、電子メールで通知される簡単な方法を提供します。
 
 このドキュメントでは、TiDB Cloudからのアラート通知メールをサブスクライブする方法について説明し、参照用にTiDBCloudに組み込まれているアラート条件も提供します。
 

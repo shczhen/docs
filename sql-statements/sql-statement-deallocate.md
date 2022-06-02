@@ -1,6 +1,6 @@
 ---
-title: 割り当て解除| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのDEALLOCATEの使用法の概要。
+title: DEALLOCATE | TiDB SQL Statement Reference
+summary: An overview of the usage of DEALLOCATE for the TiDB database.
 ---
 
 # 割り当て解除 {#deallocate}

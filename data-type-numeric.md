@@ -1,6 +1,6 @@
 ---
-title: 数値タイプ
-summary: TiDBでサポートされている数値データ型について学習します。
+title: Numeric Types
+summary: Learn about numeric data types supported in TiDB.
 ---
 
 # 数値タイプ {#numeric-types}

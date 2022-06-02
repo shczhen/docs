@@ -1,6 +1,6 @@
 ---
 title: TIKV_REGION_PEERS
-summary: `TIKV_REGION_PEERS`information_schemaテーブルを学びます。
+summary: Learn the `TIKV_REGION_PEERS` information_schema table.
 ---
 
 # TIKV_REGION_PEERS {#tikv-region-peers}

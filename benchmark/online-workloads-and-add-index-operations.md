@@ -1,6 +1,6 @@
 ---
-title: オンラインワークロードと`ADDINDEX`操作の相互作用テスト
-summary: このドキュメントでは、オンラインワークロードと`ADDINDEX`操作の間の相互作用の影響をテストします。
+title: Interaction Test on Online Workloads and `ADD INDEX` Operations
+summary: This document tests the interaction effects between online workloads and `ADD INDEX` operations.
 ---
 
 # オンラインワークロードと<code>ADD INDEX</code>操作の相互作用テスト {#interaction-test-on-online-workloads-and-code-add-index-code-operations}

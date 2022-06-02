@@ -1,6 +1,6 @@
 ---
-title: DMクラスターパフォーマンステスト
-summary: DMクラスターのパフォーマンスをテストする方法を学びます。
+title: DM Cluster Performance Test
+summary: Learn how to test the performance of DM clusters.
 ---
 
 # DMクラスターパフォーマンステスト {#dm-cluster-performance-test}

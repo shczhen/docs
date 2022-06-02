@@ -1,6 +1,6 @@
 ---
-title: TiDBクラスター間でインクリメンタルデータをリアルタイムで複製する
-summary: あるTiDBクラスタから別のクラスタに増分データをリアルタイムで複製する方法を学習します
+title: Replicate Incremental Data between TiDB Clusters in Real Time
+summary: Learns how to replicate incremental data from one TiDB cluster to another cluster in real time
 ---
 
 # TiDBクラスター間でインクリメンタルデータをリアルタイムで複製する {#replicate-incremental-data-between-tidb-clusters-in-real-time}

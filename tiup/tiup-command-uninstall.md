@@ -1,5 +1,5 @@
 ---
-title: tiupアンインストール
+title: tiup uninstall
 ---
 
 # tiupアンインストール {#tiup-uninstall}

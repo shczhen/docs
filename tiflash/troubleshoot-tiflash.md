@@ -1,6 +1,6 @@
 ---
-title: TiFlashクラスターのトラブルシューティング
-summary: TiFlashクラスタのトラブルシューティングを行う際の一般的な操作について説明します。
+title: Troubleshoot a TiFlash Cluster
+summary: Learn common operations when you troubleshoot a TiFlash cluster.
 ---
 
 # TiFlashクラスターのトラブルシューティング {#troubleshoot-a-tiflash-cluster}

@@ -1,6 +1,6 @@
 ---
-title: GRANT<特権>| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのGRANT<privileges>の使用法の概要。
+title: GRANT <privileges> | TiDB SQL Statement Reference
+summary: An overview of the usage of GRANT <privileges> for the TiDB database.
 ---
 
 # <code>GRANT &#x3C;privileges></code> {#code-grant-x3c-privileges-code}

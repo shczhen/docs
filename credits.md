@@ -1,6 +1,6 @@
 ---
-title: クレジット
-summary: TiDBコミュニティへの貢献者のリストと役割について学びます。
+title: Credits
+summary: Learn about the list and roles of contributors to the TiDB community.
 ---
 
 # クレジット {#credits}

@@ -1,5 +1,5 @@
 ---
-title: tiupミラーサイン
+title: tiup mirror sign
 ---
 
 # tiupミラーサイン {#tiup-mirror-sign}

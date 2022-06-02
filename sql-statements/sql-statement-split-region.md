@@ -1,6 +1,6 @@
 ---
-title: スプリットリージョン
-summary: TiDBデータベースの分割領域の使用法の概要。
+title: Split Region
+summary: An overview of the usage of Split Region for the TiDB database.
 ---
 
 # スプリットリージョン {#split-region}

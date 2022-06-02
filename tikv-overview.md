@@ -1,6 +1,6 @@
 ---
-title: TiKVの概要
-summary: TiKVストレージエンジンの概要。
+title: TiKV Overview
+summary: An overview of the TiKV storage engine.
 ---
 
 # TiKVの概要 {#tikv-overview}

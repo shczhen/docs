@@ -1,6 +1,6 @@
 ---
-title: テーブルの地域を表示する
-summary: TiDBでSHOWTABLEREGIONSを使用する方法を学びます。
+title: SHOW TABLE REGIONS
+summary: Learn how to use SHOW TABLE REGIONS in TiDB.
 ---
 
 # テーブルの地域を表示する {#show-table-regions}

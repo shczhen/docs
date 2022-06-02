@@ -1,6 +1,6 @@
 ---
-title: TiDBツールのユースケース
-summary: TiDBツールの一般的な使用例とツールの選択方法を学びます。
+title: TiDB Tools Use Cases
+summary: Learn the common use cases of TiDB tools and how to choose the tools.
 ---
 
 # TiDBツールのユースケース {#tidb-tools-use-cases}

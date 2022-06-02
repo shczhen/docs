@@ -1,6 +1,6 @@
 ---
-title: ロールバック| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのROLLBACKの使用法の概要。
+title: ROLLBACK | TiDB SQL Statement Reference
+summary: An overview of the usage of ROLLBACK for the TiDB database.
 ---
 
 # ロールバック {#rollback}

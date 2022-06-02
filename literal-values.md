@@ -1,6 +1,6 @@
 ---
-title: リテラル値
-summary: この記事では、TiDBSQLステートメントのリテラル値を紹介します。
+title: Literal Values
+summary: This article introduces the literal values ​​of TiDB SQL statements.
 ---
 
 # リテラル値 {#literal-values}

@@ -1,6 +1,6 @@
 ---
-title: TiFlashの概要
-summary: TiFlashのアーキテクチャと主な機能について学びます。
+title: TiFlash Overview
+summary: Learn the architecture and key features of TiFlash.
 ---
 
 # TiFlashの概要 {#tiflash-overview}

@@ -1,6 +1,6 @@
 ---
-title: TiDB LightningFAQ
-summary: TiDB Lightningに関するよくある質問（FAQ）と回答について説明します。
+title: TiDB Lightning FAQs
+summary: Learn about the frequently asked questions (FAQs) and answers about TiDB Lightning.
 ---
 
 # TiDB LightningFAQ {#tidb-lightning-faqs}
@@ -127,7 +127,7 @@ sql-mode = ""
 
 コマンドラインで`nohup`を直接使用して`tidb-lightning`を開始することはお勧めしません。スクリプトを実行することで[`tidb-lightning`開始します](/tidb-lightning/deploy-tidb-lightning.md#step-3-start-tidb-lightning)できます。
 
-さらに、TiDB Lightningの最後のログに、エラーが「コンテキストがキャンセルされました」と示されている場合は、最初の「エラー」レベルのログを検索する必要があります。この「エラー」レベルのログの後には通常、「終了する信号を取得」が続きます。これは、TiDBLightningが割り込み信号を受信して終了したことを示します。
+さらに、TiDB Lightningの最後のログに、エラーが「コンテキストがキャンセルされました」と示されている場合は、最初の「ERROR」レベルのログを検索する必要があります。この「エラー」レベルのログの後には通常、「終了する信号を取得」が続きます。これは、TiDBLightningが割り込み信号を受信して終了したことを示します。
 
 ## TiDBクラスタが大量のCPUリソースを使用していて、TiDB Lightningを使用した後、実行速度が非常に遅いのはなぜですか？ {#why-my-tidb-cluster-is-using-lots-of-cpu-resources-and-running-very-slowly-after-using-tidb-lightning}
 

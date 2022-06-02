@@ -1,6 +1,6 @@
 ---
-title: TiDBツールをダウンロードする
-summary: 最も公式に保守されているバージョンのTiDBツールをダウンロードします。
+title: Download TiDB Tools
+summary: Download the most officially maintained versions of TiDB tools.
 ---
 
 # TiDBツールをダウンロードする {#download-tidb-tools}

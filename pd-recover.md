@@ -1,6 +1,6 @@
 ---
-title: PDリカバリユーザーガイド
-summary: PD回復を使用して、サービスを正常に開始または提供できないPDクラスタを回復します。
+title: PD Recover User Guide
+summary: Use PD Recover to recover a PD cluster which cannot start or provide services normally.
 ---
 
 # PDリカバリユーザーガイド {#pd-recover-user-guide}

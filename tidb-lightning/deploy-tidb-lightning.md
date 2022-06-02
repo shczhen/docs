@@ -1,6 +1,6 @@
 ---
-title: TiDBLightningの導入
-summary: TiDB Lightningをデプロイして、大量の新しいデータをすばやくインポートします。
+title: TiDB Lightning Deployment
+summary: Deploy TiDB Lightning to quickly import large amounts of new data.
 ---
 
 # TiDBLightningの導入 {#tidb-lightning-deployment}

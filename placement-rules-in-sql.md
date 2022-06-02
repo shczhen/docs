@@ -1,6 +1,6 @@
 ---
-title: SQLの配置ルール
-summary: SQLステートメントを使用してテーブルとパーティションの配置をスケジュールする方法を学びます。
+title: Placement Rules in SQL
+summary: Learn how to schedule placement of tables and partitions using SQL statements.
 ---
 
 # SQLの配置ルール {#placement-rules-in-sql}

@@ -1,6 +1,6 @@
 ---
-title: キーワード
-summary: キーワードと予約語
+title: Keywords
+summary: Keywords and Reserved Words
 ---
 
 # キーワード {#keywords}

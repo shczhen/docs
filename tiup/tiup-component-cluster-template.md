@@ -1,5 +1,5 @@
 ---
-title: tiupクラスタテンプレート
+title: tiup cluster template
 ---
 
 # tiupクラスタテンプレート {#tiup-cluster-template}

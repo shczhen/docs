@@ -1,5 +1,5 @@
 ---
-title: TiDB4.0RCリリースノート
+title: TiDB 4.0 RC Release Notes
 ---
 
 # TiDB4.0RCリリースノート {#tidb-4-0-rc-release-notes}

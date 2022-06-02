@@ -1,6 +1,6 @@
 ---
-title: データ移行リレーログ
-summary: ディレクトリ構造、初期移行ルール、およびDMリレーログのデータパージについて説明します。
+title: Data Migration Relay Log
+summary: Learn the directory structure, initial migration rules and data purge of DM relay logs.
 ---
 
 # データ移行リレーログ {#data-migration-relay-log}

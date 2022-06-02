@@ -1,6 +1,6 @@
 ---
-title: プラグインを表示する
-summary: TiDBデータベースでのSHOWPLUGINSの使用法の概要。
+title: SHOW PLUGINS
+summary: An overview of the usage of SHOW PLUGINS for the TiDB database.
 ---
 
 # プラグインを表示する {#show-plugins}

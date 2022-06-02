@@ -1,6 +1,6 @@
 ---
 title: METRICS_SUMMARY
-summary: METRICS_SUMMARYシステムテーブルを学習します。
+summary: Learn the METRICS_SUMMARY system table.
 ---
 
 # METRICS_SUMMARY {#metrics-summary}
@@ -45,7 +45,7 @@ DESC metrics_summary;
 
 例えば：
 
-`'2020-03-08 13:23:00', '2020-03-08 13: 33: 00'`の時間範囲内でTiDBクラスタ内の平均時間が最も高い監視項目の3つのグループを照会するには、 `information_schema.metrics_summary`テーブルを直接照会し、 `/*+ time_range() */`ヒントを使用して時間範囲を指定します。 SQLステートメントは次のとおりです。
+`'2020-03-08 13:23:00', '2020-03-08 13: 33: 00'`の時間範囲内でTiDBクラスタの平均消費時間が最も長い監視項目の3つのグループを照会するには、 `information_schema.metrics_summary`テーブルを直接照会し、 `/*+ time_range() */`ヒントを使用して時間範囲を指定します。 SQLステートメントは次のとおりです。
 
 {{< copyable "" >}}
 

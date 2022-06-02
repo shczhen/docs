@@ -1,6 +1,6 @@
 ---
-title: TiDBBinlogのトラブルシューティング
-summary: TiDBBinlogのトラブルシューティングプロセスを学びます。
+title: TiDB Binlog Troubleshooting
+summary: Learn the troubleshooting process of TiDB Binlog.
 ---
 
 # TiDBBinlogのトラブルシューティング {#tidb-binlog-troubleshooting}

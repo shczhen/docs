@@ -1,6 +1,6 @@
 ---
-title: SET [NAMES | CHARACTER SET] | TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのSET[NAMES|CHARACTERSET]の使用法の概要。
+title: SET [NAMES|CHARACTER SET] |  TiDB SQL Statement Reference
+summary: An overview of the usage of SET [NAMES|CHARACTER SET] for the TiDB database.
 ---
 
 # SET [NAMES | CHARACTER SET] {#set-names-character-set}

@@ -1,6 +1,6 @@
 ---
-title: 概要ページ
-summary: TiDBダッシュボードの概要ページをご覧ください。
+title: Overview Page
+summary: Learn the overview page of TiDB Dashboard.
 ---
 
 # 概要ページ {#overview-page}

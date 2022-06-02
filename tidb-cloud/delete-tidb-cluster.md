@@ -1,6 +1,6 @@
 ---
-title: TiDBクラスターを削除する
-summary: TiDBクラスタを削除する方法を学びます。
+title: Delete a TiDB Cluster
+summary: Learn how to delete a TiDB cluster.
 ---
 
 # TiDBクラスターを削除する {#delete-a-tidb-cluster}

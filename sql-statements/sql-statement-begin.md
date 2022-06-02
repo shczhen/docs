@@ -1,6 +1,6 @@
 ---
-title: 開始| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのBEGINの使用法の概要。
+title: BEGIN | TiDB SQL Statement Reference
+summary: An overview of the usage of BEGIN for the TiDB database.
 ---
 
 # 始める {#begin}

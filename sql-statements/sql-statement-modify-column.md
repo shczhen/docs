@@ -1,6 +1,6 @@
 ---
-title: MODIFY COLUMN | TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのMODIFYCOLUMNの使用法の概要。
+title: MODIFY COLUMN | TiDB SQL Statement Reference
+summary: An overview of the usage of MODIFY COLUMN for the TiDB database.
 ---
 
 # 列の変更 {#modify-column}

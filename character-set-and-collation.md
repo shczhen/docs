@@ -1,6 +1,6 @@
 ---
-title: キャラクターセットと照合
-summary: TiDBでサポートされている文字セットと照合について学びます。
+title: Character Set and Collation
+summary: Learn about the supported character sets and collations in TiDB.
 ---
 
 # キャラクターセットと照合 {#character-set-and-collation}
@@ -377,7 +377,7 @@ SELECT _utf8mb4'string' COLLATE utf8mb4_general_ci;
 
 ## 照合サポートフレームワーク {#collation-support-framework}
 
-照合順序の構文サポートとセマンティックサポートは、 [`new_collations_enabled_on_first_bootstrap`](/tidb-configuration-file.md#new_collations_enabled_on_first_bootstrap)の構成アイテムの影響を受けます。構文サポートとセマンティックサポートは異なります。前者は、TiDBが照合を解析および設定できることを示しています。後者は、文字列を比較するときにTiDBが照合を正しく使用できることを示しています。
+照合順序の構文サポートとセマンティックサポートは、 [`new_collations_enabled_on_first_bootstrap`](/tidb-configuration-file.md#new_collations_enabled_on_first_bootstrap)の構成項目の影響を受けます。構文サポートとセマンティックサポートは異なります。前者は、TiDBが照合を解析および設定できることを示しています。後者は、文字列を比較するときにTiDBが照合を正しく使用できることを示しています。
 
 v4.0より前では、TiDBは[照合のための古いフレームワーク](#old-framework-for-collations)のみを提供します。このフレームワークでは、TiDBはほとんどのMySQL照合を構文解析的にサポートしますが、意味的にはすべての照合をバイナリ照合として受け取ります。
 

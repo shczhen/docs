@@ -1,6 +1,6 @@
 ---
-title: コミット| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのCOMMITの使用法の概要。
+title: COMMIT | TiDB SQL Statement Reference
+summary: An overview of the usage of COMMIT for the TiDB database.
 ---
 
 # 専念 {#commit}

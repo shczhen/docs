@@ -1,6 +1,6 @@
 ---
-title: TiDBLightningConfiguration / コンフィグレーション
-summary: TiDBLightningでのCLIの使用法とサンプル構成について説明します。
+title: TiDB Lightning Configuration
+summary: Learn about the CLI usage and sample configuration in TiDB Lightning.
 ---
 
 # TiDBLightningConfiguration / コンフィグレーション {#tidb-lightning-configuration}

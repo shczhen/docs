@@ -1,6 +1,6 @@
 ---
-title: 選択| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのSELECTの使用法の概要。
+title: SELECT | TiDB SQL Statement Reference
+summary: An overview of the usage of SELECT for the TiDB database.
 ---
 
 # 選択する {#select}

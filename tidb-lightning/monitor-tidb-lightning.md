@@ -1,6 +1,6 @@
 ---
 title: TiDB Lightning Monitoring
-summary: TiDBLightningのモニター構成とモニターメトリックについて学習します。
+summary: Learn about the monitor configuration and monitoring metrics of TiDB Lightning.
 ---
 
 # TiDB Lightning Monitoring {#tidb-lightning-monitoring}

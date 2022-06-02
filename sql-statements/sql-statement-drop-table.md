@@ -1,6 +1,6 @@
 ---
-title: ドロップテーブル| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのDROPTABLEの使用法の概要。
+title: DROP TABLE | TiDB SQL Statement Reference
+summary: An overview of the usage of DROP TABLE for the TiDB database.
 ---
 
 # ドロップテーブル {#drop-table}

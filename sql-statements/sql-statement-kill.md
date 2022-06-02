@@ -1,6 +1,6 @@
 ---
-title: キル[TIDB]| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのKILL[TIDB]の使用法の概要。
+title: KILL [TIDB] | TiDB SQL Statement Reference
+summary: An overview of the usage of KILL [TIDB] for the TiDB database.
 ---
 
 # キル[TIDB] {#kill-tidb}

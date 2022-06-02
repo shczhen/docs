@@ -1,6 +1,6 @@
 ---
-title: ソフトウェアとハードウェアの要件
-summary: DMクラスタのソフトウェアとハードウェアの要件を学びます。
+title: Software and Hardware Requirements
+summary: Learn the software and hardware requirements for DM cluster.
 ---
 
 # ソフトウェアとハードウェアの要件 {#software-and-hardware-requirements}

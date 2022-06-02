@@ -1,6 +1,6 @@
 ---
 title: CLUSTER_LOG
-summary: `CLUSTER_LOG`information_schemaテーブルを学びます。
+summary: Learn the `CLUSTER_LOG` information_schema table.
 ---
 
 # CLUSTER_LOG {#cluster-log}

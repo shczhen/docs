@@ -1,6 +1,6 @@
 ---
-title: mysqlスキーマ
-summary: TiDBシステムテーブルについて学びます。
+title: mysql Schema
+summary: Learn about the TiDB system tables.
 ---
 
 # <code>mysql</code>スキーマ {#code-mysql-code-schema}

@@ -1,6 +1,6 @@
 ---
-title: インデックス問題の解決方法
-summary: 間違ったインデックスの問題を解決する方法を学びます。
+title: Wrong Index Solution
+summary: Learn how to solve the wrong index issue.
 ---
 
 # インデックス問題の解決方法 {#wrong-index-solution}

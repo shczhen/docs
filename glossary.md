@@ -1,6 +1,6 @@
 ---
-title: 用語集
-summary: TiDBに関する用語集。
+title: Glossary
+summary: Glossaries about TiDB.
 ---
 
 # 用語集 {#glossary}

@@ -1,6 +1,6 @@
 ---
-title: ユーザーアクセスの管理
-summary: TiDBクラウドクラスタでユーザーアクセスを管理する方法を学びます。
+title: Manage User Access
+summary: Learn how to manage the user access in your TiDB Cloud cluster.
 ---
 
 # ユーザーアクセスの管理 {#manage-user-access}

@@ -1,6 +1,6 @@
 ---
-title: [グローバル|セッション]バインディングを作成する
-summary: TiDBデータベースでのCREATEBINDINGの使用。
+title: CREATE [GLOBAL|SESSION] BINDING
+summary: Use of CREATE BINDING in TiDB database.
 ---
 
 # [グローバル|セッション]バインディングを作成する {#create-global-session-binding}

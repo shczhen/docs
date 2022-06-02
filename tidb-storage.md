@@ -1,6 +1,6 @@
 ---
-title: TiDBストレージ
-summary: TiDBデータベースのストレージレイヤーを理解します。
+title: TiDB Storage
+summary: Understand the storage layer of a TiDB database.
 ---
 
 # TiDBストレージ {#tidb-storage}

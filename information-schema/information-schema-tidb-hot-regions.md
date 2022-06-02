@@ -1,6 +1,6 @@
 ---
 title: TIDB_HOT_REGIONS
-summary: `TIDB_HOT_REGIONS`information_schemaテーブルを学びます。
+summary: Learn the `TIDB_HOT_REGIONS` information_schema table.
 ---
 
 # TIDB_HOT_REGIONS {#tidb-hot-regions}

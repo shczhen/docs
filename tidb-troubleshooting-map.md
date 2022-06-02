@@ -1,6 +1,6 @@
 ---
-title: TiDBトラブルシューティングマップ
-summary: TiDBの一般的なエラーのトラブルシューティング方法を学びます。
+title: TiDB Troubleshooting Map
+summary: Learn how to troubleshoot common errors in TiDB.
 ---
 
 # TiDBトラブルシューティングマップ {#tidb-troubleshooting-map}
@@ -457,7 +457,7 @@ summary: TiDBの一般的なエラーのトラブルシューティング方法�
 
 -   6.2.3レプリケーションタスクが中断され、 `driver: bad connection`のエラーが返されます。
 
-    -   `driver: bad connection`エラーは、DMとダウンストリームTiDBデータベース間の接続に異常が発生し（ネットワーク障害、TiDB再起動など）、現在の要求のデータがまだTiDBに送信されていないことを示します。
+    -   `driver: bad connection`エラーは、DMとダウンストリームTiDBデータベース間の接続に異常が発生したこと（ネットワーク障害、TiDB再起動など）、および現在の要求のデータがまだTiDBに送信されていないことを示します。
 
         -   DM 1.0.0 GAより前のバージョンの場合は、 `stop-task`を実行してタスクを停止し、 `start-task`を実行してタスクを再開します。
         -   DM 1.0.0 GA以降のバージョンでは、このタイプのエラーに対する自動再試行メカニズムが追加されています。 [＃265](https://github.com/pingcap/dm/pull/265)を参照してください。

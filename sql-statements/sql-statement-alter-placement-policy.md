@@ -1,6 +1,6 @@
 ---
-title: 配置ポリシーの変更
-summary: TiDBでのALTERPLACEMENTPOLICYの使用。
+title: ALTER PLACEMENT POLICY
+summary: The usage of ALTER PLACEMENT POLICY in TiDB.
 ---
 
 # 配置ポリシーの変更 {#alter-placement-policy}

@@ -1,6 +1,6 @@
 ---
-title: アップグレードおよびアップグレード後のFAQ
-summary: TiDBのアップグレード中およびアップグレード後のいくつかのFAQとソリューションについて学びます。
+title: Upgrade and After Upgrade FAQs
+summary: Learn about some FAQs and the solutions during and after upgrading TiDB.
 ---
 
 # アップグレードおよびアップグレード後のFAQ {#upgrade-and-after-upgrade-faqs}

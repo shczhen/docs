@@ -1,6 +1,6 @@
 ---
-title: クエリステータス
-summary: データ複製タスクのステータスを照会する方法を学びます。
+title: Query Status
+summary: Learn how to query the status of a data replication task.
 ---
 
 # クエリステータス {#query-status}

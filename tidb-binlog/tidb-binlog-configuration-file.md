@@ -1,6 +1,6 @@
 ---
-title: TiDBBinlogConfiguration / コンフィグレーションファイル
-summary: TiDBBinlogの設定項目をご覧ください。
+title: TiDB Binlog Configuration File
+summary: Learn the configuration items of TiDB Binlog.
 ---
 
 # TiDBBinlogConfiguration / コンフィグレーションファイル {#tidb-binlog-configuration-file}

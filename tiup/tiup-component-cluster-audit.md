@@ -1,5 +1,5 @@
 ---
-title: tiupクラスタ監査
+title: tiup cluster audit
 ---
 
 # tiupクラスタ監査 {#tiup-cluster-audit}

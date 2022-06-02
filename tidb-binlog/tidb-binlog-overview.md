@@ -1,6 +1,6 @@
 ---
-title: TiDBBinlogの概要
-summary: TiDBBinlogのクラスタバージョンの概要を学びます。
+title: TiDB Binlog Overview
+summary: Learn overview of the cluster version of TiDB Binlog.
 ---
 
 # TiDBBinlogクラスターの概要 {#tidb-binlog-cluster-overview}

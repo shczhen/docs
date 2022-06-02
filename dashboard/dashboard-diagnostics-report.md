@@ -1,6 +1,6 @@
 ---
-title: TiDBダッシュボード診断レポート
-summary: TiDBダッシュボード診断レポートをご覧ください。
+title: TiDB Dashboard Diagnostic Report
+summary: Learn the TiDB Dashboard diagnostic report.
 ---
 
 # TiDBダッシュボード診断レポート {#tidb-dashboard-diagnostic-report}

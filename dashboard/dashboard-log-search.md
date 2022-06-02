@@ -1,6 +1,6 @@
 ---
-title: TiDBダッシュボードログ検索ページ
-summary: TiDBダッシュボードのログ検索ページを使用してすべてのノードのログを検索する方法を学びます。
+title: TiDB Dashboard Log Search Page
+summary: Learn how to search logs of all nodes using the log search page of TiDB Dashboard.
 ---
 
 # TiDBダッシュボードログ検索ページ {#tidb-dashboard-log-search-page}

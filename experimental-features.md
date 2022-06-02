@@ -1,6 +1,6 @@
 ---
-title: TiDBの実験的特徴
-summary: TiDBの実験的機能を学びます。
+title: TiDB Experimental Features
+summary: Learn the experimental features of TiDB.
 ---
 
 # TiDBの実験的特徴 {#tidb-experimental-features}

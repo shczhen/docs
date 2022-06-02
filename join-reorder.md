@@ -1,6 +1,6 @@
 ---
-title: 再注文に結合したテーブルの再配置ための概要
-summary: 結合したテーブルの再配置アルゴリズムを使用して、TiDB内の複数のテーブルを結合します。
+title: Introduction to Join Reorder
+summary: Use the Join Reorder algorithm to join multiple tables in TiDB.
 ---
 
 # 再注文に結合したテーブルの再配置ための概要 {#introduction-to-join-reorder}

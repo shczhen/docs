@@ -1,6 +1,6 @@
 ---
-title: DMのConfiguration / コンフィグレーションを最適化する
-summary: データ移行タスクの構成を最適化して、データ移行のパフォーマンスを向上させる方法を学びます。
+title: Optimize Configuration of DM
+summary: Learn how to optimize the configuration of the data migration task to improve the performance of data migration.
 ---
 
 # DMのConfiguration / コンフィグレーションを最適化する {#optimize-configuration-of-dm}

@@ -1,5 +1,5 @@
 ---
-title: MySQLにシンク
+title: Sink to MySQL
 Summary: Learn how to create a changefeed to stream data from TiDB Cloud to MySQL.
 ---
 

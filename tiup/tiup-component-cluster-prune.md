@@ -1,5 +1,5 @@
 ---
-title: tiupクラスタプルーン
+title: tiup cluster prune
 ---
 
 # tiupクラスタプルーン {#tiup-cluster-prune}

@@ -1,6 +1,6 @@
 ---
-title: 関数とオペレーターのリファレンス
-summary: 関数と演算子の使用方法を学びます。
+title: Function and Operator Reference
+summary: Learn how to use the functions and operators.
 ---
 
 # 関数とオペレーターのリファレンス {#function-and-operator-reference}

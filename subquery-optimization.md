@@ -1,6 +1,6 @@
 ---
-title: サブクエリ関連の最適化
-summary: サブクエリに関連する最適化を理解します。
+title: Subquery Related Optimizations
+summary: Understand optimizations related to subqueries.
 ---
 
 # サブクエリ関連の最適化 {#subquery-related-optimizations}

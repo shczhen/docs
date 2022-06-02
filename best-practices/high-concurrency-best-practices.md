@@ -1,6 +1,6 @@
 ---
-title: 非常に同時の書き込みのベストプラクティス
-summary: TiDBでの書き込みが集中するワークロードのベストプラクティスを学びます。
+title: Highly Concurrent Write Best Practices
+summary: Learn best practices for highly-concurrent write-intensive workloads in TiDB.
 ---
 
 # 非常に同時の書き込みのベストプラクティス {#highly-concurrent-write-best-practices}

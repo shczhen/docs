@@ -1,6 +1,6 @@
 ---
-title: シャーディングされたテーブルからのデータのマージと移行
-summary: DMがシャーディングされたテーブルからデータをマージおよび移行する方法を学びます。
+title: Merge and Migrate Data from Sharded Tables
+summary: Learn how DM merges and migrates data from sharded tables.
 ---
 
 # シャーディングされたテーブルからのデータのマージと移行 {#merge-and-migrate-data-from-sharded-tables}

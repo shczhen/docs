@@ -1,6 +1,6 @@
 ---
-title: 設定を表示
-summary: TiDBデータベースでのSHOWCONFIGの使用の概要
+title: SHOW CONFIG
+summary: Overview of the use of SHOW CONFIG in the TiDB database
 ---
 
 # 設定を表示 {#show-config}

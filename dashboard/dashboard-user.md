@@ -1,6 +1,6 @@
 ---
-title: TiDBダッシュボードユーザー管理
-summary: TiDBダッシュボードにアクセスするSQLユーザーを作成する方法を学びます。
+title: TiDB Dashboard User Management
+summary: Learn how to create SQL users to access TiDB Dashboard.
 ---
 
 # TiDBダッシュボードユーザー管理 {#tidb-dashboard-user-management}

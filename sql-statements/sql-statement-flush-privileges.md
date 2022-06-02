@@ -1,6 +1,6 @@
 ---
-title: フラッシュ特権| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのFLUSHPRIVILEGESの使用法の概要。
+title: FLUSH PRIVILEGES | TiDB SQL Statement Reference
+summary: An overview of the usage of FLUSH PRIVILEGES for the TiDB database.
 ---
 
 # フラッシュ特権 {#flush-privileges}

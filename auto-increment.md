@@ -1,6 +1,6 @@
 ---
-title: 自動増加
-summary: TiDBの`AUTO_INCREMENT`列属性を学びます。
+title: AUTO_INCREMENT
+summary: Learn the `AUTO_INCREMENT` column attribute of TiDB.
 ---
 
 # 自動増加 {#auto-increment}

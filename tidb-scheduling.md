@@ -1,6 +1,6 @@
 ---
-title: TiDBスケジューリング
-summary: TiDBクラスタにPDスケジューリングコンポーネントを導入します。
+title: TiDB Scheduling
+summary: Introduces the PD scheduling component in a TiDB cluster.
 ---
 
 # TiDBスケジューリング {#tidb-scheduling}
@@ -89,7 +89,7 @@ TiKVは、TiDBで使用される分散キー値ストレージエンジンです
 
 -   地域の指導者によって報告された情報：
 
-    各リージョンリーダーは、PDに定期的にハートビートを送信して[`RegionState`](https://github.com/pingcap/kvproto/blob/master/proto/pdpb.proto#L312)を報告します。これには、次のものが含まれます。
+    各リージョンリーダーは、以下を含む[`RegionState`](https://github.com/pingcap/kvproto/blob/master/proto/pdpb.proto#L312)を報告するために、定期的にハートビートをPDに送信します。
 
     -   リーダー自体の位置
     -   他のレプリカの位置

@@ -1,5 +1,5 @@
 ---
-title: tiupクラスタヘルプ
+title: tiup cluster help
 ---
 
 # tiupクラスタヘルプ {#tiup-cluster-help}

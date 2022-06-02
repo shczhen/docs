@@ -1,6 +1,6 @@
 ---
-title: 配置を表示
-summary: TiDBでのSHOWPLACEMENTの使用法。
+title: SHOW PLACEMENT
+summary: The usage of SHOW PLACEMENT in TiDB.
 ---
 
 # 配置を表示 {#show-placement}

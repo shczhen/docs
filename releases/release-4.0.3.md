@@ -1,5 +1,5 @@
 ---
-title: TiDB4.0.3リリースノート
+title: TiDB 4.0.3 Release Notes
 ---
 
 # TiDB4.0.3リリースノート {#tidb-4-0-3-release-notes}
@@ -113,7 +113,7 @@ TiDBバージョン：4.0.3
     -   生成された列[＃17907](https://github.com/pingcap/tidb/pull/17907)を含むテーブルで`REPLACE INTO`ステートメントが機能するときに報告されるエラーを修正します
     -   `IndexHashJoin`人と`IndexMergeJoin`人の労働者がパニックになったときにOOMエラーを返す[＃18527](https://github.com/pingcap/tidb/pull/18527)
     -   `Index Join`で使用されるインデックスに整数の主キー[＃18565](https://github.com/pingcap/tidb/pull/18565)が含まれている場合に、 `Index Join`を実行すると、特殊なケースで誤った結果が返される可能性があるというバグを修正します。
-    -   クラスタで新しい照合順序が有効になっている場合、トランザクション内の新しい照合順序で列で更新されたデータを一意のインデックス[＃18703](https://github.com/pingcap/tidb/pull/18703)から読み取ることができない問題を修正します。
+    -   クラスタで新しい照合順序が有効になっている場合、トランザクション内の新しい照合順序で列で更新されたデータを一意のインデックス[＃18703](https://github.com/pingcap/tidb/pull/18703)から読み取ることができないという問題を修正します。
 
 -   TiKV
 

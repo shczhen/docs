@@ -1,6 +1,6 @@
 ---
 title: SHOW STATS_HEALTHY
-summary: TiDBデータベースのSHOWSTATS_HEALTHYの使用法の概要。
+summary: An overview of the usage of SHOW STATS_HEALTHY for TiDB database.
 ---
 
 # SHOW STATS_HEALTHY {#show-stats-healthy}

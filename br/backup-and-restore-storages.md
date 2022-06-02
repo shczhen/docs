@@ -1,6 +1,6 @@
 ---
-title: 外部ストレージ
-summary: BR、TiDB Lightning、およびDumplingで使用されるストレージURL形式について説明します。
+title: External Storages
+summary: Describes the storage URL format used in BR, TiDB Lightning, and Dumpling.
 ---
 
 # 外部ストレージ {#external-storages}

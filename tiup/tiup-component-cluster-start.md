@@ -1,5 +1,5 @@
 ---
-title: tiupクラスタ開始
+title: tiup cluster start
 ---
 
 # tiupクラスタ開始 {#tiup-cluster-start}

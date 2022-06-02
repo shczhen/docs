@@ -1,6 +1,6 @@
 ---
-title: TiDBBinlogチュートリアル
-summary: 単純なTiDBクラスタを使用してTiDBBinlogをデプロイする方法を学びます。
+title: TiDB Binlog Tutorial
+summary: Learn to deploy TiDB Binlog with a simple TiDB cluster.
 ---
 
 # TiDBBinlogチュートリアル {#tidb-binlog-tutorial}

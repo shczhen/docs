@@ -1,6 +1,6 @@
 ---
-title: クラスタ管理に関するFAQ
-summary: TiDBクラスタ管理に関連するFAQについて学びます。
+title: Cluster Management FAQs
+summary: Learn about the FAQs related to TiDB cluster management.
 ---
 
 # クラスタ管理に関するFAQ {#cluster-management-faqs}

@@ -1,6 +1,6 @@
 ---
-title: アップストリームデータベースConfiguration / コンフィグレーションファイル
-summary: アップストリームデータベースの構成ファイルを学習する
+title: Upstream Database Configuration File
+summary: Learn the configuration file of the upstream database
 ---
 
 # アップストリームデータベースConfiguration / コンフィグレーションファイル {#upstream-database-configuration-file}

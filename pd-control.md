@@ -1,6 +1,6 @@
 ---
-title: PD制御ユーザーガイド
-summary: PD制御を使用して、クラスターの状態情報を取得し、クラスタを調整しクラスタ。
+title: PD Control User Guide
+summary: Use PD Control to obtain the state information of a cluster and tune a cluster.
 ---
 
 # PD制御ユーザーガイド {#pd-control-user-guide}

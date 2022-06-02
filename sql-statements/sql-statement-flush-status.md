@@ -1,6 +1,6 @@
 ---
-title: フラッシュステータス| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのFLUSHSTATUSの使用法の概要。
+title: FLUSH STATUS | TiDB SQL Statement Reference
+summary: An overview of the usage of FLUSH STATUS for the TiDB database.
 ---
 
 # フラッシュステータス {#flush-status}

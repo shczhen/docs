@@ -1,6 +1,6 @@
 ---
-title: TiDBダッシュボードの低速クエリページ
-summary: TiDBダッシュボードの低速クエリページをご覧ください。
+title: Slow Queries Page of TiDB Dashboard
+summary: Learn the Slow Queries page of TiDB Dashboard.
 ---
 
 # TiDBダッシュボードの低速クエリページ {#slow-queries-page-of-tidb-dashboard}

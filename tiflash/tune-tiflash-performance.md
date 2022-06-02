@@ -1,6 +1,6 @@
 ---
-title: TiFlashのパフォーマンスを調整する
-summary: TiFlashのパフォーマンスを調整する方法を学びます。
+title: Tune TiFlash Performance
+summary: Learn how to tune the performance of TiFlash.
 ---
 
 # TiFlashのパフォーマンスを調整する {#tune-tiflash-performance}

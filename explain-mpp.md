@@ -1,6 +1,6 @@
 ---
-title: MPPモードでのステートメントの説明
-summary: TiDBのEXPLAINステートメントによって返される実行プラン情報について学習します。
+title: Explain Statements in the MPP Mode
+summary: Learn about the execution plan information returned by the EXPLAIN statement in TiDB.
 ---
 
 # MPPモードでのステートメントの説明 {#explain-statements-in-the-mpp-mode}

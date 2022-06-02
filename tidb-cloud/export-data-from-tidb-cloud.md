@@ -1,6 +1,6 @@
 ---
-title: TiDBからデータをエクスポートする
-summary: このページには、TiDBクラウドのTiDBクラスタからデータをエクスポートする手順が記載されています。
+title: Export Data from TiDB
+summary: This page has instructions for exporting data from your TiDB cluster in TiDB Cloud.
 ---
 
 # TiDBからデータをエクスポートする {#export-data-from-tidb}

@@ -1,6 +1,6 @@
 ---
-title: TiDBクラスター間の双方向レプリケーション
-summary: TiDBクラスター間で双方向レプリケーションを実行する方法を学びます。
+title: Bidirectional Replication Between TiDB Clusters
+summary: Learn how to perform the bidirectional replication between TiDB clusters.
 ---
 
 # TiDBクラスター間の双方向レプリケーション {#bidirectional-replication-between-tidb-clusters}

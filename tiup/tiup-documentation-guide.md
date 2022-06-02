@@ -1,6 +1,6 @@
 ---
-title: TiUPドキュメントマップ
-summary: リンクと紹介を含むTiUPドキュメントをガイドします。
+title: TiUP Documentation Map
+summary: Guide you through TiUP documentation with links and introductions.
 ---
 
 # TiUPドキュメントマップ {#tiup-documentation-map}

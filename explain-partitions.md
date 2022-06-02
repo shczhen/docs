@@ -1,6 +1,6 @@
 ---
-title: パーティションを使用してステートメントを説明する
-summary: TiDBのEXPLAINステートメントによって返される実行プラン情報について学習します。
+title: Explain Statements Using Partitions
+summary: Learn about the execution plan information returned by the EXPLAIN statement in TiDB.
 ---
 
 # パーティションを使用してステートメントを説明する {#explain-statements-using-partitions}

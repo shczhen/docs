@@ -1,5 +1,5 @@
 ---
-title: TiDB3.0.8リリースノート
+title: TiDB 3.0.8 Release Notes
 ---
 
 # TiDB3.0.8リリースノート {#tidb-3-0-8-release-notes}
@@ -76,7 +76,7 @@ TiDB Ansibleバージョン：3.0.8
 
 -   コプロセッサー
     -   コプロセッサー[＃6051](https://github.com/tikv/tikv/pull/6051)でエラーが発生した場合、出力ログのレベルを`error`から`warn`に変更します。
-    -   統計サンプリングデータの更新動作を、行の直接更新から挿入前の削除に変更して、 [＃6069](https://github.com/tikv/tikv/pull/6096) -server1の更新動作との一貫性を維持します。
+    -   tidb-server [＃6069](https://github.com/tikv/tikv/pull/6096)の更新動作との一貫性を保つために、統計サンプリングデータの更新動作を行の直接更新から挿入前の削除に変更します。
 -   ラフトストア
     -   `destroy`のメッセージを`peerfsm`に繰り返し送信し、 `peerfsm`が複数回破壊されることによって引き起こされるパニックを修正します[＃6297](https://github.com/tikv/tikv/pull/6297)
     -   デフォルト値の`split-region-on-table`を`true`から`false`に更新して、デフォルトでリージョンをテーブルで分割できないようにします[＃6253](https://github.com/tikv/tikv/pull/6253)

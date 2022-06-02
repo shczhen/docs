@@ -1,6 +1,6 @@
 ---
-title: フォロワー読み取り
-summary: このドキュメントでは、フォロワー読み取りの使用と実装について説明します。
+title: Follower Read
+summary: This document describes the use and implementation of Follower Read.
 ---
 
 # フォロワー読み取り {#follower-read}

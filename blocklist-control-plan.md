@@ -1,6 +1,6 @@
 ---
-title: 最適化ルールと式のプッシュダウンのブロックリスト
-summary: 最適化ルールと式プッシュダウンの動作を制御するためのブロックリストについて学習します。
+title: The Blocklist of Optimization Rules and Expression Pushdown
+summary: Learn about the blocklist to control the optimization rules and the behavior of expression pushdown.
 ---
 
 # 最適化ルールと式のプッシュダウンのブロックリスト {#the-blocklist-of-optimization-rules-and-expression-pushdown}

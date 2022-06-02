@@ -1,6 +1,6 @@
 ---
-title: 助成金を表示| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのSHOWGRANTSの使用法の概要。
+title: SHOW GRANTS | TiDB SQL Statement Reference
+summary: An overview of the usage of SHOW GRANTS for the TiDB database.
 ---
 
 # 助成金を表示 {#show-grants}

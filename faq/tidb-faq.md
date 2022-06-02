@@ -1,6 +1,6 @@
 ---
 title: TiDB FAQ
-summary: TiDBに関連する最もよくある質問（FAQ）について学びます。
+summary: Learn about the most frequently asked questions (FAQs) relating to TiDB.
 ---
 
 # TiDB FAQ {#tidb-faq}

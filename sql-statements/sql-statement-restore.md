@@ -1,6 +1,6 @@
 ---
-title: 復元| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースのRESTOREの使用法の概要。
+title: RESTORE | TiDB SQL Statement Reference
+summary: An overview of the usage of RESTORE for the TiDB database.
 ---
 
 # 戻す {#restore}

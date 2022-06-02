@@ -1,6 +1,6 @@
 ---
-title: TiDBを使用してJavaアプリケーションを開発するためのベストプラクティス
-summary: TiDBを使用してJavaアプリケーションを開発するためのベストプラクティスを学びます。
+title: Best Practices for Developing Java Applications with TiDB
+summary: Learn the best practices for developing Java applications with TiDB.
 ---
 
 # TiDBを使用してJavaアプリケーションを開発するためのベストプラクティス {#best-practices-for-developing-java-applications-with-tidb}

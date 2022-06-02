@@ -1,5 +1,5 @@
 ---
-title: TiDB2.1.17リリースノート
+title: TiDB 2.1.17 Release Notes
 ---
 
 # TiDB2.1.17リリースノート {#tidb-2-1-17-release-notes}
@@ -34,7 +34,7 @@ TiDB Ansibleバージョン：2.1.17
 -   SQL実行エンジン
     -   `CAST`関数が数値タイプ[＃11712](https://github.com/pingcap/tidb/pull/11712)を変換しているときに、最初に`UINT`に変換される数値によって引き起こされるいくつかの誤った結果（ `select cast(13835058000000000000 as double)`など）を修正します。
     -   `DIV`の計算の被除数が小数であり、この計算に負の数[＃11812](https://github.com/pingcap/tidb/pull/11812)が含まれている場合、計算結果が正しくない可能性がある問題を修正します。
-    -   `ConvertStrToIntStrict`関数を追加して、 `SELECT` / `EXPLAIN`ステートメントの実行時に一部の文字列が`INT`タイプに変換されることによって引き起こされるMySQLの非互換性の問題を修正します[＃11892](https://github.com/pingcap/tidb/pull/11892)
+    -   `ConvertStrToIntStrict`関数を追加して、 `SELECT` / `EXPLAIN`ステートメント[＃11892](https://github.com/pingcap/tidb/pull/11892)の実行時に一部の文字列が`INT`タイプに変換されることによって引き起こされるMySQLの非互換性の問題を修正します。
     -   `EXPLAIN ... FOR CONNECTION`が使用されている場合に`stmtCtx`の設定が間違っているために`Explain`の結果が正しくない可能性があるという問題を修正します[＃11978](https://github.com/pingcap/tidb/pull/11978)
     -   `unaryMinus`関数によって返される結果がMySQLと互換性がないという問題を修正します。これは、整数の結果が[＃11990](https://github.com/pingcap/tidb/pull/11990)をオーバーフローしたときに非10進数の結果が原因で発生します。
     -   `LOAD DATA`ステートメントが実行されているときのカウント順序が原因で`last_insert_id()`が正しくない可能性があるという問題を修正します[＃11994](https://github.com/pingcap/tidb/pull/11994)

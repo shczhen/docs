@@ -1,6 +1,6 @@
 ---
-title: TiFlashアラートルール
-summary: TiFlashクラスタのアラートルールを学びます。
+title: TiFlash Alert Rules
+summary: Learn the alert rules of the TiFlash cluster.
 ---
 
 # TiFlashアラートルール {#tiflash-alert-rules}

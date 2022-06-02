@@ -1,6 +1,6 @@
 ---
-title: TiDBデータベースプラットフォームのクイックスタートガイド
-summary: TiDBプラットフォームをすぐに使い始める方法を学び、TiDBがあなたにとって正しい選択であるかどうかを確認してください。
+title: Quick Start Guide for the TiDB Database Platform
+summary: Learn how to quickly get started with the TiDB platform and see if TiDB is the right choice for you.
 ---
 
 # TiDBデータベースプラットフォームのクイックスタートガイド {#quick-start-guide-for-the-tidb-database-platform}

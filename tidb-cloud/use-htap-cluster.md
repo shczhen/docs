@@ -1,6 +1,6 @@
 ---
-title: HTAPクラスターを使用する
-summary: TiDBクラウドでHTAPクラスタを使用する方法を学びます。
+title: Use an HTAP Cluster
+summary: Learn how to use HTAP cluster in TiDB Cloud.
 ---
 
 # HTAPクラスターを使用する {#use-an-htap-cluster}

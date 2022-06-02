@@ -1,6 +1,6 @@
 ---
-title: TiDBの機能
-summary: TiDBの基本機能について学びます。
+title: TiDB Features
+summary: Learn about the basic features of TiDB.
 ---
 
 # TiDBの機能 {#tidb-features}

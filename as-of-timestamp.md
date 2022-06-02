@@ -1,6 +1,6 @@
 ---
-title: `ASOFTIMESTAMP`句を使用して履歴データを読み取る
-summary: `ASOFTIMESTAMP`ステートメント句を使用して履歴データを読み取る方法を学びます。
+title: Read Historical Data Using the `AS OF TIMESTAMP` Clause
+summary: Learn how to read historical data using the `AS OF TIMESTAMP` statement clause.
 ---
 
 # <code>AS OF TIMESTAMP</code>句を使用して履歴データを読み取る {#read-historical-data-using-the-code-as-of-timestamp-code-clause}

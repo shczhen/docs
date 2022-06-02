@@ -1,6 +1,6 @@
 ---
-title: 地理的に分散された展開トポロジ
-summary: TiDBの地理的に分散された展開トポロジを学習します。
+title: Geo-distributed Deployment topology
+summary: Learn the geo-distributed deployment topology of TiDB.
 ---
 
 # 地理的に分散された展開トポロジ {#geo-distributed-deployment-topology}

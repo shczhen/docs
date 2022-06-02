@@ -1,6 +1,6 @@
 ---
-title: 主な機能
-summary: DMの主な機能と適切なパラメーター構成について説明します。
+title: Key Features
+summary: Learn about the key features of DM and appropriate parameter configurations.
 ---
 
 # 主な機能 {#key-features}

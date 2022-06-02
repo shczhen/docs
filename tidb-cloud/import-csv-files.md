@@ -1,6 +1,6 @@
 ---
-title: AmazonS3またはGCSからTiDBクラウドにCSVファイルをインポートする
-summary: CSVファイルをAmazonS3またはGCSからTiDBクラウドにインポートする方法を学びます。
+title:  Import CSV Files from Amazon S3 or GCS into TiDB Cloud
+summary: Learn how to import CSV files from Amazon S3 or GCS into TiDB Cloud.
 ---
 
 # AmazonS3またはGCSからTiDBクラウドにCSVファイルをインポートする {#import-csv-files-from-amazon-s3-or-gcs-into-tidb-cloud}
@@ -103,7 +103,7 @@ CSVファイルをTiDBCloudにインポートするには、次の手順を実�
 
     数値がゼロの場合は、[**オブジェクト名パターン]**フィールドに入力した値と一致するデータファイルがないことを意味します。この場合、「<strong>オブジェクト名パターン」</strong>フィールドにタイプミスがないことを確認して、再試行してください。
 
-インポートタスクの実行時に、サポートされていない変換または無効な変換が検出されると、TiDB Cloudはインポートジョブを自動的に終了し、インポートエラーを報告します。
+インポートタスクの実行時に、サポートされていない、または無効な変換が検出されると、TiDB Cloudはインポートジョブを自動的に終了し、インポートエラーを報告します。
 
 インポートエラーが発生した場合は、次の手順を実行してください。
 

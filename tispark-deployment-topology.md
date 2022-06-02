@@ -1,6 +1,6 @@
 ---
-title: TiSparkデプロイメントトポロジ
-summary: 最小限のTiDBトポロジに基づくTiUPを使用したTiSparkの展開トポロジを学習します。
+title: TiSpark Deployment Topology
+summary: Learn the deployment topology of TiSpark using TiUP based on the minimal TiDB topology.
 ---
 
 # TiSparkデプロイメントトポロジ {#tispark-deployment-topology}

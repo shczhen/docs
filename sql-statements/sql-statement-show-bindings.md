@@ -1,6 +1,6 @@
 ---
-title: [グローバル|セッション]のバインドを表示
-summary: TiDBデータベースでのSHOWBINDINGSバインディングの使用。
+title: SHOW [GLOBAL|SESSION] BINDINGS
+summary: Use of SHOW BINDINGS binding in TiDB database.
 ---
 
 # [グローバル|セッション]のバインドを表示 {#show-global-session-bindings}

@@ -1,6 +1,6 @@
 ---
-title: 手動プロファイリング
-summary: TiDBダッシュボードの手動インスタンスプロファイリングについて学びます。
+title: Manual Profiling
+summary: Learn the manual instance profiling of TiDB Dashboard.
 ---
 
 # 手動インスタンスプロファイリングページ {#manual-instance-profiling-page}

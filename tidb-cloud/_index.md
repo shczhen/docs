@@ -1,6 +1,6 @@
 ---
-title: TiDBクラウドドキュメント
-summary: TiDBクラウドのドキュメントについて学びます。
+title: TiDB Cloud Documentation
+summary: Learn about TiDB Cloud documentation.
 aliases: ['/tidbcloud/beta/privacy-policy', '/tidbcloud/beta/terms-of-service', '/tidbcloud/beta/service-level-agreement']
 ---
 

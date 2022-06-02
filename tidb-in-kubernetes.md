@@ -1,6 +1,6 @@
 ---
-title: KubernetesにTiDBクラスターをデプロイする
-summary: KubernetesにTiDBクラスタをデプロイする方法を学びます。
+title: Deploy a TiDB Cluster in Kubernetes
+summary: Learn how to deploy a TiDB cluster in Kubernetes.
 ---
 
 # KubernetesにTiDBクラスターをデプロイする {#deploy-a-tidb-cluster-in-kubernetes}

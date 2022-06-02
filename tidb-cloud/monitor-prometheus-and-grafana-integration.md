@@ -1,6 +1,6 @@
 ---
-title: PrometheusとGrafanaの統合（サードパーティの監視サービス）
-summary: PrometheusとGrafanaの統合を使用してTiDBクラスタを監視する方法を学びます。
+title: Prometheus and Grafana Integration (Third-Party Monitoring Service)
+summary: Learn how to monitor your TiDB cluster with the Prometheus and Grafana integration.
 ---
 
 # PrometheusとGrafanaの統合 {#prometheus-and-grafana-integration}

@@ -1,6 +1,6 @@
 ---
-title: TiUPを使用してTiDBをアップグレードする
-summary: TiUPを使用してTiDBをアップグレードする方法を学びます。
+title: Upgrade TiDB Using TiUP
+summary: Learn how to upgrade TiDB using TiUP.
 ---
 
 # TiUPを使用してTiDBをアップグレードする {#upgrade-tidb-using-tiup}

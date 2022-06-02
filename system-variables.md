@@ -1,6 +1,6 @@
 ---
-title: システム変数
-summary: システム変数を使用して、パフォーマンスを最適化したり、実行動作を変更したりします。
+title: System Variables
+summary: Use system variables to optimize performance or alter running behavior.
 ---
 
 # システム変数 {#system-variables}
@@ -158,7 +158,7 @@ mysql> SELECT * FROM t1;
 
 ### datadir {#datadir}
 
--   スコープ：なし
+-   範囲：なし
 -   デフォルト値：/ tmp / tidb
 -   この変数は、データが保存される場所を示します。データがTiKVに保存されている場合、この場所はローカルパスにすることも、PDサーバーを指すこともできます。
 -   `ip_address:port`の形式の値は、起動時にTiDBが接続するPDサーバーを示します。
@@ -752,7 +752,7 @@ MPPは、TiFlashエンジンによって提供される分散コンピューテ�
 
 ### tidb_enable_enhanced_security {#tidb-enable-enhanced-security}
 
--   スコープ：なし
+-   範囲：なし
 -   デフォルト値： `OFF`
 -   この変数は、接続しているTiDBサーバーでセキュリティ拡張モード（SEM）が有効になっているかどうかを示します。その値を変更するには、TiDBサーバー構成ファイルの値`enable-sem`を変更し、TiDBサーバーを再起動する必要があります。
 -   SEMは、 [セキュリティが強化されたLinux](https://en.wikipedia.org/wiki/Security-Enhanced_Linux)などのシステムの設計に触発されています。これにより、MySQL `SUPER`特権を持つユーザーの能力が低下し、代わりに`RESTRICTED`つのきめ細かい特権を付与する必要があります。これらのきめ細かい特権には、次のものが含まれます。

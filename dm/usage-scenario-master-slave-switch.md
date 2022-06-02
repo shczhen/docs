@@ -1,6 +1,6 @@
 ---
-title: アップストリームMySQLインスタンス間のDM-worker接続の切り替え
-summary: アップストリームのMySQLインスタンス間でDM-worker接続を切り替える方法を学びます。
+title: Switch DM-worker Connection between Upstream MySQL Instances
+summary: Learn how to switch the DM-worker connection between upstream MySQL instances.
 ---
 
 # アップストリームMySQLインスタンス間のDM-worker接続の切り替え {#switch-dm-worker-connection-between-upstream-mysql-instances}

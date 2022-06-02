@@ -1,6 +1,6 @@
 ---
-title: TiDBクラスタートラブルシューティングガイド
-summary: TiDBを使用するときに問題を診断して解決する方法を学びます。
+title: TiDB Cluster Troubleshooting Guide
+summary: Learn how to diagnose and resolve issues when you use TiDB.
 ---
 
 # TiDBクラスタートラブルシューティングガイド {#tidb-cluster-troubleshooting-guide}

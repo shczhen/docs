@@ -1,6 +1,6 @@
 ---
-title: ペシミスティックモードでシャードテーブルからデータをマージおよび移行する
-summary: DMがペシミスティックモードでシャーディングされたテーブルからデータをマージおよび移行する方法を学びます。
+title: Merge and Migrate Data from Sharded Tables in the Pessimistic Mode
+summary: Learn how DM merges and migrates data from sharded tables in the pessimistic mode.
 ---
 
 # ペシミスティックモードでシャードテーブルからデータをマージおよび移行する {#merge-and-migrate-data-from-sharded-tables-in-the-pessimistic-mode}

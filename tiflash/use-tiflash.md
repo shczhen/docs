@@ -1,5 +1,5 @@
 ---
-title: TiFlashを使用する
+title: Use TiFlash
 ---
 
 データのインポートからTPC-Hデータセットでのクエリまでのプロセス全体を体験するには、 [TiDBHTAPのクイックスタートガイド](/quick-start-with-htap.md)を参照してください。

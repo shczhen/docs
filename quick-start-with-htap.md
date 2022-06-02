@@ -1,6 +1,6 @@
 ---
-title: HTAPのクイックスタート
-summary: TiDBHTAPをすばやく開始する方法を学びます。
+title: Quick start with HTAP
+summary: Learn how to quickly get started with the TiDB HTAP.
 ---
 
 # TiDBHTAPのクイックスタートガイド {#quick-start-guide-for-tidb-htap}

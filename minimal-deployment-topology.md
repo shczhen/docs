@@ -1,6 +1,6 @@
 ---
-title: 最小限の展開トポロジ
-summary: TiDBクラスターの最小限のデプロイメントトポロジーを学びます。
+title: Minimal Deployment Topology
+summary: Learn the minimal deployment topology of TiDB clusters.
 ---
 
 # 最小限の展開トポロジ {#minimal-deployment-topology}

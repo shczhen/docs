@@ -1,6 +1,6 @@
 ---
-title: エラーコードとトラブルシューティング
-summary: TiDBのエラーコードと解決策について学びます。
+title: Error Codes and Troubleshooting
+summary: Learn about the error codes and solutions in TiDB.
 ---
 
 # エラーコードとトラブルシューティング {#error-codes-and-troubleshooting}

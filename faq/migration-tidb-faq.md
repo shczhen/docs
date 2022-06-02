@@ -1,6 +1,6 @@
 ---
-title: 移行に関するよくある質問
-summary: データ移行に関連するFAQについて学びます。
+title: Migration FAQs
+summary: Learn about the FAQs related to data migration.
 ---
 
 # 移行に関するよくある質問 {#migration-faqs}

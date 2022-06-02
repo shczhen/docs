@@ -1,6 +1,6 @@
 ---
-title: 説明分析| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのEXPLAINANALYZEの使用法の概要。
+title: EXPLAIN ANALYZE | TiDB SQL Statement Reference
+summary: An overview of the usage of EXPLAIN ANALYZE for the TiDB database.
 ---
 
 # 説明分析 {#explain-analyze}

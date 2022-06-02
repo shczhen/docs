@@ -1,6 +1,6 @@
 ---
-title: テーブル属性
-summary: TiDBのテーブル属性機能の使用方法を学びます。
+title: Table Attributes
+summary: Learn how to use the table attribute feature of TiDB.
 ---
 
 # テーブル属性 {#table-attributes}

@@ -1,6 +1,6 @@
 ---
-title: ストア制限
-summary: ストア制限の機能を学びます。
+title: Store Limit
+summary: Learn the feature of Store Limit.
 ---
 
 # ストア制限 {#store-limit}

@@ -1,6 +1,6 @@
 ---
-title: と| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのWITH（共通テーブル式）の使用法の概要。
+title: WITH | TiDB SQL Statement Reference
+summary: An overview of the usage of WITH (Common Table Expression) for the TiDB database.
 ---
 
 # と {#with}

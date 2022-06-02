@@ -1,6 +1,6 @@
 ---
-title: 保存時の暗号化
-summary: 機密データを保護するために、保存時に暗号化を有効にする方法を学びます。
+title: Encryption at Rest
+summary: Learn how to enable encryption at rest to protect sensitive data.
 ---
 
 # 保存時の暗号化 {#encryption-at-rest}

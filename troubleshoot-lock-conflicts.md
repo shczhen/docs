@@ -1,6 +1,6 @@
 ---
-title: ロックの競合のトラブルシューティング
-summary: TiDBでのロックの競合を分析して解決する方法を学びます。
+title: Troubleshoot Lock Conflicts
+summary: Learn to analyze and resolve lock conflicts in TiDB.
 ---
 
 # ロックの競合のトラブルシューティング {#troubleshoot-lock-conflicts}

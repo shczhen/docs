@@ -1,5 +1,5 @@
 ---
-title: tiupクラスタ破棄
+title: tiup cluster destroy
 ---
 
 # tiupクラスタ破棄 {#tiup-cluster-destroy}

@@ -1,5 +1,5 @@
 ---
-title: tiupdmスケールイン
+title: tiup dm scale-in
 ---
 
 # tiupdmスケールイン {#tiup-dm-scale-in}

@@ -1,6 +1,6 @@
 ---
-title: SQL式を使用してDMLイベントをフィルタリングする
-summary: SQL式を使用してDMLイベントをフィルタリングする方法を学びます。
+title: Filter DML Events Using SQL Expressions
+summary: Learn how to filter DML events using SQL expressions.
 ---
 
 # SQL式を使用してDMLイベントをフィルタリングする {#filter-dml-events-using-sql-expressions}

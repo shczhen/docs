@@ -1,6 +1,6 @@
 ---
-title: 分析| TiDBSQLステートメントリファレンス
-summary: TiDBデータベースでのANALYZEの使用法の概要。
+title: ANALYZE | TiDB SQL Statement Reference
+summary: An overview of the usage of ANALYZE for the TiDB database.
 ---
 
 # 分析する {#analyze}

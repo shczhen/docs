@@ -1,5 +1,5 @@
 ---
-title: tiupクラスタの再生
+title: tiup cluster replay
 ---
 
 # tiupクラスタの再生 {#tiup-cluster-replay}

@@ -1,6 +1,6 @@
 ---
-title: データ移行タスクを再開します
-summary: データ移行タスクを再開する方法を学びます。
+title: Resume a Data Migration Task
+summary: Learn how to resume a data migration task.
 ---
 
 # データ移行タスクを再開します {#resume-a-data-migration-task}

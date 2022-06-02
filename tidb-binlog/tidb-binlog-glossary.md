@@ -1,6 +1,6 @@
 ---
-title: TiDBBinlog用語集
-summary: TiDBBinlogで使用される用語を学びます。
+title: TiDB Binlog Glossary
+summary: Learn the terms used in TiDB Binlog.
 ---
 
 # TiDBBinlog用語集 {#tidb-binlog-glossary}

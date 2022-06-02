@@ -1,6 +1,6 @@
 ---
-title: 配置ルール
-summary: 配置ルールを構成する方法を学びます。
+title: Placement Rules
+summary: Learn how to configure Placement Rules.
 ---
 
 # 配置ルール {#placement-rules}
@@ -68,7 +68,7 @@ v5.0で導入された配置ルールは、PDがさまざまなタイプのデ�
 
 ### 配置ルールを有効にする {#enable-placement-rules}
 
-配置ルール機能は、v5.0以降のバージョンのTiDBではデフォルトで有効になっています。無効にするには、 [配置ルールを無効にする](#disable-placement-rules)を参照してください。無効にした後でこの機能を有効にするには、クラスタを初期化する前に、PD構成ファイルを次のように変更できます。
+配置ルール機能は、v5.0以降のバージョンのTiDBではデフォルトで有効になっています。無効にするには、 [配置ルールを無効にする](#disable-placement-rules)を参照してください。無効にした後でこの機能を有効にするには、クラスタを初期化する前に、PD構成ファイルを次のように変更します。
 
 {{< copyable "" >}}
 

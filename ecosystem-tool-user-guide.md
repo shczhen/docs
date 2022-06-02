@@ -1,5 +1,5 @@
 ---
-title: TiDBツールの概要
+title: TiDB Tools Overview
 ---
 
 # TiDBツールの概要 {#tidb-tools-overview}
@@ -125,4 +125,4 @@ TiDBは、OLAPクエリツールTiSparkを提供します。これにより、�
 
 ### Sparkを使用してTiKVデータソースをクエリする {#query-tikv-data-source-using-spark}
 
-[TiSpark](/tispark-overview.md)は、複雑なOLAPクエリに回答するためにTiKV上でApacheSparkを実行するために構築されたシンレイヤーです。 Sparkプラットフォームと分散TiKVクラスタの両方を活用し、TiDBにシームレスに接着し、ワンストップのハイブリッドトランザクションおよび分析処理（HTAP）ソリューションを提供します。
+[TiSpark](/tispark-overview.md)は、複雑なOLAPクエリに応答するためにTiKV上でApacheSparkを実行するために構築されたシンレイヤーです。 Sparkプラットフォームと分散TiKVクラスタの両方を活用し、TiDBにシームレスに接着し、ワンストップのハイブリッドトランザクションおよび分析処理（HTAP）ソリューションを提供します。

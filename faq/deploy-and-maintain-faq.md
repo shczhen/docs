@@ -1,6 +1,6 @@
 ---
-title: 導入に関するFAQ
-summary: TiDBの展開に関連するFAQについて学びます。
+title: Deployment FAQs
+summary: Learn about the FAQs related to TiDB deployment.
 ---
 
 # 導入に関するFAQ {#deployment-faqs}
@@ -36,7 +36,7 @@ Intel x86-64アーキテクチャの64ビット汎用ハードウェアサーバ
 |   TiDB  |  8コア+ | 16 GB + |  SAS、200GB以上 | ギガビットネットワークカード |  1（PDと同じマシンにデプロイできます）  |
 |    PD   |  4コア+ |  8GB以上  |  SAS、200GB以上 | ギガビットネットワークカード | 1（TiDBと同じマシンにデプロイできます） |
 |   TiKV  |  8コア+ | 32 GB + |  SAS、200GB以上 | ギガビットネットワークカード |            3           |
-| TiFlash | 32コア+ |  64GB以上 | SSD、200 GB + | ギガビットネットワークカード |            1           |
+| TiFlash | 32コア+ | 64 GB + | SSD、200 GB + | ギガビットネットワークカード |            1           |
 |  TiCDC  |  8コア+ | 16 GB + |  SAS、200GB以上 | ギガビットネットワークカード |            1           |
 |         |       |         |              |     サーバーの総数    |            6           |
 

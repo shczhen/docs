@@ -1,6 +1,6 @@
 ---
-title: オンラインでConfiguration / コンフィグレーションを変更する
-summary: クラスタ構成をオンラインで変更する方法を学びます。
+title: Modify Configuration Online
+summary: Learn how to change the cluster configuration online.
 ---
 
 # オンラインでConfiguration / コンフィグレーションを変更する {#modify-configuration-online}
@@ -177,7 +177,7 @@ show warnings;
 | `{db-name}.compaction-readahead-size`                     | 圧縮時のサイズは`readahead`                                                                                                   |
 | `{db-name}.bytes-per-sync`                                | これらのファイルが非同期で書き込まれている間に、OSがファイルをディスクに段階的に同期する速度                                                                       |
 | `{db-name}.wal-bytes-per-sync`                            | WALファイルの書き込み中にOSがWALファイルをディスクに段階的に同期する速度                                                                              |
-| `{db-name}.writable-file-max-buffer-size`                 | WritableFileWriteで使用される最大バッファーサイズ                                                                                     |
+| `{db-name}.writable-file-max-buffer-size`                 | WritableFileWriteで使用される最大バッファサイズ                                                                                      |
 | `{db-name}.{cf-name}.block-cache-size`                    | ブロックのキャッシュサイズ                                                                                                         |
 | `{db-name}.{cf-name}.write-buffer-size`                   | memtableのサイズ                                                                                                          |
 | `{db-name}.{cf-name}.max-write-buffer-number`             | memtableの最大数                                                                                                          |

@@ -1,6 +1,6 @@
 ---
-title: データ移行監視メトリクス
-summary: データ移行を使用してデータを移行する場合の監視メトリックについて学習します。
+title: Data Migration Monitoring Metrics
+summary: Learn about the monitoring metrics when you use Data Migration to migrate data.
 ---
 
 # データ移行監視メトリクス {#data-migration-monitoring-metrics}

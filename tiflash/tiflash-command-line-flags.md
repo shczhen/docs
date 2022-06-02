@@ -1,6 +1,6 @@
 ---
-title: TiFlashコマンドラインフラグ
-summary: TiFlashのコマンドライン起動フラグについて学びます。
+title: TiFlash Command-line Flags
+summary: Learn the command-line startup flags of TiFlash.
 ---
 
 # TiFlashコマンドラインフラグ {#tiflash-command-line-flags}

@@ -1,6 +1,6 @@
 ---
-title: TiDBデータ移行の互換性カタログ
-summary: このドキュメントでは、異なるバージョンのDMとアップストリーム/ダウンストリームデータベース間の互換性について説明します。
+title: Compatibility Catalog of TiDB Data Migration
+summary: This document describes the compatibility between DM of different versions and upstream/downstream databases.
 ---
 
 # TiDBデータ移行の互換性カタログ {#compatibility-catalog-of-tidb-data-migration}
