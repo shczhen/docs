@@ -1,5 +1,5 @@
 ---
-title: TiDB 4.0.14 Release Notes
+title: TiDB4.0.14リリースノート
 ---
 
 # TiDB4.0.14リリースノート {#tidb-4-0-14-release-notes}
@@ -30,7 +30,7 @@ TiDBバージョン：4.0.14
 -   TiDBダッシュボード
 
     -   OIDCSSOをサポートします。 OIDC互換のSSOサービス（OktaやAuth0など）を設定することにより、ユーザーはSQLパスワードを入力せずにTiDBダッシュボードにログインできます。 [＃960](https://github.com/pingcap/tidb-dashboard/pull/960)
-    -   <strong>Debug API</strong> UIを追加します。これは、高度なデバッグのためにいくつかの一般的なTiDBおよびPD内部APIを呼び出すためのコマンドラインの代替メソッドです[＃927](https://github.com/pingcap/tidb-dashboard/pull/927)
+    -   **Debug API** UIを追加します。これは、高度なデバッグのためにいくつかの一般的なTiDBおよびPD内部APIを呼び出すためのコマンドラインの代替メソッドです[＃927](https://github.com/pingcap/tidb-dashboard/pull/927)
 
 ## 改善 {#improvements}
 
@@ -64,9 +64,9 @@ TiDBバージョン：4.0.14
 
         -   小さなバックアップファイルをマージして復元を高速化[＃655](https://github.com/pingcap/br/pull/655)
 
-    -   団子
+    -   Dumpling
 
-        -   アップストリームがTiDBv3.xクラスターの場合は、常に`_tidb_rowid`を使用してテーブルを分割します。これにより、TiDBのメモリ使用量を削減できます[＃306](https://github.com/pingcap/dumpling/pull/306)
+        -   アップストリームがTiDBv3.xクラスタの場合は、常に`_tidb_rowid`を使用してテーブルを分割します。これにより、TiDBのメモリ使用量を削減できます[＃306](https://github.com/pingcap/dumpling/pull/306)
 
     -   TiCDC
 
@@ -109,7 +109,7 @@ TiDBバージョン：4.0.14
     -   リージョンのハートビートにより、状況によってはTiKVが大きなリージョンを分割できない問題を修正します[＃10111](https://github.com/tikv/tikv/issues/10111)
     -   TiKVとTiDB1の間のCMSketchのフォーマットの不一致によって引き起こされる誤った統計を修正し[＃25638](https://github.com/pingcap/tidb/issues/25638)
     -   `apply wait duration`メトリック[＃9893](https://github.com/tikv/tikv/issues/9893)の誤った統計を修正します
-    -   Titan [＃10232](https://github.com/tikv/tikv/pull/10232)で`delete_files_in_range`を使用した後の、「MissingBlob」エラーを修正しました
+    -   [＃10232](https://github.com/tikv/tikv/pull/10232)で`delete_files_in_range`を使用した後の「MissingBlob」エラーを修正しました
 
 -   PD
 
@@ -122,9 +122,9 @@ TiDBバージョン：4.0.14
 
 -   TiDBダッシュボード
 
-    -   <strong>プロファイリング</strong>UIがすべてのTiDBインスタンスをプロファイリングできない問題を修正します[＃944](https://github.com/pingcap/tidb-dashboard/pull/944)
-    -   <strong>ステートメント</strong>UIに「プランカウント」が表示されない問題を修正します[＃939](https://github.com/pingcap/tidb-dashboard/pull/939)
-    -   クラスタのアップグレード後に<strong>SlowQueryUI</strong>に「不明なフィールド」エラーが表示される可能性がある問題を修正します[＃902](https://github.com/pingcap/tidb-dashboard/issues/902)
+    -   **プロファイリング**UIがすべてのTiDBインスタンスをプロファイリングできない問題を修正します[＃944](https://github.com/pingcap/tidb-dashboard/pull/944)
+    -   **ステートメント**UIに「プランカウント」が表示されない問題を修正します[＃939](https://github.com/pingcap/tidb-dashboard/pull/939)
+    -   クラスタのアップグレード後に**SlowQueryUI**に「不明なフィールド」エラーが表示される可能性がある問題を修正します[＃902](https://github.com/pingcap/tidb-dashboard/issues/902)
 
 -   TiFlash
 
@@ -151,7 +151,7 @@ TiDBバージョン：4.0.14
         -   TiDB Lightningが`FLOAT`または`DOUBLE`タイプ[＃1185](https://github.com/pingcap/br/pull/1185)の`auto_increment`列のテーブルをインポートすると、非常に大きな基本値が生成されるバグを修正します。
         -   4GBを超えるKVデータを生成するときに発生するTiDBLightningパニックの問題を修正します[＃1128](https://github.com/pingcap/br/pull/1128)
 
-    -   団子
+    -   Dumpling
 
         -   Dumplingを使用してデータをS3ストレージにエクスポートする場合、バケット全体で`s3:ListBucket`のアクセス許可は不要になります。この権限は、データソースプレフィックスにのみ必要です。 [＃898](https://github.com/pingcap/br/issues/898)
 

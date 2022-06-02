@@ -1,14 +1,13 @@
 ---
-title: DO | TiDB SQL Statement Reference
-summary: An overview of the usage of DO for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-do/','/docs/dev/reference/sql/statements/do/']
+title: 行う| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのDOの使用法の概要。
 ---
 
 # 行う {#do}
 
 `DO`は式を実行しますが、結果を返しません。ほとんどの場合、 `DO`は結果を返さない`SELECT expr, ...`と同等です。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `DO`は式のみを実行します。 `SELECT`が使用できるすべての場合に使用できるわけではありません。たとえば、 `DO id FROM t1`はテーブルを参照しているため、無効です。
 

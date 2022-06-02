@@ -1,7 +1,6 @@
 ---
-title: TiDB Binlog Glossary
-summary: Learn the terms used in TiDB Binlog.
-aliases: ['/docs/dev/tidb-binlog/tidb-binlog-glossary/','/docs/dev/reference/tidb-binlog/glossary/']
+title: TiDBBinlog用語集
+summary: TiDBBinlogで使用される用語を学びます。
 ---
 
 # TiDBBinlog用語集 {#tidb-binlog-glossary}

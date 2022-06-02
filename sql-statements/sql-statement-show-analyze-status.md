@@ -1,7 +1,6 @@
 ---
-title: SHOW ANALYZE STATUS
-summary: An overview of the usage of SHOW ANALYZE STATUS for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-analyze-status/']
+title: ステータスの分析を表示
+summary: TiDBデータベースのSHOWANALYZESTATUSの使用法の概要。
 ---
 
 # ステータスの分析を表示 {#show-analyze-status}
@@ -10,11 +9,11 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-analyze-status/']
 
 ## あらすじ {#synopsis}
 
-<strong>ShowStmt：</strong>
+**ShowStmt：**
 
 ![ShowStmt](/media/sqlgram/ShowStmt.png)
 
-<strong>ShowTargetFilterable：</strong>
+**ShowTargetFilterable：**
 
 ![ShowTargetFilterable](/media/sqlgram/ShowTargetFilterable.png)
 

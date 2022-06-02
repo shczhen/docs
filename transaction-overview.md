@@ -1,7 +1,6 @@
 ---
-title: Transactions
-summary: Learn transactions in TiDB.
-aliases: ['/docs/dev/transaction-overview/','/docs/dev/reference/transactions/overview/']
+title: トランザクション
+summary: TiDBでトランザクションを学びます。
 ---
 
 # トランザクション {#transactions}
@@ -12,7 +11,7 @@ TiDBは、 [悲観的](/pessimistic-transaction.md)または[楽観的](/optimis
 
 一般的な変数には、 [`autocommit`](#autocommit) 、および[`tidb_disable_txn_auto_retry`](/system-variables.md#tidb_disable_txn_auto_retry)が[`tidb_txn_mode`](/system-variables.md#tidb_txn_mode)れ[`tidb_retry_limit`](/system-variables.md#tidb_retry_limit) 。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > [`tidb_disable_txn_auto_retry`](/system-variables.md#tidb_disable_txn_auto_retry)変数と[`tidb_retry_limit`](/system-variables.md#tidb_retry_limit)変数は楽観的なトランザクションにのみ適用され、悲観的なトランザクションには適用されません。
 
@@ -50,7 +49,7 @@ START TRANSACTION WITH CAUSAL CONSISTENCY ONLY;
 
 これらのステートメントのいずれかが実行されたときに現在のセッションがトランザクションの処理中である場合、TiDBは新しいトランザクションを開始する前に現在のトランザクションを自動的にコミットします。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > MySQLとは異なり、TiDBは上記のステートメントを実行した後、現在のデータベースのスナップショットを取得します。 MySQLの`BEGIN`と`START TRANSACTION`は、トランザクションの開始後にInnoDBからデータを読み取る最初の`SELECT`のステートメント（ `SELECT FOR UPDATE`ではない）を実行した後にスナップショットを取得します。 `START TRANSACTION WITH CONSISTENT SNAPSHOT`は、ステートメントの実行中にスナップショットを取得します。その結果、 `BEGIN` 、および`START TRANSACTION`は、 `START TRANSACTION WITH CONSISTENT SNAPSHOT` `START TRANSACTION WITH CONSISTENT SNAPSHOT`相当します。
 
@@ -66,7 +65,7 @@ START TRANSACTION WITH CAUSAL CONSISTENCY ONLY;
 COMMIT;
 ```
 
-> <strong>ヒント：</strong>
+> **ヒント：**
 >
 > [楽観的な取引](/optimistic-transaction.md)を有効にする前に、アプリケーションが`COMMIT`ステートメントがエラーを返す可能性があることを正しく処理していることを確認してください。アプリケーションがこれをどのように処理するかわからない場合は、代わりにデフォルトの[悲観的な取引](/pessimistic-transaction.md)を使用することをお勧めします。
 
@@ -86,7 +85,7 @@ ROLLBACK;
 
 ## 自動コミット {#autocommit}
 
-MySQLの互換性に必要な場合、TiDBはデフォルトで、実行直後にステートメントを<em>自動コミット</em>します。
+MySQLの互換性に必要な場合、TiDBはデフォルトで、実行直後にステートメントを*自動コミット*します。
 
 例えば：
 
@@ -176,7 +175,7 @@ SET GLOBAL autocommit = 0;
 
 ## 明示的および暗黙的なトランザクション {#explicit-and-implicit-transaction}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 一部のステートメントは暗黙的にコミットされます。たとえば、 `[BEGIN|START TRANSACTION]`を実行すると、最後のトランザクションが暗黙的にコミットされ、新しいトランザクションが開始されます。この動作は、MySQLとの互換性のために必要です。詳細については、 [暗黙のコミット](https://dev.mysql.com/doc/refman/8.0/en/implicit-commit.html)を参照してください。
 
@@ -233,7 +232,7 @@ mysql> SELECT * FROM t1; -- MySQL returns 1 2; TiDB returns 1.
 
 レイジーチェックの最適化は、制約チェックをバッチ処理し、ネットワーク通信を減らすことでパフォーマンスを向上させます。 [`tidb_constraint_check_in_place=TRUE`](/system-variables.md#tidb_constraint_check_in_place)を設定すると、この動作を無効にできます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   この最適化は、楽観的なトランザクションにのみ適用されます。
 > -   この最適化は、 `INSERT IGNORE`と`INSERT ON DUPLICATE KEY UPDATE`では有効になりませんが、通常の`INSERT`のステートメントでのみ有効になります。
@@ -297,7 +296,7 @@ TiDBは、楽観的トランザクションと悲観的トランザクション�
 
 TiDBは以前、1つのトランザクションのキーと値のペアの総数を300,000に制限していました。この制限はTiDBv4.0で削除されました。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 通常、TiDB Binlogは、データをダウンストリームに複製するために有効になっています。一部のシナリオでは、Kafkaなどのメッセージミドルウェアを使用して、ダウンストリームに複製されるbinlogを消費します。
 >
@@ -305,7 +304,7 @@ TiDBは以前、1つのトランザクションのキーと値のペアの総数
 
 ## 因果整合性 {#causal-consistency}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 因果整合性のあるトランザクションは、非同期コミットおよび1フェーズコミット機能が有効になっている場合にのみ有効になります。 2つの機能の詳細については、 [`tidb_enable_async_commit`](/system-variables.md#tidb_enable_async_commit-new-in-v50)と[`tidb_enable_1pc`](/system-variables.md#tidb_enable_1pc-new-in-v50)を参照してください。
 
@@ -354,7 +353,7 @@ START TRANSACTION WITH CAUSAL CONSISTENCY ONLY;
 |                                 | 専念                              |                                  |
 |                                 |                                 | SELECT v FROM t WHERE id IN（1、2） |
 
-上記の例では、トランザクション1は`id = 1`レコードを読み取らないため、トランザクション1とトランザクション2にはデータベースに知られている因果関係はありません。トランザクションの因果整合性が有効になっている場合、物理的な時間順序でトランザクション1がコミットされた後にトランザクション2がコミットされたとしても、TiDBはトランザクション2がトランザクション1の後に論理的に発生することを保証しません。
+上記の例では、トランザクション1は`id = 1`レコードを読み取らないため、トランザクション1とトランザクション2にはデータベースに知られている因果関係はありません。トランザクションに対して因果整合性が有効になっている場合、物理的な時間順序に関してトランザクション1がコミットされた後にトランザクション2がコミットされたとしても、TiDBはトランザクション2がトランザクション1の後に論理的に発生することを保証しません。
 
 トランザクション1がコミットされる前にトランザクション3が開始され、トランザクション2がコミットされた後にトランザクション3が`id = 1`および`id = 2`レコードを読み取る場合、トランザクション3は`id = 1`の値を`2`に読み取り、 `id = 2`の値を`0`に読み取る可能性があります。
 

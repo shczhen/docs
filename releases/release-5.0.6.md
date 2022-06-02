@@ -1,5 +1,5 @@
 ---
-title: TiDB 5.0.6 Release Notes
+title: TiDB5.0.6リリースノート
 category: Releases
 ---
 
@@ -45,7 +45,7 @@ TiDBバージョン：5.0.6
         -   EtcdWorkerにティック頻度制限を追加して、頻繁なetcd書き込みがPDサービスに影響を与えないようにします[＃3112](https://github.com/pingcap/ticdc/issues/3112)
         -   Kafkaシンク[＃3352](https://github.com/pingcap/tiflow/issues/3352)に`config.Metadata.Timeout`のデフォルト構成を追加します
         -   Kafkaメッセージを送信できない可能性を減らすために、デフォルト値の`max-message-bytes`を設定し[＃3081](https://github.com/pingcap/tiflow/issues/3081) `10M`
-        -   `no owner alert` `buffer sink total row` [＃4054](https://github.com/pingcap/tiflow/issues/4054)など、 [＃1606](https://github.com/pingcap/tiflow/issues/1606)と`mounter row`の監視メトリックとアラートをさらに追加し`table sink total row`
+        -   `no owner alert` `buffer sink total row` [＃4054](https://github.com/pingcap/tiflow/issues/4054)など、 [＃1606](https://github.com/pingcap/tiflow/issues/1606)と`mounter row`のモニタリング指標とアラートをさらに追加し`table sink total row`
 
     -   バックアップと復元（BR）
 
@@ -81,7 +81,7 @@ TiDBバージョン：5.0.6
     -   `ENUM`型データをそのような関数のパラメーターとして使用する場合の制御関数（ `IF`や`CASE WHEN`など）の誤った結果を修正します[＃23114](https://github.com/pingcap/tidb/issues/23114)
     -   [＃29498](https://github.com/pingcap/tidb/issues/29498)の間違った結果を修正し`CONCAT(IFNULL(TIME(3))`
     -   符号なし`BIGINT`引数を渡すときの`GREATEST`と`LEAST`の誤った結果を修正します[＃30101](https://github.com/pingcap/tidb/issues/30101)
-    -   JSONタイプの列が`CHAR`タイプの列[＃29401](https://github.com/pingcap/tidb/issues/29401)に結合するとSQL操作がキャンセルされる問題を修正します
+    -   JSON型の列が`CHAR`型の列に結合するとSQL操作がキャンセルされる問題を修正します[＃29401](https://github.com/pingcap/tidb/issues/29401)
     -   怠惰な存在チェックと手つかずのキーの最適化の誤った使用によって引き起こされるデータの不整合の問題を修正します[＃30410](https://github.com/pingcap/tidb/issues/30410)
     -   トランザクションを使用するかどうかにかかわらず、ウィンドウ関数が異なる結果を返す可能性がある問題を修正します[＃29947](https://github.com/pingcap/tidb/issues/29947)
     -   `cast(integer as char) union string`を含むSQLステートメントが間違った結果を返す問題を修正します[＃29513](https://github.com/pingcap/tidb/issues/29513)
@@ -163,6 +163,6 @@ TiDBバージョン：5.0.6
 
         -   バックアップと復元の平均速度が不正確に計算されるバグを修正します[＃1405](https://github.com/pingcap/br/issues/1405)
 
-    -   団子
+    -   Dumpling
 
-        -   複合主キーまたは一意キー[＃29386](https://github.com/pingcap/tidb/issues/29386)を使用してテーブルをダンプすると、ダンプが非常に遅くなるバグを修正します。
+        -   複合主キーまたは一意キー[＃29386](https://github.com/pingcap/tidb/issues/29386)を使用してテーブルをダンプすると、Dumplingが非常に遅くなるバグを修正します。

@@ -1,7 +1,6 @@
 ---
-title: SHOW [FULL] TABLES | TiDB SQL Statement Reference
-summary: An overview of the usage of SHOW [FULL] TABLES for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-tables/','/docs/dev/reference/sql/statements/show-tables/']
+title: [フル]テーブルを表示| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースのSHOW[FULL]TABLESの使用法の概要。
 ---
 
 # [フル]テーブルを表示 {#show-full-tables}
@@ -12,19 +11,19 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-tables/','/docs/dev/refer
 
 ## あらすじ {#synopsis}
 
-<strong>ShowTablesStmt：</strong>
+**ShowTablesStmt：**
 
 ![ShowTablesStmt](/media/sqlgram/ShowTablesStmt.png)
 
-<strong>OptFull：</strong>
+**OptFull：**
 
 ![OptFull](/media/sqlgram/OptFull.png)
 
-<strong>ShowDatabaseNameOpt：</strong>
+**ShowDatabaseNameOpt：**
 
 ![ShowDatabaseNameOpt](/media/sqlgram/ShowDatabaseNameOpt.png)
 
-<strong>ShowLikeOrWhereOpt：</strong>
+**ShowLikeOrWhereOpt：**
 
 ![ShowLikeOrWhereOpt](/media/sqlgram/ShowLikeOrWhereOpt.png)
 

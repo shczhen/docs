@@ -1,7 +1,6 @@
 ---
-title: START TRANSACTION | TiDB SQL Statement Reference
-summary: An overview of the usage of START TRANSACTION for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-start-transaction/','/docs/dev/reference/sql/statements/start-transaction/']
+title: トランザクションを開始| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースのSTARTTRANSACTIONの使用法の概要。
 ---
 
 # トランザクションを開始します {#start-transaction}
@@ -12,7 +11,7 @@ aliases: ['/docs/dev/sql-statements/sql-statement-start-transaction/','/docs/dev
 
 ## あらすじ {#synopsis}
 
-<strong>BeginTransactionStmt：</strong>
+**BeginTransactionStmt：**
 
 ```ebnf+diagram
 BeginTransactionStmt ::=

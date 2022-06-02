@@ -1,6 +1,6 @@
 ---
 title: SHOW STATS_HEALTHY
-summary: An overview of the usage of SHOW STATS_HEALTHY for TiDB database.
+summary: TiDBデータベースのSHOWSTATS_HEALTHYの使用法の概要。
 ---
 
 # SHOW STATS_HEALTHY {#show-stats-healthy}
@@ -11,15 +11,15 @@ summary: An overview of the usage of SHOW STATS_HEALTHY for TiDB database.
 
 ## あらすじ {#synopsis}
 
-<strong>ShowStmt</strong>
+**ShowStmt**
 
 ![ShowStmt](/media/sqlgram/ShowStmt.png)
 
-<strong>ShowTargetFiltertable</strong>
+**ShowTargetFiltertable**
 
 ![ShowTargetFilterable](/media/sqlgram/ShowTargetFilterable.png)
 
-<strong>ShowLikeOrWhereOpt</strong>
+**ShowLikeOrWhereOpt**
 
 ![ShowLikeOrWhereOpt](/media/sqlgram/ShowLikeOrWhereOpt.png)
 

@@ -1,7 +1,6 @@
 ---
-title: SHOW PRIVILEGES | TiDB SQL Statement Reference
-summary: An overview of the usage of SHOW PRIVILEGES for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-privileges/','/docs/dev/reference/sql/statements/show-privileges/']
+title: 特権を表示する| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのSHOWPRIVILEGESの使用法の概要。
 ---
 
 # 特権を表示する {#show-privileges}
@@ -10,7 +9,7 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-privileges/','/docs/dev/r
 
 ## あらすじ {#synopsis}
 
-<strong>ShowStmt：</strong>
+**ShowStmt：**
 
 ![ShowStmt](/media/sqlgram/ShowStmt.png)
 

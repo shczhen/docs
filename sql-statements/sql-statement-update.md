@@ -1,7 +1,6 @@
 ---
-title: UPDATE | TiDB SQL Statement Reference
-summary: An overview of the usage of UPDATE for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-update/','/docs/dev/reference/sql/statements/update/']
+title: 更新| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースのUPDATEの使用法の概要。
 ---
 
 # アップデート {#update}
@@ -10,27 +9,27 @@ aliases: ['/docs/dev/sql-statements/sql-statement-update/','/docs/dev/reference/
 
 ## あらすじ {#synopsis}
 
-<strong>UpdateStmt：</strong>
+**UpdateStmt：**
 
 ![UpdateStmt](/media/sqlgram/UpdateStmt.png)
 
-<strong>PriorityOpt：</strong>
+**PriorityOpt：**
 
 ![PriorityOpt](/media/sqlgram/PriorityOpt.png)
 
-<strong>TableRef：</strong>
+**TableRef：**
 
 ![TableRef](/media/sqlgram/TableRef.png)
 
-<strong>TableRefs：</strong>
+**TableRefs：**
 
 ![TableRefs](/media/sqlgram/TableRefs.png)
 
-<strong>AssignmentList：</strong>
+**AssignmentList：**
 
 ![AssignmentList](/media/sqlgram/AssignmentList.png)
 
-<strong>WhereClauseOptional：</strong>
+**WhereClauseOptional：**
 
 ![WhereClauseOptional](/media/sqlgram/WhereClauseOptional.png)
 

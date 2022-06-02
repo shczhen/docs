@@ -1,6 +1,6 @@
 ---
-title: Migration FAQs
-summary: Learn about the FAQs related to data migration.
+title: 移行に関するよくある質問
+summary: データ移行に関連するFAQについて学びます。
 ---
 
 # 移行に関するよくある質問 {#migration-faqs}
@@ -9,7 +9,7 @@ summary: Learn about the FAQs related to data migration.
 
 移行関連のツールに関するよくある質問については、以下のリストにある対応するリンクをクリックしてください。
 
--   [バックアップと復元に関するFAQ](/br/backup-and-restore-faq.md)
+-   [バックアップと復元FAQ](/br/backup-and-restore-faq.md)
 -   [TiDB Binlog FAQ](/tidb-binlog/tidb-binlog-faq.md)
 -   [TiDB LightningFAQ](/tidb-lightning/tidb-lightning-faq.md)
 -   [TiDBデータ移行（DM）に関するFAQ](/dm/dm-faq.md)
@@ -72,7 +72,7 @@ iperf Done.
 
 ### 誤ってMySQLユーザーテーブルをTiDBにインポートした場合、またはパスワードを忘れてログインできない場合、どのように対処しますか？ {#if-i-accidentally-import-the-mysql-user-table-into-tidb-or-forget-the-password-and-cannot-log-in-how-to-deal-with-it}
 
-TiDBサービスを再起動し、構成ファイルに`-skip-grant-table=true`つのパラメーターを追加します。パスワードなしでクラスターにログインしてユーザーを再作成するか、 `mysql.user`のテーブルを再作成します。特定のテーブルスキーマについては、公式ドキュメントを検索してください。
+TiDBサービスを再起動し、構成ファイルに`-skip-grant-table=true`つのパラメーターを追加します。パスワードなしでクラスタにログインしてユーザーを再作成するか、 `mysql.user`のテーブルを再作成します。特定のテーブルスキーマについては、公式ドキュメントを検索してください。
 
 ### TiDBにデータをエクスポートする方法は？ {#how-to-export-the-data-in-tidb}
 
@@ -122,7 +122,7 @@ Sqoopでは、 `--batch`は各バッチで100個の`statement`をコミットす
 -   データベースの主キーが均等に分散されていません（たとえば、 [`SHARD_ROW_ID_BITS`](/shard-row-id-bits.md)を有効にした場合）。
 -   アップストリームデータベースはTiDBであり、エクスポートされたテーブルはパーティションテーブルです。
 
-上記の場合、Dumplingはエクスポート用に非常に大きなデータチャンクを分割し、非常に大きな結果を持つクエリを送信します。この問題に対処するには、 [お問い合わせ](https://tidbcommunity.slack.com/archives/CH7TTLL7P)ナイトリーバージョンの餃子を入手します。
+上記の場合、 Dumplingはエクスポート用に非常に大きなデータチャンクを分割し、非常に大きな結果を持つクエリを送信します。この問題に対処するには、 [お問い合わせ](https://tidbcommunity.slack.com/archives/CH7TTLL7P)ナイトリーバージョンのDumplingを入手します。
 
 ### TiDBにはOracleのフラッシュバッククエリのような機能がありますか？ DDLをサポートしていますか？ {#does-tidb-have-a-function-like-the-flashback-query-in-oracle-does-it-support-ddl}
 
@@ -138,7 +138,7 @@ Sqoopでは、 `--batch`は各バッチで100個の`statement`をコミットす
 
 ### トラフィックをすばやく移行するにはどうすればよいですか？ {#how-to-migrate-the-traffic-quickly}
 
-[TiDBデータ移行](/dm/dm-overview.md)のツールを使用してMySQLからTiDBにアプリケーションデータを移行することをお勧めします。必要に応じてネットワーク構成を編集することにより、読み取りおよび書き込みトラフィックをバッチで移行できます。ネットワーク構成を直接編集してシームレスな移行を実装するために、安定したネットワークLB（HAproxy、LVS、F5、DNSなど）を上位層に展開します。
+[TiDBデータ移行](/dm/dm-overview.md)のツールを使用してMySQLからTiDBにアプリケーションデータを移行することをお勧めします。必要に応じてネットワーク構成を編集することにより、読み取りおよび書き込みトラフィックをバッチで移行できます。ネットワーク構成を直接編集してシームレスな移行を実装するために、安定したネットワークLB（HAproxy、LVS、F5、DNSなど）を上位層にデプロイします。
 
 ### TiDBの書き込みと読み取りの合計容量に制限はありますか？ {#is-there-a-limit-for-the-total-write-and-read-capacity-in-tidb}
 
@@ -181,4 +181,4 @@ GoogleCloudSpannerには[同様の制限](https://cloud.google.com/spanner/docs/
 ### TiDBでのデータ読み込み速度を向上させる方法は？ {#how-to-improve-the-data-loading-speed-in-tidb}
 
 -   [TiDB Lightning](/tidb-lightning/tidb-lightning-overview.md)ツールは、分散データのインポート用に開発されています。データインポートプロセスは、パフォーマンス上の理由から完全なトランザクションプロセスを実行しないことに注意してください。したがって、インポートプロセス中にインポートされるデータのACID制約は保証できません。インポートされたデータのACID制約は、インポートプロセス全体が終了した後にのみ保証されます。したがって、適用可能なシナリオには、主に新しいデータ（新しいテーブルや新しいインデックスなど）のインポート、または完全バックアップと復元（元のテーブルを切り捨ててからデータをインポートする）が含まれます。
--   TiDBでのデータの読み込みは、ディスクとクラスター全体のステータスに関連しています。データをロードするときは、ホストのディスク使用率、TiClientエラー、バックオフ、スレッドCPUなどのメトリックに注意してください。これらのメトリックを使用してボトルネックを分析できます。
+-   TiDBでのデータの読み込みは、ディスクとクラスタ全体のステータスに関連しています。データをロードするときは、ホストのディスク使用率、TiClientエラー、バックオフ、スレッドCPUなどのメトリックに注意してください。これらのメトリックを使用してボトルネックを分析できます。

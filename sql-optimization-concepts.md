@@ -1,7 +1,6 @@
 ---
-title: SQL Optimization Process
-summary: Learn about the logical and physical optimization of SQL in TiDB.
-aliases: ['/docs/dev/sql-optimization-concepts/','/docs/dev/reference/performance/sql-optimizer-overview/']
+title: SQL最適化プロセス
+summary: TiDBでのSQLの論理的および物理的最適化について学びます。
 ---
 
 # SQL最適化プロセス {#sql-optimization-process}

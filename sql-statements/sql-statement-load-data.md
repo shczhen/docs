@@ -1,7 +1,6 @@
 ---
-title: LOAD DATA | TiDB SQL Statement Reference
-summary: An overview of the usage of LOAD DATA for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-load-data/','/docs/dev/reference/sql/statements/load-data/']
+title: データのロード| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースのLOADDATAの使用法の概要。
 ---
 
 # データを読み込む {#load-data}
@@ -53,6 +52,8 @@ LINES TERMINATED BY '\n'
 
 `IGNORE number LINES`パラメータを設定することにより、ファイルの最初の`number`行を無視できます。たとえば、 `IGNORE 1 LINES`を設定すると、ファイルの最初の行は無視されます。
 
+さらに、TiDBは現在、 `DuplicateOpt` 、および`CharsetOpt`パラメーターの構文解析のみをサポートして`LoadDataSetSpecOpt`ます。
+
 ## 例 {#examples}
 
 {{< copyable "" >}}
@@ -103,9 +104,9 @@ LOAD DATA LOCAL INFILE '/mnt/evo970/data-sets/bikeshare-data/2017Q4-capitalbikes
 
 ## MySQLの互換性 {#mysql-compatibility}
 
-このステートメントは、解析されるが無視される文字セットオプションを除いて、MySQLと完全に互換性があると理解されています。互換性の違いを見つけた場合は、GitHubで[問題を介して報告する](https://github.com/pingcap/tidb/issues/new/choose)できます。
+このステートメントは、 `LOAD DATA...REPLACE INTO`構文[＃24515](https://github.com/pingcap/tidb/issues/24515)を除いて、MySQLと完全に互換性があると理解されています。その他の互換性の違いは、GitHubでは[問題を介して報告](https://github.com/pingcap/tidb/issues/new/choose)である必要があります。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > TiDBの以前のリリースでは、20000行ごとに`LOAD DATA`コミットされていました。デフォルトでは、TiDBは1つのトランザクションですべての行をコミットするようになりました。これにより、TiDB4.0以前のバージョンからアップグレードした後にエラー`ERROR 8004 (HY000) at line 1: Transaction is too large, size: 100000058`が発生する可能性があります。
 >

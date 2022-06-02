@@ -1,6 +1,6 @@
 ---
-title: TABLES
-summary: Learn the `TABLES` information_schema table.
+title: テーブル
+summary: `TABLES`information_schemaテーブルを学びます。
 ---
 
 # テーブル {#tables}
@@ -110,14 +110,14 @@ SHOW TABLES
 -   `CREATE_TIME` ：テーブルが作成された時刻。
 -   `UPDATE_TIME` ：テーブルが更新された時刻。
 -   `CHECK_TIME` ：テーブルがチェックされる時刻。
--   `TABLE_COLLATION` ：テーブル内の文字列の照合。
+-   `TABLE_COLLATION` ：テーブル内の文字列の照合順序。
 -   `CHECKSUM` ：チェックサム。
 -   `CREATE_OPTIONS` ：オプションを作成します。
 -   `TABLE_COMMENT` ：表のコメントとメモ。
 
 表のほとんどの情報はMySQLと同じです。 TiDBによって新しく定義された列は2つだけです。
 
--   `TIDB_TABLE_ID` ：テーブルの内部IDを示します。このIDは、TiDBクラスター内で一意です。
+-   `TIDB_TABLE_ID` ：テーブルの内部IDを示します。このIDは、TiDBクラスタで一意です。
 -   `TIDDB_ROW_ID_SHARDING_INFO` ：テーブルのシャーディングタイプを示します。可能な値は次のとおりです。
     -   `"NOT_SHARDED"` ：テーブルはシャーディングされていません。
     -   `"NOT_SHARDED(PK_IS_HANDLE)"` ：行IDとして整数主キーを定義するテーブルはシャーディングされません。

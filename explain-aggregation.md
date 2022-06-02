@@ -1,11 +1,11 @@
 ---
-title: Explain Statements That Use Aggregation
-summary: Learn about the execution plan information returned by the `EXPLAIN` statement in TiDB.
+title: 集計を使用するステートメントを説明する
+summary: TiDBの`EXPLAIN`ステートメントによって返される実行プラン情報について学びます。
 ---
 
 # 集計を使用してステートメントを説明する {#explain-statements-using-aggregation}
 
-データを集約する場合、SQLオプティマイザーはハッシュ集約またはストリーム集約演算子のいずれかを選択します。クエリの効率を向上させるために、コプロセッサ層とTiDB層の両方で集計が実行されます。次の例を考えてみましょう。
+データを集約する場合、SQLオプティマイザーはハッシュ集計またはストリーム集計演算子のいずれかを選択します。クエリの効率を向上させるために、コプロセッサ層とTiDB層の両方で集計が実行されます。次の例を考えてみましょう。
 
 {{< copyable "" >}}
 
@@ -89,9 +89,9 @@ EXPLAIN ANALYZE SELECT COUNT(*) FROM t1;
 4 rows in set (0.01 sec)
 ```
 
-## ハッシュアグリゲーション {#hash-aggregation}
+## ハッシュ集計 {#hash-aggregation}
 
-ハッシュ集約アルゴリズムは、ハッシュテーブルを使用して、集約の実行中に中間結果を格納します。複数のスレッドを使用して並行して実行されますが、StreamAggregationよりも多くのメモリを消費します。
+ハッシュ集計アルゴリズムは、ハッシュテーブルを使用して、集約の実行中に中間結果を格納します。複数のスレッドを使用して並行して実行されますが、 集計よりも多くのメモリを消費します。
 
 以下は、 `HashAgg`演算子の例です。
 
@@ -115,9 +115,9 @@ EXPLAIN SELECT /*+ HASH_AGG() */ count(*) FROM t1;
 
 `operator info`は、データの集計に使用されるハッシュ関数が`funcs:count(1)->Column#6`であることを示しています。
 
-## ストリーム集約 {#stream-aggregation}
+## ストリーム集計 {#stream-aggregation}
 
-Stream Aggregationアルゴリズムは通常、HashAggregationよりも少ないメモリを消費します。ただし、このオペレーターは、データが到着したときに値を<em>ストリーミング</em>して集計を適用できるように、データを順序付けて送信する必要があります。
+Stream 集計アルゴリズムは通常、 集計よりも少ないメモリを消費します。ただし、このオペレーターは、データが到着したときに値を*ストリーミング*して集計を適用できるように、データを順序付けて送信する必要があります。
 
 次の例を考えてみましょう。
 

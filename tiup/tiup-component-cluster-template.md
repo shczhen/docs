@@ -1,10 +1,10 @@
 ---
-title: tiup cluster template
+title: tiupクラスタテンプレート
 ---
 
-# tiupクラスターテンプレート {#tiup-cluster-template}
+# tiupクラスタテンプレート {#tiup-cluster-template}
 
-クラスターをデプロイする前に、クラスターの[トポロジーファイル](/tiup/tiup-cluster-topology-reference.md)を準備する必要があります。 TiUPにはトポロジファイルテンプレートが組み込まれており、このテンプレートを変更して最終的なトポロジファイルを作成できます。組み込みのテンプレートコンテンツを出力するには、 `tiup cluster template`コマンドを使用できます。
+クラスタの[トポロジーファイル](/tiup/tiup-cluster-topology-reference.md)を準備する必要があります。 TiUPにはトポロジファイルテンプレートが組み込まれており、このテンプレートを変更して最終的なトポロジファイルを作成できます。組み込みのテンプレートコンテンツを出力するには、 `tiup cluster template`コマンドを使用できます。
 
 ## 構文 {#syntax}
 

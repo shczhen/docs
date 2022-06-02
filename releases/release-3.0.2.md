@@ -1,6 +1,5 @@
 ---
-title: TiDB 3.0.2 Release Notes
-aliases: ['/docs/dev/releases/release-3.0.2/','/docs/dev/releases/3.0.2/']
+title: TiDB3.0.2リリースノート
 ---
 
 # TiDB3.0.2リリースノート {#tidb-3-0-2-release-notes}
@@ -81,8 +80,8 @@ TiDB Ansibleバージョン：3.0.2
         -   `int64`は`uint64`の中間解析結果として使用され、精度オーバーフローエラー`ConvertJSONToInt`につながり[＃11551](https://github.com/pingcap/tidb/pull/11551) 。
     -   自動インクリメント列が誤った結果を取得する可能性を回避するために、自動インクリメント列へのインデックスの削除を禁止します[＃11399](https://github.com/pingcap/tidb/pull/11399)
     -   次の問題を修正します[＃11492](https://github.com/pingcap/tidb/pull/11492) ：
-        -   照合を明示的に指定する場合、文字セットと列の照合は一貫していませんが、文字セットは指定していません
-        -   `ALTER TABLE … MODIFY COLUMN`で指定された文字セットと照合の間に競合がある場合、エラーは正しく報告されません。
+        -   照合順序を明示的に指定する場合、文字セットと列の照合順序は一貫していませんが、文字セットは指定していません
+        -   `ALTER TABLE … MODIFY COLUMN`で指定された文字セットと照合順序の間に競合がある場合、エラーは正しく報告されません。
         -   `ALTER TABLE … MODIFY COLUMN`を使用して文字セットと照合を複数回指定する場合のMySQLとの非互換性
     -   サブクエリのトレースの詳細を`TRACE`のクエリの結果に追加します[＃11458](https://github.com/pingcap/tidb/pull/11458)
     -   実行`ADMIN CHECK TABLE`のパフォーマンスを最適化し、実行時間を大幅に短縮します[＃11547](https://github.com/pingcap/tidb/pull/11547)
@@ -133,7 +132,7 @@ TiDB Lightning
 -   生成されたTiDB構成ファイル[＃850](https://github.com/pingcap/tidb-ansible/pull/850)で`pessimistic-txn`の構成パラメーターが省略される問題を修正します。
 -   TiDBダッシュボード[＃853](https://github.com/pingcap/tidb-ansible/pull/853)でメトリックを追加および最適化する
 -   TiDBダッシュボード[＃854](https://github.com/pingcap/tidb-ansible/pull/854)に各監視項目の説明を追加します
--   TiDBサマリーダッシュボードを追加して、クラスターのステータスをより適切に表示し、問題のトラブルシューティングを行います[＃855](https://github.com/pingcap/tidb-ansible/pull/855)
+-   TiDBサマリーダッシュボードを追加して、クラスタのステータスをより適切に表示し、問題のトラブルシューティングを行います[＃855](https://github.com/pingcap/tidb-ansible/pull/855)
 -   TiKVダッシュボード[＃857](https://github.com/pingcap/tidb-ansible/pull/857)のアロケータ統計監視項目を更新します
 -   ノードエクスポータのアラート式[＃860](https://github.com/pingcap/tidb-ansible/pull/860)のユニットエラーを修正します。
 -   TiSparkjarパッケージを[＃862](https://github.com/pingcap/tidb-ansible/pull/862)にアップグレードします。

@@ -1,6 +1,5 @@
 ---
-title: TiDB 1.1 Alpha Release Notes
-aliases: ['/docs/dev/releases/release-1.1-alpha/','/docs/dev/releases/11alpha/']
+title: TiDB1.1Alphaリリースノート
 ---
 
 # TiDB1.1Alphaリリースノート {#tidb-1-1-alpha-release-notes}
@@ -42,7 +41,7 @@ aliases: ['/docs/dev/releases/release-1.1-alpha/','/docs/dev/releases/11alpha/']
 -   Raftスナップショットを最適化し、I/Oオーバーヘッドを削減します
 -   TLSをサポート
 -   RocksDB構成を最適化して、パフォーマンスを向上させます
--   コプロセッサーでの一意のインデックスの最適化`count (*)`とクエリのパフォーマンス
+-   コプロセッサーで`count (*)`を最適化し、固有の索引のパフォーマンスを照会する
 -   フェイルポイントと安定性テストケースをさらに追加する
 -   PDとTiKV間の再接続の問題を解決します
 -   データ回復ツールの機能を強化する`tikv-ctl`

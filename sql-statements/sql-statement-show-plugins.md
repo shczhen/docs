@@ -1,7 +1,6 @@
 ---
-title: SHOW PLUGINS
-summary: An overview of the usage of SHOW PLUGINS for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-plugins/']
+title: プラグインを表示する
+summary: TiDBデータベースでのSHOWPLUGINSの使用法の概要。
 ---
 
 # プラグインを表示する {#show-plugins}
@@ -10,11 +9,11 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-plugins/']
 
 ## あらすじ {#synopsis}
 
-<strong>ShowStmt：</strong>
+**ShowStmt：**
 
 ![ShowStmt](/media/sqlgram/ShowStmt.png)
 
-<strong>ShowTargetFilterable：</strong>
+**ShowTargetFilterable：**
 
 ![ShowTargetFilterable](/media/sqlgram/ShowTargetFilterable.png)
 

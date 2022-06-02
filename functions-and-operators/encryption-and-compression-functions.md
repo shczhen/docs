@@ -1,7 +1,6 @@
 ---
-title: Encryption and Compression Functions
-summary: Learn about the encryption and compression functions.
-aliases: ['/docs/dev/functions-and-operators/encryption-and-compression-functions/','/docs/dev/reference/sql/functions-and-operators/encryption-and-compression-functions/']
+title: 暗号化および圧縮機能
+summary: 暗号化および圧縮機能について学びます。
 ---
 
 # 暗号化および圧縮機能 {#encryption-and-compression-functions}

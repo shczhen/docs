@@ -1,7 +1,6 @@
 ---
 title: SHOW STATS_META
-summary: An overview of the usage of SHOW STATS_META for TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-stats-meta/']
+summary: TiDBデータベースでのSHOWSTATS_METAの使用法の概要。
 ---
 
 # SHOW STATS_META {#show-stats-meta}
@@ -19,21 +18,21 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-stats-meta/']
 | modify_count   | 変更された行数  |
 | row_count      | 合計行数     |
 
-> <strong>あり：</strong>
+> **あり：**
 >
 > `update_time`は、TiDBがDMLステートメントに従って`modify_count`フィールドと`row_count`フィールドを更新するときに更新されます。したがって、 `update_time`は`ANALYZE`ステートメントの最後の実行時間ではありません。
 
 ## あらすじ {#synopsis}
 
-<strong>ShowStmt</strong>
+**ShowStmt**
 
 ![ShowStmt](/media/sqlgram/ShowStmt.png)
 
-<strong>ShowTargetFiltertable</strong>
+**ShowTargetFiltertable**
 
 ![ShowTargetFilterable](/media/sqlgram/ShowTargetFilterable.png)
 
-<strong>ShowLikeOrWhereOpt</strong>
+**ShowLikeOrWhereOpt**
 
 ![ShowLikeOrWhereOpt](/media/sqlgram/ShowLikeOrWhereOpt.png)
 

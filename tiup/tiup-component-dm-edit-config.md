@@ -4,11 +4,11 @@ title: tiup dm edit-config
 
 # tiup dm edit-config {#tiup-dm-edit-config}
 
-クラスターのデプロイ後にクラスターサービス構成を変更する必要がある場合は、エディターを起動する`tiup dm edit-config`コマンドを使用して、 [トポロジーファイル](/tiup/tiup-dm-topology-reference.md)を変更できます。指定されたクラスターの。このエディターは、デフォルトで`$EDITOR`環境変数で指定されています。 `$EDITOR`環境変数が存在しない場合は、 `vi`エディターが使用されます。
+クラスタのデプロイ後にクラスタサービス構成を変更する必要がある場合は、エディターを起動する`tiup dm edit-config`コマンドを使用して、 [トポロジーファイル](/tiup/tiup-dm-topology-reference.md)を変更できます。指定されたクラスタの。このエディターは、デフォルトで`$EDITOR`環境変数で指定されています。 `$EDITOR`環境変数が存在しない場合は、 `vi`エディターが使用されます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> -   構成を変更する場合、マシンを追加または削除することはできません。マシンを追加する方法については、 [クラスターをスケールアウトする](/tiup/tiup-component-dm-scale-out.md)を参照してください。マシンを削除する方法については、 [クラスターでのスケーリング](/tiup/tiup-component-dm-scale-in.md)を参照してください。
+> -   構成を変更する場合、マシンを追加または削除することはできません。マシンを追加する方法については、 [クラスタをスケールアウトする](/tiup/tiup-component-dm-scale-out.md)を参照してください。マシンを削除する方法については、 [クラスタでのスケーリング](/tiup/tiup-component-dm-scale-in.md)を参照してください。
 > -   `tiup dm edit-config`コマンドを実行すると、制御マシンでのみ構成が変更されます。次に、 `tiup dm reload`コマンドを実行して構成を再ロードする必要があります。
 
 ## 構文 {#syntax}
@@ -17,7 +17,7 @@ title: tiup dm edit-config
 tiup dm edit-config <cluster-name> [flags]
 ```
 
-`<cluster-name>` ：操作するクラスター。
+`<cluster-name>` ：操作するクラスタ。
 
 ## オプション {#option}
 

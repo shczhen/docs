@@ -1,7 +1,6 @@
 ---
-title: Metrics Schema
-summary: Learn the `METRICS_SCHEMA` schema.
-aliases: ['/docs/dev/system-tables/system-table-metrics-schema/','/docs/dev/reference/system-databases/metrics-schema/','/tidb/dev/system-table-metrics-schema/']
+title: メトリクススキーマ
+summary: `METRICS_SCHEMA`スキーマを学びます。
 ---
 
 # メトリクススキーマ {#metrics-schema}
@@ -175,7 +174,7 @@ SELECT * FROM metrics_schema.tidb_query_duration WHERE value is not null AND tim
 +---------------------+-------------------+----------+----------+----------------+
 ```
 
-上記のクエリ結果の最初の行は、2020-03-25 23:40:00の時点で、TiDBインスタンス`172.16.5.40:10089`で、 `Insert`タイプステートメントのP99実行時間が0.509929485256秒であることを意味します。他の行の意味も同様です。 `sql_type`列の他の値は次のように説明されています。
+上記のクエリ結果の最初の行は、2020-03-25 23:40:00の時点で、TiDBインスタンス`172.16.5.40:10089`で、 `Insert`タイプのステートメントのP99実行時間が0.509929485256秒であることを意味します。他の行の意味も同様です。 `sql_type`列の他の値は次のように説明されています。
 
 -   `Select` ： `select`型ステートメントを実行します。
 -   `internal` ：TiDBの内部SQLステートメント。統計情報を更新し、グローバル変数を取得するために使用されます。
@@ -208,7 +207,7 @@ DESC SELECT * FROM metrics_schema.tidb_query_duration WHERE value is not null AN
 
 1.  2つのセッション変数の値を変更し、時間の粒度を30秒に設定します。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > Prometheusでサポートされている最小の粒度は30秒です。
 

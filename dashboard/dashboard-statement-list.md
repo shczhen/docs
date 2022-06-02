@@ -1,20 +1,19 @@
 ---
-title: SQL Statements Page of TiDB Dashboard
-summary: View the execution status of all SQL statements in the TiDB cluster.
-aliases: ['/docs/dev/dashboard/dashboard-statement-list/']
+title: TiDBダッシュボードのSQLステートメントページ
+summary: TiDBクラスタのすべてのSQLステートメントの実行ステータスを表示します。
 ---
 
 # TiDBダッシュボードのSQLステートメントページ {#sql-statements-page-of-tidb-dashboard}
 
-[SQLステートメント]ページには、クラスター内のすべてのSQLステートメントの実行ステータスが表示されます。このページは、合計または単一の実行時間が長いSQLステートメントを分析するためによく使用されます。
+[SQLステートメント]ページには、クラスタのすべてのSQLステートメントの実行ステータスが表示されます。このページは、合計または単一の実行時間が長いSQLステートメントを分析するためによく使用されます。
 
-このページでは、（クエリパラメータに一貫性がない場合でも）一貫性のある構造を持つSQLクエリは、同じSQLステートメントとして分類されます。たとえば、 `SELECT * FROM employee WHERE id IN (1, 2, 3)`と`select * from EMPLOYEE where ID in (4, 5)`の両方が同じ`select * from employee where id in (...)`ステートメントとして分類されます。
+このページでは、一貫性のある構造を持つSQLクエリ（クエリパラメータに一貫性がない場合でも）は、同じSQLステートメントとして分類されます。たとえば、 `SELECT * FROM employee WHERE id IN (1, 2, 3)`と`select * from EMPLOYEE where ID in (4, 5)`の両方が同じ`select * from employee where id in (...)`ステートメントとして分類されます。
 
 ## ページにアクセスする {#access-the-page}
 
 次の2つの方法のいずれかを使用して、SQLステートメントの要約ページにアクセスできます。
 
--   TiDBダッシュボードにログインした後、左側のナビゲーションメニューで[ <strong>SQLステートメント</strong>]をクリックします。
+-   TiDBダッシュボードにログインした後、左側のナビゲーションメニューで[ **SQLステートメント**]をクリックします。
 
     ![Access SQL statement summary page](/media/dashboard/dashboard-statement-access.png)
 
@@ -22,9 +21,9 @@ aliases: ['/docs/dev/dashboard/dashboard-statement-list/']
 
 SQLステートメントの要約ページに表示されるすべてのデータは、TiDBステートメントの要約テーブルからのものです。テーブルの詳細については、 [TiDBステートメントの要約表](/statement-summary-tables.md)を参照してください。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> SQLステートメントの要約ページの「<strong>平均待ち時間</strong>」列の青いバーは、平均実行時間を示しています。 SQLステートメントの青いバーに黄色い線がある場合、黄色い線の左側と右側はそれぞれ、最近のデータ収集サイクル中のSQLステートメントの最小実行時間と最大実行時間を表します。
+> SQLステートメントの要約ページの「**平均待ち時間**」列の青いバーは、平均実行時間を示しています。 SQLステートメントの青いバーに黄色い線がある場合、黄色い線の左側と右側はそれぞれ、最近のデータ収集サイクル中のSQLステートメントの最小実行時間と最大実行時間を表します。
 
 ### フィルタを変更する {#change-filters}
 
@@ -34,23 +33,23 @@ SQLステートメントの要約ページの上部で、表示するSQL実行�
 
 ### その他の列を表示する {#display-more-columns}
 
-ページの[<strong>列]</strong>をクリックすると、さらに列を表示するように選択できます。列名の右側にある<strong>（i）</strong>アイコンにマウスを移動すると、この列の説明が表示されます。
+ページの[**列]**をクリックすると、さらに列を表示するように選択できます。列名の右側にある<strong>（i）</strong>アイコンにマウスを移動すると、この列の説明が表示されます。
 
 ![Choose columns](/media/dashboard/dashboard-statement-columns-selector.png)
 
 ### 列で並べ替え {#sort-by-column}
 
-デフォルトでは、リストは<strong>合計レイテンシー</strong>で高から低にソートされます。別の列見出しをクリックして、並べ替え基準を変更するか、並べ替え順序を切り替えます。
+デフォルトでは、リストは**合計レイテンシー**で高から低にソートされます。別の列見出しをクリックして、並べ替え基準を変更するか、並べ替え順序を切り替えます。
 
 ![Modify list sorting](/media/dashboard/dashboard-statement-change-order.png)
 
 ### 設定を変更する {#change-settings}
 
-リストページで、右上の<strong>[設定]</strong>ボタンをクリックして、SQLステートメント機能の設定を変更します。
+リストページで、右上の**[設定]**ボタンをクリックして、SQLステートメント機能の設定を変更します。
 
 ![Settings entry](/media/dashboard/dashboard-statement-setting-entry.png)
 
-[<strong>設定]</strong>ボタンをクリックすると、次の設定ダイアログボックスが表示されます。
+[**設定]**ボタンをクリックすると、次の設定ダイアログボックスが表示されます。
 
 ![Settings](/media/dashboard/dashboard-statement-settings.png)
 
@@ -61,7 +60,7 @@ SQLステートメントの要約ページの上部で、表示するSQL実行�
 
 詳細については、 [ステートメント要約テーブルの構成](/statement-summary-tables.md#parameter-configuration)を参照してください。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   ステートメントシステムテーブルはメモリにのみ保存されるため、SQLステートメント機能を無効にすると、システムテーブルのデータがクリアされます。
 >

@@ -1,6 +1,6 @@
 ---
-title: Explain Statements That Use Subqueries
-summary: Learn about the execution plan information returned by the EXPLAIN statement in TiDB.
+title: サブクエリを使用するステートメントを説明する
+summary: TiDBのEXPLAINステートメントによって返される実行プラン情報について学習します。
 ---
 
 # サブクエリを使用するステートメントを説明する {#explain-statements-that-use-subqueries}
@@ -126,11 +126,11 @@ EXPLAIN SELECT * FROM t1 WHERE id IN (SELECT t1_id FROM t2 WHERE t1_id != t1.int
 
 上記の結果から、TiDBが`Semi Join`アルゴリズムを使用していることがわかります。半結合は内部結合とは異なります。半結合では、右キー（ `t2.t1_id` ）の最初の値のみが許可されます。これは、結合演算子タスクの一部として重複が排除されることを意味します。結合アルゴリズムもマージ結合です。これは、オペレーターが左側と右側の両方からソートされた順序でデータを読み取るため、効率的なジッパーマージのようなものです。
 
-サブクエリはサブクエリの外部に存在する列（ `t1.int_col` ）を参照するため、元のステートメントは<em>相関サブクエリ</em>と見なされます。ただし、 `EXPLAIN`の出力は、 [サブクエリの無相関化の最適化](/correlated-subquery-optimization.md)が適用された後の実行プランを示しています。条件`t1_id != t1.int_col`は`t1.id != t1.int_col`に書き換えられます。 TiDBはテーブル`t1`からデータを読み取るため、 `└─Selection_21`でこれを実行できるため、この非相関化と書き換えにより、実行がはるかに効率的になります。
+サブクエリはサブクエリの外部に存在する列（ `t1.int_col` ）を参照するため、元のステートメントは*相関サブクエリ*と見なされます。ただし、 `EXPLAIN`の出力は、 [サブクエリの無相関化の最適化](/correlated-subquery-optimization.md)が適用された後の実行プランを示しています。条件`t1_id != t1.int_col`は`t1.id != t1.int_col`に書き換えられます。 TiDBはテーブル`t1`からデータを読み取るため、 `└─Selection_21`でこれを実行できるため、この非相関化と書き換えにより、実行がはるかに効率的になります。
 
 ## アンチセミジョイン（サブクエリで<code>NOT IN</code> ） {#anti-semi-join-code-not-in-code-subquery}
 
-次の例では、サブクエリに`t3.t1_id`が含まれてい<em>ない限り</em>、クエリはテーブル`t3`からすべての行を意味的に返します。
+次の例では、サブクエリに`t3.t1_id`が含まれてい*ない限り*、クエリはテーブル`t3`からすべての行を意味的に返します。
 
 ```sql
 EXPLAIN SELECT * FROM t3 WHERE t1_id NOT IN (SELECT id FROM t1 WHERE int_col < 100);
@@ -150,4 +150,4 @@ EXPLAIN SELECT * FROM t3 WHERE t1_id NOT IN (SELECT id FROM t1 WHERE int_col < 1
 6 rows in set (0.00 sec)
 ```
 
-このクエリは、テーブル`t3`を読み取ることから始まり、 `PRIMARY KEY`に基づいてテーブル`t1`をプローブします。結合タイプは<em>反半結合</em>です;この例は、値（ `NOT IN` ）が存在しないためのものであり、結合が拒否される前に最初の行のみが一致する必要があるため、半結合するためです。
+このクエリは、テーブル`t3`を読み取ることから始まり、 `PRIMARY KEY`に基づいてテーブル`t1`をプローブします。結合タイプは*反半結合*です;この例は、値（ `NOT IN` ）が存在しないためのものであり、結合が拒否される前に最初の行のみが一致する必要があるため、半結合するためです。

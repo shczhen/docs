@@ -1,7 +1,6 @@
 ---
 title: INSPECTION_SUMMARY
-summary: Learn the `INSPECTION_SUMMARY` inspection summary table.
-aliases: ['/docs/dev/system-tables/system-table-inspection-summary/','/docs/dev/reference/system-databases/inspection-summary/','/tidb/dev/system-table-inspection-summary/']
+summary: `INSPECTION_SUMMARY`検査要約表をご覧ください。
 ---
 
 # INSPECTION_SUMMARY {#inspection-summary}
@@ -42,7 +41,7 @@ DESC inspection_summary;
 -   `QUANTILE` ： `QUANTILE`を含む監視テーブルに有効になります。述部を押し下げることにより、複数のパーセンタイルを指定できます。たとえば、 `select * from inspection_summary where rule='ddl' and quantile in (0.80, 0.90, 0.99, 0.999)`を実行して、DDL関連の監視メトリックを要約し、P80 / P90 / P99/P999の結果を照会できます。 `AVG_VALUE` 、および`MIN_VALUE`はそれぞれ、集計の`MAX_VALUE`値、最小値、および最大値を示します。
 -   `COMMENT` ：対応する監視メトリックに関するコメント。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > すべての結果を要約するとオーバーヘッドが発生するため、オーバーヘッドを減らすためにSQL述部に特定の`rule`を表示することをお勧めします。たとえば、 `select * from inspection_summary where rule in ('read-link', 'ddl')`を実行すると、読み取りリンクとDDL関連の監視メトリックが要約されます。
 

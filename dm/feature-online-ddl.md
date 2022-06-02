@@ -1,7 +1,6 @@
 ---
-title: Migrate from Databases that Use GH-ost/PT-osc
-summary: This document introduces the `online-ddl/online-ddl-scheme` feature of DM.
-aliases: ['/docs/tidb-data-migration/dev/online-ddl-scheme/','tidb-data-migration/dev/feature-online-ddl-scheme']
+title: GH-ost/PT-oscを使用するデータベースからの移行
+summary: このドキュメントでは、DMの `online-ddl/online-ddl-scheme`機能を紹介します。
 ---
 
 # GH-ost/PT-oscを使用するデータベースからの移行 {#migrate-from-databases-that-use-gh-ost-pt-osc}
@@ -24,8 +23,8 @@ gh-ostがonline-schema-changeを実装すると、次の3種類のテーブル�
 
 移行の過程で、DMは上記のテーブルを3つのカテゴリに分類します。
 
--   ghostTable： `_*_gho`
--   `_*_del` ： `_*_ghc`
+-   ghostTable： `\_\*\_gho`
+-   `\_\*\_del` ： `\_\*\_ghc`
 -   realTable：online-ddlを実行するオリジンテーブル。
 
 gh-ostで主に使用されるSQLステートメントとそれに対応するDMの操作は次のとおりです。
@@ -51,7 +50,7 @@ gh-ostで主に使用されるSQLステートメントとそれに対応するDM
     Create /* gh-ost */ table `test`.`_test4_gho` like `test`.`test4` ;
     ```
 
-    DMは`_test4_gho`のテーブルを作成しません。 DMは、 `ghost_schema` 、および`ghost_table` of `server_id` `dm_worker` 、ダウンストリームの`dm_meta.{task_name}_onlineddl`レコードを削除し、メモリ内の関連情報をクリアします。
+    DMは`_test4_gho`のテーブルを作成しません。 DMは、 `ghost_schema` 、および`ghost_table` of `server_id` `dm_worker` 、ダウンストリームの`dm_meta.{task_name}\_onlineddl`レコードを削除し、メモリ内の関連情報をクリアします。
 
     ```
     DELETE FROM dm_meta.{task_name}_onlineddl WHERE id = {server_id} and ghost_schema = {ghost_schema} and ghost_table = {ghost_table};
@@ -63,7 +62,7 @@ gh-ostで主に使用されるSQLステートメントとそれに対応するDM
     Alter /* gh-ost */ table `test`.`_test4_gho` add column cl1 varchar(20) not null ;
     ```
 
-    DMは`_test4_gho`のDDL操作を実行しません。このDDLを`dm_meta.{task_name}_onlineddl`とメモリに記録します。
+    DMは`_test4_gho`のDDL操作を実行しません。このDDLを`dm_meta.{task_name}\_onlineddl`とメモリに記録します。
 
     ```sql
     REPLACE INTO dm_meta.{task_name}_onlineddl (id, ghost_schema , ghost_table , ddls) VALUES (......);
@@ -72,14 +71,14 @@ gh-ostで主に使用されるSQLステートメントとそれに対応するDM
 4.  `_ghc`のテーブルにデータを書き込み、元のテーブルのデータを`_gho`のテーブルに複製します。
 
     ```sql
-    INSERT /* gh-ost */ INTO `test`.`_test4_ghc` VALUES (......);
-    INSERT /* gh-ost `test`.`test4` */ ignore INTO `test`.`_test4_gho` (`id`, `date`, `account_id`, `conversion_price`, `ocpc_matched_conversions`, `ad_cost`, `cl2`)
-      (SELECT `id`, `date`, `account_id`, `conversion_price`, `ocpc_matched_conversions`, `ad_cost`, `cl2` FROM `test`.`test4` FORCE INDEX (`PRIMARY`)
-        WHERE (((`id` > _binary'1') OR ((`id` = _binary'1'))) AND ((`id` < _binary'2') OR ((`id` = _binary'2')))) lock IN share mode
+    Insert /* gh-ost */ into `test`.`_test4_ghc` values (......);
+    Insert /* gh-ost `test`.`test4` */ ignore into `test`.`_test4_gho` (`id`, `date`, `account_id`, `conversion_price`, `ocpc_matched_conversions`, `ad_cost`, `cl2`)
+      (select `id`, `date`, `account_id`, `conversion_price`, `ocpc_matched_conversions`, `ad_cost`, `cl2` from `test`.`test4` force index (`PRIMARY`)
+        where (((`id` > _binary'1') or ((`id` = _binary'1'))) and ((`id` < _binary'2') or ((`id` = _binary'2')))) lock in share mode
       )   ;
     ```
 
-    DMは、 <strong>realtable</strong>用ではないDMLステートメントを実行しません。
+    DMは、 **realtable**用ではないDMLステートメントを実行しません。
 
 5.  移行が完了すると、元のテーブルと`_gho`のテーブルの両方の名前が変更され、オンラインDDL操作が完了します。
 
@@ -108,7 +107,7 @@ gh-ostで主に使用されるSQLステートメントとそれに対応するDM
         alter table test.test4 add column cl1 varchar(20) not null;
         ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > gh-ostの特定のSQLステートメントは、実行で使用されるパラメーターによって異なります。このドキュメントには、主要なSQLステートメントのみが記載されています。詳細については、 [gh-ostドキュメント](https://github.com/github/gh-ost#gh-ost)を参照してください。
 
@@ -118,12 +117,12 @@ pt-oscがonline-schema-changeを実装すると、次の2種類のテーブル�
 
 -   `new` ：DDLを適用するために使用されます。データが完全に複製され、 `new`のテーブルが元のテーブルと一致している場合、元のテーブルは名前の変更によって置き換えられます。
 -   `old` ：オリジンテーブルの名前を変更して作成されます。
--   `pt_osc_*_upd`種類のトリガー`pt_osc_*_del` `pt_osc_*_ins` 。 pt_oscのプロセスでは、originテーブルによって生成された新しいデータがTriggerによって`new`に複製されます。
+-   `pt_osc\_\*\_upd`種類のトリガー`pt_osc\_\*\_del` `pt_osc\_\*\_ins` 。 pt_oscのプロセスでは、オリジンテーブルによって生成された新しいデータがトリガーによって`new`に複製されます。
 
 移行の過程で、DMは上記のテーブルを3つのカテゴリに分類します。
 
--   ghostTable： `_*_new`
--   trashTable： `_*_old`
+-   ghostTable： `\_\*\_new`
+-   trashTable： `\_\*\_old`
 -   realTable：online-ddlを実行するオリジンテーブル。
 
 pt-oscで主に使用されるSQLステートメントとそれに対応するDMの操作は次のとおりです。
@@ -135,7 +134,7 @@ pt-oscで主に使用されるSQLステートメントとそれに対応するDM
     date date DEFAULT NULL, account_id bigint(20) DEFAULT NULL, conversion_price decimal(20,3) DEFAULT NULL,  ocpc_matched_conversions bigint(20) DEFAULT NULL, ad_cost decimal(20,3) DEFAULT NULL,cl2 varchar(20) COLLATE utf8mb4_bin NOT NULL,cl1 varchar(20) COLLATE utf8mb4_bin NOT NULL,PRIMARY KEY (id) ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ;
     ```
 
-    DMは`_test4_new`のテーブルを作成しません。 DMは、 `ghost_schema` 、および`ghost_table` of `server_id` `dm_worker` 、ダウンストリームの`dm_meta.{task_name}_onlineddl`レコードを削除し、メモリ内の関連情報をクリアします。
+    DMは`_test4_new`のテーブルを作成しません。 DMは、 `ghost_schema` 、および`ghost_table` of `server_id` `dm_worker` 、ダウンストリームの`dm_meta.{task_name}\_onlineddl`レコードを削除し、メモリ内の関連情報をクリアします。
 
     ```sql
     DELETE FROM dm_meta.{task_name}_onlineddl WHERE id = {server_id} and ghost_schema = {ghost_schema} and ghost_table = {ghost_table};
@@ -147,7 +146,7 @@ pt-oscで主に使用されるSQLステートメントとそれに対応するDM
     ALTER TABLE `test`.`_test4_new` add column c3 int;
     ```
 
-    DMは`_test4_new`のDDL操作を実行しません。代わりに、このDDLを`dm_meta.{task_name}_onlineddl`とメモリに記録します。
+    DMは`_test4_new`のDDL操作を実行しません。代わりに、このDDLを`dm_meta.{task_name}\_onlineddl`とメモリに記録します。
 
     ```sql
     REPLACE INTO dm_meta.{task_name}_onlineddl (id, ghost_schema , ghost_table , ddls) VALUES (......);
@@ -169,7 +168,7 @@ pt-oscで主に使用されるSQLステートメントとそれに対応するDM
     INSERT LOW_PRIORITY IGNORE INTO `test`.`_test4_new` (`id`, `date`, `account_id`, `conversion_price`, `ocpc_matched_conversions`, `ad_cost`, `cl2`, `cl1`) SELECT `id`, `date`, `account_id`, `conversion_price`, `ocpc_matched_conversions`, `ad_cost`, `cl2`, `cl1` FROM `test`.`test4` LOCK IN SHARE MODE /*pt-online-schema-change 3227 copy table*/
     ```
 
-    DMは、 <strong>realtable</strong>用ではないDMLステートメントを実行しません。
+    DMは、 **realtable**用ではないDMLステートメントを実行しません。
 
 5.  データ移行が完了すると、元のテーブルと`_new`のテーブルの名前が変更され、オンラインDDL操作が完了します。
 
@@ -209,22 +208,6 @@ pt-oscで主に使用されるSQLステートメントとそれに対応するDM
 
     DMは`_test4_old`とトリガーを削除しません。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > pt-oscの特定のSQLステートメントは、実行で使用されるパラメーターによって異なります。このドキュメントには、主要なSQLステートメントのみが記載されています。詳細については、 [pt-oscドキュメント](https://www.percona.com/doc/percona-toolkit/2.2/pt-online-schema-change.html)を参照してください。
-
-## その他のオンラインスキーマ変更ツール {#other-online-schema-change-tools}
-
-場合によっては、オンラインスキーマ変更ツールのデフォルトの動作を変更する必要があります。たとえば、 `ghost table`と`trash table`にカスタマイズされた名前を使用できます。その他の場合は、gh-ostまたはpt-oscの代わりに、同じ動作原理と変更プロセスで他のツールを使用することをお勧めします。
-
-このようなカスタマイズされたニーズを実現するには、 `ghost table`と`trash table`の名前に一致する正規表現を作成する必要があります。
-
-v2.0.7以降、DMは変更されたオンラインスキーマ変更ツールを実験的にサポートします。 DMタスク構成で`online-ddl=true`を設定し、 `shadow-table-rules`と`trash-table-rules`を構成することにより、変更された一時テーブルを正規表現と一致させることができます。
-
-たとえば、 `ghost table`の名前が`_{origin_table}_pcnew`で`trash table`の名前が`_{origin_table}_pcold`のカスタマイズされたpt-oscを使用する場合、カスタムルールを次のように設定できます。
-
-```yaml
-online-ddl: true
-shadow-table-rules: ["^_(.+)_(?:pcnew)$"]
-trash-table-rules: ["^_(.+)_(?:pcold)$"]
-```

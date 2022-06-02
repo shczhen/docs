@@ -1,6 +1,6 @@
 ---
-title: COLUMNS
-summary: Learn the `COLUMNS` information_schema table.
+title: 列
+summary: `COLUMNS`information_schemaテーブルを学びます。
 ---
 
 # 列 {#columns}
@@ -92,7 +92,7 @@ CHARACTER_MAXIMUM_LENGTH: NULL
 -   `NUMERIC_SCALE` ：数値タイプの列の数値スケール。
 -   `DATETIME_PRECISION` ：時間タイプの列の場合、小数秒の精度。
 -   `CHARACTER_SET_NAME` ：文字列列の文字セットの名前。
--   `COLLATION_NAME` ：文字列列の照合の名前。
+-   `COLLATION_NAME` ：文字列列の照合順序の名前。
 -   `COLUMN_TYPE` ：列タイプ。
 -   `COLUMN_KEY` ：この列にインデックスが付けられているかどうか。このフィールドの値は次のとおりです。
     -   空：この列は索引付けされていないか、この列は索引付けされており、複数列の非固有索引の2番目の列です。

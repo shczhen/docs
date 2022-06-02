@@ -1,7 +1,6 @@
 ---
-title: Literal Values
-summary: This article introduces the literal values ​​of TiDB SQL statements.
-aliases: ['/docs/dev/literal-values/','/docs/dev/reference/sql/language-structure/literal-values/']
+title: リテラル値
+summary: この記事では、TiDBSQLステートメントのリテラル値を紹介します。
 ---
 
 # リテラル値 {#literal-values}
@@ -31,10 +30,10 @@ TiDBリテラル値には、文字リテラル、数値リテラル、時刻と�
 
 文字列は、次の2つのタイプに分けられます。
 
--   バイナリ文字列：文字セットと照合が両方とも`binary`であるバイトのシーケンスで構成され、相互に比較されるときに単位として<strong>バイト</strong>を使用します。
--   非バイナリ文字列：文字のシーケンスで構成され、 `binary`以外のさまざまな文字セットと照合があります。互いに比較すると、非バイナリ文字列は<strong>文字</strong>を単位として使用します。文字セットによっては、文字に複数のバイトが含まれる場合があります。
+-   バイナリ文字列：文字セットと照合順序が両方とも`binary`であるバイトのシーケンスで構成され、相互に比較されるときに単位として**バイト**を使用します。
+-   非バイナリ文字列：文字のシーケンスで構成され、 `binary`以外のさまざまな文字セットと照合があります。互いに比較すると、非バイナリ文字列は**文字**を単位として使用します。文字セットによっては、文字に複数のバイトが含まれる場合があります。
 
-文字列リテラルには、特定の文字セットと照合を使用する文字列として指定するために、オプションの`character set introducer`と`COLLATE clause`を含めることができます。
+文字列リテラルには、特定の文字セットと照合順序を使用する文字列として指定するために、オプションの`character set introducer`と`COLLATE clause`を含めることができます。
 
 ```
 [_charset_name]'string' [COLLATE collation_name]
@@ -245,6 +244,6 @@ mysql> SELECT b+0, BIN(b), HEX(b) FROM t;
 
 `NULL`はデータが空であることを意味します。これは大文字と小文字を区別せず、 `\N` （大文字と小文字を区別）と同義です。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `NULL`は`0`と同じではなく、空の文字列`''`でもありません。

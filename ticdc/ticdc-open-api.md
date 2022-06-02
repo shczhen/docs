@@ -1,18 +1,18 @@
 ---
 title: TiCDC OpenAPI
-summary: Learn how to use the OpenAPI interface to manage the cluster status and data replication.
+summary: OpenAPIインターフェースを使用して、クラスタのステータスとデータ複製を管理する方法を学びます。
 ---
 
 # TiCDC OpenAPI {#ticdc-openapi}
 
 <!-- markdownlint-disable MD024 -->
 
-TiCDCは、TiCDCクラスターを照会および操作するためのOpenAPI機能を提供します。これは、 [`cdc cli`ツール](/ticdc/manage-ticdc.md#use-cdc-cli-to-manage-cluster-status-and-data-replication-task)の機能に似ています。
+TiCDCは、TiCDCクラスタを照会および操作するためのOpenAPI機能を提供します。これは、 [`cdc cli`ツール](/ticdc/manage-ticdc.md#use-cdc-cli-to-manage-cluster-status-and-data-replication-task)の機能に似ています。
 
-APIを使用して、TiCDCクラスターで次のメンテナンス操作を実行できます。
+APIを使用して、TiCDCクラスタで次のメンテナンス操作を実行できます。
 
 -   [TiCDCノードのステータス情報を取得します](#get-the-status-information-of-a-ticdc-node)
--   [TiCDCクラスターのヘルスステータスを確認します](#check-the-health-status-of-a-ticdc-cluster)
+-   [TiCDCクラスタのヘルスステータスを確認します](#check-the-health-status-of-a-ticdc-cluster)
 -   [レプリケーションタスクを作成する](#create-a-replication-task)
 -   [レプリケーションタスクを削除する](#remove-a-replication-task)
 -   [レプリケーション構成を更新します](#update-the-replication-configuration)
@@ -81,7 +81,7 @@ curl -X GET http://127.0.0.1:8300/api/v1/status
 -   pid：ノードのキャプチャプロセスPID。
 -   is_owner：ノードが所有者であるかどうかを示します。
 
-## TiCDCクラスターのヘルスステータスを確認します {#check-the-health-status-of-a-ticdc-cluster}
+## TiCDCクラスタのヘルスステータスを確認します {#check-the-health-status-of-a-ticdc-cluster}
 
 このAPIは同期インターフェースです。クラスタが正常な場合、 `200 OK`が返されます。
 
@@ -111,7 +111,7 @@ curl -X GET http://127.0.0.1:8300/api/v1/health
 
 #### リクエスト本文のパラメータ {#parameters-for-the-request-body}
 
-|パラメータ名|説明| | ：------------------------ | ：---------------------- --------------------------- ---- | | `changefeed_id` | `STRING`タイプ。レプリケーションタスクのID。 （オプション）| | `start_ts` | `UINT64`タイプ。チェンジフィードの開始TSOを指定します。 （オプション）| | `target_ts` | `UINT64`タイプ。チェンジフィードのターゲットTSOを指定します。 （オプション）| | <strong><code>sink_uri</code></strong> | `STRING`タイプ。レプリケーションタスクのダウンストリームアドレス。 （<strong>必須</strong>）| | `force_replicate` | `BOOLEAN`タイプ。一意のインデックスなしでテーブルを強制的に複製するかどうかを決定します。 （オプション）| | `ignore_ineligible_table` | `BOOLEAN`タイプ。複製できないテーブルを無視するかどうかを決定します。 （オプション）| | `filter_rules` | `STRING`型配列。テーブルスキーマフィルタリングのルール。 （オプション）| | `ignore_txn_start_ts` | `UINT64`型配列。指定されたstart_tsのトランザクションを無視します。 （オプション）| | `mounter_worker_num` | `INT`タイプ。マウンターのスレッド番号。 （オプション）| | `sink_config` |シンクの構成パラメーター。 （オプション）|
+|パラメータ名|説明| | ：------------------------ | ：---------------------- --------------------------- ---- | | `changefeed_id` | `STRING`タイプ。レプリケーションタスクのID。 （オプション）| | `start_ts` | `UINT64`タイプ。チェンジフィードの開始TSOを指定します。 （オプション）| | `target_ts` | `UINT64`タイプ。チェンジフィードのターゲットTSOを指定します。 （オプション）| | **`sink_uri`** | `STRING`タイプ。レプリケーションタスクのダウンストリームアドレス。 （<strong>必須</strong>）| | `force_replicate` | `BOOLEAN`タイプ。一意のインデックスなしでテーブルを強制的に複製するかどうかを決定します。 （オプション）| | `ignore_ineligible_table` | `BOOLEAN`タイプ。複製できないテーブルを無視するかどうかを決定します。 （オプション）| | `filter_rules` | `STRING`型配列。テーブルスキーマフィルタリングのルール。 （オプション）| | `ignore_txn_start_ts` | `UINT64`型配列。指定されたstart_tsのトランザクションを無視します。 （オプション）| | `mounter_worker_num` | `INT`タイプ。マウンターのスレッド番号。 （オプション）| | `sink_config` |シンクの構成パラメーター。 （オプション）|
 
 `changefeed_id` 、および`start_ts`の意味と形式は、 `target_ts`の[`cdc cli`を使用してレプリケーションタスクを作成します](/ticdc/manage-ticdc.md#create-a-replication-task)で説明されているものと同じ`sink_uri` 。これらのパラメータの詳細については、このドキュメントを参照してください。 `sink_uri`で証明書パスを指定するときは、対応する証明書が対応するTiCDCサーバーにアップロードされていることを確認してください。
 
@@ -230,7 +230,7 @@ curl -X DELETE http://127.0.0.1:8300/api/v1/changefeeds/test1
 
 ## レプリケーションタスクリストをクエリする {#query-the-replication-task-list}
 
-このAPIは同期インターフェースです。要求が成功すると、TiCDCクラスター内のすべてのノードの基本情報が返されます。
+このAPIは同期インターフェースです。要求が成功すると、TiCDCクラスタのすべてのノードの基本情報が返されます。
 
 ### URIをリクエストする {#request-uri}
 

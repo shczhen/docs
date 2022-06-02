@@ -1,12 +1,11 @@
 ---
-title: Migrate Data from SQL Files to TiDB
-summary: Learn how to migrate data from SQL files to TiDB.
-aliases: ['/docs/dev/migrate-from-mysql-mydumper-files/','/tidb/dev/migrate-from-mysql-mydumper-files/','/tidb/dev/migrate-from-mysql-dumpling-files']
+title: SQLファイルからTiDBへのデータの移行
+summary: SQLファイルからTiDBにデータを移行する方法を学びます。
 ---
 
 # SQLファイルからTiDBへのデータの移行 {#migrate-data-from-sql-files-to-tidb}
 
-このドキュメントでは、TiDBLightningを使用してMySQLSQLファイルからTiDBにデータを移行する方法について説明します。 MySQL SQLファイルの生成方法については、 [餃子を使用してSQLファイルにエクスポート](/dumpling-overview.md#export-to-sql-files)を参照してください。
+このドキュメントでは、TiDBLightningを使用してMySQLSQLファイルからTiDBにデータを移行する方法について説明します。 MySQL SQLファイルの生成方法については、 [Dumplingを使用してSQLファイルにエクスポート](/dumpling-overview.md#export-to-sql-files)を参照してください。
 
 ## 前提条件 {#prerequisites}
 
@@ -23,20 +22,20 @@ aliases: ['/docs/dev/migrate-from-mysql-mydumper-files/','/tidb/dev/migrate-from
 
 Dumplingを使用してデータをエクスポートする場合、テーブルスキーマファイルは自動的にエクスポートされます。他の方法でエクスポートされたデータの場合、次のいずれかの方法でテーブルスキーマを作成できます。
 
--   <strong>方法1</strong> ：TiDBLightningを使用してターゲットテーブルスキーマを作成します。
+-   **方法1** ：TiDBLightningを使用してターゲットテーブルスキーマを作成します。
 
     必要なDDLステートメントを含むSQLファイルを作成します。
 
     -   `${db_name}-schema-create.sql`のファイルに`CREATE DATABASE`のステートメントを追加します。
     -   `${db_name}.${table_name}-schema.sql`のファイルに`CREATE TABLE`のステートメントを追加します。
 
--   <strong>方法2</strong> ：ターゲットテーブルスキーマを手動で作成します。
+-   **方法2** ：ターゲットテーブルスキーマを手動で作成します。
 
 ## ステップ3.構成ファイルを作成します {#step-3-create-the-configuration-file}
 
 次の内容で`tidb-lightning.toml`のファイルを作成します。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```toml
 [lightning]
@@ -66,7 +65,7 @@ status-port = ${status-port}  # During the import process, TiDB Lightning needs 
 pd-addr = "${ip}:${port}"     # The address of the cluster's PD. TiDB Lightning obtains some information through PD, such as 172.16.31.3:2379. When backend = "local", you must correctly specify status-port and pd-addr. Otherwise, the import will encounter errors.
 ```
 
-構成ファイルの詳細については、 [TiDBLightning構成](/tidb-lightning/tidb-lightning-configuration.md)を参照してください。
+構成ファイルの詳細については、 [TiDBLightningConfiguration / コンフィグレーション](/tidb-lightning/tidb-lightning-configuration.md)を参照してください。
 
 ## ステップ4.データをインポートします {#step-4-import-the-data}
 
@@ -92,6 +91,6 @@ TiDB Lightningは、 `~/.aws/credentials`からのクレデンシャルファイ
 
 インポートが完了すると、TiDBLightningは自動的に終了します。ログの最後の5行に`the whole procedure completed`が含まれている場合は、インポートが正常に完了したことを意味します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > インポートが成功したかどうかに関係なく、最後の行には`tidb lightning exit`が表示されます。これは、TiDB Lightningが正常に終了したことを意味するだけであり、タスクの完了ではありません。インポートプロセス中に問題が発生した場合は、トラブルシューティングについて[TiDB Lightning FAQ](/tidb-lightning/tidb-lightning-faq.md)を参照してください。

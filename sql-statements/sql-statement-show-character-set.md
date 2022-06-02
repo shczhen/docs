@@ -1,7 +1,6 @@
 ---
-title: SHOW CHARACTER SET | TiDB SQL Statement Reference
-summary: An overview of the usage of SHOW CHARACTER SET for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-character-set/','/docs/dev/reference/sql/statements/show-character-set/']
+title: 文字セットを表示| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのSHOWCHARACTERSETの使用法の概要。
 ---
 
 # 文字セットを表示 {#show-character-set}
@@ -10,11 +9,11 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-character-set/','/docs/de
 
 ## あらすじ {#synopsis}
 
-<strong>ShowCharsetStmt：</strong>
+**ShowCharsetStmt：**
 
 ![ShowCharsetStmt](/media/sqlgram/ShowCharsetStmt.png)
 
-<strong>CharsetKw：</strong>
+**CharsetKw：**
 
 ![CharsetKw](/media/sqlgram/CharsetKw.png)
 

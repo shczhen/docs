@@ -1,14 +1,13 @@
 ---
-title: TiDB Configuration File
-summary: Learn the TiDB configuration file options that are not involved in command line options.
-aliases: ['/docs/dev/tidb-configuration-file/','/docs/dev/reference/configuration/tidb-server/configuration-file/']
+title: TiDBConfiguration / コンフィグレーションファイル
+summary: コマンドラインオプションに関係のないTiDB構成ファイルオプションについて説明します。
 ---
 
 <!-- markdownlint-disable MD001 -->
 
 <!-- markdownlint-disable MD024 -->
 
-# TiDB構成ファイル {#tidb-configuration-file}
+# TiDBConfiguration / コンフィグレーションファイル {#tidb-configuration-file}
 
 TiDB構成ファイルは、コマンドラインパラメーターよりも多くのオプションをサポートしています。デフォルトの構成ファイル[`config.toml.example`](https://github.com/pingcap/tidb/blob/master/config/config.toml.example)をダウンロードして、名前を`config.toml`に変更できます。このドキュメントでは、 [コマンドラインオプション](/command-line-flags-for-tidb-configuration.md)に関係のないオプションについてのみ説明します。
 
@@ -31,8 +30,8 @@ TiDB構成ファイルは、コマンドラインパラメーターよりも多�
 
 -   1つのSQLステートメントで使用可能な最大メモリ。
 -   デフォルト値： `1073741824` （バイト単位）
--   注：クラスターをv2.0.xまたはv3.0.xからv4.0.9以降のバージョンにアップグレードする場合、この構成のデフォルト値は`34359738368`です。
--   この値よりも多くのメモリを必要とするリクエストは、 `oom-action`で定義された動作に基づいて処理されます。
+-   注：クラスタをv2.0.xまたはv3.0.xからv4.0.9以降のバージョンにアップグレードする場合、この構成のデフォルト値は`34359738368`です。
+-   この値よりも多くのメモリを必要とする要求は、 `oom-action`で定義された動作に基づいて処理されます。
 -   この値は、システム変数[`tidb_mem_quota_query`](/system-variables.md#tidb_mem_quota_query)の初期値です。
 
 ### <code>oom-use-tmp-storage</code> {#code-oom-use-tmp-storage-code}
@@ -66,7 +65,7 @@ TiDB構成ファイルは、コマンドラインパラメーターよりも多�
 -   デフォルト値： `2`
 -   詳細については、この変数の[MySQLの説明](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_lower_case_table_names)を参照してください。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > 現在、TiDBはこのオプションの値を`2`に設定することのみをサポートしています。つまり、テーブル名を保存するときは大文字と小文字が区別されますが、テーブル名を比較するときは大文字と小文字が区別されません。比較は小文字に基づいています。
 
@@ -81,7 +80,7 @@ TiDB構成ファイルは、コマンドラインパラメーターよりも多�
 -   `KILL`ステートメントをMySQL互換に設定するかどうかを決定します。
 -   デフォルト値： `false`
 -   TiDBでの`KILL xxx`の動作は、MySQLでの動作とは異なります。 TiDBには`TIDB`のキーワード、つまり`KILL TIDB xxx`が必要です。 `compatible-kill-query`が`true`に設定されている場合、 `TIDB`キーワードは必要ありません。
--   ユーザーが<kbd>Ctrl</kbd> + <kbd>C</kbd>を押したときのMySQLコマンドラインクライアントのデフォルトの動作は、バックエンドへの新しい接続を作成し、その新しい接続で`KILL`ステートメントを実行することであるため、この区別は重要です。ロードバランサーまたはプロキシが新しい接続を元のセッションとは異なるTiDBサーバーインスタンスに送信した場合、間違ったセッションが終了し、クラスターを使用するアプリケーションが中断される可能性があります。 `KILL`ステートメントで参照している接続が、 `KILL`ステートメントの送信先と同じサーバー上にあることが確実な場合にのみ、 `compatible-kill-query`を有効にします。
+-   ユーザーが<kbd>Ctrl</kbd> + <kbd>C</kbd>を押したときのMySQLコマンドラインクライアントのデフォルトの動作は、バックエンドへの新しい接続を作成し、その新しい接続で`KILL`ステートメントを実行することであるため、この区別は重要です。ロードバランサーまたはプロキシが新しい接続を元のセッションとは異なるTiDBサーバーインスタンスに送信した場合、間違ったセッションが終了し、クラスタを使用するアプリケーションが中断される可能性があります。 `KILL`ステートメントで参照している接続が、 `KILL`ステートメントの送信先と同じサーバー上にあることが確実な場合にのみ、 `compatible-kill-query`を有効にします。
 
 ### <code>check-mb4-value-in-utf8</code> {#code-check-mb4-value-in-utf8-code}
 
@@ -99,7 +98,7 @@ TiDB構成ファイルは、コマンドラインパラメーターよりも多�
 -   デフォルト値： `false`
 -   このデフォルト設定では、主キー制約の追加または削除はサポートされていません。この機能を有効にするには、 `alter-primary-key`を`true`に設定します。ただし、スイッチがオンになる前にテーブルがすでに存在し、その主キー列のデータ型が整数である場合、この構成項目を`true`に設定しても、列から主キーを削除することはできません。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > この構成アイテムは非推奨になり、現在、 `@tidb_enable_clustered_index`の値が`INT_ONLY`の場合にのみ有効になります。主キーを追加または削除する必要がある場合は、テーブルを作成するときに代わりに`NONCLUSTERED`キーワードを使用してください。 `CLUSTERED`タイプの主キーの詳細については、 [クラスター化されたインデックス](/clustered-indexes.md)を参照してください。
 
@@ -125,9 +124,9 @@ TiDB構成ファイルは、コマンドラインパラメーターよりも多�
 
 ### <code>new_collations_enabled_on_first_bootstrap</code> {#code-new-collations-enabled-on-first-bootstrap-code}
 
--   新しい照合サポートを有効または無効にします。
--   デフォルト値： `true`
--   注：この構成は、最初に初期化されたTiDBクラスターに対してのみ有効です。初期化後、この構成アイテムを使用して、新しい照合サポートを有効または無効にすることはできません。 TiDBクラスターがv4.0以降にアップグレードされると、クラスターは以前に初期化されているため、この構成アイテムの`true`と`false`の両方の値が`false`と見なされます。
+-   新しい照合順序サポートを有効または無効にします。
+-   デフォルト値： `false`
+-   注：この構成は、最初に初期化されたTiDBクラスタに対してのみ有効です。初期化後、この構成アイテムを使用して、新しい照合順序サポートを有効または無効にすることはできません。 TiDBクラスタがv4.0にアップグレードされると、クラスタは以前に初期化されているため、この構成アイテムの`true`と`false`の両方の値が`false`と見なされます。
 
 ### <code>max-server-connections</code> {#code-max-server-connections-code}
 
@@ -180,7 +179,7 @@ TiDB構成ファイルは、コマンドラインパラメーターよりも多�
 
 ## ログ {#log}
 
-ログに関連する構成項目。
+ログに関連するConfiguration / コンフィグレーション項目。
 
 ### <code>level</code> {#code-level-code}
 
@@ -200,7 +199,7 @@ TiDB構成ファイルは、コマンドラインパラメーターよりも多�
 -   デフォルト値： `true`
 -   値を`false`に設定すると、ログはタイムスタンプを出力しません。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 下位互換性を保つために、最初の`disable-timestamp`の構成項目は引き続き有効です。ただし、 `disable-timestamp`の値が`enable-timestamp`の値と意味的に矛盾する場合（たとえば、 `enable-timestamp`と`disable-timestamp`の両方が`true`に設定されている場合）、TiDBは`disable-timestamp`の値を無視します。それ以降のバージョンでは、 `disable-timestamp`の構成が削除されます。
 >
@@ -245,7 +244,7 @@ TiDB構成ファイルは、コマンドラインパラメーターよりも多�
 
 ## log.file {#log-file}
 
-ログファイルに関連する構成項目。
+ログファイルに関連するConfiguration / コンフィグレーション項目。
 
 #### <code>filename</code> {#code-filename-code}
 
@@ -274,7 +273,7 @@ TiDB構成ファイルは、コマンドラインパラメーターよりも多�
 
 ## 安全 {#security}
 
-セキュリティに関連する構成項目。
+セキュリティに関連するConfiguration / コンフィグレーション項目。
 
 ### <code>require-secure-transport</code> {#code-require-secure-transport-code}
 
@@ -341,7 +340,7 @@ TiDB構成ファイルは、コマンドラインパラメーターよりも多�
 
 ## パフォーマンス {#performance}
 
-パフォーマンスに関連する構成項目。
+パフォーマンスに関連するConfiguration / コンフィグレーション項目。
 
 ### <code>max-procs</code> {#code-max-procs-code}
 
@@ -351,9 +350,9 @@ TiDB構成ファイルは、コマンドラインパラメーターよりも多�
 
 ### <code>server-memory-quota</code> <span class="version-mark">quotav4.0.9の新機能</span> {#code-server-memory-quota-code-span-class-version-mark-new-in-v4-0-9-span}
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> `server-memory-quota`はまだ実験的な機能です。実稼働環境で使用することはお勧めし<strong>ません</strong>。
+> `server-memory-quota`はまだ実験的機能です。実稼働環境で使用することはお勧めし**ません**。
 
 -   tidb-serverインスタンスのメモリ使用制限。<!-- New in TiDB v5.0 -->この構成アイテムは、前の[`max-memory`](https://docs.pingcap.com/tidb/stable/tidb-configuration-file#max-memory)を完全に置き換えます。
 -   デフォルト値： `0` （バイト単位）。これは、メモリ制限がないことを意味します。
@@ -383,7 +382,7 @@ TiDB構成ファイルは、コマンドラインパラメーターよりも多�
 
 -   1つのTiDBトランザクションで許可されるステートメントの最大数。
 -   デフォルト値： `5000`
--   ステートメントの数が`stmt-count-limit`を超えた後、トランザクションがロールバックまたはコミットされない場合、TiDBは`statement count 5001 exceeds the transaction limitation, autocommit = false`エラーを返します。この構成は、再試行可能な楽観的トランザクションで<strong>のみ</strong>有効になります。ペシミスティックトランザクションを使用する場合、またはトランザクションの再試行を無効にした場合、トランザクション内のステートメントの数はこの構成によって制限されません。
+-   ステートメントの数が`stmt-count-limit`を超えた後、トランザクションがロールバックまたはコミットされない場合、TiDBは`statement count 5001 exceeds the transaction limitation, autocommit = false`エラーを返します。この構成は、再試行可能な楽観的トランザクションで**のみ**有効になります。ペシミスティックトランザクションを使用する場合、またはトランザクションの再試行を無効にした場合、トランザクション内のステートメントの数はこの構成によって制限されません。
 
 ### <code>txn-entry-size-limit</code><span class="version-mark">新機能</span> {#code-txn-entry-size-limit-code-span-class-version-mark-new-in-v5-0-span}
 
@@ -396,7 +395,7 @@ TiDB構成ファイルは、コマンドラインパラメーターよりも多�
 
 -   TiDBでの単一トランザクションのサイズ制限。
 -   デフォルト値： `104857600` （バイト単位）
--   単一のトランザクションでは、キー値レコードの合計サイズがこの値を超えることはできません。このパラメーターの最大値は`1099511627776` （1 TB）です。 binlogを使用してダウンストリームコンシューマーKafka（ `arbiter`クラスターなど）にサービスを提供した場合、このパラメーターの値は`1073741824` （1 GB）以下でなければならないことに注意してください。これは、Kafkaが処理できる単一のメッセージサイズの上限が1GBであるためです。それ以外の場合、この制限を超えるとエラーが返されます。
+-   単一のトランザクションでは、キー値レコードの合計サイズがこの値を超えることはできません。このパラメーターの最大値は`1099511627776` （1 TB）です。 binlogを使用してダウンストリームコンシューマーKafka（ `arbiter`クラスタなど）にサービスを提供した場合、このパラメーターの値は`1073741824` （1 GB）以下でなければならないことに注意してください。これは、Kafkaが処理できる単一のメッセージサイズの上限が1GBであるためです。それ以外の場合、この制限を超えるとエラーが返されます。
 
 ### <code>tcp-keep-alive</code> {#code-tcp-keep-alive-code}
 
@@ -491,7 +490,7 @@ TiDB構成ファイルは、コマンドラインパラメーターよりも多�
 
 ## オープントレース {#opentracing}
 
-オープントレースに関連する構成項目。
+オープントレースに関連するConfiguration / コンフィグレーション項目。
 
 ### <code>enable</code> {#code-enable-code}
 
@@ -505,7 +504,7 @@ TiDB構成ファイルは、コマンドラインパラメーターよりも多�
 
 ## opentracing.sampler {#opentracing-sampler}
 
-opentracing.samplerに関連する構成項目。
+opentracing.samplerに関連するConfiguration / コンフィグレーション項目。
 
 ### <code>type</code> {#code-type-code}
 
@@ -539,7 +538,7 @@ opentracing.samplerに関連する構成項目。
 
 ## opentracing.reporter {#opentracing-reporter}
 
-opentracing.reporterに関連する構成アイテム。
+opentracing.reporterに関連するConfiguration / コンフィグレーションアイテム。
 
 ### <code>queue-size</code> {#code-queue-size-code}
 
@@ -579,12 +578,6 @@ opentracing.reporterに関連する構成アイテム。
 -   TiDBノードと`keepalive`ノード間のRPC1チェックのタイムアウト。
 -   デフォルト値： `3`
 -   単位：秒
-
-### <code>grpc-compression-type</code> {#code-grpc-compression-type-code}
-
--   TiDBノードとTiKVノード間のデータ転送に使用される圧縮タイプを指定します。デフォルト値は`"none"`で、これは圧縮がないことを意味します。 gzip圧縮を有効にするには、この値を`"gzip"`に設定します。
--   デフォルト値： `"none"`
--   `"gzip"`のオプション： `"none"`
 
 ### <code>commit-timeout</code> {#code-commit-timeout-code}
 
@@ -627,7 +620,7 @@ opentracing.reporterに関連する構成アイテム。
 
 ## txn-local-latches {#txn-local-latches}
 
-トランザクションラッチに関連する構成。多くのローカルトランザクションの競合が発生した場合に有効にすることをお勧めします。
+トランザクションラッチに関連するConfiguration / コンフィグレーション。多くのローカルトランザクションの競合が発生した場合に有効にすることをお勧めします。
 
 ### <code>enabled</code> {#code-enabled-code}
 
@@ -672,7 +665,7 @@ TiDBBinlogに関連する構成。
 
 ## 状態 {#status}
 
-TiDBサービスのステータスに関連する構成。
+TiDBサービスのステータスに関連するConfiguration / コンフィグレーション。
 
 ### <code>report-status</code> {#code-report-status-code}
 
@@ -683,6 +676,20 @@ TiDBサービスのステータスに関連する構成。
 
 -   データベース関連のQPSメトリックをPrometheusに送信するかどうかを決定します。
 -   デフォルト値： `false`
+
+## stmt- <span class="version-mark">summaryv3.0.4の新機能</span> {#stmt-summary-span-class-version-mark-new-in-v3-0-4-span}
+
+[ステートメント要約テーブル](/statement-summary-tables.md)に関連する構成。
+
+### max-stmt-count {#max-stmt-count}
+
+-   [ステートメント要約テーブル](/statement-summary-tables.md)に保存できるSQLカテゴリの最大数。
+-   デフォルト値： `3000`
+
+### max-sql-length {#max-sql-length}
+
+-   [ステートメント要約テーブル](/statement-summary-tables.md)の`DIGEST_TEXT`列と`QUERY_SAMPLE_TEXT`列の最長表示長。
+-   デフォルト値： `4096`
 
 ## 悲観的-txn {#pessimistic-txn}
 
@@ -703,12 +710,6 @@ TiDBサービスのステータスに関連する構成。
 ### デッドロック-履歴-収集-再試行可能 {#deadlock-history-collect-retryable}
 
 -   [`INFORMATION_SCHEMA.DEADLOCKS`](/information-schema/information-schema-deadlocks.md)テーブルが再試行可能なデッドロックエラーの情報を収集するかどうかを制御します。再試行可能なデッドロックエラーの説明については、 [再試行可能なデッドロックエラー](/information-schema/information-schema-deadlocks.md#retryable-deadlock-errors)を参照してください。
-
-### pessimistic-auto-commit（v6.0.0の新機能） {#pessimistic-auto-commit-new-in-v6-0-0}
-
--   悲観的トランザクションモードがグローバルに有効になっている場合に自動コミットトランザクションが使用するトランザクションモードを決定します（ `tidb_txn_mode='pessimistic'` ）。デフォルトでは、ペシミスティックトランザクションモードがグローバルに有効になっている場合でも、自動コミットトランザクションはオプティミスティックトランザクションモードを使用します。 `pessimistic-auto-commit`を有効にした後（ `true`に設定）、自動コミットトランザクションもペシミスティックモードを使用します。これは、他の明示的にコミットされたペシミスティックトランザクションと一致します。
--   競合のあるシナリオの場合、この構成を有効にした後、TiDBはトランザクションをグローバルロック待機管理に組み込みます。これにより、デッドロックが回避され、デッドロックの原因となる競合によって引き起こされる遅延の急増が軽減されます。
--   競合のないシナリオで、自動コミットトランザクションが多数あり、単一のトランザクションが大量のデータを操作する場合、この構成を有効にするとパフォーマンスが低下します。たとえば、auto- `INSERT INTO SELECT`ステートメント。
 -   デフォルト値： `false`
 
 ## 実験的 {#experimental}
@@ -722,9 +723,9 @@ v3.1.0で導入された`experimental`のセクションでは、TiDBの実験�
 
 ### <code>stats-load-concurrency</code><span class="version-mark">の新機能</span> {#code-stats-load-concurrency-code-span-class-version-mark-new-in-v5-4-0-span}
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> 現在、統計を同期的にロードすることは実験的な機能です。実稼働環境で使用することはお勧めしません。
+> 現在、統計を同期的にロードすることは実験的機能です。実稼働環境で使用することはお勧めしません。
 
 -   TiDB同期ロード統計機能が同時に処理できる列の最大数。
 -   デフォルト値： `5`
@@ -732,9 +733,9 @@ v3.1.0で導入された`experimental`のセクションでは、TiDBの実験�
 
 ### <code>stats-load-queue-size</code> <span class="version-mark">sizev5.4.0の新機能</span> {#code-stats-load-queue-size-code-span-class-version-mark-new-in-v5-4-0-span}
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> 現在、統計を同期的にロードすることは実験的な機能です。実稼働環境で使用することはお勧めしません。
+> 現在、統計を同期的にロードすることは実験的機能です。実稼働環境で使用することはお勧めしません。
 
 -   TiDB同期ロード統計機能がキャッシュできる列要求の最大数。
 -   デフォルト値： `1000`

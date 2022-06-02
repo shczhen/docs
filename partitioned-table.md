@@ -1,7 +1,6 @@
 ---
-title: Partitioning
-summary: Learn how to use partitioning in TiDB.
-aliases: ['/docs/dev/partitioned-table/','/docs/dev/reference/sql/partitioning/']
+title: パーティショニング
+summary: TiDBでパーティショニングを使用する方法を学びます。
 ---
 
 # パーティショニング {#partitioning}
@@ -166,9 +165,9 @@ PARTITION BY RANGE ( UNIX_TIMESTAMP(report_updated) ) (
 
 ### リストのパーティション化 {#list-partitioning}
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> リストの分割は実験的な機能です。実稼働環境で使用することはお勧めしません。
+> リストの分割は実験的機能です。実稼働環境で使用することはお勧めしません。
 
 リストパーティションテーブルを作成する前に、セッション変数`tidb_enable_list_partition`の値を`ON`に設定する必要があります。
 
@@ -267,9 +266,9 @@ test> select * from t;
 
 ### COLUMNSパーティショニングを一覧表示します {#list-columns-partitioning}
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> List COLUMNSパーティショニングは、実験的な機能です。実稼働環境で使用することはお勧めしません。
+> List COLUMNSパーティショニングは、実験的機能です。実稼働環境で使用することはお勧めしません。
 
 List COLUMNSパーティショニングは、Listパーティショニングの変形です。複数の列をパーティションキーとして使用できます。整数データ型に加えて、文字列、 `DATE` 、および`DATETIME`データ型の列をパーティション列として使用することもできます。
 
@@ -430,7 +429,7 @@ MOD(YEAR('2005-09-01'),4)
 
 TiDBでは、パーティショニング式の計算結果として`NULL`を使用できます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `NULL`は整数ではありません。 TiDBのパーティショニング実装は、 `ORDER BY`と同様に、 `NULL`を他の整数値よりも小さいものとして扱います。
 
@@ -572,7 +571,7 @@ Empty set (0.00 sec)
 
 挿入されたレコード`(NULL, 'mothra')`が`(0, 'gigan')`と同じパーティションに分類されることがわかります。
 
-> <strong>注：</strong> TiDBのハッシュパーティションによる`NULL`の値は、 [MySQLパーティショニングがNULLを処理する方法](https://dev.mysql.com/doc/refman/8.0/en/partitioning-handling-nulls.html)で説明したのと同じ方法で処理されますが、MySQLの実際の動作とは一致しません。言い換えると、この場合のMySQLの実装は、そのドキュメントと一致していません。
+> **注：** TiDBのハッシュパーティションによる`NULL`の値は、 [MySQLパーティショニングがNULLを処理する方法](https://dev.mysql.com/doc/refman/8.0/en/partitioning-handling-nulls.html)で説明したのと同じ方法で処理されますが、MySQLの実際の動作とは一致しません。言い換えると、この場合のMySQLの実装は、そのドキュメントと一致していません。
 >
 > この場合、TiDBの実際の動作は、このドキュメントの説明と一致しています。
 
@@ -590,9 +589,9 @@ Empty set (0.00 sec)
 
 パーティションに交換するすべての行がパーティション定義と一致することを確認してください。そうしないと、これらの行が見つからず、予期しない問題が発生します。
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> `EXCHANGE PARTITION`は実験的な機能です。実稼働環境での使用はお勧めしません。これを有効にするには、 `tidb_enable_exchange_partition`システム変数を`ON`に設定します。
+> `EXCHANGE PARTITION`は実験的機能です。実稼働環境での使用はお勧めしません。これを有効にするには、 `tidb_enable_exchange_partition`システム変数を`ON`に設定します。
 
 ### 範囲パーティション管理 {#range-partition-management}
 
@@ -639,7 +638,7 @@ ALTER TABLE members TRUNCATE PARTITION p1;
 Query OK, 0 rows affected (0.03 sec)
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `ALTER TABLE ... REORGANIZE PARTITION`は現在TiDBではサポートされていません。
 
@@ -784,7 +783,7 @@ SELECT fname, lname, region_code, dob
 
     `fn`関数が単調である場合、任意の`x`と`y`について、 `x > y`の場合、 `fn(x) > fn(y)` 。そうすれば、この`fn`の関数は厳密に単調と呼ぶことができます。 `x`と`y`の場合、 `x > y`の場合、 `fn(x) >= fn(y)` 。この場合、 `fn`は「単調」とも呼ばれます。理論的には、すべての単調な関数はパーティションプルーニングによってサポートされます。
 
-    現在、TiDBでのパーティションプルーニングは、これらの単調な機能のみをサポートしています。
+    現在、TiDBのパーティションプルーニングは、これらの単調な機能のみをサポートしています。
 
     ```
     unix_timestamp
@@ -946,9 +945,9 @@ SELECT store_id, COUNT(department_id) AS c
 
 このセクションでは、TiDBのパーティションテーブルに関するいくつかの制限と制限を紹介します。
 
-### パーティショニングキー、主キー、および一意キー {#partitioning-keys-primary-keys-and-unique-keys}
+### パーティションキー、主キー、および一意キー {#partitioning-keys-primary-keys-and-unique-keys}
 
-このセクションでは、パーティションキーと主キーおよび一意キーとの関係について説明します。この関係を管理するルールは、次のように表すことができます。<strong>テーブルのすべての一意キーは、テーブルのパーティション化式のすべての列を使用する必要があります</strong>。定義上、一意のキーであるため、これにはテーブルの主キーも含まれます。
+このセクションでは、パーティション化キーと主キーおよび一意キーとの関係について説明します。この関係を管理するルールは、次のように表すことができます。**テーブルのすべての一意キーは、テーブルのパーティション化式のすべての列を使用する必要があります**。定義上、一意のキーであるため、これにはテーブルの主キーも含まれます。
 
 たとえば、次のテーブル作成ステートメントは無効です。
 
@@ -1295,9 +1294,9 @@ select * from t;
 
 ### 動的剪定モード {#dynamic-pruning-mode}
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> これはまだ実験的な機能です。実稼働環境で使用することはお勧めし<strong>ません</strong>。
+> これはまだ実験的機能です。実稼働環境で使用することはお勧めし**ません**。
 
 TiDBは、 `dynamic`モードと`static`モードの2つのモードのいずれかでパーティションテーブルにアクセスします。現在、デフォルトで`static`モードが使用されています。 `dynamic`モードを有効にする場合は、 `tidb_partition_prune_mode`変数を手動で`dynamic`に設定する必要があります。
 
@@ -1360,7 +1359,7 @@ mysql> explain select * from t1 where id < 150;
 -   プランキャッシュは使用できません。 （例1および2を参照）
 -   IndexJoinを使用した実行プランは使用できません。 （例3および4を参照）
 
-<strong>例1</strong> ：次の例では、構成ファイルでプランキャッシュ機能が有効になっており、同じクエリが`static`モードで2回実行されます。
+**例1** ：次の例では、構成ファイルでプランキャッシュ機能が有効になっており、同じクエリが`static`モードで2回実行されます。
 
 {{< copyable "" >}}
 
@@ -1392,7 +1391,7 @@ mysql> select @@last_plan_from_cache;
 
 `last_plan_from_cache`変数は、最後のクエリがプランキャッシュにヒットしたかどうかを示すことができます。例1から、 `static`モードでは、パーティション化されたテーブルで同じクエリが複数回実行されても、プランキャッシュがヒットしないことがわかります。
 
-<strong>例2</strong> ：次の例では、例1と同じ操作が`dynamic`モードで実行されます。
+**例2** ：次の例では、例1と同じ操作が`dynamic`モードで実行されます。
 
 {{< copyable "" >}}
 
@@ -1421,7 +1420,7 @@ mysql> select @@last_plan_from_cache;
 
 例2から、 `dynamic`モードで、パーティション化されたテーブルをクエリするとプランキャッシュにヒットすることがわかります。
 
-<strong>例3</strong> ：次の例では、IndexJoinを使用して実行プランを使用して`static`モードでクエリを実行します。
+**例3** ：次の例では、IndexJoinを使用して実行プランを使用して`static`モードでクエリを実行します。
 
 {{< copyable "" >}}
 
@@ -1459,7 +1458,7 @@ mysql> explain select /*+ TIDB_INLJ(t1, t2) */ t1.* from t1, t2 where t2.code = 
 
 例3から、 `TIDB_INLJ`のヒントが使用されている場合でも、パーティションテーブルのクエリでIndexJoinを使用して実行プランを選択できないことがわかります。
 
-<strong>例4</strong> ：次の例では、クエリはIndexJoinで実行プランを使用して`dynamic`モードで実行されます。
+**例4** ：次の例では、クエリはIndexJoinで実行プランを使用して`dynamic`モードで実行されます。
 
 {{< copyable "" >}}
 

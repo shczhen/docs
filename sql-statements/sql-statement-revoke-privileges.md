@@ -1,7 +1,6 @@
 ---
-title: REVOKE <privileges> | TiDB SQL Statement Reference
-summary: An overview of the usage of REVOKE <privileges> for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-revoke-privileges/','/docs/dev/reference/sql/statements/revoke-privileges/']
+title: REVOKE<特権>| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのREVOKE<privileges>の使用法の概要。
 ---
 
 # <code>REVOKE &#x3C;privileges></code> {#code-revoke-x3c-privileges-code}
@@ -101,4 +100,4 @@ ERROR 1141 (42000): There is no such grant defined for user 'newuser' on host '%
 
 -   [`GRANT &#x3C;privileges>`](/sql-statements/sql-statement-grant-privileges.md)
 -   [助成金を表示](/sql-statements/sql-statement-show-grants.md)
--   [特権管理](/privilege-management.md)
+-   [権限管理](/privilege-management.md)

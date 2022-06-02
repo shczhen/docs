@@ -1,12 +1,11 @@
 ---
-title: TiDB Lightning Web Interface
-summary: Control TiDB Lightning through the web interface.
-aliases: ['/docs/dev/tidb-lightning/tidb-lightning-web-interface/','/docs/dev/reference/tools/tidb-lightning/web/']
+title: TiDBLightningWebインターフェイス
+summary: Webインターフェイスを介してTiDBLightningを制御します。
 ---
 
 # TiDBLightningWebインターフェイス {#tidb-lightning-web-interface}
 
-TiDB Lightningは、インポートの進行状況を表示し、いくつかの簡単なタスク管理を実行するためのWebページを提供します。これは<em>サーバーモード</em>と呼ばれます。
+TiDB Lightningは、インポートの進行状況を表示し、いくつかの簡単なタスク管理を実行するためのWebページを提供します。これは*サーバーモード*と呼ばれます。
 
 サーバーモードを有効にするには、 `--server-mode`フラグで`tidb-lightning`を開始します。
 
@@ -24,7 +23,7 @@ status-addr = ':8289'
 
 TiDB Lightningを起動したら、 `http://127.0.0.1:8289`にアクセスしてプログラムを制御します（実際のURLは`status-addr`の設定によって異なります）。
 
-サーバーモードでは、TiDBLightningはすぐには実行を開始しません。むしろ、ユーザーはWebインターフェースを介して（複数の）<em>タスク</em>を送信してデータをインポートします。
+サーバーモードでは、TiDBLightningはすぐには実行を開始しません。むしろ、ユーザーはWebインターフェースを介して（複数の）*タスク*を送信してデータをインポートします。
 
 ## 表紙 {#front-page}
 
@@ -35,7 +34,7 @@ TiDB Lightningを起動したら、 `http://127.0.0.1:8289`にアクセスして
 | アイコン         | 関数                                                               |
 | :----------- | :--------------------------------------------------------------- |
 | 「TiDBライトニング」 | クリックしてフロントページに戻る                                                 |
-| ⚠            | <em>前の</em>タスクからのエラーメッセージを表示します                                  |
+| ⚠            | *前の*タスクからのエラーメッセージを表示します                                         |
 | ⓘ            | 現在のタスクとキューに入れられたタスクを一覧表示します。キューに入れられたタスクの数を示すバッジがここに表示される場合があります |
 | <li></li>    | タスクを送信する                                                         |
 | ⏸/▶          | 現在の実行を一時停止/再開                                                    |
@@ -51,30 +50,30 @@ TiDB Lightningを起動したら、 `http://127.0.0.1:8289`にアクセスして
 
 ## タスクを送信 {#submit-task}
 
-タスクを送信するには、タイトルバーの[ <strong>+</strong> ]ボタンをクリックします。
+タスクを送信するには、タイトルバーの[ **+** ]ボタンをクリックします。
 
 ![Submit task dialog](/media/lightning-web-submit.png)
 
-タスクは、 [タスク構成](/tidb-lightning/tidb-lightning-configuration.md#tidb-lightning-task)として記述されたTOMLファイルです。 [アップロード]をクリックして、ローカルの<strong>TOML</strong>ファイルを開くこともできます。
+タスクは、 [タスク構成](/tidb-lightning/tidb-lightning-configuration.md#tidb-lightning-task)として記述されたTOMLファイルです。 [アップロード]をクリックして、ローカルの**TOML**ファイルを開くこともできます。
 
-[<strong>送信]</strong>をクリックしてタスクを実行します。タスクがすでに実行されている場合、現在のタスクが成功した後、新しいタスクがキューに入れられて実行されます。
+[**送信]**をクリックしてタスクを実行します。タスクがすでに実行されている場合、現在のタスクが成功した後、新しいタスクがキューに入れられて実行されます。
 
 ## テーブルの進捗状況 {#table-progress}
 
-表の詳細な進行状況を表示するには、フロントページのテーブルカードの<strong>&gt;</strong>ボタンをクリックします。
+表の詳細な進行状況を表示するには、フロントページのテーブルカードの**&gt;**ボタンをクリックします。
 
 ![Table progress](/media/lightning-web-table.png)
 
 このページには、テーブルに関連付けられているすべてのエンジンとデータファイルのインポートの進行状況が表示されます。
 
-タイトルバーの[ <strong>TiDBLightning]</strong>をクリックして、フロントページに戻ります。
+タイトルバーの[ **TiDBLightning]**をクリックして、フロントページに戻ります。
 
 ## タスク管理 {#task-management}
 
-タイトルバーの<strong>ⓘ</strong>ボタンをクリックして、現在のタスクとキューに入れられているタスクを管理します。
+タイトルバーの**ⓘ**ボタンをクリックして、現在のタスクとキューに入れられているタスクを管理します。
 
 ![Task management page](/media/lightning-web-queue.png)
 
 各タスクには、送信された時間でラベルが付けられています。タスクをクリックすると、JSONとしてフォーマットされた構成が表示されます。
 
-タスクの横にある<strong>⋮</strong>ボタンをクリックしてタスクを管理します。タスクをすぐに停止することも、キューに入れられたタスクを並べ替えることもできます。
+タスクの横にある**⋮**ボタンをクリックしてタスクを管理します。タスクをすぐに停止することも、キューに入れられたタスクを並べ替えることもできます。

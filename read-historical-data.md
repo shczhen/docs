@@ -1,14 +1,13 @@
 ---
-title: Read Historical Data Using the System Variable `tidb_snapshot`
-summary: Learn about how TiDB reads data from history versions using the system variable `tidb_snapshot`.
-aliases: ['/docs/dev/read-historical-data/','/docs/dev/how-to/get-started/read-historical-data/']
+title: システム変数`tidb_snapshot`を使用して履歴データを読み取る
+summary: システム変数`tidb_snapshot`を使用して、TiDBが履歴バージョンからデータを読み取る方法について説明します。
 ---
 
 # システム変数<code>tidb_snapshot</code>を使用して履歴データを読み取る {#read-historical-data-using-the-system-variable-code-tidb-snapshot-code}
 
 このドキュメントでは、システム変数`tidb_snapshot`を使用して履歴バージョンからデータを読み取る方法について説明します。これには、履歴データを保存するための具体的な使用例と戦略が含まれます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > [古い読み取り](/stale-read.md)機能を使用して履歴データを読み取ることもできます。これはより推奨されます。
 
@@ -16,7 +15,7 @@ aliases: ['/docs/dev/read-historical-data/','/docs/dev/how-to/get-started/read-h
 
 TiDBは、特別なクライアントやドライバーを使用せずに、標準のSQLインターフェイスを使用して履歴データを直接読み取る機能を実装しています。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   データが更新または削除された場合でも、SQLインターフェイスを使用してその履歴バージョンを読み取ることができます。
 > -   履歴データを読み取る場合、TiDBは、現在のテーブル構造が異なっていても、古いテーブル構造のデータを返します。
@@ -31,7 +30,7 @@ TiDBは、特別なクライアントやドライバーを使用せずに、標�
 -   この変数は、TSO（Timestamp Oracle）と日時を受け入れます。 TSOは、PDから取得する世界的にユニークなタイムサービスです。使用可能な日時の形式は「2016-10-0816：45：26.999」です。通常、日時は「2016-10-0816:45:26」のように2番目の精度で設定できます。
 -   変数が設定されると、TiDBは、データ構造のためだけに、その値をタイムスタンプとして使用してスナップショットを作成し、オーバーヘッドはありません。その後、 `SELECT`の操作すべてがこのスナップショットからデータを読み取ります。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > TiDBトランザクションのタイムスタンプはPlacementDriver（PD）によって割り当てられるため、保存されたデータのバージョンもPDによって割り当てられたタイムスタンプに基づいてマークされます。スナップショットが作成されるとき、バージョン番号は`tidb_snapshot`変数の値に基づいています。 TiDBサーバーとPDサーバーの現地時間に大きな違いがある場合は、PDサーバーの時間を使用してください。
 
@@ -109,7 +108,7 @@ TiDBでは、ガベージコレクション（GC）が定期的に実行され�
 
 6.  スコープがSessionである`tidb_snapshot`の変数を設定します。変数は、値の前の最新バージョンを読み取ることができるように設定されます。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > この例では、値は更新操作の前の時間に設定されています。
 
@@ -118,11 +117,11 @@ TiDBでは、ガベージコレクション（GC）が定期的に実行され�
     Query OK, 0 rows affected (0.00 sec)
     ```
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > `@@`はシステム変数を示し、 `@`はユーザー変数を示すために使用されるため、 `tidb_snapshot`の前に`@`ではなく`@@`を使用する必要があります。
 
-    <strong>結果：</strong>次のステートメントからの読み取りは、更新操作前のデータであり、履歴データです。
+    **結果：**次のステートメントからの読み取りは、更新操作前のデータであり、履歴データです。
 
     ```sql
     mysql> select * from t;
@@ -155,7 +154,7 @@ TiDBでは、ガベージコレクション（GC）が定期的に実行され�
     3 rows in set (0.00 sec)
     ```
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > `@@`はシステム変数を示し、 `@`はユーザー変数を示すために使用されるため、 `tidb_snapshot`の前に`@`ではなく`@@`を使用する必要があります。
 
@@ -167,7 +166,7 @@ TiDBでは、ガベージコレクション（GC）が定期的に実行され�
 SET GLOBAL tidb_gc_life_time="60m";
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > GCの寿命をデフォルトの10分から30分以上に増やすと、追加のバージョンの行が保持され、より多くのディスク領域が必要になる場合があります。これは、データの読み取り中にTiDBが同じ行のこれらの追加バージョンをスキップする必要がある場合のスキャンなど、特定の操作のパフォーマンスにも影響を与える可能性があります。
 
@@ -175,4 +174,4 @@ SET GLOBAL tidb_gc_life_time="60m";
 
 -   単純なケースでは、 `tidb_snapshot`変数を設定して出力をコピーアンドペーストした後に`SELECT`を使用するか、 `SELECT ... INTO LOCAL OUTFLE`を使用して後でデータをインポートするために`LOAD DATA`を使用します。
 
--   [団子](/dumpling-overview.md#export-historical-data-snapshot-of-tidb)を使用して、履歴スナップショットをエクスポートします。餃子は、より大きなデータセットのエクスポートでうまく機能します。
+-   [Dumpling](/dumpling-overview.md#export-historical-data-snapshot-of-tidb)を使用して、履歴スナップショットをエクスポートします。Dumplingは、より大きなデータセットのエクスポートでうまく機能します。

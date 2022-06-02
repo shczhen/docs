@@ -1,7 +1,6 @@
 ---
-title: TRACE | TiDB SQL Statement Reference
-summary: An overview of the usage of TRACE for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-trace/','/docs/dev/reference/sql/statements/trace/']
+title: トレース| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのTRACEの使用法の概要。
 ---
 
 # 痕跡 {#trace}
@@ -10,11 +9,11 @@ aliases: ['/docs/dev/sql-statements/sql-statement-trace/','/docs/dev/reference/s
 
 ## あらすじ {#synopsis}
 
-<strong>TraceStmt：</strong>
+**TraceStmt：**
 
 ![TraceStmt](/media/sqlgram/TraceStmt.png)
 
-<strong>TraceableStmt：</strong>
+**TraceableStmt：**
 
 ![TraceableStmt](/media/sqlgram/TraceableStmt.png)
 

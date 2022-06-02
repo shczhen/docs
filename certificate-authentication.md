@@ -1,7 +1,6 @@
 ---
-title: Certificate-Based Authentication for Login
-summary: Learn the certificate-based authentication used for login.
-aliases: ['/docs/dev/certificate-authentication/','/docs/dev/reference/security/cert-based-authentication/']
+title: ログイン用の証明書ベースの認証
+summary: ログインに使用される証明書ベースの認証について説明します。
 ---
 
 # ログイン用の証明書ベースの認証 {#certificate-based-authentication-for-login}
@@ -62,7 +61,7 @@ TiDBは、ユーザーがTiDBにログインするための証明書ベースの
     Email Address []:s@pingcap.com
     ```
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > 上記の証明書の詳細では、 `:`の後のテキストが入力された情報です。
 
@@ -125,7 +124,7 @@ TiDBは、ユーザーがTiDBにログインするための証明書ベースの
     Getting CA Private Key
     ```
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > ログインすると、TiDBは上記の出力の`subject`セクションの情報に一貫性があるかどうかを確認します。
 
@@ -190,7 +189,7 @@ TiDBは、ユーザーがTiDBにログインするための証明書ベースの
     Getting CA Private Key
     ```
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > 上記の出力の`subject`セクションの情報は、 `require`セクションの[ログイン検証のための証明書構成](#configure-the-user-certificate-information-for-login-verification)に使用されます。
 
@@ -219,7 +218,7 @@ client-cert.pem: OK
 
 TiDB構成ファイルの`[security]`セクションを変更します。この手順では、CA証明書、サーバーキー、およびサーバー証明書が保存されているディレクトリを指定します。 `path/to/server-cert.pem`を独自のディレクトリに`path/to/ca-cert.pem`ことができ`path/to/server-key.pem` 。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```
 [security]
@@ -246,7 +245,7 @@ MySQLクライアントを例にとると、 `ssl-cert` 、および`ssl-key`を
 mysql -utest -h0.0.0.0 -P4000 --ssl-cert /path/to/client-cert.new.pem --ssl-key /path/to/client-key.new.pem --ssl-ca /path/to/ca-cert.pem
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `/path/to/client-cert.new.pem` 、および`/path/to/client-key.new.pem`は、CA証明書、クライアントキー、およびクライアント証明書のディレクトリ`/path/to/ca-cert.pem` 。それらを独自のディレクトリに置き換えることができます。
 
@@ -427,7 +426,7 @@ CA証明書は、クライアントとサーバー間の相互検証の基礎で
     sudo openssl req -new -x509 -nodes -days 365000 -key ca-key.pem -out ca-cert.new.pem
     ```
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > 新しいCA証明書を生成することは、クライアントとサーバーのキーと証明書を置き換え、オンラインユーザーが影響を受けないようにすることです。したがって、上記のコマンドに追加される情報は、 `require issuer`の情報と一致している必要があります。
 
@@ -445,9 +444,9 @@ CA証明書は、クライアントとサーバー間の相互検証の基礎で
 
 ### クライアントキーと証明書を更新する {#update-client-key-and-certificate}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> 次の手順は、クライアントとサーバーの古いCA証明書を結合されたCA証明書に置き換えた<strong>後でのみ</strong>実行してください。
+> 次の手順は、クライアントとサーバーの古いCA証明書を結合されたCA証明書に置き換えた**後でのみ**実行してください。
 
 1.  クライアントの新しいRSAキーを生成します。
 
@@ -458,7 +457,7 @@ CA証明書は、クライアントとサーバー間の相互検証の基礎で
     sudo openssl rsa -in client-key.new.pem -out client-key.new.pem
     ```
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > 上記のコマンドは、クライアントキーと証明書を置き換え、オンラインユーザーが影響を受けないようにするためのものです。したがって、上記のコマンドに追加される情報は、 `require subject`の情報と一致している必要があります。
 
@@ -478,7 +477,7 @@ CA証明書は、クライアントとサーバー間の相互検証の基礎で
     mysql -utest -h0.0.0.0 -P4000 --ssl-cert /path/to/client-cert.new.pem --ssl-key /path/to/client-key.new.pem --ssl-ca /path/to/ca-cert.pem
     ```
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > `/path/to/client-cert.new.pem` 、および`/path/to/client-key.new.pem`は、CA証明書、クライアントキー、およびクライアント証明書のディレクトリを指定し`/path/to/ca-cert.pem` 。それらを独自のディレクトリに置き換えることができます。
 

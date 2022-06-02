@@ -1,6 +1,6 @@
 ---
-title: Enable TLS for DM Connections
-summary: Learn how to enable TLS for DM connections.
+title: DM接続のTLSを有効にする
+summary: DM接続でTLSを有効にする方法を学びます。
 ---
 
 # DM接続のTLSを有効にする {#enable-tls-for-dm-connections}
@@ -23,7 +23,7 @@ summary: Learn how to enable TLS for DM connections.
 
 2.  証明書を構成します。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > 同じ証明書のセットを使用するようにDM-master、DM-worker、およびdmctlを構成できます。
 
@@ -49,7 +49,7 @@ summary: Learn how to enable TLS for DM connections.
 
     -   dmctl
 
-        DMクラスターで暗号化された送信を有効にした後、dmctlを使用してクラスターに接続する必要がある場合は、クライアント証明書を指定します。例えば：
+        DMクラスタで暗号化された送信を有効にした後、dmctlを使用してクラスタに接続する必要がある場合は、クライアント証明書を指定します。例えば：
 
         {{< copyable "" >}}
 
@@ -57,7 +57,7 @@ summary: Learn how to enable TLS for DM connections.
         ./dmctl --master-addr=127.0.0.1:8261 --ssl-ca /path/to/ca.pem --ssl-cert /path/to/client-cert.pem --ssl-key /path/to/client-key.pem
         ```
 
-### コンポーネントの呼び出し元のIDを確認します {#verify-component-caller-s-identity}
+### コンポーネントの呼び出し元のIDを確認する {#verify-component-caller-s-identity}
 
 共通名は、発信者の確認に使用されます。一般に、呼び出し先は、呼び出し元から提供されたキー、証明書、およびCAの確認に加えて、呼び出し元のIDを確認する必要があります。たとえば、DM-workerにはDM-masterのみがアクセスでき、他の訪問者は正当な証明書を持っていてもブロックされます。
 
@@ -95,7 +95,7 @@ summary: Learn how to enable TLS for DM connections.
 
 2.  ソース構成ファイルにMySQLクライアント証明書を設定します。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > すべてのDM-masterおよびDM-workerコンポーネントが、指定されたパスを介して証明書とキーファイルを読み取れることを確認してください。
 
@@ -113,7 +113,7 @@ summary: Learn how to enable TLS for DM connections.
 
 2.  タスク構成ファイルにTiDBクライアント証明書を設定します。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > すべてのDM-masterおよびDM-workerコンポーネントが、指定されたパスを介して証明書とキーファイルを読み取れることを確認してください。
 

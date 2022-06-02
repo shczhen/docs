@@ -1,6 +1,5 @@
 ---
-title: TiDB 2.1.10 Release Notes
-aliases: ['/docs/dev/releases/release-2.1.10/','/docs/dev/releases/2.1.10/']
+title: TiDB2.1.10リリースノート
 ---
 
 # TiDB2.1.10リリースノート {#tidb-2-1-10-release-notes}
@@ -20,7 +19,7 @@ TiDB Ansibleバージョン：2.1.10
 -   遅いログの1行が長すぎると、 `SLOW_QUERY`のテーブルを使用して遅いログをクエリするときにエラーレポートが発生する問題を修正します[＃10412](https://github.com/pingcap/tidb/pull/10412)
 -   `DATETIME` + `INTERVAL`の結果がMySQLの結果と同じでない場合があるという問題を修正し[＃10418](https://github.com/pingcap/tidb/pull/10418) [＃10416](https://github.com/pingcap/tidb/pull/10416)
 -   うるう年の2月の無効な時間のチェックを追加します[＃10417](https://github.com/pingcap/tidb/pull/10417)
--   DDL所有者でのみ内部初期化操作制限を実行して、クラスター[＃10426](https://github.com/pingcap/tidb/pull/10426)を初期化するときに多数の競合エラーレポートを回避します。
+-   DDL所有者でのみ内部初期化操作制限を実行して、クラスタ[＃10426](https://github.com/pingcap/tidb/pull/10426)を初期化するときに多数の競合エラーレポートを回避します。
 -   出力タイムスタンプ列のデフォルト値が[＃10337](https://github.com/pingcap/tidb/issues/10337)の場合、 `DESC`がMySQLと互換性がないという問題を修正し`default current_timestamp on update current_timestamp` 。
 -   `Update`ステートメント[＃10439](https://github.com/pingcap/tidb/pull/10439)の特権チェック中にエラーが発生する問題を修正します。
 -   `RANGE`の計算が間違っていると、場合によっては`CHAR`列に間違った結果が生じるという問題を修正します[＃10455](https://github.com/pingcap/tidb/pull/10455)

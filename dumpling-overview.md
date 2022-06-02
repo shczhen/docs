@@ -1,22 +1,21 @@
 ---
-title: Dumpling Overview
-summary: Use the Dumpling tool to export data from TiDB.
-aliases: ['/docs/dev/mydumper-overview/','/docs/dev/reference/tools/mydumper/','/tidb/dev/mydumper-overview/']
+title: Dumplingの概要
+summary: Dumplingツールを使用して、TiDBからデータをエクスポートします。
 ---
 
-# 餃子の概要 {#dumpling-overview}
+# Dumplingの概要 {#dumpling-overview}
 
-このドキュメントでは、データエクスポートツール[団子](https://github.com/pingcap/dumpling)を紹介します。餃子は、TiDB / MySQLに保存されているデータをSQLまたはCSVデータファイルとしてエクスポートし、論理的な完全バックアップまたはエクスポートを行うために使用できます。
+このドキュメントでは、データエクスポートツール[Dumpling](https://github.com/pingcap/dumpling)を紹介します。Dumplingは、TiDB / MySQLに保存されているデータをSQLまたはCSVデータファイルとしてエクスポートし、論理的な完全バックアップまたはエクスポートを行うために使用できます。
 
 SSTファイル（キーと値のペア）のバックアップ、またはレイテンシーの影響を受けない増分データのバックアップについては、 [BR](/br/backup-and-restore-tool.md)を参照してください。インクリメンタルデータのリアルタイムバックアップについては、 [TiCDC](/ticdc/ticdc-overview.md)を参照してください。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> PingCAPは、以前はTiDBに固有の拡張機能を備えた[mydumperプロジェクト](https://github.com/maxbube/mydumper)のフォークを維持していました。その後、このフォークは[団子](/dumpling-overview.md)に置き換えられました。これは、Goで書き直され、TiDBに固有のより多くの最適化をサポートします。 mydumperの代わりにDumplingを使用することを強くお勧めします。
+> PingCAPは、以前はTiDBに固有の拡張機能を備えた[mydumperプロジェクト](https://github.com/maxbube/mydumper)のフォークを維持していました。その後、このフォークは[Dumpling](/dumpling-overview.md)に置き換えられました。これは、Goで書き直され、TiDBに固有のより多くの最適化をサポートします。 mydumperの代わりにDumplingを使用することを強くお勧めします。
 >
 > Mydumperの概要については、 [v4.0Mydumperのドキュメント](https://docs.pingcap.com/tidb/v4.0/backup-and-restore-using-mydumper-lightning)を参照してください。
 
-## Mydumperと比較した餃子の改善 {#improvements-of-dumpling-compared-with-mydumper}
+## Mydumperと比較したDumplingの改善 {#improvements-of-dumpling-compared-with-mydumper}
 
 1.  SQLやCSVを含む複数の形式でのデータのエクスポートをサポート
 2.  データのフィルタリングを容易にする[テーブルフィルター](https://github.com/pingcap/tidb-tools/blob/master/pkg/table-filter/README.md)つの機能をサポートします
@@ -27,17 +26,17 @@ SSTファイル（キーと値のペア）のバックアップ、またはレ�
     -   TiDBの非表示の列`_tidb_rowid`を使用して、単一のテーブルからの同時データエクスポートのパフォーマンスを最適化します
     -   TiDBの場合、値[`tidb_snapshot`](/read-historical-data.md#how-tidb-reads-data-from-history-versions)を設定して、データバックアップの時点を指定できます。これにより、一貫性を確保するために`FLUSH TABLES WITH READ LOCK`を使用する代わりに、バックアップの一貫性が保証されます。
 
-## 餃子紹介 {#dumpling-introduction}
+## Dumpling紹介 {#dumpling-introduction}
 
-餃子は囲碁で書かれています。 Githubプロジェクトは[pingcap/餃子](https://github.com/pingcap/dumpling)です。
+Dumplingは囲碁で書かれています。 Githubプロジェクトは[pingcap/餃子](https://github.com/pingcap/dumpling)です。
 
-餃子の詳細な使用法については、 `--help`オプションを使用するか、 [餃子のオプションリスト](#option-list-of-dumpling)を参照してください。
+Dumplingの詳細な使用法については、 `--help`オプションを使用するか、 [Dumplingのオプションリスト](#option-list-of-dumpling)を参照してください。
 
-Dumplingを使用する場合は、実行中のクラスターでexportコマンドを実行する必要があります。このドキュメントでは、 `127.0.0.1:4000`のホストにTiDBインスタンスがあり、このTiDBインスタンスにパスワードのないrootユーザーがいることを前提としています。
+Dumplingを使用する場合は、実行中のクラスタでexportコマンドを実行する必要があります。このドキュメントでは、 `127.0.0.1:4000`のホストにTiDBインスタンスがあり、このTiDBインスタンスにパスワードのないrootユーザーがいることを前提としています。
 
-`tiup install dumpling`を実行すると、 [TiUP](/tiup/tiup-overview.md)を使用して餃子を取得できます。その後、 `tiup dumpling ...`を使用して餃子を実行できます。
+`tiup install dumpling`を実行すると、 [TiUP](/tiup/tiup-overview.md)を使用してDumplingを取得できます。その後、 `tiup dumpling ...`を使用してDumplingを実行できます。
 
-餃子もtidb-toolkitインストールパッケージに含まれており、 [ここからダウンロード](/download-ecosystem-tools.md#dumpling)にすることができます。
+Dumplingもtidb-toolkitインストールパッケージに含まれており、 [ここからダウンロード](/download-ecosystem-tools.md#dumpling)にすることができます。
 
 ## TiDB/MySQLからデータをエクスポートする {#export-data-from-tidb-mysql}
 
@@ -51,7 +50,7 @@ Dumplingを使用する場合は、実行中のクラスターでexportコマン
 
 ### SQLファイルにエクスポート {#export-to-sql-files}
 
-餃子はデフォルトでデータをSQLファイルにエクスポートします。 `--filetype sql`フラグを追加して、データをSQLファイルにエクスポートすることもできます。
+DumplingはデフォルトでデータをSQLファイルにエクスポートします。 `--filetype sql`フラグを追加して、データをSQLファイルにエクスポートすることもできます。
 
 {{< copyable "" >}}
 
@@ -71,13 +70,13 @@ dumpling \
 
 -   `-h` 、および`-p`オプションは、それぞれアドレス、ポート、およびユーザーを意味し`-u` 。認証にパスワードが必要な場合は、 `-p $YOUR_SECRET_PASSWORD`を使用してパスワードをDumplingに渡すことができます。
 -   `-o`オプションは、ローカルファイルパスまたは[外部ストレージのURL](/br/backup-and-restore-storages.md)をサポートするストレージのエクスポートディレクトリを指定します。
--   `-t`オプションは、エクスポートするスレッドの数を指定します。スレッドの数を増やすと、餃子の同時実行性とエクスポート速度が向上し、データベースのメモリ消費量も増加します。したがって、数値を大きく設定しすぎることはお勧めしません。通常、64未満です。
--   `-r`オプションは、1つのファイルの最大行数を指定します。このオプションを指定すると、Dumplingにより、テーブル内の同時実行がエクスポートを高速化し、メモリ使用量を削減できます。アップストリームデータベースがTiDBv3.0以降のバージョンの場合、このパラメーターの値が0より大きい場合は、TiDB領域情報が分割に使用され、ここで指定された値は無効になることを示します。
+-   `-t`オプションは、エクスポートするスレッドの数を指定します。スレッドの数を増やすと、Dumplingの同時実行性とエクスポート速度が向上し、データベースのメモリ消費量も増加します。したがって、数値を大きく設定しすぎることはお勧めしません。通常、64未満です。
+-   `-r`オプションは、1つのファイルの最大行数を指定します。このオプションを指定すると、 Dumplingにより、テーブル内の同時実行がエクスポートを高速化し、メモリ使用量を削減できます。アップストリームデータベースがTiDBv3.0以降のバージョンの場合、このパラメーターの値が0より大きい場合は、TiDB領域情報が分割に使用され、ここで指定された値は無効になることを示します。
 -   `-F`オプションは、単一ファイルの最大サイズを指定するために使用されます（ここでの単位は`MiB`です`5GiB`や`8KB`などの入力も受け入れられます）。 TiDB Lightningを使用してこのファイルをTiDBインスタンスにロードする場合は、その値を256MiB以下に保つことをお勧めします。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> エクスポートされた単一のテーブルのサイズが10GBを超える場合は、 `-r`および`-F`オプション<strong>を使用することを強くお勧めし</strong>ます。
+> エクスポートされた単一のテーブルのサイズが10GBを超える場合は、 `-r`および`-F`オプション**を使用することを強くお勧めし**ます。
 
 ### CSVファイルにエクスポート {#export-to-csv-files}
 
@@ -101,13 +100,13 @@ dumpling \
 
 上記のコマンドでは：
 
--   `--sql`オプションは、CSVファイルへのエクスポートにのみ使用できます。上記のコマンドは、エクスポートされるすべてのテーブルで`SELECT * FROM <table-name> WHERE id <100`ステートメントを実行します。テーブルに指定されたフィールドがない場合、エクスポートは失敗します。
--   `--sql`オプションを使用すると、Dumplingはエクスポートされたテーブルとスキーマ情報を取得できません。 `--output-filename-template`オプションを使用してCSVファイルのファイル名形式を指定できます。これにより、後で[TiDB Lightning](/tidb-lightning/tidb-lightning-overview.md)を使用してデータファイルをインポートしやすくなります。たとえば、 `--output-filename-template='test.sbtest1.{{.Index}}'`は、エクスポートされたCSVファイルの名前が`test.sbtest1.000000000`または`test.sbtest1.000000001`であることを指定します。
--   `--csv-separator`や`--csv-delimiter`などのオプションを使用して、CSVファイル形式を構成できます。詳しくは[餃子オプションリスト](#option-list-of-dumpling)をご覧ください。
+-   `--sql`オプションは、CSVファイルへのエクスポートにのみ使用できます。上記のコマンドは、エクスポートされるすべてのテーブルに対して`SELECT * FROM <table-name> WHERE id <100`ステートメントを実行します。テーブルに指定されたフィールドがない場合、エクスポートは失敗します。
+-   `--sql`オプションを使用すると、 Dumplingはエクスポートされたテーブルおよびスキーマ情報を取得できません。 `--output-filename-template`オプションを使用してCSVファイルのファイル名形式を指定できます。これにより、後で[TiDB Lightning](/tidb-lightning/tidb-lightning-overview.md)を使用してデータファイルをインポートしやすくなります。たとえば、 `--output-filename-template='test.sbtest1.{{.Index}}'`は、エクスポートされたCSVファイルの名前が`test.sbtest1.000000000`または`test.sbtest1.000000001`であることを指定します。
+-   `--csv-separator`や`--csv-delimiter`などのオプションを使用して、CSVファイル形式を構成できます。詳しくは[Dumplingオプションリスト](#option-list-of-dumpling)をご覧ください。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> <em>文字列</em>と<em>キーワード</em>は餃子によって区別されません。インポートされたデータがブール型の場合、 `true`の値は`1`に変換され、 `false`の値は`0`に変換されます。
+> *文字列*と<em>キーワード</em>はDumplingによって区別されません。インポートされたデータがブール型の場合、 `true`の値は`1`に変換され、 `false`の値は`0`に変換されます。
 
 ### エクスポートされたファイルの形式 {#format-of-exported-files}
 
@@ -171,9 +170,9 @@ dumpling \
 
 ### AmazonS3クラウドストレージにデータをエクスポートする {#export-data-to-amazon-s3-cloud-storage}
 
-v4.0.8以降、Dumplingはクラウドストレージへのデータのエクスポートをサポートしています。 AmazonのS3バックエンドストレージにデータをバックアップする必要がある場合は、 `-o`パラメーターでS3ストレージパスを指定する必要があります。
+v4.0.8以降、 Dumplingはクラウドストレージへのデータのエクスポートをサポートしています。 AmazonのS3バックエンドストレージにデータをバックアップする必要がある場合は、 `-o`パラメーターでS3ストレージパスを指定する必要があります。
 
-指定したリージョンにS3バケットを作成する必要があります（ [Amazonドキュメント-S3バケットを作成するにはどうすればよいですか](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-bucket.html)を参照）。バケット内にフォルダも作成する必要がある場合は、 [Amazonドキュメント-フォルダーの作成](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-folder.html)を参照してください。
+指定したリージョンにS3バケットを作成する必要があります（ [Amazonのドキュメント-S3バケットを作成するにはどうすればよいですか](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-bucket.html)を参照）。バケット内にフォルダも作成する必要がある場合は、 [Amazonドキュメント-フォルダーの作成](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-folder.html)を参照してください。
 
 S3バックエンドストレージにアクセスする権限を持つアカウントの`SecretKey`と`AccessKey`を、環境変数としてDumplingノードに渡します。
 
@@ -184,7 +183,7 @@ export AWS_ACCESS_KEY_ID=${AccessKey}
 export AWS_SECRET_ACCESS_KEY=${SecretKey}
 ```
 
-餃子は、 `~/.aws/credentials`からのクレデンシャルファイルの読み取りもサポートします。餃子の構成の詳細については、 [外部ストレージ](/br/backup-and-restore-storages.md)の構成を参照してください。
+Dumplingは、 `~/.aws/credentials`からのクレデンシャルファイルの読み取りもサポートします。Dumplingの構成の詳細については、 [外部ストレージ](/br/backup-and-restore-storages.md)の構成を参照してください。
 
 Dumplingを使用してデータをバックアップする場合は、 `--s3.region`パラメーターを明示的に指定します。これは、S3ストレージの領域（たとえば、 `ap-northeast-1` ）を意味します。
 
@@ -204,7 +203,7 @@ Dumplingを使用してデータをバックアップする場合は、 `--s3.re
 
 #### <code>--where</code>オプションを使用して、データをフィルタリングします {#use-the-code-where-code-option-to-filter-data}
 
-デフォルトでは、 `PERFORMANCE_SCHEMA`はシステムデータベース（ `mysql` 、 `METRICS_SCHEMA` `sys`を`INSPECTION_SCHEMA` ）を除くすべてのデータベースをエクスポートし`INFORMATION_SCHEMA` 。 `--where <SQL where expression>`を使用して、エクスポートするレコードを選択できます。
+デフォルトでは、 Dumplingはシステム`PERFORMANCE_SCHEMA` （ `mysql` 、 `METRICS_SCHEMA` `sys`を`INSPECTION_SCHEMA` ）を除くすべてのデータベースをエクスポートし`INFORMATION_SCHEMA` 。 `--where <SQL where expression>`を使用して、エクスポートするレコードを選択できます。
 
 {{< copyable "" >}}
 
@@ -221,7 +220,7 @@ Dumplingを使用してデータをバックアップする場合は、 `--s3.re
 
 #### <code>--filter</code>オプションを使用して、データをフィルタリングします {#use-the-code-filter-code-option-to-filter-data}
 
-餃子は、 `--filter`オプションでテーブルフィルターを指定することにより、特定のデータベースまたはテーブルをフィルター処理できます。テーブルフィルターの構文は、 `.gitignore`の構文と似ています。詳細については、 [テーブルフィルター](/table-filter.md)を参照してください。
+Dumplingは、 `--filter`オプションでテーブルフィルターを指定することにより、特定のデータベースまたはテーブルをフィルター処理できます。テーブルフィルターの構文は、 `.gitignore`の構文と似ています。詳細については、 [テーブルフィルター](/table-filter.md)を参照してください。
 
 {{< copyable "" >}}
 
@@ -240,12 +239,12 @@ Dumplingを使用してデータをバックアップする場合は、 `--s3.re
 
 #### <code>-B</code>または<code>-T</code>オプションを使用して、データをフィルタリングします {#use-the-code-b-code-or-code-t-code-option-to-filter-data}
 
-餃子は、 `-B`オプションの特定のデータベースまたは`-T`オプションの特定のテーブルをエクスポートすることもできます。
+Dumplingは、 `-B`オプションの特定のデータベースまたは`-T`オプションの特定のテーブルをエクスポートすることもできます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   `--filter`オプションと`-T`オプションを同時に使用することはできません。
-> -   `-T`オプションは、 `database-name.table-name`のような完全な形式の入力のみを受け入れることができ、テーブル名のみの入力は受け入れられません。例：餃子は`-T WorkOrder`を認識できません。
+> -   `-T`オプションは、 `database-name.table-name`のような完全な形式の入力のみを受け入れることができ、テーブル名のみの入力は受け入れられません。例：Dumplingは`-T WorkOrder`を認識できません。
 
 例：
 
@@ -256,19 +255,19 @@ Dumplingを使用してデータをバックアップする場合は、 `--s3.re
 
 エクスポートされたファイルは、デフォルトで`./export-<current local time>`ディレクトリに保存されます。一般的に使用されるオプションは次のとおりです。
 
--   `-t`オプションは、エクスポートするスレッドの数を指定します。スレッドの数を増やすと、餃子の同時実行性とエクスポート速度が向上し、データベースのメモリ消費量も増加します。したがって、数値を大きく設定しすぎることはお勧めしません。
--   `-r`オプションは、単一ファイルのレコードの最大数（またはデータベース内の行数）を指定します。有効にすると、ダンプリングによってテーブルの同時実行が有効になり、大きなテーブルのエクスポート速度が向上します。アップストリームデータベースがTiDBv3.0以降のバージョンの場合、このパラメーターの値が0より大きい場合は、TiDB領域情報が分割に使用され、ここで指定された値は無効になることを示します。
+-   `-t`オプションは、エクスポートするスレッドの数を指定します。スレッドの数を増やすと、Dumplingの同時実行性とエクスポート速度が向上し、データベースのメモリ消費量も増加します。したがって、数値を大きく設定しすぎることはお勧めしません。
+-   `-r`オプションは、単一ファイルのレコードの最大数（またはデータベース内の行数）を指定します。有効にすると、Dumplingによってテーブルの同時実行が有効になり、大きなテーブルのエクスポート速度が向上します。アップストリームデータベースがTiDBv3.0以降のバージョンの場合、このパラメーターの値が0より大きい場合は、TiDB領域情報が分割に使用され、ここで指定された値は無効になることを示します。
 -   `--compress gzip`オプションを使用して、ダンプを圧縮できます。これは、ストレージがボトルネックである場合、またはストレージ容量が懸念される場合に、データのダンプを高速化するのに役立ちます。これの欠点は、CPU使用率の増加です。各ファイルは個別に圧縮されます。
 
-上記のオプションを指定すると、餃子のデータエクスポート速度が速くなります。
+上記のオプションを指定すると、Dumplingのデータエクスポート速度が速くなります。
 
 ### Dumplingのデータ整合性オプションを調整する {#adjust-dumpling-s-data-consistency-options}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> ほとんどのシナリオでは、Dumplingのデフォルトのデータ整合性オプションを調整する必要はありません（デフォルト値は`auto`です）。
+> ほとんどのシナリオでは、 Dumplingのデフォルトのデータ整合性オプションを調整する必要はありません（デフォルト値は`auto`です）。
 
-餃子は`--consistency <consistency level>`オプションを使用して、「整合性保証」のためにデータをエクスポートする方法を制御します。一貫性を保つためにスナップショットを使用する場合は、 `--snapshot`オプションを使用して、バックアップするタイムスタンプを指定できます。次のレベルの整合性を使用することもできます。
+Dumplingは`--consistency <consistency level>`オプションを使用して、「整合性保証」のためにデータをエクスポートする方法を制御します。一貫性を保つためにスナップショットを使用する場合は、 `--snapshot`オプションを使用して、バックアップするタイムスタンプを指定できます。次のレベルの整合性を使用することもできます。
 
 -   `flush` ： [`FLUSH TABLES WITH READ LOCK`](https://dev.mysql.com/doc/refman/8.0/en/flush.html#flush-tables-with-read-lock)を使用して、レプリカデータベースのDMLおよびDDL操作を一時的に中断し、バックアップ接続のグローバル整合性を確保し、binlog位置（POS）情報を記録します。すべてのバックアップ接続がトランザクションを開始すると、ロックが解除されます。オフピーク時またはMySQLレプリカデータベースで完全バックアップを実行することをお勧めします。
 -   `snapshot` ：指定されたタイムスタンプの一貫したスナップショットを取得してエクスポートします。
@@ -297,7 +296,7 @@ ls -lh /tmp/test | awk '{print $5 "\t" $9}'
 
 ### TiDBの履歴データスナップショットをエクスポートする {#export-historical-data-snapshot-of-tidb}
 
-餃子は、 `--snapshot`オプションを指定して特定の[tidb_snapshot](/read-historical-data.md#how-tidb-reads-data-from-history-versions)のデータをエクスポートできます。
+Dumplingは、 `--snapshot`オプションを指定して特定の[tidb_snapshot](/read-historical-data.md#how-tidb-reads-data-from-history-versions)のデータをエクスポートできます。
 
 `--snapshot`オプションは、TSO（ `SHOW MASTER STATUS`コマンドによって出力される`Position`フィールド）または`datetime`データ型の有効時間（ `YYYY-MM-DD hh:mm:ss`の形式）に設定できます。次に例を示します。
 
@@ -320,7 +319,7 @@ DumplingがTiDBから大きな単一のテーブルをエクスポートして�
 
 ### 大量のデータをエクスポートする場合のTiDBGC設定 {#tidb-gc-settings-when-exporting-a-large-volume-of-data}
 
-TiDBからデータをエクスポートするときに、TiDBのバージョンがv4.0.0以降で、DumplingがTiDBクラスターのPDアドレスにアクセスできる場合、Dumplingは元のクラスターに影響を与えることなくGC時間を自動的に延長します。
+TiDBからデータをエクスポートするときに、TiDBのバージョンがv4.0.0以降で、 DumplingがTiDBクラスタのPDアドレスにアクセスできる場合、 Dumplingは元のクラスタに影響を与えることなくGC時間を自動的に延長します。
 
 他のシナリオでは、データサイズが非常に大きい場合、エクスポートプロセス中のGCによるエクスポートの失敗を回避するために、事前にGC時間を延長できます。
 
@@ -340,11 +339,11 @@ SET GLOBAL tidb_gc_life_time = '10m';
 
 最後に、エクスポートされたすべてのデータは、 [TiDB Lightning](/tidb-lightning/tidb-lightning-backends.md)を使用してTiDBにインポートして戻すことができます。
 
-## 餃子のオプションリスト {#option-list-of-dumpling}
+## Dumplingのオプションリスト {#option-list-of-dumpling}
 
 | オプション                        | 使用法                                                                                                                                                                                                                                  | デフォルト値                                                                                                                                                                 |             |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `-V`または`--version`           | 餃子バージョンを出力し、直接終了します                                                                                                                                                                                                                  |                                                                                                                                                                        |             |
+| `-V`または`--version`           | Dumplingバージョンを出力し、直接終了します                                                                                                                                                                                                            |                                                                                                                                                                        |             |
 | `-B`または`--database`          | 指定されたデータベースをエクスポートする                                                                                                                                                                                                                 |                                                                                                                                                                        |             |
 | `-T`または`--tables-list`       | 指定されたテーブルをエクスポートする                                                                                                                                                                                                                   |                                                                                                                                                                        |             |
 | `-f`または`--filter`            | フィルタパターンに一致するテーブルをエクスポートします。フィルタの構文については、 [テーブルフィルター](/table-filter.md)を参照してください。                                                                                                                                                    | `[\*.\*,!/^(mysql&#124;sys&#124;INFORMATION_SCHEMA&#124;PERFORMANCE_SCHEMA&#124;METRICS_SCHEMA&#124;INSPECTION_SCHEMA)$/.\*]` （システムスキーマを除くすべてのデータベースまたはテーブルをエクスポートします） |             |

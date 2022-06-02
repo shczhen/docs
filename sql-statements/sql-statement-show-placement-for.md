@@ -1,17 +1,17 @@
 ---
-title: SHOW PLACEMENT FOR
-summary: The usage of SHOW PLACEMENT FOR in TiDB.
+title: の配置を表示
+summary: TiDBでのSHOWPLACEMENTFORの使用法。
 ---
 
 # の配置を表示 {#show-placement-for}
 
-`SHOW PLACEMENT FOR`は、すべての配置オプションを要約し、特定のテーブル、データベーススキーマ、またはパーティションの標準形式で表示します。
+> **警告：**
+>
+> SQLの配置ルールは実験的機能です。 GAの前に構文が変更される可能性があり、バグもある可能性があります。
+>
+> リスクを理解している場合は、 `SET GLOBAL tidb_enable_alter_placement = 1;`を実行することでこの実験機能を有効にできます。
 
-このステートメントは、配置ドライバー（PD）が配置のスケジューリングで行った現在の進行状況を`Scheduling_State`フィールドが示す結果セットを返します。
-
--   `PENDING` ：PDはまだ配置のスケジュールを開始していません。これは、配置ルールが意味的に正しいが、現在クラスターが満たすことができないことを示している可能性があります。たとえば、フォロワーの候補となるTiKVストアが`FOLLOWERS=4`あるが、3つしかない場合。
--   `INPROGRESS` ：PDは現在配置をスケジュールしています。
--   `SCHEDULED` ：PDは配置を正常にスケジュールしました。
+`SHOW PLACEMENT FOR`は、直接配置および配置ポリシーからのすべての配置オプションを要約し、特定のテーブル、データベーススキーマ、またはパーティションの標準形式でそれらを表示します。
 
 ## あらすじ {#synopsis}
 
@@ -31,17 +31,23 @@ ShowPlacementTarget ::=
 
 ```sql
 CREATE PLACEMENT POLICY p1 PRIMARY_REGION="us-east-1" REGIONS="us-east-1,us-west-1" FOLLOWERS=4;
+use test;
 ALTER DATABASE test PLACEMENT POLICY=p1;
 CREATE TABLE t1 (a INT);
+CREATE TABLE t2 (a INT) PRIMARY_REGION="us-east-1" REGIONS="us-east-1,us-west-1" FOLLOWERS=4;
 SHOW PLACEMENT FOR DATABASE test;
 SHOW PLACEMENT FOR TABLE t1;
-SHOW CREATE TABLE t1\G;
-CREATE TABLE t3 (a INT) PARTITION BY RANGE (a) (PARTITION p1 VALUES LESS THAN (10), PARTITION p2 VALUES LESS THAN (20));
-SHOW PLACEMENT FOR TABLE t3 PARTITION p1\G;
+SHOW CREATE TABLE t1\G
+SHOW PLACEMENT FOR TABLE t2;
+CREATE TABLE t3 (a INT) PARTITION BY RANGE (a) (PARTITION p1 VALUES LESS THAN (10), PARTITION p2 VALUES LESS THAN (20) FOLLOWERS=4);
+SHOW PLACEMENT FOR TABLE t3 PARTITION p1;
+SHOW PLACEMENT FOR TABLE t3 PARTITION p2;
 ```
 
 ```
 Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 0 rows affected (0.00 sec)
 
 Query OK, 0 rows affected (0.00 sec)
 
@@ -61,17 +67,34 @@ Query OK, 0 rows affected (0.01 sec)
 +---------------+-------------+------------------+
 1 row in set (0.00 sec)
 
-***************************[ 1. row ]***************************
-Table        | t1
-Create Table | CREATE TABLE `t1` (
+*************************** 1. row ***************************
+       Table: t1
+Create Table: CREATE TABLE `t1` (
   `a` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin /*T![placement] PLACEMENT POLICY=`p1` */
 1 row in set (0.00 sec)
 
-***************************[ 1. row ]***************************
-Target           | TABLE test.t3 PARTITION p1
-Placement        | PRIMARY_REGION="us-east-1" REGIONS="us-east-1,us-west-1" FOLLOWERS=4
-Scheduling_State | PENDING
++---------------+----------------------------------------------------------------------+------------------+
+| Target        | Placement                                                            | Scheduling_State |
++---------------+----------------------------------------------------------------------+------------------+
+| TABLE test.t2 | PRIMARY_REGION="us-east-1" REGIONS="us-east-1,us-west-1" FOLLOWERS=4 | INPROGRESS       |
++---------------+----------------------------------------------------------------------+------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.14 sec)
+
++----------------------------+-----------------------------------------------------------------------+------------------+
+| Target                     | Placement                                                             | Scheduling_State |
++----------------------------+-----------------------------------------------------------------------+------------------+
+| TABLE test.t3 PARTITION p1 | PRIMARY_REGION="us-east-1" REGIONS="us-east-1,,us-west-1" FOLLOWERS=4 | INPROGRESS       |
++----------------------------+-----------------------------------------------------------------------+------------------+
+1 row in set (0.00 sec)
+
++----------------------------+-------------+------------------+
+| Target                     | Placement   | Scheduling_State |
++----------------------------+-------------+------------------+
+| TABLE test.t3 PARTITION p2 | FOLLOWERS=4 | INPROGRESS       |
++----------------------------+-------------+------------------+
 1 row in set (0.00 sec)
 ```
 

@@ -1,7 +1,6 @@
 ---
-title: TiDB User Account Management
-summary: Learn how to manage a TiDB user account.
-aliases: ['/docs/dev/user-account-management/','/docs/dev/reference/security/user-account-management/']
+title: TiDBユーザーアカウント管理
+summary: TiDBユーザーアカウントを管理する方法を学びます。
 ---
 
 # TiDBユーザーアカウント管理 {#tidb-user-account-management}
@@ -202,7 +201,7 @@ TiDBは、 `mysql.user`のシステムデータベースにパスワードを保
 
 ## <code>FLUSH PRIVILEGES</code> {#code-flush-privileges-code}
 
-ユーザーと特権に関連する情報はTiKVサーバーに保存され、TiDBはこの情報をプロセス内にキャッシュします。一般に、 `CREATE USER` 、およびその他のステートメントによる関連情報の変更は、クラスター全体で迅速に有効になり`GRANT` 。一時的に利用できないネットワークなどの要因により運用が影響を受ける場合、TiDBは定期的にキャッシュ情報をリロードするため、変更は約15分で有効になります。
+ユーザーと特権に関連する情報はTiKVサーバーに保存され、TiDBはこの情報をプロセス内にキャッシュします。一般に、 `CREATE USER` 、およびその他のステートメントによる関連情報の変更は、クラスタ全体で迅速に有効になり`GRANT` 。一時的に利用できないネットワークなどの要因により運用が影響を受ける場合、TiDBは定期的にキャッシュ情報をリロードするため、変更は約15分で有効になります。
 
 特権テーブルを直接変更した場合は、次のコマンドを実行して変更をすぐに適用します。
 
@@ -210,4 +209,4 @@ TiDBは、 `mysql.user`のシステムデータベースにパスワードを保
 FLUSH PRIVILEGES;
 ```
 
-詳細については、 [特権管理](/privilege-management.md)を参照してください。
+詳細については、 [権限管理](/privilege-management.md)を参照してください。

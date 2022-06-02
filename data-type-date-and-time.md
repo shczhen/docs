@@ -1,7 +1,6 @@
 ---
-title: Date and Time Types
-summary: Learn about the supported date and time types.
-aliases: ['/docs/dev/data-type-date-and-time/','/docs/dev/reference/sql/data-types/date-and-time/']
+title: 日付と時刻のタイプ
+summary: サポートされている日付と時刻のタイプについて説明します。
 ---
 
 # 日付と時刻のタイプ {#date-and-time-types}
@@ -100,7 +99,7 @@ DATE
 TIME[(fsp)]
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `TIME`の省略形に注意してください。たとえば、「11:12」は「00:11:12」ではなく「11:12:00」を意味します。ただし、「1112」は「00:11:12」を意味します。これらの違いは、 `:`文字の有無によって引き起こされます。
 
@@ -128,7 +127,7 @@ TIMESTAMP[(fsp)]
 
 `TIMESTAMP`を格納する場合、TiDBは`TIMESTAMP`の値を現在のタイムゾーンからUTCタイムゾーンに変換します。 `TIMESTAMP`を取得する場合、TiDBは保存されている`TIMESTAMP`の値をUTCタイムゾーンから現在のタイムゾーンに変換します（注： `DATETIME`はこの方法では処理されません）。各接続のデフォルトのタイムゾーンはサーバーのローカルタイムゾーンであり、環境変数`time_zone`で変更できます。
 
-> <strong>警告：</strong>
+> **警告：**
 >
 > MySQLと同様に、 `TIMESTAMP`のデータ型は[2038年問題](https://en.wikipedia.org/wiki/Year_2038_problem)の影響を受けます。 2038を超える可能性のある値を格納する場合は、代わりに`DATETIME`タイプの使用を検討してください。
 

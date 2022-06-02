@@ -1,34 +1,33 @@
 ---
-title: Quick Start Guide for the TiDB Database Platform
-summary: Learn how to quickly get started with the TiDB platform and see if TiDB is the right choice for you.
-aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-docker/']
+title: TiDBデータベースプラットフォームのクイックスタートガイド
+summary: TiDBプラットフォームをすぐに使い始める方法を学び、TiDBがあなたにとって正しい選択であるかどうかを確認してください。
 ---
 
 # TiDBデータベースプラットフォームのクイックスタートガイド {#quick-start-guide-for-the-tidb-database-platform}
 
 このガイドでは、TiDBの使用を開始する最も簡単な方法について説明します。非実稼働環境の場合、次のいずれかの方法でTiDBデータベースをデプロイできます。
 
--   [ローカルテストクラスターをデプロイする](#deploy-a-local-test-cluster) （macOSおよびLinuxの場合）
+-   [ローカルテストクラスタをデプロイする](#deploy-a-local-test-cluster) （macOSおよびLinuxの場合）
 -   [単一のマシンでの実稼働展開をシミュレートする](#simulate-production-deployment-on-a-single-machine) （Linuxのみ）
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   TiDB、TiUP、およびTiDBダッシュボードは、使用法の詳細をPingCAPと共有して、製品を改善する方法を理解するのに役立ちます。共有される内容と共有を無効にする方法の詳細については、 [テレメトリー](/telemetry.md)を参照してください。
 >
-> -   このガイドで提供されている展開方法は、クイックスタート<strong>のみ</strong>を目的としており、本番環境を対象としてい<strong>ません</strong>。
+> -   このガイドで提供されている展開方法は、クイックスタート**のみ**を目的としており、本番環境を対象としてい<strong>ません</strong>。
 >
->     -   オンプレミスの本番クラスターをデプロイするには、 [本番インストールガイド](/production-deployment-using-tiup.md)を参照してください。
+>     -   オンプレミスの本番クラスタをデプロイするには、 [本番インストールガイド](/production-deployment-using-tiup.md)を参照してください。
 >     -   KubernetesにTiDBをデプロイするには、 [KubernetesでTiDBを使い始める](https://docs.pingcap.com/tidb-in-kubernetes/stable/get-started)を参照してください。
 >     -   クラウドでTiDBを管理するには、 [TiDBクラウドクイックスタート](https://docs.pingcap.com/tidbcloud/tidb-cloud-quickstart)を参照してください。
 
-## ローカルテストクラスターをデプロイする {#deploy-a-local-test-cluster}
+## ローカルテストクラスタをデプロイする {#deploy-a-local-test-cluster}
 
--   シナリオ：単一のmacOSまたはLinuxサーバーを使用してテストするためにローカルTiDBクラスターをすばやく展開します。このようなクラスターをデプロイすることにより、TiDBの基本アーキテクチャーと、TiDB、TiKV、PD、および監視コンポーネントなどのコンポーネントの操作を学習できます。
+-   シナリオ：単一のmacOSまたはLinuxサーバーを使用してテストするためにローカルTiDBクラスタをすばやく展開します。このようなクラスタをデプロイすることにより、TiDBの基本アーキテクチャーと、TiDB、TiKV、PD、および監視コンポーネントなどのコンポーネントの操作を学習できます。
 
 <SimpleTab>
 <div label="macOS">
 
-分散システムとして、基本的なTiDBテストクラスターは通常、2つのTiDBインスタンス、3つのTiKVインスタンス、3つのPDインスタンス、およびオプションのTiFlashインスタンスで構成されます。 TiUP Playgroundを使用すると、次の手順を実行してテストクラスターをすばやく構築できます。
+分散システムとして、基本的なTiDBテストクラスタは通常、2つのTiDBインスタンス、3つのTiKVインスタンス、3つのPDインスタンス、およびオプションのTiFlashインスタンスで構成されます。 TiUP Playgroundを使用すると、次の手順を実行してテストクラスタをすばやく構築できます。
 
 1.  TiUPをダウンロードしてインストールします。
 
@@ -56,7 +55,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
 2.  グローバル環境変数を宣言します。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > インストール後、TiUPは対応するシェルプロファイルファイルの絶対パスを表示します。パスに応じて、次の`source`のコマンドで`${your_shell_profile}`を変更する必要があります。この場合、 `${your_shell_profile}`はステップ1の出力からの`/Users/user/.zshrc`です。
 
@@ -66,9 +65,9 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
     source ${your_shell_profile}
     ```
 
-3.  現在のセッションでクラスターを開始します。
+3.  現在のセッションでクラスタを開始します。
 
-    -   1つのTiDBインスタンス、1つのTiKVインスタンス、1つのPDインスタンス、および1つのTiFlashインスタンスを使用して最新バージョンのTiDBクラスターを起動する場合は、次のコマンドを実行します。
+    -   1つのTiDBインスタンス、1つのTiKVインスタンス、1つのPDインスタンス、および1つのTiFlashインスタンスを使用して最新バージョンのTiDBクラスタを起動する場合は、次のコマンドを実行します。
 
         {{< copyable "" >}}
 
@@ -81,12 +80,12 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
         {{< copyable "" >}}
 
         ```shell
-        tiup playground v6.0.0 --db 2 --pd 3 --kv 3
+        tiup playground v5.4.1 --db 2 --pd 3 --kv 3
         ```
 
-        このコマンドは、バージョンクラスターをローカルマシンにダウンロードして、v6.0.0などで起動します。最新バージョンを表示するには、 `tiup list tidb`を実行します。
+        このコマンドは、バージョンクラスタをローカルマシンにダウンロードして、v5.4.1などで起動します。最新バージョンを表示するには、 `tiup list tidb`を実行します。
 
-        このコマンドは、クラスターのアクセスメソッドを返します。
+        このコマンドは、クラスタのアクセスメソッドを返します。
 
         ```log
         CLUSTER START SUCCESSFULLY, Enjoy it ^-^
@@ -98,10 +97,10 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
         To view Grafana: http://127.0.0.1:3000
         ```
 
-        > <strong>ノート：</strong>
+        > **ノート：**
         >
         > -   v5.2.0以降、TiDBはAppleM1チップを使用するマシンでの`tiup playground`の実行をサポートしています。
-        > -   このように操作された遊び場の場合、テスト展開が終了した後、TiUPは元のクラスターデータをクリーンアップします。コマンドを再実行すると、新しいクラスターが作成されます。
+        > -   このように操作された遊び場の場合、テスト展開が終了した後、TiUPは元のクラスタデータをクリーンアップします。コマンドを再実行すると、新しいクラスタが作成されます。
         > -   データをストレージに永続化する場合は、 `tiup --tag <your-tag> playground ...`を実行します。詳しくは[TiUPリファレンスガイド](/tiup/tiup-reference.md#-t---tag)をご覧ください。
 
 4.  TiDBにアクセスするための新しいセッションを開始します。
@@ -130,7 +129,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
 8.  （オプション）分析用に[TiFlashにデータをロードする](/tiflash/use-tiflash.md) 。
 
-9.  テスト展開後にクラスターをクリーンアップします。
+9.  テスト展開後にクラスタをクリーンアップします。
 
     1.  <kbd>Control + C</kbd>を押して、上記のTiDBサービスを停止します。
 
@@ -142,14 +141,14 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
         tiup clean --all
         ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > TiUP Playgroundはデフォルトで`127.0.0.1`をリッスンし、サービスはローカルでのみアクセス可能です。サービスを外部からアクセスできるようにする場合は、 `--host`パラメーターを使用してリスニングアドレスを指定し、ネットワークインターフェイスカード（NIC）を外部からアクセス可能なIPアドレスにバインドします。
 
 </div>
 <div label="Linux">
 
-分散システムとして、基本的なTiDBテストクラスターは通常、2つのTiDBインスタンス、3つのTiKVインスタンス、3つのPDインスタンス、およびオプションのTiFlashインスタンスで構成されます。 TiUP Playgroundを使用すると、次の手順を実行してテストクラスターをすばやく構築できます。
+分散システムとして、基本的なTiDBテストクラスタは通常、2つのTiDBインスタンス、3つのTiKVインスタンス、3つのPDインスタンス、およびオプションのTiFlashインスタンスで構成されます。 TiUP Playgroundを使用すると、次の手順を実行してテストクラスタをすばやく構築できます。
 
 1.  TiUPをダウンロードしてインストールします。
 
@@ -177,7 +176,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
 2.  グローバル環境変数を宣言します。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > インストール後、TiUPは対応するシェルプロファイルファイルの絶対パスを表示します。パスに応じて、次の`source`のコマンドで`${your_shell_profile}`を変更する必要があります。
 
@@ -187,9 +186,9 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
     source ${your_shell_profile}
     ```
 
-3.  現在のセッションでクラスターを開始します。
+3.  現在のセッションでクラスタを開始します。
 
-    -   1つのTiDBインスタンス、1つのTiKVインスタンス、1つのPDインスタンス、および1つのTiFlashインスタンスを使用して最新バージョンのTiDBクラスターを起動する場合は、次のコマンドを実行します。
+    -   1つのTiDBインスタンス、1つのTiKVインスタンス、1つのPDインスタンス、および1つのTiFlashインスタンスを使用して最新バージョンのTiDBクラスタを起動する場合は、次のコマンドを実行します。
 
         {{< copyable "" >}}
 
@@ -202,12 +201,12 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
         {{< copyable "" >}}
 
         ```shell
-        tiup playground v6.0.0 --db 2 --pd 3 --kv 3
+        tiup playground v5.4.1 --db 2 --pd 3 --kv 3
         ```
 
-        このコマンドは、バージョンクラスターをローカルマシンにダウンロードして、v6.0.0などで起動します。最新バージョンを表示するには、 `tiup list tidb`を実行します。
+        このコマンドは、バージョンクラスタをローカルマシンにダウンロードして、v5.4.1などで起動します。最新バージョンを表示するには、 `tiup list tidb`を実行します。
 
-        このコマンドは、クラスターのアクセスメソッドを返します。
+        このコマンドは、クラスタのアクセスメソッドを返します。
 
         ```log
         CLUSTER START SUCCESSFULLY, Enjoy it ^-^
@@ -218,9 +217,9 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
         To view the Grafana: http://127.0.0.1:3000
         ```
 
-        > <strong>ノート：</strong>
+        > **ノート：**
         >
-        > このように操作された遊び場の場合、テスト展開が終了した後、TiUPは元のクラスターデータをクリーンアップします。コマンドを再実行すると、新しいクラスターが作成されます。データをストレージに永続化する場合は、 `tiup --tag <your-tag> playground ...`を実行します。詳しくは[TiUPリファレンスガイド](/tiup/tiup-reference.md#-t---tag)をご覧ください。
+        > このように操作された遊び場の場合、テスト展開が終了した後、TiUPは元のクラスタデータをクリーンアップします。コマンドを再実行すると、新しいクラスタが作成されます。データをストレージに永続化する場合は、 `tiup --tag <your-tag> playground ...`を実行します。詳しくは[TiUPリファレンスガイド](/tiup/tiup-reference.md#-t---tag)をご覧ください。
 
 4.  TiDBにアクセスするための新しいセッションを開始します。
 
@@ -248,7 +247,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
 8.  （オプション）分析用に[TiFlashにデータをロードする](/tiflash/use-tiflash.md) 。
 
-9.  テスト展開後にクラスターをクリーンアップします。
+9.  テスト展開後にクラスタをクリーンアップします。
 
     1.  <kbd>Control+C</kbd>を押してプロセスを停止します。
 
@@ -260,7 +259,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
         tiup clean --all
         ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > TiUP Playgroundはデフォルトで`127.0.0.1`をリッスンし、サービスはローカルでのみアクセス可能です。サービスを外部からアクセスできるようにする場合は、 `--host`パラメーターを使用してリスニングアドレスを指定し、ネットワークインターフェイスカード（NIC）を外部からアクセス可能なIPアドレスにバインドします。
 
@@ -269,9 +268,9 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
 ## 単一のマシンでの実稼働展開をシミュレートする {#simulate-production-deployment-on-a-single-machine}
 
--   シナリオ：完全なトポロジーを備えた最小のTiDBクラスターを体験し、単一のLinuxサーバーで実稼働展開手順をシミュレートします。
+-   シナリオ：完全なトポロジーを備えた最小のTiDBクラスタを体験し、単一のLinuxサーバーで実稼働展開手順をシミュレートします。
 
-このセクションでは、TiUPで最小のトポロジのYAMLファイルを使用してTiDBクラスターをデプロイする方法について説明します。
+このセクションでは、TiUPで最小のトポロジのYAMLファイルを使用してTiDBクラスタをデプロイする方法について説明します。
 
 ### 準備 {#prepare}
 
@@ -280,13 +279,13 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 -   CentOS7.3以降のバージョンがインストールされている
 -   Linux OSはインターネットにアクセスできます。インターネットは、TiDBおよび関連するソフトウェアインストールパッケージをダウンロードするために必要です。
 
-最小のTiDBクラスタートポロジは次のとおりです。
+最小のTiDBクラスタトポロジは次のとおりです。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 次のインスタンスのIPアドレスは、IPの例としてのみ機能します。実際の展開では、IPを実際のIPに置き換える必要があります。
 
-| 実例      | カウント | IP                                   | 構成                          |
+| 実例      | カウント | IP                                   | Configuration / コンフィグレーション  |
 | :------ | :--- | :----------------------------------- | :-------------------------- |
 | TiKV    | 3    | 10.0.1.1<br/> 10.0.1.1<br/> 10.0.1.1 | ポートとディレクトリ間の競合を回避する         |
 | TiDB    | 1    | 10.0.1.1                             | デフォルトのポート<br/>グローバルディレクトリ構成 |
@@ -297,15 +296,15 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 ターゲットマシンのその他の要件：
 
 -   `root`人のユーザーとそのパスワードが必要です
--   [ターゲットマシンのファイアウォールサービスを停止します](/check-before-deployment.md#check-and-stop-the-firewall-service-of-target-machines) 、またはTiDBクラスターノードに必要なポートを開きます
+-   [ターゲットマシンのファイアウォールサービスを停止します](/check-before-deployment.md#check-and-stop-the-firewall-service-of-target-machines) 、またはTiDBクラスタノードに必要なポートを開きます
 -   現在、TiUPはx86_64（AMD64およびARM）アーキテクチャでのTiDBの展開をサポートしています。
 
     -   AMD64ではCentOS7.3以降のバージョンを使用することをお勧めします
     -   ARMではCentOS7.61810を使用することをお勧めします
 
-### 配備 {#deploy}
+### デプロイ {#deploy}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 通常のユーザーまたは`root`人のユーザーとしてターゲットマシンにログインできます。次の手順では、例として`root`ユーザーを使用します。
 
@@ -319,7 +318,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
 2.  グローバル環境変数を宣言します。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > インストール後、TiUPは対応するシェルプロファイルファイルの絶対パスを表示します。パスに応じて、次の`source`のコマンドで`${your_shell_profile}`を変更する必要があります。
 
@@ -329,7 +328,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
     source ${your_shell_profile}
     ```
 
-3.  TiUPのクラスターコンポーネントをインストールします。
+3.  TiUPのクラスタコンポーネントをインストールします。
 
     {{< copyable "" >}}
 
@@ -337,7 +336,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
     tiup cluster
     ```
 
-4.  TiUPクラスターがすでにマシンにインストールされている場合は、ソフトウェアバージョンを更新します。
+4.  TiUPクラスタがすでにマシンにインストールされている場合は、ソフトウェアバージョンを更新します。
 
     {{< copyable "" >}}
 
@@ -356,11 +355,11 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
         service sshd restart
         ```
 
-6.  クラスターを作成して開始します。
+6.  クラスタを作成して開始します。
 
     次のテンプレートに従って構成ファイルを編集し、 `topo.yaml`という名前を付けます。
 
-    {{&lt;コピー可能&quot;&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```yaml
     # # Global variables are applied to all deployments and used as the default value of
@@ -423,11 +422,11 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
      - host: 10.0.1.1
     ```
 
-    -   `user: "tidb"` ： `tidb`システムユーザー（展開時に自動的に作成されます）を使用して、クラスターの内部管理を実行します。デフォルトでは、ポート22を使用してSSH経由でターゲットマシンにログインします。
+    -   `user: "tidb"` ： `tidb`システムユーザー（展開時に自動的に作成されます）を使用して、クラスタの内部管理を実行します。デフォルトでは、ポート22を使用してSSH経由でターゲットマシンにログインします。
     -   `replication.enable-placement-rules` ：このPDパラメータは、TiFlashが正常に動作することを保証するために設定されます。
     -   `host` ：ターゲットマシンのIP。
 
-7.  clusterdeploymentコマンドを実行します。
+7.  clusterdeploymentコマンドを実行しクラスタ。
 
     {{< copyable "" >}}
 
@@ -436,10 +435,10 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
     ```
 
     -   `<cluster-name>` ：クラスタ名を設定します
-    -   `<tidb-version>` ：TiDBクラスターのバージョンを設定します。 `tiup list tidb`コマンドを実行すると、サポートされているすべてのTiDBバージョンを確認できます。
+    -   `<tidb-version>` ：TiDBクラスタのバージョンを設定します。 `tiup list tidb`コマンドを実行すると、サポートされているすべてのTiDBバージョンを確認できます。
     -   `-p` ：ターゲットマシンへの接続に使用するパスワードを指定します。
 
-        > <strong>ノート：</strong>
+        > **ノート：**
         >
         > 秘密鍵を使用する場合は、 `-i`を介して鍵のパスを指定できます。 `-i`と`-p`を同時に使用しないでください。
 
@@ -450,7 +449,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
     Input SSH password:
     ```
 
-8.  クラスターを開始します。
+8.  クラスタを開始します：
 
     {{< copyable "" >}}
 
@@ -458,7 +457,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
     tiup cluster start <cluster-name>
     ```
 
-9.  クラスターにアクセスします。
+9.  クラスタにアクセスします。
 
     -   MySQLクライアントをインストールします。すでにインストールされている場合は、この手順をスキップしてください。
 
@@ -480,7 +479,7 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
     -   [http：// {pd-ip}：2379 / dashboard](http://%7Bpd-ip%7D:2379/dashboard)にアクセスし[TiDBダッシュボード](/dashboard/dashboard-intro.md) 。デフォルトのユーザー名は`root`で、パスワードは空です。
 
-    -   現在デプロイされているクラスターリストを表示するには：
+    -   現在デプロイされているクラスタリストを表示するには：
 
         {{< copyable "" >}}
 
@@ -498,15 +497,15 @@ aliases: ['/docs/dev/quick-start-with-tidb/','/docs/dev/test-deployment-using-do
 
 ## 次は何ですか {#what-s-next}
 
--   ローカルテスト環境にTiDBクラスターをデプロイしたばかりの場合：
+-   ローカルテスト環境にTiDBクラスタをデプロイしたばかりの場合：
 
     -   学ぶ[TiDBでの基本的なSQL操作](/basic-sql-operations.md)
     -   [データをTiDBに移行する](/migration-overview.md)
 
--   実稼働環境にTiDBクラスターをデプロイする準備ができている場合：
+-   実稼働環境にTiDBクラスタをデプロイする準備ができている場合：
 
-    -   [TiUPを使用してTiDBをデプロイする](/production-deployment-using-tiup.md)
-    -   [TiDBオペレーターを使用してクラウドにTiDBをデプロイする](https://docs.pingcap.com/tidb-in-kubernetes/stable)
+    -   [TiUPを使用してTiDBをデプロイ](/production-deployment-using-tiup.md)
+    -   [TiDB Operatorを使用してクラウドにTiDBをデプロイ](https://docs.pingcap.com/tidb-in-kubernetes/stable)
 
 -   TiFlashを使用した分析ソリューションをお探しの場合：
 

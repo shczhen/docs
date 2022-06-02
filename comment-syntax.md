@@ -1,7 +1,6 @@
 ---
-title: Comment Syntax
-summary: This document introduces the comment syntax supported by TiDB.
-aliases: ['/docs/dev/comment-syntax/','/docs/dev/reference/sql/language-structure/comment-syntax/']
+title: コメント構文
+summary: このドキュメントでは、TiDBでサポートされているコメント構文を紹介します。
 ---
 
 # コメント構文 {#comment-syntax}
@@ -134,7 +133,7 @@ SELECT STRAIGHT_JOIN col1 FROM table1,table2 WHERE ...
 TiDBには独自のコメント構文（つまり、TiDB固有のコメント構文）があり、次の2つのタイプに分けることができます。
 
 -   `/*T! Specific code */` ：この構文は、TiDBによってのみ解析および実行でき、他のデータベースでは無視されます。
--   `/*T![feature_id] Specific code */` ：この構文は、異なるバージョンのTiDB間の互換性を確保するために使用されます。 TiDBは、現在のバージョンで`feature_id`の対応する機能を実装している場合にのみ、このコメントのSQLフラグメントを解析できます。たとえば、v3.1.1で`AUTO_RANDOM`機能が導入されたため、このバージョンのTiDBは`/*T![auto_rand] auto_random */`を`auto_random`に解析できます。 `AUTO_RANDOM`機能はv3.0.0に実装されていないため、上記のSQLステートメントフラグメントは無視されます。 <strong><code>/*T![</code>文字の中にスペースを残さないでください</strong>。
+-   `/*T![feature_id] Specific code */` ：この構文は、異なるバージョンのTiDB間の互換性を確保するために使用されます。 TiDBは、現在のバージョンで`feature_id`の対応する機能を実装している場合にのみ、このコメントのSQLフラグメントを解析できます。たとえば、v3.1.1で`AUTO_RANDOM`機能が導入されたため、このバージョンのTiDBは`/*T![auto_rand] auto_random */`を`auto_random`に解析できます。 `AUTO_RANDOM`機能はv3.0.0に実装されていないため、上記のSQLステートメントフラグメントは無視されます。 **`/*T![`文字の中にスペースを残さないでください**。
 
 ## オプティマイザーのコメント構文 {#optimizer-comment-syntax}
 
@@ -148,7 +147,7 @@ SELECT /*+ hint */ FROM ...;
 
 TiDBがサポートするオプティマイザヒントの詳細については、 [オプティマイザーのヒント](/optimizer-hints.md)を参照してください。
 
-> <strong>ノート</strong>
+> **ノート**
 >
 > MySQLクライアントでは、TiDB固有のコメント構文はコメントとして扱われ、デフォルトでクリアされます。 5.7.7より前のMySQLクライアントでは、ヒントもコメントとして表示され、デフォルトでクリアされます。クライアントを起動するときは、 `--comments`オプションを使用することをお勧めします。たとえば、 `mysql -h 127.0.0.1 -P 4000 -uroot --comments` 。
 

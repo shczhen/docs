@@ -1,7 +1,6 @@
 ---
-title: SHOW [FULL] PROCESSLIST | TiDB SQL Statement Reference
-summary: An overview of the usage of SHOW [FULL] PROCESSLIST for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-processlist/','/docs/dev/reference/sql/statements/show-processlist/']
+title: [フル]プロセスリストを表示| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースのSHOW[FULL]PROCESSLISTの使用法の概要。
 ---
 
 # [完全な]プロセスリストを表示する {#show-full-processlist}
@@ -10,11 +9,11 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-processlist/','/docs/dev/
 
 ## あらすじ {#synopsis}
 
-<strong>ShowProcesslistStmt：</strong>
+**ShowProcesslistStmt：**
 
 ![ShowProcesslistStmt](/media/sqlgram/ShowProcesslistStmt.png)
 
-<strong>OptFull：</strong>
+**OptFull：**
 
 ![OptFull](/media/sqlgram/OptFull.png)
 

@@ -1,7 +1,6 @@
 ---
-title: CREATE INDEX | TiDB SQL Statement Reference
-summary: An overview of the usage of CREATE INDEX for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-create-index/','/docs/dev/reference/sql/statements/create-index/']
+title: インデックスの作成| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのCREATEINDEXの使用法の概要。
 ---
 
 # インデックスの作成 {#create-index}
@@ -104,7 +103,7 @@ Query OK, 0 rows affected (0.31 sec)
 
 ## 式インデックス {#expression-index}
 
-一部のシナリオでは、クエリのフィルタリング条件は特定の式に基づいています。これらのシナリオでは、通常のインデックスを有効にできないため、クエリのパフォーマンスは比較的低くなります。クエリは、テーブル全体をスキャンすることによってのみ実行できます。式インデックスは、式に作成できる特殊なインデックスの一種です。式インデックスが作成されると、TiDBは式ベースのクエリにインデックスを使用できるようになり、クエリのパフォーマンスが大幅に向上します。
+一部のシナリオでは、クエリのフィルタリング条件は特定の式に基づいています。これらのシナリオでは、通常のインデックスを有効にできないため、クエリのパフォーマンスは比較的低くなります。クエリは、テーブル全体をスキャンすることによってのみ実行できます。式インデックスは、式に作成できる特殊なインデックスの一種です。式インデックスが作成されると、TiDBは式ベースのクエリにインデックスを使用できるため、クエリのパフォーマンスが大幅に向上します。
 
 たとえば、 `lower(col1)`に基づいてインデックスを作成する場合は、次のSQLステートメントを実行します。
 
@@ -130,7 +129,7 @@ ALTER TABLE t1 ADD INDEX idx1((lower(col1)));
 CREATE TABLE t1(col1 char(10), col2 char(10), index((lower(col1))));
 ```
 
-> <strong>ノート</strong>
+> **ノート**
 >
 > 式インデックスの式は、「（」および「）」で囲む必要があります。それ以外の場合は、構文エラーが報告されます。
 
@@ -142,7 +141,7 @@ CREATE TABLE t1(col1 char(10), col2 char(10), index((lower(col1))));
 DROP INDEX idx1 ON t1;
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 式インデックスには、さまざまな種類の式が含まれます。正確性を確保するために、完全にテストされた一部の関数のみが式インデックスの作成を許可されています。これは、これらの関数のみが実稼働環境の式で許可されることを意味します。これらの関数は、 `tidb_allow_function_for_expression_index`の変数をクエリすることで取得できます。将来のバージョンでは、さらに多くの機能がリストに追加される可能性があります。
 >
@@ -158,7 +157,7 @@ DROP INDEX idx1 ON t1;
 > 1 row in set (0.00 sec)
 > ```
 >
-> 上記の戻り結果に含まれていない関数の場合、これらの関数は十分にテストされておらず、実験的なものと見なすことができる実稼働環境には推奨されません。演算子、 `cast`などの他の式も実験的なものと見`case when` 、本番環境には推奨されません。ただし、それでもこれらの式を使用する場合は、 [TiDB構成ファイル](/tidb-configuration-file.md#allow-expression-index-new-in-v400)で次の構成を行うことができます。
+> 上記の戻り結果に含まれていない関数の場合、これらの関数は十分にテストされておらず、実験的ものと見なすことができる実稼働環境には推奨されません。演算子、 `cast`などの他の式も実験的ものと見`case when` 、本番環境には推奨されません。ただし、それでもこれらの式を使用する場合は、 [TiDB構成ファイル](/tidb-configuration-file.md#allow-expression-index-new-in-v400)で次の構成を行うことができます。
 >
 > {{< copyable "" >}}
 >
@@ -260,7 +259,7 @@ CREATE UNIQUE INDEX c1 ON t1 (c1) INVISIBLE;
 ## も参照してください {#see-also}
 
 -   [インデックスの選択](/choose-index.md)
--   [間違ったインデックスソリューション](/wrong-index-solution.md)
+-   [インデックス問題の解決方法](/wrong-index-solution.md)
 -   [インデックスを追加](/sql-statements/sql-statement-add-index.md)
 -   [ドロップインデックス](/sql-statements/sql-statement-drop-index.md)
 -   [インデックスの名前を変更](/sql-statements/sql-statement-rename-index.md)

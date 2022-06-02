@@ -1,6 +1,6 @@
 ---
-title: Analyze Slow Queries
-summary: Learn how to locate and analyze slow queries.
+title: 遅いクエリを分析する
+summary: 遅いクエリを見つけて分析する方法を学びます。
 ---
 
 # 遅いクエリを分析する {#analyze-slow-queries}
@@ -40,7 +40,7 @@ summary: Learn how to locate and analyze slow queries.
 
 上記の方法は、次の点で異なります。
 
--   低速ログは、解析から結果の返送まで、SQL実行のほぼすべての段階の期間を記録し、比較的包括的です（TiDBダッシュボードで低速ログを直感的な方法でクエリおよび分析できます）。
+-   スローログは、解析から結果の返送まで、SQL実行のほぼすべての段階の期間を記録し、比較的包括的です（TiDBダッシュボードでスローログを直感的な方法でクエリおよび分析できます）。
 -   `EXPLAIN ANALYZE`を実行することにより、実際のSQL実行における各演算子の消費時間を知ることができます。結果には、実行期間のより詳細な統計が含まれます。
 
 要約すると、slow logおよび`EXPLAIN ANALYZE`ステートメントは、実行のどの段階でどのコンポーネント（TiDBまたはTiKV）でSQLクエリが遅いかを判断するのに役立ちます。したがって、クエリのパフォーマンスのボトルネックを正確に特定できます。
@@ -250,6 +250,6 @@ mysql> explain select * from t t1, t t2 where t1.a>t2.a;
 
 ほとんどのオプティマイザの問題は[SQLチューニングの概要](/sql-tuning-overview.md)で説明されています。解決策については、次のドキュメントを参照してください。
 
-1.  [間違ったインデックスソリューション](/wrong-index-solution.md)
+1.  [インデックス問題の解決方法](/wrong-index-solution.md)
 2.  [間違った参加順序](/join-reorder.md)
 3.  [式はプッシュダウンされません](/blocklist-control-plan.md)

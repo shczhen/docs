@@ -1,6 +1,5 @@
 ---
-title: TiDB 3.0.13 Release Notes
-aliases: ['/docs/dev/releases/release-3.0.13/','/docs/dev/releases/3.0.13/']
+title: TiDB3.0.13リリースノート
 ---
 
 # TiDB3.0.13リリースノート {#tidb-3-0-13-release-notes}

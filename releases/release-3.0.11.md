@@ -1,6 +1,5 @@
 ---
-title: TiDB 3.0.11 Release Notes
-aliases: ['/docs/dev/releases/release-3.0.11/','/docs/dev/releases/3.0.11/']
+title: TiDB3.0.11リリースノート
 ---
 
 # TiDB3.0.11リリースノート {#tidb-3-0-11-release-notes}
@@ -11,7 +10,7 @@ TiDBバージョン：3.0.11
 
 TiDB Ansibleバージョン：3.0.11
 
-> <strong>警告：</strong>
+> **警告：**
 >
 > このバージョンにはいくつかの既知の問題があり、これらの問題は新しいバージョンで修正されています。最新の3.0.xバージョンを使用することをお勧めします。
 

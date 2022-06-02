@@ -1,7 +1,6 @@
 ---
-title: Cast Functions and Operators
-summary: Learn about the cast functions and operators.
-aliases: ['/docs/dev/functions-and-operators/cast-functions-and-operators/','/docs/dev/reference/sql/functions-and-operators/cast-functions-and-operators/']
+title: キャスト関数と演算子
+summary: キャスト関数と演算子について学びます。
 ---
 
 # キャスト関数と演算子 {#cast-functions-and-operators}

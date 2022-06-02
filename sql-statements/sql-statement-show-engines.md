@@ -1,7 +1,6 @@
 ---
-title: SHOW ENGINES | TiDB SQL Statement Reference
-summary: An overview of the usage of SHOW ENGINES for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-engines/','/docs/dev/reference/sql/statements/show-engines/']
+title: エンジンを表示| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのSHOWENGINESの使用法の概要。
 ---
 
 # エンジンを表示 {#show-engines}
@@ -10,7 +9,7 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-engines/','/docs/dev/refe
 
 ## あらすじ {#synopsis}
 
-<strong>ShowEnginesStmt：</strong>
+**ShowEnginesStmt：**
 
 ![ShowEnginesStmt](/media/sqlgram/ShowEnginesStmt.png)
 

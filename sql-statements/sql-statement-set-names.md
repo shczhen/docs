@@ -1,7 +1,6 @@
 ---
-title: SET [NAMES|CHARACTER SET] |  TiDB SQL Statement Reference
-summary: An overview of the usage of SET [NAMES|CHARACTER SET] for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-set-names/','/docs/dev/reference/sql/statements/set-names/']
+title: SET [NAMES | CHARACTER SET] | TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのSET[NAMES|CHARACTERSET]の使用法の概要。
 ---
 
 # SET [NAMES | CHARACTER SET] {#set-names-character-set}
@@ -10,31 +9,31 @@ aliases: ['/docs/dev/sql-statements/sql-statement-set-names/','/docs/dev/referen
 
 ## あらすじ {#synopsis}
 
-<strong>SetNamesStmt：</strong>
+**SetNamesStmt：**
 
 ![SetNamesStmt](/media/sqlgram/SetNamesStmt.png)
 
-<strong>VariableAssignmentList：</strong>
+**VariableAssignmentList：**
 
 ![VariableAssignmentList](/media/sqlgram/VariableAssignmentList.png)
 
-<strong>VariableAssignment：</strong>
+**VariableAssignment：**
 
 ![VariableAssignment](/media/sqlgram/VariableAssignment.png)
 
-<strong>CharsetName：</strong>
+**CharsetName：**
 
 ![CharsetName](/media/sqlgram/CharsetName.png)
 
-<strong>StringName：</strong>
+**StringName：**
 
 ![StringName](/media/sqlgram/StringName.png)
 
-<strong>CharsetKw：</strong>
+**CharsetKw：**
 
 ![CharsetKw](/media/sqlgram/CharsetKw.png)
 
-<strong>CharsetNameOrDefault：</strong>
+**CharsetNameOrDefault：**
 
 ![CharsetNameOrDefault](/media/sqlgram/CharsetNameOrDefault.png)
 

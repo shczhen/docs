@@ -1,5 +1,5 @@
 ---
-title: TiDB 4.0.12 Release Notes
+title: TiDB4.0.12リリースノート
 ---
 
 # TiDB4.0.12リリースノート {#tidb-4-0-12-release-notes}
@@ -23,10 +23,10 @@ TiDBバージョン：4.0.12
     -   DDLパッケージコードの一部を`Execute`から安全なAPIに移行し[＃22935](https://github.com/pingcap/tidb/pull/22935) （2） `ExecRestricted`
     -   DDLパッケージコードの一部を`Execute`から安全なAPIに移行し[＃22929](https://github.com/pingcap/tidb/pull/22929) （1） `ExecRestricted`
     -   遅いログ[＃22918](https://github.com/pingcap/tidb/pull/22918)に`optimization-time`と`wait-TS-time`を追加します
-    -   `infoschema.partitions`の表[＃22489](https://github.com/pingcap/tidb/pull/22489)から`partition_id`のクエリをサポート
+    -   `infoschema.partitions`の表[＃22489](https://github.com/pingcap/tidb/pull/22489)から`partition_id`を照会することをサポートします。
     -   `last_plan_from_binding`を追加して、SQLステートメントの実行プランがバインディング[＃21430](https://github.com/pingcap/tidb/pull/21430)のヒントと一致するかどうかをユーザーが認識できるようにします。
     -   `pre-split`のオプションなしで切り捨てられたテーブルを分散する[＃22872](https://github.com/pingcap/tidb/pull/22872)
-    -   `str_to_date`式[＃22812](https://github.com/pingcap/tidb/pull/22812)に3つのフォーマット指定子を追加します。
+    -   `str_to_date`式[＃22812](https://github.com/pingcap/tidb/pull/22812)に3つのフォーマット指定子を追加します
     -   `PREPARE`の実行失敗をメトリックモニター[＃22672](https://github.com/pingcap/tidb/pull/22672)に`Failed Query OPM`として記録します。
     -   `tidb_snapshot`が設定されている場合は`PREPARE`の実行でエラーを報告しない[＃22641](https://github.com/pingcap/tidb/pull/22641)
 
@@ -65,7 +65,7 @@ TiDBバージョン：4.0.12
 
     -   TiDB Lightning
 
-        -   予期しないエラーを回避するために、TiDBLightningを実行する前にTiDBクラスターのバージョンを確認してください[＃787](https://github.com/pingcap/br/pull/787)
+        -   予期しないエラーを回避するために、TiDBLightningを実行する前にTiDBクラスタのバージョンを確認してください[＃787](https://github.com/pingcap/br/pull/787)
         -   TiDB Lightningが`cancel`のエラー[＃867](https://github.com/pingcap/br/pull/867)に遭遇すると、すぐに失敗します
         -   `tikv-importer.engine-mem-cache-size`と`tikv-importer.local-writer-mem-cache-size`の構成項目を追加して、メモリ使用量とパフォーマンスのバランスを取ります[＃866](https://github.com/pingcap/br/pull/866)
         -   TiDB Lightningのローカルバックエンドに対して`batch split region`を並行して実行して、インポート速度を上げます[＃868](https://github.com/pingcap/br/pull/868)
@@ -77,14 +77,14 @@ TiDBバージョン：4.0.12
 -   TiDB
 
     -   セッション変数が16進リテラルである場合に`get`変数式が間違ってしまう問題を修正します[＃23372](https://github.com/pingcap/tidb/pull/23372)
-    -   `Enum`または`Set`タイプ[＃23292](https://github.com/pingcap/tidb/pull/23292)の高速実行プランを作成するときに間違った照合が使用される問題を修正します
+    -   `Enum`または`Set`タイプ[＃23292](https://github.com/pingcap/tidb/pull/23292)の高速実行プランを作成するときに間違った照合順序が使用される問題を修正します
     -   [＃23279](https://github.com/pingcap/tidb/pull/23279)で使用した場合に発生する可能性のある`nullif`式の誤った結果を修正し`is-null` 。
     -   自動分析が時間範囲外でトリガーされる問題を修正します[＃23219](https://github.com/pingcap/tidb/pull/23219)
     -   `CAST`関数が`point get`プラン[＃23211](https://github.com/pingcap/tidb/pull/23211)のエラーを無視する可能性がある問題を修正します
     -   `CurrentDB`が空のときにSPMが有効にならないバグを修正します[＃23209](https://github.com/pingcap/tidb/pull/23209)
     -   IndexMergeプラン[＃23165](https://github.com/pingcap/tidb/pull/23165)で発生する可能性のある間違ったテーブルフィルターの問題を修正します
     -   `NULL`定数[＃23135](https://github.com/pingcap/tidb/pull/23135)の戻り型で予期しない`NotNullFlag`の問題を修正します
-    -   照合がテキストタイプ[＃23092](https://github.com/pingcap/tidb/pull/23092)で処理されない可能性があるバグを修正します
+    -   照合順序がテキストタイプ[＃23092](https://github.com/pingcap/tidb/pull/23092)で処理されない可能性があるバグを修正します
     -   範囲パーティションが`IN`式[＃23074](https://github.com/pingcap/tidb/pull/23074)を誤って処理する可能性がある問題を修正します
     -   TiKVストアをトゥームストーンとしてマークした後、同じIPアドレスとポートを持つ異なるStoreIDで新しいTiKVストアを開始すると、 `StoreNotMatch`エラー[＃23071](https://github.com/pingcap/tidb/pull/23071)が返される問題を修正します。
     -   `NULL`で`YEAR`と比較した場合は`INT`タイプを調整しないで[＃22844](https://github.com/pingcap/tidb/pull/22844)

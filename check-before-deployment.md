@@ -1,10 +1,9 @@
 ---
-title: TiDB Environment and System Configuration Check
-summary: Learn the environment check operations before deploying TiDB.
-aliases: ['/docs/dev/check-before-deployment/']
+title: TiDB環境とシステムConfiguration / コンフィグレーションのチェック
+summary: TiDBをデプロイする前に、環境チェックの操作を学びます。
 ---
 
-# TiDB環境とシステム構成のチェック {#tidb-environment-and-system-configuration-check}
+# TiDB環境とシステムConfiguration / コンフィグレーションのチェック {#tidb-environment-and-system-configuration-check}
 
 このドキュメントでは、TiDBを展開する前の環境チェック操作について説明します。次の手順は優先順位順に並べられています。
 
@@ -16,7 +15,7 @@ aliases: ['/docs/dev/check-before-deployment/']
 
 データディスクをext4ファイルシステムにフォーマットし、ファイルシステムに`nodelalloc`および`noatime`マウントオプションを追加します。 `nodelalloc`オプションを追加する必要があります。そうしないと、TiUPデプロイメントは事前チェックに合格できません。 `noatime`オプションはオプションです。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > データディスクがext4にフォーマットされ、マウントオプションが追加されている場合は、 `umount /dev/nvme0n1p1`コマンドを実行してアンインストールし、以下の5番目の手順に直接スキップして`/etc/fstab`ファイルを編集し、ファイルシステムにオプションを再度追加できます。
 
@@ -42,7 +41,7 @@ aliases: ['/docs/dev/check-before-deployment/']
     parted -s -a optimal /dev/nvme0n1 mklabel gpt -- mkpart primary ext4 1 -1
     ```
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > `lsblk`コマンドを使用して、パーティションのデバイス番号を表示します。NVMeディスクの場合、生成されるデバイス番号は通常`nvme0n1p1`です。通常のディスク（たとえば、 `/dev/sdb` ）の場合、生成されるデバイス番号は通常`sdb1`です。
 
@@ -122,7 +121,7 @@ swapoff -a && swapon -a
 sysctl -p
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   `swapoff -a`を実行してから`swapon -a`を実行すると、データをメモリにダンプしてスワップをクリーンアップすることにより、スワップを更新します。スワップピネスの変更を削除して`swapoff -a`だけ実行すると、システムを再起動した後にスワップが再度有効になります。
 >
@@ -209,7 +208,7 @@ NTPサービスがインストールされているかどうか、およびNTP�
 
 2.  `ntpstat`コマンドを実行して、NTPサービスがNTPサーバーと同期しているかどうかを確認します。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > Ubuntuシステムの場合、 `ntpstat`パッケージをインストールする必要があります。
 
@@ -241,7 +240,7 @@ NTPサービスがインストールされているかどうか、およびNTP�
 
 3.  `chronyc tracking`コマンドを実行して、ChronyサービスがNTPサーバーと同期するかどうかを確認します。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > これは、NTPdの代わりにChronyを使用するシステムにのみ適用されます。
 
@@ -323,7 +322,7 @@ sudo systemctl enable ntpd.service
     [always] madvise never
     ```
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > `[always] madvise never`が出力される場合、THPが有効になります。無効にする必要があります。
 
@@ -340,7 +339,7 @@ sudo systemctl enable ntpd.service
     noop [deadline] cfq
     ```
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > `noop [deadline] cfq`が出力された場合、ディスクのI/Oスケジューラは`deadline`モードになります。 `noop`に変更する必要があります。
 
@@ -357,7 +356,7 @@ sudo systemctl enable ntpd.service
     E: ID_SERIAL_SHORT=6d0946606d79f90025f3e09a0c1f9e81
     ```
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > 複数のディスクにデータディレクトリが割り当てられている場合は、上記のコマンドを数回実行して、各ディスクの`ID_SERIAL`を記録する必要があります。
 
@@ -375,7 +374,7 @@ sudo systemctl enable ntpd.service
                   The governor "powersave" may decide which speed to use within this range.
     ```
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > `The governor "powersave"`が出力された場合、cpufreqモジュールの電源ポリシーは`powersave`です。 `performance`に変更する必要があります。仮想マシンまたはクラウドホストを使用する場合、出力は通常`Unable to determine current policy`であり、何も変更する必要はありません。
 
@@ -446,7 +445,7 @@ sudo systemctl enable ntpd.service
 
         1.  `grubby`コマンドを実行して、デフォルトのカーネルバージョンを確認します。
 
-            > <strong>ノート：</strong>
+            > **ノート：**
             >
             > `grubby`を実行する前に、最初に`grubby`のパッケージをインストールします。
 
@@ -468,7 +467,7 @@ sudo systemctl enable ntpd.service
             grubby --args="transparent_hugepage=never" --update-kernel /boot/vmlinuz-3.10.0-957.el7.x86_64
             ```
 
-            > <strong>ノート：</strong>
+            > **ノート：**
             >
             > `--update-kernel`の後に、実際のデフォルトのカーネルバージョンが続きます。
 
@@ -480,7 +479,7 @@ sudo systemctl enable ntpd.service
             grubby --info /boot/vmlinuz-3.10.0-957.el7.x86_64
             ```
 
-            > <strong>ノート：</strong>
+            > **ノート：**
             >
             > `--info`の後に、実際のデフォルトのカーネルバージョンが続きます。
 
@@ -678,12 +677,12 @@ sudo systemctl enable ntpd.service
 
 このセクションでは、NUMAツールをインストールする方法について説明します。オンライン環境では、ハードウェア構成は通常必要以上に高いため、ハードウェアリソースをより適切に計画するために、TiDBまたはTiKVの複数のインスタンスを単一のマシンに展開できます。このようなシナリオでは、NUMAツールを使用して、パフォーマンスの低下を引き起こす可能性のあるCPUリソースの競合を防ぐことができます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   NUMAを使用したコアのバインドは、CPUリソースを分離する方法であり、高度に構成された物理マシンに複数のインスタンスをデプロイするのに適しています。
-> -   `tiup cluster deploy`を使用して展開を完了した後、 `exec`コマンドを使用してクラスターレベルの管理操作を実行できます。
+> -   `tiup cluster deploy`を使用して展開を完了した後、 `exec`コマンドを使用してクラスタレベルの管理操作を実行できます。
 
-1.  インストールするターゲットノードにログインします。例として、CentOS Linuxリリース7.7.1908（コア）を取り上げます。
+1.  ターゲットノードにログインしてインストールします。例として、CentOS Linuxリリース7.7.1908（コア）を取り上げます。
 
     {{< copyable "" >}}
 
@@ -709,7 +708,7 @@ sudo systemctl enable ntpd.service
         --sudo             use root permissions (default false)
     ```
 
-    sudo特権を使用して、 `tidb-test`クラスター内のすべてのターゲットマシンに対してインストールコマンドを実行するには、次のコマンドを実行します。
+    sudo権限を使用して、 `tidb-test`クラスタのすべてのターゲットマシンに対してインストールコマンドを実行するには、次のコマンドを実行します。
 
     {{< copyable "" >}}
 

@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot Hotspot Issues
-summary: Learn how to locate and resolve read or write hotspot issues in TiDB.
+title: ホットスポットの問題のトラブルシューティング
+summary: TiDBで読み取りまたは書き込みホットスポットの問題を見つけて解決する方法を学びます。
 ---
 
 # ホットスポットの問題のトラブルシューティング {#troubleshoot-hotspot-issues}
@@ -17,7 +17,7 @@ TiDBは、ホットスポットのトラブルシューティング、解決、�
 
 ### TiDBエンコーディングルール {#tidb-encoding-rules}
 
-TiDBは、TableIDを各テーブルに、IndexIDを各インデックスに、RowIDを各行に割り当てます。デフォルトでは、テーブルが整数の主キーを使用している場合、主キーの値はRowIDとして扱われます。これらのIDの中で、TableIDはクラスター全体で一意ですが、IndexIDとRowIDはテーブルで一意です。これらすべてのIDのタイプはint64です。
+TiDBは、TableIDを各テーブルに、IndexIDを各インデックスに、RowIDを各行に割り当てます。デフォルトでは、テーブルが整数の主キーを使用している場合、主キーの値はRowIDとして扱われます。これらのIDの中で、TableIDはクラスタ全体で一意ですが、IndexIDとRowIDはテーブルで一意です。これらすべてのIDのタイプはint64です。
 
 データの各行は、次のルールに従ってキーと値のペアとしてエンコードされます。
 
@@ -53,8 +53,6 @@ TiDBコーディング規則によれば、同じテーブルのデータはTabl
 
 一方、TiDBのRowIDも、デフォルトで順次自動インクリメントされます。主キーが整数型でない場合は、書き込みホットスポットの問題も発生する可能性があります。
 
-さらに、データ書き込み（新しく作成されたテーブルまたはパーティション）またはデータ読み取り（読み取り専用シナリオでの定期的な読み取りホットスポット）のプロセス中にホットスポットが発生した場合、テーブル属性を使用してリージョンのマージ動作を制御できます。詳細については、 [テーブル属性を使用してリージョンのマージ動作を制御する](/table-attributes.md#control-the-region-merge-behavior-using-table-attributes)を参照してください。
-
 ### ホットスポットのインデックス {#index-hotspots}
 
 インデックスのホットスポットは、テーブルのホットスポットに似ています。一般的なインデックスのホットスポットは、時間順に単調に増加するフィールド、または繰り返し値が多数ある`INSERT`のシナリオに表示されます。
@@ -63,13 +61,13 @@ TiDBコーディング規則によれば、同じテーブルのデータはTabl
 
 パフォーマンスの問題は、必ずしもホットスポットが原因であるとは限らず、複数の要因が原因である可能性があります。問題のトラブルシューティングを行う前に、それがホットスポットに関連しているかどうかを確認してください。
 
--   書き込みホットスポットを判断するには、 <strong>TiKV-Trouble-Shooting</strong>監視パネルで<strong>Hot Write</strong>を開き、TiKVノードのRaftstoreCPUメトリック値が他のノードのメトリック値よりも大幅に高いかどうかを確認します。
+-   書き込みホットスポットを判断するには、 **TiKV-Trouble-Shooting**監視パネルで<strong>Hot Write</strong>を開き、TiKVノードのRaftstoreCPUメトリック値が他のノードのメトリック値よりも大幅に高いかどうかを確認します。
 
--   読み取りホットスポットを判断するには、 <strong>TiKV-Details</strong>監視パネルで<strong>Thread_CPU</strong>を開いて、任意のTiKVノードのコプロセッサーCPUメトリック値が特に高いかどうかを確認します。
+-   読み取りホットスポットを判断するには、 **TiKV-Details**監視パネルで<strong>Thread_CPU</strong>を開いて、任意のTiKVノードのコプロセッサーCPUメトリック値が特に高いかどうかを確認します。
 
 ### TiDBダッシュボードを使用してホットスポットテーブルを見つける {#use-tidb-dashboard-to-locate-hotspot-tables}
 
-[TiDBダッシュボード](/dashboard/dashboard-intro.md)の<strong>キービジュアライザー</strong>機能は、ユーザーがホットスポットのトラブルシューティングの範囲をテーブルレベルに絞り込むのに役立ちます。以下は、 <strong>KeyVisualizer</strong>によって示される熱図の例です。グラフの横軸は時間、縦軸はさまざまな表や索引です。色が明るいほど、負荷が大きくなります。ツールバーで読み取りまたは書き込みフローを切り替えることができます。
+[TiDBダッシュボード](/dashboard/dashboard-intro.md)の**キービジュアライザー**機能は、ユーザーがホットスポットのトラブルシューティングの範囲をテーブルレベルに絞り込むのに役立ちます。以下は、 <strong>KeyVisualizer</strong>によって示される熱図の例です。グラフの横軸は時間、縦軸はさまざまな表や索引です。色が明るいほど、負荷が大きくなります。ツールバーで読み取りまたは書き込みフローを切り替えることができます。
 
 ![Dashboard Example 1](/media/troubleshoot-hot-spot-issues-1.png)
 
@@ -176,7 +174,7 @@ TiDBのコプロセッサーキャッシュ機能は、計算結果キャッシ�
 
 詳細については、 [コプロセッサーキャッシュ](/coprocessor-cache.md)を参照してください。
 
-<strong>参照：</strong>
+**参照：**
 
 -   [非常に同時の書き込みのベストプラクティス](/best-practices/high-concurrency-best-practices.md)
 -   [スプリットリージョン](/sql-statements/sql-statement-split-region.md)

@@ -1,5 +1,5 @@
 ---
-title: TiDB 5.3.1 Release Notes
+title: TiDB5.3.1リリースノート
 ---
 
 # TiDB5.3.1リリースノート {#tidb-5-3-1-release-notes}
@@ -44,7 +44,7 @@ TiDBバージョン：5.3.1
         -   Kafka Sink `partition-num`のデフォルト値を3に変更して、TiCDCがKafkaパーティション間でメッセージをより均等に分散するようにします[＃3337](https://github.com/pingcap/tiflow/issues/3337)
         -   「EventFeed再試行率制限」ログの数を減らす[＃4006](https://github.com/pingcap/tiflow/issues/4006)
         -   デフォルト値の`max-message-bytes`を設定します[＃4041](https://github.com/pingcap/tiflow/issues/4041)
-        -   `no owner alert` `buffer sink total row` [＃4054](https://github.com/pingcap/tiflow/issues/4054)など、 [＃1606](https://github.com/pingcap/tiflow/issues/1606)と`mounter row`の監視メトリックとアラートをさらに追加し`table sink total row`
+        -   `no owner alert` `buffer sink total row` [＃4054](https://github.com/pingcap/tiflow/issues/4054)など、 [＃1606](https://github.com/pingcap/tiflow/issues/1606)と`mounter row`のモニタリング指標とアラートをさらに追加し`table sink total row`
         -   TiKVストアがダウンしたときにKVクライアントが回復する時間を短縮する[＃3191](https://github.com/pingcap/tiflow/issues/3191)
 
     -   TiDB Lightning
@@ -58,7 +58,7 @@ TiDBバージョン：5.3.1
     -   TiDBの`date_format`がMySQLと互換性のない方法で`'\n'`を処理する問題を修正します[＃32232](https://github.com/pingcap/tidb/issues/32232)
     -   `alter column set default`がテーブルスキーマを誤って更新する問題を修正します[＃31074](https://github.com/pingcap/tidb/issues/31074)
     -   `tidb_restricted_read_only`が有効になっているときに`tidb_super_read_only`が自動的に有効にならないバグを修正します[＃31745](https://github.com/pingcap/tidb/issues/31745)
-    -   照合を伴う`greatest`または`least`関数が間違った結果を取得する問題を修正します[＃31789](https://github.com/pingcap/tidb/issues/31789)
+    -   照合順序を伴う`greatest`または`least`関数が間違った結果を取得する問題を修正します[＃31789](https://github.com/pingcap/tidb/issues/31789)
     -   クエリ実行時のMPPタスクリストの空のエラーを修正[＃31636](https://github.com/pingcap/tidb/issues/31636)
     -   innerWorkerパニックによって引き起こされたインデックス結合の誤った結果を修正します[＃31494](https://github.com/pingcap/tidb/issues/31494)
     -   列タイプを`FLOAT`から`DOUBLE`に変更した後の誤ったクエリ結果を[＃31372](https://github.com/pingcap/tidb/issues/31372)する
@@ -130,7 +130,7 @@ TiDBバージョン：5.3.1
         -   コンテナ環境でのOOMの修正[＃1798](https://github.com/pingcap/tiflow/issues/1798)
         -   読み込み中のタスクを停止すると、予期しないタスクの転送が発生するバグを修正します[＃3771](https://github.com/pingcap/tiflow/issues/3771)
         -   ローダー[＃3252](https://github.com/pingcap/tiflow/issues/3252)の`query-status`コマンドで間違った進行状況が返される問題を修正します
-        -   クラスター[＃3483](https://github.com/pingcap/tiflow/issues/3483)に異なるバージョンのTiCDCノードがある場合にHTTPAPIが機能しない問題を修正します
+        -   クラスタ[＃3483](https://github.com/pingcap/tiflow/issues/3483)に異なるバージョンのTiCDCノードがある場合にHTTPAPIが機能しない問題を修正します
         -   S3ストレージがTiCDCRedoLog1で設定されている場合にTiCDCが異常終了する問題を修正し[＃3523](https://github.com/pingcap/tiflow/issues/3523)
         -   デフォルト値を複製できない問題を修正します[＃3793](https://github.com/pingcap/tiflow/issues/3793)
         -   `batch-replace-enable`が無効になっている場合にMySQLシンクが重複した`replace`のSQLステートメントを生成するバグを修正します[＃4501](https://github.com/pingcap/tiflow/issues/4501)

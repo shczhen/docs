@@ -1,5 +1,5 @@
 ---
-title: tiup mirror rotate
+title: tiupミラーが回転します
 ---
 
 # tiupミラーが回転します {#tiup-mirror-rotate}
@@ -32,7 +32,7 @@ TiUPミラーの詳細については、 [TiUPミラーリファレンス](/tiup
 
 TiUPは、コマンド`tiup mirror rotate`を使用して上記のプロセスを自動化します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   v1.5.0より前のバージョンのTiUPの場合、このコマンドを実行しても正しい新しい`root.json`ファイルは返されません。 [＃983](https://github.com/pingcap/tiup/issues/983)を参照してください。
 > -   このコマンドを使用する前に、すべてのTiUPクライアントがv1.5.0以降のバージョンにアップグレードされていることを確認してください。

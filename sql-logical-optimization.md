@@ -1,5 +1,5 @@
 ---
-title: SQL Logical Optimization
+title: SQL論理最適化
 ---
 
 # SQL論理最適化 {#sql-logical-optimization}
@@ -9,10 +9,10 @@ title: SQL Logical Optimization
 この章では、次の主要な書き直しを紹介します。
 
 -   [サブクエリ関連の最適化](/subquery-optimization.md)
--   [列の剪定](/column-pruning.md)
+-   [カラムの剪定](/column-pruning.md)
 -   [相関サブクエリの無相関化](/correlated-subquery-optimization.md)
 -   [最大/最小を排除する](/max-min-eliminate.md)
--   [述語プッシュダウン](/predicate-push-down.md)
+-   [Predicate Push Down](/predicate-push-down.md)
 -   [パーティションの剪定](/partition-pruning.md)
 -   [TopNおよびLimitOperatorプッシュダウン](/topn-limit-push-down.md)
--   [再注文に参加](/join-reorder.md)
+-   [結合したテーブルの再配置](/join-reorder.md)

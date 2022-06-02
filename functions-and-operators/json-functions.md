@@ -1,14 +1,13 @@
 ---
-title: JSON Functions
-summary: Learn about JSON functions.
-aliases: ['/docs/dev/functions-and-operators/json-functions/','/docs/dev/reference/sql/functions-and-operators/json-functions/']
+title: JSON関数
+summary: JSON関数について学びます。
 ---
 
 # JSON関数 {#json-functions}
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> これはまだ実験的な機能です。実稼働環境で使用することはお勧めし<strong>ません</strong>。
+> これはまだ実験的機能です。実稼働環境で使用することはお勧めし**ません**。
 
 TiDBは、MySQL5.7のGAリリースに付属しているほとんどのJSON関数をサポートしています。追加のJSON関数がリリース後にMySQL5.7に追加されましたが、すべてがTiDBで使用できるわけではありません（ [サポートされていない機能](#unsupported-functions)を参照）。
 
@@ -51,12 +50,12 @@ TiDBは、MySQL5.7のGAリリースに付属しているほとんどのJSON関�
 
 ## JSON値属性を返す関数 {#functions-that-return-json-value-attributes}
 
-| 関数名                                              | 説明                                                           |
-| ------------------------------------------------ | ------------------------------------------------------------ |
-| [JSON\_DEPTH(json\_doc)][json_depth]             | JSONドキュメントの最大深度を返します                                         |
-| [JSON\_LENGTH(json\_doc\[, path\])][json_length] | JSONドキュメントの長さを返します。パス引数が指定されている場合は、パス内の値の長さを返します。            |
-| [JSON\_TYPE(json\_val)][json_type]               | JSON値のタイプを示す文字列を返します                                         |
-| [JSON\_VALID(json\_doc)][json_valid]             | json_docが有効なJSONであるかどうかを確認します。 jsonタイプに変換する前に列をチェックするのに便利です。 |
+| 関数名                                              | 説明                                                         |
+| ------------------------------------------------ | ---------------------------------------------------------- |
+| [JSON\_DEPTH(json\_doc)][json_depth]             | JSONドキュメントの最大深度を返します                                       |
+| [JSON\_LENGTH(json\_doc\[, path\])][json_length] | JSONドキュメントの長さを返します。パス引数が指定されている場合は、パス内の値の長さを返します。          |
+| [JSON\_TYPE(json\_val)][json_type]               | JSON値のタイプを示す文字列を返します                                       |
+| [JSON\_VALID(json\_doc)][json_valid]             | json_docが有効なJSONであるかどうかを確認します。 json型に変換する前に列をチェックするのに便利です。 |
 
 ## ユーティリティ関数 {#utility-functions}
 

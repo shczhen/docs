@@ -1,6 +1,6 @@
 ---
-title: Filter Binlog Events
-summary: Learn how to filter binlog events when migrating data.
+title: Binlogイベントをフィルタリングする
+summary: データを移行するときにbinlogイベントをフィルタリングする方法を学びます。
 ---
 
 # Binlogイベントをフィルタリングする {#filter-binlog-events}
@@ -12,7 +12,7 @@ summary: Learn how to filter binlog events when migrating data.
 -   [小さなデータセットのMySQLシャードをTiDBに移行およびマージする](/migrate-small-mysql-shards-to-tidb.md)
 -   [大規模なデータセットのMySQLシャードをTiDBに移行およびマージする](/migrate-large-mysql-shards-to-tidb.md)
 
-## 構成 {#configuration}
+## Configuration / コンフィグレーション {#configuration}
 
 binlogイベントフィルターを使用するには、以下に示すように、DMのタスク構成ファイルに`filter`を追加します。
 
@@ -117,7 +117,7 @@ filters:
     action: Ignore
 ```
 
-> <strong>警告：</strong>
+> **警告：**
 >
 > 移行する必要のあるデータが除外されないようにするには、グローバルフィルタリングルールをできるだけ厳密に構成します。
 

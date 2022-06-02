@@ -1,17 +1,17 @@
 ---
-title: Export and Import Data Sources and Task Configuration of Clusters
-summary: Learn how to export and import data sources and task configuration of clusters when you use DM.
+title: データソースのエクスポートとインポート、およびクラスターのタスクConfiguration / コンフィグレーション
+summary: DMを使用するときに、データソースとクラスターのタスク構成をエクスポートおよびインポートする方法を学習します。
 ---
 
-# データソースのエクスポートとインポート、およびクラスターのタスク構成 {#export-and-import-data-sources-and-task-configuration-of-clusters}
+# データソースのエクスポートとインポート、およびクラスターのタスクConfiguration / コンフィグレーション {#export-and-import-data-sources-and-task-configuration-of-clusters}
 
 `config`コマンドは、クラスターのデータソースとタスク構成をエクスポートおよびインポートするために使用されます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > v2.0.5より前のクラスターの場合、dmctl v2.0.5以降を使用して、データソースとタスクの構成ファイルをエクスポートおよびインポートできます。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 » help config
@@ -32,7 +32,7 @@ Use "dmctl config [command] --help" for more information about a command.
 
 `export`のコマンドを使用して、クラスターのデータソースとタスク構成を指定したファイルにエクスポートできます。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 config export [--dir directory]
@@ -47,7 +47,7 @@ config export [--dir directory]
 
 ### 返された結果 {#returned-results}
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 config export -d /tmp/configs
@@ -61,13 +61,13 @@ export configs to directory `/tmp/configs` succeed
 
 `import`のコマンドを使用して、指定したファイルからクラスターのデータソースとタスク構成をインポートできます。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 config import [--dir directory]
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > v2.0.2以降のクラスターの場合、現在、リレーワーカーに関連する構成を自動的にインポートすることはサポートされていません。 `start-relay`のコマンドを使用して手動で[リレーログを開始](/dm/relay-log.md#start-and-stop-the-relay-log-feature)を実行できます。
 
@@ -80,7 +80,7 @@ config import [--dir directory]
 
 ### 返された結果 {#returned-results}
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 config import -d /tmp/configs

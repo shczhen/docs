@@ -1,12 +1,11 @@
 ---
 title: METRICS_SUMMARY
-summary: Learn the METRICS_SUMMARY system table.
-aliases: ['/docs/dev/system-tables/system-table-metrics-summary/','/docs/dev/reference/system-databases/metrics-summary/','/tidb/dev/system-table-metrics-summary']
+summary: METRICS_SUMMARYシステムテーブルを学習します。
 ---
 
 # METRICS_SUMMARY {#metrics-summary}
 
-TiDBクラスターには多くの監視メトリックがあります。異常な監視メトリックを簡単に検出できるようにするために、TiDB4.0では次の2つの監視要約テーブルが導入されています。
+TiDBクラスタには多くの監視メトリックがあります。異常な監視メトリックを簡単に検出できるようにするために、TiDB4.0では次の2つの監視要約テーブルが導入されています。
 
 -   `information_schema.metrics_summary`
 -   `information_schema.metrics_summary_by_label`
@@ -46,7 +45,7 @@ DESC metrics_summary;
 
 例えば：
 
-`'2020-03-08 13:23:00', '2020-03-08 13: 33: 00'`の時間範囲内でTiDBクラスター内の平均時間が最も高い監視項目の3つのグループを照会するには、 `information_schema.metrics_summary`テーブルを直接照会し、 `/*+ time_range() */`ヒントを使用して時間範囲を指定します。 SQLステートメントは次のとおりです。
+`'2020-03-08 13:23:00', '2020-03-08 13: 33: 00'`の時間範囲内でTiDBクラスタ内の平均時間が最も高い監視項目の3つのグループを照会するには、 `information_schema.metrics_summary`テーブルを直接照会し、 `/*+ time_range() */`ヒントを使用して時間範囲を指定します。 SQLステートメントは次のとおりです。
 
 {{< copyable "" >}}
 

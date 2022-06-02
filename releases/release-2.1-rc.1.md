@@ -1,6 +1,5 @@
 ---
-title: TiDB 2.1 RC1 Release Notes
-aliases: ['/docs/dev/releases/release-2.1-rc.1/','/docs/dev/releases/21rc1/']
+title: TiDB2.1RC1リリースノート
 ---
 
 # TiDB2.1RC1リリースノート {#tidb-2-1-rc1-release-notes}
@@ -39,7 +38,7 @@ aliases: ['/docs/dev/releases/release-2.1-rc.1/','/docs/dev/releases/21rc1/']
     -   場合[＃7291](https://github.com/pingcap/tidb/pull/7291)は`LTRIM`の誤った結果を修正し`RTRIM` `TRIM`
     -   `MaxOneRow`演算子は、返された結果が1行を超えないことを保証できないという問題を修正します[＃7375](https://github.com/pingcap/tidb/pull/7375)
     -   範囲が多すぎるコプロセッサー要求を分割する[＃7454](https://github.com/pingcap/tidb/pull/7454)
--   統計学
+-   統計
     -   統計動的収集のメカニズムを最適化する[＃6796](https://github.com/pingcap/tidb/pull/6796)
     -   データが頻繁に更新されるときに`Auto Analyze`が機能しないという問題を修正します[＃7022](https://github.com/pingcap/tidb/pull/7022)
     -   統計の動的更新プロセス中の書き込みの競合を減らす[＃7124](https://github.com/pingcap/tidb/pull/7124)
@@ -102,7 +101,7 @@ aliases: ['/docs/dev/releases/release-2.1-rc.1/','/docs/dev/releases/21rc1/']
 ## PD {#pd}
 
 -   特徴
-    -   バージョン管理メカニズムを導入し、互換性のあるクラスターのローリング更新をサポートします
+    -   バージョン管理メカニズムを導入し、互換性のあるクラスタのローリング更新をサポートします
     -   `region merge`つの機能を有効にする
     -   `GetPrevRegion`のインターフェースをサポート
     -   リージョンのバッチ分割をサポート

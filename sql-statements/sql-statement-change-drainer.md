@@ -1,14 +1,13 @@
 ---
-title: CHANGE DRAINER
-summary: An overview of the usage of CHANGE DRAINER for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-change-drainer/']
+title: チェンジドレイナー
+summary: TiDBデータベースのCHANGEDRAINERの使用法の概要。
 ---
 
 # チェンジドレイナー {#change-drainer}
 
-`CHANGE DRAINER`ステートメントは、クラスター内のDrainerの状況情報を変更します。
+`CHANGE DRAINER`ステートメントは、クラスタのDrainerのステータス情報を変更します。
 
-> <strong>ヒント：</strong>
+> **ヒント：**
 >
 > ドレイナーの状態は、実行中にPDに自動的に報告されます。 Drainerが異常な状況にあり、その状態がPDに格納されている状態情報と矛盾している場合にのみ、 `CHANGE DRAINER`ステートメントを使用してPDに格納されている状態情報を変更できます。
 

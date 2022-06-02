@@ -1,7 +1,6 @@
 ---
-title: SHOW [BACKUPS|RESTORES] | TiDB SQL Statement Reference
-summary: An overview of the usage of SHOW [BACKUPS|RESTORES] for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-backups/']
+title: [バックアップ|復元]を表示| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースのSHOW[BACKUPS|RESTORES]の使用法の概要。
 ---
 
 # [バックアップ|復元]を表示する {#show-backups-restores}

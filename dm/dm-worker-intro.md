@@ -1,7 +1,6 @@
 ---
-title: DM-worker Introduction
-summary: Learn the features of DM-worker.
-aliases: ['/docs/tidb-data-migration/dev/dm-worker-intro/']
+title: DMワーカーの紹介
+summary: DM-workerの機能を学びます。
 ---
 
 # DMワーカーの紹介 {#dm-worker-introduction}
@@ -37,7 +36,7 @@ DM-workerタスクには、リレーログ、ダンプ処理ユニット、ロ�
 
 Binlogレプリケーション/同期処理ユニットは、アップストリームのMySQL / MariaDBのbinlogイベントまたはリレーログのbinlogイベントを読み取り、これらのイベントをSQLステートメントに変換してから、これらのステートメントをダウンストリームのTiDBに適用します。
 
-## DM-workerに必要な特権 {#privileges-required-by-dm-worker}
+## DM-workerに必要な権限 {#privileges-required-by-dm-worker}
 
 このセクションでは、DM-workerに必要なアップストリームおよびダウンストリームのデータベースユーザーの特権と、それぞれの処理装置に必要なユーザー特権について説明します。
 
@@ -91,6 +90,6 @@ GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER,INDEX  ON db.table TO 'your_
 | ロード            | ヌル                                                                                                       | `SELECT` （チェックポイント履歴を照会する）<br/> `CREATE` （データベース/テーブルを作成します）<br/> `DELETE` （チェックポイントを削除します）<br/> `INSERT` （ダンプデータを挿入します）                                                                                      | ローカルファイルの読み取り/書き込み |
 | Binlogレプリケーション | `REPLICATION SLAVE` （binlogを読み取ります）<br/> `REPLICATION CLIENT` （ `show master status` `show slave status` | `SELECT` （インデックスと列を表示します）<br/> `INSERT` （DML）<br/> `UPDATE` （DML）<br/> `DELETE` （DML）<br/> `CREATE` （データベース/テーブルを作成します）<br/> `DROP` （データベース/テーブルを削除します）<br/> `ALTER` （テーブルを変更します）<br/> `INDEX` （インデックスを作成/削除） | ローカルファイルの読み取り/書き込み |
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > これらの特権は不変ではなく、要求が変更されると変更されます。

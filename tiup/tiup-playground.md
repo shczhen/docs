@@ -1,12 +1,11 @@
 ---
-title: Quickly Deploy a Local TiDB Cluster
-summary: Learn how to quickly deploy a local TiDB cluster using the playground component of TiUP.
-aliases: ['/docs/dev/tiup/tiup-playground/','/docs/dev/reference/tools/tiup/playground/']
+title: ローカルTiDBクラスターをすばやくデプロイする
+summary: TiUPのプレイグラウンドコンポーネントを使用して、ローカルTiDBクラスタをすばやく展開する方法を学びます。
 ---
 
-# ローカルTiDBクラスターをすばやく展開する {#quickly-deploy-a-local-tidb-cluster}
+# ローカルTiDBクラスターをすばやくデプロイする {#quickly-deploy-a-local-tidb-cluster}
 
-TiDBクラスターは、複数のコンポーネントで構成される分散システムです。一般的なTiDBクラスターは、少なくとも3つのPDノード、3つのTiKVノード、および2つのTiDBノードで構成されます。 TiDBをすばやく体験したい場合は、非常に多くのコンポーネントを手動でデプロイするのに時間がかかり、複雑になることがあります。このドキュメントでは、TiUPのプレイグラウンドコンポーネントと、それを使用してローカルTiDBテスト環境をすばやく構築する方法を紹介します。
+TiDBクラスタは、複数のコンポーネントで構成される分散システムです。一般的なTiDBクラスタは、少なくとも3つのPDノード、3つのTiKVノード、および2つのTiDBノードで構成されます。 TiDBをすばやく体験したい場合は、非常に多くのコンポーネントを手動でデプロイするのに時間がかかり、複雑になることがあります。このドキュメントでは、TiUPのプレイグラウンドコンポーネントと、それを使用してローカルTiDBテスト環境をすばやく構築する方法を紹介します。
 
 ## TiUPプレイグラウンドの概要 {#tiup-playground-overview}
 
@@ -16,15 +15,15 @@ TiDBクラスターは、複数のコンポーネントで構成される分散�
 tiup playground ${version} [flags]
 ```
 
-`tiup playground`コマンドを直接実行する場合、TiUPはローカルにインストールされたTiDB、TiKV、およびPDコンポーネントを使用するか、これらのコンポーネントの安定バージョンをインストールして、1つのTiKVインスタンス、1つのTiDBインスタンス、1つのPDインスタンス、および1つのTiDBクラスターで構成されるTiDBクラスターを開始します。 TiFlashインスタンス。
+`tiup playground`コマンドを直接実行する場合、TiUPはローカルにインストールされたTiDB、TiKV、およびPDコンポーネントを使用するか、これらのコンポーネントの安定バージョンをインストールして、1つのTiKVインスタンス、1つのTiDBインスタンス、1つのPDインスタンス、および1つのTiDBクラスタで構成されるTiDBクラスターを開始します。 TiFlashインスタンス。
 
 このコマンドは、実際には次の操作を実行します。
 
--   このコマンドはプレイグラウンドコンポーネントのバージョンを指定しないため、TiUPは最初にインストールされているプレイグラウンドコンポーネントの最新バージョンをチェックします。最新バージョンがv1.9.3であると仮定すると、このコマンドは`tiup playground:v1.9.3`と同じように機能します。
+-   このコマンドはプレイグラウンドコンポーネントのバージョンを指定しないため、TiUPは最初にインストールされているプレイグラウンドコンポーネントの最新バージョンをチェックします。最新バージョンがv1.9.0であると仮定すると、このコマンドは`tiup playground:v1.9.0`と同じように機能します。
 -   TiUPプレイグラウンドを使用してTiDB、TiKV、およびPDコンポーネントをインストールしていない場合、プレイグラウンドコンポーネントは、これらのコンポーネントの最新の安定バージョンをインストールしてから、これらのインスタンスを起動します。
--   このコマンドはTiDB、PD、およびTiKVコンポーネントのバージョンを指定しないため、TiUPプレイグラウンドはデフォルトで各コンポーネントの最新バージョンを使用します。最新バージョンがv6.0.0であると仮定すると、このコマンドは`tiup playground:v1.9.3 v6.0.0`と同じように機能します。
--   このコマンドは各コンポーネントの数を指定しないため、TiUPプレイグラウンドは、デフォルトで、1つのTiDBインスタンス、1つのTiKVインスタンス、1つのPDインスタンス、および1つのTiFlashインスタンスで構成される最小のクラスターを開始します。
--   各TiDBコンポーネントを開始した後、TiUPプレイグラウンドは、クラスターが正常に開始されたことを通知し、MySQLクライアントを介してTiDBクラスターに接続する方法や[TiDBダッシュボード](/dashboard/dashboard-intro.md)にアクセスする方法などの有用な情報を提供します。
+-   このコマンドはTiDB、PD、およびTiKVコンポーネントのバージョンを指定しないため、TiUPプレイグラウンドはデフォルトで各コンポーネントの最新バージョンを使用します。最新バージョンがv5.4.1であると仮定すると、このコマンドは`tiup playground:v1.9.0 v5.4.1`と同じように機能します。
+-   このコマンドは各コンポーネントの数を指定しないため、TiUPプレイグラウンドは、デフォルトで、1つのTiDBインスタンス、1つのTiKVインスタンス、1つのPDインスタンス、および1つのTiFlashインスタンスで構成される最小のクラスタを開始します。
+-   各TiDBコンポーネントを開始した後、TiUPプレイグラウンドは、クラスタが正常に開始されたことを通知し、MySQLクライアントを介してTiDBクラスタに接続する方法や[TiDBダッシュボード](/dashboard/dashboard-intro.md)にアクセスする方法などの有用な情報を提供します。
 
 プレイグラウンドコンポーネントのコマンドラインフラグは次のとおりです。
 
@@ -74,7 +73,7 @@ Flags:
 tiup list tidb
 ```
 
-### 特定のバージョンのTiDBクラスターを開始します {#start-a-tidb-cluster-of-a-specific-version}
+### 特定のバージョンのTiDBクラスタを開始します {#start-a-tidb-cluster-of-a-specific-version}
 
 {{< copyable "" >}}
 
@@ -84,7 +83,7 @@ tiup playground ${version}
 
 `${version}`をターゲットバージョン番号に置き換えます。
 
-### ナイトリーバージョンのTiDBクラスターを開始します {#start-a-tidb-cluster-of-the-nightly-version}
+### ナイトリーバージョンのTiDBクラスタを開始します {#start-a-tidb-cluster-of-the-nightly-version}
 
 {{< copyable "" >}}
 
@@ -106,7 +105,7 @@ tiup playground --pd.config ~/config/pd.toml
 
 ### デフォルトのバイナリファイルを置き換えます {#replace-the-default-binary-files}
 
-デフォルトでは、プレイグラウンドが開始されると、各コンポーネントは公式ミラーのバイナリファイルを使用して開始されます。一時的にコンパイルされたローカルバイナリファイルをテストのためにクラスターに配置する場合は、 `--{comp}.binpath`フラグを使用して置き換えることができます。たとえば、次のコマンドを実行して、TiDBのバイナリファイルを置き換えます。
+デフォルトでは、プレイグラウンドが開始されると、各コンポーネントは公式ミラーのバイナリファイルを使用して開始されます。一時的にコンパイルされたローカルバイナリファイルをテストのためにクラスタに配置する場合は、 `--{comp}.binpath`フラグを使用して置き換えることができます。たとえば、次のコマンドを実行して、TiDBのバイナリファイルを置き換えます。
 
 {{< copyable "" >}}
 
@@ -124,9 +123,9 @@ tiup playground --db.binpath /xx/tidb-server
 tiup playground --db 3 --pd 3 --kv 3
 ```
 
-## 遊び場で開始されたTiDBクラスターにすばやく接続する {#quickly-connect-to-the-tidb-cluster-started-by-playground}
+## 遊び場で開始されたTiDBクラスタにすばやく接続する {#quickly-connect-to-the-tidb-cluster-started-by-playground}
 
-TiUPは`client`つのコンポーネントを提供します。これは、プレイグラウンドによって開始されたローカルTiDBクラスターを自動的に検索して接続するために使用されます。使用法は次のとおりです。
+TiUPは`client`つのコンポーネントを提供します。これは、プレイグラウンドによって開始されたローカルTiDBクラスタを自動的に検索して接続するために使用されます。使用法は次のとおりです。
 
 {{< copyable "" >}}
 
@@ -134,9 +133,9 @@ TiUPは`client`つのコンポーネントを提供します。これは、プ�
 tiup client
 ```
 
-このコマンドは、コンソール上の現在のマシンのプレイグラウンドによって開始されたTiDBクラスターのリストを提供します。接続するTiDBクラスターを選択します。 [ <kbd>Enter</kbd> ]をクリックすると、組み込みのMySQLクライアントが開いてTiDBに接続します。
+このコマンドは、コンソール上の現在のマシンのプレイグラウンドによって開始されたTiDBクラスターのリストを提供します。接続するTiDBクラスタを選択します。 [ <kbd>Enter</kbd> ]をクリックすると、組み込みのMySQLクライアントが開いてTiDBに接続します。
 
-## 開始されたクラスターの情報を表示する {#view-information-of-the-started-cluster}
+## 開始されたクラスタの情報を表示する {#view-information-of-the-started-cluster}
 
 {{< copyable "" >}}
 
@@ -157,9 +156,9 @@ Pid    Role     Uptime
 86190  drainer  35m19.91349249s
 ```
 
-## クラスターをスケールアウトする {#scale-out-a-cluster}
+## クラスタをスケールアウトする {#scale-out-a-cluster}
 
-クラスターをスケールアウトするためのコマンドラインパラメーターは、クラスターを開始するためのパラメーターと似ています。次のコマンドを実行すると、2つのTiDBインスタンスをスケールアウトできます。
+クラスタを開始するためのパラメーターと似ています。次のコマンドを実行すると、2つのTiDBインスタンスをスケールアウトできます。
 
 {{< copyable "" >}}
 
@@ -167,7 +166,7 @@ Pid    Role     Uptime
 tiup playground scale-out --db 2
 ```
 
-## クラスターでのスケーリング {#scale-in-a-cluster}
+## クラスタでのスケーリング {#scale-in-a-cluster}
 
 `tiup playground scale-in`コマンドに`pid`を指定して、対応するインスタンスでスケーリングできます。 `pid`を表示するには、 `tiup playground display`を実行します。
 

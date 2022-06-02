@@ -1,7 +1,6 @@
 ---
-title: Configure TiFlash
-summary: Learn how to configure TiFlash.
-aliases: ['/docs/dev/tiflash/tiflash-configuration/','/docs/dev/reference/tiflash/configuration/']
+title: TiFlashを構成する
+summary: TiFlashを構成する方法を学びます。
 ---
 
 # TiFlashを構成する {#configure-tiflash}
@@ -10,17 +9,17 @@ aliases: ['/docs/dev/tiflash/tiflash-configuration/','/docs/dev/reference/tiflas
 
 ## PDスケジューリングパラメータ {#pd-scheduling-parameters}
 
-[pd-ctl](/pd-control.md)を使用してPDスケジューリングパラメータを調整できます。 tiupを使用してクラスターをデプロイおよび管理する場合は、 `tiup ctl pd`を使用して`pd-ctl -u <pd_ip:pd_port>`を置き換えることができることに注意してください。
+[pd-ctl](/pd-control.md)を使用してPDスケジューリングパラメータを調整できます。 tiupを使用してクラスタをデプロイおよび管理する場合は、 `tiup ctl pd`を使用して`pd-ctl -u <pd_ip:pd_port>`を置き換えることができることに注意してください。
 
 -   [`replica-schedule-limit`](/pd-configuration-file.md#replica-schedule-limit) ：レプリカ関連の演算子が生成される速度を決定します。このパラメーターは、ノードのオフライン化やレプリカの追加などの操作に影響します。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > このパラメーターの値は、 `region-schedule-limit`の値よりも小さくする必要があります。そうしないと、TiKVノード間の通常のリージョンスケジューリングが影響を受けます。
 
--   `store-balance-rate` ：各TiKV/TiFlashストアのリージョンがスケジュールされるレートを制限します。このパラメーターは、ストアがクラスターに新たに参加した場合にのみ有効になることに注意してください。既存のストアの設定を変更する場合は、次のコマンドを使用します。
+-   `store-balance-rate` ：各TiKV/TiFlashストアのリージョンがスケジュールされるレートを制限します。このパラメーターは、ストアがクラスタに新たに参加した場合にのみ有効になることに注意してください。既存のストアの設定を変更する場合は、次のコマンドを使用します。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > v4.0.2以降、 `store-balance-rate`パラメーターは非推奨になり、 `store limit`コマンドに変更が加えられました。詳細については、 [店舗制限](/configure-store-limit.md)を参照してください。
 
@@ -63,9 +62,9 @@ delta_index_cache_size = 0
 ## data is stored in the rest directories.
 # path_realtime_mode = false
 
-## The path in which the TiFlash temporary files are stored. By default it is the first directory in path
-## or in storage.latest.dir appended with "/tmp".
-# tmp_path = "/tidb-data/tiflash-9000/tmp"
+## The path in which the TiFlash temporary files are stored. Usually, it is set to the first directory in `path`
+## or in `storage.latest.dir` appended with "/tmp".
+tmp_path = "/tidb-data/tiflash-9000/tmp"
 
 ## Storage paths settings take effect starting from v4.0.9
 [storage]
@@ -75,9 +74,9 @@ delta_index_cache_size = 0
 
     ## DTFile format
     ## * format_version = 1, the old format, deprecated.
-    ## * format_version = 2, the default format for versions < v6.0.0.
-    ## * format_version = 3, the default format for versions >= v6.0.0, which provides more data validation features.
-    # format_version = 3
+    ## * format_version = 2, the default format.
+    ## * format_version = 3, the new format, which provides more data validation features.
+    # format_version = 2
 
     [storage.main]
     ## The list of directories to store the main data. More than 90% of the total data is stored in
@@ -172,12 +171,11 @@ delta_index_cache_size = 0
 [profiles]
 
 [profiles.default]
-    ## The default value is false. This parameter determines whether the segment
+    ## The default value is true. This parameter determines whether the segment
     ## of DeltaTree Storage Engine uses logical split.
-    ## Using the logical split can reduce the write amplification.
+    ## Using the logical split can reduce the write amplification, and improve the write speed.
     ## However, these are at the cost of disk space waste.
-    ## Modifying the default value is not recommended.
-    # dt_enable_logical_split = false
+    dt_enable_logical_split = true
 
     ## The memory usage limit for the generated intermediate data when a single
     ## coprocessor query is executed. The default value is 0, which means no limit.
@@ -191,12 +189,8 @@ delta_index_cache_size = 0
     cop_pool_size = 0
     ## New in v5.0. This item specifies the maximum number of batch requests that TiFlash Coprocessor executes at the same time. If the number of requests exceeds the specified value, the exceeded requests will queue. If the configuration value is set to 0 or not set, the default value is used, which is twice the number of physical cores.
     batch_cop_pool_size = 0
-    ## New in v5.4.0. This item enables or disables the elastic thread pool feature, which significantly improves CPU utilization in high concurrency scenarios of TiFlash. The default value is true. 
-    enable_elastic_threadpool = true
-    # Compression algorithm of the TiFlash storage engine. The value can be LZ4, zstd, or LZ4HC, and is case-insensitive. By default, LZ4 is used.
-    dt_compression_method = "LZ4"
-    # Compression level of the TiFlash storage engine. The default value is 1. It is recommended that you set this value to 1 if dt_compression_method is LZ4, -1 (smaller compression rate, but better read performance) or 1 if dt_compression_method is zstd, and 9 if dt_compression_method is LZ4HC.
-    dt_compression_level = 1
+    ## New in v5.4.0. This item enables or disables the elastic thread pool feature, which significantly improves CPU utilization in high concurrency scenarios of TiFlash. The default value is false. The elastic thread pool feature is experimental and not recommended for production environments.
+    enable_elastic_threadpool = false
 
 ## Security settings take effect starting from v4.0.5.
 [security]
@@ -265,9 +259,9 @@ v4.0.9以降のバージョンのTiDBクラスターの場合、TiFlashは、ス
 
 TiFlashノードに同様のI/Oメトリックを持つ複数のディスクがある場合は、 `storage.main.dir`のリストで対応するディレクトリを指定し、 `storage.latest.dir`を空のままにしておくことをお勧めします。 TiFlashは、I/O圧力とデータをすべてのディレクトリに分散します。
 
-TiFlashノードにI/Oメトリックが異なる複数のディスクがある場合は、 `storage.latest.dir`のリストでメトリックの高いディレクトリを指定し、 `storage.main.dir`のリストでメトリックの低いディレクトリを指定することをお勧めします。たとえば、1つのNVMe-SSDと2つのSATA-SSDの場合、 `storage.latest.dir`から`["/nvme_ssd_a/data/tiflash"]`および`storage.main.dir`から`["/sata_ssd_b/data/tiflash", "/sata_ssd_c/data/tiflash"]`に設定できます。 TiFlashは、I/O圧力とデータをこれら2つのディレクトリリストにそれぞれ分散します。この場合、 `storage.latest.dir`の容量は、合計計画容量の10％として計画する必要があることに注意してください。
+TiFlashノードに異なるI/Oメトリックを持つ複数のディスクがある場合は、 `storage.latest.dir`のリストでメトリックの高いディレクトリを指定し、 `storage.main.dir`のリストでメトリックの低いディレクトリを指定することをお勧めします。たとえば、1つのNVMe-SSDと2つのSATA-SSDの場合、 `storage.latest.dir`から`["/nvme_ssd_a/data/tiflash"]`および`storage.main.dir`から`["/sata_ssd_b/data/tiflash", "/sata_ssd_c/data/tiflash"]`に設定できます。 TiFlashは、I/O圧力とデータをこれら2つのディレクトリリストにそれぞれ分散します。この場合、 `storage.latest.dir`の容量は、合計計画容量の10％として計画する必要があることに注意してください。
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> -   `[storage]`構成は、v1.2.5以降のTiUPでサポートされています。 TiDBクラスターのバージョンがv4.0.9以降の場合は、TiUPのバージョンがv1.2.5以降であることを確認してください。そうしないと、 `[storage]`で定義されたデータディレクトリはTiUPによって管理されません。
-> -   [ストレージ]構成を使用した後、クラスターをv4.0.9より前のバージョンにダウングレードすると、TiFlashで<strong>データが失わ</strong>れる可能性があります。
+> -   `[storage]`構成は、v1.2.5以降のTiUPでサポートされています。 TiDBクラスタのバージョンがv4.0.9以降の場合は、TiUPのバージョンがv1.2.5以降であることを確認してください。そうしないと、 `[storage]`で定義されたデータディレクトリはTiUPによって管理されません。
+> -   [ストレージ]構成を使用した後、クラスタをv4.0.9より前のバージョンにダウングレードすると、TiFlashで**データが失わ**れる可能性があります。

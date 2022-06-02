@@ -1,7 +1,6 @@
 ---
-title: Numeric Functions and Operators
-summary: Learn about the numeric functions and operators.
-aliases: ['/docs/dev/functions-and-operators/numeric-functions-and-operators/','/docs/dev/reference/sql/functions-and-operators/numeric-functions-and-operators/']
+title: 数値関数と演算子
+summary: 数値関数と演算子について学びます。
 ---
 
 # 数値関数と演算子 {#numeric-functions-and-operators}

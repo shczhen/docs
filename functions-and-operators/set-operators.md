@@ -1,6 +1,6 @@
 ---
-title: Set Operations
-summary: Learn the supported set operations in TiDB.
+title: セット操作
+summary: TiDBでサポートされているセット操作について説明します。
 ---
 
 # セット操作 {#set-operations}

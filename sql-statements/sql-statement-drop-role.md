@@ -1,6 +1,6 @@
 ---
-title: DROP ROLE | TiDB SQL Statement Reference
-summary: An overview of the usage of DROP ROLE for the TiDB database.
+title: ドロップロール| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースのDROPROLEの使用法の概要。
 ---
 
 # ドロップロール {#drop-role}

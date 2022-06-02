@@ -1,11 +1,11 @@
 ---
-title: Create a Data Source
-summary: Learn how to create a data source for Data Migration (DM).
+title: データソースを作成する
+summary: データ移行（DM）用のデータソースを作成する方法を学びます。
 ---
 
 # データソースを作成する {#create-a-data-source}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > データソースを作成する前に、 [TiUPを使用してDMクラスターをデプロイする](/dm/deploy-a-dm-cluster-using-tiup.md)を行う必要があります。
 
@@ -57,11 +57,11 @@ summary: Learn how to create a data source for Data Migration (DM).
 tiup dmctl --master-addr <master-addr> operate-source create ./source-mysql-01.yaml
 ```
 
-その他の構成パラメーターについては、 [アップストリームデータベース構成ファイル](/dm/dm-source-configuration-file.md)を参照してください。
+その他の構成パラメーターについては、 [アップストリームデータベースConfiguration / コンフィグレーションファイル](/dm/dm-source-configuration-file.md)を参照してください。
 
 返される結果は次のとおりです。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```
 {
@@ -82,12 +82,12 @@ tiup dmctl --master-addr <master-addr> operate-source create ./source-mysql-01.y
 
 データソースを作成した後、次のコマンドを使用してデータソースをクエリできます。
 
--   データソースの`source-id`を知っている場合は、 `dmctl config source <source-id>`コマンドを使用して、データソースの構成を直接確認できます。
+-   データソースの`source-id`を知っている場合は、 `dmctl get-config source <source-id>`コマンドを使用して、データソースの構成を直接確認できます。
 
     {{< copyable "" >}}
 
     ```bash
-    tiup dmctl --master-addr <master-addr> config source mysql-01
+    tiup dmctl --master-addr <master-addr> get-config source mysql-01
     ```
 
     ```

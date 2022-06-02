@@ -1,5 +1,5 @@
 ---
-title: TiDB 5.2.4 Release Notes
+title: TiDB5.2.4リリースノート
 category: Releases
 ---
 
@@ -9,7 +9,7 @@ category: Releases
 
 TiDBバージョン：5.2.4
 
-## 互換性の変更 {#compatibility-change-s}
+## 互換性の変更 {#compatibility-changes}
 
 -   TiDB
 
@@ -48,7 +48,7 @@ TiDBバージョン：5.2.4
         -   チェンジフィードを再開するための指数バックオフメカニズムを追加する[＃3329](https://github.com/pingcap/tiflow/issues/3329)
         -   「EventFeed再試行率制限」ログの数を減らす[＃4006](https://github.com/pingcap/tiflow/issues/4006)
         -   デフォルト値の`max-message-bytes`を設定します[＃4041](https://github.com/pingcap/tiflow/issues/4041)
-        -   `no owner alert` `buffer sink total row` [＃4054](https://github.com/pingcap/tiflow/issues/4054)など、 [＃1606](https://github.com/pingcap/tiflow/issues/1606)と`mounter row`の監視メトリックとアラートをさらに追加し`table sink total row`
+        -   `no owner alert` `buffer sink total row` [＃4054](https://github.com/pingcap/tiflow/issues/4054)など、 [＃1606](https://github.com/pingcap/tiflow/issues/1606)と`mounter row`のモニタリング指標とアラートをさらに追加し`table sink total row`
         -   Grafanaダッシュボードで複数のKubernetesクラスターをサポートする[＃4665](https://github.com/pingcap/tiflow/issues/4665)
         -   キャッチアップETA（到着予定時刻）を`changefeed checkpoint`の監視メトリックに追加します[＃5232](https://github.com/pingcap/tiflow/issues/5232)
 
@@ -60,7 +60,7 @@ TiDBバージョン：5.2.4
     -   INDEXHASHJOINが`send on closed channel`エラー[＃31129](https://github.com/pingcap/tidb/issues/31129)を返す問題を修正します
     -   列タイプを同時に変更すると、スキーマとデータの間に不整合が生じる問題を修正します[＃31048](https://github.com/pingcap/tidb/issues/31048)
     -   楽観的トランザクションモード[＃30410](https://github.com/pingcap/tidb/issues/30410)での潜在的なデータインデックスの不整合の問題を修正します
-    -   JSONタイプの列が`CHAR`タイプの列[＃29401](https://github.com/pingcap/tidb/issues/29401)に結合するとSQL操作がキャンセルされる問題を修正します
+    -   JSON型の列が`CHAR`型の列に結合するとSQL操作がキャンセルされる問題を修正します[＃29401](https://github.com/pingcap/tidb/issues/29401)
     -   トランザクションを使用するかどうかにかかわらず、ウィンドウ関数が異なる結果を返す可能性がある問題を修正します[＃29947](https://github.com/pingcap/tidb/issues/29947)
     -   SQLステートメントに自然結合[＃25041](https://github.com/pingcap/tidb/issues/25041)が含まれている場合に`Column 'col_name' in field list is ambiguous`エラーが予期せず報告される問題を修正します
     -   `Decimal`から[＃29417](https://github.com/pingcap/tidb/issues/29417)をキャストするときに長さ情報が間違っている問題を修正し`String`
@@ -78,12 +78,12 @@ TiDBバージョン：5.2.4
     -   マージ結合演算子が特定の場合に間違った結果を取得する問題を修正します[＃33042](https://github.com/pingcap/tidb/issues/33042)
     -   相関サブクエリが定数[＃32089](https://github.com/pingcap/tidb/issues/32089)を返すときにTiDBが間違った結果を取得する問題を修正します
     -   `ENUM`列または`SET`列のエンコードが間違っているためにTiDBが間違ったデータを書き込む問題を修正します[＃32302](https://github.com/pingcap/tidb/issues/32302)
-    -   TiDB [＃31638](https://github.com/pingcap/tidb/issues/31638)で新しい照合が有効になっている場合、 `ENUM`列または`SET`列の`MAX`または`MIN`関数が間違った結果を返す問題を修正します。
+    -   TiDB [＃31638](https://github.com/pingcap/tidb/issues/31638)で新しい照合順序が有効になっている場合、 `ENUM`列または`SET`列の`MAX`または`MIN`関数が間違った結果を返す問題を修正します。
     -   IndexHashJoinオペレーターが正常に終了しない問題を修正します[＃31062](https://github.com/pingcap/tidb/issues/31062)
     -   テーブルに仮想列[＃30965](https://github.com/pingcap/tidb/issues/30965)がある場合にTiDBが誤ったデータを読み取る可能性がある問題を修正します
     -   ログレベルの設定が遅いクエリログ[＃30309](https://github.com/pingcap/tidb/issues/30309)で有効にならない問題を修正します
     -   パーティション化されたテーブルがインデックスを完全に使用してデータをスキャンできない場合がある問題を修正します[＃33966](https://github.com/pingcap/tidb/issues/33966)
-    -   TiDBのバックグラウンドHTTPサービスが正常に終了せず、クラスターが異常な状態になる可能性がある問題を修正します[＃30571](https://github.com/pingcap/tidb/issues/30571)
+    -   TiDBのバックグラウンドHTTPサービスが正常に終了せず、クラスタが異常な状態になる可能性がある問題を修正します[＃30571](https://github.com/pingcap/tidb/issues/30571)
     -   TiDBが失敗した認証の多くのログを予期せず出力する可能性がある問題を修正します[＃29709](https://github.com/pingcap/tidb/issues/29709)
     -   システム変数`max_allowed_packet`が有効にならない問題を修正します[＃31422](https://github.com/pingcap/tidb/issues/31422)
     -   自動IDが範囲[＃29483](https://github.com/pingcap/tidb/issues/29483)から外れると、 `REPLACE`ステートメントが他の行を誤って変更する問題を修正します。
@@ -119,7 +119,7 @@ TiDBバージョン：5.2.4
     -   コルーチンの実行速度が速すぎる場合に時々発生するデッドロックの問題を修正します[＃11549](https://github.com/tikv/tikv/issues/11549)
     -   ピアを破棄すると待ち時間が長くなる可能性があるという問題を修正します[＃10210](https://github.com/tikv/tikv/issues/10210)
     -   マージされるターゲットリージョンが無効であるためにTiKVがパニックになり、ピアを予期せず破壊する問題を修正します[＃12232](https://github.com/tikv/tikv/issues/12232)
-    -   ターゲットピアが、リージョン[＃12048](https://github.com/tikv/tikv/issues/12048)のマージ時に初期化されずに破棄されたピアに置き換えられたときに発生するTiKVパニックの問題を修正します。
+    -   ターゲットピアがリージョン[＃12048](https://github.com/tikv/tikv/issues/12048)のマージ時に初期化されずに破棄されたピアに置き換えられたときに発生するTiKVパニックの問題を修正します。
     -   スナップショットの適用が中止されたときに発生するTiKVパニックの問題を修正します[＃11618](https://github.com/tikv/tikv/issues/11618)
     -   オペレーターの実行が失敗したときにTiKVが送信されるスナップショットの数を正しく計算できないバグを修正します[＃11341](https://github.com/tikv/tikv/issues/11341)
 

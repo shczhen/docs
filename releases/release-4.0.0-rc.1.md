@@ -1,6 +1,5 @@
 ---
-title: TiDB 4.0 RC.1 Release Notes
-aliases: ['/docs/dev/releases/release-4.0.0-rc.1/','/docs/dev/releases/4.0.0-rc.1/']
+title: TiDB4.0RC.1リリースノート
 ---
 
 # TiDB4.0RC.1リリースノート {#tidb-4-0-rc-1-release-notes}

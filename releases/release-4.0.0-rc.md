@@ -1,6 +1,5 @@
 ---
-title: TiDB 4.0 RC Release Notes
-aliases: ['/docs/dev/releases/release-4.0.0-rc/','/docs/dev/releases/4.0.0-rc/']
+title: TiDB4.0RCリリースノート
 ---
 
 # TiDB4.0RCリリースノート {#tidb-4-0-rc-release-notes}
@@ -11,7 +10,7 @@ TiDBバージョン：4.0.0-rc
 
 TiUPバージョン：0.0.3
 
-> <strong>警告：</strong>
+> **警告：**
 >
 > このバージョンにはいくつかの既知の問題があり、これらの問題は新しいバージョンで修正されています。最新の4.0.xバージョンを使用することをお勧めします。
 
@@ -46,7 +45,7 @@ TiUPバージョン：0.0.3
 
 -   TiDB
 
-    -   大文字と小文字を区別しない照合を追加して、ユーザーが新しいクラスター[＃33](https://github.com/pingcap/tidb/projects/33)で`utf8mb4_general_ci`と`utf8_general_ci`を有効にできるようにします。
+    -   大文字と小文字を区別しない照合順序を追加して、ユーザーが新しいクラスタ[＃33](https://github.com/pingcap/tidb/projects/33)で`utf8mb4_general_ci`と`utf8_general_ci`を有効にできるようにします。
     -   `RECOVER TABLE`構文を拡張して、切り捨てられたテーブルの回復をサポートします[＃15398](https://github.com/pingcap/tidb/pull/15398)
     -   tidb-serverステータスポートが占有されているときにアラートログを返す代わりに開始を拒否する[＃15177](https://github.com/pingcap/tidb/pull/15177)
     -   シーケンスをデフォルトの列値として使用する書き込みパフォーマンスを最適化する[＃15216](https://github.com/pingcap/tidb/pull/15216)

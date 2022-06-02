@@ -1,6 +1,5 @@
 ---
-title: TiDB 1.0.5 Release Notes
-aliases: ['/docs/dev/releases/release-1.0.5/','/docs/dev/releases/105/']
+title: TiDB1.0.5リリースノート
 ---
 
 # TiDB1.0.5リリースノート {#tidb-1-0-5-release-notes}

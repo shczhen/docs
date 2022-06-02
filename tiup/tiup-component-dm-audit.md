@@ -1,5 +1,5 @@
 ---
-title: tiup dm audit
+title: tiupdm監査
 ---
 
 # tiupdm監査 {#tiup-dm-audit}

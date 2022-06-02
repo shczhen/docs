@@ -1,7 +1,6 @@
 ---
-title: SHOW PROFILES
-summary: An overview of the usage of SHOW PROFILES for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-profiles/']
+title: プロファイルを表示
+summary: TiDBデータベースのSHOWPROFILESの使用法の概要。
 ---
 
 # プロファイルを表示 {#show-profiles}
@@ -10,7 +9,7 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-profiles/']
 
 ## あらすじ {#synopsis}
 
-<strong>ShowStmt：</strong>
+**ShowStmt：**
 
 ![ShowStmt](/media/sqlgram/ShowStmt.png)
 

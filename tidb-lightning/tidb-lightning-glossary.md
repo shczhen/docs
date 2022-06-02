@@ -1,7 +1,6 @@
 ---
-title: TiDB Lightning Glossary
-summary: List of special terms used in TiDB Lightning.
-aliases: ['/docs/dev/tidb-lightning/tidb-lightning-glossary/','/docs/dev/reference/tools/tidb-lightning/glossary/']
+title: TiDBLightning用語集
+summary: TiDBLightningで使用される特別な用語のリスト。
 ---
 
 # TiDBLightning用語集 {#tidb-lightning-glossary}
@@ -64,7 +63,7 @@ TiDB Lightningでは、テーブルのチェックサムは、そのテーブル
 
 複数の小さなSSTファイルを1つの大きなSSTファイルにマージし、削除されたエントリをクリーンアップする操作。 TiKVは、TiDB Lightningのインポート中に、バックグラウンドでデータを自動的に圧縮します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 従来の理由から、テーブルがインポートされるたびに圧縮を明示的にトリガーするようにTiDBLightningを構成することもできます。ただし、これは推奨されておらず、対応する設定はデフォルトで無効になっています。
 
@@ -78,7 +77,7 @@ TiDB Lightningでは、テーブルのチェックサムは、そのテーブル
 
 実際の行データを並べ替えるための[エンジン](/tidb-lightning/tidb-lightning-glossary.md#engine) 。
 
-テーブルが非常に大きい場合、そのデータは複数のデータエンジンに配置され、タスクのパイプラインを改善し、TiKVImporterのスペースを節約します。デフォルトでは、100 GBのSQLデータごとに新しいデータエンジンが開かれます。これは、 `mydumper.batch-size`の設定で構成できます。
+テーブルが非常に大きい場合、そのデータは複数のデータエンジンに配置され、タスクのパイプライン化を改善し、TiKVImporterのスペースを節約します。デフォルトでは、100 GBのSQLデータごとに新しいデータエンジンが開かれます。これは、 `mydumper.batch-size`の設定で構成できます。
 
 TiDB Lightningは、複数のデータエンジンを同時に処理します。これは`lightning.table-concurrency`の設定で制御されます。
 
@@ -192,4 +191,4 @@ KVペアをTiKVImporterに送信する前にTiDBLightning自体によって計�
 
 SSTは、「sortedstringtable」の略語です。 SSTファイルは、KVペアのコレクションのRocksDB（したがってTiKV）のネイティブストレージ形式です。
 
-TiKV Importerは、閉じた[エンジン](/tidb-lightning/tidb-lightning-glossary.md#engine)からSSTファイルを生成します。これらのSSTファイルはアップロードされてからTiKVストアに[摂取した](/tidb-lightning/tidb-lightning-glossary.md#ingest)アップロードされます。
+TiKV Importerは、閉じた[エンジン](/tidb-lightning/tidb-lightning-glossary.md#engine)からSSTファイルを生成します。これらのSSTファイルはアップロードされてからTiKVストアに[摂取](/tidb-lightning/tidb-lightning-glossary.md#ingest)アップロードされます。

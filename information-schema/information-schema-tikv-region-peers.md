@@ -1,6 +1,6 @@
 ---
 title: TIKV_REGION_PEERS
-summary: Learn the `TIKV_REGION_PEERS` information_schema table.
+summary: `TIKV_REGION_PEERS`information_schemaテーブルを学びます。
 ---
 
 # TIKV_REGION_PEERS {#tikv-region-peers}
@@ -29,7 +29,7 @@ DESC tikv_region_peers;
 7 rows in set (0.01 sec)
 ```
 
-たとえば、次のSQLステートメントを使用して、最大値が`WRITTEN_BYTES`の上位3つのリージョンの特定のTiKVアドレスをクエリできます。
+たとえば、次のSQLステートメントを使用して、最大値が`WRITTEN_BYTES`の上位3つのリージョンの特定のTiKVアドレスを照会できます。
 
 ```sql
 SELECT

@@ -1,7 +1,6 @@
 ---
-title: Identify Slow Queries
-summary: Use the slow query log to identify problematic SQL statements.
-aliases: ['/docs/dev/identify-slow-queries/','/docs/dev/how-to/maintain/identify-abnormal-queries/identify-slow-queries/','/docs/dev/how-to/maintain/identify-slow-queries']
+title: 遅いクエリを特定する
+summary: 遅いクエリログを使用して、問題のあるSQLステートメントを特定します。
 ---
 
 # 遅いクエリを特定する {#identify-slow-queries}
@@ -45,9 +44,9 @@ insert into t select * from t;
 
 ## フィールドの説明 {#fields-description}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> 低速クエリログの以下のすべての時間フィールドの単位は<strong>「秒」</strong>です。
+> 低速クエリログの以下のすべての時間フィールドの単位は**「秒」**です。
 
 遅いクエリの基本：
 
@@ -102,11 +101,11 @@ TiKVコプロセッサータスクフィールド：
 -   `Process_time` ：TiKVでのSQLステートメントの合計処理時間。データは同時にTiKVに送信されるため、この値は`Query_time`を超える可能性があります。
 -   `Wait_time` ：TiKVでのステートメントの合計待機時間。 TiKVのコプロセッサーは限られた数のスレッドを実行するため、コプロセッサーのすべてのスレッドが機能しているときに要求がキューに入れられる可能性があります。キュー内のリクエストの処理に時間がかかると、後続のリクエストの待機時間が長くなります。
 -   `Process_keys` ：コプロセッサーが処理したキーの数。 `total_keys`と比較すると、 `processed_keys`には古いバージョンのMVCCが含まれていません。 `processed_keys`と`total_keys`の大きな違いは、多くの古いバージョンが存在することを示しています。
--   `Cop_proc_avg` ：RocksDBのミューテックスなど、カウントできない待機時間を含む、cop-tasksの平均実行時間。
+-   `Cop_proc_avg` ：cop-tasksの平均実行時間。
 -   `Cop_proc_p90` ：cop-tasksのP90実行時間。
 -   `Cop_proc_max` ：cop-tasksの最大実行時間。
 -   `Cop_proc_addr` ：実行時間が最も長いcop-taskのアドレス。
--   `Cop_wait_avg` ：リクエストのキューイングとスナップショットの取得の時間を含む、cop-tasksの平均待機時間。
+-   `Cop_wait_avg` ：警官タスクの平均待機時間。
 -   `Cop_wait_p90` ：cop-tasksのP90待機時間。
 -   `Cop_wait_max` ：cop-tasksの最大待機時間。
 -   `Cop_wait_addr` ：待ち時間が最も長い警官タスクのアドレス。
@@ -153,7 +152,7 @@ set @@tidb_enable_collect_execution_info=0;
 
 `INFORMATION_SCHEMA.SLOW_QUERY`のテーブルを照会することにより、低速照会ログの内容を照会できます。表の各列名は、低速ログの1つのフィールド名に対応しています。テーブル構造については、 [情報スキーマ](/information-schema/information-schema-slow-query.md)の`SLOW_QUERY`テーブルの概要を参照してください。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `SLOW_QUERY`のテーブルをクエリするたびに、TiDBは現在の低速クエリログを読み取って解析します。
 
@@ -199,7 +198,7 @@ TiDB 4.0の場合、 `SLOW_QUERY`は、ローテーションされた低速ロ�
     +----------+----------------------------+----------------------------+
     ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 指定された時間範囲の低速ログファイルが削除された場合、または低速クエリがない場合、クエリはNULLを返します。
 
@@ -259,7 +258,7 @@ limit 2;
 +-------------+------------------------------------------------------------------+----------------+
 ```
 
-### 同じSQLフィンガープリントを使用して同様の遅いクエリをクエリする {#query-similar-slow-queries-with-the-same-sql-fingerprints}
+### 同じSQLフィンガープリントを使用して同様の低速クエリをクエリする {#query-similar-slow-queries-with-the-same-sql-fingerprints}
 
 Top-N SQLステートメントをクエリした後、同じフィンガープリントを使用して同様の遅いクエリをクエリし続けます。
 
@@ -393,7 +392,7 @@ plan_digest: 6afbbd21f60ca6c6fdf3d3cd94f7c7a49dd93c00fcf8774646da492e50e204ee
               └─TableScan_11    cop     1.2440069558121831      table:sbtest25, range:[472745,472844], keep order:false
 ```
 
-### クラスター内の各TiDBノードの低速クエリの数をクエリする {#query-the-number-of-slow-queries-for-each-tidb-node-in-a-cluster}
+### クラスタの各TiDBノードの低速クエリの数をクエリする {#query-the-number-of-slow-queries-for-each-tidb-node-in-a-cluster}
 
 {{< copyable "" >}}
 
@@ -479,7 +478,7 @@ set tidb_slow_query_file = "/path-to-log/tidb-slow.log"
 
 `pt-query-digest`を使用して、TiDBの低速ログを解析します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `pt-query-digest`以降のバージョンを使用することをお勧めします。
 
@@ -519,7 +518,7 @@ pt-query-digest --report tidb-slow.log
 
 ## 問題のあるSQLステートメントを特定する {#identify-problematic-sql-statements}
 
-`SLOW_QUERY`のステートメントすべてに問題があるわけではありません。 `process_time`が非常に大きいものだけが、クラスター全体の圧力を高めます。
+`SLOW_QUERY`のステートメントすべてに問題があるわけではありません。 `process_time`が非常に大きいものだけが、クラスタ全体の圧力を高めます。
 
 `wait_time`が非常に大きく、 `process_time`が非常に小さいステートメントは、通常、問題ありません。これは、ステートメントが実際の問題のあるステートメントによってブロックされ、実行キューで待機する必要があるためです。これにより、応答時間が大幅に長くなります。
 

@@ -1,7 +1,6 @@
 ---
-title: SHOW CREATE SEQUENCE
-summary: An overview of the usage of SHOW CREATE SEQUENCE for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-create-sequence/','/docs/dev/reference/sql/statements/show-create-sequence/']
+title: シーケンスの作成を表示
+summary: TiDBデータベースでのSHOWCREATESEQUENCEの使用法の概要。
 ---
 
 # シーケンスの作成を表示 {#show-create-sequence}
@@ -10,11 +9,11 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-create-sequence/','/docs/
 
 ## あらすじ {#synopsis}
 
-<strong>ShowCreateSequenceStmt：</strong>
+**ShowCreateSequenceStmt：**
 
 ![ShowCreateSequenceStmt](/media/sqlgram/ShowCreateSequenceStmt.png)
 
-<strong>TableName：</strong>
+**TableName：**
 
 ![TableName](/media/sqlgram/TableName.png)
 

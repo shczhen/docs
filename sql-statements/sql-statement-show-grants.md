@@ -1,7 +1,6 @@
 ---
-title: SHOW GRANTS | TiDB SQL Statement Reference
-summary: An overview of the usage of SHOW GRANTS for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-grants/','/docs/dev/reference/sql/statements/show-grants/']
+title: 助成金を表示| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのSHOWGRANTSの使用法の概要。
 ---
 
 # 助成金を表示 {#show-grants}
@@ -10,23 +9,23 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-grants/','/docs/dev/refer
 
 ## あらすじ {#synopsis}
 
-<strong>ShowGrantsStmt：</strong>
+**ShowGrantsStmt：**
 
 ![ShowGrantsStmt](/media/sqlgram/ShowGrantsStmt.png)
 
-<strong>ユーザー名：</strong>
+**ユーザー名：**
 
 ![Username](/media/sqlgram/Username.png)
 
-<strong>UsingRoles：</strong>
+**UsingRoles：**
 
 ![UsingRoles](/media/sqlgram/UsingRoles.png)
 
-<strong>RolenameList：</strong>
+**RolenameList：**
 
 ![RolenameList](/media/sqlgram/RolenameList.png)
 
-<strong>役割名：</strong>
+**役割名：**
 
 ![Rolename](/media/sqlgram/Rolename.png)
 

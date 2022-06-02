@@ -1,7 +1,6 @@
 ---
-title: Data Check for TiDB Upstream and Downstream Clusters
-summary: Learn how to check data for TiDB upstream and downstream clusters.
-aliases: ['/docs/dev/sync-diff-inspector/upstream-downstream-diff/','/docs/dev/reference/tools/sync-diff-inspector/tidb-diff/']
+title: TiDBアップストリームおよびダウンストリームクラスターのデータチェック
+summary: TiDBアップストリームおよびダウンストリームクラスターのデータを確認する方法を学びます。
 ---
 
 # TiDBアップストリームおよびダウンストリームクラスターのデータチェック {#data-check-for-tidb-upstream-and-downstream-clusters}
@@ -10,7 +9,7 @@ TiDB Binlogを使用して、TiDBのアップストリームおよびダウン�
 
 ## ステップ1： <code>ts-map</code>を取得する {#step-1-obtain-code-ts-map-code}
 
-`ts-map`を取得するには、ダウンストリームTiDBクラスターで次のSQLステートメントを実行します。
+`ts-map`を取得するには、ダウンストリームTiDBクラスタで次のSQLステートメントを実行します。
 
 ```sql
 mysql> select * from tidb_binlog.checkpoint;
@@ -42,7 +41,7 @@ mysql> select * from tidb_binlog.checkpoint;
     snapshot = "409621863377928345"
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   Drainerの`db-type`を`tidb`に設定して、 `ts-map`がチェックポイントに保存されるようにします。
 > -   TiKVのガベージコレクション（GC）時間を変更して、スナップショットに対応する履歴データがデータチェック中にGCによって収集されないようにします。 GC時間を1時間に変更し、チェック後に設定を復元することをお勧めします。

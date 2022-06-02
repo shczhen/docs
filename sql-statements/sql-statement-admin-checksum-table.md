@@ -1,6 +1,6 @@
 ---
-title: ADMIN CHECKSUM TABLE | TiDB SQL Statement Reference
-summary: An overview of the usage of ADMIN for the TiDB database.
+title: 管理チェックサムテーブル| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのADMINの使用法の概要。
 category: reference
 ---
 

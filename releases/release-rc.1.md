@@ -1,6 +1,5 @@
 ---
-title: TiDB RC1 Release Notes
-aliases: ['/docs/dev/releases/release-rc.1/','/docs/dev/releases/rc1/']
+title: TiDBRC1リリースノート
 ---
 
 # TiDBRC1リリースノート {#tidb-rc1-release-notes}
@@ -12,14 +11,14 @@ aliases: ['/docs/dev/releases/release-rc.1/','/docs/dev/releases/rc1/']
 -   書き込み速度が向上しました。
 -   ディスクスペースの使用量が削減されます。
 -   数百TBのデータをサポートできます。
--   安定性が向上し、TiKVは200ノードのクラスターをサポートできます。
+-   安定性が向上し、TiKVは200ノードのクラスタをサポートできます。
 -   RawKVAPIとGolangクライアントをサポートします。
 
 ## 配置ドライバー（PD） {#placement-driver-pd}
 
 -   スケジューリング戦略フレームワークが最適化され、戦略がより柔軟で合理的になりました。
 -   クロスデータセンターのスケジューリングをサポートするために、 `label`のサポートが追加されました。
--   PDコントローラーは、PDクラスターをより簡単に操作するために提供されています。
+-   PDコントローラーは、PDクラスタをより簡単に操作するために提供されています。
 
 ## TiDB {#tidb}
 

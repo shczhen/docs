@@ -1,7 +1,6 @@
 ---
-title: Reparo User Guide
-summary: Learn to use Reparo.
-aliases: ['/docs/dev/tidb-binlog/tidb-binlog-reparo/','/docs/dev/reference/tidb-binlog/reparo/']
+title: Reparoユーザーガイド
+summary: Reparoの使い方を学びましょう。
 ---
 
 # Reparoユーザーガイド {#reparo-user-guide}
@@ -117,10 +116,10 @@ password = ""
 ### 例を開始 {#start-example}
 
 ```
-./reparo -config reparo.toml
+./bin/reparo -config reparo.toml
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   `data-dir`は、Drainerが出力するbinlogファイルのディレクトリを指定します。
 > -   `start-datatime`と`start-tso`はどちらもリカバリを開始する時点を指定するために使用されますが、時間形式が異なります。それらが設定されていない場合、リカバリプロセスはデフォルトで最も古いbinlogファイルから開始されます。

@@ -1,7 +1,6 @@
 ---
-title: TiDB Transaction Isolation Levels
-summary: Learn about the transaction isolation levels in TiDB.
-aliases: ['/docs/dev/transaction-isolation-levels/','/docs/dev/reference/transactions/transaction-isolation/']
+title: TiDBトランザクション分離レベル
+summary: TiDBのトランザクション分離レベルについて学びます。
 ---
 
 # TiDBトランザクション分離レベル {#tidb-transaction-isolation-levels}
@@ -19,11 +18,11 @@ SQL-92標準では、トランザクション分離の4つのレベルが定義�
 
 TiDBは、MySQLとの互換性のために`REPEATABLE-READ`としてアドバタイズするスナップショットアイソレーション（SI）整合性を実装します。これは、 [ANSI繰り返し可能読み取り分離レベル](#difference-between-tidb-and-ansi-repeatable-read)および[MySQLの繰り返し可能な読み取りレベル](#difference-between-tidb-and-mysql-repeatable-read)とは異なります。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> TiDB v3.0では、トランザクションの自動再試行はデフォルトで無効になっています。自動再試行を有効にすると<strong>、トランザクション分離レベル</strong>が損なわれる可能性があるため、お勧めしません。詳細は[トランザクションの再試行](/optimistic-transaction.md#automatic-retry)を参照してください。
+> TiDB v3.0では、トランザクションの自動再試行はデフォルトで無効になっています。自動再試行を有効にすると**、トランザクション分離レベル**が損なわれる可能性があるため、お勧めしません。詳細は[トランザクションの再試行](/optimistic-transaction.md#automatic-retry)を参照してください。
 >
-> TiDB [v3.0.8](/releases/release-3.0.8.md#tidb)から、新しく作成されたTiDBクラスターはデフォルトで[悲観的なトランザクションモード](/pessimistic-transaction.md)を使用します。現在の読み取り（ `for update`読み取り）は<strong>繰り返し不可の読み取り</strong>です。詳細は[悲観的なトランザクションモード](/pessimistic-transaction.md)を参照してください。
+> TiDB [v3.0.8](/releases/release-3.0.8.md#tidb)から、新しく作成されたTiDBクラスターはデフォルトで[悲観的なトランザクションモード](/pessimistic-transaction.md)を使用します。現在の読み取り（ `for update`読み取り）は**繰り返し不可の読み取り**です。詳細は[悲観的なトランザクションモード](/pessimistic-transaction.md)を参照してください。
 
 ## 繰り返し可能な読み取り分離レベル {#repeatable-read-isolation-level}
 
@@ -58,18 +57,9 @@ TiDB [v4.0.0-ベータ版](/releases/release-4.0.0-beta.md#tidb)以降、TiDBは
 
 歴史的な理由から、現在の主流データベースのReadCommitted分離レベルは基本的に[Oracleによって定義された一貫性のある読み取り分離レベル](https://docs.oracle.com/cd/B19306_01/server.102/b14220/consist.htm)です。この状況に適応するために、TiDBペシミスティックトランザクションの読み取りコミット分離レベルも、本質的に一貫した読み取り動作です。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > Read Committed分離レベルは、 [悲観的なトランザクションモード](/pessimistic-transaction.md)でのみ有効です。 [楽観的なトランザクションモード](/optimistic-transaction.md)では、トランザクション分離レベルを`Read Committed`に設定しても有効にならず、トランザクションは引き続き繰り返し可能読み取り分離レベルを使用します。
-
-v6.0.0以降、TiDBは、 [`tidb_rc_read_check_ts`](/system-variables.md#tidb_rc_read_check_ts-new-in-v600)システム変数を使用して、読み取りと書き込みの競合がまれなシナリオでタイムスタンプの取得を最適化することをサポートしています。この変数を有効にした後、TiDBは、 `SELECT`が実行されるときに、以前の有効なタイムスタンプを使用してデータを読み取ろうとします。この変数の初期値は、トランザクションの`start_ts`です。
-
--   読み取りプロセス中にTiDBがデータの更新を検出しなかった場合、TiDBは結果をクライアントに返し、 `SELECT`ステートメントが正常に実行されます。
--   読み取りプロセス中にTiDBでデータの更新が発生した場合：
-    -   TiDBがまだ結果をクライアントに送信していない場合、TiDBは新しいタイムスタンプを取得して、このステートメントを再試行します。
-    -   TiDBがすでに部分的なデータをクライアントに送信している場合、TiDBはクライアントにエラーを報告します。毎回クライアントに送信されるデータの量は、 `tidb_init_chunk_size`と`tidb_max_chunk_size`によって制御されます。
-
-`READ-COMMITTED`の分離レベルが使用されるシナリオでは、 `SELECT`のステートメントが多く、読み取りと書き込みの競合はまれです。この変数を有効にすると、グローバルタイムスタンプを取得するための遅延とコストを回避できます。
 
 ## TiDBとMySQLReadCommittedの違い {#difference-between-tidb-and-mysql-read-committed}
 

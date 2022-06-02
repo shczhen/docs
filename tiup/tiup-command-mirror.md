@@ -1,5 +1,5 @@
 ---
-title: tiup mirror
+title: tiupミラー
 ---
 
 # tiupミラー {#tiup-mirror}

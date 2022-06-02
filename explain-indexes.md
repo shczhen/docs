@@ -1,11 +1,11 @@
 ---
-title: Explain Statements That Use Indexes
-summary: Learn about the execution plan information returned by the EXPLAIN statement in TiDB.
+title: インデックスを使用するステートメントを説明する
+summary: TiDBのEXPLAINステートメントによって返される実行プラン情報について学習します。
 ---
 
 # インデックスを使用するステートメントを説明する {#explain-statements-that-use-indexes}
 
-TiDBは、インデックスを使用してクエリの実行を高速化するいくつかの演算子をサポートしています。
+TiDBは、インデックスを利用してクエリの実行を高速化するいくつかの演算子をサポートしています。
 
 -   [`IndexLookup`](#indexlookup)
 -   [`IndexReader`](#indexreader)
@@ -102,7 +102,7 @@ EXPLAIN SELECT * FROM t1 WHERE intkey >= 99 AND intkey <= 103;
 
 `IndexLookup`オペレーターには、2つの子ノードがあります。
 
--   `├─IndexRangeScan_8(Build)`オペレーターは、 `intkey`インデックスに対して範囲スキャンを実行し、内部`RowID` （このテーブルでは主キー）の値を取得します。
+-   `├─IndexRangeScan_8(Build)`オペレーターは、 `intkey`インデックスに対して範囲スキャンを実行し、内部`RowID`の値（このテーブルでは主キー）を取得します。
 -   次に、 `└─TableRowIDScan_9(Probe)`演算子は、テーブルデータから行全体を取得します。
 
 `IndexLookup`つのタスクには2つのステップが必要なため、多数の行が一致するシナリオでは、SQLオプティマイザーは[統計学](/statistics.md)に基づいて`TableFullScan`の演算子を選択する場合があります。次の例では、多数の行が`intkey > 100`の条件に一致し、 `TableFullScan`が選択されています。
@@ -149,7 +149,7 @@ EXPLAIN SELECT * FROM t1 ORDER BY intkey DESC LIMIT 10;
 
 ## IndexReader {#indexreader}
 
-TiDBは、<em>カバーリングインデックスの最適化を</em>サポートしています。すべての行をインデックスから取得できる場合、TiDBは通常`IndexLookup`で必要とされる2番目のステップをスキップします。次の2つの例を検討してください。
+TiDBは、*カバーリングインデックスの最適化を*サポートしています。すべての行をインデックスから取得できる場合、TiDBは通常`IndexLookup`で必要とされる2番目のステップをスキップします。次の2つの例を検討してください。
 
 {{< copyable "" >}}
 
@@ -270,7 +270,7 @@ EXPLAIN SELECT MAX(intkey) FROM t1;
 5 rows in set (0.00 sec)
 ```
 
-上記のステートメントでは、各TiKVリージョンで`IndexFullScan`のタスクが実行されます。名前`FullScan`にもかかわらず、最初の行のみを読み取る必要があります（ `└─Limit_28` ）。各TiKVリージョンはその`MIN`または`MAX`の値をTiDBに返し、TiDBはストリーム集約を実行して単一の行をフィルタリングします。集計関数`MAX`または`MIN`を使用したストリーム集計では、テーブルが空の場合に`NULL`が返されることも保証されます。
+上記のステートメントでは、各TiKVリージョンで`IndexFullScan`のタスクが実行されます。名前`FullScan`にもかかわらず、最初の行のみを読み取る必要があります（ `└─Limit_28` ）。各TiKVリージョンはその`MIN`または`MAX`の値をTiDBに返し、TiDBはストリーム集計を実行して単一の行をフィルタリングします。集計関数`MAX`または`MIN`を使用した集計では、テーブルが空の場合に`NULL`が返されることも保証されます。
 
 対照的に、インデックス付けされていない値に対して`MIN`関数を実行すると、 `TableFullScan`になります。クエリではすべての行をTiKVでスキャンする必要がありますが、 `TopN`の計算を実行して、各TiKV領域がTiDBに1行のみを返すようにします。 `TopN`は、TiKVとTiDBの間で過剰な行が転送されるのを防ぎますが、このステートメントは、 `MIN`がインデックスを利用できる上記の例よりもはるかに効率が悪いと見なされます。
 

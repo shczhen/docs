@@ -1,7 +1,6 @@
 ---
-title: TiDB Cluster Troubleshooting Guide
-summary: Learn how to diagnose and resolve issues when you use TiDB.
-aliases: ['/docs/dev/troubleshoot-tidb-cluster/','/docs/dev/how-to/troubleshoot/cluster-setup/']
+title: TiDBクラスタートラブルシューティングガイド
+summary: TiDBを使用するときに問題を診断して解決する方法を学びます。
 ---
 
 # TiDBクラスタートラブルシューティングガイド {#tidb-cluster-troubleshooting-guide}
@@ -33,7 +32,7 @@ aliases: ['/docs/dev/troubleshoot-tidb-cluster/','/docs/dev/how-to/troubleshoot/
 3.  データがクリアされ、サービスが再デプロイされた場合は、次のことを確認してください。
 
     -   `tikv-server`と`pd-server`のすべてのデータがクリアされます。特定のデータは`tikv-server`に格納され、メタデータは`pd-server`に格納されます。 2つのサーバーのうち1つだけがクリアされると、データに一貫性がなくなります。
-    -   `pd-server`と`tikv-server`のデータがクリアされ、 `pd-server`と`tikv-server`が再起動された後、 `tidb-server`も再起動する必要があります。クラスターIDは、 `pd-server`が初期化されるときにランダムに割り当てられます。したがって、クラスターが再デプロイされると、クラスターIDが変更され、 `tidb-server`を再起動して新しいクラスターIDを取得する必要があります。
+    -   `pd-server`と`tikv-server`のデータがクリアされ、 `pd-server`と`tikv-server`が再起動された後、 `tidb-server`も再起動する必要があります。クラスタIDは、 `pd-server`が初期化されるときにランダムに割り当てられます。したがって、クラスタが再デプロイされると、クラスタIDが変更され、 `tidb-server`を再起動して新しいクラスタIDを取得する必要があります。
 
 ## <code>tidb-server</code>を起動できません {#cannot-start-code-tidb-server-code}
 
@@ -51,7 +50,7 @@ aliases: ['/docs/dev/troubleshoot-tidb-cluster/','/docs/dev/how-to/troubleshoot/
 
 -   `pd-server`に接続できません。
 
-    -   ネットワークにpingを実行できるかどうかや、ファイアウォールの構成に問題があるかどうかなど、TiDBとPDの間のネットワークがスムーズに実行されているかどうかを確認します。
+    -   TiDBとPDの間のネットワークがスムーズに実行されているかどうかを確認します。これには、ネットワークにpingを実行できるかどうか、ファイアウォールの構成に問題があるかどうかなどが含まれます。
     -   ネットワークに問題がない場合は、 `pd-server`プロセスの状態とログを確認してください。
 
 ## <code>tikv-server</code>を起動できません {#cannot-start-code-tikv-server-code}
@@ -129,7 +128,7 @@ aliases: ['/docs/dev/troubleshoot-tidb-cluster/','/docs/dev/how-to/troubleshoot/
 
 <!---->
 
--   TiDBクラスター以外に他のサービスはありますか？
+-   TiDBクラスタ以外に他のサービスはありますか？
 -   `pd-server`秒と`tikv-server`秒は別々に展開されていますか？
 -   現在の操作は何ですか？
 -   `top -H`コマンドでCPUスレッド名を確認してください。

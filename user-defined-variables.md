@@ -1,16 +1,15 @@
 ---
-title: User-Defined Variables
-summary: Learn how to use user-defined variables.
-aliases: ['/docs/dev/user-defined-variables/','/docs/dev/reference/sql/language-structure/user-defined-variables/']
+title: ユーザー定義変数
+summary: ユーザー定義変数の使用方法を学びます。
 ---
 
 # ユーザー定義変数 {#user-defined-variables}
 
 このドキュメントでは、TiDBのユーザー定義変数の概念と、ユーザー定義変数を設定および読み取る方法について説明します。
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> ユーザー定義変数はまだ実験的な機能です。実稼働環境で使用することはお勧めし<strong>ません</strong>。
+> ユーザー定義変数はまだ実験的機能です。実稼働環境で使用することはお勧めし**ません**。
 
 ユーザー定義変数の形式は`@var_name`です。 `var_name`を構成する文字は、数字`0-9` 、文字`a-zA-Z` 、下線`_` 、ドル記号`$` 、UTF-8文字など、識別子を構成できる任意の文字にすることができます。さらに、英語の期間`.`も含まれます。ユーザー定義の変数では大文字と小文字は区別されません。
 

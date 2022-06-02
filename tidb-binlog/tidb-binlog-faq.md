@@ -1,7 +1,6 @@
 ---
 title: TiDB Binlog FAQ
-summary: Learn about the frequently asked questions (FAQs) and answers about TiDB Binlog.
-aliases: ['/docs/dev/tidb-binlog/tidb-binlog-faq/','/docs/dev/reference/tidb-binlog/faq/','/docs/dev/reference/tools/tidb-binlog/faq/']
+summary: TiDB Binlogに関するよくある質問（FAQ）と回答について学びます。
 ---
 
 # TiDB Binlog FAQ {#tidb-binlog-faq}
@@ -18,9 +17,9 @@ aliases: ['/docs/dev/tidb-binlog/tidb-binlog-faq/','/docs/dev/reference/tidb-bin
 
 TiDB Binlogレプリケーションの遅延は秒単位で測定されます。これは、通常、オフピーク時に約3秒です。
 
-## DrainerがダウンストリームのMySQLまたはTiDBクラスターにデータを複製するために必要な特権は何ですか？ {#what-privileges-does-drainer-need-to-replicate-data-to-the-downstream-mysql-or-tidb-cluster}
+## DrainerがダウンストリームのMySQLまたはTiDBクラスタにデータを複製するために必要な特権は何ですか？ {#what-privileges-does-drainer-need-to-replicate-data-to-the-downstream-mysql-or-tidb-cluster}
 
-ダウンストリームのMySQLまたはTiDBクラスターにデータを複製するには、Drainerに次の権限が必要です。
+ダウンストリームのMySQLまたはTiDBクラスタにデータを複製するには、Drainerに次の権限が必要です。
 
 -   入れる
 -   アップデート
@@ -36,11 +35,11 @@ TiDB Binlogレプリケーションの遅延は秒単位で測定されます。
 
 1.  PumpのGCが正常に機能するかどうかを確認します。
 
-    -   Pumpの監視パネルの<strong>gc_tso</strong>時間が設定ファイルの時間と同じであるかどうかを確認します。
+    -   Pumpの監視パネルの**gc_tso**時間が設定ファイルの時間と同じであるかどうかを確認します。
 
 2.  GCが正常に機能する場合は、次の手順を実行して、単一のポンプに必要なスペースの量を減らします。
 
-    -   Pumpの<strong>GC</strong>パラメータを変更して、データを保持する日数を減らします。
+    -   Pumpの**GC**パラメータを変更して、データを保持する日数を減らします。
 
     -   ポンプインスタンスを追加します。
 
@@ -56,13 +55,13 @@ binlogctl -cmd pumps
 
 次に、Drainerモニターまたはログが対応するエラーを出力するかどうかを確認します。もしそうなら、それに応じてそれらを解決します。
 
-## DrainerがダウンストリームのMySQLまたはTiDBクラスターにデータを複製するのが遅い場合はどうすればよいですか？ {#what-can-i-do-if-drainer-is-slow-to-replicate-data-to-the-downstream-mysql-or-tidb-cluster}
+## DrainerがダウンストリームのMySQLまたはTiDBクラスタにデータを複製するのが遅い場合はどうすればよいですか？ {#what-can-i-do-if-drainer-is-slow-to-replicate-data-to-the-downstream-mysql-or-tidb-cluster}
 
 次の監視項目を確認してください。
 
--   <strong>Drainer Event</strong>モニタリングメトリックについては、Drainerが`DELETE`秒あたり`INSERT` 、および`UPDATE`トランザクションをダウンストリームに複製する速度を確認してください。
+-   **Drainer Event**モニタリングメトリックについては、Drainerが`DELETE`秒あたり`INSERT` 、および`UPDATE`トランザクションをダウンストリームに複製する速度を確認してください。
 
--   <strong>SQLクエリ時間</strong>の監視メトリックについては、DrainerがダウンストリームでSQLステートメントを実行するのにかかる時間を確認してください。
+-   **SQLクエリ時間**の監視メトリックについては、DrainerがダウンストリームでSQLステートメントを実行するのにかかる時間を確認してください。
 
 複製が遅い場合の考えられる原因と解決策：
 
@@ -120,7 +119,7 @@ kafka / fileのデータには`commit-ts`が含まれているため、チェッ
 
     2.  [binlogctlを使用して、古いDrainerの状態を`offline`に変更します](/tidb-binlog/maintain-tidb-binlog-cluster.md)を使用します。
 
-## フルバックアップとbinlogバックアップファイルを使用してクラスターのデータを復元するにはどうすればよいですか？ {#how-to-restore-the-data-of-a-cluster-using-a-full-backup-and-a-binlog-backup-file}
+## フルバックアップとbinlogバックアップファイルを使用してクラスタのデータを復元するにはどうすればよいですか？ {#how-to-restore-the-data-of-a-cluster-using-a-full-backup-and-a-binlog-backup-file}
 
 1.  クラスタをクリーンアップし、完全バックアップを復元します。
 
@@ -174,7 +173,7 @@ kafka / fileのデータには`commit-ts`が含まれているため、チェッ
 
 -   プロセスを直接強制終了します。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > `kill -9`コマンドは使用しないでください。そうしないと、PumpまたはDrainerノードは信号を処理できません。
 
@@ -218,7 +217,7 @@ kafka / fileのデータには`commit-ts`が含まれているため、チェッ
 
 その他の状況では、 `offline-pump`コマンドを使用して、通常のプロセスであるポンプサービスを閉じます。
 
-> <strong>警告：</strong>
+> **警告：**
 >
 > > binlogデータの損失とアップストリームとダウンストリーム間のデータの不整合を許容できる場合、またはポンプノードに保存されているbinlogデータが不要になった場合を除いて、 `update-pump`コマンドを使用しないでください。
 

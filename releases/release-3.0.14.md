@@ -1,6 +1,5 @@
 ---
-title: TiDB 3.0.14 Release Notes
-aliases: ['/docs/dev/releases/release-3.0.14/','/docs/dev/releases/3.0.14/']
+title: TiDB3.0.14リリースノート
 ---
 
 # TiDB3.0.14リリースノート {#tidb-3-0-14-release-notes}
@@ -61,7 +60,7 @@ TiDBバージョン：3.0.14
 
     -   TiDB Lightning
 
-        -   tidb-lightning- [＃287](https://github.com/pingcap/tidb-lightning/pull/287)の`fetch-mode`サブコマンドを使用したTiKVクラスターモードの印刷をサポートします。
+        -   tidb-lightning- [＃287](https://github.com/pingcap/tidb-lightning/pull/287)の`fetch-mode`サブコマンドを使用したTiKVクラスタモードの印刷をサポートします。
 
 ## バグの修正 {#bug-fixes}
 
@@ -84,7 +83,7 @@ TiDBバージョン：3.0.14
     -   [＃15359](https://github.com/pingcap/tidb/pull/15359)の誤った動作を修正し`CASE WHEN (not_int)`
     -   現在のスキーマにない`view`を使用すると`Unknown column`エラーメッセージが返される問題を修正します[＃15866](https://github.com/pingcap/tidb/pull/15866)
     -   時間文字列の解析結果がMySQL1と互換性がないという問題を修正し[＃16242](https://github.com/pingcap/tidb/pull/16242)
-    -   右側の子ノード[＃16528](https://github.com/pingcap/tidb/pull/16528)に`null`列が存在する場合に、照合演算子が`left join`でパニックになる可能性を修正します。
+    -   右側の子ノード[＃16528](https://github.com/pingcap/tidb/pull/16528)に`null`列が存在する場合に、照合順序演算子が`left join`でパニックになる可能性を修正します。
     -   TiKVが`StaleCommand`のエラーメッセージを返し続けるとSQLの実行がブロックされてもエラーメッセージが返されない問題を修正します[＃16528](https://github.com/pingcap/tidb/pull/16528)
     -   監査プラグインが有効になっているときにポートプローブによって引き起こされる可能性のあるパニックを修正します[＃15967](https://github.com/pingcap/tidb/pull/15967)
     -   `fast analyze`がインデックスのみで機能する場合に発生するパニックを修正します[＃15967](https://github.com/pingcap/tidb/pull/15967)

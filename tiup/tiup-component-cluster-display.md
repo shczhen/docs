@@ -1,10 +1,10 @@
 ---
-title: tiup cluster display
+title: tiupクラスタ表示
 ---
 
-# tiupクラスター表示 {#tiup-cluster-display}
+# tiupクラスタ表示 {#tiup-cluster-display}
 
-クラスタ内の各コンポーネントの動作状態を確認したい場合は、各マシンに1台ずつログインするのは明らかに非効率的です。したがって、tiup-clusterは、このタスクを効率的に完了するための`tiup cluster display`のコマンドを提供します。
+クラスタの各コンポーネントの動作ステータスを確認したい場合は、各マシンに1つずつログインするのは明らかに非効率的です。したがって、tiup-clusterは、このタスクを効率的に完了するための`tiup cluster display`のコマンドを提供します。
 
 ## 構文 {#syntax}
 
@@ -12,13 +12,13 @@ title: tiup cluster display
 tiup cluster display <cluster-name> [flags]
 ```
 
-`<cluster-name>` ：操作するクラスターの名前。クラスタ名を忘れた場合は、 [クラスターリスト](/tiup/tiup-component-cluster-list.md)コマンドで確認できます。
+`<cluster-name>` ：操作するクラスタの名前。クラスタ名を忘れた場合は、 [クラスタリスト](/tiup/tiup-component-cluster-list.md)コマンドで確認できます。
 
 ## オプション {#options}
 
 ### -ダッシュボード {#dashboard}
 
--   デフォルトでは、クラスター全体のすべてのノード情報が表示されます。 `--dashboard`オプションでは、ダッシュボード情報のみが表示されます。
+-   デフォルトでは、クラスタ全体のすべてのノード情報が表示されます。 `--dashboard`オプションでは、ダッシュボード情報のみが表示されます。
 -   データ型： `BOOLEAN`
 -   このオプションはデフォルトで無効になっており、デフォルト値は`false`です。このオプションを有効にするには、このオプションをコマンドに追加して、 `true`の値を渡すか、値を渡さないようにします。
 
@@ -28,7 +28,7 @@ tiup cluster display <cluster-name> [flags]
 -   データ型： `STRINGS`
 -   このオプションがコマンドで指定されていない場合、デフォルトですべてのノードがチェックされます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `-R, --role`オプションを同時に指定すると、 `-N, --node`と`-R, --role`の両方の仕様に一致するサービスノードのみがチェックされます。
 
@@ -38,7 +38,7 @@ tiup cluster display <cluster-name> [flags]
 -   データ型： `STRINGS`
 -   コマンドでこのオプションが指定されていない場合、デフォルトですべての役割が表示されます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `-N, --node`オプションを同時に指定すると、 `-N, --node`と`-R, --role`の両方の仕様に一致するサービスノードのみが表示されます。
 
@@ -50,8 +50,8 @@ tiup cluster display <cluster-name> [flags]
 
 ## 出力 {#outputs}
 
--   クラスター名
--   クラスターバージョン
+-   クラスタ名
+-   クラスタバージョン
 -   SSHクライアントタイプ
 -   ダッシュボードアドレス
 -   次のフィールドを持つテーブル：
@@ -62,6 +62,6 @@ tiup cluster display <cluster-name> [flags]
     -   OS / Arch：このノードのオペレーティングシステムとマシンアーキテクチャ
     -   ステータス：ノードサービスの現在のステータス
     -   データディレクトリ：サービスのデータディレクトリ。 `-`はデータディレクトリがないことを意味します。
-    -   Deploy Dir：サービスのデプロイメントディレクトリ
+    -   デプロイ Dir：サービスのデプロイメントディレクトリ
 
 [&lt;&lt;前のページに戻る-TiUPClusterコマンドリスト](/tiup/tiup-component-cluster.md#command-list)

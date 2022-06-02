@@ -1,7 +1,6 @@
 ---
-title: TiDB Optimistic Transaction Model
-summary: Learn the optimistic transaction model in TiDB.
-aliases: ['/docs/dev/optimistic-transaction/','/docs/dev/reference/transactions/transaction-optimistic/','/docs/dev/reference/transactions/transaction-model/']
+title: TiDBオプティミスティックトランザクションモデル
+summary: TiDBで楽観的なトランザクションモデルを学びましょう。
 ---
 
 # TiDBオプティミスティックトランザクションモデル {#tidb-optimistic-transaction-model}
@@ -10,9 +9,9 @@ aliases: ['/docs/dev/optimistic-transaction/','/docs/dev/reference/transactions/
 
 楽観的なトランザクションを有効にする前に、アプリケーションが`COMMIT`ステートメントがエラーを返す可能性があることを正しく処理することを確認してください。アプリケーションがこれをどのように処理するかわからない場合は、代わりにペシミスティックトランザクションを使用することをお勧めします。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> v3.0.8以降、TiDBはデフォルトで[悲観的なトランザクションモード](/pessimistic-transaction.md)を使用します。ただし、v3.0.7以前からv3.0.8以降にアップグレードした場合、これは既存のクラスターには影響しません。つまり、<strong>新しく作成されたクラスターのみがデフォルトで悲観的トランザクションモードを使用します</strong>。
+> v3.0.8以降、TiDBはデフォルトで[悲観的なトランザクションモード](/pessimistic-transaction.md)を使用します。ただし、v3.0.7以前からv3.0.8以降にアップグレードした場合、これは既存のクラスタには影響しません。つまり、**新しく作成されたクラスターのみがデフォルトで悲観的トランザクションモードを使用します**。
 
 ## 楽観的な取引の原則 {#principles-of-optimistic-transactions}
 
@@ -31,7 +30,7 @@ aliases: ['/docs/dev/optimistic-transaction/','/docs/dev/reference/transactions/
 
 3.  クライアントは書き込み要求を発行します。
 
-    TiDBは、書き込まれたデータが制約を満たしているかどうかをチェックします（データ型が正しいことを確認するため、NOT NULL制約が満たされていることなど）。<strong>有効なデータは、TiDBのこのトランザクションのプライベートメモリに保存されます</strong>。
+    TiDBは、書き込まれたデータが制約を満たしているかどうかをチェックします（データ型が正しいことを確認するため、NOT NULL制約が満たされていることなど）。**有効なデータは、TiDBのこのトランザクションのプライベートメモリに保存されます**。
 
 4.  クライアントはコミット要求を発行します。
 
@@ -109,7 +108,7 @@ tidb_retry_limit = 10
     SET GLOBAL tidb_retry_limit = 10;
     ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `tidb_retry_limit`変数は、再試行の最大数を決定します。この変数が`0`に設定されている場合、自動的にコミットされる暗黙の単一ステートメントトランザクションを含め、どのトランザクションも自動的に再試行されません。これは、TiDBの自動再試行メカニズムを完全に無効にする方法です。自動再試行を無効にすると、競合するすべてのトランザクションが失敗（ `try again later`メッセージを含む）をアプリケーション層に最速で報告します。
 
@@ -129,7 +128,7 @@ tidb_retry_limit = 10
 
 ## 競合の検出 {#conflict-detection}
 
-分散データベースとして、TiDBは、主にプリライトフェーズで、TiKVレイヤーでメモリ内の競合検出を実行します。 TiDBインスタンスはステートレスであり、相互に認識していません。つまり、書き込みによってクラスター全体で競合が発生するかどうかを知ることはできません。したがって、競合検出はTiKV層で実行されます。
+分散データベースとして、TiDBは、主にプリライトフェーズで、TiKVレイヤーでメモリ内の競合検出を実行します。 TiDBインスタンスはステートレスであり、相互に認識していません。つまり、書き込みによってクラスタ全体で競合が発生するかどうかを知ることはできません。したがって、競合検出はTiKV層で実行されます。
 
 構成は次のとおりです。
 

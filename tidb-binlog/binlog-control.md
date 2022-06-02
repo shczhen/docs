@@ -1,7 +1,6 @@
 ---
 title: binlogctl
-summary: Learns how to use `binlogctl`.
-aliases: ['/docs/dev/tidb-binlog/binlog-control/']
+summary: `binlogctl`の使い方を学びます。
 ---
 
 # binlogctl {#binlogctl}
@@ -17,14 +16,14 @@ aliases: ['/docs/dev/tidb-binlog/binlog-control/']
 その使用シナリオは次のとおりです。
 
 -   データ複製中にエラーが発生したか、ポンプまたはドレイナーの実行状態を確認する必要があります。
--   クラスターを保守するときは、ポンプまたはドレイナーを一時停止または閉じる必要があります。
+-   クラスタを保守するときは、ポンプまたはドレイナーを一時停止または閉じる必要があります。
 -   ノードの状態が更新されていないか、予期しないときに、ポンプまたはドレイナープロセスが異常終了します。これは、データ複製タスクに影響します。
 
 ## <code>binlogctl</code>ダウンロードする {#download-code-binlogctl-code}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> 使用する制御ツールのバージョンは、クラスターのバージョンと一致していることをお勧めします。
+> 使用する制御ツールのバージョンは、クラスタのバージョンと一致していることをお勧めします。
 
 {{< copyable "" >}}
 
@@ -131,6 +130,6 @@ Usage of binlogctl:
     bin/binlogctl -pd-urls=http://127.0.0.1:2379 -cmd update-pump -node-id ip-127-0-0-1:8250 -state paused
     ```
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > PumpまたはDrainerノードが正常に実行されると、その状態は定期的にPDに更新されます。上記のコマンドは、PDに保存されているポンプまたはドレイナーの状態を直接変更します。したがって、PumpまたはDrainerノードが正常に動作しているときは、このコマンドを使用しないでください。詳細については、 [TiDB Binlog FAQ](/tidb-binlog/tidb-binlog-faq.md)を参照してください。

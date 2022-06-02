@@ -1,5 +1,5 @@
 ---
-title: TiDB 4.0.5 Release Notes
+title: TiDB4.0.5リリースノート
 ---
 
 # TiDB4.0.5リリースノート {#tidb-4-0-5-release-notes}
@@ -40,7 +40,7 @@ TiDBバージョン：4.0.5
 
     -   大きなユニオンクエリに対して`DecodePlan`のパフォーマンスを最適化する[＃18941](https://github.com/pingcap/tidb/pull/18941)
     -   `Region cache miss`のエラーが発生したときにGCロックスキャンの数を減らします[＃18876](https://github.com/pingcap/tidb/pull/18876)
-    -   統計的フィードバックがクラスターのパフォーマンスに与える影響を緩和する[＃18772](https://github.com/pingcap/tidb/pull/18772)
+    -   統計的フィードバックがクラスタのパフォーマンスに与える影響を緩和する[＃18772](https://github.com/pingcap/tidb/pull/18772)
     -   RPC応答が返される前のキャンセル操作をサポート[＃18580](https://github.com/pingcap/tidb/pull/18580)
     -   HTTP APIを追加して、TiDBメトリックプロファイルを生成します[＃18531](https://github.com/pingcap/tidb/pull/18531)
     -   分割されたテーブルの分散をサポートする[＃17863](https://github.com/pingcap/tidb/pull/17863)
@@ -66,7 +66,7 @@ TiDBバージョン：4.0.5
     -   PDリーダーとフォロワーの間でリージョンリーダーの変更を同期することをサポートする[＃2795](https://github.com/tikv/pd/pull/2795)
     -   GCセーフポイントサービスを照会するためのコマンドを追加する[＃2797](https://github.com/tikv/pd/pull/2797)
     -   パフォーマンスを向上させるために、フィルターの`region.Clone`の呼び出しを置き換えます[＃2801](https://github.com/tikv/pd/pull/2801)
-    -   大規模クラスターのパフォーマンスを向上させるために、リージョンフローキャッシュの更新を無効にするオプションを追加します[＃2848](https://github.com/tikv/pd/pull/2848)
+    -   大規模クラスタのパフォーマンスを向上させるために、リージョンフローキャッシュの更新を無効にするオプションを追加します[＃2848](https://github.com/tikv/pd/pull/2848)
 
 -   TiFlash
 
@@ -90,7 +90,7 @@ TiDBバージョン：4.0.5
 
         -   一部のログを最適化する[＃428](https://github.com/pingcap/br/pull/428)
 
-    -   団子
+    -   Dumpling
 
         -   MySQL [＃121](https://github.com/pingcap/dumpling/pull/121)のロック時間を短縮するために、接続が作成された後にFTWRLを解放します
 
@@ -112,7 +112,7 @@ TiDBバージョン：4.0.5
     -   `char`関数[＃18122](https://github.com/pingcap/tidb/pull/18122)の間違った動作を修正します
     -   `ADMIN REPAIR TABLE`ステートメントが範囲パーティション[＃17988](https://github.com/pingcap/tidb/pull/17988)の式の整数を解析できない問題を修正します
     -   `SET CHARSET`ステートメント[＃17289](https://github.com/pingcap/tidb/pull/17289)の誤った動作を修正します
-    -   `collation`関数[＃17231](https://github.com/pingcap/tidb/pull/17231)の間違った結果につながる間違った照合設定によって引き起こされたバグを修正します
+    -   `collation`関数[＃17231](https://github.com/pingcap/tidb/pull/17231)の間違った結果につながる間違った照合順序設定によって引き起こされたバグを修正します
     -   フォーマットトークン&#39;％r&#39;、&#39;％h&#39;の`STR_TO_DATE`の処理がMySQL3の処理と矛盾する問題を修正し[＃18727](https://github.com/pingcap/tidb/pull/18727)
     -   TiDBのバージョン情報が`cluster_info`表[＃18413](https://github.com/pingcap/tidb/pull/18413)のPD/TiKVのバージョン情報と矛盾する問題を修正します。
     -   悲観的なトランザクションの既存のチェックを修正する[＃19004](https://github.com/pingcap/tidb/pull/19004)
@@ -159,7 +159,7 @@ TiDBバージョン：4.0.5
         -   バックアップサマリーログ[＃472](https://github.com/pingcap/br/pull/472)の合計KVと合計バイトの重複計算の問題を修正します。
         -   このモードに切り替えてから最初の5分間はインポートモードが機能しないという問題を修正します[＃473](https://github.com/pingcap/br/pull/473)
 
-    -   団子
+    -   Dumpling
 
         -   FTWRLロックが時間[＃128](https://github.com/pingcap/dumpling/pull/128)で解放されない問題を修正します
 

@@ -1,12 +1,12 @@
 ---
-title: tiup status
+title: tiupステータス
 ---
 
 # tiupステータス {#tiup-status}
 
 `tiup status`コマンドは、 `tiup [flags] <component> [args...]`コマンドを使用してコンポーネントを実行した後、コンポーネントの動作情報を表示するために使用されます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 次のコンポーネントの情報のみを確認できます。
 >

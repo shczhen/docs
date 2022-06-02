@@ -1,35 +1,23 @@
 ---
-title: Maintain DM Clusters Using OpenAPI
-summary: Learn about how to use OpenAPI interface to manage the cluster status and data replication.
+title: OpenAPIを使用してDMクラスターを管理する
+summary: OpenAPIインターフェイスを使用してクラスタのステータスとデータレプリケーションを管理する方法について説明します。
 ---
 
-# OpenAPIを使用してDMクラスターを維持する {#maintain-dm-clusters-using-openapi}
+# OpenAPIを使用してDMクラスターを管理する {#maintain-dm-clusters-using-openapi}
 
-DMは、DMクラスターを簡単に照会および操作するためのOpenAPI機能を提供します。これは、 [dmctlツール](/dm/dmctl-introduction.md)の機能に似ています。
+DMは、DMクラスタを簡単に照会および操作するためのOpenAPI機能を提供します。これは、 [dmctlツール](/dm/dmctl-introduction.md)の機能に似ています。この機能を有効にする必要がある場合は、DMマスター構成ファイルに次の構成を追加します。
 
-OpenAPIを有効にするには、次のいずれかの操作を実行します。
+```toml
+openapi = true
+```
 
--   DMクラスターがバイナリを使用して直接デプロイされている場合は、次の構成をDMマスター構成ファイルに追加します。
-
-    ```toml
-    openapi = true
-    ```
-
--   DMクラスターがTiUPを使用してデプロイされている場合は、トポロジーファイルに次の構成を追加します。
-
-    ```yaml
-    server_configs:
-      master:
-        openapi: true
-    ```
-
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   DMは、OpenAPI3.0.0標準を満たす[仕様書](https://github.com/pingcap/tiflow/blob/master/dm/openapi/spec/dm.yaml)を提供します。このドキュメントには、すべてのリクエストパラメータと戻り値が含まれています。ドキュメントyamlをコピーして、 [Swaggerエディター](https://editor.swagger.io/)でプレビューできます。
 >
 > -   DMマスターノードを展開した後、 `http://{master-addr}/api/v1/docs`にアクセスしてドキュメントをオンラインでプレビューできます。
 
-APIを使用して、DMクラスターで次のメンテナンス操作を実行できます。
+APIを使用して、DMクラスタで次のメンテナンス操作を実行できます。
 
 ## クラスターを管理するためのAPI {#apis-for-managing-clusters}
 
@@ -41,16 +29,13 @@ APIを使用して、DMクラスターで次のメンテナンス操作を実行
 ## データソースを管理するためのAPI {#apis-for-managing-data-sources}
 
 -   [データソースを作成する](#create-a-data-source)
--   [データソースを取得する](#get-a-data-source)
--   [データソースを削除します](#delete-the-data-source)
--   [データソースを更新する](#update-a-data-source)
--   [データソースを有効にする](#enable-a-data-source)
--   [データソースを無効にする](#disable-a-data-source)
--   [データソースの情報を取得する](#get-the-information-of-a-data-source)
 -   [データソースリストを取得する](#get-the-data-source-list)
+-   [データソースを削除します](#delete-the-data-source)
+-   [データソースの情報を取得する](#get-the-information-of-a-data-source)
 -   [データソースのリレーログ機能を開始します](#start-the-relay-log-feature-for-data-sources)
 -   [データソースのリレーログ機能を停止します](#stop-the-relay-log-feature-for-data-sources)
--   [不要になったリレーログファイルを削除します](#purge-relay-log-files-that-are-no-longer-required)
+-   [データソースのリレーログ機能を一時停止します](#pause-the-relay-log-feature-for-data-sources)
+-   [データソースのリレーログ機能を再開します](#resume-the-relay-log-feature-for-data-sources)
 -   [データソースとDMワーカー間のバインディングを変更します](#change-the-bindings-between-the-data-source-and-dm-workers)
 -   [データソースのスキーマ名のリストを取得する](#get-the-list-of-schema-names-of-a-data-source)
 -   [データソース内の指定されたスキーマのテーブル名のリストを取得します](#get-the-list-of-table-names-of-a-specified-schema-in-a-data-source)
@@ -58,14 +43,11 @@ APIを使用して、DMクラスターで次のメンテナンス操作を実行
 ## レプリケーションタスクを管理するためのAPI {#apis-for-managing-replication-tasks}
 
 -   [レプリケーションタスクを作成する](#create-a-replication-task)
--   [レプリケーションタスクを取得する](#get-a-replication-task)
--   [レプリケーションタスクを削除します](#delete-a-replication-task)
--   [レプリケーションタスクを更新します](#update-a-replication-task)
--   [レプリケーションタスクを開始します](#start-a-replication-task)
+-   [レプリケーションタスクリストを取得する](#get-the-replication-task-list)
 -   [レプリケーションタスクを停止します](#stop-a-replication-task)
 -   [レプリケーションタスクの情報を取得します](#get-the-information-of-a-replication-task)
--   [レプリケーションタスクリストを取得する](#get-the-replication-task-list)
--   [レプリケーションタスクの移行ルールを取得する](#get-the-migration-rules-of-a-replication-task)
+-   [レプリケーションタスクを一時停止します](#pause-a-replication-task)
+-   [レプリケーションタスクを再開します](#resume-a-replication-task)
 -   [レプリケーションタスクに関連付けられているデータソースのスキーマ名のリストを取得します](#get-the-list-of-schema-names-of-the-data-source-that-is-associated-with-a-replication-task)
 -   [レプリケーションタスクに関連付けられているデータソース内の指定されたスキーマのテーブル名のリストを取得します](#get-the-list-of-table-names-of-a-specified-schema-in-the-data-source-that-is-associated-with-a-replication-task)
 -   [レプリケーションタスクに関連付けられているデータソースのスキーマのCREATEステートメントを取得します](#get-the-create-statement-for-schemas-of-the-data-source-that-is-associated-with-a-replication-task)
@@ -210,7 +192,6 @@ curl -X 'POST' \
   "port": 3306,
   "user": "root",
   "password": "123456",
-  "enable": true,
   "enable_gtid": false,
   "security": {
     "ssl_ca_content": "",
@@ -235,7 +216,6 @@ curl -X 'POST' \
   "port": 3306,
   "user": "root",
   "password": "123456",
-  "enable": true,
   "enable_gtid": false,
   "security": {
     "ssl_ca_content": "",
@@ -266,212 +246,6 @@ curl -X 'POST' \
     }
   ]
 }
-```
-
-## データソースを取得する {#get-a-data-source}
-
-このAPIは同期インターフェースです。リクエストが成功すると、対応するデータソースの情報が返されます。
-
-### URIをリクエストする {#request-uri}
-
-`GET /api/v1/sources/{source-name}`
-
-### 例 {#example}
-
-{{< copyable "" >}}
-
-```shell
-curl -X 'GET' \
-  'http://127.0.0.1:8261/api/v1/sources/source-1?with_status=true' \
-  -H 'accept: application/json'
-```
-
-```json
-{
-  "source_name": "mysql-01",
-  "host": "127.0.0.1",
-  "port": 3306,
-  "user": "root",
-  "password": "123456",
-  "enable_gtid": false,
-  "enable": false,
-  "flavor": "mysql",
-  "task_name_list": [
-    "task1"
-  ],
-  "security": {
-    "ssl_ca_content": "",
-    "ssl_cert_content": "",
-    "ssl_key_content": "",
-    "cert_allowed_cn": [
-      "string"
-    ]
-  },
-  "purge": {
-    "interval": 3600,
-    "expires": 0,
-    "remain_space": 15
-  },
-  "status_list": [
-    {
-      "source_name": "mysql-replica-01",
-      "worker_name": "worker-1",
-      "relay_status": {
-        "master_binlog": "(mysql-bin.000001, 1979)",
-        "master_binlog_gtid": "e9a1fc22-ec08-11e9-b2ac-0242ac110003:1-7849",
-        "relay_dir": "./sub_dir",
-        "relay_binlog_gtid": "e9a1fc22-ec08-11e9-b2ac-0242ac110003:1-7849",
-        "relay_catch_up_master": true,
-        "stage": "Running"
-      },
-      "error_msg": "string"
-    }
-  ],
-  "relay_config": {
-    "enable_relay": true,
-    "relay_binlog_name": "mysql-bin.000002",
-    "relay_binlog_gtid": "e9a1fc22-ec08-11e9-b2ac-0242ac110003:1-7849",
-    "relay_dir": "./relay_log"
-  }
-}
-```
-
-## データソースを削除します {#delete-the-data-source}
-
-このAPIは同期インターフェースです。リクエストが成功した場合、返される本文のステータスコードは204です。
-
-### URIをリクエストする {#request-uri}
-
-`DELETE /api/v1/sources/{source-name}`
-
-### 例 {#example}
-
-{{< copyable "" >}}
-
-```shell
-curl -X 'DELETE' \
-  'http://127.0.0.1:8261/api/v1/sources/mysql-01?force=true' \
-  -H 'accept: application/json'
-```
-
-## データソースを更新する {#update-a-data-source}
-
-このAPIは同期インターフェースです。リクエストが成功すると、対応するデータソースの情報が返されます。
-
-> <strong>ノート：</strong>
->
-> このAPIを使用してデータソース構成を更新するときは、現在のデータソースで実行中のタスクがないことを確認してください。
-
-### URIをリクエストする {#request-uri}
-
-`PUT /api/v1/sources/{source-name}`
-
-### 例 {#example}
-
-{{< copyable "" >}}
-
-```shell
-curl -X 'PUT' \
-  'http://127.0.0.1:8261/api/v1/sources/mysql-01' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "source": {
-    "source_name": "mysql-01",
-    "host": "127.0.0.1",
-    "port": 3306,
-    "user": "root",
-    "password": "123456",
-    "enable_gtid": false,
-    "enable": false,
-    "flavor": "mysql",
-    "task_name_list": [
-      "task1"
-    ],
-    "security": {
-      "ssl_ca_content": "",
-      "ssl_cert_content": "",
-      "ssl_key_content": "",
-      "cert_allowed_cn": [
-        "string"
-      ]
-    },
-    "purge": {
-      "interval": 3600,
-      "expires": 0,
-      "remain_space": 15
-    },
-    "relay_config": {
-      "enable_relay": true,
-      "relay_binlog_name": "mysql-bin.000002",
-      "relay_binlog_gtid": "e9a1fc22-ec08-11e9-b2ac-0242ac110003:1-7849",
-      "relay_dir": "./relay_log"
-    }
-  }
-}'
-```
-
-```json
-{
-  "source_name": "mysql-01",
-  "host": "127.0.0.1",
-  "port": 3306,
-  "user": "root",
-  "password": "123456",
-  "enable": true,
-  "enable_gtid": false,
-  "security": {
-    "ssl_ca_content": "",
-    "ssl_cert_content": "",
-    "ssl_key_content": "",
-    "cert_allowed_cn": [
-      "string"
-    ]
-  },
-  "purge": {
-    "interval": 3600,
-    "expires": 0,
-    "remain_space": 15
-  }
-}
-```
-
-## データソースを有効にする {#enable-a-data-source}
-
-これは、要求が成功したときにデータソースを有効にし、このデータソースに依存するタスクのすべてのサブタスクをバッチで開始する同期インターフェイスです。
-
-### URIをリクエストする {#request-uri}
-
-`POST /api/v1/sources/{source-name}/enable`
-
-### 例 {#example}
-
-{{< copyable "" >}}
-
-```shell
-curl -X 'POST' \
-  'http://127.0.0.1:8261/api/v1/sources/mysql-01/enable' \
-  -H 'accept: */*' \
-  -H 'Content-Type: application/json'
-```
-
-## データソースを無効にする {#disable-a-data-source}
-
-これは、要求が成功するとこのデータソースを非アクティブ化し、それに依存するタスクのすべてのサブタスクをバッチで停止する同期インターフェイスです。
-
-### URIをリクエストする {#request-uri}
-
-`POST /api/v1/sources/{source-name}/disable`
-
-### 例 {#example}
-
-{{< copyable "" >}}
-
-```shell
-curl -X 'POST' \
-  'http://127.0.0.1:8261/api/v1/sources/mysql-01/disable' \
-  -H 'accept: */*' \
-  -H 'Content-Type: application/json'
 ```
 
 ## データソースリストを取得する {#get-the-data-source-list}
@@ -528,6 +302,24 @@ curl -X 'GET' \
 }
 ```
 
+## データソースを削除します {#delete-the-data-source}
+
+このAPIは同期インターフェースです。リクエストが成功した場合、返される本文のステータスコードは204です。
+
+### URIをリクエストする {#request-uri}
+
+`DELETE /api/v1/sources/{source-name}`
+
+### 例 {#example}
+
+{{< copyable "" >}}
+
+```shell
+curl -X 'DELETE' \
+  'http://127.0.0.1:8261/api/v1/sources/mysql-01?force=true' \
+  -H 'accept: application/json'
+```
+
 ## データソースの情報を取得する {#get-the-information-of-a-data-source}
 
 このAPIは同期インターフェースです。リクエストが成功すると、対応するノードの情報が返されます。
@@ -573,7 +365,7 @@ curl -X 'GET' \
 
 ### URIをリクエストする {#request-uri}
 
-`POST /api/v1/sources/{source-name}/relay/enable`
+`POST /api/v1/sources/{source-name}/start-relay`
 
 ### 例 {#example}
 
@@ -581,7 +373,7 @@ curl -X 'GET' \
 
 ```shell
 curl -X 'POST' \
-  'http://127.0.0.1:8261/api/v1/sources/mysql-01/relay/enable' \
+  'http://127.0.0.1:8261/api/v1/sources/mysql-01/start-relay' \
   -H 'accept: */*' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -600,7 +392,7 @@ curl -X 'POST' \
 
 ### URIをリクエストする {#request-uri}
 
-`POST /api/v1/sources/{source-name}/relay/disable`
+`POST /api/v1/sources/{source-name}/stop-relay`
 
 ### 例 {#example}
 
@@ -608,7 +400,7 @@ curl -X 'POST' \
 
 ```shell
 curl -X 'POST' \
-  'http://127.0.0.1:8261/api/v1/sources/mysql-01/relay/disable' \
+  'http://127.0.0.1:8261/api/v1/sources/mysql-01/stop-relay' \
   -H 'accept: */*' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -618,13 +410,13 @@ curl -X 'POST' \
 }'
 ```
 
-## 不要になったリレーログファイルを削除します {#purge-relay-log-files-that-are-no-longer-required}
+## データソースのリレーログ機能を一時停止します {#pause-the-relay-log-feature-for-data-sources}
 
 このAPIは非同期インターフェースです。リクエストが成功した場合、返された本文のステータスコードは200です。最新のステータスを確認するには、 [データソースの情報を取得する](#get-the-information-of-a-data-source)を実行できます。
 
 ### URIをリクエストする {#request-uri}
 
-`POST /api/v1/sources/{source-name}/relay/purge`
+`POST /api/v1/sources/{source-name}/pause-relay`
 
 ### 例 {#example}
 
@@ -632,13 +424,26 @@ curl -X 'POST' \
 
 ```shell
 curl -X 'POST' \
-  'http://127.0.0.1:8261/api/v1/sources/mysql-01/relay/purge' \
-  -H 'accept: */*' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "relay_binlog_name": "mysql-bin.000002",
-  "relay_dir": "string"
-}'
+  'http://127.0.0.1:8261/api/v1/sources/mysql-01/pause-relay' \
+  -H 'accept: */*'
+```
+
+## データソースのリレーログ機能を再開します {#resume-the-relay-log-feature-for-data-sources}
+
+このAPIは非同期インターフェースです。リクエストが成功した場合、返された本文のステータスコードは200です。最新のステータスを確認するには、 [データソースの情報を取得する](#get-the-information-of-a-data-source)を実行できます。
+
+### URIをリクエストする {#request-uri}
+
+`POST /api/v1/sources/{source-name}/resume-relay`
+
+### 例 {#example}
+
+{{< copyable "" >}}
+
+```shell
+curl -X 'POST' \
+  'http://127.0.0.1:8261/api/v1/sources/mysql-01/resume-relay' \
+  -H 'accept: */*'
 ```
 
 ## データソースとDMワーカー間のバインディングを変更します {#change-the-bindings-between-the-data-source-and-dm-workers}
@@ -713,7 +518,7 @@ curl -X 'GET' \
 
 ## レプリケーションタスクを作成する {#create-a-replication-task}
 
-このAPIは同期インターフェースです。リクエストが成功した場合、返される本文のステータスコードは200です。リクエストが成功すると、対応するレプリケーションタスクの情報が返されます。
+このAPIは非同期インターフェースです。リクエストが成功した場合、返された本文のステータスコードは200です。最新のステータスを確認するには、 [レプリケーションタスクの情報を取得する](#get-the-information-of-a-replication-task)を実行できます。
 
 ### URIをリクエストする {#request-uri}
 
@@ -729,6 +534,7 @@ curl -X 'POST' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
+  "remove_meta": false,
   "task": {
     "name": "task-1",
     "task_mode": "all",
@@ -814,534 +620,105 @@ curl -X 'POST' \
         }
       ]
     }
-  }
-}'
-```
-
-```json
-{
-  "name": "task-1",
-  "task_mode": "all",
-  "shard_mode": "pessimistic",
-  "meta_schema": "dm-meta",
-  "enhance_online_schema_change": true,
-  "on_duplicate": "overwrite",
-  "target_config": {
-    "host": "127.0.0.1",
-    "port": 3306,
-    "user": "root",
-    "password": "123456",
-    "security": {
-      "ssl_ca_content": "",
-      "ssl_cert_content": "",
-      "ssl_key_content": "",
-      "cert_allowed_cn": [
-        "string"
-      ]
-    }
   },
-  "binlog_filter_rule": {
-    "rule-1": {
-      "ignore_event": [
-        "all dml"
-      ],
-      "ignore_sql": [
-        "^Drop"
-      ]
-    },
-    "rule-2": {
-      "ignore_event": [
-        "all dml"
-      ],
-      "ignore_sql": [
-        "^Drop"
-      ]
-    },
-    "rule-3": {
-      "ignore_event": [
-        "all dml"
-      ],
-      "ignore_sql": [
-        "^Drop"
-      ]
-    }
-  },
-  "table_migrate_rule": [
-    {
-      "source": {
-        "source_name": "source-name",
-        "schema": "db-*",
-        "table": "tb-*"
-      },
-      "target": {
-        "schema": "db1",
-        "table": "tb1"
-      },
-      "binlog_filter_rule": [
-        "rule-1",
-        "rule-2",
-        "rule-3",
-      ]
-    }
-  ],
-  "source_config": {
-    "full_migrate_conf": {
-      "export_threads": 4,
-      "import_threads": 16,
-      "data_dir": "./exported_data",
-      "consistency": "auto"
-    },
-    "incr_migrate_conf": {
-      "repl_threads": 16,
-      "repl_batch": 100
-    },
-    "source_conf": [
-      {
-        "source_name": "mysql-replica-01",
-        "binlog_name": "binlog.000001",
-        "binlog_pos": 4,
-        "binlog_gtid": "03fc0263-28c7-11e7-a653-6c0b84d59f30:1-7041423,05474d3c-28c7-11e7-8352-203db246dd3d:1-170"
-      }
-    ]
-  }
-}
-```
-
-## レプリケーションタスクを取得する {#get-a-replication-task}
-
-このAPIは同期インターフェースです。要求が成功すると、対応するレプリケーションタスクの情報が返されます。
-
-### URIをリクエストする {#request-uri}
-
-`GET /api/v1/tasks/{task-name}?with_status=true`
-
-### 例 {#example}
-
-{{< copyable "" >}}
-
-```shell
-curl -X 'GET' \
-  'http://127.0.0.1:8261/api/v1/tasks/task-1?with_status=true' \
-  -H 'accept: application/json'
-```
-
-```json
-{
-  "name": "task-1",
-  "task_mode": "all",
-  "shard_mode": "pessimistic",
-  "meta_schema": "dm-meta",
-  "enhance_online_schema_change": true,
-  "on_duplicate": "overwrite",
-  "target_config": {
-    "host": "127.0.0.1",
-    "port": 3306,
-    "user": "root",
-    "password": "123456",
-    "security": {
-      "ssl_ca_content": "",
-      "ssl_cert_content": "",
-      "ssl_key_content": "",
-      "cert_allowed_cn": [
-        "string"
-      ]
-    }
-  },
-  "binlog_filter_rule": {
-    "rule-1": {
-      "ignore_event": [
-        "all dml"
-      ],
-      "ignore_sql": [
-        "^Drop"
-      ]
-    },
-    "rule-2": {
-      "ignore_event": [
-        "all dml"
-      ],
-      "ignore_sql": [
-        "^Drop"
-      ]
-    },
-    "rule-3": {
-      "ignore_event": [
-        "all dml"
-      ],
-      "ignore_sql": [
-        "^Drop"
-      ]
-    }
-  },
-  "table_migrate_rule": [
-    {
-      "source": {
-        "source_name": "source-name",
-        "schema": "db-*",
-        "table": "tb-*"
-      },
-      "target": {
-        "schema": "db1",
-        "table": "tb1"
-      },
-      "binlog_filter_rule": [
-        "rule-1",
-        "rule-2",
-        "rule-3",
-      ]
-    }
-  ],
-  "source_config": {
-    "full_migrate_conf": {
-      "export_threads": 4,
-      "import_threads": 16,
-      "data_dir": "./exported_data",
-      "consistency": "auto"
-    },
-    "incr_migrate_conf": {
-      "repl_threads": 16,
-      "repl_batch": 100
-    },
-    "source_conf": [
-      {
-        "source_name": "mysql-replica-01",
-        "binlog_name": "binlog.000001",
-        "binlog_pos": 4,
-        "binlog_gtid": "03fc0263-28c7-11e7-a653-6c0b84d59f30:1-7041423,05474d3c-28c7-11e7-8352-203db246dd3d:1-170"
-      }
-    ]
-  }
-}
-```
-
-## レプリケーションタスクを削除します {#delete-a-replication-task}
-
-このインターフェースは同期インターフェースであり、リクエストが成功すると、返される本文のステータスコードは204になります。
-
-### URIをリクエストする {#request-uri}
-
-`DELETE /api/v1/tasks/{task-name}`
-
-### 例 {#example}
-
-{{< copyable "" >}}
-
-```shell
-curl -X 'DELETE' \
-  'http://127.0.0.1:8261/api/v1/tasks/task-1' \
-  -H 'accept: application/json'
-```
-
-## レプリケーションタスクを更新します {#update-a-replication-task}
-
-このインターフェースは同期インターフェースであり、リクエストが成功するとタスクの情報が返されます。
-
-> <strong>ノート：</strong>
->
-> このAPIを使用してタスク構成を更新するときは、タスクが停止して増分同期が実行されていること、および一部のフィールドのみを更新できることを確認してください。
-
-### URIをリクエストする {#request-uri}
-
-`PUT /api/v1/tasks/{task-name}`
-
-### 例 {#example}
-
-{{< copyable "" >}}
-
-```shell
-curl -X 'PUT' \
-  'http://127.0.0.1:8261/api/v1/tasks/task-1' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "task": {
-    "name": "task-1",
-    "task_mode": "all",
-    "shard_mode": "pessimistic",
-    "meta_schema": "dm-meta",
-    "enhance_online_schema_change": true,
-    "on_duplicate": "overwrite",
-    "target_config": {
-      "host": "127.0.0.1",
-      "port": 3306,
-      "user": "root",
-      "password": "123456",
-      "security": {
-        "ssl_ca_content": "",
-        "ssl_cert_content": "",
-        "ssl_key_content": "",
-        "cert_allowed_cn": [
-          "string"
-        ]
-      }
-    },
-    "binlog_filter_rule": {
-      "rule-1": {
-        "ignore_event": [
-          "all dml"
-        ],
-        "ignore_sql": [
-          "^Drop"
-        ]
-      },
-      "rule-2": {
-        "ignore_event": [
-          "all dml"
-        ],
-        "ignore_sql": [
-          "^Drop"
-        ]
-      },
-      "rule-3": {
-        "ignore_event": [
-          "all dml"
-        ],
-        "ignore_sql": [
-          "^Drop"
-        ]
-      }
-    },
-    "table_migrate_rule": [
-      {
-        "source": {
-          "source_name": "source-name",
-          "schema": "db-*",
-          "table": "tb-*"
-        },
-        "target": {
-          "schema": "db1",
-          "table": "tb1"
-        },
-        "binlog_filter_rule": [
-          "rule-1",
-          "rule-2",
-          "rule-3",
-        ]
-      }
-    ],
-    "source_config": {
-      "full_migrate_conf": {
-        "export_threads": 4,
-        "import_threads": 16,
-        "data_dir": "./exported_data",
-        "consistency": "auto"
-      },
-      "incr_migrate_conf": {
-        "repl_threads": 16,
-        "repl_batch": 100
-      },
-      "source_conf": [
-        {
-          "source_name": "mysql-replica-01",
-          "binlog_name": "binlog.000001",
-          "binlog_pos": 4,
-          "binlog_gtid": "03fc0263-28c7-11e7-a653-6c0b84d59f30:1-7041423,05474d3c-28c7-11e7-8352-203db246dd3d:1-170"
-        }
-      ]
-    }
-  }
-}'
-```
-
-```json
-{
-  "name": "task-1",
-  "task_mode": "all",
-  "shard_mode": "pessimistic",
-  "meta_schema": "dm-meta",
-  "enhance_online_schema_change": true,
-  "on_duplicate": "overwrite",
-  "target_config": {
-    "host": "127.0.0.1",
-    "port": 3306,
-    "user": "root",
-    "password": "123456",
-    "security": {
-      "ssl_ca_content": "",
-      "ssl_cert_content": "",
-      "ssl_key_content": "",
-      "cert_allowed_cn": [
-        "string"
-      ]
-    }
-  },
-  "binlog_filter_rule": {
-    "rule-1": {
-      "ignore_event": [
-        "all dml"
-      ],
-      "ignore_sql": [
-        "^Drop"
-      ]
-    },
-    "rule-2": {
-      "ignore_event": [
-        "all dml"
-      ],
-      "ignore_sql": [
-        "^Drop"
-      ]
-    },
-    "rule-3": {
-      "ignore_event": [
-        "all dml"
-      ],
-      "ignore_sql": [
-        "^Drop"
-      ]
-    }
-  },
-  "table_migrate_rule": [
-    {
-      "source": {
-        "source_name": "source-name",
-        "schema": "db-*",
-        "table": "tb-*"
-      },
-      "target": {
-        "schema": "db1",
-        "table": "tb1"
-      },
-      "binlog_filter_rule": [
-        "rule-1",
-        "rule-2",
-        "rule-3",
-      ]
-    }
-  ],
-  "source_config": {
-    "full_migrate_conf": {
-      "export_threads": 4,
-      "import_threads": 16,
-      "data_dir": "./exported_data",
-      "consistency": "auto"
-    },
-    "incr_migrate_conf": {
-      "repl_threads": 16,
-      "repl_batch": 100
-    },
-    "source_conf": [
-      {
-        "source_name": "mysql-replica-01",
-        "binlog_name": "binlog.000001",
-        "binlog_pos": 4,
-        "binlog_gtid": "03fc0263-28c7-11e7-a653-6c0b84d59f30:1-7041423,05474d3c-28c7-11e7-8352-203db246dd3d:1-170"
-      }
-    ]
-  }
-}
-```
-
-## レプリケーションタスクを開始します {#start-a-replication-task}
-
-このAPIは非同期インターフェースです。リクエストが成功した場合、返される本文のステータスコードは204です。タスクの最新のステータスを知るには、 [レプリケーションタスクの情報を取得する](#get-the-information-of-a-replication-task)を実行できます。
-
-### URIをリクエストする {#request-uri}
-
-`POST /api/v1/tasks/{task-name}/start`
-
-### 例 {#example}
-
-{{< copyable "" >}}
-
-```shell
-curl -X 'POST' \
-  'http://127.0.0.1:8261/api/v1/tasks/task-1/start' \
-  -H 'accept: */*'
-```
-
-## レプリケーションタスクを停止します {#stop-a-replication-task}
-
-このAPIは非同期インターフェースです。リクエストが成功した場合、返される本文のステータスコードは200です。タスクの最新のステータスを知るには、 [レプリケーションタスクの情報を取得する](#get-the-information-of-a-replication-task)を実行できます。
-
-### URIをリクエストする {#request-uri}
-
-`POST /api/v1/tasks/{task-name}/stop`
-
-### 例 {#example}
-
-{{< copyable "" >}}
-
-```shell
-curl -X 'POST' \
-  'http://127.0.0.1:8261/api/v1/tasks/task-1/stop' \
-  -H 'accept: */*'
-```
-
-## レプリケーションタスクの情報を取得します {#get-the-information-of-a-replication-task}
-
-このAPIは同期インターフェースです。リクエストが成功すると、対応するノードの情報が返されます。
-
-### URIをリクエストする {#request-uri}
-
-`GET /api/v1/tasks/task-1/status`
-
-### 例 {#example}
-
-{{< copyable "" >}}
-
-```shell
-curl -X 'GET' \
-  'http://127.0.0.1:8261/api/v1/tasks/task-1/status?stage=running' \
-  -H 'accept: application/json'
-```
-
-```json
-{
-  "total": 1,
-  "data": [
-    {
-      "name": "string",
-      "source_name": "string",
-      "worker_name": "string",
-      "stage": "runing",
-      "unit": "sync",
-      "unresolved_ddl_lock_id": "string",
-      "load_status": {
-        "finished_bytes": 0,
-        "total_bytes": 0,
-        "progress": "string",
-        "meta_binlog": "string",
-        "meta_binlog_gtid": "string"
-      },
-      "sync_status": {
-        "total_events": 0,
-        "total_tps": 0,
-        "recent_tps": 0,
-        "master_binlog": "string",
-        "master_binlog_gtid": "string",
-        "syncer_binlog": "string",
-        "syncer_binlog_gtid": "string",
-        "blocking_ddls": [
-          "string"
-        ],
-        "unresolved_groups": [
-          {
-            "target": "string",
-            "ddl_list": [
-              "string"
-            ],
-            "first_location": "string",
-            "synced": [
-              "string"
-            ],
-            "unsynced": [
-              "string"
-            ]
-          }
-        ],
-        "synced": true,
-        "binlog_type": "string",
-        "seconds_behind_master": 0
-      }
-    }
+  "source_name_list": [
+    "source-1"
   ]
+}'
+```
+
+```json
+{
+  "name": "task-1",
+  "task_mode": "all",
+  "shard_mode": "pessimistic",
+  "meta_schema": "dm-meta",
+  "enhance_online_schema_change": true,
+  "on_duplicate": "overwrite",
+  "target_config": {
+    "host": "127.0.0.1",
+    "port": 3306,
+    "user": "root",
+    "password": "123456",
+    "security": {
+      "ssl_ca_content": "",
+      "ssl_cert_content": "",
+      "ssl_key_content": "",
+      "cert_allowed_cn": [
+        "string"
+      ]
+    }
+  },
+  "binlog_filter_rule": {
+    "rule-1": {
+      "ignore_event": [
+        "all dml"
+      ],
+      "ignore_sql": [
+        "^Drop"
+      ]
+    },
+    "rule-2": {
+      "ignore_event": [
+        "all dml"
+      ],
+      "ignore_sql": [
+        "^Drop"
+      ]
+    },
+    "rule-3": {
+      "ignore_event": [
+        "all dml"
+      ],
+      "ignore_sql": [
+        "^Drop"
+      ]
+    }
+  },
+  "table_migrate_rule": [
+    {
+      "source": {
+        "source_name": "source-name",
+        "schema": "db-*",
+        "table": "tb-*"
+      },
+      "target": {
+        "schema": "db1",
+        "table": "tb1"
+      },
+      "binlog_filter_rule": [
+        "rule-1",
+        "rule-2",
+        "rule-3",
+      ]
+    }
+  ],
+  "source_config": {
+    "full_migrate_conf": {
+      "export_threads": 4,
+      "import_threads": 16,
+      "data_dir": "./exported_data",
+      "consistency": "auto"
+    },
+    "incr_migrate_conf": {
+      "repl_threads": 16,
+      "repl_batch": 100
+    },
+    "source_conf": [
+      {
+        "source_name": "mysql-replica-01",
+        "binlog_name": "binlog.000001",
+        "binlog_pos": 4,
+        "binlog_gtid": "03fc0263-28c7-11e7-a653-6c0b84d59f30:1-7041423,05474d3c-28c7-11e7-8352-203db246dd3d:1-170"
+      }
+    ]
+  }
 }
 ```
 
 ## レプリケーションタスクリストを取得する {#get-the-replication-task-list}
 
-このAPIは同期インターフェースであり、リクエストが成功すると、対応するタスクのリストが返されます。
+このAPIは同期インターフェースです。要求が成功すると、対応するレプリケーションタスクの情報が返されます。
 
 ### URIをリクエストする {#request-uri}
 
@@ -1451,13 +828,31 @@ curl -X 'GET' \
 }
 ```
 
-## レプリケーションタスクの移行ルールを取得する {#get-the-migration-rules-of-a-replication-task}
+## レプリケーションタスクを停止します {#stop-a-replication-task}
 
-このAPIは同期インターフェースであり、リクエストが成功すると、このタスクの移行ルールのリストが返されます。
+このAPIは非同期インターフェースです。リクエストが成功した場合、返された本文のステータスコードは204です。最新のステータスについて知るには、 [レプリケーションタスクの情報を取得する](#get-the-information-of-a-replication-task)を実行できます。
 
 ### URIをリクエストする {#request-uri}
 
-`GET /api/v1/tasks/{task-name}/sources/{source-name}/migrate_targets`
+`DELETE /api/v1/tasks/{task-name}`
+
+### 例 {#example}
+
+{{< copyable "" >}}
+
+```shell
+curl -X 'DELETE' \
+  'http://127.0.0.1:8261/api/v1/tasks/task-1' \
+  -H 'accept: */*'
+```
+
+## レプリケーションタスクの情報を取得します {#get-the-information-of-a-replication-task}
+
+このAPIは同期インターフェースです。リクエストが成功すると、対応するノードの情報が返されます。
+
+### URIをリクエストする {#request-uri}
+
+`GET /api/v1/tasks/task-1/status`
 
 ### 例 {#example}
 
@@ -1465,22 +860,105 @@ curl -X 'GET' \
 
 ```shell
 curl -X 'GET' \
-  'http://127.0.0.1:8261/api/v1/tasks/task-1/sources/source-1/migrate_targets' \
+  'http://127.0.0.1:8261/api/v1/tasks/task-1/status?stage=running' \
   -H 'accept: application/json'
 ```
 
 ```json
 {
-  "total": 0,
+  "total": 1,
   "data": [
     {
-      "source_schema": "db1",
-      "source_table": "tb1",
-      "target_schema": "db1",
-      "target_table": "tb1"
+      "name": "string",
+      "source_name": "string",
+      "worker_name": "string",
+      "stage": "runing",
+      "unit": "sync",
+      "unresolved_ddl_lock_id": "string",
+      "load_status": {
+        "finished_bytes": 0,
+        "total_bytes": 0,
+        "progress": "string",
+        "meta_binlog": "string",
+        "meta_binlog_gtid": "string"
+      },
+      "sync_status": {
+        "total_events": 0,
+        "total_tps": 0,
+        "recent_tps": 0,
+        "master_binlog": "string",
+        "master_binlog_gtid": "string",
+        "syncer_binlog": "string",
+        "syncer_binlog_gtid": "string",
+        "blocking_ddls": [
+          "string"
+        ],
+        "unresolved_groups": [
+          {
+            "target": "string",
+            "ddl_list": [
+              "string"
+            ],
+            "first_location": "string",
+            "synced": [
+              "string"
+            ],
+            "unsynced": [
+              "string"
+            ]
+          }
+        ],
+        "synced": true,
+        "binlog_type": "string",
+        "seconds_behind_master": 0
+      }
     }
   ]
 }
+```
+
+## レプリケーションタスクを一時停止します {#pause-a-replication-task}
+
+このAPIは非同期インターフェースです。リクエストが成功した場合、返された本文のステータスコードは200です。最新のステータスを確認するには、 [レプリケーションタスクの情報を取得する](#get-the-information-of-a-replication-task)を実行できます。
+
+### URIをリクエストする {#request-uri}
+
+`POST /api/v1/tasks/task-1/pause`
+
+### 例 {#example}
+
+{{< copyable "" >}}
+
+```shell
+curl -X 'POST' \
+  'http://127.0.0.1:8261/api/v1/tasks/task-1/pause' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '[
+  "source-1"
+]'
+```
+
+## レプリケーションタスクを再開します {#resume-a-replication-task}
+
+このAPIは非同期インターフェースです。リクエストが成功した場合、返された本文のステータスコードは200です。最新のステータスを確認するには、 [レプリケーションタスクの情報を取得する](#get-the-information-of-a-replication-task)を実行できます。
+
+### URIをリクエストする {#request-uri}
+
+`POST /api/v1/tasks/task-1/resume`
+
+### 例 {#example}
+
+{{< copyable "" >}}
+
+```shell
+curl -X 'POST' \
+  'http://127.0.0.1:8261/api/v1/tasks/task-1/resume' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '[
+  "source-1"
+]'
 ```
 
 ## レプリケーションタスクに関連付けられているデータソースのスキーマ名のリストを取得します {#get-the-list-of-schema-names-of-the-data-source-that-is-associated-with-a-replication-task}

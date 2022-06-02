@@ -1,6 +1,6 @@
 ---
 title: CHARACTER_SETS
-summary: Learn the `CHARACTER_SETS` information_schema table.
+summary: `CHARACTER_SETS`information_schemaテーブルを学びます。
 ---
 
 # CHARACTER_SETS {#character-sets}
@@ -48,6 +48,6 @@ SELECT * FROM `character_sets`;
 `CHARACTER_SETS`テーブルの列の説明は次のとおりです。
 
 -   `CHARACTER_SET_NAME` ：文字セットの名前。
--   `DEFAULT_COLLATE_NAME`文字セットのデフォルトの照合名。
+-   `DEFAULT_COLLATE_NAME`文字セットのデフォルトの照合順序名。
 -   `DESCRIPTION`文字セットの説明。
 -   `MAXLEN`この文字セットに文字を格納するために必要な最大長。

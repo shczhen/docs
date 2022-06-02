@@ -1,5 +1,5 @@
 ---
-title: TiDB 5.0.3 Release Notes
+title: TiDB5.0.3リリースノート
 ---
 
 # TiDB5.0.3リリースノート {#tidb-5-0-3-release-notes}
@@ -12,7 +12,7 @@ TiDBバージョン：5.0.3
 
 -   TiDB
 
-    -   v4.0クラスターがv5.0以降のバージョン（devまたはv5.1）にアップグレードされると、 `tidb_multi_statement_mode`変数のデフォルト値が`WARN`から`OFF`に変更されます。
+    -   v4.0クラスタがv5.0以降のバージョン（devまたはv5.1）にアップグレードされると、 `tidb_multi_statement_mode`変数のデフォルト値が`WARN`から`OFF`に変更されます。
     -   TiDBは、MySQL5.7のnoop変数`innodb_default_row_format`と互換性があります。この変数を設定しても効果はありません。 [＃23541](https://github.com/pingcap/tidb/issues/23541)
 
 ## 機能の強化 {#feature-enhancements}

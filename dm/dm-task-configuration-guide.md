@@ -1,9 +1,9 @@
 ---
-title: Data Migration Task Configuration Guide
-summary: Learn how to configure a data migration task in Data Migration (DM).
+title: データ移行タスクConfiguration / コンフィグレーションガイド
+summary: データ移行（DM）でデータ移行タスクを構成する方法を学びます。
 ---
 
-# データ移行タスク構成ガイド {#data-migration-task-configuration-guide}
+# データ移行タスクConfiguration / コンフィグレーションガイド {#data-migration-task-configuration-guide}
 
 このドキュメントでは、データ移行（DM）でデータ移行タスクを構成する方法を紹介します。
 
@@ -29,9 +29,9 @@ mysql-instances:
   - source-id: "mysql-replica-02"  # Migrate data from the data source whose `source-id` is `mysql-replica-02`.
 ```
 
-## ダウンストリームTiDBクラスターを構成します {#configure-the-downstream-tidb-cluster}
+## ダウンストリームTiDBクラスタを構成します {#configure-the-downstream-tidb-cluster}
 
-次の`target-database`の例は、データ移行タスクのために移行先のターゲットTiDBクラスターを構成する方法を示しています。
+次の`target-database`の例は、データ移行タスクのために移行先のターゲットTiDBクラスタを構成する方法を示しています。
 
 ```yaml
 ---
@@ -54,7 +54,7 @@ target-database:       # Configuration of target TiDB database.
 
 ## 移行するテーブルを構成する {#configure-tables-to-be-migrated}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 特定のテーブルをフィルタリングしたり、特定のテーブルを移行したりする必要がない場合は、この構成をスキップしてください。
 
@@ -92,7 +92,7 @@ target-database:       # Configuration of target TiDB database.
 
 ## 移行するbinlogイベントを構成します {#configure-binlog-events-to-be-migrated}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 特定のスキーマまたはテーブルの特定のbinlogイベントをフィルタリングする必要がない場合は、この構成をスキップしてください。
 
@@ -129,11 +129,11 @@ target-database:       # Configuration of target TiDB database.
 
 ## データソーステーブルからダウンストリームTiDBテーブルへのマッピングを構成します {#configure-the-mapping-of-data-source-tables-to-downstream-tidb-tables}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   データソースの特定のテーブルをダウンストリームTiDBインスタンスの別の名前のテーブルに移行する必要がない場合は、この構成をスキップしてください。
 >
-> -   シャードマージタスクの場合は、タスク構成ファイルでマッピングルールを設定する<strong>必要</strong>があります。
+> -   シャードマージタスクの場合は、タスク構成ファイルでマッピングルールを設定する**必要**があります。
 
 データソーステーブルを指定されたダウンストリームTiDBテーブルに移行するためのルーティングマッピングルールを設定するには、次の手順を実行します。
 
@@ -168,11 +168,11 @@ target-database:       # Configuration of target TiDB database.
 
 ## シャードマージタスクを構成する {#configure-a-shard-merge-task}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> -   シャードマージシナリオでシャーディングDDLステートメントを移行する必要がある場合は、 `shard-mode`フィールドを明示的に構成する<strong>必要</strong>があります。それ以外の場合は、 `shard-mode`をまったく構成し<strong>ない</strong>でください。
+> -   シャードマージシナリオでシャーディングDDLステートメントを移行する必要がある場合は、 `shard-mode`フィールドを明示的に構成する**必要**があります。それ以外の場合は、 `shard-mode`をまったく構成し<strong>ない</strong>でください。
 >
-> -   シャーディングDDLステートメントを移行すると、多くの問題が発生する可能性があります。この機能を使用する前に、DM移行DDLステートメントの原則と制限を理解していることを確認してください。この機能は注意して使用する<strong>必要</strong>があります。
+> -   シャーディングDDLステートメントを移行すると、多くの問題が発生する可能性があります。この機能を使用する前に、DM移行DDLステートメントの原則と制限を理解していることを確認してください。この機能は注意して使用する**必要**があります。
 
 次の例は、タスクをシャードマージタスクとして構成する方法を示しています。
 

@@ -1,7 +1,6 @@
 ---
-title: SET ROLE | TiDB SQL Statement Reference
-summary: An overview of the usage of SET ROLE for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-set-role/']
+title: セットロール| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのSETROLEの使用法の概要。
 ---
 
 # 役割を設定する {#set-role}
@@ -10,15 +9,15 @@ aliases: ['/docs/dev/sql-statements/sql-statement-set-role/']
 
 ## あらすじ {#synopsis}
 
-<strong>SetRoleStmt：</strong>
+**SetRoleStmt：**
 
 ![SetRoleStmt](/media/sqlgram/SetRoleStmt.png)
 
-<strong>SetRoleOpt：</strong>
+**SetRoleOpt：**
 
 ![SetRoleOpt](/media/sqlgram/SetRoleOpt.png)
 
-<strong>SetDefaultRoleOpt：</strong>
+**SetDefaultRoleOpt：**
 
 ![SetDefaultRoleOpt](/media/sqlgram/SetDefaultRoleOpt.png)
 

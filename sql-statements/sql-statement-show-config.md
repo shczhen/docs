@@ -1,24 +1,23 @@
 ---
-title: SHOW CONFIG
-summary: Overview of the use of SHOW CONFIG in the TiDB database
-aliases: ['/docs/dev/sql-statements/sql-statement-show-config/']
+title: 設定を表示
+summary: TiDBデータベースでのSHOWCONFIGの使用の概要
 ---
 
 # 設定を表示 {#show-config}
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> この機能は現在実験的な機能です。この機能を実稼働環境で使用することはお勧めしません。
+> この機能は現在実験的機能です。この機能を実稼働環境で使用することはお勧めしません。
 
 `SHOW CONFIG`ステートメントは、TiDBのさまざまなコンポーネントの現在の構成を示すために使用されます。構成変数とシステム変数は異なる次元で機能するため、混同しないでください。システム変数情報を取得する場合は、 [変数を表示](/sql-statements/sql-statement-show-variables.md)の構文を使用します。
 
 ## あらすじ {#synopsis}
 
-<strong>ShowStmt：</strong>
+**ShowStmt：**
 
 ![ShowStmt](/media/sqlgram/ShowStmt.png)
 
-<strong>ShowTargetFilterable：</strong>
+**ShowTargetFilterable：**
 
 ![ShowTargetFilterable](/media/sqlgram/ShowTargetFilterable.png)
 

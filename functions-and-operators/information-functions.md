@@ -1,7 +1,6 @@
 ---
-title: Information Functions
-summary: Learn about the information functions.
-aliases: ['/docs/dev/functions-and-operators/information-functions/','/docs/dev/reference/sql/functions-and-operators/information-functions/']
+title: 情報機能
+summary: 情報機能について学びます。
 ---
 
 # 情報機能 {#information-functions}

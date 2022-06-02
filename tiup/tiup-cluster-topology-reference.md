@@ -1,19 +1,19 @@
 ---
-title: Topology Configuration File for TiDB Deployment Using TiUP
+title: TiUPを使用したTiDB展開用のトポロジConfiguration / コンフィグレーションファイル
 ---
 
-# TiUPを使用したTiDB展開用のトポロジ構成ファイル {#topology-configuration-file-for-tidb-deployment-using-tiup}
+# TiUPを使用したTiDB展開用のトポロジConfiguration / コンフィグレーションファイル {#topology-configuration-file-for-tidb-deployment-using-tiup}
 
-TiUPを使用してTiDBを展開またはスケーリングするには、クラスタートポロジを記述するトポロジファイル（ [サンプル](https://github.com/pingcap/tiup/blob/master/embed/examples/cluster/topology.example.yaml) ）を提供する必要があります。
+TiUPを使用してTiDBを展開またはスケーリングするには、クラスタトポロジを記述するトポロジファイル（ [サンプル](https://github.com/pingcap/tiup/blob/master/embed/examples/cluster/topology.example.yaml) ）を提供する必要があります。
 
-同様に、クラスタートポロジを変更するには、トポロジファイルを変更する必要があります。違いは、クラスターがデプロイされた後は、トポロジー・ファイルのフィールドの一部しか変更できないことです。このドキュメントでは、トポロジファイルの各セクションと各セクションの各フィールドを紹介します。
+同様に、クラスタトポロジを変更するには、トポロジファイルを変更する必要があります。違いは、クラスタがデプロイされた後は、トポロジー・ファイルのフィールドの一部しか変更できないことです。このドキュメントでは、トポロジファイルの各セクションと各セクションの各フィールドを紹介します。
 
 ## ファイル構造 {#file-structure}
 
 TiUPを使用したTiDB展開のトポロジ構成ファイルには、次のセクションが含まれる場合があります。
 
 -   [グローバル](#global) ：クラスターのグローバル構成。一部の構成アイテムはデフォルト値を使用し、インスタンスごとに個別に構成できます。
--   [監視](#monitored) ：監視サービスの構成、つまり、blackbox_exporterと`node_exporter` 。各マシンには、 `node_exporter`と`blackbox_exporter`が配備されています。
+-   [監視](#monitored) ：監視サービスのConfiguration / コンフィグレーション、つまり、blackbox_exporterと`node_exporter` 。各マシンには、 `node_exporter`と`blackbox_exporter`が配備されています。
 -   [server_configs](#server_configs) ：コンポーネントのグローバル構成。各コンポーネントを個別に構成できます。インスタンスに同じ名前の構成アイテムがある場合、インスタンスの構成アイテムが有効になります。
 -   [pd_servers](#pd_servers) ：PDインスタンスの構成。この構成は、PDコンポーネントが展開されるマシンを指定します。
 -   [tidb_servers](#tidb_servers) ：TiDBインスタンスの構成。この構成は、TiDBコンポーネントがデプロイされるマシンを指定します。
@@ -32,13 +32,13 @@ TiUPを使用したTiDB展開のトポロジ構成ファイルには、次のセ
 
 `global`セクションは、クラスターのグローバル構成に対応し、次のフィールドがあります。
 
--   `user` ：デプロイされたクラスターの開始に使用されたユーザー。デフォルト値は`"tidb"`です。 `<user>`フィールドで指定されたユーザーがターゲットマシンに存在しない場合、このユーザーは自動的に作成されます。
+-   `user` ：デプロイされたクラスタの開始に使用されたユーザー。デフォルト値は`"tidb"`です。 `<user>`フィールドで指定されたユーザーがターゲットマシンに存在しない場合、このユーザーは自動的に作成されます。
 
 -   `group` ：ユーザーが属するユーザーグループ。ユーザーの作成時に指定します。値のデフォルトは`<user>`フィールドの値です。指定したグループが存在しない場合は、自動的に作成されます。
 
 -   `ssh_port` ：操作のためにターゲットマシンに接続するSSHポートを指定します。デフォルト値は`22`です。
 
--   `enable_tls` ：クラスターのTLSを有効にするかどうかを指定します。 TLSを有効にした後、生成されたTLS証明書は、コンポーネント間またはクライアントとコンポーネント間の接続に使用する必要があります。<strong>一度有効にすると、無効にすることはできません</strong>。デフォルト値は`false`です。
+-   `enable_tls` ：クラスタのTLSを有効にするかどうかを指定します。 TLSを有効にした後、生成されたTLS証明書は、コンポーネント間またはクライアントとコンポーネント間の接続に使用する必要があります。**一度有効にすると、無効にすることはできません**。デフォルト値は`false`です。
 
 -   `deploy_dir` ：各コンポーネントの展開ディレクトリ。デフォルト値は`"deployed"`です。その適用規則は次のとおりです。
 
@@ -91,7 +91,7 @@ global:
     memory_limit: "2G"
 ```
 
-上記の構成では、 `tidb`ユーザーを使用してクラスターを開始します。同時に、各コンポーネントの実行時には、最大2GBのメモリに制限されます。
+上記の構成では、 `tidb`ユーザーを使用してクラスタを開始します。同時に、各コンポーネントの実行時には、最大2GBのメモリに制限されます。
 
 ### <code>monitored</code> {#code-monitored-code}
 
@@ -135,7 +135,7 @@ monitored:
 
 -   `drainer` ：ドレイナーサービス関連の構成。完全な構成については、 [TiDBBinlog構成ファイル](/tidb-binlog/tidb-binlog-configuration-file.md#drainer)を参照してください。
 
--   `cdc` ：TiCDCサービス関連の構成。完全な構成については、 [TiCDCを展開する](/ticdc/deploy-ticdc.md)を参照してください。
+-   `cdc` ：TiCDCサービス関連の構成。完全な構成については、 [TiCDCをデプロイ](/ticdc/deploy-ticdc.md)を参照してください。
 
 `server_configs`の構成例は次のとおりです。
 
@@ -440,7 +440,7 @@ pump_servers:
 
 -   `log_dir` ：ログディレクトリを指定します。相対ディレクトリとして指定または指定されていない場合、ログは`global`で構成された`log_dir`ディレクトリに従って生成されます。
 
--   `commit_ts` （非推奨）：Drainerが起動すると、チェックポイントを読み取ります。 Drainerがチェックポイントを取得しない場合、Drainerはこのフィールドを最初の起動のレプリケーション時点として使用します。このフィールドのデフォルトは`-1`です（Drainerは常にPDから最新のタイムスタンプをcommit_tsとして取得します）。
+-   `commit_ts` ：Drainerが起動すると、チェックポイントを読み取ります。 Drainerがチェックポイントを読み取れない場合、このフィールドを最初の起動のレプリケーション時点として使用します。このフィールドのデフォルトは`-1`です（Drainerは常にPDから最新のタイムスタンプをcommit_tsとして取得します）。
 
 -   `numa_node` ：NUMAポリシーをインスタンスに割り当てます。このフィールドを指定する前に、ターゲットマシンに[numactl](https://linux.die.net/man/8/numactl)がインストールされていることを確認する必要があります。このフィールドが指定されている場合、cpubindおよびmembindポリシーは[numactl](https://linux.die.net/man/8/numactl)を使用して割り当てられます。このフィールドは文字列タイプです。フィールド値は、「0,1」などのNUMAノードのIDです。
 
@@ -459,10 +459,9 @@ pump_servers:
 -   `deploy_dir`
 -   `data_dir`
 -   `log_dir`
+-   `commit_ts`
 -   `arch`
 -   `os`
-
-`commit_ts`フィールドは、TiUP v1.9.2以降非推奨であり、Drainerの開始スクリプトには記録されません。それでもこのフィールドを使用する必要がある場合は、次の例を参照して`config`の`initial-commit-ts`フィールドを構成してください。
 
 `drainer_servers`の構成例は次のとおりです。
 
@@ -470,7 +469,6 @@ pump_servers:
 drainer_servers:
   - host: 10.0.1.21
     config:
-      initial-commit-ts: -1
       syncer.db-type: "mysql"
       syncer.to.host: "127.0.0.1"
       syncer.to.user: "root"
@@ -638,7 +636,7 @@ tispark_workers:
 
 -   `host` ：監視サービスが展開されているマシンを指定します。フィールド値はIPアドレスであり、必須です。
 
--   `ng_port` ：NGMonitoringに接続するSSHポートを指定します。 TiUP v1.7.0で導入されたこのフィールドは、TiDB5.3.0以降で[継続的なプロファイリング](/dashboard/dashboard-profiling.md)およびTopSQLをサポートします。
+-   `ng_port` ：NGMonitoringに接続するSSHポートを指定します。 TiUP v1.7.0で導入されたこのフィールドは、TiDB5.3.0以降で[継続的なプロファイリング](/dashboard/dashboard-profiling.md)およびTop SQLをサポートします。
 
 -   `ssh_port` ：操作のためにターゲットマシンに接続するSSHポートを指定します。指定されていない場合は、 `global`のセクションのうち`ssh_port`つが使用されます。
 
@@ -654,13 +652,13 @@ tispark_workers:
 
 -   `storage_retention` ：プロメテウスモニタリングデータの保持時間。デフォルト値は`"30d"`です。
 
--   `rule_dir` ：完全な`*.rules.yml`のファイルを含むローカルディレクトリを指定します。これらのファイルは、Prometheusのルールとして、クラスター構成の初期化フェーズ中にターゲットマシンに転送されます。
+-   `rule_dir` ：完全な`*.rules.yml`のファイルを含むローカルディレクトリを指定します。これらのファイルは、Prometheusのルールとして、クラスタ構成の初期化フェーズ中にターゲットマシンに転送されます。
 
 -   `remote_config` ：リモートへのPrometheusデータの書き込み、またはリモートからのデータの読み取りをサポートします。このフィールドには2つの構成があります。
     -   `remote_write` ：Prometheusドキュメント[`&#x3C;remote_write>`](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#remote_write)を参照してください。
     -   `remote_read` ：Prometheusドキュメント[`&#x3C;remote_read>`](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#remote_read)を参照してください。
 
--   `external_alertmanagers` ： `external_alertmanagers`フィールドが構成されている場合、Prometheusはクラスターの外部にあるAlertmanagerに構成動作を警告します。このフィールドは配列であり、各要素は外部Alertmanagerであり、 `host`つと`web_port`のフィールドで構成されています。
+-   `external_alertmanagers` ： `external_alertmanagers`フィールドが構成されている場合、Prometheusはクラスタの外部にあるAlertmanagerに構成動作を警告します。このフィールドは配列であり、各要素は外部Alertmanagerであり、 `host`つと`web_port`のフィールドで構成されています。
 
 -   `os` ： `host`で指定されたマシンのオペレーティングシステム。このフィールドが指定されていない場合、デフォルト値は`global`の`os`値です。
 
@@ -721,15 +719,15 @@ monitoring_servers:
 
 -   `password` ：Grafanaに対応するパスワード。
 
--   `dashboard_dir` ：完全な`dashboard(*.json)`のファイルを含むローカルディレクトリを指定します。これらのファイルは、クラスター構成の初期化フェーズ中にGrafanaのダッシュボードとしてターゲットマシンに転送されます。
+-   `dashboard_dir` ：完全な`dashboard(*.json)`のファイルを含むローカルディレクトリを指定します。これらのファイルは、クラスタ構成の初期化フェーズ中にGrafanaのダッシュボードとしてターゲットマシンに転送されます。
 
 -   `resource_control` ：サービスのリソース制御。このフィールドが構成されている場合、フィールドのコンテンツは`global`の`resource_control`つのコンテンツとマージされます（2つのフィールドが重複している場合、このフィールドのコンテンツが有効になります）。次に、systemd構成ファイルが生成され、 `host`で指定されたマシンに送信されます。 `resource_control`の構成ルールは、 `global`の`resource_control`のコンテンツと同じです。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> `grafana_servers`の`dashboard_dir`フィールドが構成されている場合、 `tiup cluster rename`コマンドを実行してクラスターの名前を変更した後、次の操作を実行する必要があります。
+> `grafana_servers`の`dashboard_dir`フィールドが構成されている場合、 `tiup cluster rename`コマンドを実行してクラスタの名前を変更した後、次の操作を実行する必要があります。
 >
-> 1.  ローカルダッシュボードディレクトリ内の`*.json`ファイルについて、 `datasource`フィールドの値を新しいクラスター名に更新します（ `datasource`はクラスター名にちなんで名付けられているため）。
+> 1.  ローカルダッシュボードディレクトリ内の`*.json`ファイルについて、 `datasource`フィールドの値を新しいクラスタ名に更新します（ `datasource`はクラスタ名にちなんで名付けられているため）。
 > 2.  `tiup cluster reload -R grafana`コマンドを実行します。
 
 上記のフィールドの場合、展開後にこれらの構成済みフィールドを変更することはできません。
@@ -768,7 +766,7 @@ grafana_servers:
 
 -   `numa_node` ：NUMAポリシーをインスタンスに割り当てます。このフィールドを指定する前に、ターゲットマシンに[numactl](https://linux.die.net/man/8/numactl)がインストールされていることを確認する必要があります。このフィールドが指定されている場合、cpubindおよびmembindポリシーは[numactl](https://linux.die.net/man/8/numactl)を使用して割り当てられます。このフィールドは文字列タイプです。フィールド値は、「0,1」などのNUMAノードのIDです。
 
--   `config_file` ：クラスター構成の初期化段階でターゲットマシンに転送されるローカルファイルをAlertmanagerの構成として指定します。
+-   `config_file` ：クラスタ構成の初期化段階でターゲットマシンに転送されるローカルファイルをAlertmanagerの構成として指定します。
 
 -   `os` ： `host`で指定されたマシンのオペレーティングシステム。このフィールドが指定されていない場合、デフォルト値は`global`の`os`値です。
 

@@ -1,6 +1,6 @@
 ---
-title: Data Migration Overview
-summary: Learn the overview of data migration scenarios and the solutions.
+title: データ移行の概要
+summary: データ移行シナリオとソリューションの概要を学びます。
 ---
 
 # データ移行の概要 {#data-migration-overview}
@@ -9,22 +9,22 @@ summary: Learn the overview of data migration scenarios and the solutions.
 
 -   完全なデータ移行。
     -   Amazon Auroraスナップショット、CSVファイル、またはMydumper SQLファイルをTiDBにインポートするには、TiDBLightningを使用して完全な移行を実行できます。
-    -   すべてのTiDBデータをCSVファイルまたはMydumperSQLファイルとしてエクスポートするには、Dumplingを使用して完全な移行を実行できます。これにより、MySQLまたはMariaDBからのデータ移行が容易になります。
+    -   すべてのTiDBデータをCSVファイルまたはMydumperSQLファイルとしてエクスポートするには、 Dumplingを使用して完全な移行を実行できます。これにより、MySQLまたはMariaDBからのデータ移行が容易になります。
     -   データサイズが小さい（たとえば、1 TiB未満）データベースからすべてのデータを移行するには、TiDBデータ移行（DM）を使用することもできます。
 
--   TiDBのクイック初期化。 TiDB Lightningは、データの迅速なインポートをサポートし、TiDBの特定のテーブルを迅速に初期化できます。この機能を使用する前に、クイック初期化はTiDBに大きな影響を与え、初期化期間中はクラスターがサービスを提供しないことに注意してください。
+-   TiDBのクイック初期化。 TiDB Lightningは、データの迅速なインポートをサポートし、TiDBの特定のテーブルを迅速に初期化できます。この機能を使用する前に、クイック初期化はTiDBに大きな影響を与え、初期化期間中はクラスタがサービスを提供しないことに注意してください。
 
 -   インクリメンタルレプリケーション。 TiDB DMを使用して、MySQL、MariaDB、またはAuroraからTiDBにbinlogを複製できます。これにより、複製期間中のウィンドウのダウンタイムが大幅に短縮されます。
 
--   TiDBクラスター間のデータレプリケーション。 TiDBはバックアップと復元をサポートしています。この機能により、既存のTiDBクラスターのスナップショットを新しいTiDBクラスターに初期化できます。
+-   TiDBクラスター間のデータレプリケーション。 TiDBはバックアップと復元をサポートしています。この機能により、既存のTiDBクラスタのスナップショットを新しいTiDBクラスタに初期化できます。
 
 データベースの種類、展開場所、アプリケーションデータのサイズ、およびアプリケーションのニーズに応じて、さまざまな移行ソリューションを選択できます。次のセクションでは、いくつかの一般的な移行シナリオを紹介します。これらのセクションを参照して、ニーズに応じて最適なソリューションを決定できます。
 
-## AuroraMySQLからTiDBにデータを移行する {#migrate-data-from-aurora-mysql-to-tidb}
+## AuroraMySQLからAuroraにデータを移行する {#migrate-data-from-aurora-mysql-to-tidb}
 
-AuroraからAWSにデプロイされたTiDBクラスターにデータを移行する場合、データ移行には、完全なデータ移行と増分レプリケーションの2つの操作が必要です。アプリケーションのニーズに応じて、対応する操作を選択できます。
+AuroraからAWSにデプロイされたTiDBクラスタにデータを移行する場合、データ移行には、完全なデータ移行と増分レプリケーションの2つの操作が必要です。アプリケーションのニーズに応じて、対応する操作を選択できます。
 
--   [AmazonAuroraからTiDBへのデータの移行](/migrate-aurora-to-tidb.md) 。
+-   [AuroraからTiDBへのデータの移行](/migrate-aurora-to-tidb.md) 。
 
 ## MySQLからTiDBにデータを移行する {#migrate-data-from-mysql-to-tidb}
 

@@ -1,6 +1,6 @@
 ---
-title: DEADLOCKS
-summary: Learn the `DEADLOCKS` information_schema table.
+title: デッドロック
+summary: `DEADLOCKS`information_schemaテーブルを学びます。
 ---
 
 # デッドロック {#deadlocks}
@@ -30,7 +30,7 @@ DESC deadlocks;
 +-------------------------+---------------------+------+------+---------+-------+
 ```
 
-`DEADLOCKS`のテーブルは、複数の行を使用して同じデッドロックイベントを示し、各行には、デッドロックイベントに関係するトランザクションの1つに関する情報が表示されます。 TiDBノードが複数のデッドロックエラーを記録する場合、各エラーは`DEADLOCK_ID`列を使用して区別されます。同じ`DEADLOCK_ID`は、同じデッドロックイベントを示します。 `DEADLOCK_ID`<strong>はグローバルな一意性を保証するものではなく、永続化されないことに</strong>注意してください。同じ結果セットで同じデッドロックイベントのみが表示されます。
+`DEADLOCKS`のテーブルは、複数の行を使用して同じデッドロックイベントを示し、各行には、デッドロックイベントに関係するトランザクションの1つに関する情報が表示されます。 TiDBノードが複数のデッドロックエラーを記録する場合、各エラーは`DEADLOCK_ID`列を使用して区別されます。同じ`DEADLOCK_ID`は、同じデッドロックイベントを示します。 `DEADLOCK_ID`**はグローバルな一意性を保証するものではなく、永続化されないことに**注意してください。同じ結果セットで同じデッドロックイベントのみが表示されます。
 
 `DEADLOCKS`テーブルの各列フィールドの意味は次のとおりです。
 
@@ -46,7 +46,7 @@ DESC deadlocks;
 
 `DEADLOCKS`のテーブルに記録できるデッドロックイベントの最大数を調整するには、TiDB構成ファイルの[`pessimistic-txn.deadlock-history-capacity`](/tidb-configuration-file.md#deadlock-history-capacity)の構成を調整します。デフォルトでは、最近の10個のデッドロックイベントの情報がテーブルに記録されます。
 
-> <strong>警告：</strong>
+> **警告：**
 >
 > -   このテーブルをクエリできるのは、 [処理する](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_process)の特権を持つユーザーのみです。
 > -   `CURRENT_SQL_DIGEST`列の情報（SQLダイジェスト）は、正規化されたSQLステートメントから計算されたハッシュ値です。 `CURRENT_SQL_DIGEST_TEXT`列の情報は、ステートメントの要約テーブルから内部的に照会されるため、対応するステートメントが内部で見つからない可能性があります。 SQLダイジェストとステートメントの要約テーブルの詳細については、 [ステートメント要約表](/statement-summary-tables.md)を参照してください。
@@ -72,13 +72,13 @@ DESC deadlocks;
 
 上記のフィールドで、フィールドの情報が適用できないか、現在利用できない場合、そのフィールドはクエリ結果で省略されます。たとえば、行キー情報には`index_id` 、および`index_name`は含まれて`index_values`ません。インデックスキーには`handle_type`と`handle_value`が含まれていません。パーティション化されていないテーブルは`partition_id`と`partition_name`を表示しません。削除されたテーブルの`db_name`情報は、 `table_name`などの`db_id`情報を取得できず、テーブルが`index_name`テーブルであるかどうかを区別できません。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > キーがパーティション化が有効になっているテーブルからのものであり、クエリ中に何らかの理由（たとえば、キーが属するテーブルが削除された）のために、キーが属するスキーマの情報をクエリできない場合、IDキーが属するパーティションの`table_id`フィールドに表示される場合があります。これは、TiDBが複数の独立したテーブルのキーをエンコードするのと同じ方法で、異なるパーティションのキーをエンコードするためです。したがって、スキーマ情報が欠落している場合、TiDBは、キーがパーティション化されていないテーブルに属しているのか、テーブルの1つのパーティションに属しているのかを確認できません。
 
 ## 再試行可能なデッドロックエラー {#retryable-deadlock-errors}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `DEADLOCKS`テーブルは、デフォルトでは再試行可能なデッドロックエラーの情報を収集しません。テーブルで再試行可能なデッドロックエラー情報を収集する場合は、TiDB構成ファイルの値[`pessimistic-txn.deadlock-history-collect-retryable`](/tidb-configuration-file.md#deadlock-history-collect-retryable)を調整できます。
 
@@ -178,7 +178,7 @@ select * from information_schema.deadlocks;
 
 ## CLUSTER_DEADLOCKS {#cluster-deadlocks}
 
-`CLUSTER_DEADLOCKS`テーブルは、クラスター全体の各TiDBノードでの最近のデッドロックエラーに関する情報を返します。これは、各ノードの`DEADLOCKS`テーブルの情報を組み合わせたものです。 `CLUSTER_DEADLOCKS`には、異なるTiDBノードを区別するためにノードのIPアドレスとポートを表示するための追加の`INSTANCE`列も含まれています。
+`CLUSTER_DEADLOCKS`テーブルは、クラスタ全体の各TiDBノードでの最近のデッドロックエラーに関する情報を返します。これは、各ノードの`DEADLOCKS`テーブルの情報を組み合わせたものです。 `CLUSTER_DEADLOCKS`には、異なるTiDBノードを区別するためにノードのIPアドレスとポートを表示するための追加の`INSTANCE`列も含まれています。
 
 `DEADLOCK_ID`はグローバルな一意性を保証しないため、 `CLUSTER_DEADLOCKS`テーブルのクエリ結果では、 `INSTANCE`と`DEADLOCK_ID`を一緒に使用して、結果セット内のさまざまなデッドロックエラーの情報を区別する必要があることに注意してください。
 

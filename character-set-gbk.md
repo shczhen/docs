@@ -1,6 +1,6 @@
 ---
 title: GBK
-summary: This document provides details about the TiDB support of the GBK character set.
+summary: このドキュメントでは、GBK文字セットのTiDBサポートについて詳しく説明します。
 ---
 
 # GBK {#gbk}
@@ -31,11 +31,11 @@ SHOW COLLATION WHERE CHARSET = 'gbk';
 
 ### 照合 {#collations}
 
-MySQLのGBK文字セットのデフォルトの照合は`gbk_chinese_ci`です。 MySQLとは異なり、TiDBのGBK文字セットのデフォルトの照合は`gbk_bin`です。さらに、TiDBはGBKをUTF8MB4に変換してから、バイナリ照合を使用するため、TiDBの`gbk_bin`照合はMySQLの`gbk_bin`照合と同じではありません。
+MySQLのGBK文字セットのデフォルトの照合順序は`gbk_chinese_ci`です。 MySQLとは異なり、TiDBのGBK文字セットのデフォルトの照合順序は`gbk_bin`です。さらに、TiDBはGBKをUTF8MB4に変換してから、バイナリ照合順序を使用するため、TiDBの`gbk_bin`照合順序はMySQLの`gbk_bin`照合順序と同じではありません。
 
-TiDBをMySQLGBK文字セットの照合と互換性を持たせるには、最初にTiDBクラスターを初期化するときに、TiDBオプション[`new_collations_enabled_on_first_bootstrap`](/tidb-configuration-file.md#new_collations_enabled_on_first_bootstrap)から`true`を設定して[照合のための新しいフレームワーク](/character-set-and-collation.md#new-framework-for-collations)を有効にする必要があります。
+TiDBをMySQLGBK文字セットの照合と互換性を持たせるには、最初にTiDBクラスタを初期化するときに、TiDBオプション[`new_collations_enabled_on_first_bootstrap`](/tidb-configuration-file.md#new_collations_enabled_on_first_bootstrap)から`true`を設定して[照合のための新しいフレームワーク](/character-set-and-collation.md#new-framework-for-collations)を有効にする必要があります。
 
-照合用の新しいフレームワークを有効にした後、GBK文字セットに対応する照合を確認すると、TiDBGBKのデフォルトの照合が`gbk_chinese_ci`に変更されていることがわかります。
+照合用の新しいフレームワークを有効にした後、GBK文字セットに対応する照合を確認すると、TiDBGBKのデフォルトの照合順序が`gbk_chinese_ci`に変更されていることがわかります。
 
 ```sql
 SHOW CHARACTER SET WHERE CHARSET = 'gbk';

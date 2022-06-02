@@ -1,19 +1,19 @@
 ---
-title: Manually Upgrade TiDB Data Migration from v1.0.x to v2.0+
-summary: Learn how to manually upgrade TiDB data migration from v1.0.x to v2.0+.
+title: TiDBデータ移行をv1.0.xからv2.0+に手動でアップグレードする
+summary: TiDBデータ移行をv1.0.xからv2.0+に手動でアップグレードする方法を学びます。
 ---
 
 # TiDBデータ移行をv1.0.xからv2.0+に手動でアップグレードする {#manually-upgrade-tidb-data-migration-from-v1-0-x-to-v2-0}
 
-このドキュメントでは、TiDBDMツールをv1.0.xからv2.0+に手動でアップグレードする方法を紹介します。主なアイデアは、v1.0.xのグローバルチェックポイント情報を使用して、v2.0+クラスターで新しいデータ移行タスクを開始することです。
+このドキュメントでは、TiDBDMツールをv1.0.xからv2.0+に手動でアップグレードする方法を紹介します。主なアイデアは、v1.0.xのグローバルチェックポイント情報を使用して、v2.0+クラスタで新しいデータ移行タスクを開始することです。
 
-TiDBDMツールをv1.0.xからv2.0+に自動的にアップグレードする方法については、 [TiUPを使用して、DM-Ansibleによってデプロイされた1.0クラスターを自動的にインポートします](/dm/maintain-dm-using-tiup.md#import-and-upgrade-a-dm-10-cluster-deployed-using-dm-ansible)を参照してください。
+TiDBDMツールをv1.0.xからv2.0+に自動的にアップグレードする方法については、 [TiUPを使用して、DM-Ansibleによってデプロイされた1.0クラスタを自動的にインポートします](/dm/maintain-dm-using-tiup.md#import-and-upgrade-a-dm-10-cluster-deployed-using-dm-ansible)を参照してください。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   現在、データ移行タスクが完全エクスポートまたは完全インポートの処理中である場合、DMをv1.0.xからv2.0+にアップグレードすることはサポートされていません。
-> -   DMクラスターのコンポーネント間の相互作用に使用されるgRPCプロトコルは大幅に更新されるため、アップグレードの前後でDMコンポーネント（dmctlを含む）が同じバージョンを使用していることを確認する必要があります。
-> -   DMクラスターのメタデータストレージ（チェックポイント、シャードDDLロックステータス、オンラインDDLメタデータなど）が大幅に更新されるため、v1.0.xのメタデータをv2.0+で自動的に再利用することはできません。したがって、アップグレード操作を実行する前に、次の要件が満たされていることを確認する必要があります。
+> -   DMクラスタのコンポーネント間の相互作用に使用されるgRPCプロトコルは大幅に更新されるため、アップグレードの前後でDMコンポーネント（dmctlを含む）が同じバージョンを使用していることを確認する必要があります。
+> -   DMクラスタのメタデータストレージ（チェックポイント、シャードDDLロックステータス、オンラインDDLメタデータなど）が大幅に更新されるため、v1.0.xのメタデータをv2.0+で自動的に再利用することはできません。したがって、アップグレード操作を実行する前に、次の要件が満たされていることを確認する必要があります。
 >     -   すべてのデータ移行タスクは、シャードDDL調整のプロセスではありません。
 >     -   すべてのデータ移行タスクは、オンラインDDL調整のプロセスではありません。
 
@@ -27,13 +27,13 @@ v2.0 +の準備された構成ファイルには、アップストリームデ�
 
 v2.0 +では、 [アップストリームデータベース構成ファイル](/dm/dm-source-configuration-file.md)はDMワーカーのプロセス構成から分離されているため、 [v1.0.xDM-worker構成](/dm/dm-worker-configuration-file.md)に基づいてソース構成を取得する必要があります。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > v1.0.xからv2.0+へのアップグレード中にソース構成の`enable-gtid`が有効になっている場合は、binlogまたはリレーログファイルを解析して、binlogの位置に対応するGTIDセットを取得する必要があります。
 
-#### DM-Ansibleによってデプロイされたv1.0.xクラスターをアップグレードします {#upgrade-a-v1-0-x-cluster-deployed-by-dm-ansible}
+#### DM-Ansibleによってデプロイされたv1.0.xクラスタをアップグレードします {#upgrade-a-v1-0-x-cluster-deployed-by-dm-ansible}
 
-v1.0.x DMクラスターがDM-Ansibleによってデプロイされ、次の`dm_worker_servers`の構成が`inventory.ini`のファイルに含まれていると想定します。
+v1.0.x DMクラスタがDM-Ansibleによってデプロイされ、次の`dm_worker_servers`の構成が`inventory.ini`のファイルに含まれていると想定します。
 
 ```ini
 [dm_master_servers]
@@ -65,9 +65,9 @@ from:
   password: "VjX8cEeTX+qcvZ3bPaO4h0C80pe/1aU="   # Corresponds to the original `mysql_password`.
 ```
 
-#### バイナリによってデプロイされたv1.0.xクラスターをアップグレードします {#upgrade-a-v1-0-x-cluster-deployed-by-binary}
+#### バイナリによってデプロイされたv1.0.xクラスタをアップグレードします {#upgrade-a-v1-0-x-cluster-deployed-by-binary}
 
-v1.0.x DMクラスターがバイナリーによってデプロイされ、対応するDM-worker構成が次のようになっていると想定します。
+v1.0.x DMクラスタがバイナリーによってデプロイされ、対応するDM-worker構成が次のようになっていると想定します。
 
 ```toml
 log-level = "info"
@@ -100,25 +100,25 @@ from:
 
 [データ移行タスク構成ガイド](/dm/dm-task-configuration-guide.md)の場合、v2.0+は基本的にv1.0.xと互換性があります。 v1.0.xの構成を直接コピーできます。
 
-## ステップ2：v2.0+クラスターをデプロイする {#step-2-deploy-the-v2-0-cluster}
+## ステップ2：v2.0+クラスタをデプロイ {#step-2-deploy-the-v2-0-cluster}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 他のv2.0+クラスターを使用できる場合は、この手順をスキップしてください。
 
-[TiUPを使用する](/dm/deploy-a-dm-cluster-using-tiup.md)は、必要なノード数に応じて新しいv2.0+クラスターをデプロイします。
+[TiUPを使用する](/dm/deploy-a-dm-cluster-using-tiup.md)は、必要なノード数に応じて新しいv2.0+クラスタをデプロイします。
 
-## ステップ3：v1.0.xクラスターを停止します {#step-3-stop-the-v1-0-x-cluster}
+## ステップ3：v1.0.xクラスタを停止します {#step-3-stop-the-v1-0-x-cluster}
 
-元のv1.0.xクラスターがDM-Ansibleによってデプロイされている場合は、 [DM-v1.0.xクラスターを停止できます](https://docs.pingcap.com/tidb-data-migration/v1.0/cluster-operations#stop-a-cluster)を使用する必要があります。
+元のv1.0.xクラスタがDM-Ansibleによってデプロイされている場合は、 [DM-v1.0.xクラスタを停止できます](https://docs.pingcap.com/tidb-data-migration/v1.0/cluster-operations#stop-a-cluster)を使用する必要があります。
 
-元のv1.0.xクラスターがバイナリーでデプロイされている場合は、DM-workerおよびDM-masterプロセスを直接停止できます。
+元のv1.0.xクラスタがバイナリーでデプロイされている場合は、DM-workerおよびDM-masterプロセスを直接停止できます。
 
 ## ステップ4：データ移行タスクをアップグレードする {#step-4-upgrade-data-migration-task}
 
-1.  [`operate-source`](/dm/dm-manage-source.md#operate-data-source)コマンドを使用して、アップストリームデータベースソース構成を[ステップ1](#step-1-prepare-v20-configuration-file)からv2.0+クラスターにロードします。
+1.  [`operate-source`](/dm/dm-manage-source.md#operate-data-source)コマンドを使用して、アップストリームデータベースソース構成を[ステップ1](#step-1-prepare-v20-configuration-file)からv2.0+クラスタにロードします。
 
-2.  ダウンストリームTiDBクラスターで、v1.0.xデータ移行タスクのインクリメンタルチェックポイントテーブルから対応するグローバルチェックポイント情報を取得します。
+2.  ダウンストリームTiDBクラスタで、v1.0.xデータ移行タスクのインクリメンタルチェックポイントテーブルから対応するグローバルチェックポイント情報を取得します。
 
     -   v1.0.xデータ移行構成で`meta-schema`が指定されておらず（またはその値がデフォルトの`dm_meta`として指定されて）、対応するタスク名が`task_v1`であるとすると、対応するチェックポイント情報はダウンストリームTiDBの`` `dm_meta`.`task_v1_syncer_checkpoint` ``テーブルにあります。
     -   次のSQLステートメントを使用して、データ移行タスクに対応するすべてのアップストリームデータベースソースのグローバルチェックポイント情報を取得します。
@@ -154,7 +154,7 @@ from:
                   binlog-pos: 10485
             ```
 
-            > <strong>ノート：</strong>
+            > **ノート：**
             >
             > ソース構成で`enable-gtid`が有効になっている場合、現在、binlogまたはリレーログファイルを解析して、binlogの位置に対応するGTIDセットを取得し、 `meta`で`binlog-gtid`に設定する必要があります。
 

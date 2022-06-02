@@ -21,19 +21,17 @@ Google翻訳を使用して、さまざまな言語でドキュメントを表�
 
 現在、さまざまなブランチで次のバージョンのTiDBドキュメントを管理しています。
 
-| 支店名                                                               | TiDBドキュメントバージョン  |
-| :---------------------------------------------------------------- | :--------------- |
-| [`master`](https://github.com/pingcap/docs/tree/master)           | 最新の開発バージョン       |
-| [`release-6.0`](https://github.com/pingcap/docs/tree/release-6.0) | 6.0開発マイルストーンリリース |
-| [`release-5.4`](https://github.com/pingcap/docs/tree/release-5.4) | 5.4安定バージョン       |
-| [`release-5.3`](https://github.com/pingcap/docs/tree/release-5.3) | 5.3安定バージョン       |
-| [`release-5.2`](https://github.com/pingcap/docs/tree/release-5.2) | 5.2安定バージョン       |
-| [`release-5.1`](https://github.com/pingcap/docs/tree/release-5.1) | 5.1安定バージョン       |
-| [`release-5.0`](https://github.com/pingcap/docs/tree/release-5.0) | 5.0安定バージョン       |
-| [`release-4.0`](https://github.com/pingcap/docs/tree/release-4.0) | 4.0安定バージョン       |
-| [`release-3.1`](https://github.com/pingcap/docs/tree/release-3.1) | 3.1安定バージョン       |
-| [`release-3.0`](https://github.com/pingcap/docs/tree/release-3.0) | 3.0安定版           |
-| [`release-2.1`](https://github.com/pingcap/docs/tree/release-2.1) | 2.1安定バージョン       |
+| 支店名                                                               | TiDBドキュメントバージョン |
+| :---------------------------------------------------------------- | :-------------- |
+| [`master`](https://github.com/pingcap/docs/tree/master)           | 最新の開発バージョン      |
+| [`release-5.3`](https://github.com/pingcap/docs/tree/release-5.3) | 5.3安定バージョン      |
+| [`release-5.2`](https://github.com/pingcap/docs/tree/release-5.2) | 5.2安定バージョン      |
+| [`release-5.1`](https://github.com/pingcap/docs/tree/release-5.1) | 5.1安定バージョン      |
+| [`release-5.0`](https://github.com/pingcap/docs/tree/release-5.0) | 5.0安定バージョン      |
+| [`release-4.0`](https://github.com/pingcap/docs/tree/release-4.0) | 4.0安定バージョン      |
+| [`release-3.1`](https://github.com/pingcap/docs/tree/release-3.1) | 3.1安定バージョン      |
+| [`release-3.0`](https://github.com/pingcap/docs/tree/release-3.0) | 3.0安定版          |
+| [`release-2.1`](https://github.com/pingcap/docs/tree/release-2.1) | 2.1安定バージョン      |
 
 ## 貢献 {#contributing}
 

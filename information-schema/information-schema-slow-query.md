@@ -1,6 +1,6 @@
 ---
 title: SLOW_QUERY
-summary: Learn the `SLOW_QUERY` information_schema table.
+summary: `SLOW_QUERY`information_schemaテーブルを学びます。
 ---
 
 # SLOW_QUERY {#slow-query}
@@ -78,7 +78,7 @@ DESC slow_query;
 
 ## CLUSTER_SLOW_QUERYテーブル {#cluster-slow-query-table}
 
-`CLUSTER_SLOW_QUERY`テーブルは、クラスター内のすべてのノードの低速クエリ情報を提供します。これは、TiDB低速ログファイルの解析結果です。 `CLUSTER_SLOW_QUERY`テーブルは`SLOW_QUERY`と同じように使用できます。 `CLUSTER_SLOW_QUERY`テーブルのテーブルスキーマは、 `INSTANCE`列が`CLUSTER_SLOW_QUERY`に追加されるという点で`SLOW_QUERY`テーブルのテーブルスキーマとは異なります。 `INSTANCE`列は、低速クエリの行情報のTiDBノードアドレスを表します。このテーブルを使用して問題のあるステートメントを特定し、クエリのパフォーマンスを向上させる方法については、 [遅いクエリログドキュメント](/identify-slow-queries.md)を参照してください。
+`CLUSTER_SLOW_QUERY`テーブルは、クラスタのすべてのノードのスロークエリ情報を提供します。これは、TiDBスローログファイルの解析結果です。 `CLUSTER_SLOW_QUERY`テーブルは`SLOW_QUERY`と同じように使用できます。 `CLUSTER_SLOW_QUERY`テーブルのテーブルスキーマは、 `INSTANCE`列が`CLUSTER_SLOW_QUERY`に追加されるという点で`SLOW_QUERY`テーブルのテーブルスキーマとは異なります。 `INSTANCE`列は、低速クエリの行情報のTiDBノードアドレスを表します。このテーブルを使用して問題のあるステートメントを特定し、クエリのパフォーマンスを向上させる方法については、 [遅いクエリログドキュメント](/identify-slow-queries.md)を参照してください。
 
 {{< copyable "" >}}
 

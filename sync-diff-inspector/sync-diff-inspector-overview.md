@@ -1,7 +1,6 @@
 ---
-title: sync-diff-inspector User Guide
-summary: Use sync-diff-inspector to compare data and repair inconsistent data.
-aliases: ['/docs/dev/sync-diff-inspector/sync-diff-inspector-overview/','/docs/dev/reference/tools/sync-diff-inspector/overview/']
+title: sync-diff-inspectorユーザーガイド
+summary: sync-diff-inspectorを使用して、データを比較し、一貫性のないデータを修復します。
 ---
 
 # sync-diff-inspectorユーザーガイド {#sync-diff-inspector-user-guide}
@@ -10,7 +9,7 @@ aliases: ['/docs/dev/sync-diff-inspector/sync-diff-inspector-overview/','/docs/d
 
 このガイドでは、sync-diff-inspectorの主な機能を紹介し、このツールを構成して使用する方法について説明します。 sync-diff-inspectorをダウンロードするには、次のいずれかの方法を使用します。
 
--   バイナリパッケージ。 [tidb-enterprise-tools-nightly-linux-amd64](https://download.pingcap.org/tidb-enterprise-tools-nightly-linux-amd64.tar.gz)をクリックしてダウンロードします。
+-   バイナリパッケージ。 [tidb-community-toolkit-v5.4.1-linux-amd64](https://download.pingcap.org/tidb-community-toolkit-v5.4.1-linux-amd64.tar.gz)をクリックしてダウンロードします。
 -   Dockerイメージ。次のコマンドを実行してダウンロードします。
 
     {{< copyable "" >}}
@@ -51,15 +50,15 @@ sync-diff-inspectorは、テーブルスキーマの情報を取得し、デー�
     -   `SHOW_DATABASES` （データベース名を表示）
     -   `RELOAD` （テーブルスキーマを表示）
 
-## 構成ファイルの説明 {#configuration-file-description}
+## Configuration / コンフィグレーションファイルの説明 {#configuration-file-description}
 
 sync-diff-inspectorの構成は、次の部分で構成されています。
 
 -   `Global config` ：チェックするスレッドの数、矛盾するテーブルを修正するためにSQLステートメントをエクスポートするかどうか、データをキャンプするかどうかなどの一般的な構成。
 -   `Databases config` ：アップストリームおよびダウンストリームデータベースのインスタンスを構成します。
--   `Routes` ：ダウンストリームの単一スキーマ名と一致するアップストリームの複数のスキーマ名のルール<strong>（オプション）</strong> 。
+-   `Routes` ：ダウンストリームの単一スキーマ名と一致するアップストリームの複数のスキーマ名のルール**（オプション）** 。
 -   `Task config` ：チェックするテーブルを構成します。一部のテーブルにアップストリームデータベースとダウンストリームデータベースの間に特定のマッピング関係がある場合、または特別な要件がある場合は、これらのテーブルを構成する必要があります。
--   `Table config` ：無視する指定された範囲や列など、特定のテーブルの特別な構成<strong>（オプション）</strong> 。
+-   `Table config` ：無視する指定範囲や列など、特定のテーブルの特別な構成**（オプション）** 。
 
 以下は、完全な構成ファイルの説明です。
 
@@ -160,7 +159,7 @@ collation = ""
 {{< copyable "" >}}
 
 ```bash
-./sync_diff_inspector --config=./config.toml
+./bin/sync_diff_inspector --config=./config.toml
 ```
 
 このコマンドは、 `output-dir`のチェックレポート`summary.txt`とログ`sync_diff.log`を出力し`config.toml` 。 `output-dir`では、 `config. toml`ファイルのハッシュ値で指定されたフォルダも生成されます。このフォルダーには、ブレークポイントのチェックポイントノード情報と、データに一貫性がない場合に生成されるSQLファイルが含まれます。
@@ -169,7 +168,7 @@ collation = ""
 
 sync-diff-inspectorは、実行時に進行状況情報を`stdout`に送信します。進行状況情報には、テーブル構造の比較結果、テーブルデータの比較結果、および進行状況バーが含まれます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 表示効果を確保するには、表示ウィンドウの幅を80文字以上に保ちます。
 
@@ -278,7 +277,7 @@ REPLACE INTO `sbtest`.`sbtest99`(`id`,`k`,`c`,`pad`) VALUES (3700000,2501808,'he
 ## ノート {#note}
 
 -   sync-diff-inspectorは、データをチェックするときに一定量のサーバーリソースを消費します。ピーク営業時間中にデータをチェックするためにsync-diff-inspectorを使用することは避けてください。
--   MySQLのデータをTiDBのデータと比較する前に、テーブルの照合構成に注意してください。主キーまたは一意キーが`varchar`タイプであり、MySQLの照合構成がTiDBの構成と異なる場合、照合の問題が原因で最終チェック結果が正しくない可能性があります。 sync-diff-inspector構成ファイルに照合を追加する必要があります。
--   sync-diff-inspectorは、最初にTiDB統計に従ってデータをチャンクに分割し、統計の精度を保証する必要があります。 TiDBサーバーの<em>ワークロードが軽い</em>場合は、手動で`analyze table {table_name}`コマンドを実行できます。
+-   MySQLのデータをTiDBのデータと比較する前に、テーブルの照合順序構成に注意してください。主キーまたは一意キーが`varchar`タイプであり、MySQLの照合順序構成がTiDBの構成と異なる場合、照合順序の問題が原因で最終チェック結果が正しくない可能性があります。 sync-diff-inspector構成ファイルに照合順序を追加する必要があります。
+-   sync-diff-inspectorは、最初にTiDB統計に従ってデータをチャンクに分割し、統計の精度を保証する必要があります。 TiDBサーバーの*ワークロードが軽い*場合は、手動で`analyze table {table_name}`コマンドを実行できます。
 -   `table-rules`に特に注意してください。 `schema-pattern="test1"` 、および`table-pattern = "t_1"`を`target-table = "t_2"`する`test1` `target-schema="test2"`ソースデータベースの`t_1`スキーマと`test2` 。ターゲットデータベースの`t_2`個のスキーマが比較されます。シャーディングはsync-diff-inspectorでデフォルトで有効になっているため、ソースデータベースに`test2`がある場合。 `t_2`テーブル、 `test1` 。 `t_1`テーブルと`test2` 。シャーディングとして機能するソースデータベースの`t_2`テーブルが`test2`と比較されます。ターゲットデータベースの`t_2`テーブル。
 -   生成されたSQLファイルは、データを修復するための参照としてのみ使用され、データを修復するためにこれらのSQLステートメントを実行する前に確認する必要があります。

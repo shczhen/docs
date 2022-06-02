@@ -1,14 +1,13 @@
 ---
-title: Introduction to Statistics
-summary: Learn how the statistics collect table-level and column-level information.
-aliases: ['/docs/dev/statistics/','/docs/dev/reference/performance/statistics/']
+title: 統計入門
+summary: 統計がテーブルレベルおよび列レベルの情報を収集する方法を学びます。
 ---
 
 # 統計入門 {#introduction-to-statistics}
 
-TiDBは統計を使用して[どのインデックスを選択するか](/choose-index.md)を決定します。 `tidb_analyze_version`変数は、TiDBによって収集される統計を制御します。現在、 `tidb_analyze_version = 1`と`tidb_analyze_version = 2`の2つのバージョンの統計がサポートされています。 v5.1.0より前のバージョンでは、この変数のデフォルト値は`1`です。 v5.3.0以降のバージョンでは、この変数のデフォルト値は`2`であり、これは実験的な機能として機能します。クラスタがv5.3.0より前のバージョンからv5.3.0以降にアップグレードされた場合、デフォルト値の`tidb_analyze_version`は変更されません。
+TiDBは統計を使用して[どのインデックスを選択するか](/choose-index.md)を決定します。 `tidb_analyze_version`変数は、TiDBによって収集される統計を制御します。現在、 `tidb_analyze_version = 1`と`tidb_analyze_version = 2`の2つのバージョンの統計がサポートされています。 v5.1.0より前のバージョンでは、この変数のデフォルト値は`1`です。 v5.3.0以降のバージョンでは、この変数のデフォルト値は`2`であり、これは実験的機能として機能します。クラスタがv5.3.0より前のバージョンからv5.3.0以降にアップグレードされた場合、デフォルト値の`tidb_analyze_version`は変更されません。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `tidb_analyze_version = 2`の場合、 `ANALYZE`の実行後にメモリオーバーフローが発生した場合は、 `tidb_analyze_version = 1`を設定し、次のいずれかの操作を行う必要があります。
 >
@@ -32,7 +31,7 @@ TiDBは統計を使用して[どのインデックスを選択するか](/choose
 
 | 情報                | バージョン1                             | バージョン2                                                |
 | ----------------- | ---------------------------------- | ----------------------------------------------------- |
-| テーブル内の行の総数        | √                                  | √                                                     |
+| テーブルの行の総数         | √                                  | √                                                     |
 | 列数-最小スケッチ         | √                                  | ××                                                    |
 | インデックスカウント-最小スケッチ | √                                  | ××                                                    |
 | 列Top-N            | √                                  | √（メンテナンス方法と精度が向上）                                     |
@@ -77,7 +76,7 @@ Top-N値は、列またはインデックスの上位N個の値です。 TiDBは
 
 `ANALYZE`ステートメントを実行して、統計を収集できます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > TiDBの実行時間`ANALYZE TABLE`は、MySQLまたはInnoDBの実行時間よりも長くなります。 InnoDBでは、少数のページのみがサンプリングされますが、TiDBでは、包括的な統計セットが完全に再構築されます。 MySQL用に作成されたスクリプトは、 `ANALYZE TABLE`が短期間の操作であると素朴に予想する場合があります。
 >
@@ -85,7 +84,7 @@ Top-N値は、列またはインデックスの上位N個の値です。 TiDBは
 >
 > クイック分析を有効にすると、TiDBは約10,000行のデータをランダムにサンプリングして統計を作成します。したがって、不均一なデータ分布や比較的少量のデータの場合、統計情報の精度は比較的低くなります。間違ったインデックスを選択するなど、実行計画が不十分になる可能性があります。通常の`ANALYZE`ステートメントの実行時間が許容できる場合は、クイック分析機能を無効にすることをお勧めします。
 >
-> `tidb_enable_fast_analyze`は実験的な機能であり、現在`tidb_analyze_version=2`の統計情報と<strong>正確には一致していません</strong>。したがって、 `tidb_enable_fast_analyze`が有効になっている場合は、 `tidb_analyze_version`から`1`の値を設定する必要があります。
+> `tidb_enable_fast_analyze`は実験的機能であり、現在`tidb_analyze_version=2`の統計情報と**正確には一致していません**。したがって、 `tidb_enable_fast_analyze`が有効になっている場合は、 `tidb_analyze_version`から`1`の値を設定する必要があります。
 
 #### フルコレクション {#full-collection}
 
@@ -118,7 +117,7 @@ Top-N値は、列またはインデックスの上位N個の値です。 TiDBは
 
 v5.3.0より前では、TiDBはリザーバーサンプリング方式を使用して統計を収集していました。 v5.3.0以降、TiDBバージョン2統計は、デフォルトでベルヌーイサンプリング法を使用して統計を収集します。リザーバーサンプリング方法を再利用するには、 `WITH NUM SAMPLES`ステートメントを使用できます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 現在のサンプリングレートは、適応アルゴリズムに基づいて計算されます。 [`SHOW STATS_META`](/sql-statements/sql-statement-show-stats-meta.md)を使用してテーブルの行数を確認できる場合、この行数を使用して、100,000行に対応するサンプリングレートを計算できます。この数値がわからない場合は、 [`TABLE_STORAGE_STATS`](/information-schema/information-schema-table-storage-stats.md)テーブルの`TABLE_KEYS`列を別の参照として使用して、サンプリングレートを計算できます。
 >
@@ -130,7 +129,7 @@ v5.3.0より前では、TiDBはリザーバーサンプリング方式を使用�
 
 テーブルに多くの列がある場合、すべての列の統計を収集すると、大きなオーバーヘッドが発生する可能性があります。オーバーヘッドを削減するために、オプティマイザーが使用する特定の列または`PREDICATE COLUMNS`つのみの統計を収集できます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 一部の列の統計の収集は、 `tidb_analyze_version = 2`にのみ適用されます。
 
@@ -144,15 +143,15 @@ v5.3.0より前では、TiDBはリザーバーサンプリング方式を使用�
 
     構文では、 `ColumnNameList`はターゲット列の名前リストを指定します。複数の列を指定する必要がある場合は、コンマ`,`を使用して列名を区切ります。たとえば、 `ANALYZE table t columns a, b` 。この構文は、特定のテーブルの特定の列の統計を収集するだけでなく、インデックス付きの列とそのテーブルのすべてのインデックスの統計を同時に収集します。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > 上記の構文は完全なコレクションです。たとえば、この構文を使用して列`a`と`b`の統計を収集した後、列`c`の統計も収集する場合は、 `ANALYZE TABLE t COLUMNS c`を使用して追加の列`c`を指定するだけでなく、 `ANALYZE table t columns a, b, c`を使用して3つの列すべてを指定する必要があります。
 
 -   `PREDICATE COLUMNS`の統計を収集するには、次のようにします。
 
-    > <strong>警告：</strong>
+    > **警告：**
     >
-    > 現在、 `PREDICATE COLUMNS`に関する統計の収集は実験的な機能です。実稼働環境で使用することはお勧めしません。
+    > 現在、 `PREDICATE COLUMNS`に関する統計の収集は実験的機能です。実稼働環境で使用することはお勧めしません。
 
     1.  [`tidb_enable_column_tracking`](/system-variables.md#tidb_enable_column_tracking-new-in-v540)システム変数の値を`ON`に設定して、TiDBが`PREDICATE COLUMNS`を収集できるようにします。
 
@@ -168,7 +167,7 @@ v5.3.0より前では、TiDBはリザーバーサンプリング方式を使用�
 
         この構文は、特定のテーブルの`PREDICATE COLUMNS`に関する統計を収集するだけでなく、インデックス付きの列とそのテーブル内のすべてのインデックスの統計を同時に収集します。
 
-        > <strong>ノート：</strong>
+        > **ノート：**
         >
         > -   `mysql.column_stats_usage`のシステムテーブルにそのテーブルの`PREDICATE COLUMNS`のレコードが含まれていない場合、前述の構文は、そのテーブルのすべての列とすべてのインデックスの統計を収集します。
         > -   この構文を使用して統計を収集した後、新しいタイプのSQLクエリを実行すると、オプティマイザーはこの時点で一時的に古い列または疑似列の統計を使用する場合があり、TiDBは次回から使用された列の統計を収集します。
@@ -257,7 +256,7 @@ ANALYZE TABLE TableName INDEX [IndexNameList] [WITH NUM BUCKETS|TOPN|CMSKETCH DE
 
 `IndexNameList`が空の場合、この構文は`TableName`のすべてのインデックスの統計を収集します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 収集の前後の統計情報に一貫性を持たせるために、 `tidb_analyze_version`が`2`の場合、この構文は、インデックスだけでなく、テーブル全体（すべての列とインデックスを含む）の統計を収集します。
 
@@ -281,9 +280,9 @@ ANALYZE TABLE TableName INDEX [IndexNameList] [WITH NUM BUCKETS|TOPN|CMSKETCH DE
 
 -   テーブル内の一部のパーティションのうち[一部の列の統計を収集する](/statistics.md#collect-statistics-on-some-columns)だけが必要な場合は、次の構文を使用します。
 
-    > <strong>警告：</strong>
+    > **警告：**
     >
-    > 現在、 `PREDICATE COLUMNS`に関する統計の収集は実験的な機能です。実稼働環境で使用することはお勧めしません。
+    > 現在、 `PREDICATE COLUMNS`に関する統計の収集は実験的機能です。実稼働環境で使用することはお勧めしません。
 
     {{< copyable "" >}}
 
@@ -295,7 +294,7 @@ ANALYZE TABLE TableName INDEX [IndexNameList] [WITH NUM BUCKETS|TOPN|CMSKETCH DE
 
 完全収集後の分析速度を向上させるために、増分収集を使用して、時間列などの単調に減少しない列に新しく追加されたセクションを分析できます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   現在、インクリメンタルコレクションはインデックス用にのみ提供されています。
 > -   インクリメンタルコレクションを使用する場合は、テーブルに`INSERT`の操作のみが存在し、インデックス列に新しく挿入された値が単調に減少しないことを確認する必要があります。そうしないと、統計情報が不正確になり、TiDBオプティマイザが適切な実行プランを選択するのに影響を与える可能性があります。
@@ -332,37 +331,11 @@ ANALYZE TABLE TableName INDEX [IndexNameList] [WITH NUM BUCKETS|TOPN|CMSKETCH DE
 
 テーブル内の`tbl`の行の総数に対する変更された行の数の比率が`tidb_auto_analyze_ratio`より大きく、現在の時刻が`tidb_auto_analyze_start_time`の場合、 `tidb_auto_analyze_end_time`はバックグラウンドで`ANALYZE TABLE tbl`ステートメントを実行して、この統計を自動的に更新します。テーブル。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 現在、自動更新では、マニュアル`ANALYZE`で入力された構成項目は記録されません。したがって、 `WITH`構文を使用して`ANALYZE`の収集動作を制御する場合は、統計を収集するためにスケジュールされたタスクを手動で設定する必要があります。
 
-TiDB v5.0より前では、クエリを実行すると、TiDBは`feedback-probability`でフィードバックを収集し、フィードバックに基づいてヒストグラムとカウント最小スケッチを更新します。 <strong>v5.0以降、この機能はデフォルトで無効になっているため、この機能を有効にすることはお勧めしません。</strong>
-
-TiDB v6.0以降、TiDBは`KILL`ステートメントを使用してバックグラウンドで実行されている`ANALYZE`タスクを終了することをサポートしています。バックグラウンドで実行されている`ANALYZE`のタスクが多くのリソースを消費し、アプリケーションに影響を与えることがわかった場合は、次の手順を実行して`ANALYZE`のタスクを終了できます。
-
-1.  次のSQLステートメントを実行して、TiDBインスタンスアドレスとバックグラウンド`ANALYZE`タスクの`ID`を取得します。
-
-    {{< copyable "" >}}
-
-    ```sql
-    SELECT ci.instance as instance, cp.id as id FROM information_schema.cluster_info ci, information_schema.cluster_processlist cp WHERE ci.status_address = cp.instance and ci.type = 'tidb' and cp.info like 'analyze table %' and cp.user = '' and cp.host = '';
-    ```
-
-    結果がない場合、バックグラウンドで実行されているタスクは`ANALYZE`もありません。
-
-2.  クライアントを使用して、バックグラウンド`ANALYZE`タスクが実行されているTiDBインスタンスに接続してから、次の`KILL`のステートメントを実行します。
-
-    {{< copyable "" >}}
-
-    ```sql
-    KILL TIDB ${id};
-    ```
-
-    `${id}`は、前のステップで取得したバックグラウンド`ANALYZE`タスクの`ID`です。
-
-    > <strong>ノート：</strong>
-    >
-    > 上記の`KILL`のステートメントは、バックグラウンド`ANALYZE`のタスクを実行しているTiDBインスタンスでのみ機能します。したがって、最初にクライアントを使用してそのTiDBインスタンスに接続する必要があります。クライアントを使用して別のTiDBインスタンスに接続する場合、またはクライアントとTiDBの間にプロキシがある場合、 `KILL`ステートメントはバックグラウンド`ANALYZE`タスクを終了できません。詳細については、 [`KILL [TIDB]`](/sql-statements/sql-statement-kill.md)を参照してください。
+v5.0より前では、クエリを実行すると、TiDBは`feedback-probability`でフィードバックを収集し、フィードバックに基づいてヒストグラムとカウント最小スケッチを更新します。 **v5.0以降、この機能はデフォルトで無効になっているため、この機能を有効にすることはお勧めしません。**
 
 ### <code>ANALYZE</code>並行性を制御する {#control-code-analyze-code-concurrency}
 
@@ -378,7 +351,7 @@ TiDB v6.0以降、TiDBは`KILL`ステートメントを使用してバックグ�
 
 #### <code>tidb_index_serial_scan_concurrency</code> {#code-tidb-index-serial-scan-concurrency-code}
 
-インデックス列を分析する場合、 `tidb_index_serial_scan_concurrency`パラメーターを使用して、一度に読み取るリージョンの数を制御できます。デフォルト値は`1`です。
+インデックス列を分析する場合、 `tidb_index_serial_scan_concurrency`パラメータを使用して、一度に読み取るリージョンの数を制御できます。デフォルト値は`1`です。
 
 ### ANALYZE構成を永続化する {#persist-analyze-configurations}
 
@@ -407,7 +380,7 @@ v5.4.0以降、TiDBはいくつかの`ANALYZE`構成の永続化をサポート�
 
 `ANALYZE`構成永続化機能を無効にした後、TiDBは永続化された構成レコードをクリアしません。したがって、この機能を再度有効にすると、TiDBは、以前に記録された永続的な構成を使用して統計を収集し続けます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `ANALYZE`構成の永続性機能を再度有効にしたときに、以前に記録された永続性構成が最新のデータに適用できなくなった場合は、 `ANALYZE`ステートメントを手動で実行し、新しい永続性構成を指定する必要があります。
 
@@ -462,7 +435,7 @@ SHOW STATS_META [ShowLikeOrWhere]
 | `modify_count`   | 変更された行の数 |
 | `row_count`      | 行の総数     |
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > TiDBがDMLステートメントに従って行の総数と変更された行の数を自動的に更新すると、 `update_time`も更新されます。したがって、 `update_time`は、 `ANALYZE`ステートメントが最後に実行された時刻を必ずしも示しているわけではありません。
 
@@ -597,9 +570,9 @@ DROP STATS TableName
 
 v5.4.0以降、TiDBは同期ロード統計機能を導入しています。この機能により、SQLステートメントの実行時にTiDBが大規模な統計（ヒストグラム、TopN、Count-Min Sketch統計など）をメモリに同期的にロードできるようになり、SQL最適化の統計の完全性が向上します。
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> 現在、統計を同期的にロードすることは実験的な機能です。実稼働環境で使用することはお勧めしません。
+> 現在、統計を同期的にロードすることは実験的機能です。実稼働環境で使用することはお勧めしません。
 
 統計の同期ロード機能はデフォルトで無効になっています。この機能を有効にするには、 [`tidb_stats_load_sync_wait`](/system-variables.md#tidb_stats_load_sync_wait-new-in-v540)システム変数の値を、SQL最適化が完全な列統計を同期的にロードするために最大で待機できるタイムアウト（ミリ秒単位）に設定します。この変数のデフォルト値は`0`で、機能が無効になっていることを示します。
 
@@ -617,7 +590,7 @@ v5.4.0以降、TiDBは同期ロード統計機能を導入しています。こ�
 
 -   `${db_name}`データベースの`${table_name}`テーブルのJSON形式の統計を取得するには：
 
-    {{&lt;コピー可能&quot;&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```
     http://${tidb-server-ip}:${tidb-server-status-port}/stats/dump/${db_name}/${table_name}
@@ -625,7 +598,7 @@ v5.4.0以降、TiDBは同期ロード統計機能を導入しています。こ�
 
     例えば：
 
-    {{&lt;コピー可能&quot;&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```
     curl -s http://127.0.0.1:10080/stats/dump/test/t1 -o /tmp/t1.json
@@ -633,7 +606,7 @@ v5.4.0以降、TiDBは同期ロード統計機能を導入しています。こ�
 
 -   特定の時間に`${db_name}`データベースの`${table_name}`テーブルのJSON形式の統計を取得するには：
 
-    {{&lt;コピー可能&quot;&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```
     http://${tidb-server-ip}:${tidb-server-status-port}/stats/dump/${db_name}/${table_name}/${yyyyMMddHHmmss}
@@ -641,7 +614,7 @@ v5.4.0以降、TiDBは同期ロード統計機能を導入しています。こ�
 
 ### 統計のインポート {#import-statistics}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > MySQLクライアントを起動するときは、 `--local-infile=1`オプションを使用します。
 

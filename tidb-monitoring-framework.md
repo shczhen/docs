@@ -1,7 +1,6 @@
 ---
-title: TiDB Monitoring Framework Overview
-summary: Use Prometheus and Grafana to build the TiDB monitoring framework.
-aliases: ['/docs/dev/tidb-monitoring-framework/','/docs/dev/how-to/monitor/overview/']
+title: TiDBモニタリングフレームワークの概要
+summary: PrometheusとGrafanaを使用して、TiDB監視フレームワークを構築します。
 ---
 
 # TiDBモニタリングフレームワークの概要 {#tidb-monitoring-framework-overview}
@@ -28,7 +27,7 @@ Grafanaは、メトリックを分析および視覚化するためのオープ�
 
 ![Grafana monitored\_groups](/media/grafana-monitored-groups.png)
 
--   {TiDB_Cluster_name}-バックアップ-復元：バックアップと復元に関連するメトリックを監視します。
+-   {TiDB_Cluster_name}-バックアップと復元：バックアップと復元に関連するメトリックを監視します。
 -   {TiDB_Cluster_name}-Binlog：TiDBBinlogに関連するメトリックを監視します。
 -   {TiDB_Cluster_name}-Blackbox_exporter：ネットワークプローブに関連するメトリックを監視します。
 -   {TiDB_Cluster_name}-ディスク-パフォーマンス：ディスクパフォーマンスに関連するメトリックを監視します。
@@ -48,6 +47,6 @@ Grafanaは、メトリックを分析および視覚化するためのオープ�
 -   {TiDB_Cluster_name}-TiKV-トラブルシューティング：TiKVエラー診断に関連するメトリックを監視します。
 -   {TiDB_Cluster_name}-TiCDC：TiCDCに関連する詳細な監視メトリック。
 
-各グループには、監視メトリックの複数のパネルラベルがあり、各パネルには、複数の監視メトリックの詳細情報が含まれています。たとえば、<strong>概要</strong>監視グループには5つのパネルラベルがあり、各ラベルは監視パネルに対応しています。次のUIを参照してください。
+各グループには、監視メトリックの複数のパネルラベルがあり、各パネルには、複数の監視メトリックの詳細情報が含まれています。たとえば、**概要**監視グループには5つのパネルラベルがあり、各ラベルは監視パネルに対応しています。次のUIを参照してください。
 
 ![Grafana Overview](/media/grafana-monitor-overview.png)

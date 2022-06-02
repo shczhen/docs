@@ -1,14 +1,13 @@
 ---
-title: Optimizer Hints
-summary: Use Optimizer Hints to influence query execution plans
-aliases: ['/docs/dev/optimizer-hints/','/docs/dev/reference/performance/optimizer-hints/']
+title: オプティマイザーのヒント
+summary: オプティマイザーヒントを使用して、クエリ実行計画に影響を与える
 ---
 
 # オプティマイザーのヒント {#optimizer-hints}
 
 TiDBは、MySQL5.7で導入されたコメントのような構文に基づくオプティマイザヒントをサポートしています。たとえば、一般的な構文の1つは`/*+ HINT_NAME([t1_name [, t2_name] ...]) */`です。 TiDBオプティマイザが最適でないクエリプランを選択する場合は、オプティマイザヒントの使用をお勧めします。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 5.7.7より前のMySQLコマンドラインクライアントは、デフォルトでオプティマイザヒントを削除します。これらの以前のバージョンで`Hint`構文を使用する場合は、クライアントの起動時に`--comments`オプションを追加します。例： `mysql -h 127.0.0.1 -P 4000 -uroot --comments` 。
 
@@ -26,9 +25,9 @@ SELECT /*+ USE_INDEX(t1, idx1), HASH_AGG(), HASH_JOIN(t1) */ count(*) FROM t t1,
 
 オプティマイザヒントがクエリ実行プランにどのように影響するかは、 [`EXPLAIN`](/sql-statements/sql-statement-explain.md)と[`EXPLAIN ANALYZE`](/sql-statements/sql-statement-explain-analyze.md)の出力で確認できます。
 
-ヒントが正しくないか不完全であっても、ステートメントエラーは発生しません。これは、ヒントは、クエリの実行に対して意味のある<em>ヒント</em>（提案）のみを持つことを目的としているためです。同様に、ヒントが適用できない場合、TiDBはせいぜい警告を返します。
+ヒントが正しくないか不完全であっても、ステートメントエラーは発生しません。これは、ヒントは、クエリの実行に対して意味のある*ヒント*（提案）のみを持つことを目的としているためです。同様に、ヒントが適用できない場合、TiDBはせいぜい警告を返します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > コメントが指定されたキーワードの後ろに続かない場合、それらは一般的なMySQLコメントとして扱われます。コメントは有効にならず、警告は報告されません。
 
@@ -46,7 +45,7 @@ SELECT * FROM (SELECT * FROM t) t1, (SELECT * FROM t) t2;
 
 ## クエリブロックで有効になるヒント {#hints-that-take-effect-in-query-blocks}
 
-このカテゴリのヒントは、 `SELECT` 、<strong>または</strong>`DELETE` `UPDATE`のキーワードの後ろに続けることができます。ヒントの有効範囲を制御するには、ヒントでクエリブロックの名前を使用します。クエリ内の各テーブルを正確に識別することで、ヒントパラメータを明確にすることができます（テーブル名またはエイリアスが重複している場合）。ヒントにクエリブロックが指定されていない場合、ヒントはデフォルトで現在のブロックで有効になります。
+このカテゴリのヒントは、 `SELECT` 、**または**`DELETE` `UPDATE`のキーワードの後ろに続けることができます。ヒントの有効範囲を制御するには、ヒントでクエリブロックの名前を使用します。クエリ内の各テーブルを正確に識別することで、ヒントパラメータを明確にすることができます（テーブル名またはエイリアスが重複している場合）。ヒントにクエリブロックが指定されていない場合、ヒントはデフォルトで現在のブロックで有効になります。
 
 例えば：
 
@@ -63,7 +62,7 @@ SELECT /*+ HASH_JOIN(@sel_1 t1@sel_1, t3) */ * FROM (SELECT t1.a, t1.b FROM t t1
 -   ヒントの最初のパラメーターとしてクエリブロック名を設定し、他のパラメーターとはスペースで区切ります。 `QB_NAME`に加えて、このセクションにリストされているすべてのヒントには、別のオプションの非表示パラメーター`@QB_NAME`もあります。このパラメーターを使用することにより、このヒントの有効な範囲を指定できます。
 -   パラメータのテーブル名に`@QB_NAME`を追加して、このテーブルが属するクエリブロックを明示的に指定します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > ヒントを有効にするクエリブロックの中または前にヒントを配置する必要があります。ヒントがクエリブロックの後に置かれている場合、それは有効になりません。
 
@@ -81,7 +80,7 @@ SELECT /*+ QB_NAME(QB1) */ * FROM (SELECT * FROM t) t1, (SELECT * FROM t) t2;
 
 このヒントは、外側の`SELECT`クエリブロックの名前を`QB1`に指定します。これにより、 `QB1`とデフォルト名`sel_1`の両方がクエリブロックに対して有効になります。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 上記の例で、ヒントが`QB_NAME`から`sel_2`を指定し、元の2番目の`SELECT`クエリブロックに新しい`QB_NAME`を指定しない場合、 `sel_2`は2番目の`SELECT`クエリブロックの無効な名前になります。
 
@@ -95,7 +94,7 @@ SELECT /*+ QB_NAME(QB1) */ * FROM (SELECT * FROM t) t1, (SELECT * FROM t) t2;
 select /*+ MERGE_JOIN(t1, t2) */ * from t1，t2 where t1.id = t2.id;
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `TIDB_SMJ`は、TiDB3.0.x以前のバージョンの`MERGE_JOIN`のエイリアスです。これらのバージョンのいずれかを使用している場合は、ヒントに`TIDB_SMJ(t1_name [, tl_name ...])`の構文を適用する必要があります。それ以降のバージョンのTiDBでは、 `TIDB_SMJ`と`MERGE_JOIN`の両方がヒントの有効な名前ですが、 `MERGE_JOIN`をお勧めします。
 
@@ -111,13 +110,13 @@ select /*+ INL_JOIN(t1, t2) */ * from t1，t2 where t1.id = t2.id;
 
 `INL_JOIN()`で指定されたパラメーターは、クエリプランを作成するときの内部テーブルの候補テーブルです。たとえば、 `INL_JOIN(t1)`は、TiDBがクエリプランを作成するための内部テーブルとして`t1`の使用のみを考慮することを意味します。候補テーブルにエイリアスがある場合は、 `INL_JOIN()`のパラメータとしてエイリアスを使用する必要があります。エイリアスがない場合は、テーブルの元の名前をパラメータとして使用します。たとえば、 `select /*+ INL_JOIN(t1) */ * from t t1, t t2 where t1.a = t2.b;`クエリでは、 `INL_JOIN()`のパラメータとして`t`ではなく`t`テーブルのエイリアス`t1`または`t2`を使用する必要があります。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `TIDB_INLJ`は、TiDB3.0.x以前のバージョンの`INL_JOIN`のエイリアスです。これらのバージョンのいずれかを使用している場合は、ヒントに`TIDB_INLJ(t1_name [, tl_name ...])`の構文を適用する必要があります。それ以降のバージョンのTiDBでは、 `TIDB_INLJ`と`INL_JOIN`の両方がヒントの有効な名前ですが、 `INL_JOIN`をお勧めします。
 
 ### INL_HASH_JOIN {#inl-hash-join}
 
-`INL_HASH_JOIN(t1_name [, tl_name])`ヒントは、オプティマイザにインデックスネストループハッシュ結合アルゴリズムを使用するように指示します。このアルゴリズムを使用するための条件は、インデックスネストループ結合アルゴリズムを使用するための条件と同じです。 2つのアルゴリズムの違いは、 `INL_JOIN`は結合された内部テーブルにハッシュテーブルを作成しますが、 `INL_HASH_JOIN`は結合された外部テーブルにハッシュテーブルを作成することです。 `INL_HASH_JOIN`にはメモリ使用量の固定制限がありますが、 `INL_JOIN`で使用されるメモリは、内部テーブルで一致する行数によって異なります。
+`INL_HASH_JOIN(t1_name [, tl_name])`ヒントは、オプティマイザーにインデックスネストループハッシュ結合アルゴリズムを使用するように指示します。このアルゴリズムを使用するための条件は、インデックスネストループ結合アルゴリズムを使用するための条件と同じです。 2つのアルゴリズムの違いは、 `INL_JOIN`は結合された内部テーブルにハッシュテーブルを作成しますが、 `INL_HASH_JOIN`は結合された外部テーブルにハッシュテーブルを作成することです。 `INL_HASH_JOIN`にはメモリ使用量の固定制限がありますが、 `INL_JOIN`で使用されるメモリは、内部テーブルで一致する行数によって異なります。
 
 ### HASH_JOIN（t1_name [、tl_name ...]） {#hash-join-t1-name-tl-name}
 
@@ -129,13 +128,13 @@ select /*+ INL_JOIN(t1, t2) */ * from t1，t2 where t1.id = t2.id;
 select /*+ HASH_JOIN(t1, t2) */ * from t1，t2 where t1.id = t2.id;
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `TIDB_HJ`は、TiDB3.0.x以前のバージョンの`HASH_JOIN`のエイリアスです。これらのバージョンのいずれかを使用している場合は、ヒントに`TIDB_HJ(t1_name [, tl_name ...])`の構文を適用する必要があります。それ以降のバージョンのTiDBでは、 `TIDB_HJ`と`HASH_JOIN`の両方がヒントの有効な名前ですが、 `HASH_JOIN`をお勧めします。
 
 ### HASH_AGG（） {#hash-agg}
 
-`HASH_AGG()`ヒントは、指定されたクエリブロック内のすべての集計関数でハッシュ集計アルゴリズムを使用するようにオプティマイザーに指示します。このアルゴリズムを使用すると、クエリを複数のスレッドと同時に実行できます。これにより、処理速度は向上しますが、より多くのメモリを消費します。例えば：
+`HASH_AGG()`ヒントは、指定されたクエリブロック内のすべての集計関数でハッシュ集計アルゴリズムを使用するようにオプティマイザに指示します。このアルゴリズムを使用すると、クエリを複数のスレッドと同時に実行できます。これにより、処理速度は向上しますが、より多くのメモリを消費します。例えば：
 
 {{< copyable "" >}}
 
@@ -163,26 +162,9 @@ select /*+ STREAM_AGG() */ count(*) from t1，t2 where t1.a > 10 group by t1.id;
 SELECT /*+ USE_INDEX(t1, idx1, idx2) */ * FROM t1;
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > このヒントでテーブル名のみを指定し、インデックス名は指定しない場合、実行ではインデックスは考慮されず、テーブル全体がスキャンされます。
-
-### FORCE_INDEX（t1_name、idx1_name [、idx2_name ...]） {#force-index-t1-name-idx1-name-idx2-name}
-
-`FORCE_INDEX(t1_name, idx1_name [, idx2_name ...])`ヒントは、指定されたインデックスのみを使用するようにオプティマイザに指示します。
-
-`FORCE_INDEX(t1_name, idx1_name [, idx2_name ...])`の使用法と効果は、 `USE_INDEX(t1_name, idx1_name [, idx2_name ...])`の使用法と効果と同じです。
-
-次の4つのクエリは同じ効果があります。
-
-{{< copyable "" >}}
-
-```sql
-SELECT /*+ USE_INDEX(t, idx1) */ * FROM t;
-SELECT /*+ FORCE_INDEX(t, idx1) */ * FROM t;
-SELECT * FROM t use index(idx1);
-SELECT * FROM t force index(idx1);
-```
 
 ### IGNORE_INDEX（t1_name、idx1_name [、idx2_name ...]） {#ignore-index-t1-name-idx1-name-idx2-name}
 
@@ -224,7 +206,7 @@ SELECT /*+ LIMIT_TO_COP() */ * FROM t WHERE a = 1 AND b > 10 ORDER BY c LIMIT 1;
 select /*+ READ_FROM_STORAGE(TIFLASH[t1], TIKV[t2]) */ t1.a from t t1, t t2 where t1.a = t2.a;
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > オプティマイザで別のスキーマのテーブルを使用する場合は、スキーマ名を明示的に指定する必要があります。例えば：
 >
@@ -246,7 +228,7 @@ SELECT /*+ USE_INDEX_MERGE(t1, idx_a, idx_b, idx_c) */ * FROM t1 WHERE t1.a > 10
 
 同じテーブルに対して複数の`USE_INDEX_MERGE`ヒントが作成されると、オプティマイザは、これらのヒントで指定されたインデックスセットの和集合からインデックスを選択しようとします。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `USE_INDEX_MERGE`のパラメーターは、列名ではなく、索引名を参照します。主キーのインデックス名は`primary`です。
 
@@ -256,9 +238,9 @@ SELECT /*+ USE_INDEX_MERGE(t1, idx_a, idx_b, idx_c) */ * FROM t1 WHERE t1.a > 10
 
 ## クエリ全体で有効になるヒント {#hints-that-take-effect-in-the-whole-query}
 
-このカテゴリのヒントは、<strong>最初の</strong>`SELECT` 、または`UPDATE`キーワードの後ろにのみ続くことができ`DELETE` 。これは、このクエリの実行時に指定されたシステム変数の値を変更することと同じです。ヒントの優先度は、既存のシステム変数の優先度よりも高くなっています。
+このカテゴリのヒントは、**最初の**`SELECT` 、または`UPDATE`キーワードの後ろにのみ続くことができ`DELETE` 。これは、このクエリの実行時に指定されたシステム変数の値を変更することと同じです。ヒントの優先度は、既存のシステム変数の優先度よりも高くなっています。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > このカテゴリのヒントには、オプションの非表示変数`@QB_NAME`もありますが、変数を指定した場合でも、ヒントはクエリ全体で有効になります。
 
@@ -276,7 +258,7 @@ select /*+ NO_INDEX_MERGE() */ * from t where t.a > 0 or t.b > 0;
 
 このヒントに加えて、 `tidb_enable_index_merge`システム変数を設定すると、この機能を有効にするかどうかも制御されます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   `NO_INDEX_MERGE`は`USE_INDEX_MERGE`よりも優先されます。両方のヒントを使用すると、 `USE_INDEX_MERGE`は有効になりません。
 > -   サブクエリの場合、 `NO_INDEX_MERGE`は、サブクエリの最も外側のレベルに配置されている場合にのみ有効になります。
@@ -363,6 +345,6 @@ prepare stmt from 'select  /*+ IGNORE_PLAN_CACHE() */ * from t where t.id = ?';
 SELECT /*+ NTH_PLAN(3) */ count(*) from t where a > 5;
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> `NTH_PLAN(N)`は主にテストに使用され、それ以降のバージョンでは互換性が保証されません。このヒント<strong>は注意して</strong>使用してください。
+> `NTH_PLAN(N)`は主にテストに使用され、それ以降のバージョンでは互換性が保証されません。このヒント**は注意して**使用してください。

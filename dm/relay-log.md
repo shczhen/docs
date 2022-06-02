@@ -1,20 +1,19 @@
 ---
-title: Data Migration Relay Log
-summary: Learn the directory structure, initial migration rules and data purge of DM relay logs.
-aliases: ['/docs/tidb-data-migration/dev/relay-log/']
+title: データ移行リレーログ
+summary: ディレクトリ構造、初期移行ルール、およびDMリレーログのデータパージについて説明します。
 ---
 
 # データ移行リレーログ {#data-migration-relay-log}
 
 データ移行（DM）リレーログは、データベースの変更を説明するイベントを含む番号付きファイルのいくつかのセットと、使用されているすべてのリレーログファイルの名前を含むインデックスファイルで構成されます。
 
-リレーログを有効にすると、DM-workerはアップストリームbinlogをローカル構成ディレクトリに自動的に移行します（DMがTiUPを使用してデプロイされている場合、デフォルトの移行ディレクトリは`<deploy_dir>/<relay_log>`です）。デフォルト値の`<relay_log>`は`relay-dir`で、 [アップストリームデータベース構成ファイル](/dm/dm-source-configuration-file.md)で変更できます。 v5.4.0以降、 [DM-worker構成ファイル](/dm/dm-worker-configuration-file.md)の`relay-dir`からローカル構成ディレクトリを構成できます。これは、アップストリーム・データベースの構成ファイルよりも優先されます。
+リレーログを有効にすると、DM-workerはアップストリームbinlogをローカル構成ディレクトリに自動的に移行します（DMがTiUPを使用してデプロイされている場合、デフォルトの移行ディレクトリは`<deploy_dir>/<relay_log>`です）。デフォルト値の`<relay_log>`は`relay-dir`で、 [アップストリームデータベースConfiguration / コンフィグレーションファイル](/dm/dm-source-configuration-file.md)で変更できます。 v5.4.0以降、 [DM-worker構成ファイル](/dm/dm-worker-configuration-file.md)の`relay-dir`からローカル構成ディレクトリを構成できます。これは、アップストリーム・データベースの構成ファイルよりも優先されます。
 
 DM-workerが実行されている場合、アップストリームのbinlogをローカルファイルにリアルタイムで移行します。 DM-workerの同期処理ユニットは、ローカルリレーログのbinlogイベントをリアルタイムで読み取り、これらのイベントをSQLステートメントに変換してから、これらのステートメントをダウンストリームデータベースに移行します。
 
 このドキュメントでは、ディレクトリ構造と初期移行ルールのDMリレーログ、およびリレーログを一時停止、再開、およびパージする方法を紹介します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > リレーログ機能には追加のディスクI/O操作が必要であるため、データ移行の待ち時間が長くなります。展開環境でのディスクI/Oのパフォーマンスが低い場合、リレーログ機能が移行タスクのボトルネックになり、移行が遅くなる可能性があります。
 
@@ -81,7 +80,7 @@ DM-workerが実行されている場合、アップストリームのbinlogを�
 
     -   GTIDモードでは、DM-workerは最初のアップストリームGTIDから移行を開始します。
 
-        > <strong>ノート：</strong>
+        > **ノート：**
         >
         > アップストリームリレーログがパージされると、エラーが発生します。この場合、移行の開始位置を指定するには`relay-binlog-gtid`を設定します。
 
@@ -93,7 +92,7 @@ DM-workerが実行されている場合、アップストリームのbinlogを�
 
 v5.4.0以降のバージョンでは、 `enable-relay`を`true`に設定することでリレーログを有効にできます。 v5.4.0以降、アップストリームデータソースをバインドするときに、DM-workerはデータソースの構成の`enable-relay`の項目をチェックします。 `enable-relay`が`true`の場合、このデータソースに対してリレーログ機能が有効になります。
 
-詳細な設定方法については、 [アップストリームデータベース構成ファイル](/dm/dm-source-configuration-file.md)を参照してください。
+詳細な設定方法については、 [アップストリームデータベースConfiguration / コンフィグレーションファイル](/dm/dm-source-configuration-file.md)を参照してください。
 
 さらに、 `start-relay`または`stop-relay`コマンドを使用してデータソースの`enable-relay`構成を動的に調整し、リレーログイン時間を有効または無効にすることもできます。
 
@@ -114,7 +113,7 @@ v5.4.0以降のバージョンでは、 `enable-relay`を`true`に設定する�
 
 <div label="versions between v2.0.2 (included) and v5.3.0 (included)">
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > DMv2.0.2より後のDMv2.0.xおよびv5.3.0では、ソース構成ファイルの構成項目`enable-relay`は無効になり、リレーログの有効化と無効化に使用できるのは`start-relay`と`stop-relay`のみです。 DMは、 [データソース構成のロード](/dm/dm-manage-source.md#operate-data-source)のときに`enable-relay`が`true`に設定されていることを検出すると、次のメッセージを出力します。
 >
@@ -124,7 +123,7 @@ v5.4.0以降のバージョンでは、 `enable-relay`を`true`に設定する�
 
 コマンド`start-relay`では、指定されたデータソースのリレーログを移行するように1つ以上のDM-workerを構成できますが、パラメーターで指定されたDM-workerは解放されているか、アップストリームデータソースにバインドされている必要があります。例は次のとおりです。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 » start-relay -s mysql-replica-01 worker1 worker2
@@ -137,7 +136,7 @@ v5.4.0以降のバージョンでは、 `enable-relay`を`true`に設定する�
 }
 ```
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 » stop-relay -s mysql-replica-01 worker1 worker2
@@ -156,7 +155,7 @@ v5.4.0以降のバージョンでは、 `enable-relay`を`true`に設定する�
 
 v2.0.2より前のバージョン（v2.0.2を含まない）では、DMワーカーをアップストリームデータソースにバインドするときに、DMはソース構成ファイルの構成項目`enable-relay`をチェックします。 `enable-relay`が`true`に設定されている場合、DMはデータソースのリレーログ機能を有効にします。
 
-構成項目`enable-relay`の設定方法については、 [アップストリームデータベース構成ファイル](/dm/dm-source-configuration-file.md)を参照してください。
+構成項目`enable-relay`の設定方法については、 [アップストリームデータベースConfiguration / コンフィグレーションファイル](/dm/dm-source-configuration-file.md)を参照してください。
 
 </div>
 </SimpleTab>
@@ -165,7 +164,7 @@ v2.0.2より前のバージョン（v2.0.2を含まない）では、DMワーカ
 
 コマンド`query-status -s`を使用して、アップストリームデータソースのリレーログプルプロセスのステータスを照会できます。次の例を参照してください。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 » query-status -s mysql-replica-01
@@ -226,7 +225,7 @@ v2.0.2より前のバージョン（v2.0.2を含まない）では、DMワーカ
 
 コマンド`pause-relay`を使用してリレーログのプルプロセスを一時停止し、コマンド`resume-relay`を使用してプロセスを再開できます。これら2つのコマンドを実行するときは、アップストリームデータソースの`source-id`を指定する必要があります。次の例を参照してください。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 » pause-relay -s mysql-replica-01 -s mysql-replica-02
@@ -254,7 +253,7 @@ v2.0.2より前のバージョン（v2.0.2を含まない）では、DMワーカ
 }
 ```
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 » resume-relay -s mysql-replica-01
@@ -308,7 +307,7 @@ purge:
 
 ### 手動データパージ {#manual-data-purge}
 
-手動データパージとは、dmctlが提供する`purge-relay`コマンドを使用して`subdir`とbinlog名を指定し、指定されたbinlogの<strong>前に</strong>すべてのリレーログをパージすることを意味します。コマンドの`-subdir`オプションが指定されていない場合、現在のリレーログサブディレクトリ<strong>より前</strong>のすべてのリレーログが削除されます。
+手動データパージとは、dmctlが提供する`purge-relay`コマンドを使用して`subdir`とbinlog名を指定し、指定されたbinlogの**前に**すべてのリレーログをパージすることを意味します。コマンドの`-subdir`オプションが指定されていない場合、現在のリレーログサブディレクトリ<strong>より前</strong>のすべてのリレーログが削除されます。
 
 現在のリレーログのディレクトリ構造が次のようになっていると仮定します。
 
@@ -334,17 +333,17 @@ e4e0e8ab-09cc-11e9-9220-82cc35207219.000002
 deb76a2b-09cc-11e9-9129-5242cf3bb246.000003
 ```
 
--   dmctlで次の`purge-relay`コマンドを実行すると、 `e4e0e8ab-09cc-11e9-9220-82cc35207219.000002/mysql-bin.000001`<strong>より前</strong>のすべてのリレーログファイルが削除されます。これは、 `deb76a2b-09cc-11e9-9129-5242cf3bb246.000001`のすべてのリレーログファイルです。
+-   dmctlで次の`purge-relay`コマンドを実行すると、 `e4e0e8ab-09cc-11e9-9220-82cc35207219.000002/mysql-bin.000001`**より前**のすべてのリレーログファイルが削除されます。これは、 `deb76a2b-09cc-11e9-9129-5242cf3bb246.000001`のすべてのリレーログファイルです。
 
-    {{&lt;コピー可能&quot;&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     » purge-relay -s mysql-replica-01 --filename mysql-bin.000001 --sub-dir e4e0e8ab-09cc-11e9-9220-82cc35207219.000002
     ```
 
--   dmctlで次の`purge-relay`コマンドを実行する<strong>と、現在の</strong>（ `deb76a2b-09cc-11e9-9129-5242cf3bb246.000003` ）ディレクトリの`mysql-bin.000001`の前にあるすべてのリレーログファイルが削除されます。これは、 `deb76a2b-09cc-11e9-9129-5242cf3bb246.000001`と`e4e0e8ab-09cc-11e9-9220-82cc35207219.000002`のすべてのリレーログファイルです。
+-   dmctlで次の`purge-relay`コマンドを実行する**と、現在の**（ `deb76a2b-09cc-11e9-9129-5242cf3bb246.000003` ）ディレクトリの`mysql-bin.000001`の前にあるすべてのリレーログファイルが削除されます。これは、 `deb76a2b-09cc-11e9-9129-5242cf3bb246.000001`と`e4e0e8ab-09cc-11e9-9220-82cc35207219.000002`のすべてのリレーログファイルです。
 
-    {{&lt;コピー可能&quot;&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     » purge-relay -s mysql-replica-01 --filename mysql-bin.000001

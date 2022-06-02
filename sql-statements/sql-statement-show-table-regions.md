@@ -1,7 +1,6 @@
 ---
-title: SHOW TABLE REGIONS
-summary: Learn how to use SHOW TABLE REGIONS in TiDB.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-table-regions/','/docs/dev/reference/sql/statements/show-table-regions/']
+title: テーブルの地域を表示する
+summary: TiDBでSHOWTABLEREGIONSを使用する方法を学びます。
 ---
 
 # テーブルの地域を表示する {#show-table-regions}
@@ -17,23 +16,23 @@ SHOW TABLE [table_name] INDEX [index_name] REGIONS [WhereClauseOptional];
 
 ## あらすじ {#synopsis}
 
-<strong>ShowTableRegionStmt：</strong>
+**ShowTableRegionStmt：**
 
 ![ShowTableRegionStmt](/media/sqlgram/ShowTableRegionStmt.png)
 
-<strong>TableName：</strong>
+**TableName：**
 
 ![TableName](/media/sqlgram/TableName.png)
 
-<strong>PartitionNameListOpt：</strong>
+**PartitionNameListOpt：**
 
 ![PartitionNameListOpt](/media/sqlgram/PartitionNameListOpt.png)
 
-<strong>WhereClauseOptional：</strong>
+**WhereClauseOptional：**
 
 ![WhereClauseOptional](/media/sqlgram/WhereClauseOptional.png)
 
-<strong>WhereClause：</strong>
+**WhereClause：**
 
 ![WhereClause](/media/sqlgram/WhereClause.png)
 
@@ -51,7 +50,7 @@ SHOW TABLE [table_name] INDEX [index_name] REGIONS [WhereClauseOptional];
 -   `APPROXIMATE_SIZE(MB)` ：リージョン内の推定データ量。単位はメガバイト（MB）です。
 -   `APPROXIMATE_KEYS` ：リージョン内のキーの推定数。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `WRITTEN_BYTES`の`READ_BYTES`は`APPROXIMATE_KEYS`なデータではありませ`APPROXIMATE_SIZE(MB)` 。これらは、PDが地域から受信する心拍情報に基づいてPDから推定されたデータです。
 

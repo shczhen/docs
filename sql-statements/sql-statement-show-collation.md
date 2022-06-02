@@ -1,26 +1,25 @@
 ---
-title: SHOW COLLATION | TiDB SQL Statement Reference
-summary: An overview of the usage of SHOW COLLATION for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-collation/','/docs/dev/reference/sql/statements/show-collation/']
+title: 照合を表示| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのSHOWCOLLATIONの使用法の概要。
 ---
 
 # 照合を表示 {#show-collation}
 
 このステートメントは、照合の静的リストを提供し、MySQLクライアントライブラリとの互換性を提供するために含まれています。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> [「新しい照合フレームワーク」](/character-set-and-collation.md#new-framework-for-collations)を有効にすると、 `SHOW COLLATION`の結果は異なります。新しい照合フレームワークの詳細については、 [キャラクターセットと照合](/character-set-and-collation.md)を参照してください。
+> [「新しい照合順序フレームワーク」](/character-set-and-collation.md#new-framework-for-collations)を有効にすると、 `SHOW COLLATION`の結果は異なります。新しい照合順序フレームワークの詳細については、 [キャラクターセットと照合](/character-set-and-collation.md)を参照してください。
 
 ## あらすじ {#synopsis}
 
-<strong>ShowCollationStmt：</strong>
+**ShowCollationStmt：**
 
 ![ShowCollationStmt](/media/sqlgram/ShowCollationStmt.png)
 
 ## 例 {#examples}
 
-新しい照合フレームワークを無効にすると、バイナリ照合のみが表示されます。
+新しい照合順序フレームワークを無効にすると、バイナリ照合のみが表示されます。
 
 ```sql
 mysql> SHOW COLLATION;
@@ -36,7 +35,7 @@ mysql> SHOW COLLATION;
 5 rows in set (0.02 sec)
 ```
 
-新しい照合フレームワークを有効にすると、 `utf8_general_ci`と`utf8mb4_general_ci`が追加でサポートされます。
+新しい照合順序フレームワークを有効にすると、 `utf8_general_ci`と`utf8mb4_general_ci`が追加でサポートされます。
 
 ```sql
 mysql> SHOW COLLATION;

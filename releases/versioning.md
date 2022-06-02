@@ -1,13 +1,11 @@
 ---
-title: TiDB Versioning
-summary: Learn the version numbering system of TiDB.
+title: TiDBバージョニング
+summary: TiDBのバージョン番号付けシステムを学びます。
 ---
 
 # TiDBバージョニング {#tidb-versioning}
 
-<Important>
-It is recommended to always upgrade to the latest patch release of your release series.
-</Important>
+<Important>リリースシリーズの最新のパッチリリースに常にアップグレードすることをお勧めします。</Important>
 
 TiDBは2つのリリースシリーズを提供しています。
 
@@ -43,9 +41,7 @@ LTSのライフサイクル中に、パッチリリースがオンデマンド�
 
 -   6.1.1
 
-<Note>
-v5.1.0, v5.2.0, v5.3.0, v5.4.0 were released only two months after their preceding releases, but all four releases are LTS and provide patch releases.
-</Note>
+<Note>v5.1.0、v5.2.0、v5.3.0、v5.4.0は、以前のリリースからわずか2か月後にリリースされましたが、4つのリリースはすべてLTSであり、パッチリリースを提供します。</Note>
 
 ## 開発マイルストーンリリース {#development-milestone-releases}
 
@@ -59,7 +55,7 @@ DMRは`X.Y.Z`としてバージョン管理されます。 `Z`のデフォルト
 
 ## TiDBエコシステムツールのバージョン管理 {#versioning-of-tidb-ecosystem-tools}
 
-一部のTiDBツールはTiDBサーバーと一緒にリリースされ、TiDBLightningなどの同じバージョン番号付けシステムを使用します。一部のTiDBツールは、TiDBサーバーとは別にリリースされ、TiUPやTiDBOperatorなどの独自のバージョン番号付けシステムを使用します。
+一部のTiDBツールはTiDBサーバーと一緒にリリースされ、TiDBLightningなどの同じバージョン番号付けシステムを使用します。一部のTiDBツールは、TiDBサーバーとは別にリリースされ、TiUPやTiDB Operatorなどの独自のバージョン番号付けシステムを使用します。
 
 ## 履歴バージョン管理（非推奨） {#historical-versioning-deprecated}
 

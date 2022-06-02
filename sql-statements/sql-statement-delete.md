@@ -1,7 +1,6 @@
 ---
-title: DELETE | TiDB SQL Statement Reference
-summary: An overview of the usage of DELETE for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-delete/','/docs/dev/reference/sql/statements/delete/']
+title: 削除| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのDELETEの使用法の概要。
 ---
 
 # 消去 {#delete}

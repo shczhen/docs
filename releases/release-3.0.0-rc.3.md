@@ -1,6 +1,5 @@
 ---
-title: TiDB 3.0.0-rc.3 Release Notes
-aliases: ['/docs/dev/releases/release-3.0.0-rc.3/','/docs/dev/releases/3.0.0-rc.3/']
+title: TiDB3.0.0-rc.3リリースノート
 ---
 
 # TiDB3.0.0-rc.3リリースノート {#tidb-3-0-0-rc-3-release-notes}
@@ -55,7 +54,7 @@ TiDB Ansibleバージョン：3.0.0-rc.3
     -   `alter table`を使用して文字セットを変更すると`blob`タイプが変更される問題を修正します[＃10698](https://github.com/pingcap/tidb/pull/10698)
     -   ホットスポットの問題を軽減するために、列に`AUTO_INCREMENT`属性が含まれている場合に、 `SHARD_ROW_ID_BITS`を使用して行IDを分散する機能を追加します[＃10794](https://github.com/pingcap/tidb/pull/10794)
     -   `alter table`ステートメント[＃10808](https://github.com/pingcap/tidb/pull/10808)を使用して、保存された生成列の追加を禁止します。
-    -   DDLメタデータの無効な存続時間を最適化して、クラスターのアップグレード後にDDL操作が遅くなる期間を短縮します[＃10795](https://github.com/pingcap/tidb/pull/10795)
+    -   DDLメタデータの無効な存続時間を最適化して、クラスタのアップグレード後にDDL操作が遅くなる期間を短縮します[＃10795](https://github.com/pingcap/tidb/pull/10795)
 
 ## PD {#pd}
 
@@ -119,4 +118,4 @@ TiDB Ansibleバージョン：3.0.0-rc.3
 
 ## TiDB Ansible {#tidb-ansible}
 
--   監視項目を追加して、クラスターの最大QPS値を予測します（デフォルトでは「非表示」） [＃f5cfa4d](https://github.com/pingcap/tidb-ansible/commit/f5cfa4d903bbcd77e01eddc8d31eabb6e6157f73)
+-   監視項目を追加して、クラスタの最大QPS値を予測します（デフォルトでは「非表示」） [＃f5cfa4d](https://github.com/pingcap/tidb-ansible/commit/f5cfa4d903bbcd77e01eddc8d31eabb6e6157f73)

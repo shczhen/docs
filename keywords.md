@@ -1,14 +1,13 @@
 ---
-title: Keywords
-summary: Keywords and Reserved Words
-aliases: ['/docs/dev/keywords-and-reserved-words/','/docs/dev/reference/sql/language-structure/keywords-and-reserved-words/','/tidb/dev/keywords-and-reserved-words/']
+title: キーワード
+summary: キーワードと予約語
 ---
 
 # キーワード {#keywords}
 
 この記事では、TiDBのキーワード、予約語と非予約語の違いを紹介し、クエリのすべてのキーワードを要約します。
 
-キーワードは、 `SELECT`などのSQLステートメントで特別な意味を持つ`DELETE` `UPDATE` 。それらのいくつかは、<strong>非予約キーワード</strong>と呼ばれる識別子として直接使用できます。それらのいくつかは、<strong>予約キーワード</strong>と呼ばれる識別子として使用される前に特別な処理を必要とします。
+キーワードは、 `SELECT`などのSQLステートメントで特別な意味を持つ`DELETE` `UPDATE` 。それらのいくつかは、**非予約キーワード**と呼ばれる識別子として直接使用できます。それらのいくつかは、<strong>予約キーワード</strong>と呼ばれる識別子として使用される前に特別な処理を必要とします。
 
 予約されたキーワードを識別子として使用するには、それらをバッククォート`` ` ``で囲む必要があります。
 

@@ -1,6 +1,6 @@
 ---
-title: Eliminate Max/Min
-summary: Introduce the rules for eliminating Max/Min functions.
+title: 最大/最小を排除する
+summary: 最大/最小関数を削除するためのルールを導入します。
 ---
 
 # 最大/最小を排除する {#eliminate-max-min}

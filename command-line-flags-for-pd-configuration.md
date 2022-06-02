@@ -1,10 +1,9 @@
 ---
-title: PD Configuration Flags
-summary: Learn some configuration flags of PD.
-aliases: ['/docs/dev/command-line-flags-for-pd-configuration/','/docs/dev/reference/configuration/pd-server/configuration/']
+title: PDConfiguration / コンフィグレーションフラグ
+summary: PDのいくつかの構成フラグを学びます。
 ---
 
-# PD構成フラグ {#pd-configuration-flags}
+# PDConfiguration / コンフィグレーションフラグ {#pd-configuration-flags}
 
 PDは、コマンドラインフラグと環境変数を使用して構成できます。
 
@@ -26,13 +25,13 @@ PDは、コマンドラインフラグと環境変数を使用して構成でき
 
 -   PDがリッスンするクライアントURLのリスト
 -   デフォルト： `"http://127.0.0.1:2379"`
--   クラスタを展開するときは、現在のホストのIPアドレスを`--client-urls` （たとえば、 `"http://192.168.100.113:2379"` ）として指定する必要があります。クラスターがDockerで実行されている場合は、DockerのIPアドレスを`"http://0.0.0.0:2379"`として指定します。
+-   クラスタを展開するときは、現在のホストのIPアドレスを`--client-urls` （たとえば、 `"http://192.168.100.113:2379"` ）として指定する必要があります。クラスタがDockerで実行されている場合は、DockerのIPアドレスを`"http://0.0.0.0:2379"`として指定します。
 
 ## <code>--peer-urls</code> {#code-peer-urls-code}
 
 -   PDノードがリッスンするピアURLのリスト
 -   デフォルト： `"http://127.0.0.1:2380"`
--   クラスタを展開するときは、現在のホストのIPアドレスとして`--peer-urls` （ `"http://192.168.100.113:2380"`など）を指定する必要があります。クラスターがDockerで実行されている場合は、DockerのIPアドレスを`"http://0.0.0.0:2380"`として指定します。
+-   クラスタを展開するときは、現在のホストのIPアドレスとして`--peer-urls` （ `"http://192.168.100.113:2380"`など）を指定する必要があります。クラスタがDockerで実行されている場合は、DockerのIPアドレスを`"http://0.0.0.0:2380"`として指定します。
 
 ## <code>--config</code> {#code-config-code}
 
@@ -47,7 +46,7 @@ PDは、コマンドラインフラグと環境変数を使用して構成でき
 
 ## <code>--initial-cluster</code> {#code-initial-cluster-code}
 
--   ブートストラップの初期クラスター構成
+-   ブートストラップの初期クラスタ構成
 -   デフォルト： `"{name}=http://{advertise-peer-url}"`
 -   たとえば、 `name`が「pd」で`advertise-peer-urls`が`"http://192.168.100.113:2380"`の場合、 `initial-cluster`は`"pd=http://192.168.100.113:2380"`です。
 -   3台のPDサーバーを起動する必要がある場合、 `initial-cluster`台は次のようになります。
@@ -58,9 +57,9 @@ PDは、コマンドラインフラグと環境変数を使用して構成でき
 
 ## <code>--join</code> {#code-join-code}
 
--   動的にクラスターに参加する
+-   動的にクラスタに参加する
 -   デフォルト： `""`
--   既存のクラスターに参加する場合は、 `--join="${advertise-client-urls}"`を使用できます`advertise-client-url`は既存のPDであり、複数のアドバタイズクライアントのURLはコンマで区切られます。
+-   既存のクラスタに参加する場合は、 `--join="${advertise-client-urls}"`を使用できます`advertise-client-url`は既存のPDであり、複数のアドバタイズクライアントのURLはコンマで区切られます。
 
 ## <code>-L</code> {#code-l-code}
 

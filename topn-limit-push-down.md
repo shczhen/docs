@@ -1,6 +1,6 @@
 ---
-title: TopN and Limit Operator Push Down
-summary: Learn the implementation of TopN and Limit operator pushdown.
+title: TopNおよびLimitOperatorプッシュダウン
+summary: TopNおよびLimit演算子のプッシュダウンの実装について説明します。
 ---
 
 # TopNおよびLimitOperatorプッシュダウン {#topn-and-limit-operator-push-down}

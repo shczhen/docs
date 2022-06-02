@@ -1,6 +1,5 @@
 ---
-title: TiDB 2.1.4 Release Notes
-aliases: ['/docs/dev/releases/release-2.1.4/','/docs/dev/releases/2.1.4/']
+title: TiDB2.1.4リリースノート
 ---
 
 # TiDB2.1.4リリースノート {#tidb-2-1-4-release-notes}
@@ -35,6 +34,6 @@ aliases: ['/docs/dev/releases/release-2.1.4/','/docs/dev/releases/2.1.4/']
     -   キャッシュミスが多すぎることによるパフォーマンスの低下を回避するために、ダンプファイルの読み取りのI/O同時実行を制限します[＃110](https://github.com/pingcap/tidb-lightning/pull/110)
     -   インポートの安定性を向上させるために、単一のテーブルのデータをバッチでインポートすることをサポートします[＃110](https://github.com/pingcap/tidb-lightning/pull/113)
     -   [＃4199](https://github.com/tikv/tikv/pull/4199)のインポートモードで自動圧縮を有効にする
-    -   TiKVクラスターのバージョンが2.1.4以降の場合、レベル1の圧縮はインポートモードで自動的に実行されるため、TiKVの定期的なレベル1の圧縮パラメーターの無効化をサポートします[＃119](https://github.com/pingcap/tidb-lightning/pull/119)
+    -   TiKVクラスタのバージョンが2.1.4以降の場合、レベル1の圧縮はインポートモードで自動的に実行されるため、TiKVの定期的なレベル1の圧縮パラメーターの無効化をサポートします[＃119](https://github.com/pingcap/tidb-lightning/pull/119)
     -   インポートエンジンの数を制限して、インポーターのディスク領域を過度に消費しないようにします[＃119](https://github.com/pingcap/tidb-lightning/pull/119)
 -   sync-diff-inspector1で[＃197](https://github.com/pingcap/tidb-tools/pull/197)統計を使用したチャンクの分割をサポートします

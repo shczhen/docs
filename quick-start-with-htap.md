@@ -1,13 +1,13 @@
 ---
-title: Quick start with HTAP
-summary: Learn how to quickly get started with the TiDB HTAP.
+title: HTAPのクイックスタート
+summary: TiDBHTAPをすばやく開始する方法を学びます。
 ---
 
 # TiDBHTAPのクイックスタートガイド {#quick-start-guide-for-tidb-htap}
 
 このガイドでは、TiDBのハイブリッドトランザクションおよび分析処理（HTAP）のワンストップソリューションを開始するための最も簡単な方法について説明します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > このガイドに記載されている手順は、テスト環境でのクイックスタートのみを目的としています。実稼働環境では、 [HTAPを探索する](/explore-htap.md)をお勧めします。
 
@@ -24,9 +24,9 @@ TiDB HTAPを使用する前に、TiDBオンライントランザクション処�
 
 このドキュメントでは、 [TPC-H](http://www.tpc.org/tpch/)のデータセットのサンプルテーブルをクエリすることで、TiDBHTAPの便利さと高性能を体験できます。 TPC-Hは、大量のデータと高度な複雑さを備えた一連のビジネス指向のアドホッククエリで構成される一般的な意思決定支援ベンチマークです。 TPC-Hを使用して22の完全なSQLクエリを体験するには、クエリステートメントとデータを生成する方法について[tidb-ベンチリポジトリ](https://github.com/pingcap/tidb-bench/tree/master/tpch/queries)または[TPC-H](http://www.tpc.org/tpch/)にアクセスしてください。
 
-### 手順1.ローカルテスト環境を展開する {#step-1-deploy-a-local-test-environment}
+### 手順1.ローカルテスト環境をデプロイする {#step-1-deploy-a-local-test-environment}
 
-TiDB HTAPを使用する前に、 [TiDBデータベースプラットフォームのクイックスタートガイド](/quick-start-with-tidb.md)の手順に従ってローカルテスト環境を準備し、次のコマンドを実行してTiDBクラスターを展開します。
+TiDB HTAPを使用する前に、 [TiDBデータベースプラットフォームのクイックスタートガイド](/quick-start-with-tidb.md)の手順に従ってローカルテスト環境を準備し、次のコマンドを実行してTiDBクラスタを展開します。
 
 {{< copyable "" >}}
 
@@ -34,7 +34,7 @@ TiDB HTAPを使用する前に、 [TiDBデータベースプラットフォー�
 tiup playground
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `tiup playground`コマンドはクイックスタート専用であり、実動用ではありません。
 
@@ -42,7 +42,7 @@ tiup playground
 
 次の手順では、TiDBHTAPを使用するためのテストデータとして[TPC-H](http://www.tpc.org/tpch/)のデータセットを作成できます。 TPC-Hに興味がある場合は、 [一般的な実装ガイドライン](http://tpc.org/tpc_documents_current_versions/pdf/tpc-h_v3.0.0.pdf)を参照してください。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 既存のデータを分析クエリに使用する場合は、 [データをTiDBに移行する](/migration-overview.md)を実行できます。独自のテストデータを設計および作成する場合は、SQLステートメントを実行するか、関連するツールを使用して作成できます。
 

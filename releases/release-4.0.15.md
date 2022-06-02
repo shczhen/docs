@@ -1,5 +1,5 @@
 ---
-title: TiDB 4.0.15 Release Notes
+title: TiDB4.0.15リリースノート
 ---
 
 # TiDB4.0.15リリースノート {#tidb-4-0-15-release-notes}
@@ -21,10 +21,10 @@ TiDBバージョン：4.0.15
         -   `having`句が正しく機能しない可能性がある問題を修正します[＃26496](https://github.com/pingcap/tidb/issues/26496)
         -   `between`式の周りの照合が異なる場合に発生する誤った実行結果を修正します[＃27146](https://github.com/pingcap/tidb/issues/27146)
         -   `extract`関数の引数が負の期間[＃27236](https://github.com/pingcap/tidb/issues/27236)である場合に発生する誤った結果を修正します
-        -   `group_concat`関数の列に非ビン照合がある場合に発生する誤った実行結果を修正します[＃27429](https://github.com/pingcap/tidb/issues/27429)
+        -   `group_concat`関数の列に非ビン照合順序がある場合に発生する誤った実行結果を修正します[＃27429](https://github.com/pingcap/tidb/issues/27429)
         -   `Apply`演算子を[＃27233](https://github.com/pingcap/tidb/issues/27233)に変換するときに列情報が失われる問題を修正し`Join`
         -   無効な文字列を`DATE`にキャストしたときの[＃26762](https://github.com/pingcap/tidb/issues/26762)しない動作の問題を修正しました
-        -   新しい照合が有効になっている場合、複数の列の`count distinct`の結果が間違っているというバグを修正します[＃27091](https://github.com/pingcap/tidb/issues/27091)
+        -   新しい照合順序が有効になっている場合、複数の列の`count distinct`の結果が間違っているというバグを修正します[＃27091](https://github.com/pingcap/tidb/issues/27091)
 
 ## 機能強化 {#feature-enhancement}
 
@@ -55,15 +55,15 @@ TiDBバージョン：4.0.15
 
         -   リージョンを同時に分割および分散して、復元速度を向上させる[＃1363](https://github.com/pingcap/br/pull/1363)
         -   PD要求エラーまたはTiKVI/ Oタイムアウトエラーが発生した場合は、BRタスクを再試行してください[＃27787](https://github.com/pingcap/tidb/issues/27787)
-        -   多くの小さなテーブルを復元するときに空の領域を減らして、復元後のクラスター操作に影響を与えないようにします[＃1374](https://github.com/pingcap/br/issues/1374)
+        -   多くの小さなテーブルを復元するときに空の領域を減らして、復元後のクラスタ操作に影響を与えないようにします[＃1374](https://github.com/pingcap/br/issues/1374)
         -   テーブルの作成中に`rebase auto id`の操作を実行すると、個別の`rebase auto id`のDDL操作が保存され、復元[＃1424](https://github.com/pingcap/br/pull/1424)が高速化されます。
 
-    -   団子
+    -   Dumpling
 
         -   `SHOW TABLE STATUS` [＃337](https://github.com/pingcap/dumpling/pull/337)のフィルタリング効率を向上させるために、テーブル情報を取得する前にスキップされたデータベースをフィルタリングします。
         -   一部のMySQLバージョン[＃322](https://github.com/pingcap/dumpling/issues/322)では`SHOW TABLE STATUS`が正しく機能しないため、 `SHOW FULL TABLES`を使用してエクスポートするテーブルのテーブル情報を取得します。
         -   `START TRANSACTION ... WITH CONSISTENT SNAPSHOT`または`SHOW CREATE TABLE`構文をサポートしないMySQL互換データベースのバックアップをサポートする[＃309](https://github.com/pingcap/dumpling/issues/309)
-        -   ダンプが失敗するという誤解を招く情報を回避するために、ダンプリング警告ログを調整します[＃340](https://github.com/pingcap/dumpling/pull/340)
+        -   ダンプが失敗するという誤解を招く情報を回避するために、Dumpling警告ログを調整します[＃340](https://github.com/pingcap/dumpling/pull/340)
 
     -   TiDB Lightning
 
@@ -88,15 +88,15 @@ TiDBバージョン：4.0.15
 
 -   TiDB
 
-    -   範囲[＃23672](https://github.com/pingcap/tidb/issues/23672)を構築するときに、バイナリリテラルに対して照合が誤って設定されるバグを修正します。
+    -   範囲[＃23672](https://github.com/pingcap/tidb/issues/23672)を構築するときに、バイナリリテラルに対して照合順序が誤って設定されるバグを修正します。
 
-    -   クエリに`GROUP BY`と[＃26553](https://github.com/pingcap/tidb/pull/26553)の両方が含まれている場合に発生する「インデックスが範囲外」エラーを修正し`UNION`
+    -   クエリに`GROUP BY`と`UNION`の両方が含まれている場合に発生する「インデックスが範囲外」エラーを[＃26553](https://github.com/pingcap/tidb/pull/26553)
 
     -   TiKVにトゥームストーンストアがある場合、TiDBがリクエストを送信できない可能性がある問題を修正します[＃23676](https://github.com/pingcap/tidb/issues/23676) [＃24648](https://github.com/pingcap/tidb/issues/24648)
 
     -   文書化されていない`/debug/sub-optimal-plan`を削除し[＃27264](https://github.com/pingcap/tidb/pull/27264)
 
-    -   `case when`式[＃26662](https://github.com/pingcap/tidb/issues/26662)の間違った文字セットと照合の問題を修正しました
+    -   `case when`式[＃26662](https://github.com/pingcap/tidb/issues/26662)の間違った文字セットと照合順序の問題を修正しました
 
 -   TiKV
 

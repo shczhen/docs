@@ -1,5 +1,5 @@
 ---
-title: TiDB 5.1.1 Release Notes
+title: TiDB5.1.1リリースノート
 ---
 
 # TiDB5.1.1リリースノート {#tidb-5-1-1-release-notes}
@@ -48,7 +48,7 @@ TiDBバージョン：5.1.1
     -   MPPクエリを起動する前にTiFlashの可用性を確認してください[＃26192](https://github.com/pingcap/tidb/pull/26192)
     -   読み取りタイムスタンプを将来の時刻に設定することを許可しない[＃25763](https://github.com/pingcap/tidb/pull/25763)
     -   `EXPLAIN`のステートメントで集計関数をプッシュダウンできない場合のログ警告の出力[＃25737](https://github.com/pingcap/tidb/pull/25737)
-    -   `statements_summary_evicted`のテーブルを追加して、クラスター[＃25587](https://github.com/pingcap/tidb/pull/25587)の削除されたカウント情報を記録します。
+    -   `statements_summary_evicted`のテーブルを追加して、クラスタ[＃25587](https://github.com/pingcap/tidb/pull/25587)の削除されたカウント情報を記録します。
     -   フォーマット指定子[＃25768](https://github.com/pingcap/tidb/pull/25768)の組み込み関数`str_to_date`のMySQL互換性を改善し`%b/%M/%r/%T`
 
 -   TiKV
@@ -71,9 +71,9 @@ TiDBバージョン：5.1.1
 
         -   スキーマを復元するための再試行メカニズムを追加する[＃1294](https://github.com/pingcap/br/pull/1294)
 
-    -   団子
+    -   Dumpling
 
-        -   アップストリームがTiDBv3.xクラスターの場合は、常に`_tidb_rowid`を使用してテーブルを分割します。これにより、TiDBのメモリ使用量を削減できます[＃295](https://github.com/pingcap/dumpling/issues/295)
+        -   アップストリームがTiDBv3.xクラスタの場合は、常に`_tidb_rowid`を使用してテーブルを分割します。これにより、TiDBのメモリ使用量を削減できます[＃295](https://github.com/pingcap/dumpling/issues/295)
         -   データベースメタデータにアクセスする頻度を減らして、Dumplingのパフォーマンスと安定性を向上させます[＃315](https://github.com/pingcap/dumpling/pull/315)
 
 ## バグの修正 {#bug-fixes}
@@ -138,7 +138,7 @@ TiDBバージョン：5.1.1
 
     -   TiCDC
 
-        -   新しい照合機能[＃2301](https://github.com/pingcap/tiflow/issues/2301)のサポートを修正します
+        -   新しい照合順序機能[＃2301](https://github.com/pingcap/tiflow/issues/2301)のサポートを修正します
         -   実行時に共有マップへの非同期アクセスがパニックを引き起こす可能性がある問題を修正します[＃2300](https://github.com/pingcap/tiflow/pull/2300)
         -   DDLステートメントの実行中に所有者がクラッシュしたときに発生する可能性のあるDDL損失の問題を修正します[＃2290](https://github.com/pingcap/tiflow/pull/2290)
         -   TiDBのロックを時期尚早に解決しようとする問題を修正します[＃2188](https://github.com/pingcap/tiflow/issues/2188)

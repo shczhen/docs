@@ -1,6 +1,6 @@
 ---
-title: Handle Performance Issues
-summary: Learn about common performance issues that might exist in DM and how to deal with them.
+title: パフォーマンスの問題を処理する
+summary: DMに存在する可能性のある一般的なパフォーマンスの問題と、それらに対処する方法について説明します。
 ---
 
 # パフォーマンスの問題を処理する {#handle-performance-issues}
@@ -15,7 +15,7 @@ summary: Learn about common performance issues that might exist in DM and how to
 -   Grafanaモニタリングダッシュボードで[モニタリング指標](/dm/monitor-a-dm-cluster.md#task)を表示できます。
 -   診断するコンポーネントはうまく機能します。そうしないと、監視メトリックの例外がパフォーマンスの問題の診断に干渉する可能性があります。
 
-データ移行の遅延が大きい場合、ボトルネックがDMコンポーネント内にあるのか、TiDBクラスター内にあるのかをすばやく把握するために、最初に[ダウンストリームへのSQLステートメントの記述](#write-sql-statements-to-downstream)の`DML queue remain length`を確認できます。
+データ移行の待ち時間が長い場合、ボトルネックがDMコンポーネント内にあるのか、TiDBクラスタ内にあるのかをすばやく把握するために、最初に[ダウンストリームへのSQLステートメントの記述](#write-sql-statements-to-downstream)の`DML queue remain length`を確認できます。
 
 ## リレーログユニット {#relay-log-unit}
 
@@ -29,7 +29,7 @@ summary: Learn about common performance issues that might exist in DM and how to
 
 -   1つのデータセンターでのデータ移行の場合、binlogデータの読み取りはパフォーマンスのボトルネックにはなりません。 `read binlog event duration`の値が大きすぎる場合は、DM-workerとMySQL/MariaDBの間のネットワーク接続を確認してください。
 
--   地理分散環境でのデータ移行の場合は、ターゲットデータセンターにTiDBクラスターをデプロイしながら、DM-workerとMySQL/MariaDBを1つのデータセンターにデプロイしてみてください。
+-   地理分散環境でのデータ移行の場合は、ターゲットデータセンターにTiDBクラスタをデプロイしながら、DM-workerとMySQL/MariaDBを1つのデータセンターにデプロイしてみてください。
 
 アップストリームデータベースからbinlogデータを読み取るプロセスには、次のサブプロセスが含まれます。
 
@@ -37,7 +37,7 @@ summary: Learn about common performance issues that might exist in DM and how to
 -   binlogデータは、MySQL / MariaDBが配置されているマシンから、DM-workerが配置されているマシンにネットワーク経由で転送されます。このサブプロセスがボトルネックになるかどうかは、主にDM-workerとアップストリームのMySQL/MariaDB間のネットワーク接続に依存します。
 -   DM-workerは、ネットワークデータストリームからbinlogデータを読み取り、それをbinlogイベントとして構築します。 DMワーカーのロードで例外が発生しない場合、このサブプロセスは通常、ボトルネックにはなりません。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 値`read binlog event duration`が大きい場合、別の考えられる理由は、アップストリームのMySQL/MariaDBの負荷が低いことです。これは、binlogイベントを一定期間DMに送信する必要がなく、リレーログユニットが待機状態のままであるため、この値には追加の待機時間が含まれることを意味します。
 

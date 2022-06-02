@@ -1,7 +1,6 @@
 ---
-title: SHOW TABLE STATUS | TiDB SQL Statement Reference
-summary: An overview of the usage of SHOW TABLE STATUS for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-table-status/','/docs/dev/reference/sql/statements/show-table-status/']
+title: テーブルステータスを表示| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースのSHOWTABLESTATUSの使用法の概要。
 ---
 
 # テーブルステータスを表示 {#show-table-status}
@@ -10,15 +9,15 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-table-status/','/docs/dev
 
 ## あらすじ {#synopsis}
 
-<strong>ShowTableStatusStmt：</strong>
+**ShowTableStatusStmt：**
 
 ![ShowTableStatusStmt](/media/sqlgram/ShowTableStatusStmt.png)
 
-<strong>FromOrIn：</strong>
+**FromOrIn：**
 
 ![FromOrIn](/media/sqlgram/FromOrIn.png)
 
-<strong>StatusTableName：</strong>
+**StatusTableName：**
 
 ![StatusTableName](/media/sqlgram/StatusTableName.png)
 

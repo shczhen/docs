@@ -1,7 +1,6 @@
 ---
 title: ALTER INDEX
-summary: An overview of the usage of ALTER INDEX for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-alter-index/']
+summary: TiDBデータベースでのALTERINDEXの使用法の概要。
 ---
 
 # ALTER INDEX {#alter-index}
@@ -76,7 +75,7 @@ SHOW CREATE TABLE t1;
 1 row in set (0.00 sec)
 ```
 
-オプティマイザは、非表示の<strong>インデックス</strong>`c1`を使用できません。
+オプティマイザは、非表示の**インデックス**`c1`を使用できません。
 
 {{< copyable "" >}}
 
@@ -95,7 +94,7 @@ EXPLAIN SELECT c1 FROM t1 ORDER BY c1;
 3 rows in set (0.00 sec)
 ```
 
-比較すると、 `c2`は<strong>表示可能なインデックス</strong>であり、オプティマイザで使用できます。
+比較すると、 `c2`は**表示可能なインデックス**であり、オプティマイザで使用できます。
 
 {{< copyable "" >}}
 
@@ -125,7 +124,7 @@ SELECT * FROM t1 USE INDEX(c1);
 ERROR 1176 (42000): Key 'c1' doesn't exist in table 't1'
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > ここでの「不可視」とは、オプティマイザにのみ不可視であることを意味します。非表示のインデックスは引き続き変更または削除できます。
 
@@ -143,7 +142,7 @@ Query OK, 0 rows affected (0.02 sec)
 
 -   TiDBの非表示インデックスは、MySQL8.0の同等の機能をモデルにしています。
 -   MySQLと同様に、TiDBでは`PRIMARY KEY`のインデックスを非表示にすることはできません。
--   MySQLには、すべての非表示のインデックスを再び<em>表示できるよう</em>にするオプティマイザスイッチ`use_invisible_indexes=on`が用意されています。この機能はTiDBでは使用できません。
+-   MySQLには、すべての非表示のインデックスを再び*表示できるよう*にするオプティマイザスイッチ`use_invisible_indexes=on`が用意されています。この機能はTiDBでは使用できません。
 
 ## も参照してください {#see-also}
 

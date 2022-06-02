@@ -1,12 +1,11 @@
 ---
-title: ALTER DATABASE | TiDB SQL Statement Reference
-summary: An overview of the usage of ALTER DATABASE for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-alter-database/','/docs/dev/reference/sql/statements/alter-database/']
+title: ALTER DATABASE | TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのALTERDATABASEの使用法の概要。
 ---
 
 # ALTER DATABASE {#alter-database}
 
-`ALTER DATABASE`は、現在のデータベースのデフォルトの文字セットと照合を指定または変更するために使用されます。 `ALTER SCHEMA`は`ALTER DATABASE`と同じ効果があります。
+`ALTER DATABASE`は、現在のデータベースのデフォルトの文字セットと照合順序を指定または変更するために使用されます。 `ALTER SCHEMA`は`ALTER DATABASE`と同じ効果があります。
 
 ## あらすじ {#synopsis}
 

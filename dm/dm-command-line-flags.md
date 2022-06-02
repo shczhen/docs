@@ -1,6 +1,6 @@
 ---
-title: Command-line Flags
-summary: Learn about the command-line flags in DM.
+title: コマンドラインフラグ
+summary: DMのコマンドラインフラグについて学習します。
 ---
 
 # コマンドラインフラグ {#command-line-flags}
@@ -35,15 +35,15 @@ summary: Learn about the command-line flags in DM.
 
 ### <code>--initial-cluster</code> {#code-initial-cluster-code}
 
--   DMマスタークラスターのブートストラップに使用される`"{node name}={external address}"`のリスト
+-   DMマスタークラスタのブートストラップに使用される`"{node name}={external address}"`のリスト
 -   デフォルト値は`"{name}={advertise-peer-urls}"`です
--   `join`フラグが指定されていない場合は、このフラグを指定する必要があります。 3ノードクラスターの構成例は`"dm-master-1=http://172.16.15.11:8291,dm-master-2=http://172.16.15.12:8291,dm-master-3=http://172.16.15.13:8291"`です。
+-   `join`フラグが指定されていない場合は、このフラグを指定する必要があります。 3ノードクラスタの構成例は`"dm-master-1=http://172.16.15.11:8291,dm-master-2=http://172.16.15.12:8291,dm-master-3=http://172.16.15.13:8291"`です。
 
 ### <code>--join</code> {#code-join-code}
 
--   DMマスターノードがこのクラスターに参加するときの既存のクラスターの`advertise-addr`のリスト
+-   DMマスターノードがこのクラスタに参加するときの既存のクラスターの`advertise-addr`のリスト
 -   デフォルト値は`""`です
--   `initial-cluster`フラグが指定されていない場合は、このフラグを指定する必要があります。新しいノードが2つのノードを持つクラスターに参加するとします。構成例は`"172.16.15.11:8261,172.16.15.12:8261"`です。
+-   `initial-cluster`フラグが指定されていない場合は、このフラグを指定する必要があります。新しいノードが2つのノードを持つクラスタに参加するとします。構成例は`"172.16.15.11:8261,172.16.15.12:8261"`です。
 
 ### <code>--log-file</code> {#code-log-file-code}
 
@@ -91,9 +91,9 @@ summary: Learn about the command-line flags in DM.
 
 ### <code>--join</code> {#code-join-code}
 
--   DMワーカーがこのクラスターに登録するときのクラスター内のDMマスターノードの`{advertise-addr}`のリスト
+-   DMワーカーがこのクラスタに登録するときのクラスタのDMマスターノードの`{advertise-addr}`のリスト
 -   デフォルト値は`""`です
--   必要なフラグ。 3ノード（DMマスターノード）クラスターの構成例は`"172.16.15.11:8261,172.16.15.12:8261,172.16.15.13:8261"`です。
+-   必要なフラグ。 3ノード（DMマスターノード）クラスタの構成例は`"172.16.15.11:8261,172.16.15.12:8261,172.16.15.13:8261"`です。
 
 ### <code>--log-file</code> {#code-log-file-code}
 
@@ -129,7 +129,7 @@ summary: Learn about the command-line flags in DM.
 
 ### <code>--master-addr</code> {#code-master-addr-code}
 
--   dmctlによって接続されるクラスター内のDMマスターノードの`{advertise-addr}`つ
+-   dmctlによって接続されるクラスタのDMマスターノードの`{advertise-addr}`つ
 -   デフォルト値は`""`です
 -   dmctlがDM-masterと対話するときに必要なフラグです。
 

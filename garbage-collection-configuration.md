@@ -1,10 +1,9 @@
 ---
-title: Garbage Collection Configuration
-summary: Learn about GC configuration parameters.
-aliases: ['/docs/dev/garbage-collection-configuration/','/docs/dev/reference/garbage-collection/configuration/']
+title: ガベージコレクションのConfiguration / コンフィグレーション
+summary: GC構成パラメーターについて学習します。
 ---
 
-# ガベージコレクションの構成 {#garbage-collection-configuration}
+# ガベージコレクションのConfiguration / コンフィグレーション {#garbage-collection-configuration}
 
 ガベージコレクションは、次のシステム変数を介して構成されます。
 
@@ -34,13 +33,13 @@ TiDBの以前のリリースでは、ガベージコレクションは`mysql.tid
 
 `CENTRAL`ガベージコレクションモードはサポートされなくなりました。 `DISTRIBUTED` GCモード（TiDB 3.0以降のデフォルト）が代わりに自動的に使用されます。 TiDBがガベージコレクションをトリガーするために各TiKVリージョンにリクエストを送信する必要がなくなるため、このモードはより効率的です。
 
-以前のリリースでの変更点については、左側のメニューの<em>TIDBバージョンセレクター</em>を使用して、このドキュメントの以前のバージョンを参照してください。
+以前のリリースでの変更点については、左側のメニューの*TIDBバージョンセレクター*を使用して、このドキュメントの以前のバージョンを参照してください。
 
 ### コンパクションフィルターのGC {#gc-in-compaction-filter}
 
 `DISTRIBUTED` GCモードに基づいて、圧縮フィルターのGCのメカニズムは、個別のGCワーカースレッドではなく、RocksDBの圧縮プロセスを使用してGCを実行します。この新しいGCメカニズムは、GCによって引き起こされる余分なディスク読み取りを回避するのに役立ちます。また、廃止されたデータをクリアした後、シーケンシャルスキャンのパフォーマンスを低下させる多数の左のトゥームストーンマークを回避します。次の例は、TiKV構成ファイルでメカニズムを有効にする方法を示しています。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```toml
 [gc]

@@ -1,6 +1,5 @@
 ---
-title: TiDB 4.0.0 Beta.1 Release Notes
-aliases: ['/docs/dev/releases/release-4.0.0-beta.1/','/docs/dev/releases/4.0.0-beta.1/']
+title: TiDB4.0.0Beta.1リリースノート
 ---
 
 # TiDB4.0.0Beta.1リリースノート {#tidb-4-0-0-beta-1-release-notes}
@@ -15,7 +14,7 @@ TiDB Ansibleバージョン：4.0.0-beta.1
 
 -   TiDB
     -   `log.enable-slow-log`構成項目のタイプを整数からブール[＃14864](https://github.com/pingcap/tidb/pull/14864)に変更します
-    -   MySQL 5.7との整合性を保つために、 `mysql.user`システムテーブルの`password`フィールド名を`authentication_string`に変更します（<strong>この互換性の変更は、以前のバージョンにロールバックできないことを意味します</strong>[＃14598](https://github.com/pingcap/tidb/pull/14598) 。
+    -   MySQL 5.7との整合性を保つために、 `mysql.user`システムテーブルの`password`フィールド名を`authentication_string`に変更します（**この互換性の変更は、以前のバージョンにロールバックできないことを意味します**[＃14598](https://github.com/pingcap/tidb/pull/14598) 。
     -   `txn-total-size-limit`構成項目のデフォルト値を`1GB`から[＃14522](https://github.com/pingcap/tidb/pull/14522)に調整し`100MB` 。
     -   [＃14830](https://github.com/pingcap/tidb/pull/14830)から[＃14303](https://github.com/pingcap/tidb/pull/14303)た構成アイテムの動的な変更または更新をサポート[＃14750](https://github.com/pingcap/tidb/pull/14750)
 
@@ -59,7 +58,7 @@ TiDB Ansibleバージョン：4.0.0-beta.1
     -   コプロセッサー[＃6341](https://github.com/tikv/tikv/pull/6341)で`Chunk Encoder`のパフォーマンスを最適化する
 
 -   PD
-    -   ダッシュボード[＃2086](https://github.com/pingcap/pd/pull/2086)を介したクラスター内のホットスポットの分散へのアクセスのサポート
+    -   ダッシュボード[＃2086](https://github.com/pingcap/pd/pull/2086)を介したクラスタのホットスポットの分散へのアクセスのサポート
     -   クラスタコンポーネント[＃2116](https://github.com/pingcap/pd/pull/2116)の`START_TIME`と`UPTIME`のキャプチャと表示をサポートします
     -   `member`の返されたメッセージにデプロイメントパスとコンポーネントバージョンの情報を追加し[＃2130](https://github.com/pingcap/pd/pull/2130)
     -   pd-ctlに`component`つのサブコマンドを追加して、他のコンポーネントの構成を変更および確認します（実験的） [＃2092](https://github.com/pingcap/pd/pull/2092)
@@ -70,7 +69,7 @@ TiDB Ansibleバージョン：4.0.0-beta.1
     -   [＃885](https://github.com/pingcap/tidb-binlog/pull/885)での増分バックアップデータのパージをサポート
 
 -   TiDB Ansible
-    -   1つのクラスターでの複数のGrafana/Prometheus/Alertmanagersのデプロイをサポート[＃1142](https://github.com/pingcap/tidb-ansible/pull/1142)
+    -   1つのクラスタでの複数のGrafana/Prometheus/Alertmanagersのデプロイをサポート[＃1142](https://github.com/pingcap/tidb-ansible/pull/1142)
     -   TiFlashの設定ファイルに`metric_port`の設定項目（デフォルトでは`8234` ）を追加します[＃1145](https://github.com/pingcap/tidb-ansible/pull/1145)
     -   TiFlashの設定ファイルに`flash_proxy_status_port`の設定項目（デフォルトでは`20292` ）を追加します[＃1141](https://github.com/pingcap/tidb-ansible/pull/1141)
     -   [＃1151](https://github.com/pingcap/tidb-ansible/pull/1151)モニタリングダッシュボードを追加する[＃1147](https://github.com/pingcap/tidb-ansible/pull/1147)

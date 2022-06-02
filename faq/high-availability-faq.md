@@ -1,6 +1,6 @@
 ---
-title: High Availability FAQs
-summary: Learn about the FAQs related to high availability of TiDB.
+title: 高可用性に関するFAQ
+summary: TiDBの高可用性に関連するFAQについて学びます。
 ---
 
 # 高可用性に関するFAQ {#high-availability-faqs}
@@ -9,9 +9,9 @@ summary: Learn about the FAQs related to high availability of TiDB.
 
 ## TiDBはどのように強く一貫していますか？ {#how-is-tidb-strongly-consistent}
 
-ノード障害が発生した場合の回復可能性を確保するために、 [いかだコンセンサスアルゴリズム](https://raft.github.io/)を使用してTiKVノード間でデータが冗長的にコピーされます。
+データは[いかだコンセンサスアルゴリズム](https://raft.github.io/)を使用してTiKVノード間で冗長にコピーされ、ノード障害が発生した場合の回復可能性を確保します。
 
-最下層では、TiKVはレプリケーションログとステートマシンのモデルを使用してデータをレプリケートします。書き込み要求の場合、データはリーダーに書き込まれ、リーダーはコマンドをログの形式でフォロワーに複製します。クラスタ内のノードの大部分がこのログを受信すると、このログはコミットされ、ステートマシンに適用できます。
+最下層では、TiKVはレプリケーションログとステートマシンのモデルを使用してデータをレプリケートします。書き込み要求の場合、データはリーダーに書き込まれ、リーダーはコマンドをログの形式でフォロワーに複製します。クラスタのノードの大部分がこのログを受信すると、このログはコミットされ、ステートマシンに適用できます。
 
 ## 3つの地理的に分散したデータセンターの展開に推奨されるソリューションは何ですか？ {#what-s-the-recommended-solution-for-the-deployment-of-three-geo-distributed-data-centers}
 

@@ -1,12 +1,11 @@
 ---
-title: SHOW PUMP STATUS
-summary: An overview of the usage of SHOW PUMP STATUS for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-pump-status/']
+title: ポンプステータスを表示
+summary: TiDBデータベースのSHOWPUMPSTATUSの使用法の概要。
 ---
 
 # ポンプステータスを表示 {#show-pump-status}
 
-`SHOW PUMP STATUS`ステートメントは、クラスター内のすべてのポンプノードのステータス情報を表示します。
+`SHOW PUMP STATUS`ステートメントは、クラスタのすべてのポンプノードのステータス情報を表示します。
 
 ## 例 {#examples}
 

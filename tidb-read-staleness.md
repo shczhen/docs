@@ -1,6 +1,6 @@
 ---
-title: Read Historical Data Using the `tidb_read_staleness` System Variable
-summary: Learn how to read historical data using the `tidb_read_staleness` system variable.
+title: `tidb_read_staleness`システム変数を使用して履歴データを読み取る
+summary: `tidb_read_staleness`システム変数を使用して履歴データを読み取る方法を学びます。
 ---
 
 # <code>tidb_read_staleness</code>システム変数を使用して履歴データを読み取る {#read-historical-data-using-the-code-tidb-read-staleness-code-system-variable}
@@ -113,7 +113,7 @@ summary: Learn how to read historical data using the `tidb_read_staleness` syste
     Query OK, 0 rows affected (0.00 sec)
     ```
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > -   `tidb_read_staleness`の前に`@`ではなく`@@`を使用します。 `@@`はシステム変数を意味し、 `@`はユーザー変数を意味します。
     > -   手順3と手順4で費やした合計時間に応じて、履歴時間範囲（値`tidb_read_staleness` ）を設定する必要があります。そうしないと、履歴データではなく、最新のデータがクエリ結果に表示されます。したがって、操作に費やした時間に応じて、この時間範囲を調整する必要があります。たとえば、この例では、設定された時間範囲が5秒であるため、5秒以内にステップ3とステップ4を完了する必要があります。

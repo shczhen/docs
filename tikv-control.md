@@ -1,20 +1,19 @@
 ---
-title: TiKV Control User Guide
-summary: Use TiKV Control to manage a TiKV cluster.
-aliases: ['/docs/dev/tikv-control/','/docs/dev/reference/tools/tikv-control/']
+title: TiKVControlユーザーガイド
+summary: TiKVコントロールを使用してTiKVクラスタを管理します。
 ---
 
 # TiKVControlユーザーガイド {#tikv-control-user-guide}
 
-TiKV Control（ `tikv-ctl` ）は、クラスターの管理に使用されるTiKVのコマンドラインツールです。そのインストールディレクトリは次のとおりです。
+TiKV Control（ `tikv-ctl` ）は、クラスタの管理に使用されるTiKVのコマンドラインツールです。そのインストールディレクトリは次のとおりです。
 
--   クラスターがTiUPを使用してデプロイされている場合、 `tikv-ctl`のディレクトリーが`~/.tiup/components/ctl/{VERSION}/`のディレクトリーにあります。
+-   クラスタがTiUPを使用してデプロイされている場合、 `tikv-ctl`のディレクトリーが`~/.tiup/components/ctl/{VERSION}/`のディレクトリーにあります。
 
 ## TiUPでTiKVコントロールを使用する {#use-tikv-control-in-tiup}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> 使用する制御ツールのバージョンは、クラスターのバージョンと一致していることをお勧めします。
+> 使用する制御ツールのバージョンは、クラスタのバージョンと一致していることをお勧めします。
 
 `tikv-ctl`は`tiup`コマンドにも統合されています。次のコマンドを実行して、 `tikv-ctl`ツールを呼び出します。
 
@@ -122,7 +121,7 @@ $ tikv-ctl --to-hex "\252\377"
 AAFF
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > コマンドラインでキーの`escaped`形式を指定する場合は、二重引用符で囲む必要があります。そうしないと、bashが円記号を食いつぶし、間違った結果が返されます。
 
@@ -132,7 +131,7 @@ AAFF
 
 ### ラフトステートマシンの情報を表示する {#view-information-of-the-raft-state-machine}
 
-`raft`サブコマンドを使用して、特定の時点でのRaftステートマシンのステータスを表示します。ステータス情報には、3つの構造体（ <strong>RegionLocalState</strong> 、 <strong>RaftLocalState</strong> 、および<strong>RegionApplyState</strong> ）と、特定のログの対応するエントリの2つの部分が含まれます。
+`raft`サブコマンドを使用して、特定の時点でのRaftステートマシンのステータスを表示します。ステータス情報には、3つの構造体（ **RegionLocalState** 、 <strong>RaftLocalState</strong> 、および<strong>RegionApplyState</strong> ）と、特定のログの対応するエントリの2つの部分が含まれます。
 
 上記の情報を取得するには、それぞれ`region`と`log`のサブコマンドを使用します。 2つのサブコマンドは、両方ともリモートモードとローカルモードを同時にサポートします。それらの使用法と出力は次のとおりです。
 
@@ -240,9 +239,9 @@ $ tikv-ctl --data-dir /path/to/tikv compact -d kv
 success!
 ```
 
-### TiKVクラスター全体のコンパクトなデータを手動で {#compact-data-of-the-whole-tikv-cluster-manually}
+### TiKVクラスタ全体のコンパクトなデータを手動で {#compact-data-of-the-whole-tikv-cluster-manually}
 
-`compact-cluster`コマンドを使用して、TiKVクラスター全体のデータを手動で圧縮します。このコマンドのフラグは、 `compact`コマンドのフラグと同じ意味と使用法を持っています。
+`compact-cluster`コマンドを使用して、TiKVクラスタ全体のデータを手動で圧縮します。このコマンドのフラグは、 `compact`コマンドのフラグと同じ意味と使用法を持っています。
 
 ### リージョンをトゥームストーンに設定します {#set-a-region-to-tombstone}
 
@@ -282,7 +281,7 @@ tikv-ctl --data-dir /path/to/tikv tombstone -p 127.0.0.1:2379 -r <region_id>,<re
 success!
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   `tombstone`コマンドは、ローカルモードのみをサポートします。
 > -   `-p`オプションの引数は、 `http`プレフィックスなしのPDエンドポイントを指定します。 PDエンドポイントを指定することは、PDがTombstoneに安全に切り替えることができるかどうかを照会することです。
@@ -298,8 +297,9 @@ $ tikv-ctl --host 127.0.0.1:20161 consistency-check -r 2
 DebugClient::check_region_consistency: RpcFailure(RpcStatus { status: Unknown, details: Some("StringError(\"Leader is on store 1\")") })
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
+> -   `consistency-check`コマンドを使用することはお勧めし**ません**。これは、TiDBのガベージコレクションと互換性がなく、誤ってエラーを報告する可能性があるためです。
 > -   このコマンドは、リモートモードのみをサポートします。
 > -   このコマンドが`success!`を返した場合でも、TiKVがパニックになるかどうかを確認する必要があります。これは、このコマンドがリーダーの整合性チェックを要求する提案にすぎず、チェックプロセス全体が成功したかどうかをクライアントから知ることができないためです。
 
@@ -411,11 +411,11 @@ success
 
 `-s`オプションは、コンマで区切られた複数の`store_id`を受け入れ、 `-r`フラグを使用して関連するリージョンを指定します。特定のストア内のすべてのリージョンでこの操作を実行する必要がある場合は、 `--all-regions`を指定するだけです。
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> -   誤操作が発生した場合、クラスターの復旧が困難になる可能性があります。潜在的なリスクを認識し、本番環境でこの機能を使用しないようにしてください。
-> -   `--all-regions`オプションを使用する場合は、クラスターに接続されている残りのすべてのストアでこのコマンドを実行する必要があります。損傷した店舗を復旧する前に、これらの健全な店舗がサービスの提供を停止していることを確認する必要があります。そうしないと、リージョンレプリカのピアリストに一貫性がないため、 `split-region`または`remove-peer`を実行したときにエラーが発生します。これにより、他のメタデータ間の不整合がさらに発生し、最終的に、リージョンが使用できなくなります。
-> -   `remove-fail-stores`を実行すると、削除されたノードを再起動したり、これらのノードをクラスターに追加したりすることはできません。そうしないと、メタデータに一貫性がなくなり、最終的にリージョンが使用できなくなります。
+> -   誤操作が発生した場合、クラスタの復旧が困難になる場合があります。潜在的なリスクを認識し、本番環境でこの機能を使用しないようにしてください。
+> -   `--all-regions`オプションを使用する場合は、クラスタに接続されている残りのすべてのストアでこのコマンドを実行する必要があります。損傷した店舗を復旧する前に、これらの健全な店舗がサービスの提供を停止していることを確認する必要があります。そうしないと、リージョンレプリカのピアリストに一貫性がないため、 `split-region`または`remove-peer`を実行したときにエラーが発生します。これにより、他のメタデータ間の不整合がさらに発生し、最終的に、リージョンが使用できなくなります。
+> -   `remove-fail-stores`を実行すると、削除されたノードを再起動したり、これらのノードをクラスタに追加したりすることはできません。そうしないと、メタデータに一貫性がなくなり、最終的にリージョンが使用できなくなります。
 
 {{< copyable "" >}}
 
@@ -435,7 +435,7 @@ tikv-ctl --data-dir /path/to/tikv unsafe-recover remove-fail-stores -s 4,5 --all
 
 次に、TiKVを再起動した後、リージョンは残りの正常なレプリカでサービスを提供し続けることができます。このコマンドは、複数のTiKVストアが破損または削除された場合によく使用されます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   このコマンドは、指定されたリージョンのピアが配置されているすべてのストアに対して実行する必要があります。
 > -   このコマンドはローカルモードのみをサポートします。正常に実行されると`success!`を出力します。
@@ -452,7 +452,7 @@ $ tikv-ctl --data-dir /path/to/tikv recover-mvcc -r 1001,1002 -p 127.0.0.1:2379
 success!
 ```
 
-> <strong>注</strong>：
+> **注**：
 >
 > -   このコマンドはローカルモードのみをサポートします。正常に実行されると`success!`を出力します。
 > -   `-p`オプションの引数は、 `http`プレフィックスなしのPDエンドポイントを指定します。 PDエンドポイントを指定することは、指定された`region_id`が検証されているかどうかを照会することです。
@@ -533,7 +533,7 @@ Type "I consent" to continue, anything else to exit: I consent
 9291156302549018620: key: 8B6B6B8F83D36BE2467ED55D72AE808B method: Aes128Ctr creation_time: 1592938357
 ```
 
-> <strong>ノート</strong>
+> **ノート**
 >
 > このコマンドは、データ暗号化キーをプレーンテキストとして公開します。本番環境では、出力をファイルにリダイレクトしないでください。後で出力ファイルを削除しても、ディスクからコンテンツを完全に消去できない場合があります。
 
@@ -541,7 +541,7 @@ Type "I consent" to continue, anything else to exit: I consent
 
 TiKV内の破損したSSTファイルにより、TiKVプロセスがパニックになる可能性があります。破損したSSTファイルをクリーンアップするには、これらのファイルの情報が必要になります。情報を取得するには、TiKVコントロールで`bad-ssts`コマンドを実行します。必要な情報が出力に表示されます。以下は、コマンドと出力の例です。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > このコマンドを実行する前に、実行中のTiKVインスタンスを停止してください。
 

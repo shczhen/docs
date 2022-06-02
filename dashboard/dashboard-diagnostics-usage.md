@@ -1,7 +1,6 @@
 ---
-title: Locate Problems Using Diagnostic Report of TiDB Dashboard
-summary: Learn how to locate problems using diagnostic report of TiDB Dashboard.
-aliases: ['/docs/dev/dashboard/dashboard-diagnostics-usage/']
+title: TiDBダッシュボードの診断レポートを使用して問題を特定する
+summary: TiDBダッシュボードの診断レポートを使用して問題を特定する方法を学びます。
 ---
 
 # TiDBダッシュボードの診断レポートを使用して問題を特定する {#locate-problems-using-diagnostic-report-of-tidb-dashboard}
@@ -26,11 +25,11 @@ aliases: ['/docs/dev/dashboard/dashboard-diagnostics-usage/']
 
 ジッタの影響範囲は3分であるため、上記の2つの時間範囲は両方とも3分です。一部の監視された平均値は診断中の比較に使用されるため、範囲が長すぎると平均値の差がわずかになり、問題を正確に特定できなくなります。
 
-レポートが生成されたら、[<strong>診断の比較]</strong>ページでこのレポートを表示できます。
+レポートが生成されたら、[**診断の比較]**ページでこのレポートを表示できます。
 
 ![Comparison diagnostics](/media/dashboard/dashboard-diagnostics-usage2.png)
 
-上記の診断結果は、診断時間中に大きなクエリが存在する可能性があることを示しています。上記のレポートの各<strong>詳細</strong>は、次のように説明されています。
+上記の診断結果は、診断時に大きなクエリが存在する可能性があることを示しています。上記のレポートの各**詳細**は、次のように説明されています。
 
 -   `tidb_qps` ：QPSが0.93倍減少しました。
 -   `tidb_query_duration` ：P999クエリのレイテンシが1.54倍に増加しました。
@@ -74,7 +73,7 @@ digest             | 24bd6d8a9b238086c9b8c3d240ad4ef32f79ce94cf5a468c0b8fe1eb5f8
 
 `2020-03-08 01:51:30` `2020-03-08 01:46:30`この範囲で、QPSは減少し始めました。
 
-レポートが生成されたら、[<strong>診断の比較]</strong>ページでこのレポートを表示できます。
+レポートが生成されたら、[**診断の比較]**ページでこのレポートを表示できます。
 
 ![Comparison diagnostics](/media/dashboard/dashboard-diagnostics-usage4.png)
 
@@ -105,7 +104,7 @@ MESSAGE  | [expensivequery.go:167] [expensive_query] [cost_time=60.085949605s] [
 
 `2020-05-22 22:17:00` ： `2020-05-22 22:14:00` 。この範囲で、QPSは減少し始めました。
 
-比較レポートを生成した後、 <strong>Maxdiffアイテム</strong>レポートを確認します。このレポートでは、上記の2つの時間範囲の監視項目を比較し、監視項目の違いに応じて並べ替えます。この表の結果は次のとおりです。
+比較レポートを生成した後、 **Maxdiffアイテム**レポートを確認します。このレポートでは、上記の2つの時間範囲の監視項目を比較し、監視項目の違いに応じて並べ替えます。この表の結果は次のとおりです。
 
 ![Comparison results](/media/dashboard/dashboard-diagnostics-usage6.png)
 

@@ -1,22 +1,21 @@
 ---
-title: Troubleshoot TiCDC
-summary: Learn how to troubleshoot issues you might encounter when you use TiCDC.
-aliases: ['/docs/dev/ticdc/troubleshoot-ticdc/']
+title: TiCDCのトラブルシューティング
+summary: TiCDCを使用するときに発生する可能性のある問題のトラブルシューティング方法を学びます。
 ---
 
 # TiCDCのトラブルシューティング {#troubleshoot-ticdc}
 
 このドキュメントでは、TiCDCを使用するときに発生する可能性のある一般的な問題とエラー、および対応するメンテナンスとトラブルシューティングの方法を紹介します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > このドキュメントでは、 `cdc cli`コマンドで指定されたPDアドレスは`--pd=http://10.0.10.25:2379`です。コマンドを使用するときは、アドレスを実際のPDアドレスに置き換えてください。
 
 ## TiCDCでタスクを作成するときに<code>start-ts</code>を選択するにはどうすればよいですか？ {#how-do-i-choose-code-start-ts-code-when-creating-a-task-in-ticdc}
 
-レプリケーションタスクの`start-ts`は、アップストリームTiDBクラスターのタイムスタンプOracle（TSO）に対応します。 TiCDCは、レプリケーションタスクでこのTSOにデータを要求します。したがって、レプリケーションタスクの`start-ts`は、次の要件を満たす必要があります。
+レプリケーションタスクの`start-ts`は、アップストリームTiDBクラスタのタイムスタンプOracle（TSO）に対応します。 TiCDCは、レプリケーションタスクでこのTSOにデータを要求します。したがって、レプリケーションタスクの`start-ts`は、次の要件を満たす必要があります。
 
--   `start-ts`の値は、現在のTiDBクラスターの`tikv_gc_safe_point`の値よりも大きくなります。そうしないと、タスクの作成時にエラーが発生します。
+-   `start-ts`の値は、現在のTiDBクラスタの`tikv_gc_safe_point`の値よりも大きくなります。そうしないと、タスクの作成時にエラーが発生します。
 -   タスクを開始する前に、ダウンストリームに`start-ts`より前のすべてのデータがあることを確認してください。メッセージキューへのデータの複製などのシナリオで、アップストリームとダウンストリーム間のデータの整合性が必要ない場合は、アプリケーションのニーズに応じてこの要件を緩和できます。
 
 `start-ts`を指定しない場合、または`start-ts`を`0`として指定する場合、レプリケーションタスクの開始時に、TiCDCは現在のTSOを取得し、このTSOからタスクを開始します。
@@ -55,7 +54,7 @@ cdc cli changefeed list --pd=http://10.0.10.25:2379
     -   `stopped` ：タスクが手動で停止されたか、エラーが発生しました。
     -   `removed` ：タスクが削除されます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > この機能はTiCDC4.0.3で導入されました。
 
@@ -112,7 +111,7 @@ cdc cli changefeed query --pd=http://10.0.10.25:2379 --changefeed-id 28c43ffc-23
 
 ### タスクの中断後にTiCDCが再起動された後に発生するOOMを処理するにはどうすればよいですか？ {#what-should-i-do-to-handle-the-oom-that-occurs-after-ticdc-is-restarted-after-a-task-interruption}
 
--   TiDBクラスターとTiCDCクラスターを最新バージョンに更新します。 OOMの問題は、 <strong>v4.0.14以降のv4.0バージョン、v5.0.2以降のv5.0バージョン、および最新バージョンで</strong>はすでに解決されています。
+-   TiDBクラスタとTiCDCクラスタを最新バージョンに更新します。 OOMの問題は、 **v4.0.14以降のv4.0バージョン、v5.0.2以降のv5.0バージョン、および最新バージョンで**はすでに解決されています。
 
 -   上記の更新バージョンでは、ユニファイドソーターを有効にして、システムメモリが不足しているときにディスク内のデータを並べ替えることができます。この機能を有効にするには、レプリケーションタスクを作成するときに`--sort-engine=unified`から`cdc cli`のコマンドを渡すことができます。例えば：
 
@@ -122,7 +121,7 @@ cdc cli changefeed query --pd=http://10.0.10.25:2379 --changefeed-id 28c43ffc-23
 cdc cli changefeed update -c <changefeed-id> --sort-engine="unified" --pd=http://10.0.10.25:2379
 ```
 
-クラスタを上記の新しいバージョンに更新できない場合でも、<strong>以前のバージョン</strong>でユニファイドソーターを有効にすることができます。レプリケーションタスクを作成するときに、 `--sort-engine=unified`と`--sort-dir=/path/to/sort_dir`を`cdc cli`コマンドに渡すことができます。例えば：
+クラスタを上記の新しいバージョンに更新できない場合でも、**以前のバージョン**でユニファイドソーターを有効にすることができます。レプリケーションタスクを作成するときに、 `--sort-engine=unified`と`--sort-dir=/path/to/sort_dir`を`cdc cli`コマンドに渡すことができます。例えば：
 
 {{< copyable "" >}}
 
@@ -130,12 +129,12 @@ cdc cli changefeed update -c <changefeed-id> --sort-engine="unified" --pd=http:/
 cdc cli changefeed update -c <changefeed-id> --sort-engine="unified" --sort-dir="/data/cdc/sort" --pd=http://10.0.10.25:2379
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   v4.0.9以降、TiCDCは統合ソーターエンジンをサポートしています。
 > -   TiCDC（4.0バージョン）は、ソートエンジンの動的な変更をまだサポートしていません。ソーター設定を変更する前に、チェンジフィードが停止していることを確認してください。
 > -   `sort-dir`は、バージョンごとに動作が異なります。 [`sort-dir`と<code>data-dir</code>の互換性に関する注意事項](/ticdc/ticdc-overview.md#compatibility-notes-for-sort-dir-and-data-dir)を参照し、注意して設定してください。
-> -   現在、統合ソーターは実験的な機能です。テーブルの数が多すぎる場合（&gt; = 100）、統合ソーターはパフォーマンスの問題を引き起こし、レプリケーションのスループットに影響を与える可能性があります。したがって、実稼働環境での使用はお勧めしません。統合ソーターを有効にする前に、各TiCDCノードのマシンに十分なディスク容量があることを確認してください。未処理のデータ変更の合計サイズが1TBを超える可能性がある場合は、レプリケーションにTiCDCを使用することはお勧めしません。
+> -   現在、統合ソーターは実験的機能です。テーブルの数が多すぎる場合（&gt; = 100）、統合ソーターはパフォーマンスの問題を引き起こし、レプリケーションのスループットに影響を与える可能性があります。したがって、実稼働環境での使用はお勧めしません。統合ソーターを有効にする前に、各TiCDCノードのマシンに十分なディスク容量があることを確認してください。未処理のデータ変更の合計サイズが1TBを超える可能性がある場合は、レプリケーションにTiCDCを使用することはお勧めしません。
 
 ## TiCDC <code>gc-ttl</code>とは何ですか？ {#what-is-code-gc-ttl-code-in-ticdc}
 
@@ -148,11 +147,11 @@ TiCDCサーバーを起動するときに、 `gc-ttl`を構成することによ
 -   TiCDCサービスが停止した後、GCセーフポイントがPDに保持される最大時間。
 -   タスクが中断または手動で停止された後、レプリケーションタスクを一時停止できる最大時間。中断されたレプリケーションタスクの時間が`gc-ttl`で設定された値よりも長い場合、レプリケーションタスクは`failed`ステータスになり、再開できず、GCセーフポイントの進行に影響を与え続けることができません。
 
-上記の2番目の動作は、TiCDCv4.0.13以降のバージョンで導入されています。目的は、TiCDCのレプリケーションタスクが長時間中断され、アップストリームTiKVクラスターのGCセーフポイントが長時間継続せず、古いデータバージョンが多すぎて、アップストリームクラスターのパフォーマンスに影響を与えるのを防ぐことです。
+上記の2番目の動作は、TiCDCv4.0.13以降のバージョンで導入されています。目的は、TiCDCのレプリケーションタスクが長時間中断され、アップストリームTiKVクラスタのGCセーフポイントが長時間継続せず、古いデータバージョンが多すぎて、アップストリームクラスタのパフォーマンスに影響を与えるのを防ぐことです。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> 一部のシナリオでは、たとえば、Dumpling / BRを使用した完全レプリケーションの後に増分レプリケーションにTiCDCを使用する場合、デフォルトの24時間の`gc-ttl`では不十分な場合があります。 TiCDCサーバーを起動するときは、 `gc-ttl`に適切な値を指定する必要があります。
+> 一部のシナリオでは、たとえば、 Dumpling/ BRを使用した完全レプリケーションの後に増分レプリケーションにTiCDCを使用する場合、デフォルトの24時間の`gc-ttl`では不十分な場合があります。 TiCDCサーバーを起動するときは、 `gc-ttl`に適切な値を指定する必要があります。
 
 ## TiCDCガベージコレクション（GC）セーフポイントの完全な動作は何ですか？ {#what-is-the-complete-behavior-of-ticdc-garbage-collection-gc-safepoint}
 
@@ -209,12 +208,12 @@ Warning: Unable to load '/usr/share/zoneinfo/zone1970.tab' as time zone. Skippin
     cdc cli changefeed create --sink-uri="mysql://root@127.0.0.1:3306/?time-zone=CST" --pd=http://10.0.10.25:2379
     ```
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > CSTは、次の4つの異なるタイムゾーンの略語である可能性があります。
     >
     > -   中部標準時（米国）UT-6:00
-    > -   中部標準時（オーストラリア）UT + 9：30
+    > -   中央標準時間（オーストラリア）UT + 9：30
     > -   中国標準時UT+8：00
     > -   キューバ標準時UT-4:00
     >
@@ -222,12 +221,12 @@ Warning: Unable to load '/usr/share/zoneinfo/zone1970.tab' as time zone. Skippin
 
 ## TiCDCタイムゾーンとアップストリーム/ダウンストリームデータベースのタイムゾーンの関係を理解するにはどうすればよいですか？ {#how-to-understand-the-relationship-between-the-ticdc-time-zone-and-the-time-zones-of-the-upstream-downstream-databases}
 
-|      |                              上流のタイムゾーン                             |                                  TiCDCタイムゾーン                                 |                            下流のタイムゾーン                           |
-| :--: | :----------------------------------------------------------------: | :--------------------------------------------------------------------------: | :------------------------------------------------------------: |
-| 構成方法 |              [タイムゾーンのサポート](/configure-time-zone.md)を参照             |                       TiCDCサーバーの起動時に`--tz`パラメーターを使用して構成                      |               `sink-uri`の`time-zone`パラメータを使用して構成               |
-|  説明  | アップストリームTiDBのタイムゾーン。タイムスタンプタイプのDML操作とタイムスタンプタイプの列に関連するDDL操作に影響します。 | TiCDCは、アップストリームTiDBのタイムゾーンがTiCDCタイムゾーン構成と同じであると想定し、タイムスタンプ列に対して関連する操作を実行します。 | ダウンストリームMySQLは、ダウンストリームタイムゾーン設定に従って、DMLおよびDDL操作のタイムスタンプを処理します。 |
+|                              |                              上流のタイムゾーン                             |                                  TiCDCタイムゾーン                                 |                            下流のタイムゾーン                           |
+| :--------------------------: | :----------------------------------------------------------------: | :--------------------------------------------------------------------------: | :------------------------------------------------------------: |
+| Configuration / コンフィグレーション方法 |              [タイムゾーンのサポート](/configure-time-zone.md)を参照             |                       TiCDCサーバーの起動時に`--tz`パラメーターを使用して構成                      |               `sink-uri`の`time-zone`パラメータを使用して構成               |
+|              説明              | アップストリームTiDBのタイムゾーン。タイムスタンプタイプのDML操作とタイムスタンプタイプの列に関連するDDL操作に影響します。 | TiCDCは、アップストリームTiDBのタイムゾーンがTiCDCタイムゾーン構成と同じであると想定し、タイムスタンプ列に対して関連する操作を実行します。 | ダウンストリームMySQLは、ダウンストリームタイムゾーン設定に従って、DMLおよびDDL操作のタイムスタンプを処理します。 |
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > TiCDCサーバーのタイムゾーンを設定するときは注意してください。このタイムゾーンはタイムタイプの変換に使用されるためです。アップストリームタイムゾーン、TiCDCタイムゾーン、およびダウンストリームタイムゾーンの一貫性を保ちます。 TiCDCサーバーは、次の優先順位でタイムゾーンを選択します。
 >
@@ -257,7 +256,7 @@ Warning: Unable to load '/usr/share/zoneinfo/zone1970.tab' as time zone. Skippin
 cdc cli changefeed create --pd=http://10.0.10.25:2379 --sink-uri="kafka://127.0.0.1:9092/cdc-test?kafka-version=2.4.0&protocol=canal" --config changefeed.toml
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   この機能はTiCDC4.0.2で導入されました。
 > -   TiCDCは現在、KafkaやPulsarなどのMQシンクにのみCanal形式でデータ変更を出力することをサポートしています。
@@ -357,7 +356,7 @@ TiCDCは、大規模なトランザクション（5 GBを超えるサイズ）�
 4.  チェンジフィード構成を変更し、上記の`start-ts`を`ignore-txn-start-ts`構成項目に追加します。
 5.  一時停止したチェンジフィードを再開します。
 
-## TiCDCクラスターをv4.0.8にアップグレードした後、チェンジフィードを実行すると、 <code>[CDC:ErrKafkaInvalidConfig]Canal requires old value to be enabled</code>ますエラーが報告されます {#after-i-upgrade-the-ticdc-cluster-to-v4-0-8-the-code-cdc-errkafkainvalidconfig-canal-requires-old-value-to-be-enabled-code-error-is-reported-when-i-execute-a-changefeed}
+## TiCDCクラスタをv4.0.8にアップグレードした後、チェンジフィードを実行すると、 <code>[CDC:ErrKafkaInvalidConfig]Canal requires old value to be enabled</code>ますエラーが報告されます {#after-i-upgrade-the-ticdc-cluster-to-v4-0-8-the-code-cdc-errkafkainvalidconfig-canal-requires-old-value-to-be-enabled-code-error-is-reported-when-i-execute-a-changefeed}
 
 v4.0.8以降、チェンジフィードの出力に`canal-json` 、または`canal`プロトコルが使用されている場合、 `maxwell`は古い値の機能を自動的に有効にします。ただし、TiCDCを以前のバージョンから`maxwell` `canal-json` `canal`使用し、古い値の機能が無効になっていると、このエラーが報告されます。
 

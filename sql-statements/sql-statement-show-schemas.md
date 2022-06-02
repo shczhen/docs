@@ -1,7 +1,6 @@
 ---
-title: SHOW SCHEMAS | TiDB SQL Statement Reference
-summary: An overview of the usage of SHOW SCHEMAS for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-schemas/','/docs/dev/reference/sql/statements/show-schemas/']
+title: スキーマを表示| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのSHOWSCHEMASの使用法の概要。
 ---
 
 # スキーマを表示 {#show-schemas}

@@ -1,7 +1,6 @@
 ---
-title: SHOW [GLOBAL|SESSION] STATUS | TiDB SQL Statement Reference
-summary: An overview of the usage of SHOW [GLOBAL|SESSION] STATUS for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-status/','/docs/dev/reference/sql/statements/show-status/']
+title: [グローバル|セッション]ステータスを表示| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースのSHOW[GLOBAL|SESSION]STATUSの使用法の概要。
 ---
 
 # [グローバル|セッション]ステータスを表示 {#show-global-session-status}
@@ -10,15 +9,15 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-status/','/docs/dev/refer
 
 ## あらすじ {#synopsis}
 
-<strong>ShowStmt：</strong>
+**ShowStmt：**
 
 ![ShowStmt](/media/sqlgram/ShowStmt.png)
 
-<strong>ShowTargetFilterable：</strong>
+**ShowTargetFilterable：**
 
 ![ShowTargetFilterable](/media/sqlgram/ShowTargetFilterable.png)
 
-<strong>GlobalScope：</strong>
+**GlobalScope：**
 
 ![GlobalScope](/media/sqlgram/GlobalScope.png)
 

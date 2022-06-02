@@ -1,5 +1,5 @@
 ---
-title: TiDB 4.0.11 Release Notes
+title: TiDB4.0.11リリースノート
 ---
 
 # TiDB4.0.11リリースノート {#tidb-4-0-11-release-notes}
@@ -16,8 +16,8 @@ TiDBバージョン：4.0.11
 
 -   TiKV
 
-    -   `utf8mb4_unicode_ci`の照合をサポートする[＃9577](https://github.com/tikv/tikv/pull/9577)
-    -   `cast_year_as_time`の照合をサポートする[＃9299](https://github.com/tikv/tikv/pull/9299)
+    -   `utf8mb4_unicode_ci`の照合順序をサポートする[＃9577](https://github.com/tikv/tikv/pull/9577)
+    -   `cast_year_as_time`の照合順序をサポートする[＃9299](https://github.com/tikv/tikv/pull/9299)
 
 -   TiFlash
 
@@ -70,10 +70,10 @@ TiDBバージョン：4.0.11
 -   TiDB
 
     -   異常な`unicode_ci`定数伝播[＃22614](https://github.com/pingcap/tidb/pull/22614)の問題を修正します
-    -   間違った照合と強制性を引き起こす可能性のある問題を修正します[＃22602](https://github.com/pingcap/tidb/pull/22602)
-    -   誤った照合結果を引き起こす可能性のある問題を修正する[＃22599](https://github.com/pingcap/tidb/pull/22599)
+    -   間違った照合順序と強制性を引き起こす可能性のある問題を修正します[＃22602](https://github.com/pingcap/tidb/pull/22602)
+    -   誤った照合順序結果を引き起こす可能性のある問題を修正する[＃22599](https://github.com/pingcap/tidb/pull/22599)
     -   さまざまな照合の定数置換の問題を修正します[＃22582](https://github.com/pingcap/tidb/pull/22582)
-    -   照合[＃22531](https://github.com/pingcap/tidb/pull/22531)を使用すると、 `like`関数が間違った結果を返す可能性があるバグを修正します
+    -   照合順序[＃22531](https://github.com/pingcap/tidb/pull/22531)を使用すると、 `like`関数が間違った結果を返す可能性があるバグを修正します
     -   `least`および`greatest`関数[＃22580](https://github.com/pingcap/tidb/pull/22580)での誤った`duration`型推論の問題を修正します。
     -   `like`関数が単一文字のワイルドカード（ `_` ）とそれに続く複数文字のワイルドカード（ `%` ）を処理するときに発生するバグを修正します[＃22575](https://github.com/pingcap/tidb/pull/22575)
     -   TiDBの組み込み関数（ `least`および`greatest` ）の型推論エラーを修正します[＃22562](https://github.com/pingcap/tidb/pull/22562)
@@ -121,7 +121,7 @@ TiDBバージョン：4.0.11
     -   部分的なRawKV復元範囲のエンドキーが包括的であるという問題を修正します[＃9583](https://github.com/tikv/tikv/pull/9583)
     -   TiCDCのインクリメンタルスキャン中にロールバックされたトランザクションのキーの古い値をロードするときに発生するTiKVパニックの問題を修正します[＃9569](https://github.com/tikv/tikv/pull/9569)
     -   異なる設定のチェンジフィードが1つのリージョン[＃9565](https://github.com/tikv/tikv/pull/9565)に接続するときの古い値の構成グリッチを修正します
-    -   MACアドレス（v4.0.9で導入）がないネットワークインターフェイスを備えたマシンでTiKVクラスターを実行するときに発生するクラッシュの問題を修正します[＃9516](https://github.com/tikv/tikv/pull/9516)
+    -   MACアドレスがないネットワークインターフェイスを備えたマシンでTiKVクラスタを実行するときに発生するクラッシュの問題を修正します（v4.0.9で導入） [＃9516](https://github.com/tikv/tikv/pull/9516)
     -   巨大なリージョン[＃9448](https://github.com/tikv/tikv/pull/9448)をバックアップするときのTiKVOOMの問題を修正します
     -   `region-split-check-diff`はカスタマイズできないという問題を修正します[＃9530](https://github.com/tikv/tikv/pull/9530)
     -   システム時刻が戻ったときのTiKVパニックの問題を修正します[＃9542](https://github.com/tikv/tikv/pull/9542)
@@ -146,7 +146,7 @@ TiDBバージョン：4.0.11
 
     -   TiCDC
 
-        -   `ErrTaskStatusNotExists`セッションと`capture`セッションの終了が同時に発生した場合にTiCDCサービスが予期せず終了する可能性があるバグを修正します[＃1240](https://github.com/pingcap/tiflow/pull/1240)
+        -   `ErrTaskStatusNotExists`と`capture`のセッションの終了が同時に発生したときにTiCDCサービスが予期せず終了する可能性があるバグを修正します[＃1240](https://github.com/pingcap/tiflow/pull/1240)
         -   `changefeed`が別の[＃1347](https://github.com/pingcap/tiflow/pull/1347)の影響を受ける可能性があるという古い値スイッチの問題を修正し`changefeed`
         -   無効な`sort-engine`パラメータ[＃1309](https://github.com/pingcap/tiflow/pull/1309)を使用して新しい`changefeed`を処理するときにTiCDCサービスがハングする可能性があるバグを修正します。
         -   非所有者ノードでデバッグ情報を取得するときに発生するパニックの問題を修正します[＃1349](https://github.com/pingcap/tiflow/pull/1349)

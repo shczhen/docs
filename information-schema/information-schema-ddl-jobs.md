@@ -1,11 +1,11 @@
 ---
 title: DDL_JOBS
-summary: Learn the `DDL_JOBS` information_schema table.
+summary: `DDL_JOBS`information_schemaテーブルを学びます。
 ---
 
 # DDL_JOBS {#ddl-jobs}
 
-`DDL_JOBS`テーブルは、 `ADMIN SHOW DDL JOBS`コマンドへの`INFORMATION_SCHEMA`インターフェイスを提供します。これは、TiDBクラスター全体のDDL操作の現在のステータスと短い履歴の両方を提供します。
+`DDL_JOBS`テーブルは、 `ADMIN SHOW DDL JOBS`コマンドへの`INFORMATION_SCHEMA`インターフェイスを提供します。これは、TiDBクラスタ全体のDDL操作の現在のステータスと短い履歴の両方を提供します。
 
 {{< copyable "" >}}
 

@@ -1,7 +1,6 @@
 ---
-title: LOAD STATS
-summary: An overview of the usage of LOAD STATS for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-load-stats/']
+title: 統計の読み込み
+summary: TiDBデータベースのLOADSTATSの使用法の概要。
 ---
 
 # 統計の読み込み {#load-stats}
@@ -39,4 +38,4 @@ Query OK, 0 rows affected (0.00 sec)
 
 ## も参照してください {#see-also}
 
--   [統計学](/statistics.md)
+-   [統計](/statistics.md)

@@ -1,7 +1,6 @@
 ---
-title: TiUP Terminology and Concepts
-summary: Explain the terms and concepts of TiUP.
-aliases: ['/docs/dev/tiup/tiup-terminology-and-concepts/']
+title: TiUPの用語と概念
+summary: TiUPの用語と概念を説明します。
 ---
 
 # TiUPの用語と概念 {#tiup-terminology-and-concepts}
@@ -10,7 +9,7 @@ aliases: ['/docs/dev/tiup/tiup-terminology-and-concepts/']
 
 ## TiUPコンポーネント {#tiup-components}
 
-TiUPプログラムには、コンポーネントをダウンロード、更新、およびアンインストールするためのコマンドがいくつか含まれています。 TiUPは、さまざまなコンポーネントで機能を拡張します。<strong>コンポーネント</strong>は、実行可能なプログラムまたはスクリプトです。 `tiup <component>`を介してコンポーネントを実行する場合、TiUPは環境変数のセットを追加し、プログラムのデータディレクトリを作成してから、プログラムを実行します。
+TiUPプログラムには、コンポーネントをダウンロード、更新、およびアンインストールするためのコマンドがいくつか含まれています。 TiUPは、さまざまなコンポーネントで機能を拡張します。**コンポーネント**は、実行可能なプログラムまたはスクリプトです。 `tiup <component>`を介してコンポーネントを実行する場合、TiUPは環境変数のセットを追加し、プログラムのデータディレクトリを作成してから、プログラムを実行します。
 
 `tiup <component>`コマンドを実行することにより、TiUPでサポートされているコンポーネントを実行できます。実行中のロジックは次のとおりです。
 

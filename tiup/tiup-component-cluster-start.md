@@ -1,10 +1,10 @@
 ---
-title: tiup cluster start
+title: tiupクラスタ開始
 ---
 
-# tiupクラスター開始 {#tiup-cluster-start}
+# tiupクラスタ開始 {#tiup-cluster-start}
 
-`tiup cluster start`コマンドは、指定されたクラスターのすべてのサービスまたは一部のサービスを開始するために使用されます。
+`tiup cluster start`コマンドは、指定されたクラスタのすべてのサービスまたは一部のサービスを開始するために使用されます。
 
 ## 構文 {#syntax}
 
@@ -12,27 +12,27 @@ title: tiup cluster start
 tiup cluster start <cluster-name> [flags]
 ```
 
-`<cluster-name>`は、操作するクラスターの名前です。クラスタ名を忘れた場合は、 [`tiup cluster list`](/tiup/tiup-component-cluster-list.md)コマンドで確認できます。
+`<cluster-name>`は、操作するクラスタの名前です。クラスタ名を忘れた場合は、 [`tiup cluster list`](/tiup/tiup-component-cluster-list.md)コマンドで確認できます。
 
 ## オプション {#options}
 
 ### -N、-node {#n-node}
 
--   開始するノードを指定します。このオプションの値は、ノードIDのコンマ区切りのリストです。 `tiup cluster display`コマンドによって返された[クラスターステータステーブル](/tiup/tiup-component-cluster-display.md)の最初の列からノードIDを取得できます。
+-   開始するノードを指定します。このオプションの値は、ノードIDのコンマ区切りのリストです。 `tiup cluster display`コマンドによって返された[クラスタステータステーブル](/tiup/tiup-component-cluster-display.md)の最初の列からノードIDを取得できます。
 -   データ型： `STRINGS`
 -   このオプションがコマンドで指定されていない場合、すべてのノードがデフォルトで開始されます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `-R, --role`オプションを同時に指定すると、 `-N, --node`と`-R, --role`の両方の仕様に一致するサービスノードのみが起動します。
 
 ### -R、-role {#r-role}
 
--   開始するノードの役割を指定します。このオプションの値は、ノードの役割のコンマ区切りのリストです。 `tiup cluster display`コマンドによって返される[クラスターステータステーブル](/tiup/tiup-component-cluster-display.md)の2番目の列からノードの役割を取得できます。
+-   開始するノードの役割を指定します。このオプションの値は、ノードの役割のコンマ区切りのリストです。 `tiup cluster display`コマンドによって返される[クラスタステータステーブル](/tiup/tiup-component-cluster-display.md)の2番目の列からノードの役割を取得できます。
 -   データ型： `STRINGS`
 -   このオプションがコマンドで指定されていない場合、すべての役割がデフォルトで開始されます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `-N, --node`オプションを同時に指定すると、 `-N, --node`と`-R, --role`の両方の仕様に一致するサービスノードのみが起動します。
 

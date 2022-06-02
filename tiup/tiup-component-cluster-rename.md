@@ -1,16 +1,16 @@
 ---
-title: tiup cluster rename
+title: クラスタの名前変更
 ---
 
-# tiupclusterの名前変更 {#tiup-cluster-rename}
+# クラスタの名前変更 {#tiup-cluster-rename}
 
-クラスタ名は[クラスターがデプロイされます](/tiup/tiup-component-cluster-deploy.md)の場合に指定されます。クラスターのデプロイ後にクラスター名を変更する場合は、コマンド`tiup cluster rename`を使用できます。
+クラスタ名は[クラスタがデプロイされます](/tiup/tiup-component-cluster-deploy.md)の場合に指定されます。クラスタのデプロイ後にクラスタ名を変更する場合は、コマンド`tiup cluster rename`を使用できます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> `grafana_servers`の`dashboard_dir`フィールドがTiUPクラスター用に構成されている場合、コマンド`tiup cluster rename`を実行してクラスターの名前を変更した後、次の追加手順が必要です。
+> `grafana_servers`の`dashboard_dir`フィールドがTiUPクラスタ用に構成されている場合、コマンド`tiup cluster rename`を実行してクラスタの名前を変更した後、次の追加手順が必要です。
 >
-> -   ローカルダッシュボードディレクトリ内の`*.json`のファイルについては、各ファイルの`datasource`のフィールドを新しいクラスター名に更新します。これは、 `datasource`の値がクラスターの名前である必要があるためです。
+> -   ローカルダッシュボードディレクトリ内の`*.json`のファイルについては、各ファイルの`datasource`のフィールドを新しいクラスタ名に更新します。これは、 `datasource`の値がクラスタの名前である必要があるためです。
 > -   コマンド`tiup cluster reload -R grafana`を実行します。
 
 ## 構文 {#syntax}
@@ -19,8 +19,8 @@ title: tiup cluster rename
 tiup cluster rename <old-cluster-name> <new-cluster-name> [flags]
 ```
 
--   `<old-cluster-name>` ：古いクラスター名。
--   `<new-cluster-name>` ：新しいクラスター名。
+-   `<old-cluster-name>` ：古いクラスタ名。
+-   `<new-cluster-name>` ：新しいクラスタ名。
 
 ## オプション {#options}
 

@@ -1,12 +1,11 @@
 ---
 title: AUTO_RANDOM
-summary: Learn the AUTO_RANDOM attribute.
-aliases: ['/docs/dev/auto-random/','/docs/dev/reference/sql/attributes/auto-random/']
+summary: AUTO_RANDOM属性を学びます。
 ---
 
 # AUTO_RANDOMv3.1.0<span class="version-mark">の新機能</span> {#auto-random-span-class-version-mark-new-in-v3-1-0-span}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `AUTO_RANDOM`はv4.0.3で安定としてマークされました。
 
@@ -49,9 +48,9 @@ CREATE TABLE t (a bigint AUTO_RANDOM, b varchar(255), PRIMARY KEY (a))
 次に、 `INSERT INTO t(b) VALUES...`などの`INSERT`ステートメントを実行します。これで、結果は次のようになります。
 
 -   値の暗黙的な割り当て： `INSERT`ステートメントで整数主キー列（列`a` ）の値が指定されていない場合、または値が`NULL`として指定されていない場合、TiDBはこの列に値を自動的に割り当てます。これらの値は、必ずしも自動インクリメントまたは連続である必要はありませんが、一意であるため、連続行IDによって引き起こされるホットスポットの問題を回避できます。
--   値の明示的な挿入： `INSERT`ステートメントが整数主キー列の値を明示的に指定する場合、TiDBはこれらの値を保存します。これは、 `AUTO_INCREMENT`属性と同様に機能します。 `@@sql_mode`システム変数に`NO_AUTO_VALUE_ON_ZERO`を設定しない場合、整数主キー列の値を`0`として明示的に指定しても、TiDBはこの列に値を自動的に割り当てることに注意してください。
+-   値の明示的な挿入： `INSERT`ステートメントが整数の主キー列の値を明示的に指定する場合、TiDBはこれらの値を保存します。これは、 `AUTO_INCREMENT`属性と同様に機能します。 `@@sql_mode`システム変数に`NO_AUTO_VALUE_ON_ZERO`を設定しない場合、整数主キー列の値を`0`として明示的に指定しても、TiDBはこの列に値を自動的に割り当てることに注意してください。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > v4.0.3以降、値を明示的に挿入する場合は、 `@@allow_auto_random_explicit_insert`システム変数の値を`1` （デフォルトでは`0` ）に設定します。この明示的な挿入はデフォルトではサポートされておらず、その理由は[制限](#restrictions)セクションに記載されています。
 
@@ -85,7 +84,7 @@ SHOW WARNINGS
 +-------+------+----------------------------------------------------------+
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > v4.0.3以降、 `AUTO_RANDOM`列のタイプは`BIGINT`のみになります。これは、暗黙的な割り当ての最大数を確保するためです。
 
@@ -142,11 +141,9 @@ CREATE TABLE t (a bigint PRIMARY KEY AUTO_RANDOM)
 
 `AUTO_RANDOM`を使用する場合は、次の制限に注意してください。
 
--   この属性は、 `bigint`種類の主キー列<strong>のみ</strong>に指定してください。そうしないと、エラーが発生します。また、主キーの属性が`NONCLUSTERED`の場合、整数の主キーでも`AUTO_RANDOM`はサポートされません。 `CLUSTERED`タイプの主キーの詳細については、 [クラスター化されたインデックス](/clustered-indexes.md)を参照してください。
+-   この属性は、整数型の主キー列に**のみ**指定してください。そうしないと、エラーが発生する可能性があります。また、主キーの属性が`NONCLUSTERED`の場合、整数の主キーでも`AUTO_RANDOM`はサポートされません。 `CLUSTERED`タイプの主キーの詳細については、 [クラスター化されたインデックス](/clustered-indexes.md)を参照してください。
 -   `ALTER TABLE`を使用して、この属性の追加または削除を含め、 `AUTO_RANDOM`属性を変更することはできません。
--   最大値が列タイプの最大値に近い場合、 `ALTER TABLE`を使用して`AUTO_INCREMENT`から`AUTO_RANDOM`に変更することはできません。
 -   `AUTO_RANDOM`属性で指定された主キー列の列タイプは変更できません。
 -   同じ列に`AUTO_RANDOM`と`AUTO_INCREMENT`を同時に指定することはできません。
 -   同じ列に`AUTO_RANDOM`と`DEFAULT` （列のデフォルト値）を同時に指定することはできません。
--   列に`AUTO_RANDOM`を使用すると、自動生成された値が非常に大きくなる可能性があるため、列属性を`AUTO_INCREMENT`に戻すことは困難です。
--   データを挿入するときに、 `AUTO_RANDOM`属性を持つ列の値を明示的に指定することは<strong>お</strong>勧めしません。そうしないと、このテーブルに自動的に割り当てられる数値が事前に使い果たされる可能性があります。
+-   データを挿入するときに、 `AUTO_RANDOM`属性を持つ列の値を明示的に指定することは**お**勧めしません。そうしないと、このテーブルに自動的に割り当てられる数値が事前に使い果たされる可能性があります。

@@ -1,11 +1,10 @@
 ---
-title: Deploy a TiDB Cluster in Kubernetes
-summary: Learn how to deploy a TiDB cluster in Kubernetes.
-aliases: ['/docs/tidb-in-kubernetes/dev/']
+title: KubernetesにTiDBクラスターをデプロイする
+summary: KubernetesにTiDBクラスタをデプロイする方法を学びます。
 ---
 
 # KubernetesにTiDBクラスターをデプロイする {#deploy-a-tidb-cluster-in-kubernetes}
 
-[TiDBオペレーター](https://github.com/pingcap/tidb-operator)を使用して、KubernetesにTiDBクラスターをデプロイできます。 TiDB Operatorは、KubernetesのTiDBクラスターの自動操作システムです。展開、アップグレード、スケーリング、バックアップ、フェイルオーバー、構成変更など、TiDBの完全なライフサイクル管理を提供します。 TiDB Operatorを使用すると、TiDBはパブリッククラウドまたはプライベートクラウドにデプロイされたKubernetesクラスターでシームレスに実行できます。
+[TiDB Operator](https://github.com/pingcap/tidb-operator)を使用して、KubernetesにTiDBクラスターをデプロイできます。 TiDB Operatorは、KubernetesのTiDBクラスターの自動操作システムです。展開、アップグレード、スケーリング、バックアップ、フェイルオーバー、構成変更など、TiDBの完全なライフサイクル管理を提供します。 TiDB Operatorを使用すると、TiDBはパブリッククラウドまたはプライベートクラウドにデプロイされたKubernetesクラスターでシームレスに実行できます。
 
-現在、KubernetesドキュメントのTiDBはTiDBドキュメントから独立しています。 TiDB Operatorを使用してKubernetesにTiDBクラスターをデプロイする方法の詳細な手順については、 [KubernetesドキュメントのTiDB](https://docs.pingcap.com/tidb-in-kubernetes/stable/)を参照してください。
+現在、KubernetesドキュメントのTiDBはTiDBドキュメントから独立しています。 TiDB Operatorを使用してKubernetesにTiDBクラスタをデプロイする方法の詳細な手順については、 [KubernetesドキュメントのTiDB](https://docs.pingcap.com/tidb-in-kubernetes/stable/)を参照してください。

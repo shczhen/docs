@@ -1,7 +1,6 @@
 ---
-title: SHOW CREATE USER | TiDB SQL Statement Reference
-summary: An overview of the usage of SHOW CREATE USER for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-create-user/','/docs/dev/reference/sql/statements/show-create-user/']
+title: 作成ユーザーを表示| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのSHOWCREATEUSERの使用法の概要。
 ---
 
 # CREATEUSERを表示する {#show-create-user}
@@ -10,11 +9,11 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-create-user/','/docs/dev/
 
 ## あらすじ {#synopsis}
 
-<strong>ShowCreateUserStmt：</strong>
+**ShowCreateUserStmt：**
 
 ![ShowCreateUserStmt](/media/sqlgram/ShowCreateUserStmt.png)
 
-<strong>ユーザー名：</strong>
+**ユーザー名：**
 
 ![Username](/media/sqlgram/Username.png)
 

@@ -1,18 +1,17 @@
 ---
-title: TiDB Dashboard Cluster Information Page
-summary: View the running status of TiDB, TiKV, PD, TiFlash components in the entire cluster and the running status of the host on which these components are located.
-aliases: ['/docs/dev/dashboard/dashboard-cluster-info/']
+title: TiDBダッシュボードクラスター情報ページ
+summary: クラスタ全体のTiDB、TiKV、PD、TiFlashコンポーネントの実行ステータスと、これらのコンポーネントが配置されているホストの実行ステータスを表示します。
 ---
 
 # TiDBダッシュボードクラスター情報ページ {#tidb-dashboard-cluster-information-page}
 
-クラスター情報ページでは、クラスター全体のTiDB、TiKV、PD、TiFlashコンポーネントの実行状況と、これらのコンポーネントが配置されているホストの実行状況を確認できます。
+クラスタ情報ページでは、クラスタ全体のTiDB、TiKV、PD、TiFlashコンポーネントの実行状況と、これらのコンポーネントが配置されているホストの実行状況を確認できます。
 
 ## ページにアクセスする {#access-the-page}
 
 次の2つの方法のいずれかを使用して、クラスタ情報ページにアクセスできます。
 
--   TiDBダッシュボードにログインした後、左側のナビゲーションメニューで[<strong>クラスター情報</strong>]をクリックします。
+-   TiDBダッシュボードにログインした後、左側のナビゲーションメニューで[**クラスター情報**]をクリックします。
 
     ![Access cluster information page](/media/dashboard/dashboard-cluster-info-access.png)
 
@@ -20,11 +19,11 @@ aliases: ['/docs/dev/dashboard/dashboard-cluster-info/']
 
 ## インスタンスリスト {#instance-list}
 
-[<strong>インスタンス</strong>]をクリックして、インスタンスのリストを表示します。
+[**インスタンス**]をクリックして、インスタンスのリストを表示します。
 
 ![Instance list](/media/dashboard/dashboard-cluster-info-instances.png)
 
-このインスタンスリストには、クラスター内のTiDB、TiKV、PD、およびTiFlashコンポーネントのすべてのインスタンスの概要情報が表示されます。
+このインスタンスリストには、クラスタのTiDB、TiKV、PD、およびTiFlashコンポーネントのすべてのインスタンスの概要情報が表示されます。
 
 このリストには、次の情報が含まれています。
 
@@ -43,17 +42,17 @@ aliases: ['/docs/dev/dashboard/dashboard-cluster-info/']
 -   離脱：インスタンス上のデータが移行され、スケールインが進行中です。このステータスは、TiKVまたはTiFlashインスタンスにのみ存在します。
 -   不明：インスタンスの実行状態は不明です。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > テーブルの一部の列は、インスタンスが起動している場合にのみ表示できます。
 
 ## ホストリスト {#host-list}
 
-[<strong>ホスト</strong>]をクリックして、ホストのリストを表示します。
+[**ホスト**]をクリックして、ホストのリストを表示します。
 
 ![Host list](/media/dashboard/dashboard-cluster-info-hosts.png)
 
-このホストリストには、クラスター内のTiDB、TiKV、PD、およびTiFlashコンポーネントのすべてのインスタンスに対応するホストの実行ステータスが表示されます。
+このホストリストには、クラスタのTiDB、TiKV、PD、およびTiFlashコンポーネントのすべてのインスタンスに対応するホストの実行ステータスが表示されます。
 
 このリストには、次の情報が含まれています。
 
@@ -65,6 +64,6 @@ aliases: ['/docs/dev/dashboard/dashboard-cluster-info/']
 -   ディスク：インスタンスが実行されているホスト上のディスクのファイルシステムと、このディスクのマウントパス。
 -   ディスク使用量：インスタンスが実行されているホスト上のディスクのスペース使用量。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > ホストリスト情報は各インスタンスプロセスによって提供されるため、ホスト上のすべてのインスタンスがダウンしている場合、ホスト情報は表示されません。

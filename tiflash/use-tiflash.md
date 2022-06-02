@@ -1,6 +1,5 @@
 ---
-title: Use TiFlash
-aliases: ['/docs/dev/tiflash/use-tiflash/','/docs/dev/reference/tiflash/use-tiflash/']
+title: TiFlashを使用する
 ---
 
 データのインポートからTPC-Hデータセットでのクエリまでのプロセス全体を体験するには、 [TiDBHTAPのクイックスタートガイド](/quick-start-with-htap.md)を参照してください。
@@ -14,13 +13,9 @@ TiDBを使用して中規模の分析処理用のTiFlashレプリカを読み取
 -   [TiDBを使用してTiFlashレプリカを読み取る](#use-tidb-to-read-tiflash-replicas)
 -   [TiSparkを使用してTiFlashレプリカを読み取ります](#use-tispark-to-read-tiflash-replicas)
 
-## TiFlashレプリカを作成する {#create-tiflash-replicas}
+## テーブルのTiFlashレプリカを作成する {#create-tiflash-replicas-for-tables}
 
-このセクションでは、テーブルとデータベースのTiFlashレプリカを作成する方法と、レプリカのスケジューリングに使用できるゾーンを設定する方法について説明します。
-
-### テーブルのTiFlashレプリカを作成する {#create-tiflash-replicas-for-tables}
-
-TiFlashがTiKVクラスターに接続された後、デフォルトではデータレプリケーションは開始されません。 MySQLクライアントを介してDDLステートメントをTiDBに送信して、特定のテーブルのTiFlashレプリカを作成できます。
+TiFlashがTiKVクラスタに接続された後、デフォルトではデータレプリケーションは開始されません。 MySQLクライアントを介してDDLステートメントをTiDBに送信して、特定のテーブルのTiFlashレプリカを作成できます。
 
 {{< copyable "" >}}
 
@@ -50,7 +45,7 @@ ALTER TABLE `tpch50`.`lineitem` SET TIFLASH REPLICA 2;
 ALTER TABLE `tpch50`.`lineitem` SET TIFLASH REPLICA 0;
 ```
 
-<strong>ノート：</strong>
+**ノート：**
 
 -   テーブル`t`が上記のDDLステートメントを介してTiFlashに複製される場合、次のステートメントを使用して作成されたテーブルも自動的にTiFlashに複製されます。
 
@@ -66,9 +61,9 @@ ALTER TABLE `tpch50`.`lineitem` SET TIFLASH REPLICA 0;
 
 -   PDスケジューリングのパフォーマンスが低下するため、1,000を超えるテーブルを複製しないことをお勧めします。この制限は、以降のバージョンで削除される予定です。
 
--   v5.1以降のバージョンでは、システムテーブルのレプリカの設定はサポートされなくなりました。クラスタをアップグレードする前に、関連するシステムテーブルのレプリカをクリアする必要があります。そうしないと、クラスターを新しいバージョンにアップグレードした後、システムテーブルのレプリカ設定を変更できません。
+-   v5.1以降のバージョンでは、システムテーブルのレプリカの設定はサポートされなくなりました。クラスタをアップグレードする前に、関連するシステムテーブルのレプリカをクリアする必要があります。そうしないと、クラスタを新しいバージョンにアップグレードした後、システムテーブルのレプリカ設定を変更できません。
 
-#### レプリケーションの進行状況を確認する {#check-replication-progress}
+### レプリケーションの進行状況を確認する {#check-replication-progress}
 
 次のステートメントを使用して、特定のテーブルのTiFlashレプリカのステータスを確認できます。テーブルは`WHERE`句を使用して指定されます。 `WHERE`句を削除すると、すべてのテーブルのレプリカステータスが確認されます。
 
@@ -83,70 +78,11 @@ SELECT * FROM information_schema.tiflash_replica WHERE TABLE_SCHEMA = '<db_name>
 -   `AVAILABLE`は、このテーブルのTiFlashレプリカが使用可能かどうかを示します。 `1`は利用可能、 `0`は利用不可を意味します。レプリカが使用可能になると、このステータスは変更されません。 DDLステートメントを使用してレプリカの数を変更すると、レプリケーションステータスが再計算されます。
 -   `PROGRESS`は、レプリケーションの進行状況を意味します。値は`0.0` `1.0` 。 `1`は、少なくとも1つのレプリカが複製されることを意味します。
 
-### データベース用のTiFlashレプリカを作成する {#create-tiflash-replicas-for-databases}
-
-テーブルのTiFlashレプリカを作成するのと同様に、MySQLクライアントを介してDDLステートメントをTiDBに送信して、特定のデータベース内のすべてのテーブルのTiFlashレプリカを作成できます。
-
-{{< copyable "" >}}
-
-```sql
-ALTER DATABASE db_name SET TIFLASH REPLICA count;
-```
-
-このステートメントで、 `count`はレプリカの数を示します。 `0`に設定すると、レプリカが削除されます。
-
-例：
-
--   データベース内のすべてのテーブルに2つのレプリカを作成します`tpch50` ：
-
-    {{< copyable "" >}}
-
-    ```sql
-    ALTER DATABASE `tpch50` SET TIFLASH REPLICA 2;
-    ```
-
--   データベース用に作成されたTiFlashレプリカを削除します`tpch50` ：
-
-    {{< copyable "" >}}
-
-    ```sql
-    ALTER DATABASE `tpch50` SET TIFLASH REPLICA 0;
-    ```
-
-> <strong>ノート：</strong>
->
-> -   このステートメントは、実際には、リソースを大量に消費する一連のDDL操作を実行します。実行中にステートメントが中断された場合、実行された操作はロールバックされず、実行されていない操作は続行されません。
->
-> -   ステートメントの実行後、このデータベース<strong>内のすべてのテーブルが複製される</strong>まで、TiFlashレプリカの数を設定したり、このデータベースでDDL操作を実行したりしないでください。そうしないと、次のような予期しない結果が発生する可能性があります。
->     -   データベース内のすべてのテーブルが複製される前に、TiFlashレプリカの数を2に設定し、その数を1に変更した場合、すべてのテーブルのTiFlashレプリカの最終的な数は必ずしも1または2ではありません。
->     -   ステートメントの実行後、ステートメントの実行が完了する前にこのデータベースにテーブルを作成すると、これらの新しいテーブルに対してTiFlashレプリカ<strong>が作成される場合と作成されない場合があり</strong>ます。
->     -   ステートメントの実行後、ステートメントの実行が完了する前にデータベース内のテーブルのインデックスを追加すると、インデックスが追加された後にのみステートメントがハングして再開する場合があります。
->
-> -   このステートメントは、システムテーブル、ビュー、一時テーブル、およびTiFlashでサポートされていない文字セットを持つテーブルをスキップします。
-
-#### レプリケーションの進行状況を確認する {#check-replication-progress}
-
-テーブルのTiFlashレプリカの作成と同様に、DDLステートメントの正常な実行は、レプリケーションの完了を意味するものではありません。次のSQLステートメントを実行して、ターゲットテーブルでのレプリケーションの進行状況を確認できます。
-
-{{< copyable "" >}}
-
-```sql
-SELECT * FROM information_schema.tiflash_replica WHERE TABLE_SCHEMA = '<db_name>';
-```
-
-データベースにTiFlashレプリカがないテーブルをチェックするには、次のSQLステートメントを実行できます。
-
-{{< copyable "" >}}
-
-```sql
-SELECT TABLE_NAME FROM information_schema.tables where TABLE_SCHEMA = "<db_name>" and TABLE_NAME not in (SELECT TABLE_NAME FROM information_schema.tiflash_replica where TABLE_SCHEMA = "<db_name>");
-```
-
 ### 利用可能なゾーンを設定する {#set-available-zones}
 
 レプリカを構成するときに、ディザスタリカバリのためにTiFlashレプリカを複数のデータセンターに配布する必要がある場合は、以下の手順に従って使用可能なゾーンを構成できます。
 
-1.  クラスター構成ファイルでTiFlashノードのラベルを指定します。
+1.  クラスタ構成ファイルでTiFlashノードのラベルを指定します。
 
     ```
     tiflash_servers:
@@ -208,7 +144,7 @@ SELECT TABLE_NAME FROM information_schema.tables where TABLE_SCHEMA = "<db_name>
         ...
     ```
 
-ラベルを使用したレプリカのスケジュールの詳細については、 [トポロジラベルによるレプリカのスケジュール](/schedule-replicas-by-topology-labels.md) 、および[1つの都市展開における複数のデータセンター](/multi-data-centers-in-one-city-deployment.md)を参照して[2つの都市に配置された3つのデータセンター](/three-data-centers-in-two-cities-deployment.md) 。
+ラベルを使用したレプリカのスケジュールの詳細については、 [トポロジラベルごとにレプリカをスケジュールする](/schedule-replicas-by-topology-labels.md) 、および[1 つの地域展開における複数のデータセンター](/multi-data-centers-in-one-city-deployment.md)を参照して[2つの都市に配置された3つのデータセンター](/three-data-centers-in-two-cities-deployment.md) 。
 
 ## TiDBを使用してTiFlashレプリカを読み取る {#use-tidb-to-read-tiflash-replicas}
 
@@ -266,7 +202,7 @@ explain analyze select count(*) from test.t;
     engines = ["tikv", "tidb", "tiflash"]
     ```
 
-    <strong>INSTANCEレベルのデフォルト構成は<code>[&quot;tikv&quot;, &quot;tidb&quot;, &quot;tiflash&quot;]</code>です。</strong>
+    **INSTANCEレベルのデフォルト構成は`[&quot;tikv&quot;, &quot;tidb&quot;, &quot;tiflash&quot;]`です。**
 
 -   SESSIONレベル。次のステートメントを使用して構成します。
 
@@ -288,7 +224,7 @@ explain analyze select count(*) from test.t;
 
 最終的なエンジン構成はセッションレベルの構成です。つまり、セッションレベルの構成はインスタンスレベルの構成をオーバーライドします。たとえば、INSTANCEレベルで「tikv」を構成し、SESSIONレベルで「tiflash」を構成した場合、TiFlashレプリカが読み取られます。最終的なエンジン構成が「tikv」と「tiflash」の場合、TiKVとTiFlashのレプリカが両方とも読み取られ、オプティマイザーは実行するのに適したエンジンを自動的に選択します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > [TiDBダッシュボード](/dashboard/dashboard-intro.md)およびその他のコンポーネントは、TiDBメモリテーブル領域に格納されている一部のシステムテーブルを読み取る必要があるため、常に「tidb」エンジンをインスタンスレベルのエンジン構成に追加することをお勧めします。
 
@@ -316,7 +252,7 @@ select /*+ read_from_storage(tiflash[alias_a,alias_b]) */ ... from table_name_1 
 
 ヒントで指定されたテーブルに指定されたエンジンのレプリカがない場合、ヒントは無視され、警告が報告されます。さらに、ヒントはエンジン分離の前提でのみ有効になります。ヒントで指定されたエンジンがエンジン分離リストにない場合、ヒントも無視され、警告が報告されます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 5.7.7以前のバージョンのMySQLクライアントは、デフォルトでオプティマイザヒントをクリアします。これらの初期バージョンでヒント構文を使用するには、 `--comments`オプション（たとえば、 `mysql -h 127.0.0.1 -P 4000 -uroot --comments` ）でクライアントを起動します。
 
@@ -324,17 +260,17 @@ select /*+ read_from_storage(tiflash[alias_a,alias_b]) */ ... from table_name_1 
 
 上記の3つのTiFlashレプリカの読み取り方法では、エンジン分離により、エンジンの使用可能なレプリカの全体的な範囲が指定されます。この範囲内で、手動ヒントは、よりきめ細かいステートメントレベルおよびテーブルレベルのエンジン選択を提供します。最後に、CBOが決定を下し、指定されたエンジンリスト内のコスト見積もりに基づいてエンジンのレプリカを選択します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> `UPDATE ...`より前では、非読み取り専用SQLステートメント（たとえば、 `INSERT INTO ... SELECT` ）での`SELECT ... FOR UPDATE`レプリカからの読み取りの`DELETE ...`は定義されていません。 v4.0.3以降のバージョンでは、内部的にTiDBは非読み取り専用SQLステートメントのTiFlashレプリカを無視して、データの正確性を保証します。つまり、 [スマートセレクション](#smart-selection)の場合、TiDBは非TiFlashレプリカを自動的に選択します。 TiFlashレプリカ<strong>のみ</strong>を指定する[エンジンの分離](#engine-isolation)の場合、TiDBはエラーを報告します。 [手動ヒント](#manual-hint)の場合、TiDBはヒントを無視します。
+> `UPDATE ...`より前では、非読み取り専用SQLステートメント（たとえば、 `INSERT INTO ... SELECT` ）での`SELECT ... FOR UPDATE`レプリカからの読み取りの`DELETE ...`は定義されていません。 v4.0.3以降のバージョンでは、内部的にTiDBは非読み取り専用SQLステートメントのTiFlashレプリカを無視して、データの正確性を保証します。つまり、 [スマートセレクション](#smart-selection)の場合、TiDBは非TiFlashレプリカを自動的に選択します。 TiFlashレプリカ**のみ**を指定する[エンジンの分離](#engine-isolation)の場合、TiDBはエラーを報告します。 [手動ヒント](#manual-hint)の場合、TiDBはヒントを無視します。
 
 ## TiSparkを使用してTiFlashレプリカを読み取ります {#use-tispark-to-read-tiflash-replicas}
 
 現在、TiSparkを使用して、TiDBのエンジン分離と同様の方法でTiFlashレプリカを読み取ることができます。この方法は、 `spark.tispark.isolation_read_engines`つのパラメーターを構成するためのものです。パラメータ値のデフォルトは`tikv,tiflash`です。これは、TiDBがCBOの選択に従ってTiFlashまたはTiKVからデータを読み取ることを意味します。パラメータ値を`tiflash`に設定すると、TiDBがTiFlashからデータを強制的に読み取ることを意味します。
 
-> <strong>ノート</strong>
+> **ノート**
 >
-> このパラメーターが`true`に設定されている場合、クエリに関係するすべてのテーブルのTiFlashレプリカのみが読み取られ、これらのテーブルにはTiFlashレプリカが必要です。 TiFlashレプリカがないテーブルの場合、エラーが報告されます。このパラメーターが`false`に設定されている場合、TiKVレプリカのみが読み取られます。
+> このパラメーターが`tiflash`に設定されている場合、クエリに関係するすべてのテーブルのTiFlashレプリカのみが読み取られ、これらのテーブルにはTiFlashレプリカが必要です。 TiFlashレプリカがないテーブルの場合、エラーが報告されます。このパラメーターが`tikv`に設定されている場合、TiKVレプリカのみが読み取られます。
 
 このパラメーターは、次のいずれかの方法で構成できます。
 
@@ -356,15 +292,17 @@ TiFlashは、次の演算子のプッシュダウンをサポートしていま�
 
 -   TableScan：テーブルからデータを読み取ります。
 -   選択：データをフィルタリングします。
--   HashAgg： [ハッシュアグリゲーション](/explain-aggregation.md#hash-aggregation)アルゴリズムに基づいてデータ集約を実行します。
--   StreamAgg： [ストリーム集約](/explain-aggregation.md#stream-aggregation)のアルゴリズムに基づいてデータ集約を実行します。 SteamAggは、 `GROUP BY`の条件なしで集約のみをサポートします。
+-   HashAgg： [ハッシュ集計](/explain-aggregation.md#hash-aggregation)アルゴリズムに基づいてデータ集約を実行します。
+-   StreamAgg： [ストリーム集計](/explain-aggregation.md#stream-aggregation)のアルゴリズムに基づいてデータ集約を実行します。 SteamAggは、 `GROUP BY`の条件なしで集約のみをサポートします。
 -   TopN：TopN計算を実行します。
 -   制限：制限計算を実行します。
 -   プロジェクト：投影計算を実行します。
--   HashJoin： [ハッシュ参加](/explain-joins.md#hash-join)アルゴリズムを使用して結合計算を実行しますが、次の条件があります。
+-   HashJoin（Equi Join）： [ハッシュ参加](/explain-joins.md#hash-join)アルゴリズムに基づいて結合計算を実行しますが、次の条件があります。
     -   オペレーターは[MPPモード](#use-the-mpp-mode)でのみ押し下げることができます。
-    -   サポートされている結合は、内部結合、左結合、半結合、反半結合、左半結合、および反左半結合です。
-    -   上記の結合は、等式結合と非等式結合（デカルト結合）の両方をサポートします。デカルト結合を計算するときは、シャッフルハッシュ結合アルゴリズムの代わりにブロードキャストアルゴリズムが使用されます。
+    -   `Full Outer Join`のプッシュダウンはサポートされていません。
+-   HashJoin（非等結合）：デカルト結合アルゴリズムを実行しますが、次の条件があります。
+    -   オペレーターは[MPPモード](#use-the-mpp-mode)でのみ押し下げることができます。
+    -   デカルト結合は、ブロードキャスト結合でのみサポートされます。
 
 TiDBでは、オペレーターはツリー構造で編成されています。オペレーターをTiFlashにプッシュダウンするには、次のすべての前提条件が満たされている必要があります。
 
@@ -373,13 +311,13 @@ TiDBでは、オペレーターはツリー構造で編成されています。�
 
 現在、TiFlashは次のプッシュダウン式をサポートしています。
 
--   数学関数： `+, -, /, *, %, >=, <=, =, !=, <, >, round, abs, floor(int), ceil(int), ceiling(int), sqrt, log, log2, log10, ln, exp, pow, sign, radians, degrees, conv, crc32, greatest(int/real), least(int/real)`
--   論理関数： `and, or, not, case when, if, ifnull, isnull, in, like, coalesce, is`
+-   数学関数： `+, -, /, *, %, >=, <=, =, !=, <, >, round, abs, floor(int), ceil(int), ceiling(int), sqrt, log, log2, log10, ln, exp, pow, sign, radians, degrees, conv, crc32`
+-   論理関数： `and, or, not, case when, if, ifnull, isnull, in, like, coalesce`
 -   ビット演算： `bitand, bitor, bigneg, bitxor`
--   文字列関数： `substr, char_length, replace, concat, concat_ws, left, right, ascii, length, trim, ltrim, rtrim, position, format, lower, ucase, upper, substring_index, lpad, rpad, strcmp, regexp`
--   日付関数： `date_format, timestampdiff, from_unixtime, unix_timestamp(int), unix_timestamp(decimal), str_to_date(date), str_to_date(datetime), datediff, year, month, day, extract(datetime), date, hour, microsecond, minute, second, sysdate, date_add, date_sub, adddate, subdate, quarter, dayname, dayofmonth, dayofweek, dayofyear, last_day, monthname`
+-   文字列関数： `substr, char_length, replace, concat, concat_ws, left, right, ascii, length, trim, ltrim, rtrim, position, format, lower, ucase, upper, substring_index, lpad, rpad, strcmp`
+-   日付関数： `date_format, timestampdiff, from_unixtime, unix_timestamp(int), unix_timestamp(decimal), str_to_date(date), str_to_date(datetime), datediff, year, month, day, extract(datetime), date, hour, microsecond, minute, second, sysdate, date_add, date_sub, adddate, subdate, quarter`
 -   JSON関数： `json_length`
--   変換機能： `cast(int as double), cast(int as decimal), cast(int as string), cast(int as time), cast(double as int), cast(double as decimal), cast(double as string), cast(double as time), cast(string as int), cast(string as double), cast(string as decimal), cast(string as time), cast(decimal as int), cast(decimal as string), cast(decimal as time), cast(time as int), cast(time as decimal), cast(time as string), cast(time as real)`
+-   変換関数： `cast(int as double), cast(int as decimal), cast(int as string), cast(int as time), cast(double as int), cast(double as decimal), cast(double as string), cast(double as time), cast(string as int), cast(string as double), cast(string as decimal), cast(string as time), cast(decimal as int), cast(decimal as string), cast(decimal as time), cast(time as int), cast(time as decimal), cast(time as string), cast(time as real)`
 -   集計関数： `min, max, sum, count, avg, approx_count_distinct, group_concat`
 -   その他の機能： `inetntoa, inetaton, inet6ntoa, inet6aton`
 
@@ -441,9 +379,9 @@ set @@session.tidb_allow_mpp=1;
 set @@session.tidb_enforce_mpp=1;
 ```
 
-`tidb_enforce_mpp`セッション変数の初期値は、このtidb-serverインスタンスの[`enforce-mpp`](/tidb-configuration-file.md#enforce-mpp)構成値（デフォルトでは`false` ）と同じです。 TiDBクラスター内の複数のtidb-serverインスタンスが分析クエリのみを実行し、これらのインスタンスでMPPモードが使用されていることを確認する場合は、 [`enforce-mpp`](/tidb-configuration-file.md#enforce-mpp)の構成値を`true`に変更できます。
+`tidb_enforce_mpp`セッション変数の初期値は、このtidb-serverインスタンスの[`enforce-mpp`](/tidb-configuration-file.md#enforce-mpp)構成値（デフォルトでは`false` ）と同じです。 TiDBクラスタの複数のtidb-serverインスタンスが分析クエリのみを実行し、これらのインスタンスでMPPモードが使用されていることを確認する場合は、 [`enforce-mpp`](/tidb-configuration-file.md#enforce-mpp)の構成値を`true`に変更できます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `tidb_enforce_mpp=1`が有効になると、TiDBオプティマイザはコスト見積もりを無視してMPPモードを選択します。ただし、他の要因がMPPモードをブロックしている場合、TiDBはMPPモードを選択しません。これらの要因には、TiFlashレプリカの欠如、TiFlashレプリカの未完了の複製、およびMPPモードでサポートされていない演算子または関数を含むステートメントが含まれます。
 >
@@ -468,7 +406,7 @@ set @@session.tidb_enforce_mpp=1;
 
 ### MPPモードのアルゴリズムサポート {#algorithm-support-for-the-mpp-mode}
 
-MPPモードは、ブロードキャストハッシュ結合、シャッフルハッシュ結合、シャッフルハッシュ集約、Union All、TopN、およびLimitの物理アルゴリズムをサポートします。オプティマイザは、クエリで使用するアルゴリズムを自動的に決定します。特定のクエリ実行プランを確認するには、 `EXPLAIN`ステートメントを実行します。 `EXPLAIN`ステートメントの結果にExchangeSenderおよびExchangeReceiverオペレーターが表示されている場合は、MPPモードが有効になっていることを示しています。
+MPPモードは、ブロードキャストハッシュ結合、シャッフルハッシュ結合、シャッフルハッシュ集計、Union All、TopN、およびLimitの物理アルゴリズムをサポートします。オプティマイザは、クエリで使用するアルゴリズムを自動的に決定します。特定のクエリ実行プランを確認するには、 `EXPLAIN`ステートメントを実行します。 `EXPLAIN`ステートメントの結果にExchangeSenderおよびExchangeReceiverオペレーターが表示されている場合は、MPPモードが有効になっていることを示しています。
 
 次のステートメントは、TPC-Hテストセットのテーブル構造を例として取り上げています。
 
@@ -497,73 +435,6 @@ TiFlashは、ブロードキャストハッシュ結合を使用するかどう�
 -   [`tidb_broadcast_join_threshold_size`](/system-variables.md#tidb_broadcast_join_threshold_count-new-in-v50) ：値の単位はバイトです。テーブルサイズ（バイト単位）が変数の値よりも小さい場合は、ブロードキャストハッシュ結合アルゴリズムが使用されます。それ以外の場合は、シャッフルハッシュ結合アルゴリズムが使用されます。
 -   [`tidb_broadcast_join_threshold_count`](/system-variables.md#tidb_broadcast_join_threshold_count-new-in-v50) ：値の単位は行です。結合操作のオブジェクトがサブクエリに属している場合、オプティマイザはサブクエリ結果セットのサイズを推定できないため、サイズは結果セットの行数によって決定されます。サブクエリの推定行数がこの変数の値よりも少ない場合は、ブロードキャストハッシュ結合アルゴリズムが使用されます。それ以外の場合は、シャッフルハッシュ結合アルゴリズムが使用されます。
 
-## MPPモードでパーティションテーブルにアクセスする {#access-partitioned-tables-in-the-mpp-mode}
-
-MPPモードでパーティションテーブルにアクセスするには、最初に[動的剪定モード](https://docs.pingcap.com/tidb/stable/partitioned-table#dynamic-pruning-mode)を有効にする必要があります。
-
-> <strong>警告：</strong>
->
-> -   現在、パーティションテーブルの動的プルーニングモードは実験的な機能であり、実稼働環境には推奨されません。
->
-> -   パーティションテーブルに`time`タイプの列が含まれている場合は、動的プルーニングモードを有効にしないでください。そうしないと、クエリが`time`タイプの列を選択したときにTiFlashがクラッシュします。
-
-例：
-
-```sql
-mysql> DROP TABLE if exists test.employees;
-Query OK, 0 rows affected, 1 warning (0.00 sec)
-
-mysql> CREATE TABLE test.employees (  id int(11) NOT NULL,  fname varchar(30) DEFAULT NULL,  lname varchar(30) DEFAULT NULL,  hired date NOT NULL DEFAULT '1970-01-01',  separated date DEFAULT '99
-99-12-31',  job_code int(11) DEFAULT NULL,  store_id int(11) NOT NULL  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin  PARTITION BY RANGE (store_id)  (PARTITION p0 VALUES LESS THAN (
-6),  PARTITION p1 VALUES LESS THAN (11),  PARTITION p2 VALUES LESS THAN (16), PARTITION p3 VALUES LESS THAN (MAXVALUE));
-Query OK, 0 rows affected (0.10 sec)
-
-mysql> ALTER table test.employees SET tiflash replica 1;
-Query OK, 0 rows affected (0.09 sec)
-
-mysql> SET tidb_partition_prune_mode=static;
-Query OK, 0 rows affected (0.00 sec)
-
-mysql> explain SELECT count(*) FROM test.employees;
-+----------------------------------+----------+-------------------+-------------------------------+-----------------------------------+
-| id                               | estRows  | task              | access object                 | operator info                     |
-+----------------------------------+----------+-------------------+-------------------------------+-----------------------------------+
-| HashAgg_19                       | 1.00     | root              |                               | funcs:count(Column#10)->Column#9  |
-| └─PartitionUnion_21              | 4.00     | root              |                               |                                   |
-|   ├─StreamAgg_40                 | 1.00     | root              |                               | funcs:count(Column#12)->Column#10 |
-|   │ └─TableReader_41             | 1.00     | root              |                               | data:StreamAgg_27                 |
-|   │   └─StreamAgg_27             | 1.00     | batchCop[tiflash] |                               | funcs:count(1)->Column#12         |
-|   │     └─TableFullScan_39       | 10000.00 | batchCop[tiflash] | table:employees, partition:p0 | keep order:false, stats:pseudo    |
-|   ├─StreamAgg_63                 | 1.00     | root              |                               | funcs:count(Column#14)->Column#10 |
-|   │ └─TableReader_64             | 1.00     | root              |                               | data:StreamAgg_50                 |
-|   │   └─StreamAgg_50             | 1.00     | batchCop[tiflash] |                               | funcs:count(1)->Column#14         |
-|   │     └─TableFullScan_62       | 10000.00 | batchCop[tiflash] | table:employees, partition:p1 | keep order:false, stats:pseudo    |
-|   ├─StreamAgg_86                 | 1.00     | root              |                               | funcs:count(Column#16)->Column#10 |
-|   │ └─TableReader_87             | 1.00     | root              |                               | data:StreamAgg_73                 |
-|   │   └─StreamAgg_73             | 1.00     | batchCop[tiflash] |                               | funcs:count(1)->Column#16         |
-|   │     └─TableFullScan_85       | 10000.00 | batchCop[tiflash] | table:employees, partition:p2 | keep order:false, stats:pseudo    |
-|   └─StreamAgg_109                | 1.00     | root              |                               | funcs:count(Column#18)->Column#10 |
-|     └─TableReader_110            | 1.00     | root              |                               | data:StreamAgg_96                 |
-|       └─StreamAgg_96             | 1.00     | batchCop[tiflash] |                               | funcs:count(1)->Column#18         |
-|         └─TableFullScan_108      | 10000.00 | batchCop[tiflash] | table:employees, partition:p3 | keep order:false, stats:pseudo    |
-+----------------------------------+----------+-------------------+-------------------------------+-----------------------------------+
-18 rows in set, 4 warnings (0.00 sec)
-
-mysql> SET tidb_partition_prune_mode=dynamic;
-Query OK, 0 rows affected (0.00 sec)
-
-mysql> explain SELECT count(*) FROM test.employees;
-+------------------------------+----------+-------------------+-----------------+----------------------------------+
-| id                           | estRows  | task              | access object   | operator info                    |
-+------------------------------+----------+-------------------+-----------------+----------------------------------+
-| HashAgg_21                   | 1.00     | root              |                 | funcs:count(Column#11)->Column#9 |
-| └─TableReader_23             | 1.00     | root              | partition:all   | data:ExchangeSender_22           |
-|   └─ExchangeSender_22        | 1.00     | batchCop[tiflash] |                 | ExchangeType: PassThrough        |
-|     └─HashAgg_9              | 1.00     | batchCop[tiflash] |                 | funcs:count(1)->Column#11        |
-|       └─TableFullScan_20     | 10000.00 | batchCop[tiflash] | table:employees | keep order:false, stats:pseudo   |
-+------------------------------+----------+-------------------+-----------------+----------------------------------+
-```
-
 ## データ検証 {#data-validation}
 
 ### ユーザーシナリオ {#user-scenarios}
@@ -578,11 +449,11 @@ v5.4.0以降、TiFlashはより高度なデータ検証機能を導入してい�
 
 検証メカニズムは、DeltaTreeファイル（DTFile）に基づいて構築されています。 DTFileは、TiFlashデータを保持するストレージファイルです。 DTFileには次の3つの形式があります。
 
-| バージョン | 州                      | 検証メカニズム                                                   | ノート                       |
-| :---- | :--------------------- | :-------------------------------------------------------- | :------------------------ |
-| V1    | 非推奨                    | ハッシュはデータファイルに埋め込まれています。                                   |                           |
-| V2    | バージョン&lt;v6.0.0のデフォルト  | ハッシュはデータファイルに埋め込まれています。                                   | V1と比較して、V2は列データの統計を追加します。 |
-| V3    | バージョン&gt;=v6.0.0のデフォルト | V3には、メタデータとトークンデータのチェックサムが含まれており、複数のハッシュアルゴリズムをサポートしています。 | v5.4.0の新機能。               |
+| バージョン | 州        | 検証メカニズム                                                   | ノート                       |
+| :---- | :------- | :-------------------------------------------------------- | :------------------------ |
+| V1    | 非推奨      | ハッシュはデータファイルに埋め込まれています。                                   |                           |
+| V2    | デフォルト    | ハッシュはデータファイルに埋め込まれています。                                   | V1と比較して、V2は列データの統計を追加します。 |
+| V3    | 手動で有効にする | V3には、メタデータとトークンデータのチェックサムが含まれており、複数のハッシュアルゴリズムをサポートしています。 | v5.4.0の新機能。               |
 
 DTFileは、データファイルディレクトリの`stable`フォルダに保存されます。現在有効になっているすべての形式はフォルダ形式です。つまり、データは`dmf_<file id>`のような名前のフォルダの下にある複数のファイルに保存されます。
 
@@ -591,12 +462,11 @@ DTFileは、データファイルディレクトリの`stable`フォルダに保
 TiFlashは、自動データ検証と手動データ検証の両方をサポートしています。
 
 -   自動データ検証：
-    -   v6.0.0以降のバージョンでは、デフォルトでV3検証メカニズムが使用されます。
-    -   v6.0.0より前のバージョンでは、デフォルトでV2検証メカニズムが使用されます。
-    -   検証メカニズムを手動で切り替えるには、 [TiFlash設定ファイル](/tiflash/tiflash-configuration.md#configure-the-tiflashtoml-file)を参照してください。ただし、デフォルトの構成はテストによって検証されるため、推奨されます。
+    -   TiFlashは、デフォルトでV2検証メカニズムを有効にします。
+    -   V3検証メカニズムを有効にするには、 [TiFlash設定ファイル](/tiflash/tiflash-configuration.md#configure-the-tiflashtoml-file)を参照してください。
 -   手動データ検証。 [`DTTool inspect`](/tiflash/tiflash-command-line-flags.md#dttool-inspect)を参照してください。
 
-> <strong>警告：</strong>
+> **警告：**
 >
 > V3検証メカニズムを有効にすると、新しく生成されたDTFileをv5.4.0より前のTiFlashで直接読み取ることはできません。 v5.4.0以降、TiFlashはV2とV3の両方をサポートし、バージョンを積極的にアップグレードまたはダウングレードしません。既存のファイルのバージョンをアップグレードまたはダウングレードする必要がある場合は、手動で[バージョンの切り替え](/tiflash/tiflash-command-line-flags.md#dttool-migrate)を行う必要があります。
 

@@ -1,7 +1,6 @@
 ---
-title: Operators
-summary: Learn about the operators precedence, comparison functions and operators, logical operators, and assignment operators.
-aliases: ['/docs/dev/functions-and-operators/operators/','/docs/dev/reference/sql/functions-and-operators/operators/']
+title: オペレーター
+summary: 演算子の優先順位、比較関数と演算子、論理演算子、および代入演算子について学習します。
 ---
 
 # オペレーター {#operators}

@@ -1,14 +1,13 @@
 ---
-title: Statement Summary Tables
-summary: Learn about Statement Summary Table in TiDB.
-aliases: ['/docs/dev/statement-summary-tables/','/docs/dev/reference/performance/statement-summary/']
+title: ステートメント要約表
+summary: TiDBのステートメント要約テーブルについて学習します。
 ---
 
 # ステートメント要約表 {#statement-summary-tables}
 
 SQLのパフォーマンスの問題をより適切に処理するために、MySQLはSQLを統計で監視するために`performance_schema`の[ステートメント要約テーブル](https://dev.mysql.com/doc/refman/5.7/en/performance-schema-statement-summary-tables.html)を提供しています。これらのテーブルの中で、 `events_statements_summary_by_digest`は、レイテンシ、実行時間、スキャンされた行、全表スキャンなどの豊富なフィールドでSQLの問題を見つけるのに非常に役立ちます。
 
-したがって、v4.0.0-rc.1以降、TiDBは、機能の点で`events_statements_summary_by_digest`に類似したシステムテーブルを`information_schema` （ `performance_schema`では<em>なく</em>）で提供します。
+したがって、v4.0.0-rc.1以降、TiDBは、機能の点で`events_statements_summary_by_digest`に類似したシステムテーブルを`information_schema` （ `performance_schema`では*なく*）で提供します。
 
 -   [`statements_summary`](#statements_summary)
 -   [`statements_summary_history`](#statements_summary_history)
@@ -80,7 +79,7 @@ select * from employee where id in (...) and salary between ? and ?;
                  PLAN:  Point_Get_1     root    1       table:employee, handle:3100
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > TiDBでは、ステートメントサマリーテーブルのフィールドの時間単位はナノ秒（ns）ですが、MySQLでは時間単位はピコ秒（ps）です。
 
@@ -113,7 +112,7 @@ select * from employee where id in (...) and salary between ? and ?;
 -   `tidb_stmt_summary_max_sql_length` ： `DIGEST_TEXT`と`QUERY_SAMPLE_TEXT`の最長表示長を指定します。デフォルト値は`4096`です。
 -   `tidb_stmt_summary_internal_query` ：TiDBSQLステートメントをカウントするかどうかを決定します。 `1`はカウントすることを意味し、 `0`はカウントしないことを意味します。デフォルト値は`0`です。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `tidb_stmt_summary_max_stmt_count`の制限を超えたためにSQLステートメントのカテゴリを削除する必要がある場合、TiDBはすべての時間範囲のそのSQLステートメントカテゴリのデータを`statement_summary_history`のテーブルから削除します。したがって、特定の時間範囲内のSQLステートメントカテゴリの数が制限に達していない場合でも、 `statement_summary_history`のテーブルに格納されているSQLステートメントの数は実際のSQLステートメントの数よりも少なくなります。この状況が発生してパフォーマンスに影響を与える場合は、 `tidb_stmt_summary_max_stmt_count`の値を増やすことをお勧めします。
 
@@ -131,7 +130,14 @@ set global tidb_stmt_summary_history_size = 24;
 
 `statements_summary_evicted`の表は、SQLステートメントがステートメントの要約から削除された最近の24期間を記録します。 `statements_summary_evicted`のテーブルは30分ごとに更新されます。
 
-> <strong>ノート：</strong>
+上記のシステム変数には、グローバルとセッションの2つのスコープがあります。これらのスコープは、他のシステム変数とは動作が異なります。
+
+-   グローバル変数を設定すると、設定はクラスタ全体にすぐに適用されます。
+-   セッション変数を設定すると、設定は現在のTiDBサーバーにすぐに適用されます。これは、単一のTiDBサーバーインスタンスでデバッグする場合に役立ちます。
+-   セッション変数の読み取り優先度は高くなります。グローバル変数は、セッション変数が設定されていない場合にのみ読み取られます。
+-   セッション変数を空白の文字列に設定すると、グローバル変数が再読み取りされます。
+
+> **ノート：**
 >
 > `tidb_stmt_summary_history_size` 、および`tidb_stmt_summary_max_stmt_count`の構成項目は、メモリー使用量に影響し`tidb_stmt_summary_max_sql_length` 。必要に応じて、これらの構成を調整することをお勧めします。大きすぎる値を設定することはお勧めしません。
 

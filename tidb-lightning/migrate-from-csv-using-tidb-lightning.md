@@ -1,12 +1,11 @@
 ---
-title: TiDB Lightning CSV Support and Restrictions
-summary: Learn how to import CSV files via TiDB Lightning.
-aliases: ['/docs/dev/tidb-lightning/migrate-from-csv-using-tidb-lightning/','/docs/dev/reference/tools/tidb-lightning/csv/']
+title: TiDBLightningCSVのサポートと制限
+summary: TiDBLightningを介してCSVファイルをインポートする方法を学びます。
 ---
 
 # TiDBLightningCSVのサポートと制限 {#tidb-lightning-csv-support-and-restrictions}
 
-このドキュメントでは、TiDBLightningを使用してCSVファイルからTiDBにデータを移行する方法について説明します。 MySQLからCSVファイルを生成する方法については、 [餃子を使用してCSVファイルにエクスポート](/dumpling-overview.md#export-to-csv-files)を参照してください。
+このドキュメントでは、TiDBLightningを使用してCSVファイルからTiDBにデータを移行する方法について説明します。 MySQLからCSVファイルを生成する方法については、 [Dumplingを使用してCSVファイルにエクスポート](/dumpling-overview.md#export-to-csv-files)を参照してください。
 
 TiDB Lightningは、CSV（カンマ区切り値）データソース、およびTSV（タブ区切り値）などの他の区切り形式の読み取りをサポートしています。
 
@@ -23,9 +22,9 @@ TiDB Lightningは、CSV（カンマ区切り値）データソース、および
 CSVファイルはスキーマレスです。それらをTiDBにインポートするには、テーブルスキーマを提供する必要があります。これは、次のいずれかによって実行できます。
 
 -   `CREATE TABLE`のDDLステートメントを含む`db_name.table_name-schema.sql`という名前のファイルと、 `CREATE DATABASE`のDDLステートメントを含む`db_name-schema-create.sql`という名前のファイルを提供します。
--   TiDBでテーブルスキーマを手動で作成します。
+-   そもそもTiDBで直接空のテーブルを作成し、次に`tidb-lightning.toml`の`[mydumper] no-schema = true`を設定します。
 
-## 構成 {#configuration}
+## Configuration / コンフィグレーション {#configuration}
 
 CSV形式は、 `[mydumper.csv]`セクションの`tidb-lightning.toml`で構成できます。ほとんどの設定には、 [`LOAD DATA`]ステートメントに対応するオプションがあります。
 
@@ -52,9 +51,9 @@ backslash-escape = true
 trim-last-separator = false
 ```
 
-`separator`などのすべての文字列フィールドで、入力に特殊文字が含まれている場合は、円記号のエスケープシーケンスを使用して、それらを<em>二重引用符で囲まれ</em>`"…"` `delimiter`で表すことができ`terminator` 。たとえば、 `separator = "\u001f"`は、ASCII文字0x1Fを区切り文字として使用することを意味します。
+`separator`などのすべての文字列フィールドで、入力に特殊文字が含まれている場合は、円記号のエスケープシーケンスを使用して、それらを*二重引用符で囲まれ*`"…"` `delimiter`で表すことができ`terminator` 。たとえば、 `separator = "\u001f"`は、ASCII文字0x1Fを区切り文字として使用することを意味します。
 
-さらに、<em>一重引用符で囲まれ</em>た文字列（ `'…'` ）を使用して、バックスラッシュのエスケープを抑制することができます。たとえば、 `terminator = '\n'`は、2文字の文字列を使用することを意味します。つまり、円記号の後に文字「n」をターミネータとして使用します。
+さらに、*一重引用符で囲まれ*た文字列（ `'…'` ）を使用して、バックスラッシュのエスケープを抑制することができます。たとえば、 `terminator = '\n'`は、2文字の文字列を使用することを意味します。つまり、円記号の後に文字「n」をターミネータとして使用します。
 
 詳細については、 [TOML v1.0.0 specification]を参照してください。
 
@@ -99,8 +98,8 @@ trim-last-separator = false
 
 ### <code>header</code> {#code-header-code}
 
--   <em>すべての</em>CSVファイルにヘッダー行が含まれているかどうか。
--   `header`が真の場合、最初の行が<em>列名</em>として使用されます。 `header`がfalseの場合、最初の行は特別ではなく、通常のデータ行として扱われます。
+-   *すべての*CSVファイルにヘッダー行が含まれているかどうか。
+-   `header`が真の場合、最初の行が*列名*として使用されます。 `header`がfalseの場合、最初の行は特別ではなく、通常のデータ行として扱われます。
 
 ### <code>not-null</code>および<code>null</code> {#code-not-null-code-and-code-null-code}
 
@@ -177,7 +176,7 @@ TiDB Lightningは、 `LOAD DATA`ステートメントでサポートされるす
 
 Lightningは、入力ファイルのサイズが約256MBで均一な場合に最適に機能します。入力が単一の巨大なCSVファイルである場合、Lightningはそれを処理するために1つのスレッドしか使用できないため、インポート速度が大幅に低下します。
 
-これは、最初にCSVを複数のファイルに分割することで修正できます。一般的なCSV形式の場合、ファイル全体を読み取らずに行の開始と終了をすばやく識別する方法はありません。したがって、LightningはデフォルトではCSVファイルを自動的に分割しませ<em>ん</em>。ただし、CSV入力が特定の制限に準拠していることが確実な場合は、 `strict-format`設定を有効にして、Lightningがファイルを複数の256MBサイズのチャンクに分割して並列処理できるようにすることができます。
+これは、最初にCSVを複数のファイルに分割することで修正できます。一般的なCSV形式の場合、ファイル全体を読み取らずに行の開始と終了をすばやく識別する方法はありません。したがって、LightningはデフォルトではCSVファイルを自動的に分割しませ*ん*。ただし、CSV入力が特定の制限に準拠していることが確実な場合は、 `strict-format`設定を有効にして、Lightningがファイルを複数の256MBサイズのチャンクに分割して並列処理できるようにすることができます。
 
 ```toml
 [mydumper]

@@ -1,6 +1,5 @@
 ---
-title: TiDB 3.1 RC Release Notes
-aliases: ['/docs/dev/releases/release-3.1.0-rc/','/docs/dev/releases/3.1.0-rc/']
+title: TiDB3.1RCリリースノート
 ---
 
 # TiDB3.1RCリリースノート {#tidb-3-1-rc-release-notes}
@@ -11,7 +10,7 @@ TiDBバージョン：3.1.0-rc
 
 TiDB Ansibleバージョン：3.1.0-rc
 
-> <strong>警告：</strong>
+> **警告：**
 >
 > このバージョンにはいくつかの既知の問題があり、これらの問題は新しいバージョンで修正されています。最新の3.1.xバージョンを使用することをお勧めします。
 
@@ -87,7 +86,7 @@ TiDB Ansibleバージョン：3.1.0-rc
 
     -   既存のキーをトランザクションに挿入し、整合性チェックパラメータを無効にしたときにすぐに削除することによって引き起こされる競合チェックの失敗またはデータインデックスの不整合の問題を修正します[＃7112](https://github.com/tikv/tikv/pull/7112)
     -   `TopN`が符号なし整数を比較するときの計算エラーを修正します[＃7199](https://github.com/tikv/tikv/pull/7199)
-    -   Raftstoreにフロー制御メカニズムを導入して、フロー制御がないと、ログの追跡が遅くなり、クラスターがスタックする可能性があるという問題を解決します。トランザクションサイズが大きいと、TiKVサーバー間で頻繁に再接続される可能性があるという問題[＃7087](https://github.com/tikv/tikv/pull/7087) [＃7078](https://github.com/tikv/tikv/pull/7078)
+    -   Raftstoreにフロー制御メカニズムを導入して、フロー制御がないと、ログの追跡が遅くなり、クラスタがスタックする可能性があるという問題を解決します。トランザクションサイズが大きいと、TiKVサーバー間で頻繁に再接続される可能性があるという問題[＃7087](https://github.com/tikv/tikv/pull/7087) [＃7078](https://github.com/tikv/tikv/pull/7078)
     -   レプリカに送信される保留中の読み取り要求が永続的にブロックされる可能性がある問題を修正します[＃6543](https://github.com/tikv/tikv/pull/6543)
     -   スナップショットを適用すると、レプリカの読み取りがブロックされる可能性がある問題を修正します[＃7249](https://github.com/tikv/tikv/pull/7249)
     -   リーダーを転送するとTiKVがパニックになる可能性がある問題を修正します[＃7240](https://github.com/tikv/tikv/pull/7240)
@@ -110,4 +109,4 @@ TiDB Ansibleバージョン：3.1.0-rc
 
     -   バックアップと復元（BR）
 
-        -   BRがTiFlashクラスターデータを復元できない問題を修正する[＃194](https://github.com/pingcap/br/pull/194)
+        -   BRがTiFlashクラスタデータを復元できない問題を修正する[＃194](https://github.com/pingcap/br/pull/194)

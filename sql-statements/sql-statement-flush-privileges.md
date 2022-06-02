@@ -1,7 +1,6 @@
 ---
-title: FLUSH PRIVILEGES | TiDB SQL Statement Reference
-summary: An overview of the usage of FLUSH PRIVILEGES for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-flush-privileges/','/docs/dev/reference/sql/statements/flush-privileges/']
+title: フラッシュ特権| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのFLUSHPRIVILEGESの使用法の概要。
 ---
 
 # フラッシュ特権 {#flush-privileges}
@@ -39,4 +38,4 @@ Query OK, 0 rows affected (0.01 sec)
 
 ## も参照してください {#see-also}
 
--   [特権管理](/privilege-management.md)
+-   [権限管理](/privilege-management.md)

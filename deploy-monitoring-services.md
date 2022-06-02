@@ -1,18 +1,17 @@
 ---
-title: Deploy Monitoring Services for the TiDB Cluster
-summary: Learn how to deploy monitoring services for the TiDB cluster.
-aliases: ['/docs/dev/deploy-monitoring-services/','/docs/dev/how-to/monitor/monitor-a-cluster/','/docs/dev/monitor-a-tidb-cluster/']
+title: TiDBクラスターの監視サービスをデプロイ
+summary: TiDBクラスタの監視サービスを展開する方法を学びます。
 ---
 
-# TiDBクラスターの監視サービスを展開する {#deploy-monitoring-services-for-the-tidb-cluster}
+# TiDBクラスターの監視サービスをデプロイ {#deploy-monitoring-services-for-the-tidb-cluster}
 
 このドキュメントは、TiDB監視およびアラートサービスを手動で展開するユーザーを対象としています。
 
-TiUPを使用してTiDBクラスターを展開する場合、監視およびアラートサービスは自動的に展開され、手動で展開する必要はありません。
+TiUPを使用してTiDBクラスタを展開する場合、監視およびアラートサービスは自動的に展開され、手動で展開する必要はありません。
 
-## PrometheusとGrafanaをデプロイする {#deploy-prometheus-and-grafana}
+## PrometheusとGrafanaをデプロイ {#deploy-prometheus-and-grafana}
 
-TiDBクラスタートポロジが次のとおりであると想定します。
+TiDBクラスタトポロジが次のとおりであると想定します。
 
 | 名前    | ホストIP           | サービス                                    |
 | :---- | :-------------- | :-------------------------------------- |
@@ -55,7 +54,7 @@ $ ./node_exporter --web.listen-address=":9100" \
     --log.level="info" &
 ```
 
-### ステップ3：Node1でPrometheusを起動します {#step-3-start-prometheus-on-node1}
+### ステップ3：Node1でPrometheusを起動する {#step-3-start-prometheus-on-node1}
 
 Prometheus構成ファイルを編集します。
 
@@ -182,10 +181,8 @@ url = https://grafana.net
 
 Grafanaサービスを開始します。
 
-{{< copyable "" >}}
-
 ```bash
-./bin/grafana-server \
+$ ./bin/grafana-server \
     --config="./conf/grafana.ini" &
 ```
 
@@ -203,22 +200,22 @@ Grafanaサービスを開始します。
 
     -   デフォルトのパスワード：admin
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
-    > [<strong>パスワードの変更]</strong>ステップでは、[<strong>スキップ]</strong>を選択できます。
+    > [**パスワードの変更]**ステップでは、[<strong>スキップ]</strong>を選択できます。
 
-2.  Grafanaサイドバーメニューで、<strong>構成</strong>内の<strong>データソース</strong>をクリックします。
+2.  Grafanaサイドバーメニューで、**Configuration / コンフィグレーション**内の<strong>データソース</strong>をクリックします。
 
-3.  [<strong>データソースの追加]を</strong>クリックします。
+3.  [**データソースの追加]を**クリックします。
 
 4.  データソース情報を指定します。
 
-    -   データソースの<strong>名前</strong>を指定します。
-    -   [<strong>タイプ]</strong>で、[<strong>プロメテウス]</strong>を選択します。
-    -   <strong>URL</strong>には、Prometheusアドレスを指定します。
+    -   データソースの**名前**を指定します。
+    -   [**タイプ]**で、[<strong>プロメテウス]</strong>を選択します。
+    -   **URL**には、Prometheusアドレスを指定します。
     -   必要に応じて他のフィールドを指定します。
 
-5.  [<strong>追加]</strong>をクリックして、新しいデータソースを保存します。
+5.  [**追加]**をクリックして、新しいデータソースを保存します。
 
 ### ステップ2：Grafanaダッシュボードをインポートする {#step-2-import-a-grafana-dashboard}
 
@@ -226,36 +223,36 @@ PDサーバー、TiKVサーバー、およびTiDBサーバーのGrafanaダッシ
 
 1.  Grafanaロゴをクリックして、サイドバーメニューを開きます。
 
-2.  サイドバーメニューで、[<strong>ダッシュボード</strong>]-&gt; [<strong>インポート</strong>]をクリックして、[ダッシュボードの<strong>インポート</strong>]ウィンドウを開きます。
+2.  サイドバーメニューで、[**ダッシュボード**]-&gt; [<strong>インポート</strong>]をクリックして、[ダッシュボードの<strong>インポート</strong>]ウィンドウを開きます。
 
-3.  [ <strong>.jsonファイルのアップロード]</strong>をクリックして、JSONファイルをアップロードします（ダウンロード[TiDBGrafana構成ファイル](https://github.com/pingcap/tidb-ansible/tree/master/scripts) ）。
+3.  [ **.jsonファイルのアップロード]**をクリックして、JSONファイルをアップロードします（ダウンロード[TiDBGrafana構成ファイル](https://github.com/pingcap/tidb-ansible/tree/master/scripts) ）。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > `tidb.json` 、PD、および`tikv_trouble_shooting.json`ダッシュボードの場合、対応する`tidb_summary.json`ファイルは`tikv_summary.json` 、および`pd.json` `tikv_details.json` 。
 
-4.  [<strong>ロード]</strong>をクリックします。
+4.  [**ロード]**をクリックします。
 
 5.  Prometheusデータソースを選択します。
 
-6.  [<strong>インポート]</strong>をクリックします。 Prometheusダッシュボードがインポートされます。
+6.  [**インポート]**をクリックします。 Prometheusダッシュボードがインポートされます。
 
 ## コンポーネントメトリックを表示する {#view-component-metrics}
 
-トップメニューの[<strong>新しいダッシュボード</strong>]をクリックして、表示するダッシュボードを選択します。
+トップメニューの[**新しいダッシュボード**]をクリックして、表示するダッシュボードを選択します。
 
 ![view dashboard](/media/view-dashboard.png)
 
 クラスタコンポーネントについて、次のメトリックを取得できます。
 
--   <strong>TiDBサーバー：</strong>
+-   **TiDBサーバー：**
 
     -   レイテンシとスループットを監視するためのクエリ処理時間
     -   DDLプロセスの監視
     -   TiKVクライアント関連の監視
     -   PDクライアント関連の監視
 
--   <strong>PDサーバー：</strong>
+-   **PDサーバー：**
 
     -   コマンドが実行される合計回数
     -   特定のコマンドが失敗した合計回数
@@ -263,7 +260,7 @@ PDサーバー、TiKVサーバー、およびTiDBサーバーのGrafanaダッシ
     -   コマンドが失敗する期間
     -   コマンドが終了して結果を返す期間
 
--   <strong>TiKVサーバー：</strong>
+-   **TiKVサーバー：**
 
     -   ガベージコレクション（GC）の監視
     -   TiKVコマンドが実行される合計回数

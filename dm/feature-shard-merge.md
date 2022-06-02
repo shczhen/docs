@@ -1,7 +1,6 @@
 ---
-title: Merge and Migrate Data from Sharded Tables
-summary: Learn how DM merges and migrates data from sharded tables.
-aliases: ['/docs/tidb-data-migration/dev/feature-shard-merge/']
+title: シャーディングされたテーブルからのデータのマージと移行
+summary: DMがシャーディングされたテーブルからデータをマージおよび移行する方法を学びます。
 ---
 
 # シャーディングされたテーブルからのデータのマージと移行 {#merge-and-migrate-data-from-sharded-tables}
@@ -12,7 +11,7 @@ aliases: ['/docs/tidb-data-migration/dev/feature-shard-merge/']
 
 DMは、複数のアップストリームシャーディングテーブルのデータをTiDBの1つのテーブルにマージおよび移行することをサポートします。移行中は、各シャーディングテーブルのDDLと、DDLの前後のDMLを調整する必要があります。使用シナリオでは、DMは悲観的モードと楽観的モードの2つの異なるモードをサポートします。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   シャーディングされたテーブルからデータをマージおよび移行するには、タスク構成ファイルで`shard-mode`を設定する必要があります。
 > -   DMは、シャーディングサポート機能のマージにデフォルトでペシミスティックモードを使用します。 （ドキュメントに特別な説明がない場合は、デフォルトで悲観的モードを使用します。）

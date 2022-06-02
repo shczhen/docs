@@ -1,5 +1,5 @@
 ---
-title: TiDB 4.0.8 Release Notes
+title: TiDB4.0.8リリースノート
 ---
 
 # TiDB4.0.8リリースノート {#tidb-4-0-8-release-notes}
@@ -46,7 +46,7 @@ TiDBバージョン：4.0.8
 
 -   TiKV
 
-    -   <strong>Fast-Tune</strong>パネルページを追加して、パフォーマンス診断を支援します[＃8804](https://github.com/tikv/tikv/pull/8804)
+    -   **Fast-Tune**パネルページを追加して、パフォーマンス診断を支援します[＃8804](https://github.com/tikv/tikv/pull/8804)
     -   ログからユーザーデータを編集する`security.redact-info-log`の構成アイテムを追加します[＃8746](https://github.com/tikv/tikv/pull/8746)
     -   エラーコードのメタファイルを再フォーマットする[＃8877](https://github.com/tikv/tikv/pull/8877)
     -   `pessimistic-txn.pipelined`構成の動的変更を有効にする[＃8853](https://github.com/tikv/tikv/pull/8853)
@@ -77,7 +77,7 @@ TiDBバージョン：4.0.8
 
         -   MySQLシンクで統計を定期的に出力する[＃1023](https://github.com/pingcap/tiflow/pull/1023)
 
-    -   団子
+    -   Dumpling
 
         -   S3ストレージへのデータの直接ダンプリングをサポート[＃155](https://github.com/pingcap/dumpling/pull/155)
         -   ビューのダンプをサポート[＃158](https://github.com/pingcap/dumpling/pull/158)
@@ -87,7 +87,7 @@ TiDBバージョン：4.0.8
 
         -   マルチバイトのCSV区切り文字と区切り文字をサポート[＃406](https://github.com/pingcap/tidb-lightning/pull/406)
         -   一部のPDスケジューラーを無効にすることにより、復元プロセスを高速化します[＃408](https://github.com/pingcap/tidb-lightning/pull/408)
-        -   GCエラーを回避するためにv4.0クラスターのチェックサムGCセーフポイントにGC-TTLAPIを使用する[＃396](https://github.com/pingcap/tidb-lightning/pull/396)
+        -   GCエラーを回避するためにv4.0クラスタのチェックサムGCセーフポイントにGC-TTLAPIを使用する[＃396](https://github.com/pingcap/tidb-lightning/pull/396)
 
 ## バグの修正 {#bug-fixes}
 
@@ -106,7 +106,7 @@ TiDBバージョン：4.0.8
     -   最大符号なし整数を`BatchPointGet`でソートしたときに返される間違った結果を修正し[＃20205](https://github.com/pingcap/tidb/pull/20205)
     -   `Enum`と`Set`の強制力が間違っているというバグを修正します[＃20364](https://github.com/pingcap/tidb/pull/20364)
     -   あいまいな`YEAR`変換[＃20292](https://github.com/pingcap/tidb/pull/20292)の問題を修正します
-    -   <strong>KV期間</strong>パネルに[＃20260](https://github.com/pingcap/tidb/pull/20260)が含まれている場合に発生する誤った報告結果の問題を修正し`store0`
+    -   **KV期間**パネルに[＃20260](https://github.com/pingcap/tidb/pull/20260)が含まれている場合に発生する誤った報告結果の問題を修正し`store0`
     -   `out of range`エラー[＃20252](https://github.com/pingcap/tidb/pull/20252)に関係なく、 `Float`タイプのデータが誤って挿入される問題を修正します。
     -   生成された列が不正な`NULL`の値を処理しないというバグを修正します[＃20216](https://github.com/pingcap/tidb/pull/20216)
     -   範囲[＃20170](https://github.com/pingcap/tidb/pull/20170)外の`YEAR`タイプのデータの不正確なエラー情報を修正します

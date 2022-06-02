@@ -1,5 +1,5 @@
 ---
-title: TiDB 4.0.7 Release Notes
+title: TiDB4.0.7リリースノート
 ---
 
 # TiDB4.0.7リリースノート {#tidb-4-0-7-release-notes}
@@ -98,6 +98,6 @@ TiDBバージョン：4.0.7
 
         -   復元プロセス後にTiDB構成が変更される原因となるバグを修正します[＃509](https://github.com/pingcap/br/pull/509)
 
-    -   団子
+    -   Dumpling
 
-        -   一部の変数が`NULL`の場合、Dumplingがメタデータの解析に失敗する問題を修正し[＃150](https://github.com/pingcap/dumpling/pull/150) 。
+        -   一部の変数が`NULL`の場合、 Dumplingがメタデータの解析に失敗する問題を修正し[＃150](https://github.com/pingcap/dumpling/pull/150) 。

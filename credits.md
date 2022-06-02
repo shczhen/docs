@@ -1,6 +1,6 @@
 ---
-title: Credits
-summary: Learn about the list and roles of contributors to the TiDB community.
+title: クレジット
+summary: TiDBコミュニティへの貢献者のリストと役割について学びます。
 ---
 
 # クレジット {#credits}
@@ -15,7 +15,6 @@ TiDB開発者は、新機能の開発、パフォーマンスの向上、安定�
 -   [tikv / tikv](https://github.com/tikv/tikv/graphs/contributors)
 -   [pingcap / parser](https://github.com/pingcap/parser/graphs/contributors)
 -   [tikv / pd](https://github.com/tikv/pd/graphs/contributors)
--   [pingcap / tiflash](https://github.com/pingcap/tiflash/graphs/contributors)
 -   [pingcap / tidb-operator](https://github.com/pingcap/tidb-operator/graphs/contributors)
 -   [pingcap / tiup](https://github.com/pingcap/tiup/graphs/contributors)
 -   [pingcap / br](https://github.com/pingcap/br/graphs/contributors)

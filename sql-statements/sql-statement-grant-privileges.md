@@ -1,7 +1,6 @@
 ---
-title: GRANT <privileges> | TiDB SQL Statement Reference
-summary: An overview of the usage of GRANT <privileges> for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-grant-privileges/','/docs/dev/reference/sql/statements/grant-privileges/']
+title: GRANT<特権>| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのGRANT<privileges>の使用法の概要。
 ---
 
 # <code>GRANT &#x3C;privileges></code> {#code-grant-x3c-privileges-code}
@@ -87,4 +86,4 @@ mysql> SHOW GRANTS FOR 'newuser';
 -   [`GRANT &#x3C;role>`](/sql-statements/sql-statement-grant-role.md)
 -   [`REVOKE &#x3C;privileges>`](/sql-statements/sql-statement-revoke-privileges.md)
 -   [助成金を表示](/sql-statements/sql-statement-show-grants.md)
--   [特権管理](/privilege-management.md)
+-   [権限管理](/privilege-management.md)

@@ -1,7 +1,6 @@
 ---
-title: Enable TLS Between TiDB Components
-summary: Learn how to enable TLS authentication between TiDB components.
-aliases: ['/docs/dev/enable-tls-between-components/','/docs/dev/how-to/secure/enable-tls-between-components/']
+title: TiDBコンポーネント間のTLSを有効にする
+summary: TiDBコンポーネント間でTLS認証を有効にする方法を学びます。
 ---
 
 # TiDBコンポーネント間のTLSを有効にする {#enable-tls-between-tidb-components}
@@ -11,7 +10,7 @@ aliases: ['/docs/dev/enable-tls-between-components/','/docs/dev/how-to/secure/en
 -   TiDBおよびTiKV; TiDBとPD
 -   TiKVとPD
 -   TiDBコントロールとTiDB; TiKVコントロールとTiKV; PD制御とPD
--   各TiKV、PD、TiDBクラスター内の内部通信
+-   各TiKV、PD、TiDBクラスタ内の内部通信
 
 現在、一部の特定のコンポーネントの暗号化された送信のみを有効にすることはサポートされていません。
 
@@ -112,9 +111,9 @@ aliases: ['/docs/dev/enable-tls-between-components/','/docs/dev/how-to/secure/en
 
         これで、TiDBコンポーネント間の暗号化された送信が有効になります。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
-    > TiDBクラスターで暗号化された送信を有効にした後、tidb-ctl、tikv-ctl、またはpd-ctlを使用してクラスターに接続する必要がある場合は、クライアント証明書を指定します。例えば：
+    > TiDBクラスタで暗号化された送信を有効にした後、tidb-ctl、tikv-ctl、またはpd-ctlを使用してクラスタに接続する必要がある場合は、クライアント証明書を指定します。例えば：
 
     {{< copyable "" >}}
 
@@ -134,7 +133,7 @@ aliases: ['/docs/dev/enable-tls-between-components/','/docs/dev/how-to/secure/en
     ./tikv-ctl --host="127.0.0.1:20160" --ca-path="/path/to/ca.pem" --cert-path="/path/to/client.pem" --key-path="/path/to/clinet-key.pem"
     ```
 
-### コンポーネントの呼び出し元のIDを確認します {#verify-component-caller-s-identity}
+### コンポーネントの呼び出し元のIDを確認する {#verify-component-caller-s-identity}
 
 共通名は、発信者の確認に使用されます。一般に、呼び出し先は、呼び出し元から提供されたキー、証明書、およびCAの確認に加えて、呼び出し元のIDを確認する必要があります。たとえば、TiKVにはTiDBからのみアクセスでき、他の訪問者は正当な証明書を持っていてもブロックされます。
 

@@ -1,12 +1,11 @@
 ---
-title: TiFlash Alert Rules
-summary: Learn the alert rules of the TiFlash cluster.
-aliases: ['/docs/dev/tiflash/tiflash-alert-rules/','/docs/dev/reference/tiflash/alert-rules/']
+title: TiFlashアラートルール
+summary: TiFlashクラスタのアラートルールを学びます。
 ---
 
 # TiFlashアラートルール {#tiflash-alert-rules}
 
-このドキュメントでは、TiFlashクラスターのアラートルールを紹介します。
+このドキュメントでは、TiFlashクラスタのアラートルールを紹介します。
 
 ## <code>TiFlash_schema_error</code> {#code-tiflash-schema-error-code}
 
@@ -46,13 +45,13 @@ aliases: ['/docs/dev/tiflash/tiflash-alert-rules/','/docs/dev/reference/tiflash/
 
     読み取りインデックス期間が3秒を超える確率が99％を超えると、アラートがトリガーされます。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > `read index`は、TiKVリーダーに送信されるkvproto要求です。 TiKVリージョンの再試行、ビジーストア、またはネットワークの問題により、要求時間が`read index`に長くなる可能性があります。
 
 -   解決：
 
-    頻繁な再試行は、TiKVクラスターの頻繁な分割または移行が原因である可能性があります。 TiKVクラスターのステータスを確認して、再試行の理由を特定できます。
+    頻繁な再試行は、TiKVクラスタの頻繁な分割または移行が原因である可能性があります。 TiKVクラスタのステータスを確認して、再試行の理由を特定できます。
 
 ## <code>TiFlash_raft_wait_index_duration</code> {#code-tiflash-raft-wait-index-duration-code}
 

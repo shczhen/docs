@@ -1,12 +1,11 @@
 ---
-title: Generate Self-signed Certificates
-summary: Use `openssl` to generate self-signed certificates.
-aliases: ['/docs/dev/generate-self-signed-certificates/','/docs/dev/how-to/secure/generate-self-signed-certificates/']
+title: 自己署名証明書を生成する
+summary: `openssl`を使用して、自己署名証明書を生成します。
 ---
 
-# 自己署名証明書を生成する {#generate-self-signed-certificates}
+# 証明書を生成する {#generate-self-signed-certificates}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > クライアントとサーバー間でTLSを有効にするには、 `auto-tls`を設定するだけです。
 

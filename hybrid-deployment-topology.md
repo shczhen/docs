@@ -1,7 +1,6 @@
 ---
-title: Hybrid Deployment Topology
-summary: Learn the hybrid deployment topology of TiDB clusters.
-aliases: ['/docs/dev/hybrid-deployment-topology/']
+title: ハイブリッド展開トポロジ
+summary: TiDBクラスターのハイブリッドデプロイメントトポロジを学習します。
 ---
 
 # ハイブリッド展開トポロジ {#hybrid-deployment-topology}
@@ -14,7 +13,7 @@ aliases: ['/docs/dev/hybrid-deployment-topology/']
 
 ## トポロジー情報 {#topology-information}
 
-| 実例             | カウント | 物理マシン構成                    | IP                                   | 構成                                                                                                                                                                    |
+| 実例             | カウント | 物理マシン構成                    | IP                                   | Configuration / コンフィグレーション                                                                                                                                            |
 | :------------- | :--- | :------------------------- | :----------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | TiDB           | 6    | 32 VCore 64GB              | 10.0.1.1<br/> 10.0.1.2<br/> 10.0.1.3 | CPUコアをバインドするようにNUMAを構成する                                                                                                                                              |
 | PD             | 3    | 16 VCore 32 GB             | 10.0.1.4<br/> 10.0.1.5<br/> 10.0.1.6 | `location_labels`つのパラメーターを構成します                                                                                                                                       |
@@ -26,7 +25,7 @@ aliases: ['/docs/dev/hybrid-deployment-topology/']
 -   [ハイブリッド展開用のシンプルなテンプレート](https://github.com/pingcap/docs-cn/blob/master/config-templates/simple-multi-instance.yaml)
 -   [ハイブリッド展開用の複雑なテンプレート](https://github.com/pingcap/docs/blob/master/config-templates/complex-multi-instance.yaml)
 
-上記のTiDBクラスタートポロジファイルの構成項目の詳細については、 [TiUPを使用してTiDBを展開するためのトポロジ構成ファイル](/tiup/tiup-cluster-topology-reference.md)を参照してください。
+上記のTiDBクラスタトポロジファイルの構成項目の詳細については、 [TiUPを使用してTiDBを展開するためのトポロジConfiguration / コンフィグレーションファイル](/tiup/tiup-cluster-topology-reference.md)を参照してください。
 
 ### 重要なパラメータ {#key-parameters}
 
@@ -71,7 +70,7 @@ aliases: ['/docs/dev/hybrid-deployment-topology/']
 
 -   ラベルスケジューリング構成
 
-    TiKVの複数のインスタンスが単一のマシンにデプロイされているため、物理マシンがダウンすると、Raftグループはデフォルトの3つのレプリカのうち2つを失い、クラスターが使用できなくなる可能性があります。この問題に対処するには、ラベルを使用してPDのスマートスケジューリングを有効にします。これにより、Raftグループが同じマシン上の複数のTiKVインスタンスに3つ以上のレプリカを持つようになります。
+    TiKVの複数のインスタンスが単一のマシンにデプロイされているため、物理マシンがダウンすると、Raftグループはデフォルトの3つのレプリカのうち2つを失い、クラスタが使用できなくなる可能性があります。この問題に対処するには、ラベルを使用してPDのスマートスケジューリングを有効にします。これにより、Raftグループが同じマシン上の複数のTiKVインスタンスに3つ以上のレプリカを持つようになります。
 
     -   TiKV構成
 
@@ -100,9 +99,9 @@ aliases: ['/docs/dev/hybrid-deployment-topology/']
 
     -   `numa_node`パラメーターは`numactl --membind`構成に対応します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   構成ファイルテンプレートを編集するときは、必要なパラメーター、IP、ポート、およびディレクトリーを変更してください。
 > -   各コンポーネントは、デフォルトでグローバル`<deploy_dir>/<components_name>-<port>`を`deploy_dir`として使用します。たとえば、TiDBが`4001`ポートを指定している場合、その`deploy_dir`はデフォルトで`/tidb-deploy/tidb-4001`です。したがって、マルチインスタンスシナリオでは、デフォルト以外のポートを指定するときに、ディレクトリを再度指定する必要はありません。
-> -   構成ファイルに`tidb`人のユーザーを手動で作成する必要はありません。 TiUPクラスターコンポーネントは、ターゲットマシン上に`tidb`のユーザーを自動的に作成します。ユーザーをカスタマイズすることも、ユーザーを制御マシンとの一貫性を保つこともできます。
-> -   展開ディレクトリを相対パスとして構成すると、クラスターはユーザーのホームディレクトリに展開されます。
+> -   構成ファイルに`tidb`人のユーザーを手動で作成する必要はありません。 TiUPクラスタコンポーネントは、ターゲットマシン上に`tidb`のユーザーを自動的に作成します。ユーザーをカスタマイズすることも、ユーザーを制御マシンとの一貫性を保つこともできます。
+> -   展開ディレクトリを相対パスとして構成すると、クラスタはユーザーのホームディレクトリに展開されます。

@@ -1,6 +1,6 @@
 ---
-title: The Blocklist of Optimization Rules and Expression Pushdown
-summary: Learn about the blocklist to control the optimization rules and the behavior of expression pushdown.
+title: 最適化ルールと式のプッシュダウンのブロックリスト
+summary: 最適化ルールと式プッシュダウンの動作を制御するためのブロックリストについて学習します。
 ---
 
 # 最適化ルールと式のプッシュダウンのブロックリスト {#the-blocklist-of-optimization-rules-and-expression-pushdown}
@@ -13,19 +13,19 @@ summary: Learn about the blocklist to control the optimization rules and the beh
 
 ### 重要な最適化ルール {#important-optimization-rules}
 
-| <strong>最適化ルール</strong> | <strong>ルール名</strong>   | <strong>説明</strong>                                                               |
-| :---------------------- | :---------------------- | :-------------------------------------------------------------------------------- |
-| 列の剪定                    | column_prune            | 上位のエグゼキュータが必要としない場合は、1人のオペレータが列を整理します。                                            |
-| サブクエリを非相関化              | デコレレート                  | 相関サブクエリを非相関結合または集約に書き直そうとします。                                                     |
-| 凝集の除去                   | Aggregation_eliminate   | 実行プランから不要な集計演算子を削除しようとします。                                                        |
-| 突起物の除去                  | Projection_eliminate    | 実行プランから不要な射影演算子を削除します。                                                            |
-| 最大/最小除去                 | max_min_eliminate       | 一部のmax/min関数を集約して`order by` + `limit 1`形式に書き換えます。                                 |
-| 述語プッシュダウン               | predicate_push_down     | データソースに近い演算子に述語をプッシュしようとします。                                                      |
-| アウタージョインの排除             | external_join_eliminate | 実行プランから不要な左結合または右結合を削除しようとします。                                                    |
-| パーティションの剪定              | partition_processor     | 述部によって拒否されたパーティションを削除し、パーティションテーブルクエリを`UnionAll + Partition Datasource`形式に書き換えます。 |
-| 集約プッシュダウン               | Aggregation_push_down   | アグリゲーションを子にプッシュしようとします。                                                           |
-| TopNプッシュダウン             | topn_push_down          | TopN演算子をデータソースに近い場所にプッシュしようとします。                                                  |
-| 再注文に参加                  | join_reorder            | マルチテーブル結合の順序を決定します。                                                               |
+| **最適化ルール**  | **ルール名**                | **説明**                                                                            |
+| :---------- | :---------------------- | :-------------------------------------------------------------------------------- |
+| 列の剪定        | column_prune            | 上位のエグゼキュータが必要としない場合は、1人のオペレータが列を整理します。                                            |
+| サブクエリを非相関化  | デコレレート                  | 相関サブクエリを非相関結合または集約に書き直そうとします。                                                     |
+| 集計の除去       | Aggregation_eliminate   | 実行プランから不要な集計演算子を削除しようとします。                                                        |
+| 突起物の除去      | Projection_eliminate    | 実行プランから不要な射影演算子を削除します。                                                            |
+| 最大/最小除去     | max_min_eliminate       | 一部のmax/min関数を集約して`order by` + `limit 1`形式に書き換えます。                                 |
+| 述語プッシュダウン   | predicate_push_down     | データソースに近い演算子に述語をプッシュしようとします。                                                      |
+| アウタージョインの排除 | external_join_eliminate | 実行プランから不要な左結合または右結合を削除しようとします。                                                    |
+| パーティションの剪定  | partition_processor     | 述部によって拒否されたパーティションを削除し、パーティションテーブルクエリを`UnionAll + Partition Datasource`形式に書き換えます。 |
+| 集計プッシュダウン   | Aggregation_push_down   | アグリゲーションを子にプッシュしようとします。                                                           |
+| TopNプッシュダウン | topn_push_down          | TopN演算子をデータソースに近い場所にプッシュしようとします。                                                  |
+| 再注文に参加      | join_reorder            | マルチテーブル結合の順序を決定します。                                                               |
 
 ### 最適化ルールを無効にする {#disable-optimization-rules}
 
@@ -33,7 +33,7 @@ summary: Learn about the blocklist to control the optimization rules and the beh
 
 #### 使用法 {#usage}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 以下のすべての操作には、データベースの`super privilege`の特権が必要です。各最適化ルールには名前があります。たとえば、列プルーニングの名前は`column_prune`です。すべての最適化ルールの名前は、表[重要な最適化ルール](#important-optimization-rules)の2番目の列にあります。
 
@@ -53,7 +53,7 @@ summary: Learn about the blocklist to control the optimization rules and the beh
     admin reload opt_rule_blacklist;
     ```
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > `admin reload opt_rule_blacklist`は、上記のステートメントが実行されたTiDBサーバーでのみ有効です。クラスタのすべてのTiDBサーバーを有効にする場合は、各TiDBサーバーでこのコマンドを実行します。
 
@@ -138,7 +138,7 @@ DESC mysql.expr_pushdown_blacklist;
 
 2.  `admin reload expr_pushdown_blacklist`を実行します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `admin reload expr_pushdown_blacklist`は、このステートメントが実行されるTiDBサーバーでのみ有効です。クラスタのすべてのTiDBサーバーを有効にする場合は、各TiDBサーバーでこのコマンドを実行します。
 

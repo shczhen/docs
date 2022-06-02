@@ -1,6 +1,5 @@
 ---
-title: TiDB 2.1.17 Release Notes
-aliases: ['/docs/dev/releases/release-2.1.17/','/docs/dev/releases/2.1.17/']
+title: TiDB2.1.17リリースノート
 ---
 
 # TiDB2.1.17リリースノート {#tidb-2-1-17-release-notes}
@@ -40,7 +39,7 @@ TiDB Ansibleバージョン：2.1.17
     -   `unaryMinus`関数によって返される結果がMySQLと互換性がないという問題を修正します。これは、整数の結果が[＃11990](https://github.com/pingcap/tidb/pull/11990)をオーバーフローしたときに非10進数の結果が原因で発生します。
     -   `LOAD DATA`ステートメントが実行されているときのカウント順序が原因で`last_insert_id()`が正しくない可能性があるという問題を修正します[＃11994](https://github.com/pingcap/tidb/pull/11994)
     -   ユーザーが明示的-暗黙的な混合方法で自動インクリメント列データを書き込むときに`last_insert_id()`が正しくない可能性があるという問題を修正します[＃12001](https://github.com/pingcap/tidb/pull/12001)
-    -   `JSON_UNQUOTE`関数の引用符が多すぎるバグを修正します。二重引用符（ `"` ）で囲まれた値のみを引用符で囲まないようにする必要があります。たとえば、「 `SELECT JSON_UNQUOTE("\\\\")` 」の結果は「 `\\` 」（変更されない） [＃12096](https://github.com/pingcap/tidb/pull/12096)になります。
+    -   `JSON_UNQUOTE`関数の引用符で囲まれたバグを修正します。二重引用符（ `"` ）で囲まれた値のみを引用符で囲まないようにする必要があります。たとえば、「 `SELECT JSON_UNQUOTE("\\\\")` 」の結果は「 `\\` 」（変更されない） [＃12096](https://github.com/pingcap/tidb/pull/12096)になります。
 -   サーバ
     -   低速クエリログに記録された`start ts`を、TiDBトランザクションを再試行するときの最後の再試行時刻から最初の実行時刻に変更します[＃11878](https://github.com/pingcap/tidb/pull/11878)
     -   リージョン全体でのスキャン操作を回避し、キーの数が減ったときにロックを解決するコストを削減するために、トランザクションのキーの数を`LockResolver`に追加します[＃11889](https://github.com/pingcap/tidb/pull/11889)

@@ -1,7 +1,6 @@
 ---
-title: Handle Errors
-summary: Learn about the error system and how to handle common errors when you use DM.
-aliases: ['/docs/tidb-data-migration/dev/error-handling/','/docs/tidb-data-migration/dev/troubleshoot-dm/','/docs/tidb-data-migration/dev/error-system/']
+title: エラーの処理
+summary: エラーシステムと、DMを使用する際の一般的なエラーの処理方法について説明します。
 ---
 
 # エラーの処理 {#handle-errors}
@@ -135,9 +134,9 @@ DMの現在のバージョンは、エラー時に自動的に再試行します
 
 #### 理由 {#reason}
 
-リレーログプルまたはインクリメンタルレプリケーションのDMプロセス中に、アップストリームbinlogファイルのサイズが<strong>4 GB</strong>を超えると、この2つのエラーが発生する可能性があります。
+リレーログプルまたはインクリメンタルレプリケーションのDMプロセス中に、アップストリームbinlogファイルのサイズが**4 GB**を超えると、この2つのエラーが発生する可能性があります。
 
-<strong>原因：</strong>リレーログを書き込む場合、DMはbinlogの位置とbinlogファイルのサイズに基づいてイベント検証を実行し、複製されたbinlogの位置をチェックポイントとして保存する必要があります。ただし、公式のMySQLは`uint32`を使用してbinlogの位置を格納します。これは、4 GBを超えるbinlogファイルのbinlog位置がオーバーフローし、上記のエラーが発生することを意味します。
+**原因：**リレーログを書き込む場合、DMはbinlogの位置とbinlogファイルのサイズに基づいてイベント検証を実行し、複製されたbinlogの位置をチェックポイントとして保存する必要があります。ただし、公式のMySQLは`uint32`を使用してbinlogの位置を格納します。これは、4 GBを超えるbinlogファイルのbinlog位置がオーバーフローし、上記のエラーが発生することを意味します。
 
 #### ソリューション {#solutions}
 

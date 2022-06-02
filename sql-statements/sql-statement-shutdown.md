@@ -1,7 +1,6 @@
 ---
-title: SHUTDOWN
-summary: An overview of the usage of SHUTDOWN for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-shutdown/']
+title: シャットダウン
+summary: TiDBデータベースのSHUTDOWNの使用法の概要。
 ---
 
 # シャットダウン {#shutdown}
@@ -10,7 +9,7 @@ aliases: ['/docs/dev/sql-statements/sql-statement-shutdown/']
 
 ## あらすじ {#synopsis}
 
-<strong>声明：</strong>
+**声明：**
 
 ![Statement](/media/sqlgram/ShutdownStmt.png)
 
@@ -28,8 +27,8 @@ Query OK, 0 rows affected (0.00 sec)
 
 ## MySQLの互換性 {#mysql-compatibility}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> TiDBは分散データベースであるため、TiDBでのシャットダウン操作は、TiDBクラスター全体ではなく、クライアントに接続されたTiDBインスタンスを停止します。
+> TiDBは分散データベースであるため、TiDBでのシャットダウン操作は、TiDBクラスタ全体ではなく、クライアントに接続されたTiDBインスタンスを停止します。
 
 `SHUTDOWN`ステートメントはMySQLと部分的に互換性があります。互換性の問題が発生した場合は、問題を報告できます[GitHubで](https://github.com/pingcap/tidb/issues/new/choose) 。

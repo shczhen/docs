@@ -1,7 +1,6 @@
 ---
-title: Best Practices of Data Migration in the Shard Merge Scenario
-summary: Learn the best practices of data migration in the shard merge scenario.
-aliases: ['/docs/tidb-data-migration/dev/shard-merge-best-practices/']
+title: シャードマージシナリオでのデータ移行のベストプラクティス
+summary: シャードマージシナリオでのデータ移行のベストプラクティスを学びます。
 ---
 
 # シャードマージシナリオでのデータ移行のベストプラクティス {#best-practices-of-data-migration-in-the-shard-merge-scenario}
@@ -14,13 +13,13 @@ aliases: ['/docs/tidb-data-migration/dev/shard-merge-best-practices/']
 
 現在のシャーディングDDLメカニズムには、さまざまなシャードテーブルでのDDL操作によってもたらされるスキーマの変更を調整するための[使用制限](/dm/feature-shard-merge-pessimistic.md#restrictions)があります。予期しない理由でこれらの制限に違反した場合は、データ移行タスク全体を[DMでシャーディングDDLロックを手動で処理する](/dm/manually-handling-sharding-ddl-locks.md) 、またはやり直す必要があります。
 
-例外が発生した場合のデータ移行への影響を軽減するために、各シャーディンググループを個別のデータ移行タスクとしてマージおよび移行することをお勧めします。<strong>これにより、少数のデータ移行タスクのみを手動で処理する必要があり、他のタスクは影響を受けないままになる可能性があります。</strong>
+例外が発生した場合のデータ移行への影響を軽減するために、各シャーディンググループを個別のデータ移行タスクとしてマージおよび移行することをお勧めします。**これにより、少数のデータ移行タスクのみを手動で処理する必要があり、他のタスクは影響を受けないままになる可能性があります。**
 
 ## シャーディングDDLロックを手動で処理する {#handle-sharding-ddl-locks-manually}
 
 DMのシャーディングDDLロックは、複数のアップストリームシャードテーブルからダウンストリームへのDDL操作の実行を調整するためのメカニズムであると[シャーディングされたテーブルからのデータのマージと移行](/dm/feature-shard-merge-pessimistic.md#principles)から簡単に結論付けることができます。
 
-したがって、 `DM-master`コマンドでシャーディングDDLロックを見つけた場合、または`shard-ddl-lock`コマンドで一部のDMワーカーで`unresolvedGroups`または`blockingDDLs`を見つけた場合は、 `query-status`コマンドでシャーディング`shard-ddl-lock unlock`ロックを手動で解放しないでください。
+したがって、 `DM-master`コマンドでシャーディングDDLロックを見つけた場合、または`show-ddl-locks`コマンドで一部のDMワーカーで`unresolvedGroups`または`blockingDDLs`を見つけた場合は、 `query-status`コマンドでシャーディング`unlock-ddl-lock`ロックを手動で解放しないでください。
 
 代わりに、次のことができます。
 
@@ -118,9 +117,13 @@ CREATE TABLE `tbl_multi_pk` (
 
 3.  `query-status`を実行して、データ移行タスクが正常に処理されたかどうか、およびアップストリームからのデータが既にマージされてダウンストリームデータベースに移行されているかどうかを確認します。
 
+## アップストリームRDSにシャーディングテーブルが含まれている場合の特別な処理 {#special-processing-when-the-upstream-rds-contains-sharded-tables}
+
+アップストリームデータソースがRDSであり、シャーディングテーブルが含まれている場合、SQLクライアントに接続すると、MySQLbinlogのテーブル名が表示されない場合があります。たとえば、アップストリームがUCloud分散データベースである場合、binlogのテーブル名に追加のプレフィックス`_0001`が付いている可能性があります。したがって、SQLクライアントのテーブル名ではなく、binlogのテーブル名に基づいて[テーブルルーティング](/dm/dm-key-features.md#table-routing)を構成する必要があります。
+
 ## アップストリームでテーブルを作成/削除します {#create-drop-tables-in-the-upstream}
 
-[シャーディングされたテーブルからのデータのマージと移行](/dm/feature-shard-merge-pessimistic.md#principles)では、シャーディングDDLロックの調整は、ダウンストリームデータベースがすべてのアップストリームシャードテーブルのDDLステートメントを受信するかどうかに依存することは明らかです。さらに、DMは現在、アップストリームでのシャードテーブルの動的な作成または削除を<strong>サポートしていません</strong>。したがって、アップストリームでシャードテーブルを作成または削除するには、次の手順を実行することをお勧めします。
+[シャーディングされたテーブルからのデータのマージと移行](/dm/feature-shard-merge-pessimistic.md#principles)では、シャーディングDDLロックの調整は、ダウンストリームデータベースがすべてのアップストリームシャードテーブルのDDLステートメントを受信するかどうかに依存することは明らかです。さらに、DMは現在、アップストリームでのシャードテーブルの動的な作成または削除を**サポートしていません**。したがって、アップストリームでシャードテーブルを作成または削除するには、次の手順を実行することをお勧めします。
 
 ### 上流にシャードテーブルを作成する {#create-sharded-tables-in-the-upstream}
 
@@ -142,11 +145,11 @@ CREATE TABLE `tbl_multi_pk` (
 
 シャードテーブルをアップストリームにドロップする必要がある場合は、次の手順を実行します。
 
-1.  シャーディングされたテーブルを削除し、 [`SHOW BINLOG EVENTS`](https://dev.mysql.com/doc/refman/5.7/en/show-binlog-events.html)を実行してbinlogイベントの`DROP TABLE`ステートメントに対応する`End_log_pos`をフェッチし、 <em>Pos-M</em>としてマークします。
+1.  シャーディングされたテーブルを削除し、 [`SHOW BINLOG EVENTS`](https://dev.mysql.com/doc/refman/5.7/en/show-binlog-events.html)を実行してbinlogイベントの`DROP TABLE`ステートメントに対応する`End_log_pos`をフェッチし、 *Pos-M*としてマークします。
 
-2.  `query-status`を実行して、DMによって処理されたbinlogイベントに対応する位置（ `syncerBinlog` ）をフェッチし、 <em>Pos-S</em>としてマークします。
+2.  `query-status`を実行して、DMによって処理されたbinlogイベントに対応する位置（ `syncerBinlog` ）をフェッチし、 *Pos-S*としてマークします。
 
-3.  <em>Pos-S</em>が<em>Pos-M</em>より大きい場合は、DMが`DROP TABLE`のステートメントすべてを処理し、ドロップする前のテーブルのデータがダウンストリームに移行されたため、後続の操作を実行できることを意味します。それ以外の場合は、DMがデータの移行を完了するのを待ちます。
+3.  *Pos-S*が<em>Pos-M</em>より大きい場合は、DMが`DROP TABLE`のステートメントすべてを処理し、ドロップする前のテーブルのデータがダウンストリームに移行されたため、後続の操作を実行できることを意味します。それ以外の場合は、DMがデータの移行を完了するのを待ちます。
 
 4.  `stop-task`を実行してタスクを停止します。
 
@@ -158,4 +161,4 @@ CREATE TABLE `tbl_multi_pk` (
 
 ## 制限速度と交通流制御 {#speed-limits-and-traffic-flow-control}
 
-複数のアップストリームMySQLまたはMariaDBインスタンスからのデータがマージされ、ダウンストリームの同じTiDBクラスターに移行されると、各アップストリームインスタンスに対応するすべてのDMワーカーは、完全なデータレプリケーションと増分データレプリケーションを同時に実行します。これは、DMワーカーの数が増えると、デフォルトの同時実行度（完全なデータ移行で`pool-size` 、増分データレプリケーションで`worker-count` ）が累積し、ダウンストリームデータベースが過負荷になる可能性があることを意味します。この場合、TiDBおよびDMの監視メトリックに基づいて予備的なパフォーマンス分析を実行し、各同時実行パラメーターの値を調整する必要があります。将来的には、DMは部分的に自動化された交通流制御をサポートすることが期待されています。
+複数のアップストリームMySQLまたはMariaDBインスタンスからのデータがマージされ、ダウンストリームの同じTiDBクラスタに移行されると、各アップストリームインスタンスに対応するすべてのDMワーカーは、完全なデータレプリケーションと増分データレプリケーションを同時に実行します。これは、DMワーカーの数が増えると、デフォルトの同時実行度（完全なデータ移行で`pool-size` 、増分データレプリケーションで`worker-count` ）が累積し、ダウンストリームデータベースが過負荷になる可能性があることを意味します。この場合、TiDBおよびDMの監視メトリックに基づいて予備的なパフォーマンス分析を実行し、各同時実行パラメーターの値を調整する必要があります。将来的には、DMは部分的に自動化された交通流制御をサポートすることが期待されています。

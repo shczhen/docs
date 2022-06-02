@@ -1,6 +1,6 @@
 ---
-title: Deployment FAQs
-summary: Learn about the FAQs related to TiDB deployment.
+title: 導入に関するFAQ
+summary: TiDBの展開に関連するFAQについて学びます。
 ---
 
 # 導入に関するFAQ {#deployment-faqs}
@@ -11,13 +11,15 @@ summary: Learn about the FAQs related to TiDB deployment.
 
 ### 必要なオペレーティングシステムのバージョンは何ですか？ {#what-are-the-required-operating-system-versions}
 
-|         Linux OS         | バージョン |
-| :----------------------: | :---: |
-| Red Hat Enterprise Linux | 7.3以降 |
-|          CentOS          | 7.3以降 |
-|  Oracle Enterprise Linux | 7.3以降 |
+|         Linux OS         |     バージョン     |
+| :----------------------: | :-----------: |
+| Red Hat Enterprise Linux | 7.3以降の7.xリリース |
+|          CentOS          | 7.3以降の7.xリリース |
+|  Oracle Enterprise Linux | 7.3以降の7.xリリース |
+|       Amazon Linux       |       2       |
+|        Ubuntu LTS        |    16.04以降    |
 
-### CentOS 7にTiDBクラスターをデプロイすることが推奨されるのはなぜですか？ {#why-it-is-recommended-to-deploy-the-tidb-cluster-on-centos-7}
+### CentOS 7にTiDBクラスタをデプロイすることが推奨されるのはなぜですか？ {#why-it-is-recommended-to-deploy-the-tidb-cluster-on-centos-7}
 
 高性能のオープンソース分散NewSQLデータベースとして、TiDBはIntelアーキテクチャサーバーおよび主要な仮想化環境に導入でき、適切に動作します。 TiDBは、主要なハードウェアネットワークとLinuxオペレーティングシステムのほとんどをサポートしています。詳細については、TiDBの導入について[公式の展開要件](/hardware-and-software-requirements.md)を参照してください。
 
@@ -29,26 +31,30 @@ Intel x86-64アーキテクチャの64ビット汎用ハードウェアサーバ
 
 ### 開発およびテスト環境 {#development-and-testing-environments}
 
-|  成分  |  CPU |   メモリー  |  ローカルストレージ  |       通信網      |     インスタンス番号（最小要件）     |
-| :--: | :--: | :-----: | :---------: | :------------: | :--------------------: |
-| TiDB | 8コア+ | 16 GB + | SAS、200GB以上 | ギガビットネットワークカード |  1（PDと同じマシンにデプロイできます）  |
-|  PD  | 8コア+ | 16 GB + | SAS、200GB以上 | ギガビットネットワークカード | 1（TiDBと同じマシンにデプロイできます） |
-| TiKV | 8コア+ | 32 GB + | SAS、200GB以上 | ギガビットネットワークカード |            3           |
-|      |      |         |             |     サーバーの総数    |            4           |
+|    成分   |  CPU  |   メモリー  |   ローカルストレージ  |       通信網      |     インスタンス番号（最小要件）     |
+| :-----: | :---: | :-----: | :----------: | :------------: | :--------------------: |
+|   TiDB  |  8コア+ | 16 GB + |  SAS、200GB以上 | ギガビットネットワークカード |  1（PDと同じマシンにデプロイできます）  |
+|    PD   |  4コア+ |  8GB以上  |  SAS、200GB以上 | ギガビットネットワークカード | 1（TiDBと同じマシンにデプロイできます） |
+|   TiKV  |  8コア+ | 32 GB + |  SAS、200GB以上 | ギガビットネットワークカード |            3           |
+| TiFlash | 32コア+ |  64GB以上 | SSD、200 GB + | ギガビットネットワークカード |            1           |
+|  TiCDC  |  8コア+ | 16 GB + |  SAS、200GB以上 | ギガビットネットワークカード |            1           |
+|         |       |         |              |     サーバーの総数    |            6           |
 
 ### 本番環境 {#production-environment}
 
-|  成分  |  CPU  |   メモリー  | ハードディスクの種類 |           通信網          | インスタンス番号（最小要件） |
-| :--: | :---: | :-----: | :--------: | :--------------------: | :------------: |
-| TiDB | 16コア+ | 48 GB + |     SAS    | 10ギガビットネットワークカード（2枚推奨） |        2       |
-|  PD  |  8コア+ | 16 GB + |     SSD    | 10ギガビットネットワークカード（2枚推奨） |        3       |
-| TiKV | 16コア+ | 48 GB + |     SSD    | 10ギガビットネットワークカード（2枚推奨） |        3       |
-| モニター |  8コア+ | 16 GB + |     SAS    |     ギガビットネットワークカード     |        1       |
-|      |       |         |            |         サーバーの総数        |        9       |
+|    成分   |  CPU  |   メモリー   | ハードディスクの種類 |           通信網          | インスタンス番号（最小要件） |
+| :-----: | :---: | :------: | :--------: | :--------------------: | :------------: |
+|   TiDB  | 16コア+ |  48 GB + |     SAS    | 10ギガビットネットワークカード（2枚推奨） |        2       |
+|    PD   |  8コア+ |  16 GB + |     SSD    | 10ギガビットネットワークカード（2枚推奨） |        3       |
+|   TiKV  | 16コア+ |  64 GB + |     SSD    | 10ギガビットネットワークカード（2枚推奨） |        3       |
+| TiFlash | 48コア+ | 128 GB + |  1つ以上のSSD  | 10ギガビットネットワークカード（2枚推奨） |        2       |
+|  TiCDC  | 16コア+ |  64 GB + |     SSD    | 10ギガビットネットワークカード（2枚推奨） |        2       |
+|   モニター  |  8コア+ |  16 GB + |     SAS    |     ギガビットネットワークカード     |        1       |
+|         |       |          |            |         サーバーの総数        |       13       |
 
 ### 10ギガビットの2つのネットワークカードの目的は何ですか？ {#what-s-the-purposes-of-2-network-cards-of-10-gigabit}
 
-分散クラスターとして、PDは一意のタイムスタンプを配布する必要があるため、TiDBは、特にPDに対して時間に対する需要が高くなります。 PDサーバーの時間が一定していない場合、PDサーバーを切り替える際の待機時間が長くなります。 2枚のネットワークカードを結合することでデータ伝送の安定性が保証され、10ギガビットが伝送速度を保証します。ギガビットネットワークカードはボトルネックになりやすいため、10ギガビットネットワークカードを使用することを強くお勧めします。
+分散クラスタとして、PDは一意のタイムスタンプを配布する必要があるため、TiDBは、特にPDに対して時間に対する需要が高くなります。 PDサーバーの時間が一定していない場合、PDサーバーを切り替える際の待機時間が長くなります。 2枚のネットワークカードを結合することでデータ伝送の安定性が保証され、10ギガビットが伝送速度を保証します。ギガビットネットワークカードはボトルネックになりやすいため、10ギガビットネットワークカードを使用することを強くお勧めします。
 
 ### SSDにRAIDを使用しない場合は可能ですか？ {#is-it-feasible-if-we-don-t-use-raid-for-ssd}
 
@@ -57,14 +63,14 @@ Intel x86-64アーキテクチャの64ビット汎用ハードウェアサーバ
 ### TiDBコンポーネントの推奨構成は何ですか？ {#what-s-the-recommended-configuration-of-tidb-components}
 
 -   TiDBには、CPUとメモリに対する高い要件があります。 TiDB Binlogを有効にする必要がある場合は、サービスボリュームの見積もりとGC操作の時間要件に基づいて、ローカルディスク容量を増やす必要があります。ただし、SSDディスクは必須ではありません。
--   PDはクラスターメタデータを格納し、頻繁に読み取りおよび書き込み要求を行います。高いI/Oディスクが必要です。パフォーマンスの低いディスクは、クラスター全体のパフォーマンスに影響を与えます。 SSDディスクを使用することをお勧めします。さらに、リージョンの数が多いほど、CPUとメモリに対する要件が高くなります。
+-   PDはクラスタメタデータを格納し、頻繁に読み取りおよび書き込み要求を行います。高いI/Oディスクが必要です。パフォーマンスの低いディスクは、クラスタ全体のパフォーマンスに影響します。 SSDディスクを使用することをお勧めします。さらに、リージョンの数が多いほど、CPUとメモリに対する要件が高くなります。
 -   TiKVには、CPU、メモリ、およびディスクに対する高い要件があります。 SSDを使用する必要があります。
 
 詳細については、 [ソフトウェアとハードウェアの推奨事項](/hardware-and-software-requirements.md)を参照してください。
 
 ## インストールと展開 {#installation-and-deployment}
 
-実稼働環境では、 [TiUP](/tiup/tiup-overview.md)を使用してTiDBクラスターをデプロイすることをお勧めします。 [TiUPを使用してTiDBクラスターをデプロイする](/production-deployment-using-tiup.md)を参照してください。
+実稼働環境では、 [TiUP](/tiup/tiup-overview.md)を使用してTiDBクラスタをデプロイすることをお勧めします。 [TiUPを使用してTiDBクラスターをデプロイする](/production-deployment-using-tiup.md)を参照してください。
 
 ### TiKV / PDの変更された<code>toml</code>構成が有効にならないのはなぜですか？ {#why-the-modified-code-toml-code-configuration-for-tikv-pd-does-not-take-effect}
 
@@ -76,7 +82,7 @@ Intel x86-64アーキテクチャの64ビット汎用ハードウェアサーバ
 
 ### モニターがすべてのメトリックを表示できないのはなぜですか？ {#why-the-monitor-cannot-display-all-metrics}
 
-モニターのマシン時間とクラスター内の時間の時間差を確認してください。大きい場合は、時間を修正すると、モニターにすべてのメトリックが表示されます。
+モニターのマシン時間とクラスタ内の時間の時間差を確認してください。大きい場合は、時間を修正すると、モニターにすべてのメトリックが表示されます。
 
 ### supervise / svc / svstatサービスの機能は何ですか？ {#what-is-the-function-of-supervise-svc-svstat-service}
 
@@ -88,7 +94,7 @@ Intel x86-64アーキテクチャの64ビット汎用ハードウェアサーバ
 
 | 変数                      | 説明                                                                                                     |
 | ----------------------- | ------------------------------------------------------------------------------------------------------ |
-| `cluster_name`          | クラスターの名前、調整可能                                                                                          |
+| `cluster_name`          | クラスタの名前、調整可能                                                                                           |
 | `tidb_version`          | TiDBのバージョン                                                                                             |
 | `deployment_method`     | デプロイの方法、デフォルトではバイナリ、Dockerはオプション                                                                       |
 | `process_supervision`   | プロセスの監視方法（デフォルトではsystemd）、オプションの監視                                                                     |
@@ -99,8 +105,8 @@ Intel x86-64アーキテクチャの64ビット汎用ハードウェアサーバ
 | `enable_ntpd`           | 管理対象ノードのNTPサービスを監視します。デフォルトではTrueです。閉じないでください                                                          |
 | `machine_benchmark`     | 管理対象ノードのディスクIOPSを監視します。デフォルトではTrueです。閉じないでください                                                         |
 | `set_hostname`          | IPに基づいて管理対象ノードのホスト名を編集します。デフォルトではFalseです。                                                              |
-| `enable_binlog`         | Kafkaクラスターに応じて、Pumpをデプロイしてbinlogを有効にするかどうか（デフォルトではFalse）。 `zookeeper_addrs`変数を参照してください                 |
-| `zookeeper_addrs`       | binlogKafkaクラスターのZooKeeperアドレス                                                                         |
+| `enable_binlog`         | Kafkaクラスタに応じて、Pumpをデプロイしてbinlogを有効にするかどうか（デフォルトではFalse）。 `zookeeper_addrs`変数を参照してください                  |
+| `zookeeper_addrs`       | binlogKafkaクラスタのZooKeeperアドレス                                                                          |
 | `enable_slow_query_log` | TiDBの低速クエリログを単一のファイルに記録するには：（{{deploy_dir}} / log / tidb_slow_query.log）。デフォルトではFalseで、TiDBログに記録します    |
 | `deploy_without_tidb`   | キーバリューモードでは、PD、TiKV、および監視サービスのみを展開し、TiDBは展開しません。 `inventory.ini`ファイルでtidb_serversホストグループのIPをnullに設定します |
 
@@ -112,9 +118,9 @@ Intel x86-64アーキテクチャの64ビット汎用ハードウェアサーバ
 
 3.  ログに加えて、 `admin show slow`コマンドを使用して低速クエリを表示することもできます。詳細については、 [`admin show slow`コマンド](/identify-slow-queries.md#admin-show-slow-command)を参照してください。
 
-### TiDBクラスターを初めてデプロイしたときにTiKVの<code>label</code>が構成されていない場合、 <code>label</code>構成を追加するにはどうすればよいですか？ {#how-to-add-the-code-label-code-configuration-if-code-label-code-of-tikv-was-not-configured-when-i-deployed-the-tidb-cluster-for-the-first-time}
+### TiDBクラスタを初めてデプロイしたときにTiKVの<code>label</code>が構成されていない場合、 <code>label</code>構成を追加するにはどうすればよいですか？ {#how-to-add-the-code-label-code-configuration-if-code-label-code-of-tikv-was-not-configured-when-i-deployed-the-tidb-cluster-for-the-first-time}
 
-TiDB `label`の構成は、クラスター展開アーキテクチャーに関連しています。これは重要であり、PDがグローバルな管理とスケジューリングを実行するための基礎となります。以前にクラスターをデプロイするときに`label`を構成しなかった場合は、PD管理ツール`pd-ctl` （たとえば、 `config set location-labels "zone,rack,host"` ）を使用して`location-labels`の情報を手動で追加することにより、デプロイメント構造を調整する必要があります（実際の`label`レベル名に基づいて構成する必要があります）。
+TiDB `label`の構成は、クラスタ展開アーキテクチャーに関連しています。これは重要であり、PDがグローバルな管理とスケジューリングを実行するための基礎となります。以前にクラスタをデプロイするときに`label`を構成しなかった場合は、PD管理ツール`pd-ctl` （たとえば、 `config set location-labels "zone,rack,host"` ）を使用して`location-labels`の情報を手動で追加することにより、デプロイメント構造を調整する必要があります（実際の`label`レベル名に基づいて構成する必要があります）。
 
 `pd-ctl`の使用法については、 [PD制御ユーザーガイド](/pd-control.md)を参照してください。
 

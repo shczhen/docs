@@ -1,7 +1,6 @@
 ---
-title: ADD COLUMN | TiDB SQL Statement Reference
-summary: An overview of the usage of ADD COLUMN for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-add-column/','/docs/dev/reference/sql/statements/add-column/']
+title: 列を追加| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースのADDCOLUMNの使用法の概要。
 ---
 
 # 列を追加 {#add-column}

@@ -1,22 +1,21 @@
 ---
-title: Best Practices for TiKV Performance Tuning with Massive Regions
-summary: Learn how to tune the performance of TiKV with a massive amount of Regions.
-aliases: ['/docs/dev/best-practices/massive-regions-best-practices/','/docs/dev/reference/best-practices/massive-regions/']
+title: 大規模なリージョンでのTiKV性能チューニングのベストプラクティス
+summary: 大量のリージョンでTiKVのパフォーマンスを調整する方法を学びます。
 ---
 
-# 大規模なリージョンでのTiKVパフォーマンスチューニングのベストプラクティス {#best-practices-for-tikv-performance-tuning-with-massive-regions}
+# 大規模なリージョンでのTiKV性能チューニングのベストプラクティス {#best-practices-for-tikv-performance-tuning-with-massive-regions}
 
-TiDBでは、データはリージョンに分割され、各リージョンには特定のキー範囲のデータが格納されます。これらのリージョンは、複数のTiKVインスタンスに分散されています。データがクラスターに書き込まれると、数百万または数千万のリージョンが作成されます。 1つのTiKVインスタンスのリージョンが多すぎると、クラスターに大きな負担がかかり、クラスターのパフォーマンスに影響を与える可能性があります。
+TiDBでは、データはリージョンに分割され、各リージョンには特定のキー範囲のデータが格納されます。これらのリージョンは、複数のTiKVインスタンスに分散されています。データがクラスタに書き込まれると、数百万または数千万のリージョンが作成されます。 1つのTiKVインスタンスのリージョンが多すぎると、クラスターに大きな負担がかかり、クラスタのパフォーマンスに影響を与える可能性があります。
 
 このドキュメントでは、Raftstore（TiKVのコアモジュール）のワークフローを紹介し、大量のリージョンがパフォーマンスに影響を与える理由を説明し、TiKVのパフォーマンスを調整する方法を提供します。
 
 ## Raftstoreワークフロー {#raftstore-workflow}
 
-TiKVインスタンスには、複数のリージョンがあります。 Raftstoreモジュールは、Raftステートマシンを駆動してRegionメッセージを処理します。これらのメッセージには、リージョンでの読み取りまたは書き込み要求の処理、Raftログの永続化または複製、およびRaftハートビートの処理が含まれます。ただし、リージョンの数が増えると、クラスター全体のパフォーマンスに影響を与える可能性があります。これを理解するには、次のようなRaftstoreのワークフローを学ぶ必要があります。
+TiKVインスタンスには、複数のリージョンがあります。 Raftstoreモジュールは、Raftステートマシンを駆動してRegionメッセージを処理します。これらのメッセージには、リージョンでの読み取りまたは書き込み要求の処理、Raftログの永続化または複製、およびRaftハートビートの処理が含まれます。ただし、リージョンの数が増えると、クラスタ全体のパフォーマンスに影響を与える可能性があります。これを理解するには、次のようなRaftstoreのワークフローを学ぶ必要があります。
 
 ![Raftstore Workflow](/media/best-practices/raft-process.png)
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > この図は、Raftstoreのワークフローを示しているだけであり、実際のコード構造を表すものではありません。
 
@@ -28,26 +27,26 @@ Raftstoreワークフロー図から、各リージョンのメッセージが1�
 
 一般に、ロードされたRaftstoreのCPU使用率が85％以上に達すると、Raftstoreはビジー状態になり、ボトルネックになります。同時に、 `propose wait duration`は数百ミリ秒にもなる可能性があります。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   上記のRaftstoreのCPU使用率については、Raftstoreはシングルスレッドです。 Raftstoreがマルチスレッドの場合、CPU使用率のしきい値（85％）を比例して増やすことができます。
 > -   I / O操作はRaftstoreスレッドに存在するため、CPU使用率を100％に到達させることはできません。
 
 ### パフォーマンス監視 {#performance-monitoring}
 
-Grafanaの<strong>TiKVダッシュボード</strong>で次のモニタリング指標を確認できます。
+Grafanaの**TiKVダッシュボード**で次のモニタリング指標を確認できます。
 
--   <strong>スレッドCPU</strong>パネルの`Raft store CPU`
+-   **スレッドCPU**パネルの`Raft store CPU`
 
     基準値： `raftstore.store-pool-size * 85%`未満。
 
     ![Check Raftstore CPU](/media/best-practices/raft-store-cpu.png)
 
--   <strong>RaftPropose</strong>パネルの`Propose wait duration`
+-   **RaftPropose**パネルの`Propose wait duration`
 
     `Propose wait duration`は、リクエストがRaftstoreに送信されてから、Raftstoreが実際にリクエストの処理を開始するまでの遅延です。遅延が長いということは、Raftstoreがビジーであるか、追加ログの処理に時間がかかり、Raftstoreが時間内にリクエストを処理できないことを意味します。
 
-    基準値：クラスターサイズに応じて50〜100ms未満
+    基準値：クラスタサイズに応じて50〜100ms未満
 
     ![Check Propose wait duration](/media/best-practices/propose-wait-duration.png)
 
@@ -72,15 +71,15 @@ Hibernateリージョンはデフォルトで[TiKVマスター](https://github.c
 
 ### 方法3： <code>Region Merge</code>有効にする {#method-3-enable-code-region-merge-code}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > TiDB v3.0以降、デフォルトで`Region Merge`が有効になっています。
 
-`Region Merge`を有効にすることで、リージョンの数を減らすこともできます。 `Region Split`とは異なり、 `Region Merge`は、スケジューリングによって隣接する小さなリージョンをマージするプロセスです。データを削除するか、 `Drop Table`または`Truncate Table`ステートメントを実行した後、小さなリージョンまたは空のリージョンをマージして、リソースの消費を減らすことができます。
+`Region Merge`を有効にすることで、リージョンの数を減らすこともできます。 `Region Split`とは異なり、 `Region Merge`は、スケジューリングによって隣接する小さなリージョンをマージするプロセスです。データを削除するか、 `Drop Table`または`Truncate Table`ステートメントを実行した後、小さなリージョンまたは空のリージョンをマージして、リソース消費を減らすことができます。
 
 次のパラメータを設定して`Region Merge`を有効にします。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```
 >> pd-ctl config set max-merge-region-size 20
@@ -98,13 +97,13 @@ Hibernateリージョンはデフォルトで[TiKVマスター](https://github.c
 
 ### 方法4：TiKVインスタンスの数を増やす {#method-4-increase-the-number-of-tikv-instances}
 
-I / OリソースとCPUリソースが十分な場合は、単一のマシンに複数のTiKVインスタンスをデプロイして、単一のTiKVインスタンスのリージョンの数を減らすことができます。または、TiKVクラスター内のマシンの数を増やすことができます。
+I / OリソースとCPUリソースが十分な場合は、単一のマシンに複数のTiKVインスタンスをデプロイして、単一のTiKVインスタンスのリージョンの数を減らすことができます。または、TiKVクラスタのマシンの数を増やすことができます。
 
 ### 方法5： <code>raft-base-tick-interval</code>調整する {#method-5-adjust-code-raft-base-tick-interval-code}
 
 リージョンの数を減らすことに加えて、単位時間内に各リージョンのメッセージの数を減らすことで、Raftstoreへのプレッシャーを減らすこともできます。たとえば、 `raft-base-tick-interval`の構成アイテムの値を適切に増やすことができます。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```
 [raftstore]
@@ -115,7 +114,7 @@ raft-base-tick-interval = "2s"
 
 ティックメッセージ間のこの間隔は、 `election timeout`と`heartbeat`の間の間隔も決定することに注意してください。次の例を参照してください。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```
 raft-election-timeout = raft-base-tick-interval * raft-election-timeout-ticks
@@ -138,7 +137,7 @@ PDは、PDリーダーノードを切り替えた後、PDがリージョンル�
 
 TiKVでは、pd-workerはRegionMeta情報をPDに定期的に報告します。 TiKVが再起動されるか、リージョンリーダーが切り替わると、PDは統計を通じてリージョン`approximate size / keys`を再計算する必要があります。したがって、リージョンの数が多いと、シングルスレッドのpd-workerがボトルネックになり、タスクが積み重なって時間内に処理されない可能性があります。この状況では、PDは特定のRegion Meta情報を時間内に取得できないため、ルーティング情報は時間内に更新されません。この問題は実際の読み取りと書き込みには影響しませんが、不正確なPDスケジューリングを引き起こし、TiDBがリージョンキャッシュを更新するときに数回のラウンドトリップが必要になる可能性があります。
 
-<strong>TiKV Grafana</strong>パネルの<strong>[タスク</strong>]で[<strong>ワーカーの保留中のタスク</strong>]を確認して、pd-workerにタスクが積み上げられているかどうかを確認できます。一般に、 `pending tasks`は比較的低い値に保つ必要があります。
+**TiKV Grafana**パネルの<strong>[タスク</strong>]で[<strong>ワーカーの保留中のタスク</strong>]を確認して、pd-workerにタスクが積み上げられているかどうかを確認できます。一般に、 `pending tasks`は比較的低い値に保つ必要があります。
 
 ![Check pd-worker](/media/best-practices/pd-worker-metrics.png)
 
@@ -146,4 +145,4 @@ pd-workerは、 [v3.0.5](/releases/release-3.0.5.md#tikv)以降、パフォー�
 
 ### Prometheusはメトリックのクエリに時間がかかります {#prometheus-is-slow-to-query-metrics}
 
-大規模なクラスターでは、TiKVインスタンスの数が増えると、Prometheusはメトリックのクエリに大きなプレッシャーをかけ、Grafanaがこれらのメトリックを表示するのが遅くなります。この問題を緩和するために、v3.0以降、メトリックの事前計算が構成されています。
+大規模なクラスタでは、TiKVインスタンスの数が増えると、Prometheusはメトリックのクエリに大きなプレッシャーをかけ、Grafanaがこれらのメトリックを表示するのが遅くなります。この問題を緩和するために、v3.0以降、メトリックの事前計算が構成されています。

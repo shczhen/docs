@@ -1,7 +1,6 @@
 ---
-title: USE | TiDB SQL Statement Reference
-summary: An overview of the usage of USE for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-use/','/docs/dev/reference/sql/statements/use/']
+title: 使用| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースのUSEの使用法の概要。
 ---
 
 # 使用する {#use}
@@ -10,11 +9,11 @@ aliases: ['/docs/dev/sql-statements/sql-statement-use/','/docs/dev/reference/sql
 
 ## あらすじ {#synopsis}
 
-<strong>UseStmt：</strong>
+**UseStmt：**
 
 ![UseStmt](/media/sqlgram/UseStmt.png)
 
-<strong>DBName：</strong>
+**DBName：**
 
 ![DBName](/media/sqlgram/DBName.png)
 

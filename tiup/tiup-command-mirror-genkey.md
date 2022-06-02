@@ -1,5 +1,5 @@
 ---
-title: tiup mirror genkey
+title: tiupミラーゲンキー
 ---
 
 # tiupミラーゲンキー {#tiup-mirror-genkey}
@@ -12,9 +12,9 @@ TiUP [鏡](/tiup/tiup-mirror-reference.md)は、その定義によれば、ユ�
 
 TiUPはファイルを変更するために対応する所有者/管理者の署名を必要とするため、所有者/管理者は自分の秘密鍵を持っている必要があります。コマンド`tiup mirror genkey`は、秘密鍵を生成するために使用されます。
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> インターネット経由で秘密鍵を送信し<strong>ない</strong>でください。
+> インターネット経由で秘密鍵を送信し**ない**でください。
 
 ## 構文 {#syntax}
 

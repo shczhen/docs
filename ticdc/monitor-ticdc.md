@@ -1,11 +1,11 @@
 ---
-title: Key Monitoring Metrics of TiCDC
-summary: Learn some key metrics displayed on the Grafana TiCDC dashboard.
+title: TiCDCの主要な監視指標
+summary: GrafanaTiCDCダッシュボードに表示されるいくつかの主要な指標について説明します。
 ---
 
 # TiCDCの主要な監視指標 {#key-monitoring-metrics-of-ticdc}
 
-TiUPを使用してTiDBクラスターを展開すると、同時に展開されている監視システムにTiCDCのサブダッシュボードが表示されます。 TiCDCの現在のステータスの概要は、主要なメトリックが表示されるTiCDCダッシュボードから取得できます。このドキュメントでは、これらの主要な指標について詳しく説明します。
+TiUPを使用してTiDBクラスタをデプロイすると、同時にデプロイされている監視システムにTiCDCのサブダッシュボードが表示されます。 TiCDCの現在のステータスの概要は、主要なメトリックが表示されるTiCDCダッシュボードから取得できます。このドキュメントでは、これらの主要な指標について詳しく説明します。
 
 このドキュメントのメトリックの説明は、デフォルト構成を使用してデータをMySQLにレプリケートする次のレプリケーションタスクの例に基づいています。
 
@@ -19,37 +19,37 @@ TiCDCダッシュボードには、4つの監視パネルが含まれていま�
 
 各パネルの説明は次のとおりです。
 
--   [**サーバ**](#server) ：TiDBクラスター内のTiKVノードとTiCDCノードの概要情報
+-   [**サーバ**](#server) ：TiDBクラスタのTiKVノードとTiCDCノードの概要情報
 -   [**チェンジフィード**](#changefeed) ：TiCDCレプリケーションタスクの詳細情報
--   [**イベント**](#events) ：TiCDCクラスター内のデータフローに関する詳細情報
+-   [**イベント**](#events) ：TiCDCクラスタ内のデータフローに関する詳細情報
 -   [**TiKV**](#tikv) ：TiCDCに関連するTiKV情報
 
 ## サーバ {#server}
 
-次に、<strong>サーバー</strong>パネルの例を示します。
+次に、**サーバー**パネルの例を示します。
 
 ![TiCDC Dashboard - Server metrics](/media/ticdc/ticdc-dashboard-server.png)
 
-<strong>サーバー</strong>パネルの各メトリックの説明は次のとおりです。
+**サーバー**パネルの各メトリックの説明は次のとおりです。
 
 -   稼働時間：TiKVノードとTiCDCノードが実行されている時間
 -   ゴルーチン数：TiCDCノードのゴルーチンの数
 -   オープンFDカウント：TiCDCノードによって開かれたファイルハンドルの数
--   所有権：TiCDCクラスター内のノードの現在のステータス
--   所有履歴：TiCDCクラスターの所有履歴
+-   所有権：TiCDCクラスタのノードの現在のステータス
+-   所有履歴：TiCDCクラスタの所有履歴
 -   CPU使用率：TiCDCノードのCPU使用率
 -   メモリ使用量：TiCDCノードのメモリ使用量
 
 ## チェンジフィード {#changefeed}
 
-次に、 <strong>Changefeed</strong>パネルの例を示します。
+次に、 **Changefeed**パネルの例を示します。
 
 ![TiCDC Dashboard - Changefeed metrics 1](/media/ticdc/ticdc-dashboard-changefeed-1.png) ![TiCDC Dashboard - Changefeed metrics 2](/media/ticdc/ticdc-dashboard-changefeed-2.png) ![TiCDC Dashboard - Changefeed metrics 3](/media/ticdc/ticdc-dashboard-changefeed-3.png)
 
-[<strong>チェンジフィード</strong>]パネルの各メトリックの説明は次のとおりです。
+[**チェンジフィード**]パネルの各メトリックの説明は次のとおりです。
 
 -   変更フィードテーブル数：各TiCDCノードがレプリケーションタスクでレプリケートする必要があるテーブルの数
--   プロセッサが解決したts：TiCDCクラスターで解決されたタイムスタンプ
+-   プロセッサが解決したts：TiCDCクラスタで解決されたタイムスタンプ
 -   テーブル解決済みts：レプリケーションタスクの各テーブルのレプリケーションの進行状況
 -   チェンジフィードチェックポイント：ダウンストリームへのデータの複製の進行状況。通常、緑色のバーは黄色の線に接続されています
 -   PD etcd requests / s：TiCDCノードが1秒あたりにPDに送信するリクエストの数
@@ -66,11 +66,11 @@ TiCDCダッシュボードには、4つの監視パネルが含まれていま�
 
 ## イベント {#events}
 
-次に、[<strong>イベント</strong>]パネルの例を示します。
+次に、[**イベント**]パネルの例を示します。
 
 ![TiCDC Dashboard - Events metrics 2](/media/ticdc/ticdc-dashboard-events-1.png) ![TiCDC Dashboard - Events metrics 2](/media/ticdc/ticdc-dashboard-events-2.png) ![TiCDC Dashboard - Events metrics 2](/media/ticdc/ticdc-dashboard-events-3.png)
 
-[<strong>イベント</strong>]パネルの各メトリックの説明は次のとおりです。
+[**イベント**]パネルの各メトリックの説明は次のとおりです。
 
 -   イベントフィード数：TiCDCノードのイベントフィードRPCリクエストの数
 -   イベントサイズのパーセンタイル：TiCDCが1秒以内にTiKVから受信するイベントサイズ（P95、P99、およびP999）
@@ -94,11 +94,11 @@ TiCDCダッシュボードには、4つの監視パネルが含まれていま�
 
 ## TiKV {#tikv}
 
-以下は、 <strong>TiKV</strong>パネルの例です。
+以下は、 **TiKV**パネルの例です。
 
 ![TiCDC Dashboard - TiKV metrics 2](/media/ticdc/ticdc-dashboard-tikv-2.png) ![TiCDC Dashboard - TiKV metrics 1](/media/ticdc/ticdc-dashboard-tikv-1.png)
 
-<strong>TiKV</strong>パネルの各メトリックの説明は次のとおりです。
+**TiKV**パネルの各メトリックの説明は次のとおりです。
 
 -   CDCエンドポイントCPU：TiKVノードでのCDCエンドポイントスレッドのCPU使用率
 -   CDCワーカーCPU：TiKVノードでのCDCワーカースレッドのCPU使用率

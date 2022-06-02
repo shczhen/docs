@@ -1,6 +1,5 @@
 ---
-title: TiDB 2.1 GA Release Notes
-aliases: ['/docs/dev/releases/release-2.1-ga/','/docs/dev/releases/2.1ga/']
+title: TiDB2.1GAリリースノート
 ---
 
 # TiDB2.1GAリリースノート {#tidb-2-1-ga-release-notes}
@@ -53,7 +52,7 @@ aliases: ['/docs/dev/releases/release-2.1-ga/','/docs/dev/releases/2.1ga/']
 
     -   [`EXPLAIN ANALYZE`ステートメント](/sql-statements/sql-statement-explain-analyze.md)を使用して、実行時間や各演算子の返された行数などの実行時統計を確認することをサポートします
 
--   統計学
+-   統計
 
     -   1日の特定の期間にのみ自動ANALYZE統計を有効にすることをサポート
 
@@ -83,13 +82,13 @@ aliases: ['/docs/dev/releases/release-2.1-ga/','/docs/dev/releases/2.1ga/']
 
     -   [HTTP API](https://github.com/pingcap/tidb/blob/master/docs/tidb_http_api.md)を追加します
 
-        -   TiKVクラスター内のテーブル領域の分布を分散させる
+        -   TiKVクラスタのテーブル領域の分布を分散させる
 
         -   `general log`を開くかどうかを制御します
 
         -   オンラインでのログレベルの変更をサポート
 
-        -   TiDBクラスター情報を確認する
+        -   TiDBクラスタ情報を確認する
 
     <!---->
 
@@ -117,7 +116,7 @@ aliases: ['/docs/dev/releases/release-2.1-ga/','/docs/dev/releases/2.1ga/']
 
     -   `ALTER TABLE RENAME KEY TO`構文をサポートする
 
-    -   `admin show ddl jobs`の出力情報にテーブル名とデータベース名を追加します
+    -   `admin show ddl jobs`の出力情報にテーブル名とデータベース名を追加します。
 
     -   [`ddl/owner/resign` HTTPインターフェースを使用してDDL所有者を解放し、新しいDDL所有者の選出を開始することをサポートします](https://github.com/pingcap/tidb/blob/master/docs/tidb_http_api.md)
 
@@ -141,7 +140,7 @@ aliases: ['/docs/dev/releases/release-2.1-ga/','/docs/dev/releases/2.1ga/']
 
 -   可用性を最適化する
 
-    -   バージョン管理メカニズムを導入し、互換性のあるクラスターのローリング更新をサポートします
+    -   バージョン管理メカニズムを導入し、互換性のあるクラスタのローリング更新をサポートします
 
     -   ネットワークの分離後にネットワークが回復したときにリーダーが再選されるのを防ぐために、PDノード間で[`Raft PreVote`有効にする](https://github.com/pingcap/pd/blob/5c7b18cf3af91098f07cf46df0b59fbf8c7c5462/conf/config.toml#L22)
 
@@ -228,7 +227,7 @@ aliases: ['/docs/dev/releases/release-2.1-ga/','/docs/dev/releases/2.1ga/']
 
     -   連続ロールバックレコードを折りたたんで、読み取りパフォーマンスを確保します
 
-    -   [`UnsafeDestroyRange` APIを追加して、ドロップするテーブル/インデックスのスペースの収集をサポートします](https://github.com/tikv/rfcs/blob/master/text/2018-08-29-unsafe-destroy-range.md)
+    -   [`UnsafeDestroyRange` APIを追加して、ドロップするテーブル/インデックス用のスペースの収集をサポートします](https://github.com/tikv/rfcs/blob/master/text/2018-08-29-unsafe-destroy-range.md)
 
     -   書き込みへの影響を減らすためにGCモジュールを分離します
 

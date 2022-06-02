@@ -1,12 +1,11 @@
 ---
 title: CLUSTER_CONFIG
-summary: Learn the `CLUSTER_CONFIG` information_schema table.
-aliases: ['/docs/dev/system-tables/system-table-cluster-config/','/docs/dev/reference/system-databases/cluster-config/','/tidb/dev/system-table-cluster-config/']
+summary: `CLUSTER_CONFIG`information_schemaテーブルを学びます。
 ---
 
 # CLUSTER_CONFIG {#cluster-config}
 
-`CLUSTER_CONFIG`クラスター構成テーブルを使用して、クラスター内のすべてのサーバーコンポーネントの現在の構成を取得できます。これにより、TiDBの以前のリリースよりも使用が簡素化され、同様の情報を取得するには、各インスタンスのHTTPAPIエンドポイントにアクセスする必要があります。
+`CLUSTER_CONFIG`クラスタ構成テーブルを使用して、クラスタのすべてのサーバーコンポーネントの現在の構成を取得できます。これにより、TiDBの以前のリリースよりも使用が簡素化され、同様の情報を取得するには、各インスタンスのHTTPAPIエンドポイントにアクセスする必要があります。
 
 {{< copyable "" >}}
 

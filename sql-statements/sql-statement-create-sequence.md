@@ -1,7 +1,6 @@
 ---
-title: CREATE SEQUENCE
-summary: An overview of the usage of CREATE SEQUENCE for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-create-sequence/','/docs/dev/reference/sql/statements/create-sequence/']
+title: シーケンスの作成
+summary: TiDBデータベースのCREATESEQUENCEの使用法の概要。
 ---
 
 # シーケンスの作成 {#create-sequence}
@@ -79,7 +78,7 @@ CREATE [TEMPORARY] SEQUENCE [IF NOT EXISTS] sequence_name
 
     この関数は、シーケンスの現在の値の進行を設定します。この関数の最初のパラメーターは、シーケンスの`identifier`です。 2番目のパラメーターは`num`です。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > TiDBでのシーケンスの実装では、 `SETVAL`関数はこのシーケンスの初期進行またはサイクル進行を変更できません。この関数は、この進行に基づいて次の有効な値のみを返します。
 
@@ -300,7 +299,7 @@ CREATE [TEMPORARY] SEQUENCE [IF NOT EXISTS] sequence_name
 
 このステートメントはTiDB拡張です。実装は、MariaDBで利用可能なシーケンスに基づいてモデル化されています。
 
-`SETVAL`の関数を除いて、他のすべての関数はMariaDBと同じ<em>進行</em>をします。ここで「進行」とは、シーケンス内の数値が、シーケンスによって定義された特定の等差数列規則に従うことを意味します。 `SETVAL`を使用してシーケンスの現在の値を設定できますが、シーケンスの後続の値は元の進行規則に従います。
+`SETVAL`の関数を除いて、他のすべての関数はMariaDBと同じ*進行*をします。ここで「進行」とは、シーケンス内の数値が、シーケンスによって定義された特定の等差数列規則に従うことを意味します。 `SETVAL`を使用してシーケンスの現在の値を設定できますが、シーケンスの後続の値は元の進行規則に従います。
 
 例えば：
 

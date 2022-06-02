@@ -1,7 +1,6 @@
 ---
-title: Role-Based Access Control
-summary: This document introduces TiDB RBAC operations and implementation.
-aliases: ['/docs/dev/role-based-access-control/','/docs/dev/reference/security/role-based-access-control/']
+title: ロールベースのアクセス制御
+summary: このドキュメントでは、TiDBRBACの操作と実装を紹介します。
 ---
 
 # ロールベースのアクセス制御 {#role-based-access-control}
@@ -37,7 +36,7 @@ CREATE ROLE 'app_developer', 'app_read', 'app_write';
 
 ### 役割に特権を付与する {#grant-a-privilege-to-a-role}
 
-ロールに特権を付与する操作は、ユーザーに特権を付与する操作と同じです。詳細については、 [TiDB特権管理](/privilege-management.md)を参照してください。
+ロールに特権を付与する操作は、ユーザーに特権を付与する操作と同じです。詳細については、 [TiDB権限管理](/privilege-management.md)を参照してください。
 
 たとえば、次のステートメントを使用して、 `app_read`の役割に`app_db`のデータベースを読み取る特権を付与できます。
 
@@ -219,7 +218,7 @@ SET DEFAULT ROLE ALL TO 'dev1'@'localhost';
 SET DEFAULT ROLE NONE TO 'dev1'@'localhost';
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > デフォルトの役割をこの役割に設定する前に、ユーザーに役割を付与する必要があります。
 
@@ -237,7 +236,7 @@ SET ROLE {
 }
 ```
 
-たとえば、 `rw_user1`ログインした後、次のステートメントを使用して、現在のセッションでのみ有効なロール`app_read`と`app_write`を有効にできます。
+たとえば、 `rw_user1`がログインした後、次のステートメントを使用して、現在のセッションでのみ有効なロール`app_read`と`app_write`を有効にできます。
 
 {{< copyable "" >}}
 
@@ -277,7 +276,7 @@ SET ROLE NONE
 SET ROLE ALL EXCEPT 'app_read'
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `SET ROLE`を使用して役割を有効にする場合、この役割は現在のセッションでのみ有効です。
 
@@ -353,7 +352,7 @@ REVOKE 'app_read', 'app_write' FROM 'rw_user1'@'localhost';
 REVOKE INSERT, UPDATE, DELETE ON app_db.* FROM 'app_write';
 ```
 
-詳細については、 [TiDB特権管理](/privilege-management.md)を参照してください。
+詳細については、 [TiDB権限管理](/privilege-management.md)を参照してください。
 
 ### 役割を削除する {#delete-a-role}
 
@@ -396,7 +395,7 @@ SELECT * FROM mysql.role_edges;
 ```
 
 -   `FROM_HOST`と`FROM_USER`は、それぞれロールのホスト名とユーザー名を示します。
--   `TO_HOST`と`TO_USER`は、役割が付与されているユーザーのホスト名とユーザー名を示します。
+-   `TO_HOST`と`TO_USER`は、ロールが付与されているユーザーのホスト名とユーザー名を示します。
 
 #### <code>mysql.default_roles</code> {#code-mysql-default-roles-code}
 
@@ -425,5 +424,5 @@ SELECT * FROM mysql.default_roles;
 
 RBAC、ユーザー管理、および特権管理は密接に関連しているため、次のリソースで操作の詳細を参照できます。
 
--   [TiDB特権管理](/privilege-management.md)
+-   [TiDB権限管理](/privilege-management.md)
 -   [TiDBユーザーアカウント管理](/user-account-management.md)

@@ -1,6 +1,5 @@
 ---
-title: TiDB 2.0 RC3 Release Notes
-aliases: ['/docs/dev/releases/release-2.0-rc.3/','/docs/dev/releases/2rc3/']
+title: TiDB2.0RC3リリースノート
 ---
 
 # TiDB2.0RC3リリースノート {#tidb-2-0-rc3-release-notes}
@@ -16,7 +15,7 @@ aliases: ['/docs/dev/releases/release-2.0-rc.3/','/docs/dev/releases/2rc3/']
 -   時間タイプの解析エラーログを改善し、エラー情報を追加します
 -   メモリ制御を改善し、 `IndexLookupExecutor`のメモリに関する統計を追加します
 -   一部のシナリオでは、実行速度を`ADD INDEX`に最適化して、速度を大幅に向上させます。
--   `GROUP BY`のサブステートメントが空の場合は、Stream Aggregation演算子を使用して、速度を上げます。
+-   `GROUP BY`のサブステートメントが空の場合は、Stream 集計演算子を使用して、速度を上げます。
 -   `STRAIGHT_JOIN`を使用してオプティマイザで`Join Reorder`の最適化を閉じることをサポートします
 -   DDLジョブのより詳細なステータス情報を`ADMIN SHOW DDL JOBS`で出力します
 -   `ADMIN SHOW DDL JOB QUERIES`を使用して現在実行中のDDLジョブの元のステートメントのクエリをサポート

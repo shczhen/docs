@@ -1,7 +1,6 @@
 ---
-title: TiUP Documentation Map
-summary: Guide you through TiUP documentation with links and introductions.
-aliases: ['/docs/dev/tiup/tiup-documentation-guide/']
+title: TiUPドキュメントマップ
+summary: リンクと紹介を含むTiUPドキュメントをガイドします。
 ---
 
 # TiUPドキュメントマップ {#tiup-documentation-map}

@@ -1,7 +1,6 @@
 ---
-title: CREATE USER | TiDB SQL Statement Reference
-summary: An overview of the usage of CREATE USER for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-create-user/','/docs/dev/reference/sql/statements/create-user/']
+title: ユーザーの作成| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのCREATEUSERの使用法の概要。
 ---
 
 # ユーザーを作成 {#create-user}
@@ -76,4 +75,4 @@ Query OK, 1 row affected (0.02 sec)
 -   [ドロップユーザー](/sql-statements/sql-statement-drop-user.md)
 -   [CREATEUSERを表示する](/sql-statements/sql-statement-show-create-user.md)
 -   [ALTER USER](/sql-statements/sql-statement-alter-user.md)
--   [特権管理](/privilege-management.md)
+-   [権限管理](/privilege-management.md)

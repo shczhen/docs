@@ -1,5 +1,5 @@
 ---
-title: TiDB 5.4.1 Release Notes
+title: TiDB5.4.1リリースノート
 ---
 
 # TiDB5.4.1リリースノート {#tidb-5-4-1-release-notes}
@@ -53,12 +53,12 @@ TiDB v5.4.1では、製品設計に互換性の変更は導入されていませ
     -   マージ結合演算子が特定の場合に間違った結果を取得する問題を修正します[＃33042](https://github.com/pingcap/tidb/issues/33042)
     -   相関サブクエリが定数[＃32089](https://github.com/pingcap/tidb/issues/32089)を返すときにTiDBが間違った結果を取得する問題を修正します
     -   TiFlashはまだ空の範囲のテーブルの読み取りをサポートしていませんが、TiFlashを使用して空の範囲のテーブルをスキャンするとTiDBが間違った結果を取得する問題を修正します[＃33083](https://github.com/pingcap/tidb/issues/33083)
-    -   TiDB [＃31638](https://github.com/pingcap/tidb/issues/31638)で新しい照合が有効になっている場合、 `ENUM`列または`SET`列の`MAX`または`MIN`関数が間違った結果を返す問題を修正します。
+    -   TiDB [＃31638](https://github.com/pingcap/tidb/issues/31638)で新しい照合順序が有効になっている場合、 `ENUM`列または`SET`列の`MAX`または`MIN`関数が間違った結果を返す問題を修正します。
     -   クエリがエラーを報告したときにCTEがブロックされる可能性があるバグを修正します[＃31302](https://github.com/pingcap/tidb/issues/31302)
     -   列挙値[＃32428](https://github.com/pingcap/tidb/issues/32428)のNulleq関数の誤った範囲計算結果を修正しました
     -   ChunkRPCを使用してデータをエクスポートするときの[＃30880](https://github.com/pingcap/tidb/issues/30880)を修正[＃31981](https://github.com/pingcap/tidb/issues/31981)
     -   `tidb_restricted_read_only`が有効になっているときに`tidb_super_read_only`が自動的に有効にならないバグを修正します[＃31745](https://github.com/pingcap/tidb/issues/31745)
-    -   照合を伴う`greatest`または`least`関数が間違った結果を取得する問題を修正します[＃31789](https://github.com/pingcap/tidb/issues/31789)
+    -   照合順序を伴う`greatest`または`least`関数が間違った結果を取得する問題を修正します[＃31789](https://github.com/pingcap/tidb/issues/31789)
     -   エスケープ文字[＃31589](https://github.com/pingcap/tidb/issues/31589)でデータが壊れた場合のデータのロードパニックを修正
     -   インデックスルックアップ結合[＃30468](https://github.com/pingcap/tidb/issues/30468)を使用してクエリを実行するときの`invalid transaction`のエラーを修正しました
     -   `left join`を使用して複数のテーブルのデータを削除した誤った結果を[＃31321](https://github.com/pingcap/tidb/issues/31321)
@@ -74,8 +74,8 @@ TiDB v5.4.1では、製品設計に互換性の変更は導入されていませ
     -   `sql_mode`が[＃34099](https://github.com/pingcap/tidb/issues/34099)に設定されている場合に`'0000-00-00 00:00:00'`が`datetime`列に挿入される可能性があるバグを修正し`NO_ZERO_DATE` 。
     -   `INFORMATION_SCHEMA.CLUSTER_SLOW_QUERY`のテーブルが照会されたときにTiDBサーバーのメモリが不足する可能性がある問題を修正します。この問題は、Grafanaダッシュボード[＃33893](https://github.com/pingcap/tidb/issues/33893)で遅いクエリをチェックしたときに発生する可能性があります
     -   `NOWAIT`ステートメントで、実行中のトランザクションがロック[＃32754](https://github.com/pingcap/tidb/issues/32754)に遭遇したときにすぐに返されないというバグを修正します。
-    -   `GBK`文字セットと`gbk_bin`文字セットでテーブルを作成するときに失敗するバグを修正します[＃31308](https://github.com/pingcap/tidb/issues/31308)
-    -   `enable-new-charset`が`on`の場合、照合を使用した`GBK`文字セットテーブルの作成が「不明な文字セット」エラー[＃31297](https://github.com/pingcap/tidb/issues/31297)で失敗するバグを修正します。
+    -   `GBK`文字セットと`gbk_bin`文字セットでテーブルを作成するときに失敗するバグを修正し照合順序[＃31308](https://github.com/pingcap/tidb/issues/31308)
+    -   `enable-new-charset`が`on`の場合、照合順序を使用した`GBK`文字セットテーブルの作成が「不明な文字セット」エラー[＃31297](https://github.com/pingcap/tidb/issues/31297)で失敗するバグを修正します。
 
 -   TiKV
 
@@ -84,7 +84,7 @@ TiDB v5.4.1では、製品設計に互換性の変更は導入されていませ
     -   メモリメトリックのオーバーフローによって引き起こされる断続的なパケット損失とメモリ不足（OOM）の問題を修正します[＃12160](https://github.com/tikv/tikv/issues/12160)
     -   TiKVが[＃9765](https://github.com/tikv/tikv/issues/9765)でプロファイリングを実行するときに発生する可能性のあるパニックの問題を修正します。
     -   レプリカの読み取りが線形化可能性に違反する可能性があるバグを修正します[＃12109](https://github.com/tikv/tikv/issues/12109)
-    -   ターゲットピアが、リージョン[＃12048](https://github.com/tikv/tikv/issues/12048)のマージ時に初期化されずに破棄されたピアに置き換えられたときに発生するTiKVパニックの問題を修正します。
+    -   ターゲットピアがリージョン[＃12048](https://github.com/tikv/tikv/issues/12048)のマージ時に初期化されずに破棄されたピアに置き換えられたときに発生するTiKVパニックの問題を修正します。
     -   TiKVが2年以上実行されている場合にパニックになる可能性があるバグを修正します[＃11940](https://github.com/tikv/tikv/issues/11940)
     -   ロックの解決ステップ[＃11993](https://github.com/tikv/tikv/issues/11993)を必要とするリージョンの数を減らすことにより、TiCDCの回復時間を短縮します。
     -   ピアステータスが`Applying`のときにスナップショットファイルを削除することによって引き起こされるパニックの問題を修正し[＃11746](https://github.com/tikv/tikv/issues/11746)
@@ -159,7 +159,7 @@ TiDB v5.4.1では、製品設計に互換性の変更は導入されていませ
         -   チェックサムエラー「GCの有効期間がトランザクション期間より短い」を修正[＃32733](https://github.com/pingcap/tidb/issues/32733)
         -   空のテーブルのチェックに失敗したときにTiDBLightningがスタックする問題を修正します[＃31797](https://github.com/pingcap/tidb/issues/31797)
         -   一部のインポートタスクにソースファイルが含まれていない場合にTiDBLightningがメタデータスキーマを削除しない可能性があるバグを修正します[＃28144](https://github.com/pingcap/tidb/issues/28144)
-        -   事前チェックでローカルディスクリソースとクラスターの可用性がチェックされない問題を修正します[＃34213](https://github.com/pingcap/tidb/issues/34213)
+        -   事前チェックでローカルディスクリソースとクラスタの可用性がチェックされない問題を修正します[＃34213](https://github.com/pingcap/tidb/issues/34213)
 
     -   TiDBデータ移行（DM）
 

@@ -1,19 +1,18 @@
 ---
-title: Create a Data Migration Task
-summary: Learn how to create a migration task after the DM cluster is deployed.
-aliases: ['/docs/tidb-data-migration/dev/create-task-and-verify/']
+title: データ移行タスクを作成する
+summary: DMクラスタのデプロイ後に移行タスクを作成する方法を学びます。
 ---
 
 # データ移行タスクを作成する {#create-a-data-migration-task}
 
-このドキュメントでは、DMクラスターが正常にデプロイされた後に簡単なデータ移行タスクを作成する方法について説明します。
+このドキュメントでは、DMクラスタが正常にデプロイされた後に簡単なデータ移行タスクを作成する方法について説明します。
 
 ## サンプルシナリオ {#sample-scenario}
 
 このサンプルシナリオに基づいてデータ移行タスクを作成するとします。
 
--   binlogが有効になっている2つのMySQLインスタンスと1つのTiDBインスタンスをローカルにデプロイします
--   DMクラスターのDMマスターを使用して、クラスターおよびデータ移行タスクを管理します。
+-   デプロイが有効になっている2つのMySQLインスタンスと1つのTiDBインスタンスをローカルにデプロイします
+-   DMクラスタのDMマスターを使用して、クラスタおよびデータ移行タスクを管理します。
 
 各ノードの情報は以下のとおりです。
 
@@ -80,9 +79,9 @@ mv tidb-latest-linux-amd64/bin/tidb-server ./
 ./tidb-server
 ```
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> このドキュメントのTiDBの展開方法は、実稼働環境または開発環境に<strong>は適用されません</strong>。
+> このドキュメントのTiDBの展開方法は、実稼働環境または開発環境に**は適用されません**。
 
 ## MySQLデータソースを構成する {#configure-the-mysql-data-source}
 
@@ -90,7 +89,7 @@ mv tidb-latest-linux-amd64/bin/tidb-server ./
 
 ### パスワードを暗号化する {#encrypt-the-password}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   データベースにパスワードがない場合は、この手順をスキップできます。
 > -   プレーンテキストのパスワードを使用して、DMv1.0.6以降のバージョンでソース情報を構成できます。
@@ -100,7 +99,7 @@ mv tidb-latest-linux-amd64/bin/tidb-server ./
 {{< copyable "" >}}
 
 ```bash
-./dmctl encrypt "123456"
+./bin/dmctl encrypt "123456"
 ```
 
 ```
@@ -132,12 +131,12 @@ MySQL2データソースで、上記の構成を`conf/source2.yaml`にコピー�
 
 ### ソースを作成する {#create-a-source}
 
-dmctlを使用してMySQL1のデータソース構成をDMクラスターにロードするには、ターミナルで次のコマンドを実行します。
+dmctlを使用してMySQL1のデータソース構成をDMクラスタにロードするには、ターミナルで次のコマンドを実行します。
 
 {{< copyable "" >}}
 
 ```bash
-./dmctl --master-addr=127.0.0.1:8261 operate-source create conf/source1.yaml
+./bin/dmctl --master-addr=127.0.0.1:8261 operate-source create conf/source1.yaml
 ```
 
 MySQL2の場合、上記のコマンドの構成ファイルをMySQL2の構成ファイルに置き換えます。
@@ -150,7 +149,7 @@ MySQL2の場合、上記のコマンドの構成ファイルをMySQL2の構成�
 
 1.  タスクの構成ファイルを作成します。
 
-    {{&lt;コピー可能&quot;&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```yaml
     ---
@@ -198,7 +197,7 @@ MySQL2の場合、上記のコマンドの構成ファイルをMySQL2の構成�
     {{< copyable "" >}}
 
     ```bash
-    ./dmctl --master-addr 127.0.0.1:8261 start-task conf/task.yaml
+    ./bin/dmctl --master-addr 127.0.0.1:8261 start-task conf/task.yaml
     ```
 
     ```
@@ -226,4 +225,4 @@ MySQL2の場合、上記のコマンドの構成ファイルをMySQL2の構成�
 
 ## データを確認する {#verify-data}
 
-アップストリームのMySQLシャードテーブルのデータを変更できます。次に、 [sync-diff-inspector](/sync-diff-inspector/shard-diff.md)を使用して、アップストリームデータとダウンストリームデータに一貫性があるかどうかを確認します。一貫性のあるデータは、移行タスクが適切に機能することを意味します。これは、クラスターが適切に機能することも示します。
+アップストリームのMySQLシャードテーブルのデータを変更できます。次に、 [sync-diff-inspector](/sync-diff-inspector/shard-diff.md)を使用して、アップストリームデータとダウンストリームデータに一貫性があるかどうかを確認します。一貫性のあるデータは、移行タスクが適切に機能することを意味します。これは、クラスタが適切に機能することも示します。

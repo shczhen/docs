@@ -1,7 +1,6 @@
 ---
-title: Security Compatibility with MySQL
-summary: Learn TiDB's security compatibilities with MySQL.
-aliases: ['/docs/dev/security-compatibility-with-mysql/','/docs/dev/reference/security/compatibility/']
+title: MySQLとのセキュリティの互換性
+summary: TiDBのMySQLとのセキュリティ互換性について学びます。
 ---
 
 # MySQLとのセキュリティの互換性 {#security-compatibility-with-mysql}

@@ -1,6 +1,5 @@
 ---
-title: TiDB 4.0 GA Release Notes
-aliases: ['/docs/dev/releases/release-4.0-ga/']
+title: TiDB4.0GAリリースノート
 ---
 
 # TiDB4.0GAリリースノート {#tidb-4-0-ga-release-notes}
@@ -39,7 +38,7 @@ TiDBバージョン：4.0.0
     -   `Distinct`関数[＃17240](https://github.com/pingcap/tidb/pull/17240)を使用する場合の`collations`の値のチェックをサポートします。
     -   ハッシュパーティションプルーニング[＃17310](https://github.com/pingcap/tidb/pull/17310)中に`is null`フィルター条件をサポートします。
     -   パーティションテーブルで`admin check index` 、および`admin cleanup index`を[＃17317](https://github.com/pingcap/tidb/pull/17317) `admin recover index` [＃17392](https://github.com/pingcap/tidb/pull/17392) [＃17405](https://github.com/pingcap/tidb/pull/17405)
-    -   `in`式[＃17320](https://github.com/pingcap/tidb/pull/17320)の範囲パーティションプルーニングをサポートします。
+    -   `in`式の範囲パーティションプルーニングをサポート[＃17320](https://github.com/pingcap/tidb/pull/17320)
 
 -   TiFlash
     -   学習者がデータを読み取るときに、 `Lock CF`の修飾された`TSO`から`min commit ts`の値に対応するデータの除外をサポートします
@@ -47,7 +46,7 @@ TiDBバージョン：4.0.0
     -   ログを検索する際の正規表現でのフラグの使用をサポート
 
 -   TiKV
-    -   `ascii_bin`および`latin1_bin`エンコーディング[＃7919](https://github.com/tikv/tikv/pull/7919)の照合ルールをサポートします
+    -   `ascii_bin`および`latin1_bin`エンコーディング[＃7919](https://github.com/tikv/tikv/pull/7919)の照合順序ルールをサポートします
 
 -   PD
     -   組み込みのTiDBダッシュボード[＃2457](https://github.com/pingcap/pd/pull/2457)のリバースプロキシリソースプレフィックスの指定をサポート

@@ -1,7 +1,6 @@
 ---
-title: DROP SEQUENCE
-summary: An overview of the usage of DROP SEQUENCE for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-drop-sequence/','/docs/dev/reference/sql/statements/drop-sequence/']
+title: ドロップシーケンス
+summary: TiDBデータベースのDROPSEQUENCEの使用法の概要。
 ---
 
 # ドロップシーケンス {#drop-sequence}

@@ -1,7 +1,6 @@
 ---
-title: Type Conversion in Expression Evaluation
-summary: Learn about the type conversion in expression evaluation.
-aliases: ['/docs/dev/functions-and-operators/type-conversion-in-expression-evaluation/','/docs/dev/reference/sql/functions-and-operators/type-conversion/']
+title: 式評価における型変換
+summary: 式の評価における型変換について学びます。
 ---
 
 # 式評価における型変換 {#type-conversion-in-expression-evaluation}

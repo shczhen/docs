@@ -1,7 +1,6 @@
 ---
-title: SHOW TABLE NEXT_ROW_ID
-summary: Learn the usage of `SHOW TABLE NEXT_ROW_ID` in TiDB.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-table-next-rowid/']
+title: テーブルNEXT_ROW_IDを表示
+summary: TiDBでの`SHOWTABLENEXT_ROW_ID`の使用法を学びます。
 ---
 
 # テーブルNEXT_ROW_IDを表示 {#show-table-next-row-id}
@@ -15,11 +14,11 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-table-next-rowid/']
 
 ## あらすじ {#synopsis}
 
-<strong>ShowTableNextRowIDStmt：</strong>
+**ShowTableNextRowIDStmt：**
 
 ![ShowTableNextRowIDStmt](/media/sqlgram/ShowTableNextRowIDStmt.png)
 
-<strong>TableName：</strong>
+**TableName：**
 
 ![TableName](/media/sqlgram/TableName.png)
 

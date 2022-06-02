@@ -1,6 +1,6 @@
 ---
-title: Handle Alerts
-summary: Understand how to deal with the alert information in DM.
+title: アラートを処理する
+summary: DMでアラート情報を処理する方法を理解します。
 ---
 
 # アラートを処理する {#handle-alerts}
@@ -128,7 +128,7 @@ summary: Understand how to deal with the alert information in DM.
 
 -   説明：
 
-    現在のアップストリームMySQL/MariaDB内のbinlogファイルの数が、リレーログ処理ユニットによってプルされた最新のbinlogファイルの数を10分間1<strong>以上超える</strong>と、アラートがトリガーされます。
+    現在のアップストリームMySQL/MariaDB内のbinlogファイルの数が、リレーログ処理ユニットによってプルされた最新のbinlogファイルの数を10分間1**以上超える**と、アラートがトリガーされます。
 
 -   解決：
 
@@ -172,7 +172,7 @@ summary: Understand how to deal with the alert information in DM.
 
 -   説明：
 
-    現在のアップストリームMySQL/MariaDB内のbinlogファイルの数が、リレーログ処理ユニットによって処理された最新のbinlogファイルの数を10分間1<strong>以上超える</strong>と、アラートがトリガーされます。
+    現在のアップストリームMySQL/MariaDB内のbinlogファイルの数が、リレーログ処理ユニットによって処理された最新のbinlogファイルの数を10分間1**以上超える**と、アラートがトリガーされます。
 
 -   解決：
 
@@ -182,7 +182,7 @@ summary: Understand how to deal with the alert information in DM.
 
 -   説明：
 
-    現在のリレーログ処理ユニット内のbinlogファイルの数がbinlog複製処理ユニットによって処理された最新のbinlogファイルの数を10分間1<strong>以上超える</strong>と、アラートがトリガーされます。
+    現在のリレーログ処理ユニット内のbinlogファイルの数がbinlog複製処理ユニットによって処理された最新のbinlogファイルの数を10分間1**以上超える**と、アラートがトリガーされます。
 
 -   解決：
 

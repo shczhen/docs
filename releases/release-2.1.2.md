@@ -1,6 +1,5 @@
 ---
-title: TiDB 2.1.2 Release Notes
-aliases: ['/docs/dev/releases/release-2.1.2/','/docs/dev/releases/2.1.2/']
+title: TiDB2.1.2リリースノート
 ---
 
 # TiDB2.1.2リリースノート {#tidb-2-1-2-release-notes}
@@ -30,7 +29,7 @@ aliases: ['/docs/dev/releases/release-2.1.2/','/docs/dev/releases/2.1.2/']
 ## ツール {#tools}
 
 -   TiDB Lightning
-    -   TiDB2.1.0をLightningでサポートされる最小クラスターバージョンにします
+    -   TiDB2.1.0をLightningでサポートされる最小クラスタバージョンにします
     -   [＃144](https://github.com/pingcap/tidb-tools/issues/144)で解析された`JSON`データを含むファイルのコンテンツエラーを修正しました
     -   チェックポイントを使用してLightningを再起動した後に`Too many open engines`が発生する問題を修正します
 -   TiDB Binlog

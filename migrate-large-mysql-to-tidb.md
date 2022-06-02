@@ -1,6 +1,6 @@
 ---
-title: Migrate MySQL of Large Datasets to TiDB
-summary: Learn how to migrate MySQL of large datasets to TiDB.
+title: 大規模なデータセットのMySQLをTiDBに移行する
+summary: 大規模なデータセットのMySQLをTiDBに移行する方法を学びます。
 ---
 
 # 大規模なデータセットのMySQLをTiDBに移行する {#migrate-mysql-of-large-datasets-to-tidb}
@@ -9,8 +9,8 @@ summary: Learn how to migrate MySQL of large datasets to TiDB.
 
 このドキュメントでは、大規模なデータセットをMySQLからTiDBに移行する方法について説明します。移行全体には2つのプロセスがあります。
 
-1.  <em>完全な移行</em>。 DumplingとTiDBLightningを使用して、完全な移行を実行します。 TiDB Lightningの<strong>ローカルバックエンド</strong>モードでは、最大500 GiB/hの速度でデータをインポートできます。
-2.  <em>インクリメンタルレプリケーション</em>。完全な移行が完了したら、DMを使用して増分データを複製できます。
+1.  *完全な移行*。 DumplingとTiDBLightningを使用して、完全な移行を実行します。 TiDB Lightningの**ローカルバックエンド**モードでは、最大500 GiB/hの速度でデータをインポートできます。
+2.  *インクリメンタルレプリケーション*。完全な移行が完了したら、DMを使用して増分データを複製できます。
 
 ## 前提条件 {#prerequisites}
 
@@ -18,23 +18,23 @@ summary: Learn how to migrate MySQL of large datasets to TiDB.
 -   [DumplingとTiDBLightningをインストールします](/migration-tools.md) 。
 -   [DMに必要なソースデータベースとターゲットデータベースの権限を付与します](/dm/dm-worker-intro.md) 。
 -   [TiDBLightningに必要なターゲットデータベース権限を付与します](/tidb-lightning/tidb-lightning-faq.md#what-are-the-privilege-requirements-for-the-target-database) 。
--   [餃子に必要なソースデータベース権限を付与します](/dumpling-overview.md#export-data-from-tidbmysql) 。
+-   [Dumplingに必要なソースデータベース権限を付与します](/dumpling-overview.md#export-data-from-tidbmysql) 。
 
 ## リソース要件 {#resource-requirements}
 
-<strong>オペレーティングシステム</strong>：このドキュメントの例では、新しいCentOS7インスタンスを使用しています。仮想マシンは、ローカルホストまたはクラウドのいずれかにデプロイできます。 TiDB Lightningはデフォルトで必要なだけのCPUリソースを消費するため、専用サーバーにデプロイすることをお勧めします。これが不可能な場合は、他のTiDBコンポーネント（たとえば`tikv-server` ）と一緒に単一のサーバーにデプロイしてから、TiDBLightningからのCPU使用率を制限するように`region-concurrency`を構成できます。通常、サイズは論理CPUの75％に設定できます。
+**オペレーティングシステム**：このドキュメントの例では、新しいCentOS7インスタンスを使用しています。仮想マシンは、ローカルホストまたはクラウドのいずれかにデプロイできます。 TiDB Lightningはデフォルトで必要なだけのCPUリソースを消費するため、専用サーバーにデプロイすることをお勧めします。これが不可能な場合は、他のTiDBコンポーネント（たとえば`tikv-server` ）と一緒に単一のサーバーにデプロイしてから、TiDBLightningからのCPU使用率を制限するように`region-concurrency`を構成できます。通常、サイズは論理CPUの75％に設定できます。
 
-<strong>メモリとCPU</strong> ：TiDB Lightningは大量のリソースを消費するため、64GiBを超えるメモリと32を超えるCPUコアを割り当てることをお勧めします。最高のパフォーマンスを得るには、CPUコアとメモリ（GiB）の比率が1：2より大きいことを確認してください。
+**メモリとCPU** ：TiDB Lightningは大量のリソースを消費するため、64GiBを超えるメモリと32を超えるCPUコアを割り当てることをお勧めします。最高のパフォーマンスを得るには、CPUコアとメモリ（GiB）の比率が1：2より大きいことを確認してください。
 
-<strong>ディスク容量</strong>：
+**ディスク容量**：
 
--   餃子には、データソース全体を保存するのに十分なディスク容量が必要です。 SSDをお勧めします。
+-   Dumplingには、データソース全体を保存するのに十分なディスク容量が必要です。 SSDをお勧めします。
 -   インポート中、TiDB Lightningには、ソートされたキーと値のペアを格納するための一時的なスペースが必要です。ディスク容量は、データソースからの最大の単一テーブルを保持するのに十分である必要があります。
 -   フルデータボリュームが大きい場合は、アップストリームでのbinlogストレージ時間を増やすことができます。これは、インクリメンタルレプリケーション中にbinlogが失われないようにするためです。
 
-<strong>注</strong>：MySQLからDumplingによってエクスポートされた正確なデータ量を計算することは困難ですが、次のSQLステートメントを使用して`information_schema.tables`テーブルの`data-length`フィールドを要約することにより、データ量を見積もることができます。
+**注**：MySQLからDumplingによってエクスポートされた正確なデータ量を計算することは困難ですが、次のSQLステートメントを使用して`information_schema.tables`テーブルの`data-length`フィールドを要約することにより、データ量を見積もることができます。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 /* Calculate the size of all schemas, in MiB. Replace ${schema_name} with your schema name. */
@@ -44,9 +44,9 @@ SELECT table_schema,SUM(data_length)/1024/1024 AS data_length,SUM(index_length)/
 SELECT table_name,table_schema,SUM(data_length)/1024/1024 AS data_length,SUM(index_length)/1024/1024 AS index_length,SUM(data_length+index_length)/1024/1024 AS SUM from information_schema.tables WHERE table_schema = "${schema_name}" GROUP BY table_name,table_schema ORDER BY SUM DESC LIMIT 5;
 ```
 
-### ターゲットTiKVクラスターのディスク容量 {#disk-space-for-the-target-tikv-cluster}
+### ターゲットTiKVクラスタのディスク容量 {#disk-space-for-the-target-tikv-cluster}
 
-ターゲットTiKVクラスターには、インポートされたデータを格納するのに十分なディスク容量が必要です。 [標準のハードウェア要件](/hardware-and-software-requirements.md)に加えて、ターゲットTiKVクラスターのストレージスペースは<strong>、データソースのサイズx <a href="/faq/manage-cluster-faq.md#is-the-number-of-replicas-in-each-region-configurable-if-yes-how-to-configure-it">レプリカの数</a>x2</strong>よりも大きくする必要があります。たとえば、クラスターがデフォルトで3つのレプリカを使用する場合、ターゲットTiKVクラスターには、データソースのサイズの6倍を超えるストレージスペースが必要です。数式には`x 2`あります。理由は次のとおりです。
+ターゲットTiKVクラスタには、インポートされたデータを格納するのに十分なディスク容量が必要です。 [標準のハードウェア要件](/hardware-and-software-requirements.md)に加えて、ターゲットTiKVクラスタのストレージスペースは**、データソースのサイズx <a href="/faq/manage-cluster-faq.md#is-the-number-of-replicas-in-each-region-configurable-if-yes-how-to-configure-it">レプリカの数</a>x2**よりも大きくする必要があります。たとえば、クラスタがデフォルトで3つのレプリカを使用する場合、ターゲットTiKVクラスタには、データソースのサイズの6倍を超えるストレージスペースが必要です。数式には`x 2`あります。理由は次のとおりです。
 
 -   インデックスには余分なスペースが必要になる場合があります。
 -   RocksDBにはスペース増幅効果があります。
@@ -61,9 +61,9 @@ SELECT table_name,table_schema,SUM(data_length)/1024/1024 AS data_length,SUM(ind
     tiup dumpling -h ${ip} -P 3306 -u root -t 16 -r 200000 -F 256MiB -B my_db1 -f 'my_db1.table[12]' -o 's3://my-bucket/sql-backup?region=us-west-2'
     ```
 
-    餃子はデフォルトでSQLファイルのデータをエクスポートします。 `--filetype`オプションを追加することにより、別のファイル形式を指定できます。
+    DumplingはデフォルトでSQLファイルのデータをエクスポートします。 `--filetype`オプションを追加することにより、別のファイル形式を指定できます。
 
-    上記で使用したパラメータは次のとおりです。その他の餃子パラメータについては、 [餃子の概要](/dumpling-overview.md)を参照してください。
+    上記で使用したパラメータは次のとおりです。その他のDumplingパラメータについては、 [Dumplingの概要](/dumpling-overview.md)を参照してください。
 
     | パラメーター              | 説明                                                                                         |
     | ------------------- | ------------------------------------------------------------------------------------------ |
@@ -93,7 +93,7 @@ SELECT table_name,table_schema,SUM(data_length)/1024/1024 AS data_length,SUM(ind
 
 1.  `tidb-lightning.toml`の構成ファイルを作成します。
 
-    {{&lt;コピー可能&quot;&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```toml
     [lightning]
@@ -118,11 +118,11 @@ SELECT table_name,table_schema,SUM(data_length)/1024/1024 AS data_length,SUM(ind
     port = ${port}                # e.g.: 4000
     user = "${user_name}"         # e.g.: "root"
     password = "${password}"      # e.g.: "rootroot"
-    status-port = ${status-port}  # During the import, TiCb Lightning needs to obtain the table schema information from the TiDB status port. e.g.: 10080
+    status-port = ${status-port}  # During the import, TiDB Lightning needs to obtain the table schema information from the TiDB status port. e.g.: 10080
     pd-addr = "${ip}:${port}"     # The address of the PD cluster, e.g.: 172.16.31.3:2379. TiDB Lightning obtains some information from PD. When backend = "local", you must specify status-port and pd-addr correctly. Otherwise, the import will be abnormal.
     ```
 
-    TiDB Lightning構成の詳細については、 [TiDBLightning構成](/tidb-lightning/tidb-lightning-configuration.md)を参照してください。
+    TiDB Lightning構成の詳細については、 [TiDBLightningConfiguration / コンフィグレーション](/tidb-lightning/tidb-lightning-configuration.md)を参照してください。
 
 2.  `tidb-lightning`を実行してインポートを開始します。コマンドラインで直接プログラムを起動すると、SIGHUP信号を受信した後、プロセスが予期せず終了する場合があります。この場合、 `nohup`または`screen`ツールを使用してプログラムを実行することをお勧めします。例えば：
 
@@ -144,7 +144,7 @@ SELECT table_name,table_schema,SUM(data_length)/1024/1024 AS data_length,SUM(ind
 
 4.  TiDB Lightningがインポートを完了すると、自動的に終了します。ログ印刷`the whole procedure completed`の最後の5行が見つかった場合、インポートは成功しています。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > インポートが成功したかどうかに関係なく、ログの最後の行には`tidb lightning exit`が表示されます。これは、TiDB Lightningが正常に終了することを意味しますが、必ずしもインポートが成功したことを意味するわけではありません。
 
@@ -156,7 +156,7 @@ SELECT table_name,table_schema,SUM(data_length)/1024/1024 AS data_length,SUM(ind
 
 1.  次のように`source1.yaml`のファイルを作成します。
 
-    {{&lt;コピー可能&quot;&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```yaml
     # Must be unique.
@@ -172,7 +172,7 @@ SELECT table_name,table_schema,SUM(data_length)/1024/1024 AS data_length,SUM(ind
       port: 3306
     ```
 
-2.  次のコマンドを実行して、 `tiup dmctl`を使用してデータソース構成をDMクラスターにロードします。
+2.  次のコマンドを実行して、 `tiup dmctl`を使用してデータソース構成をDMクラスタにロードします。
 
     {{< copyable "" >}}
 
@@ -182,10 +182,10 @@ SELECT table_name,table_schema,SUM(data_length)/1024/1024 AS data_length,SUM(ind
 
     上記のコマンドで使用されるパラメーターは、次のとおりです。
 
-    | パラメータ                   | 説明                                                                  |
-    | ----------------------- | ------------------------------------------------------------------- |
-    | `--master-addr`         | `dmctl`が接続されるクラスター内の任意のDMマスターの`{advertise-addr}`例：172.16.10.71：8261 |
-    | `operate-source create` | データソースをDMクラスターにロードします。                                              |
+    | パラメータ                   | 説明                                                                |
+    | ----------------------- | ----------------------------------------------------------------- |
+    | `--master-addr`         | `dmctl`が接続されるクラスタの任意のDMマスターの`{advertise-addr}`例：172.16.10.71：8261 |
+    | `operate-source create` | データソースをDMクラスタにロードします。                                             |
 
 ### レプリケーションタスクを追加する {#add-a-replication-task}
 
@@ -226,7 +226,7 @@ SELECT table_name,table_schema,SUM(data_length)/1024/1024 AS data_length,SUM(ind
     #     safe-mode: true # If this field is set to true, DM changes INSERT of the data source to REPLACE for the target database, and changes UPDATE of the data source to DELETE and REPLACE for the target database. This is to ensure that when the table schema contains a primary key or unique index, DML statements can be imported repeatedly. In the first minute of starting or resuming an incremental replication task, DM automatically enables the safe mode.
     ```
 
-    上記のYAMLは、移行タスクに必要な最小限の構成です。その他の設定項目については、 [DM高度なタスク構成ファイル](/dm/task-configuration-file-full.md)を参照してください。
+    上記のYAMLは、移行タスクに必要な最小限の構成です。その他の設定項目については、 [DM高度なタスクConfiguration / コンフィグレーションファイル](/dm/task-configuration-file-full.md)を参照してください。
 
     移行タスクを開始する前に、エラーの可能性を減らすために、次の`check-task`コマンドを実行して、構成がDMの要件を満たしていることを確認することをお勧めします。
 
@@ -246,10 +246,10 @@ SELECT table_name,table_schema,SUM(data_length)/1024/1024 AS data_length,SUM(ind
 
     上記のコマンドで使用されるパラメーターは、次のとおりです。
 
-    | パラメータ           | 説明                                                             |
-    | --------------- | -------------------------------------------------------------- |
-    | `--master-addr` | `dmctl`が接続されるクラスター内のDMマスターの{advertise-addr}例：172.16.10.71：8261 |
-    | `start-task`    | 移行タスクを開始します。                                                   |
+    | パラメータ           | 説明                                                           |
+    | --------------- | ------------------------------------------------------------ |
+    | `--master-addr` | `dmctl`が接続されるクラスタのDMマスターの{advertise-addr}例：172.16.10.71：8261 |
+    | `start-task`    | 移行タスクを開始します。                                                 |
 
     タスクの開始に失敗した場合は、プロンプトメッセージを確認し、構成を修正してください。その後、上記のコマンドを再実行してタスクを開始できます。
 
@@ -257,7 +257,7 @@ SELECT table_name,table_schema,SUM(data_length)/1024/1024 AS data_length,SUM(ind
 
 ### 移行タスクのステータスを確認する {#check-the-migration-task-status}
 
-DMクラスターに進行中の移行タスクがあるかどうかを確認し、タスクステータスを表示するには、 `tiup dmctl`を使用して`query-status`コマンドを実行します。
+DMクラスタに進行中の移行タスクがあるかどうかを確認し、タスクステータスを表示するには、 `tiup dmctl`を使用して`query-status`コマンドを実行します。
 
 {{< copyable "" >}}
 
@@ -283,5 +283,5 @@ DMの実行中、DM-worker、DM-master、およびdmctlは、関連情報をロ�
 -   [データ移行タスクを一時停止します](/dm/dm-pause-task.md)
 -   [データ移行タスクを再開します](/dm/dm-resume-task.md)
 -   [データ移行タスクを停止する](/dm/dm-stop-task.md)
--   [データソースのエクスポートとインポート、およびクラスターのタスク構成](/dm/dm-export-import-config.md)
+-   [データソースのエクスポートとインポート、およびクラスターのタスクConfiguration / コンフィグレーション](/dm/dm-export-import-config.md)
 -   [失敗したDDLステートメントの処理](/dm/handle-failed-ddl-statements.md)

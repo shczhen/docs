@@ -1,7 +1,6 @@
 ---
-title: Binlog Consumer Client User Guide
-summary: Use Binlog Consumer Client to consume TiDB secondary binlog data from Kafka and output the data in a specific format.
-aliases: ['/tidb/dev/binlog-slave-client','/docs/dev/tidb-binlog/binlog-slave-client/','/docs/dev/reference/tidb-binlog/binlog-slave-client/','/docs/dev/reference/tools/tidb-binlog/binlog-slave-client/']
+title: Binlogコンシューマークライアントユーザーガイド
+summary: Binlog Consumer Clientを使用して、KafkaからのTiDBセカンダリbinlogデータを消費し、特定の形式でデータを出力します。
 ---
 
 # Binlogコンシューマークライアントユーザーガイド {#binlog-consumer-client-user-guide}
@@ -129,10 +128,10 @@ message Binlog {
 
 Driverを使用する場合は、次の情報を構成する必要があります。
 
--   `KafkaAddr` ：Kafkaクラスターのアドレス
+-   `KafkaAddr` ：Kafkaクラスタのアドレス
 -   `CommitTS` ：どの`commit ts`からbinlogの読み取りを開始するか
 -   `Offset` ： `offset`がデータの読み取りを開始する場所。 `CommitTS`が設定されている場合、このパラメーターを構成する必要はありません。
--   `ClusterID` ：TiDBクラスターのクラスターID
+-   `ClusterID` ：TiDBクラスタのクラスタID
 -   `Topic` ：カフカのトピック名。トピックが空の場合は、 `<ClusterID>_obinlog`のデフォルト名を使用します。
 
 パッケージ内のドライバーコードを引用してドライバーを使用し、ドライバーが提供するサンプルコードを参照して、ドライバーの使用方法とbinlogデータの解析方法を学ぶことができます。
@@ -142,7 +141,7 @@ Driverを使用する場合は、次の情報を構成する必要がありま�
 -   Driverを使用してデータをMySQLに複製します。この例は、binlogをSQLに変換する方法を示しています
 -   ドライバを使用してデータを印刷する
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   サンプルコードは、ドライバーの使用方法のみを示しています。実稼働環境でDriverを使用する場合は、コードを最適化する必要があります。
 > -   現在、Golangバージョンのドライバーとサンプルコードのみが利用可能です。他の言語を使用する場合は、binlog protoファイルに基づいて対応する言語でコードファイルを生成し、Kafkaでbinlogデータを読み取り、データを解析して、データをダウンストリームに出力するアプリケーションを開発する必要があります。サンプルコードを最適化し、他の言語のサンプルコードを[TiDB-ツール](https://github.com/pingcap/tidb-tools)に送信することもできます。

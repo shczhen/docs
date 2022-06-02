@@ -1,6 +1,5 @@
 ---
-title: TiDB 3.0 Beta Release Notes
-aliases: ['/docs/dev/releases/release-3.0-beta/','/docs/dev/releases/3.0beta/']
+title: TiDB3.0ベータリリースノート
 ---
 
 # TiDB3.0ベータリリースノート {#tidb-3-0-beta-release-notes}
@@ -20,9 +19,9 @@ aliases: ['/docs/dev/releases/release-3.0-beta/','/docs/dev/releases/3.0beta/']
     -   新しいカスケードオプティマイザをサポートするために`tidb_enable_cascades_planner`の変数を追加します。現在、Cascadesオプティマイザはまだ完全には実装されておらず、デフォルトでオフになっています[＃7879](https://github.com/pingcap/tidb/pull/7879)
     -   トランザクションでのインデックス結合の使用のサポート[＃7877](https://github.com/pingcap/tidb/pull/7877)
     -   外部結合での定数伝播を最適化して、結合結果の外部テーブルに関連するフィルタリング条件を外部結合を介して外部テーブルにプッシュダウンできるようにします。これにより、外部結合の無駄な計算が減り、実行パフォーマンスが向上します[＃7794](https://github.com/pingcap/tidb/pull/7794) 。
-    -   冗長な`Project`演算子を避けるために、射影除去の最適化ルールを集約除去後の位置に調整します[＃7909](https://github.com/pingcap/tidb/pull/7909)
+    -   冗長な`Project`演算子を避けるために、射影除去の最適化ルールを集計除去後の位置に調整します[＃7909](https://github.com/pingcap/tidb/pull/7909)
     -   `IFNULL`関数を最適化し、入力パラメーターにNULL以外の属性がある場合はこの関数を削除します[＃7924](https://github.com/pingcap/tidb/pull/7924)
-    -   全表スキャンを回避し、クラスターのストレスを軽減するための`_tidb_rowid`の構築クエリのサポート範囲[＃8047](https://github.com/pingcap/tidb/pull/8047)
+    -   全表スキャンを回避し、クラスタのストレスを軽減するための`_tidb_rowid`の構築クエリのサポート範囲[＃8047](https://github.com/pingcap/tidb/pull/8047)
     -   `IN`のサブクエリを最適化して、集計後に内部結合を実行し、 `tidb_opt_insubq_to_join_and_agg`の変数を追加して、この最適化ルールを有効にしてデフォルトで開くかどうかを制御します[＃7531](https://github.com/pingcap/tidb/pull/7531)
     -   `DO`ステートメント[＃8343](https://github.com/pingcap/tidb/pull/8343)でのサブクエリの使用のサポート
     -   外部結合除去の最適化ルールを追加して、不要なテーブルスキャンと結合操作を減らし、実行パフォーマンスを向上させます[＃8021](https://github.com/pingcap/tidb/pull/8021)
@@ -39,7 +38,7 @@ aliases: ['/docs/dev/releases/release-3.0-beta/','/docs/dev/releases/3.0beta/']
     -   ログを最適化し、 `EXECUTE`ステートメントの実行時に使用されるユーザー変数を出力します[＃7684](https://github.com/pingcap/tidb/pull/7684)
     -   ログを最適化して、 `COMMIT`ステートメントの低速クエリ情報を出力します[＃7951](https://github.com/pingcap/tidb/pull/7951)
     -   SQLチューニングプロセスを容易にする`EXPLAIN ANALYZE`つの機能をサポートする[＃7827](https://github.com/pingcap/tidb/pull/7827)
-    -   多くの列を持つ幅の広いテーブルの書き込みパフォーマンスを最適化する[＃7935](https://github.com/pingcap/tidb/pull/7935)
+    -   多くの列を持つワイドテーブルの書き込みパフォーマンスを最適化する[＃7935](https://github.com/pingcap/tidb/pull/7935)
     -   [＃8242](https://github.com/pingcap/tidb/pull/8242) `admin show next_row_id`
     -   `tidb_init_chunk_size`変数を追加して、実行エンジン[＃8480](https://github.com/pingcap/tidb/pull/8480)が使用する初期チャンクのサイズを制御します。
     -   `shard_row_id_bits`を改善し、自動インクリメント[＃8936](https://github.com/pingcap/tidb/pull/8936)をクロスチェックします
@@ -50,7 +49,7 @@ aliases: ['/docs/dev/releases/release-3.0-beta/','/docs/dev/releases/3.0beta/']
     -   クエリプランキャッシュを最適化して、 `DEALLOCATE`ステートメントを実行するときに対応するプランを削除します[＃8332](https://github.com/pingcap/tidb/pull/8332)
     -   クエリプランのキャッシュを最適化して、メモリ使用量を制限することにより、あまりにも多くのプランをキャッシュすることによって引き起こされるTiDBOOMの問題を回避します[＃8339](https://github.com/pingcap/tidb/pull/8339)
     -   `Prepare`ステートメントを最適化して`ORDER BY`節`GROUP BY`の`?` [＃8206](https://github.com/pingcap/tidb/pull/8206)ホルダーの使用をサポートし`LIMIT`
--   特権管理
+-   権限管理
     -   `ANALYZE`ステートメントの特権チェックを追加します[＃8486](https://github.com/pingcap/tidb/pull/8486)
     -   `USE`ステートメントの特権チェックを追加します[＃8414](https://github.com/pingcap/tidb/pull/8418)
     -   `SET GLOBAL`ステートメントの特権チェックを追加します[＃8837](https://github.com/pingcap/tidb/pull/8837)

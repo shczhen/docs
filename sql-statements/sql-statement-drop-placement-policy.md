@@ -1,9 +1,15 @@
 ---
-title: DROP PLACEMENT POLICY
-summary: The usage of ALTER PLACEMENT POLICY in TiDB.
+title: ドロッププレースメントポリシー
+summary: TiDBでのALTERPLACEMENTPOLICYの使用。
 ---
 
 # ドロッププレースメントポリシー {#drop-placement-policy}
+
+> **警告：**
+>
+> SQLの配置ルールは実験的機能です。 GAの前に構文が変更される可能性があり、バグもある可能性があります。
+>
+> リスクを理解している場合は、 `SET GLOBAL tidb_enable_alter_placement = 1;`を実行することでこの実験機能を有効にできます。
 
 `DROP PLACEMENT POLICY`は、以前に作成された配置ポリシーを削除するために使用されます。
 

@@ -1,12 +1,11 @@
 ---
-title: Maintain a TiFlash Cluster
-summary: Learn common operations when you maintain a TiFlash cluster.
-aliases: ['/docs/dev/tiflash/maintain-tiflash/','/docs/dev/reference/tiflash/maintain/']
+title: TiFlashクラスターを管理する
+summary: TiFlashクラスタを保守する際の一般的な操作について説明します。
 ---
 
-# TiFlashクラスターを維持する {#maintain-a-tiflash-cluster}
+# TiFlashクラスターを管理する {#maintain-a-tiflash-cluster}
 
-このドキュメントでは、TiFlashのバージョンの確認など、 [TiFlash](/tiflash/tiflash-overview.md)のクラスタを維持するときに一般的な操作を実行する方法について説明します。このドキュメントでは、重要なログとTiFlashのシステムテーブルも紹介しています。
+このドキュメントでは、TiFlashのバージョンの確認など、 [TiFlash](/tiflash/tiflash-overview.md)のクラスタを維持する場合の一般的な操作の実行方法について説明します。このドキュメントでは、重要なログとTiFlashのシステムテーブルも紹介しています。
 
 ## TiFlashのバージョンを確認してください {#check-the-tiflash-version}
 
@@ -35,7 +34,7 @@ TiFlashのバージョンを確認する方法は2つあります。
 | ログ情報                                                                                                                                                   | ログの説明                                       |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------- |
 | [INFO] [ `<unknown>` ] [&quot;KVStore：永続化を開始[リージョン47、適用：用語6インデックス10]&quot;] [thread_id = 23]                                                           | データの複製が開始されます（ログの先頭にある角かっこ内の数字はスレッドIDを示します  |
-| [DEBUG] [ `<unknown>` ] [&quot;CoprocessorHandler：grpc :: Status DB :: CoprocessorHandler :: execute（）：DAGリクエストの処理&quot;] [thread_id = 30]             | DAG要求の処理、つまり、TiFlashはコプロセッサー要求の処理を開始します     |
+| [デバッグ][ `<unknown>` ][&quot;CoprocessorHandler：grpc :: Status DB :: CoprocessorHandler :: execute（）：DAGリクエストの処理&quot;] [thread_id = 30]                | DAG要求の処理、つまり、TiFlashはコプロセッサー要求の処理を開始します     |
 | [DEBUG] [ `<unknown>` ] [&quot;CoprocessorHandler：grpc :: Status DB :: CoprocessorHandler :: execute（）：Handle DAG request done&quot;] [thread_id = 30] | 完了したDAG要求の処理、つまり、TiFlashはコプロセッサー要求の処理を終了します |
 
 コプロセッサー要求の開始または終了を見つけて、ログの先頭に印刷されたスレッドIDからコプロセッサー要求の関連ログを見つけることができます。

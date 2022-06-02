@@ -1,5 +1,5 @@
 ---
-title: tiup install
+title: tiupインストール
 ---
 
 # tiupインストール {#tiup-install}

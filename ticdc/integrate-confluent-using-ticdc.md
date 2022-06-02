@@ -1,15 +1,15 @@
 ---
-title: Quick Start Guide on Integrating TiDB with Confluent Platform
-summary: Learn how to stream TiDB data to the Confluent Platform using TiCDC.
+title: TiDBとConfluentプラットフォームの統合に関するクイックスタートガイド
+summary: TiCDCを使用してTiDBデータをConfluentプラットフォームにストリーミングする方法を学びます。
 ---
 
 # TiDBとConfluentプラットフォームの統合に関するクイックスタートガイド {#quick-start-guide-on-integrating-tidb-with-confluent-platform}
 
 このドキュメントでは、 [TiCDC](/ticdc/ticdc-overview.md)を使用してTiDBをConfluentプラットフォームに統合する方法を紹介します。
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> これはまだ実験的な機能です。実稼働環境では使用し<strong>ない</strong>でください。
+> これはまだ実験的機能です。実稼働環境では使用し**ない**でください。
 
 [コンフルエントなプラットフォーム](https://docs.confluent.io/current/platform.html)は、ApacheKafkaをコアとするデータストリーミングプラットフォームです。多くの公式およびサードパーティのシンクコネクタを備えたConfluentPlatformを使用すると、ストリームソースをリレーショナルデータベースまたは非リレーショナルデータベースに簡単に接続できます。
 
@@ -17,9 +17,9 @@ TiDBをConfluentPlatformと統合するには、TiCDCコンポーネントをAvr
 
 ## 前提条件 {#prerequisites}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> このチュートリアルでは、 [JDBCシンクコネクタ](https://docs.confluent.io/current/connect/kafka-connect-jdbc/sink-connector/index.html#load-the-jdbc-sink-connector)を使用してTiDBデータをダウンストリームのリレーショナルデータベースに複製します。簡単にするために、ここでは例として<strong>SQLite</strong>を使用しています。
+> このチュートリアルでは、 [JDBCシンクコネクタ](https://docs.confluent.io/current/connect/kafka-connect-jdbc/sink-connector/index.html#load-the-jdbc-sink-connector)を使用してTiDBデータをダウンストリームのリレーショナルデータベースに複製します。簡単にするために、ここでは例として**SQLite**を使用しています。
 
 -   Zookeeper、Kafka、およびSchemaRegistryが正しくインストールされていることを確認してください。 [Confluentプラットフォームクイックスタートガイド](https://docs.confluent.io/current/quickstart/ce-quickstart.html#ce-quickstart)に従って、ローカルテスト環境を展開することをお勧めします。
 
@@ -35,7 +35,7 @@ TiDBをConfluentPlatformと統合するには、TiCDCコンポーネントをAvr
 
 1.  次の構成を`jdbc-sink-connector.json`に保存します。
 
-    {{&lt;コピー可能&quot;&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```json
     {
@@ -63,9 +63,9 @@ TiDBをConfluentPlatformと統合するには、TiCDCコンポーネントをAvr
 
 3.  次のいずれかの方法でTiCDCをデプロイします。 TiCDCがすでに展開されている場合は、この手順をスキップできます。
 
-    -   [TiUPを使用してTiCDCを含む新しいTiDBクラスターをデプロイします](/ticdc/deploy-ticdc.md#deploy-a-new-tidb-cluster-that-includes-ticdc-using-tiup)
-    -   [TiUPを使用して既存のTiDBクラスターにTiCDCを追加します](/ticdc/deploy-ticdc.md#add-ticdc-to-an-existing-tidb-cluster-using-tiup)
-    -   [バイナリを使用して既存のTiDBクラスターにTiCDCを追加します（非推奨）](/ticdc/deploy-ticdc.md#add-ticdc-to-an-existing-tidb-cluster-using-binary-not-recommended)
+    -   [TiUPを使用してTiCDCを含む新しいTiDBクラスタをデプロイします](/ticdc/deploy-ticdc.md#deploy-a-new-tidb-cluster-that-includes-ticdc-using-tiup)
+    -   [TiUPを使用して既存のTiDBクラスタにTiCDCを追加します](/ticdc/deploy-ticdc.md#add-ticdc-to-an-existing-tidb-cluster-using-tiup)
+    -   [バイナリを使用して既存のTiDBクラスタにTiCDCを追加します（非推奨）](/ticdc/deploy-ticdc.md#add-ticdc-to-an-existing-tidb-cluster-using-binary-not-recommended)
 
     続行する前に、TiDBおよびTiCDCクラスターが正常であることを確認してください。
 
@@ -77,7 +77,7 @@ TiDBをConfluentPlatformと統合するには、TiCDCコンポーネントをAvr
     ./cdc cli changefeed create --pd="http://127.0.0.1:2379" --sink-uri="kafka://127.0.0.1:9092/testdb_test?protocol=avro" --opts "registry=http://127.0.0.1:8081"
     ```
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > PD、Kafka、およびSchemaRegistryがそれぞれのデフォルトポートで実行されていることを確認してください。
 
@@ -85,7 +85,7 @@ TiDBをConfluentPlatformと統合するには、TiCDCコンポーネントをAvr
 
 TiDBがConfluentPlatformと統合された後、以下の手順例に従ってデータ複製をテストできます。
 
-1.  TiDBクラスターに`testdb`のデータベースを作成します。
+1.  TiDBクラスタに`testdb`のデータベースを作成します。
 
     {{< copyable "" >}}
 
@@ -105,7 +105,7 @@ TiDBがConfluentPlatformと統合された後、以下の手順例に従って�
     );
     ```
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > データベース名またはテーブル名を変更する必要がある場合は、それに応じて`jdbc-sink-connector.json`の`topics`を変更してください。
 

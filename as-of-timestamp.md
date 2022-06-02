@@ -1,13 +1,13 @@
 ---
-title: Read Historical Data Using the `AS OF TIMESTAMP` Clause
-summary: Learn how to read historical data using the `AS OF TIMESTAMP` statement clause.
+title: `ASOFTIMESTAMP`句を使用して履歴データを読み取る
+summary: `ASOFTIMESTAMP`ステートメント句を使用して履歴データを読み取る方法を学びます。
 ---
 
 # <code>AS OF TIMESTAMP</code>句を使用して履歴データを読み取る {#read-historical-data-using-the-code-as-of-timestamp-code-clause}
 
 このドキュメントでは、 `AS OF TIMESTAMP`句を使用して[古い読み取り](/stale-read.md)機能を実行し、TiDBの履歴データを読み取る方法について説明します。これには、履歴データを保存するための具体的な使用例と戦略が含まれます。
 
-> <strong>警告：</strong>
+> **警告：**
 >
 > 現在、StaleReadをTiFlashと一緒に使用することはできません。 SQLクエリに`AS OF TIMESTAMP`句が含まれていて、TiDBがTiFlashレプリカからデータを読み取る可能性がある場合、 `ERROR 1105 (HY000): stale requests require tikv backend`のようなメッセージでエラーが発生する可能性があります。
 >
@@ -18,7 +18,7 @@ summary: Learn how to read historical data using the `AS OF TIMESTAMP` statement
 
 TiDBは、特別なクライアントやドライバーを必要とせずに、 `AS OF TIMESTAMP`のSQL句である標準SQLインターフェイスを介した履歴データの読み取りをサポートします。データが更新または削除された後、このSQLインターフェイスを使用して、更新または削除前の履歴データを読み取ることができます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 履歴データを読み取る場合、TiDBは、現在のテーブル構造が異なっていても、古いテーブル構造のデータを返します。
 
@@ -30,7 +30,7 @@ TiDBは、特別なクライアントやドライバーを必要とせずに、 
 -   [`START TRANSACTION READ ONLY AS OF TIMESTAMP`](/sql-statements/sql-statement-start-transaction.md)
 -   [`SET TRANSACTION READ ONLY AS OF TIMESTAMP`](/sql-statements/sql-statement-set-transaction.md)
 
-正確な時点を指定する場合は、日時値を設定するか、 `AS OF TIMESTAMP`句で時刻関数を使用できます。日時の形式は「2016-10-0816：45：26.999」のようにミリ秒が最小時間単位ですが、ほとんどの場合、「2016-10-08 16：45：26.999」のように、秒の時間単位で日時を指定できます。 -10-0816:45:26&quot;。 `NOW(3)`関数を使用して、現在の時刻をミリ秒まで取得することもできます。数秒前のデータを読みたい場合は、 `NOW() - INTERVAL 10 SECOND`などの式を使用することを<strong>お勧め</strong>します。
+正確な時点を指定する場合は、日時値を設定するか、 `AS OF TIMESTAMP`句で時刻関数を使用できます。日時の形式は「2016-10-0816：45：26.999」のようにミリ秒が最小時間単位ですが、ほとんどの場合、「2016-10-08 16：45：26.999」のように、秒の時間単位で日時を指定できます。 -10-0816:45:26&quot;。 `NOW(3)`関数を使用して、現在の時刻をミリ秒まで取得することもできます。数秒前のデータを読みたい場合は、 `NOW() - INTERVAL 10 SECOND`などの式を使用することを**お勧め**します。
 
 時間範囲を指定する場合は、句で`TIDB_BOUNDED_STALENESS()`関数を使用できます。この関数を使用すると、TiDBは指定された時間範囲内で適切なタイムスタンプを選択します。 「適切」とは、このタイムスタンプより前に開始され、アクセスされたレプリカでコミットされていないトランザクションがないことを意味します。つまり、TiDBはアクセスされたレプリカで読み取り操作を実行でき、読み取り操作はブロックされません。この関数を呼び出すには、 `TIDB_BOUNDED_STALENESS(t1, t2)`を使用する必要があります。 `t1`と`t2`は時間範囲の両端であり、日時値または時間関数のいずれかを使用して指定できます。
 
@@ -41,7 +41,7 @@ TiDBは、特別なクライアントやドライバーを必要とせずに、 
 -   `AS OF TIMESTAMP TIDB_BOUNDED_STALENESS('2016-10-08 16:45:26', '2016-10-08 16:45:29')` ：2016年10月8日の16:45:26から16:45:29の時間範囲内で可能な限り新しいデータを読み取るようにTiDBに指示します。
 -   `AS OF TIMESTAMP TIDB_BOUNDED_STALENESS(NOW() - INTERVAL 20 SECOND, NOW())`秒前から現在までの時間範囲内で可能な限り新しいデータを読み取るようにTiDBに指示します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > タイムスタンプの指定に加えて、 `AS OF TIMESTAMP`句の最も一般的な使用法は、数秒前のデータを読み取ることです。このアプローチを使用する場合は、5秒より古い履歴データを読み取ることをお勧めします。
 >
@@ -149,7 +149,7 @@ select * from t as of timestamp '2021-05-26 16:45:26';
 3 rows in set (0.00 sec)
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 1つの`SELECT`ステートメントを使用して複数のテーブルを読み取る場合は、TIMESTAMPEXPRESSIONの形式が一貫していることを確認する必要があります。たとえば、 `select * from t as of timestamp NOW() - INTERVAL 2 SECOND, c as of timestamp NOW() - INTERVAL 2 SECOND;` 。さらに、 `SELECT`ステートメントで関連するテーブルの`AS OF`情報を指定する必要があります。それ以外の場合、 `SELECT`ステートメントはデフォルトで最新のデータを読み取ります。
 
@@ -205,7 +205,7 @@ select * from t;
 3 rows in set (0.00 sec)
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > ステートメント`START TRANSACTION READ ONLY AS OF TIMESTAMP`でトランザクションを開始する場合、それは読み取り専用トランザクションです。このトランザクションでは、書き込み操作は拒否されます。
 
@@ -269,6 +269,6 @@ select * from t;
 3 rows in set (0.00 sec)
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > ステートメント`SET TRANSACTION READ ONLY AS OF TIMESTAMP`でトランザクションを開始する場合、それは読み取り専用トランザクションです。このトランザクションでは、書き込み操作は拒否されます。

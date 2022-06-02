@@ -1,6 +1,6 @@
 ---
-title: TiDB Lightning Error Resolution
-summary: Learn how to resolve type conversion and duplication errors during data import.
+title: TiDBLightningエラー解決
+summary: データのインポート中に型変換と重複エラーを解決する方法を学びます。
 ---
 
 # TiDBLightningエラー解決 {#tidb-lightning-error-resolution}
@@ -11,11 +11,15 @@ v5.4.0以降では、無効な型変換や一意キーの競合などのエラ�
 
 ## タイプエラー {#type-error}
 
-`lightning.max-error`構成を使用して、データ型に関連するエラーの許容度を上げることができます。この構成が<em>N</em>に設定されている場合、TiDB Lightningは、データソースが存在する前に最大<em>N個</em>のエラーを許可してスキップします。デフォルト値の`0`は、エラーが許可されないことを意味します。
+> **警告：**
+>
+> TiDB Lightningタイプのエラー（ `lightning.max-error` ）は実験的機能です。実稼働環境でのエラーを解決するためだけに依存することはお勧めし**ません**。
+
+`lightning.max-error`構成を使用して、データ型に関連するエラーの許容度を上げることができます。この構成が*N*に設定されている場合、TiDB Lightningは、データソースが存在する前に最大<em>N個</em>のエラーを許可してスキップします。デフォルト値の`0`は、エラーが許可されないことを意味します。
 
 これらのエラーはデータベースに記録されます。インポートが完了したら、データベース内のエラーを表示して手動で処理できます。詳細については、 [エラーレポート](#error-report)を参照してください。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```toml
 [lightning]
@@ -45,7 +49,7 @@ max-error = 0
 
 ローカルバックエンドモードでは、TiDB Lightningは、最初にデータをKVペアに変換し、ペアをバッチでTiKVに取り込むことにより、データをインポートします。 TiDBバックエンドモードとは異なり、重複する行はタスクが終了するまで検出されません。したがって、ローカルバックエンドモードでの重複エラーは`max-error`によって制御されるのではなく、別の構成`duplicate-resolution`によって制御されます。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```toml
 [tikv-importer]
@@ -54,33 +58,19 @@ duplicate-resolution = 'none'
 
 `duplicate-resolution`の値オプションは次のとおりです。
 
--   <strong>&#39;none&#39;</strong> ：重複データを検出しません。一意/主キーの競合が存在する場合、インポートされたテーブルには一貫性のないデータとインデックスがあり、チェックサムチェックに失敗します。
--   <strong>&#39;record&#39;</strong> ：重複データを検出しますが、修正は試みません。一意/主キーの競合が存在する場合、インポートされたテーブルには一貫性のないデータとインデックスがあり、チェックサムをスキップして競合エラーの数を報告します。
--   <strong>&#39;remove&#39;</strong> ：重複データを検出し、重複した<em>すべての</em>行を削除します。インポートされたテーブルは一貫性がありますが、関連する行は無視され、手動で追加し直す必要があります。
+-   **&#39;none&#39;** ：重複データを検出しません。一意/主キーの競合が存在する場合、インポートされたテーブルには一貫性のないデータとインデックスがあり、チェックサムチェックに失敗します。
+-   **&#39;record&#39;** ：重複データを検出しますが、修正は試みません。一意/主キーの競合が存在する場合、インポートされたテーブルには一貫性のないデータとインデックスがあり、チェックサムをスキップして競合エラーの数を報告します。
+-   **&#39;remove&#39;** ：重複データを検出し、重複した*すべての*行を削除します。インポートされたテーブルは一貫性がありますが、関連する行は無視され、手動で追加し直す必要があります。
 
 TiDB Lightningの重複解決では、データソース内でのみ重複データを検出できます。この機能は、TiDBLightningを実行する前に既存のデータとの競合を処理できません。
 
 ## エラーレポート {#error-report}
 
-インポート中にTiDBLightningでエラーが発生した場合、TiDB Lightningは、終了時に、端末とログファイルの両方にこれらのエラーに関する統計の要約を出力します。
-
--   ターミナルのエラーレポートは、次の表のようになります。
-
-    |   | エラータイプ  | エラーカウント | エラーデータテーブル                              |
-    | - | ------- | ------- | --------------------------------------- |
-    | 1 | データ・タイプ | 1000    | `lightning_task_info` 。 `type_error_v1` |
-
--   TiDBLightningログファイルのエラーレポートは次のとおりです。
-
-    ```shell
-    [2022/03/13 05:33:57.736 +08:00] [WARN] [errormanager.go:459] ["Detect 1000 data type errors in total, please refer to table `lightning_task_info`.`type_error_v1` for more details"]
-    ```
-
-すべてのエラーは、ダウンストリームTiDBクラスターの`lightning_task_info`のデータベースのテーブルに書き込まれます。インポートが完了した後、エラーデータが収集された場合は、データベース内のエラーを表示して手動で処理できます。
+すべてのエラーは、ダウンストリームTiDBクラスタの`lightning_task_info`のデータベースのテーブルに書き込まれます。インポートが完了したら、データベース内のエラーを表示して手動で処理できます。
 
 `lightning.task-info-schema-name`を設定することにより、データベース名を変更できます。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```toml
 [lightning]
@@ -129,9 +119,9 @@ CREATE TABLE conflict_error_v1 (
 **syntax_error_v1** is intended to record syntax error from files. It is not implemented yet.
 -->
 
-<strong>type_error_v1</strong>は、 `max-error`の構成によって管理される[タイプエラー](#type-error)すべてを記録します。エラーごとに1つの行があります。
+**type_error_v1**は、 `max-error`の構成によって管理される[タイプエラー](#type-error)すべてを記録します。エラーごとに1つの行があります。
 
-<strong>conflict_error_v1</strong>は[ローカルバックエンドでの一意/主キーの競合](#duplicate-resolution-in-local-backend-mode)すべてを記録します。競合のペアごとに2つの行があります。
+**conflict_error_v1**は[ローカルバックエンドでの一意/主キーの競合](#duplicate-resolution-in-local-backend-mode)すべてを記録します。競合のペアごとに2つの行があります。
 
 | 桁            | 構文 | タイプ | 対立 | 説明                                                                            |
 | ------------ | -- | --- | -- | ----------------------------------------------------------------------------- |
@@ -150,7 +140,7 @@ CREATE TABLE conflict_error_v1 (
 | raw_handle   |    |     | ✓✓ | 競合する行の行ハンドル                                                                   |
 | raw_row      |    |     | ✓✓ | 競合する行のエンコードされた値                                                               |
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > エラーレポートは、取得するのが非効率的な行/列番号ではなく、ファイルオフセットを記録します。次のコマンドを使用して、バイト位置の近くにすばやくジャンプできます（例として183を使用）。
 >

@@ -1,6 +1,6 @@
 ---
-title: ADMIN CANCEL DDL | TiDB SQL Statement Reference
-summary: An overview of the usage of ADMIN CANCEL DDL for the TiDB database.
+title: ADMIN CANCEL DDL | TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのADMINCANCELDDLの使用法の概要。
 category: reference
 ---
 
@@ -30,9 +30,9 @@ ADMIN CANCEL DDL JOBS job_id [, job_id] ...;
 
 操作がジョブのキャンセルに失敗した場合、特定の理由が表示されます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> -   この操作のみがDDLジョブをキャンセルできます。他のすべての操作と環境の変更（マシンの再起動やクラスターの再起動など）では、これらのジョブをキャンセルできません。
+> -   この操作のみがDDLジョブをキャンセルできます。他のすべての操作と環境の変更（マシンの再起動やクラスタの再起動など）では、これらのジョブをキャンセルできません。
 > -   この操作により、複数のDDLジョブを同時にキャンセルできます。 `ADMIN SHOW DDL JOBS`ステートメントを使用してDDLジョブのIDを取得できます。
 > -   キャンセルしたいジョブが終了した場合、キャンセル操作は失敗します。
 

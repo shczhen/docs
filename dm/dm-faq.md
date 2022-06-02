@@ -1,10 +1,9 @@
 ---
-title: TiDB Data Migration FAQ
-summary: Learn about frequently asked questions (FAQs) about TiDB Data Migration (DM).
-aliases: ['/docs/tidb-data-migration/dev/faq/']
+title: TiDBデータ移行FAQ
+summary: TiDBデータ移行（DM）に関するよくある質問（FAQ）について説明します。
 ---
 
-# TiDBデータ移行に関するFAQ {#tidb-data-migration-faq}
+# TiDBデータ移行FAQ {#tidb-data-migration-faq}
 
 このドキュメントは、TiDBデータ移行（DM）に関するよくある質問（FAQ）をまとめたものです。
 
@@ -16,8 +15,8 @@ Alibaba Cloud RDSに主キーがないアップストリームテーブルの場
 
 互換性のない既知の問題は次のとおりです。
 
--   <strong>Alibaba Cloud RDS</strong>では、主キーのないアップストリームテーブルの場合、そのbinlogに非表示の主キー列が含まれているため、元のテーブル構造と矛盾しています。
--   <strong>HUAWEI Cloud RDS</strong>では、binlogファイルの直接読み取りはサポートされていません。詳細については、 [HUAWEI Cloud RDSはBinlogバックアップファイルを直接読み取ることができますか？](https://support.huaweicloud.com/en-us/rds_faq/rds_faq_0210.html)を参照してください。
+-   **Alibaba Cloud RDS**では、主キーのないアップストリームテーブルの場合、そのbinlogに非表示の主キー列が含まれているため、元のテーブル構造と矛盾しています。
+-   **HUAWEI Cloud RDS**では、binlogファイルの直接読み取りはサポートされていません。詳細については、 [HUAWEI Cloud RDSはBinlogバックアップファイルを直接読み取ることができますか？](https://support.huaweicloud.com/en-us/rds_faq/rds_faq_0210.html)を参照してください。
 
 ## タスク構成のブロックと許可リストの正規表現は、 <code>non-capturing (?!)</code>サポートしていますか？ {#does-the-regular-expression-of-the-block-and-allow-list-in-the-task-configuration-support-code-non-capturing-code}
 
@@ -31,7 +30,7 @@ DMは、複数のDDL変更操作を含む単一のステートメントを1つ�
 
 TiDBでサポートされていないDDLステートメントに遭遇した場合は、dmctlを使用して手動で処理する必要があります（DDLステートメントをスキップするか、指定されたDDLステートメントに置き換えます）。詳細については、 [失敗したDDLステートメントを処理する](/dm/handle-failed-ddl-statements.md)を参照してください。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 現在、TiDBはMySQLがサポートするすべてのDDLステートメントと互換性があるわけではありません。 [MySQLの互換性](/mysql-compatibility.md#ddl)を参照してください。
 
@@ -79,7 +78,7 @@ TiDBでサポートされていないDDLステートメントに遭遇した場�
 
 実行中のデータ移行タスクにテーブルを追加する必要がある場合は、タスクの段階に応じて次の方法で対処できます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 既存のデータ移行タスクへのテーブルの追加は複雑であるため、この操作は必要な場合にのみ実行することをお勧めします。
 
@@ -122,13 +121,13 @@ MySQLはエクスポート用のスナップショットを指定できないた
 以下のパラメータをデフォルトの67108864（64M）より大きい値に設定します。
 
 -   TiDBサーバーのグローバル変数： `max_allowed_packet` 。
--   タスク構成ファイルの構成項目： `target-database.max-allowed-packet` 。詳しくは[DM高度なタスク構成ファイル](/dm/task-configuration-file-full.md)をご覧ください。
+-   タスク構成ファイルの構成項目： `target-database.max-allowed-packet` 。詳しくは[DM高度なタスクConfiguration / コンフィグレーションファイル](/dm/task-configuration-file-full.md)をご覧ください。
 
-## <code>Error 1054: Unknown column &#39;binlog_gtid&#39; in &#39;field list&#39;</code> ？ {#how-to-handle-the-error-code-error-1054-unknown-column-binlog-gtid-in-field-list-code-that-occurs-when-existing-dm-migration-tasks-of-an-dm-1-0-cluster-are-running-on-a-dm-2-0-or-newer-cluster}
+## エラー1054の処理方法：DM1.0クラスタの既存のDM移行タスクがDM2.0以降のクラスタで実行されているときに発生する<code>Error 1054: Unknown column &#39;binlog_gtid&#39; in &#39;field list&#39;</code> ？ {#how-to-handle-the-error-code-error-1054-unknown-column-binlog-gtid-in-field-list-code-that-occurs-when-existing-dm-migration-tasks-of-an-dm-1-0-cluster-are-running-on-a-dm-2-0-or-newer-cluster}
 
-DM v2.0以降、DM 1.0クラスターのタスク構成ファイルを使用して`start-task`コマンドを直接実行し、増分データ複製を続行すると、エラー`Error 1054: Unknown column 'binlog_gtid' in 'field list'`が発生します。
+DM v2.0以降、DM 1.0クラスタのタスク構成ファイルを使用して`start-task`コマンドを直接実行し、増分データ複製を続行すると、エラー`Error 1054: Unknown column 'binlog_gtid' in 'field list'`が発生します。
 
-このエラーは[DM1.0クラスターのDM移行タスクをDM2.0クラスターに手動でインポートする](/dm/manually-upgrade-dm-1.0-to-2.0.md)で処理できます。
+このエラーは[DM1.0クラスタのDM移行タスクをDM2.0クラスタに手動でインポートする](/dm/manually-upgrade-dm-1.0-to-2.0.md)で処理できます。
 
 ## TiUPがDMの一部のバージョン（v2.0.0-hotfixなど）のデプロイに失敗するのはなぜですか？ {#why-does-tiup-fail-to-deploy-some-versions-of-dm-for-example-v2-0-0-hotfix}
 
@@ -188,7 +187,7 @@ if the DDL is not needed, you can use a filter rule with \"*\" schema-pattern to
 
 このタイプのエラーの理由は、TiDBパーサーが`ALTER EVENT`などのアップストリームによって送信されたDDLステートメントを解析できないため、 `sql-skip`が期待どおりに有効にならないためです。構成ファイルに[binlogイベントフィルター](/dm/dm-key-features.md#binlog-event-filter)を追加して、これらのステートメントをフィルター処理し、 `schema-pattern: "*"`を設定できます。 DM v2.0.1以降、DMは`EVENT`に関連するステートメントを事前にフィルタリングします。
 
-DM v6.0以降、 `sql-skip`と`handle-error`は`binlog`に置き換えられます。この問題を回避するには、代わりに`binlog`コマンドを使用できます。
+DM v2.0以降、 `handle-error`が`sql-skip`に置き換わります。この問題を回避するには、代わりに`handle-error`を使用できます。
 
 ## DMが複製しているときに、 <code>REPLACE</code>ステートメントがダウンストリームに表示され続けるのはなぜですか？ {#why-do-code-replace-code-statements-keep-appearing-in-the-downstream-when-dm-is-replicating}
 
@@ -198,7 +197,7 @@ DM-workerログファイルを確認して、 `change count`を含む行を検�
 
 ## DM v2.0では、タスク中にDMが再起動すると、完全なインポートタスクが失敗するのはなぜですか？ {#in-dm-v2-0-why-does-the-full-import-task-fail-if-dm-restarts-during-the-task}
 
-DM v2.0.1以前のバージョンでは、完全なインポートが完了する前にDMが再起動すると、アップストリームデータソースとDMワーカーノード間のバインディングが変更される可能性があります。たとえば、ダンプ・ユニットの中間データがDM-workerノードAにあるが、ロード・ユニットがDM-workerノードBによって実行されているため、操作が失敗する可能性があります。
+DM v2.0.1以前のバージョンでは、完全なインポートが完了する前にDMが再起動すると、アップストリームデータソースとDMワーカーノード間のバインディングが変更される可能性があります。たとえば、ダンプユニットの中間データがDM-workerノードAにあるが、ロードユニットがDM-workerノードBによって実行されているため、操作が失敗する可能性があります。
 
 この問題に対する2つの解決策は次のとおりです。
 
@@ -208,7 +207,7 @@ DM v2.0.1以前のバージョンでは、完全なインポートが完了す�
     2.  エクスポートされたデータのディレクトリ内のすべてのファイルを削除します。
     3.  dmctlを使用してタスクを削除し、コマンド`start-task --remove-meta`を実行して新しいタスクを作成します。
 
-    新しいタスクの開始後、冗長なDMワーカーノードがないことを確認し、完全なインポート中にDMクラスターを再起動またはアップグレードしないようにすることをお勧めします。
+    新しいタスクの開始後、冗長なDMワーカーノードがないことを確認し、完全なインポート中にDMクラスタを再起動またはアップグレードしないようにすることをお勧めします。
 
 -   データ量が多い（1 TBを超える）場合は、次の手順を実行します。
 
@@ -230,13 +229,13 @@ DM v2.0.1以前のバージョンでは、完全なインポートが完了す�
 1.  完全な移行タスクが完了する前に必要なbinlogファイルを誤ってパージしないように、アップストリームMySQLデータベースの値を`expire_logs_days`に増やします。データ量が多い場合は、餃子とTiDB-Lightningを同時に使用してタスクを高速化することをお勧めします。
 2.  このタスクのリレーログ機能を有効にして、binlogの位置が削除されてもDMがリレーログからデータを読み取れるようにします。
 
-## クラスターがTiUPv1.3.0またはv1.3.1を使用してデプロイされている場合、DMクラスターディスプレイのGrafanaダッシュボードがダッシュボードの<code>failed to fetch dashboard</code>たのはなぜですか？ {#why-does-the-grafana-dashboard-of-a-dm-cluster-display-code-failed-to-fetch-dashboard-code-if-the-cluster-is-deployed-using-tiup-v1-3-0-or-v1-3-1}
+## クラスタがTiUPv1.3.0またはv1.3.1を使用してデプロイされている場合、DMクラスタディスプレイのGrafanaダッシュボードがダッシュボードの<code>failed to fetch dashboard</code>たのはなぜですか？ {#why-does-the-grafana-dashboard-of-a-dm-cluster-display-code-failed-to-fetch-dashboard-code-if-the-cluster-is-deployed-using-tiup-v1-3-0-or-v1-3-1}
 
 これはTiUPの既知のバグであり、TiUPv1.3.2で修正されています。この問題に対する2つの解決策は次のとおりです。
 
 -   解決策1：
     1.  コマンド`tiup update --self && tiup update dm`を使用して、TiUPを新しいバージョンにアップグレードします。
-    2.  クラスタ内のGrafanaノードをスケールインしてからスケールアウトし、Grafanaサービスを再起動します。
+    2.  クラスタのGrafanaノードをスケールインしてからスケールアウトし、Grafanaサービスを再起動します。
 -   解決策2：
     1.  `deploy/grafana-$port/bin/public`のフォルダをバックアップします。
     2.  [TiUPDMオフラインパッケージ](https://download.pingcap.org/tidb-dm-v2.0.1-linux-amd64.tar.gz)をダウンロードして解凍します。
@@ -249,7 +248,7 @@ DM v2.0.1以前のバージョンでは、完全なインポートが完了す�
 これはDMの既知のバグであり、DMv2.0.2で修正されています。このバグは、次の2つの条件が同時に完全に満たされたときにトリガーされます。
 
 1.  ソース構成ファイルでは、パラメーター`enable-relay`と`enable-gtid`が`true`に設定されています。
-2.  アップストリームデータベースは<strong>MySQLセカンダリデータベース</strong>です。コマンド`show binlog events in '<newest-binlog>' limit 2`を実行してデータベースの`previous_gtids`を照会すると、次の例のように、結果は連続しません。
+2.  アップストリームデータベースは**MySQLセカンダリデータベース**です。コマンド`show binlog events in '<newest-binlog>' limit 2`を実行してデータベースの`previous_gtids`を照会すると、次の例のように、結果は連続しません。
 
 ```
 mysql> show binlog events in 'mysql-bin.000005' limit 2;
@@ -353,7 +352,7 @@ query-status test
 
 DM v2.0以降のバージョンでは、 `heartbeat`機能はデフォルトで無効になっています。タスク構成ファイルでこの機能を有効にすると、高可用性機能が妨げられます。この問題を解決するには、タスク構成ファイルで`enable-heartbeat`を`false`に設定して、 `heartbeat`機能を無効にしてから、タスク構成ファイルを再ロードします。 DMは、以降のリリースで`heartbeat`機能を強制的に無効にします。
 
-## DMマスターが再起動した後、クラスターへの参加に失敗し、DMが「埋め込みetcdの開始に失敗しました。RawCause：メンバーxxxはすでにブートストラップされています」というエラーを報告するのはなぜですか？ {#why-does-a-dm-master-fail-to-join-the-cluster-after-it-restarts-and-dm-reports-the-error-fail-to-start-embed-etcd-rawcause-member-xxx-has-already-been-bootstrapped}
+## DMマスターが再起動した後、クラスタへの参加に失敗し、DMが「埋め込みetcdの開始に失敗しました。RawCause：メンバーxxxはすでにブートストラップされています」というエラーを報告するのはなぜですか？ {#why-does-a-dm-master-fail-to-join-the-cluster-after-it-restarts-and-dm-reports-the-error-fail-to-start-embed-etcd-rawcause-member-xxx-has-already-been-bootstrapped}
 
 DMマスターが起動すると、DMはetcd情報を現在のディレクトリに記録します。 DMマスターの再起動後にディレクトリが変更された場合、DMはetcd情報にアクセスできないため、再起動は失敗します。
 
@@ -363,11 +362,11 @@ DMマスターが起動すると、DMはetcd情報を現在のディレクトリ
 
 dmctl executeコマンドを使用すると、DMマスターへの接続が失敗する場合があり（コマンドでパラメーター値`--master-addr`を指定した場合でも）、エラーメッセージは`RawCause: context deadline exceeded, Workaround: please check your network connection.`のようになります。ただし、 `telnet <master-addr>`などのコマンドを使用してネットワーク接続を確認した後、例外は見つかりません。
 
-この場合、環境変数`https_proxy`を確認できます（ <strong>https</strong>であることに注意してください）。この変数が構成されている場合、dmctlは`https_proxy`で指定されたホストとポートを自動的に接続します。ホストに対応する転送サービスがない場合、接続は失敗し`proxy` 。
+この場合、環境変数`https_proxy`を確認できます（ **https**であることに注意してください）。この変数が構成されている場合、dmctlは`https_proxy`で指定されたホストとポートを自動的に接続します。ホストに対応する転送サービスがない場合、接続は失敗し`proxy` 。
 
 この問題を解決するには、 `https_proxy`が必須かどうかを確認してください。そうでない場合は、設定をキャンセルしてください。それ以外の場合は、元のdmctlコマンドの前に環境変数設定`https_proxy="" ./dmctl --master-addr "x.x.x.x:8261"`を追加します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `proxy`に関連する環境変数には、 `http_proxy` 、および`https_proxy`が含まれ`no_proxy` 。上記の手順を実行しても接続エラーが続く場合は、 `http_proxy`と`no_proxy`の構成パラメーターが正しいかどうかを確認してください。
 

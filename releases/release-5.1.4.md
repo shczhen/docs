@@ -1,5 +1,5 @@
 ---
-title: TiDB 5.1.4 Release Notes
+title: TiDB5.1.4リリースノート
 ---
 
 # TiDB5.1.4リリースノート {#tidb-5-1-4-release-notes}
@@ -53,7 +53,7 @@ TiDBバージョン：5.1.4
         -   多くのテーブルを複製するときの複製待ち時間を短縮する[＃3900](https://github.com/pingcap/tiflow/issues/3900)
         -   インクリメンタルスキャンの残り時間を監視するためのメトリックを追加する[＃2985](https://github.com/pingcap/tiflow/issues/2985)
         -   「EventFeed再試行率制限」ログの数を減らす[＃4006](https://github.com/pingcap/tiflow/issues/4006)
-        -   `no owner alert` `buffer sink total row` [＃4054](https://github.com/pingcap/tiflow/issues/4054)など、 [＃1606](https://github.com/pingcap/tiflow/issues/1606)と`mounter row`の監視メトリックとアラートをさらに追加し`table sink total row`
+        -   `no owner alert` `buffer sink total row` [＃4054](https://github.com/pingcap/tiflow/issues/4054)など、 [＃1606](https://github.com/pingcap/tiflow/issues/1606)と`mounter row`のモニタリング指標とアラートをさらに追加し`table sink total row`
         -   TiKVリロードのレート制限制御を最適化して、チェンジフィード初期化中のgPRC輻輳を低減します[＃3110](https://github.com/pingcap/ticdc/issues/3110)
         -   TiKVストアがダウンしたときにKVクライアントが回復する時間を短縮する[＃3191](https://github.com/pingcap/tiflow/issues/3191)
 

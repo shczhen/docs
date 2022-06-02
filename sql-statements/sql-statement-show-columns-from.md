@@ -1,7 +1,6 @@
 ---
-title: SHOW [FULL] COLUMNS FROM | TiDB SQL Statement Reference
-summary: An overview of the usage of SHOW [FULL] COLUMNS FROM for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-columns-from/','/docs/dev/reference/sql/statements/show-columns-from/']
+title: [フル]列を表示| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのSHOW[FULL]COLUMNSFROMの使用法の概要。
 ---
 
 # [フル]列を表示 {#show-full-columns-from}
@@ -10,49 +9,49 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-columns-from/','/docs/dev
 
 ステートメント`SHOW [FULL] FIELDS FROM <table_name>` 、および`DESCRIBE <table_name>`は、この`EXPLAIN <table_name>`のエイリアス`DESC <table_name>` 。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `DESC TABLE <table_name>` 、および`DESCRIBE TABLE <table_name>`は、上記のステートメントと`EXPLAIN TABLE <table_name>`ではありません。それらは[`DESC SELECT * FROM &#x3C;table_name>`](/sql-statements/sql-statement-explain.md)のエイリアスです。
 
 ## あらすじ {#synopsis}
 
-<strong>ShowStmt：</strong>
+**ShowStmt：**
 
 ![ShowStmt](/media/sqlgram/ShowStmt.png)
 
-<strong>ShowColumnsFilterable：</strong>
+**ShowColumnsFilterable：**
 
 ![ShowColumnsFilterable](/media/sqlgram/ShowColumnsFilterable.png)
 
-<strong>OptFull：</strong>
+**OptFull：**
 
 ![OptFull](/media/sqlgram/OptFull.png)
 
-<strong>FieldsOrColumns：</strong>
+**FieldsOrColumns：**
 
 ![FieldsOrColumns](/media/sqlgram/FieldsOrColumns.png)
 
-<strong>ShowTableAliasOpt：</strong>
+**ShowTableAliasOpt：**
 
 ![ShowTableAliasOpt](/media/sqlgram/ShowTableAliasOpt.png)
 
-<strong>FromOrIn：</strong>
+**FromOrIn：**
 
 ![FromOrIn](/media/sqlgram/FromOrIn.png)
 
-<strong>TableName：</strong>
+**TableName：**
 
 ![TableName](/media/sqlgram/TableName.png)
 
-<strong>ShowDatabaseNameOpt：</strong>
+**ShowDatabaseNameOpt：**
 
 ![ShowDatabaseNameOpt](/media/sqlgram/ShowDatabaseNameOpt.png)
 
-<strong>DBName：</strong>
+**DBName：**
 
 ![DBName](/media/sqlgram/DBName.png)
 
-<strong>ShowLikeOrWhereOpt：</strong>
+**ShowLikeOrWhereOpt：**
 
 ![ShowLikeOrWhereOpt](/media/sqlgram/ShowLikeOrWhereOpt.png)
 

@@ -1,11 +1,17 @@
 ---
-title: SHOW CREATE PLACEMENT POLICY
-summary: The usage of SHOW CREATE PLACEMENT POLICY in TiDB.
+title: プレースメントポリシーの作成を表示
+summary: TiDBでのSHOWCREATEPLACEMENTPOLICYの使用法。
 ---
 
 # プレースメントポリシーの作成を表示 {#show-create-placement-policy}
 
-`SHOW CREATE PLACEMENT POLICY`は、配置ポリシーの定義を示すために使用されます。これを使用して、配置ポリシーの現在の定義を確認し、別のTiDBクラスターで再作成できます。
+> **警告：**
+>
+> SQLの配置ルールは実験的機能です。 GAの前に構文が変更される可能性があり、バグもある可能性があります。
+>
+> リスクを理解している場合は、 `SET GLOBAL tidb_enable_alter_placement = 1;`を実行することでこの実験機能を有効にできます。
+
+`SHOW CREATE PLACEMENT POLICY`は、配置ポリシーの定義を示すために使用されます。これを使用して、配置ポリシーの現在の定義を確認し、別のTiDBクラスタで再作成できます。
 
 ## あらすじ {#synopsis}
 
@@ -24,7 +30,7 @@ PolicyName ::=
 ```sql
 CREATE PLACEMENT POLICY p1 PRIMARY_REGION="us-east-1" REGIONS="us-east-1,us-west-1" FOLLOWERS=4;
 CREATE TABLE t1 (a INT) PLACEMENT POLICY=p1;
-SHOW CREATE PLACEMENT POLICY p1\G;
+SHOW CREATE PLACEMENT POLICY p1\G
 ```
 
 ```
@@ -32,9 +38,9 @@ Query OK, 0 rows affected (0.08 sec)
 
 Query OK, 0 rows affected (0.10 sec)
 
-***************************[ 1. row ]***************************
-Policy        | p1
-Create Policy | CREATE PLACEMENT POLICY `p1` PRIMARY_REGION="us-east-1" REGIONS="us-east-1,us-west-1" FOLLOWERS=4
+*************************** 1. row ***************************
+       Policy: p1
+Create Policy: CREATE PLACEMENT POLICY `p1` PRIMARY_REGION="us-east-1" REGIONS="us-east-1,us-west-1" FOLLOWERS=4
 1 row in set (0.00 sec)
 ```
 

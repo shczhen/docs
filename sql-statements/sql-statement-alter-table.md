@@ -1,7 +1,6 @@
 ---
-title: ALTER TABLE | TiDB SQL Statement Reference
-summary: An overview of the usage of ALTER TABLE for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-alter-table/','/docs/dev/reference/sql/statements/alter-table/']
+title: ALTER TABLE | TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのALTERTABLEの使用法の概要。
 ---
 
 # 他の机 {#alter-table}
@@ -42,8 +41,7 @@ AlterTableSpec ::=
 |   ( 'WITH' | 'WITHOUT' ) 'VALIDATION'
 |   'SECONDARY_LOAD'
 |   'SECONDARY_UNLOAD'
-|   ( 'AUTO_INCREMENT' | 'AUTO_ID_CACHE' | 'AUTO_RANDOM_BASE' | 'SHARD_ROW_ID_BITS' ) EqOpt LengthNum
-|   ( 'CACHE' | 'NOCACHE' )
+| ( 'AUTO_INCREMENT' | 'AUTO_ID_CACHE' | 'AUTO_RANDOM_BASE' | 'SHARD_ROW_ID_BITS' ) EqOpt LengthNum
 ```
 
 ## 例 {#examples}
@@ -83,7 +81,7 @@ EXPLAIN SELECT * FROM t1 WHERE c1 = 3;
 3 rows in set (0.00 sec)
 ```
 
-ステートメント[`ALTER TABLE .. ADD INDEX`](/sql-statements/sql-statement-add-index.md)を使用して、テーブルt1にインデックスを追加できます。 `EXPLAIN`は、元のクエリがインデックス範囲スキャンを使用していることを確認します。これはより効率的です。
+ステートメント[`ALTER TABLE .. ADD INDEX`](/sql-statements/sql-statement-add-index.md)を使用して、テーブルt1にインデックスを追加できます。 `EXPLAIN`は、元のクエリがインデックス範囲スキャンを使用することを確認します。これはより効率的です。
 
 {{< copyable "" >}}
 
@@ -128,7 +126,7 @@ ALTER TABLE t1 ADD INDEX (c1), ALGORITHM=INSTANT;
 ERROR 1846 (0A000): ALGORITHM=INSTANT is not supported. Reason: Cannot alter table by INSTANT. Try ALGORITHM=INPLACE.
 ```
 
-ただし、 `INPLACE`操作に`ALGORITHM=COPY`アサーションを使用すると、エラーではなく警告が生成されます。これは、TiDBがアサーションを<em>このアルゴリズム以上として解釈するためです</em>。 TiDBが使用するアルゴリズムはMySQLとは異なる可能性があるため、この動作の違いはMySQLの互換性に役立ちます。
+ただし、 `INPLACE`操作に`ALGORITHM=COPY`アサーションを使用すると、エラーではなく警告が生成されます。これは、TiDBがアサーションを*このアルゴリズム以上として解釈するためです*。 TiDBが使用するアルゴリズムはMySQLとは異なる可能性があるため、この動作の違いはMySQLの互換性に役立ちます。
 
 {{< copyable "" >}}
 
@@ -163,8 +161,6 @@ Query OK, 0 rows affected, 1 warning (0.25 sec)
 -   一部のデータ型（たとえば、一部のTIME、Bit、Set、Enum、およびJSON型）の変更は、TiDBとMySQL間の`CAST`関数の動作の互換性の問題のためにサポートされていません。
 
 -   空間データ型はサポートされていません。
-
--   `ALTER TABLE t CACHE | NOCACHE`はMySQL構文のTiDB拡張です。詳細については、 [キャッシュされたテーブル](/cached-tables.md)を参照してください。
 
 さらなる制限については、 [MySQLの互換性](/mysql-compatibility.md#ddl)を参照してください。
 

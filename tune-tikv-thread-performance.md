@@ -1,7 +1,6 @@
 ---
-title: Tune TiKV Thread Pool Performance
-summary: Learn how to tune TiKV thread pools for optimal performance.
-aliases: ['/docs/dev/tune-tikv-thread-performance/']
+title: TiKVスレッドプールのパフォーマンスを調整する
+summary: 最適なパフォーマンスを得るためにTiKVスレッドプールを調整する方法を学びます。
 ---
 
 # TiKVスレッドプールのパフォーマンスを調整する {#tune-tikv-thread-pool-performance}
@@ -37,7 +36,7 @@ TiKVの読み取り要求は、次のタイプに分けられます。
 -   ストレージ読み取りプールで実行される、特定の行または複数の行を指定する単純なクエリ。
 -   コプロセッサー読み取りプールで実行される、複雑な集計計算と範囲クエリ。
 
-TiKV v5.0以降、すべての読み取り要求は、デフォルトでクエリに統合スレッドプールを使用します。 TiKVクラスターがTiKVv4.0からアップグレードされ、アップグレード前に`readpool.storage`の`use-unified-pool`構成が`false`に設定されていた場合、すべての読み取り要求は、アップグレード後も異なるスレッドプールを使用し続けます。このシナリオでは、すべての読み取り要求でクエリに統合スレッドプールを使用するように、 `readpool.storage.use-unified-pool`の値を設定でき`true` 。
+TiKV v5.0以降、すべての読み取り要求は、デフォルトでクエリに統合スレッドプールを使用します。 TiKVクラスタがTiKVv4.0からアップグレードされ、アップグレード前に`readpool.storage`の`use-unified-pool`構成が`false`に設定されていた場合、すべての読み取り要求は、アップグレード後も異なるスレッドプールを使用し続けます。このシナリオでは、すべての読み取り要求でクエリに統合スレッドプールを使用するように、 `readpool.storage.use-unified-pool`の値を設定でき`true` 。
 
 ## TiKVスレッドプールのパフォーマンスチューニング {#performance-tuning-for-tikv-thread-pools}
 
@@ -52,7 +51,7 @@ TiKV v5.0以降、すべての読み取り要求は、デフォルトでクエ�
 
     TiKVがマシンのCPUコアの数が16以上であることを検出すると、スケジューラスレッドプールのデフォルトサイズ（ `storage.scheduler-worker-pool-size`で構成）は`8`になります。 TiKVがマシンのCPUコアの数が16未満であることを検出すると、デフォルトのサイズは`4`になります。
 
-    このスレッドプールは主に、複雑なトランザクション要求を単純なキー値の読み取りおよび書き込み要求に変換するために使用されます。ただし、<strong>スケジューラスレッドプール自体は書き込み操作を実行しません</strong>。
+    このスレッドプールは主に、複雑なトランザクション要求を単純なキー値の読み取りおよび書き込み要求に変換するために使用されます。ただし、**スケジューラスレッドプール自体は書き込み操作を実行しません**。
 
     -   トランザクションの競合が検出された場合、このスレッドプールは競合の結果を事前にクライアントに返します。
     -   競合が検出されない場合、このスレッドプールは、書き込み操作を実行するキー値要求をRaftログにマージし、RaftログレプリケーションのためにRaftstoreスレッドに送信します。
@@ -65,7 +64,7 @@ TiKV v5.0以降、すべての読み取り要求は、デフォルトでクエ�
 
     -   StoreWriterスレッドプールのサイズが0の場合、すべての書き込み要求はRaftstoreスレッドによって`fsync`の方法でRocksDBに書き込まれます。この場合、次のようにパフォーマンスを調整することをお勧めします。
 
-        -   Raftstoreスレッドの全体的なCPU使用率を60％未満に保ちます。 Raftstoreスレッドの数が2の場合、 <strong>TiKV-Details</strong> 、 <strong>Thread CPU</strong> 、 <strong>Raft store CPU</strong>をGrafanaで120％未満に保ちます。 I / O要求により、理論上、RaftstoreスレッドのCPU使用率は常に100％未満です。
+        -   Raftstoreスレッドの全体的なCPU使用率を60％未満に保ちます。 Raftstoreスレッドの数が2の場合、 **TiKV-Details** 、 <strong>Thread CPU</strong> 、 <strong>Raft store CPU</strong>をGrafanaで120％未満に保ちます。 I / O要求により、理論上、RaftstoreスレッドのCPU使用率は常に100％未満です。
         -   慎重に検討せずに書き込みパフォーマンスを向上させるためにRaftstoreスレッドプールのサイズを大きくしないでください。ディスクの負荷が増加し、パフォーマンスが低下する可能性があります。
 
     -   StoreWriterスレッドプールのサイズが0でない場合、すべての書き込み要求は、StoreWriterスレッドによって`fsync`の方法でRocksDBに書き込まれます。この場合、次のようにパフォーマンスを調整することをお勧めします。
@@ -89,7 +88,7 @@ TiKV v5.0以降、すべての読み取り要求は、デフォルトでクエ�
     RocksDBスレッドプールは、RocksDBがタスクを圧縮およびフラッシュするためのスレッドプールです。通常、設定する必要はありません。
 
     -   マシンのCPUコアの数が少ない場合は、 `rocksdb.max-background-jobs`と`raftdb.max-background-jobs`の両方を`4`に設定します。
-    -   書き込みストールが発生した場合は、 <strong>GrafanaのRocksDB-kvの</strong>書き込みストール理由に移動し、 `0`以外のメトリックを確認してください。
+    -   書き込みストールが発生した場合は、 **GrafanaのRocksDB-kvの**書き込みストール理由に移動し、 `0`以外のメトリックを確認してください。
 
         -   保留中の圧縮バイトに関連する理由が原因である場合は、 `rocksdb.max-sub-compactions`を`2`または`3`に設定します。この構成項目は、単一の圧縮ジョブで許可されるサブスレッドの数を示します。デフォルト値は、TiKV 4.0では`3` 、TiKV3.0では`1`です。
         -   理由がmemtablecountに関連している場合は、すべての列の`max-write-buffer-number`を増やすことをお勧めします（デフォルトでは`5` ）。

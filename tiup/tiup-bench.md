@@ -1,7 +1,6 @@
 ---
-title: Stress Test TiDB Using TiUP Bench Component
-summary: Learns how to stress test TiDB with TPC-C and TPC-H workloads using TiUP.
-aliases: ['/docs/dev/tiup/tiup-bench/','/docs/dev/reference/tools/tiup/bench/']
+title: TiUPベンチコンポーネントを使用したTiDBのストレステスト
+summary: TiUPを使用してTPC-CおよびTPC-HワークロードでTiDBのストレステストを行う方法を学習します。
 ---
 
 # TiUPベンチコンポーネントを使用したTiDBのストレステスト {#stress-test-tidb-using-tiup-bench-component}
@@ -15,6 +14,7 @@ tiup bench
 ```
 
 ```
+Starting component `bench`: /home/tidb/.tiup/components/bench/v1.5.0/bench
 Benchmark database with different workloads
 
 Usage:

@@ -1,7 +1,6 @@
 ---
-title: Information Schema
-summary: TiDB implements the ANSI-standard information_schema for viewing system metadata.
-aliases: ['/docs/dev/system-tables/system-table-information-schema/','/docs/dev/reference/system-databases/information-schema/','/tidb/dev/system-table-information-schema/']
+title: 情報スキーマ
+summary: TiDBは、システムメタデータを表示するためのANSI標準のinformation_schemaを実装しています。
 ---
 
 # 情報スキーマ {#information-schema}
@@ -55,28 +54,28 @@ aliases: ['/docs/dev/system-tables/system-table-information-schema/','/docs/dev/
 | [`CLIENT_ERRORS_SUMMARY_BY_HOST`](/information-schema/client-errors-summary-by-host.md)          | クライアント要求によって生成され、クライアントに返されるエラーと警告の要約を提供します。          |
 | [`CLIENT_ERRORS_SUMMARY_BY_USER`](/information-schema/client-errors-summary-by-user.md)          | クライアントによって生成されたエラーと警告の要約を提供します。                       |
 | [`CLIENT_ERRORS_SUMMARY_GLOBAL`](/information-schema/client-errors-summary-global.md)            | クライアントによって生成されたエラーと警告の要約を提供します。                       |
-| [`CLUSTER_CONFIG`](/information-schema/information-schema-cluster-config.md)                     | TiDBクラスター全体の構成設定に関する詳細を提供します。                         |
+| [`CLUSTER_CONFIG`](/information-schema/information-schema-cluster-config.md)                     | TiDBクラスタ全体の構成設定に関する詳細を提供します。                          |
 | `CLUSTER_DEADLOCKS`                                                                              | `DEADLOCKS`のテーブルのクラスターレベルのビューを提供します。                  |
 | [`CLUSTER_HARDWARE`](/information-schema/information-schema-cluster-hardware.md)                 | 各TiDBコンポーネントで検出された基盤となる物理ハードウェアの詳細を提供します。             |
-| [`CLUSTER_INFO`](/information-schema/information-schema-cluster-info.md)                         | 現在のクラスタートポロジの詳細を提供します。                                |
-| [`CLUSTER_LOAD`](/information-schema/information-schema-cluster-load.md)                         | クラスタ内のTiDBサーバーの現在の負荷情報を提供します。                         |
-| [`CLUSTER_LOG`](/information-schema/information-schema-cluster-log.md)                           | TiDBクラスター全体のログを提供します                                  |
+| [`CLUSTER_INFO`](/information-schema/information-schema-cluster-info.md)                         | 現在のクラスタトポロジの詳細を提供します。                                 |
+| [`CLUSTER_LOAD`](/information-schema/information-schema-cluster-load.md)                         | クラスタのTiDBサーバーの現在の負荷情報を提供します。                          |
+| [`CLUSTER_LOG`](/information-schema/information-schema-cluster-log.md)                           | TiDBクラスタ全体のログを提供します                                   |
 | `CLUSTER_PROCESSLIST`                                                                            | `PROCESSLIST`のテーブルのクラスターレベルのビューを提供します。                |
 | `CLUSTER_SLOW_QUERY`                                                                             | `SLOW_QUERY`のテーブルのクラスターレベルのビューを提供します。                 |
 | `CLUSTER_STATEMENTS_SUMMARY`                                                                     | `STATEMENTS_SUMMARY`のテーブルのクラスターレベルのビューを提供します。         |
 | `CLUSTER_STATEMENTS_SUMMARY_HISTORY`                                                             | `STATEMENTS_SUMMARY_HISTORY`のテーブルのクラスターレベルのビューを提供します。 |
 | `CLUSTER_TIDB_TRX`                                                                               | `TIDB_TRX`のテーブルのクラスターレベルのビューを提供します。                   |
-| [`CLUSTER_SYSTEMINFO`](/information-schema/information-schema-cluster-systeminfo.md)             | クラスタ内のサーバーのカーネルパラメータ構成に関する詳細を提供します。                   |
+| [`CLUSTER_SYSTEMINFO`](/information-schema/information-schema-cluster-systeminfo.md)             | クラスタのサーバーのカーネルパラメータ構成に関する詳細を提供します。                    |
 | [`DATA_LOCK_WAITS`](/information-schema/information-schema-data-lock-waits.md)                   | TiKVサーバーのロック待機情報を提供します。                               |
 | [`DDL_JOBS`](/information-schema/information-schema-ddl-jobs.md)                                 | `ADMIN SHOW DDL JOBS`と同様の出力を提供します                     |
 | [`DEADLOCKS`](/information-schema/information-schema-deadlocks.md)                               | 最近発生したいくつかのデッドロックエラーの情報を提供します。                        |
 | [`INSPECTION_RESULT`](/information-schema/information-schema-inspection-result.md)               | 内部診断チェックをトリガーします。                                     |
 | [`INSPECTION_RULES`](/information-schema/information-schema-inspection-rules.md)                 | 実行された内部診断チェックのリスト。                                    |
-| [`INSPECTION_SUMMARY`](/information-schema/information-schema-inspection-summary.md)             | 重要な監視メトリックの要約レポート。                                    |
+| [`INSPECTION_SUMMARY`](/information-schema/information-schema-inspection-summary.md)             | 重要な監視指標の要約レポート。                                       |
 | [`METRICS_SUMMARY`](/information-schema/information-schema-metrics-summary.md)                   | Prometheusから抽出されたメトリックの要約。                            |
 | `METRICS_SUMMARY_BY_LABEL`                                                                       | `METRICS_SUMMARY`の表を参照してください。                         |
 | [`METRICS_TABLES`](/information-schema/information-schema-metrics-tables.md)                     | `METRICS_SCHEMA`のテーブルのPromQL定義を提供します。                 |
-| [`PLACEMENT_POLICIES`](/information-schema/information-schema-placement-policies.md)             | すべての配置ポリシーに関する情報を提供します。                               |
+| [`PLACEMENT_RULES`](/information-schema/information-schema-placement-rules.md)                   | 明示的な配置ルールが割り当てられているすべてのオブジェクトに関する情報を提供します。            |
 | [`SEQUENCES`](/information-schema/information-schema-sequences.md)                               | シーケンスのTiDB実装は、MariaDBに基づいています。                        |
 | [`SLOW_QUERY`](/information-schema/information-schema-slow-query.md)                             | 現在のTiDBサーバーでの低速クエリに関する情報を提供します。                       |
 | [`STATEMENTS_SUMMARY`](/statement-summary-tables.md)                                             | MySQLのperformance_schemaステートメントの要約に似ています。             |

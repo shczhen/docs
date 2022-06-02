@@ -1,6 +1,5 @@
 ---
-title: Filter DMLs Using SQL Expressions
-aliases: ['/tidb/dev/feature-expression-filter/']
+title: SQL式を使用してDMLをフィルタリングする
 ---
 
 # SQL式を使用してDMLをフィルタリングする {#filter-dmls-using-sql-expressions}

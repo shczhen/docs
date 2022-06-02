@@ -1,12 +1,11 @@
 ---
-title: SHOW DRAINER STATUS
-summary: An overview of the usage of SHOW DRAINER STATUS for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-drainer-status/']
+title: ドレイナーステータスを表示
+summary: TiDBデータベースのSHOWDRAINERSTATUSの使用法の概要。
 ---
 
 # ドレイナーステータスを表示 {#show-drainer-status}
 
-`SHOW DRAINER STATUS`ステートメントは、クラスター内のすべてのDrainerノードのステータス情報を表示します。
+`SHOW DRAINER STATUS`ステートメントは、クラスタのすべてのDrainerノードのステータス情報を表示します。
 
 ## 例 {#examples}
 

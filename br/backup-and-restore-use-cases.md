@@ -1,12 +1,11 @@
 ---
-title: BR Use Cases
-summary: Learn the use cases of backing up and restoring data using BR.
-aliases: ['/docs/dev/br/backup-and-restore-use-cases/','/docs/dev/reference/tools/br/use-cases/']
+title: BRのユースケース
+summary: BRを使用してデータをバックアップおよび復元するユースケースを学びます。
 ---
 
 # BRのユースケース {#br-use-cases}
 
-[BR](/br/backup-and-restore-tool.md)は、TiDBクラスターデータの分散バックアップと復元のためのツールです。
+[BR](/br/backup-and-restore-tool.md)は、TiDBクラスタデータの分散バックアップと復元のためのツールです。
 
 このドキュメントでは、次のユースケースでBRを実行する方法について説明します。
 
@@ -30,13 +29,13 @@ TiDBと[TiKV](https://tikv.org/)の基本的な知識が必要です。
 
 ## 前提条件 {#prerequisites}
 
-このセクションでは、TiDBをデプロイするための推奨される方法、クラスターのバージョン、TiKVクラスターのハードウェア情報、およびユースケースのデモンストレーション用のクラスター構成を紹介します。
+このセクションでは、TiDBをデプロイするための推奨される方法、クラスタのバージョン、TiKVクラスタのハードウェア情報、およびユースケースのデモンストレーション用のクラスタ構成を紹介します。
 
 独自のハードウェアと構成に基づいて、バックアップまたは復元操作のパフォーマンスを見積もることができます。
 
 ### 展開方法 {#deployment-method}
 
-[TiUP](/tiup/tiup-cluster.md)を使用してTiDBクラスターをデプロイし、 [TiDBツールキット](/download-ecosystem-tools.md#br-backup-and-restore)をダウンロードしてBRを取得することをお勧めします。
+[TiUP](/tiup/tiup-cluster.md)を使用してTiDBクラスタをデプロイし、 [TiDBツールキット](/download-ecosystem-tools.md#br-backup-and-restore)をダウンロードしてBRを取得することをお勧めします。
 
 ### クラスターバージョン {#cluster-versions}
 
@@ -45,9 +44,9 @@ TiDBと[TiKV](https://tikv.org/)の基本的な知識が必要です。
 -   PD：v5.0.0
 -   BR：v5.0.0
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> v5.0.0は、このドキュメントが作成された時点での最新バージョンでした。最新バージョンの[TiDB / TiKV / PD / BR](/releases/release-notes.md)を使用し、BRバージョンがTiDBバージョンと<strong>一致して</strong>いることを確認することをお勧めします。
+> v5.0.0は、このドキュメントが作成された時点での最新バージョンでした。最新バージョンの[TiDB / TiKV / PD / BR](/releases/release-notes.md)を使用し、BRバージョンがTiDBバージョンと**一致して**いることを確認することをお勧めします。
 
 ### TiKVハードウェア情報 {#tikv-hardware-information}
 
@@ -59,7 +58,7 @@ TiDBと[TiKV](https://tikv.org/)の基本的な知識が必要です。
 
 ### クラスター構成 {#cluster-configuration}
 
-BRはコマンドをTiKVクラスターに直接送信し、TiDBサーバーに依存しないため、BRを使用するときにTiDBサーバーを構成する必要はありません。
+BRはコマンドをTiKVクラスタに直接送信し、TiDBサーバーに依存しないため、BRを使用するときにTiDBサーバーを構成する必要はありません。
 
 -   TiKV：デフォルト構成
 -   PD：デフォルト構成
@@ -73,7 +72,7 @@ BRはコマンドをTiKVクラスターに直接送信し、TiDBサーバーに�
 -   [単一のテーブルをローカルディスクにバックアップします（テスト環境で推奨）](#back-up-a-single-table-to-a-local-disk-recommended-in-testing-environment)
 -   [ローカルディスクからデータを復元する（テスト環境で推奨）](#restore-data-from-a-local-disk-recommended-in-testing-environment)
 
-ネットワークディスクを使用してデータをバックアップおよび復元することをお勧めします。これにより、バックアップファイルの収集が不要になり、特にTiKVクラスターが大規模な場合にバックアップ効率が大幅に向上します。
+ネットワークディスクを使用してデータをバックアップおよび復元することをお勧めします。これにより、バックアップファイルの収集が不要になり、特にTiKVクラスタが大規模な場合にバックアップ効率が大幅に向上します。
 
 バックアップまたは復元操作の前に、いくつかの準備を行う必要があります。
 
@@ -86,12 +85,12 @@ BRツールはすでにGCへの自己適応をサポートしています。 `ba
 
 `br backup`コマンドの使用法の詳細については、 [バックアップと復元にBRコマンドラインを使用する](/br/use-br-command-line-tool.md)を参照してください。
 
-1.  `br backup`コマンドを実行する前に、TiDBクラスターでDDLが実行されていないことを確認してください。
+1.  `br backup`コマンドを実行する前に、TiDBクラスタでDDLが実行されていないことを確認してください。
 2.  バックアップが作成されるストレージデバイスに十分なスペースがあることを確認してください。
 
 ### 修復の準備 {#preparation-for-restoration}
 
-[`br restore`コマンド](/br/use-br-command-line-tool.md#br-command-line-description)を実行する前に、新しいクラスターをチェックして、クラスター内のテーブルに重複した名前がないことを確認してください。
+[`br restore`コマンド](/br/use-br-command-line-tool.md#br-command-line-description)を実行する前に、新しいクラスタをチェックして、クラスタのテーブルに重複した名前がないことを確認してください。
 
 ### 単一のテーブルをネットワークディスクにバックアップします（実稼働環境で推奨） {#back-up-a-single-table-to-a-network-disk-recommended-in-production-environment}
 
@@ -103,9 +102,9 @@ BRツールはすでにGCへの自己適応をサポートしています。 `ba
 -   高性能SSDハードディスクホストをデータを保存するNFSサーバーとして構成し、すべてのBRノード、TiKVノード、およびTiFlashノードをNFSクライアントとして構成します。 NFSクライアントがサーバーにアクセスできるように、同じパス（たとえば、 `/br_data` ）をNFSサーバーにマウントします。
 -   NFSサーバーとすべてのNFSクライアント間の合計転送速度は、少なくとも`the number of TiKV instances * 150MB/s`に達する必要があります。そうしないと、ネットワークI/Oがパフォーマンスのボトルネックになる可能性があります。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> -   データのバックアップ中は、リーダーレプリカのデータのみがバックアップされるため、クラスター内にTiFlashレプリカが存在する場合でも、BRはTiFlashノードをマウントせずにバックアップを完了できます。
+> -   データのバックアップ中は、リーダーレプリカのデータのみがバックアップされるため、クラスタにTiFlashレプリカが存在する場合でも、BRはTiFlashノードをマウントせずにバックアップを完了できます。
 > -   データを復元する場合、BRはすべてのレプリカのデータを復元します。また、TiFlashノードは、復元を完了するためにBRのバックアップデータにアクセスする必要があります。したがって、復元する前に、TiFlashノードをNFSサーバーにマウントする必要があります。
 
 #### トポロジー {#topology}
@@ -137,36 +136,36 @@ bin/br backup table \
 
 バックアッププロセス中は、監視パネルの次のメトリックに注意して、バックアッププロセスのステータスを取得してください。
 
-<strong>バックアップCPU使用率</strong>：バックアップ操作で動作している各TiKVノードのCPU使用率（たとえば、backup-workerとbackup-endpoint）。
+**バックアップCPU使用率**：バックアップ操作で動作している各TiKVノードのCPU使用率（たとえば、backup-workerとbackup-endpoint）。
 
 ![img](/media/br/backup-cpu.png)
 
-<strong>IO使用率</strong>：バックアップ操作で動作している各TiKVノードのI/O使用率。
+**IO使用率**：バックアップ操作で動作している各TiKVノードのI/O使用率。
 
 ![img](/media/br/backup-io.png)
 
-<strong>BackupSST生成スループット</strong>：バックアップ操作で動作している各TiKVノードのbackupSST生成スループット。通常は約150MB/秒です。
+**BackupSST生成スループット**：バックアップ操作で動作している各TiKVノードのbackupSST生成スループット。通常は約150MB/秒です。
 
 ![img](/media/br/backup-throughput.png)
 
-<strong>1つのバックアップ範囲期間</strong>：範囲をバックアップする期間。これは、KVをスキャンし、その範囲をbackupSSTファイルとして保存するための合計時間コストです。
+**1つのバックアップ範囲期間**：範囲をバックアップする期間。これは、KVをスキャンし、その範囲をbackupSSTファイルとして保存するための合計時間コストです。
 
 ![img](/media/br/backup-range-duration.png)
 
-<strong>1つのバックアップサブタスク期間</strong>：バックアップタスクが分割される各サブタスクの期間。
+**1つのバックアップサブタスク期間**：バックアップタスクが分割される各サブタスクの期間。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   このタスクでは、バックアップされる単一のテーブルに3つのインデックスがあり、タスクは通常4つのサブタスクに分割されます。
 > -   次の画像のパネルには13のポイントがあります。これは、9回（つまり、13〜4回）の再試行を意味します。リージョンのスケジューリングはバックアッププロセス中に発生する可能性があるため、数回の再試行が正常です。
 
 ![img](/media/br/backup-subtask-duration.png)
 
-<strong>バックアップエラー</strong>：バックアッププロセス中に発生したエラー。通常の状況ではエラーは発生しません。いくつかのエラーが発生した場合でも、バックアップ操作には再試行メカニズムがあり、バックアップ時間が長くなる可能性がありますが、操作の正確性には影響しません。
+**バックアップエラー**：バックアッププロセス中に発生したエラー。通常の状況ではエラーは発生しません。いくつかのエラーが発生した場合でも、バックアップ操作には再試行メカニズムがあり、バックアップ時間が長くなる可能性がありますが、操作の正確性には影響しません。
 
 ![img](/media/br/backup-errors.png)
 
-<strong>チェックサム要求期間</strong>：バックアップクラスターでの管理チェックサム要求の期間。
+**チェックサム要求期間**：バックアップクラスタでの管理チェックサム要求の期間。
 
 ![img](/media/br/checksum-duration.png)
 
@@ -236,7 +235,7 @@ bin/br backup table \
 
 ### ネットワークディスクからデータを復元する（実稼働環境で推奨） {#restore-data-from-a-network-disk-recommended-in-production-environment}
 
-`br restore`コマンドを使用して、完全なバックアップデータをオフラインクラスターに復元します。現在、BRはオンラインクラスターへのデータの復元をサポートしていません。
+`br restore`コマンドを使用して、完全なバックアップデータをオフラインクラスタに復元します。現在、BRはオンラインクラスタへのデータの復元をサポートしていません。
 
 #### 復元の前提条件 {#restoration-prerequisites}
 
@@ -264,31 +263,31 @@ bin/br restore table --db batchmark --table order_line -s local:///br_data --pd 
 
 復元プロセス中は、監視パネルの次のメトリックに注意して、復元プロセスのステータスを取得してください。
 
-<strong>CPU使用率</strong>：復元操作で動作している各TiKVノードのCPU使用率。
+**CPU使用率**：復元操作で動作している各TiKVノードのCPU使用率。
 
 ![img](/media/br/restore-cpu.png)
 
-<strong>IO使用率</strong>：復元操作で動作している各TiKVノードのI/O使用率。
+**IO使用率**：復元操作で動作している各TiKVノードのI/O使用率。
 
 ![img](/media/br/restore-io.png)
 
-<strong>地域</strong>：地域の分布。リージョンが均等に分散されるほど、復元リソースがより適切に使用されます。
+**地域**：地域の分布。リージョンが均等に分散されるほど、復元リソースがより適切に使用されます。
 
 ![img](/media/br/restore-region.png)
 
-SSTの処理<strong>期間</strong>：SSTファイルの処理の遅延。テーブルを復元するときに、 `tableID`が変更された場合は、 `tableID`を書き直す必要があります。それ以外の場合、 `tableID`は名前が変更されます。一般的に、書き換えの遅延は名前変更の遅延よりも長くなります。
+SSTの処理**期間**：SSTファイルの処理の遅延。テーブルを復元するときに、 `tableID`が変更された場合は、 `tableID`を書き直す必要があります。それ以外の場合、 `tableID`は名前が変更されます。一般的に、書き換えの遅延は名前変更の遅延よりも長くなります。
 
 ![img](/media/br/restore-process-sst.png)
 
-<strong>SSTスループット</strong>のダウンロード：外部ストレージからSSTファイルをダウンロードするスループット。
+**SSTスループット**のダウンロード：外部ストレージからSSTファイルをダウンロードするスループット。
 
 ![img](/media/br/restore-download-sst.png)
 
-<strong>復元エラー</strong>：復元プロセス中に発生したエラー。
+**復元エラー**：復元プロセス中に発生したエラー。
 
 ![img](/media/br/restore-errors.png)
 
-<strong>チェックサム要求期間</strong>：管理者チェックサム要求の期間。この復元の期間は、バックアップの期間よりも長くなります。
+**チェックサム要求期間**：管理者チェックサム要求の期間。この復元の期間は、バックアップの期間よりも長くなります。
 
 ![img](/media/br/restore-checksum.png)
 
@@ -403,12 +402,12 @@ bin/br backup table \
 
 ### ローカルディスクからデータを復元する（テスト環境で推奨） {#restore-data-from-a-local-disk-recommended-in-testing-environment}
 
-`br restore`コマンドを使用して、完全なバックアップデータをオフラインクラスターに復元します。現在、BRはオンラインクラスターへのデータの復元をサポートしていません。
+`br restore`コマンドを使用して、完全なバックアップデータをオフラインクラスタに復元します。現在、BRはオンラインクラスタへのデータの復元をサポートしていません。
 
 #### 復元の前提条件 {#restoration-prerequisites}
 
 -   [修復の準備](#preparation-for-restoration)
--   TiKVクラスターとバックアップデータに重複するデータベースまたはテーブルはありません。現在、BRはテーブルルートをサポートしていません。
+-   TiKVクラスタとバックアップデータに重複するデータベースまたはテーブルはありません。現在、BRはテーブルルートをサポートしていません。
 -   各TiKVノードには、backupSSTファイルを保存するための個別のディスクがあります。
 -   `restore_endpoint`ノードには、 `backupmeta`ファイルを保存するための個別のディスクがあります。
 -   TiKVと`restore_endpoint`ノードは、復元のために同じディレクトリ（たとえば、 `/home/tidb/backup_local/` ）を持っている必要があります。
@@ -416,7 +415,7 @@ bin/br backup table \
 復元する前に、次の手順に従ってください。
 
 1.  すべてのbackupSSTファイルを同じディレクトリに収集します。
-2.  収集したbackupSSTファイルをクラスターのすべてのTiKVノードにコピーします。
+2.  収集したbackupSSTファイルをクラスタのすべてのTiKVノードにコピーします。
 3.  `backupmeta`ファイルを`restore endpoint`ノードにコピーします。
 
 #### トポロジー {#topology}

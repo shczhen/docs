@@ -1,6 +1,5 @@
 ---
-title: TiDB 3.0.12 Release Notes
-aliases: ['/docs/dev/releases/release-3.0.12/','/docs/dev/releases/3.0.12/']
+title: TiDB3.0.12リリースノート
 ---
 
 # TiDB3.0.12リリースノート {#tidb-3-0-12-release-notes}
@@ -11,7 +10,7 @@ TiDBバージョン：3.0.12
 
 TiDB Ansibleバージョン：3.0.12
 
-> <strong>警告：</strong>
+> **警告：**
 >
 > このバージョンにはいくつかの既知の問題があり、これらの問題は新しいバージョンで修正されています。最新の3.0.xバージョンを使用することをお勧めします。
 
@@ -43,10 +42,10 @@ TiDB Ansibleバージョン：3.0.12
 
 -   TiKV
     -   既存のキーをトランザクションに挿入し、整合性チェックパラメーター[＃7054](https://github.com/tikv/tikv/pull/7054)を無効にしたときにすぐに削除することによって引き起こされる、競合検出の失敗またはデータインデックスの不整合の問題を修正します。
-    -   Raftstoreにフロー制御メカニズムを導入して、フロー制御がないと、追跡が遅くなり、クラスターがスタックし、トランザクションサイズによってTiKV接続が頻繁に再接続される可能性があるという問題を解決します[＃7072](https://github.com/tikv/tikv/pull/7072) [＃6993](https://github.com/tikv/tikv/pull/6993)
+    -   Raftstoreにフロー制御メカニズムを導入して、フロー制御がないと、追跡が遅くなり、クラスタがスタックし、トランザクションサイズによってTiKV接続が頻繁に再接続される可能性があるという問題を解決します[＃7072](https://github.com/tikv/tikv/pull/7072) [＃6993](https://github.com/tikv/tikv/pull/6993)
 
 -   PD
     -   PDがリージョンハートビートを処理するときにデータ競合によって引き起こされる誤ったリージョン情報の問題を修正します[＃2233](https://github.com/pingcap/pd/pull/2233)
 
 -   TiDB Ansible
-    -   クラスタ内での複数のGrafana/Prometheus/Alertmanagerのデプロイをサポート[＃1198](https://github.com/pingcap/tidb-ansible/pull/1198)
+    -   クラスタでの複数のGrafana/Prometheus/Alertmanagerのデプロイをサポート[＃1198](https://github.com/pingcap/tidb-ansible/pull/1198)

@@ -1,6 +1,5 @@
 ---
-title: TiDB 3.0.8 Release Notes
-aliases: ['/docs/dev/releases/release-3.0.8/','/docs/dev/releases/3.0.8/']
+title: TiDB3.0.8リリースノート
 ---
 
 # TiDB3.0.8リリースノート {#tidb-3-0-8-release-notes}
@@ -41,7 +40,7 @@ TiDB Ansibleバージョン：3.0.8
         -   `events_statements_summary_by_digest_history` [＃14166](https://github.com/pingcap/tidb/pull/14166)テーブルを追加して、古いデータを35に保存し`events_statements_summary_by_digest`
     -   RBAC関連の内部SQLステートメントが実行されたときにbinlogが誤って出力される問題を修正します[＃13890](https://github.com/pingcap/tidb/pull/13890)
     -   `server-version`の構成アイテムを追加して、TiDBサーバーバージョン[＃13906](https://github.com/pingcap/tidb/pull/13906)を変更する機能を制御します。
-    -   HTTPインターフェースを使用して[＃13892](https://github.com/pingcap/tidb/pull/13892)の書き込みを回復する機能を追加します。
+    -   HTTPインターフェイスを使用して[＃13892](https://github.com/pingcap/tidb/pull/13892)の書き込みを回復する機能を追加します。
     -   MySQLの動作との一貫性を保つために、 `GRANT roles TO user`に必要な特権を`GrantPriv`から`ROLE_ADMIN`または`SUPER`に更新します[＃13932](https://github.com/pingcap/tidb/pull/13932)
     -   MySQLの動作との互換性を維持するために、TiDBの動作を現在のデータベースの使用から`GRANT`ステートメントでデータベース名が指定されていない場合の`No database selected`エラーの報告に変更し[＃13784](https://github.com/pingcap/tidb/pull/13784) 。
     -   MySQLの動作との一貫性を保つために、ユーザーが対応するスキーマの特権を持っている場合にのみ実行可能な`REVOKE`ステートメントの実行特権を`SuperPriv`から`REVOKE`に変更します[＃13306](https://github.com/pingcap/tidb/pull/13306)
@@ -63,7 +62,7 @@ TiDB Ansibleバージョン：3.0.8
     -   TiKVサーバーが切断されたときに`rpcClient`が閉じないため、 `CheckStreamTimeoutLoop`つのゴルーチンがリークする可能性がある問題を修正します[＃14227](https://github.com/pingcap/tidb/pull/14227)
     -   証明書ベースの認証をサポートする（ [ユーザードキュメント](/certificate-authentication.md) ） [＃13955](https://github.com/pingcap/tidb/pull/13955)
 -   取引
-    -   新しいクラスターが作成されたときに、 `tidb_txn_mode`変数のデフォルト値を`""`から`"pessimistic"`に更新します[＃14171](https://github.com/pingcap/tidb/pull/14171)
+    -   新しいクラスタが作成されたときに、 `tidb_txn_mode`変数のデフォルト値を`""`から`"pessimistic"`に更新します[＃14171](https://github.com/pingcap/tidb/pull/14171)
     -   トランザクションが再試行されたときに単一ステートメントのロック待機時間がリセットされないため、ペシミスティックトランザクションに対してロック待機時間が長すぎるという問題を修正します[＃13990](https://github.com/pingcap/tidb/pull/13990)
     -   悲観的なトランザクションモード[＃14050](https://github.com/pingcap/tidb/pull/14050)では、変更されていないデータのロックが解除されるため、間違ったデータが読み取られる可能性があるという問題を修正します。
     -   mocktikv [＃14175](https://github.com/pingcap/tidb/pull/14175)でプリライトが実行されるとトランザクションタイプが区別されないため、挿入値の制限チェックが繰り返される問題を修正しました。
@@ -77,7 +76,7 @@ TiDB Ansibleバージョン：3.0.8
 
 -   コプロセッサー
     -   コプロセッサー[＃6051](https://github.com/tikv/tikv/pull/6051)でエラーが発生した場合、出力ログのレベルを`error`から`warn`に変更します。
-    -   tidb-server [＃6069](https://github.com/tikv/tikv/pull/6096)の更新動作との一貫性を保つために、統計サンプリングデータの更新動作を行の直接更新から挿入前の削除に変更します。
+    -   統計サンプリングデータの更新動作を、行の直接更新から挿入前の削除に変更して、 [＃6069](https://github.com/tikv/tikv/pull/6096) -server1の更新動作との一貫性を維持します。
 -   ラフトストア
     -   `destroy`のメッセージを`peerfsm`に繰り返し送信し、 `peerfsm`が複数回破壊されることによって引き起こされるパニックを修正します[＃6297](https://github.com/tikv/tikv/pull/6297)
     -   デフォルト値の`split-region-on-table`を`true`から`false`に更新して、デフォルトでリージョンをテーブルで分割できないようにします[＃6253](https://github.com/tikv/tikv/pull/6253)

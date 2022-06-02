@@ -1,7 +1,6 @@
 ---
-title: Query Status
-summary: Learn how to query the status of a data replication task.
-aliases: ['/docs/tidb-data-migration/dev/query-status/']
+title: クエリステータス
+summary: データ複製タスクのステータスを照会する方法を学びます。
 ---
 
 # クエリステータス {#query-status}
@@ -10,7 +9,7 @@ aliases: ['/docs/tidb-data-migration/dev/query-status/']
 
 ## クエリ結果 {#query-result}
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 » query-status
@@ -64,7 +63,7 @@ DM移行タスクのステータスは、DM-workerに割り当てられた各サ
 
 ## 詳細なクエリ結果 {#detailed-query-result}
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 » query-status test

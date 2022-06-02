@@ -1,6 +1,5 @@
 ---
-title: TiDB 2.1 RC2 Release Notes
-aliases: ['/docs/dev/releases/release-2.1-rc.2/','/docs/dev/releases/21rc2/']
+title: TiDB2.1RC2リリースノート
 ---
 
 # TiDB2.1RC2リリースノート {#tidb-2-1-rc2-release-notes}
@@ -23,7 +22,7 @@ aliases: ['/docs/dev/releases/release-2.1-rc.2/','/docs/dev/releases/21rc2/']
     -   結合演算子のパフォーマンスを最適化[＃7433](https://github.com/pingcap/tidb/pull/7433) [＃7493](https://github.com/pingcap/tidb/pull/7493)
     -   結合順序が変更されたときに`UPDATE JOIN`の結果が正しくない問題を修正します[＃7571](https://github.com/pingcap/tidb/pull/7571)
     -   チャンクのイテレータ[＃7585](https://github.com/pingcap/tidb/pull/7585)のパフォーマンスを向上させる
--   統計学
+-   統計
     -   自動分析作業が統計を繰り返し分析する問題を修正します[＃7550](https://github.com/pingcap/tidb/pull/7550)
     -   統計の変更がない場合に発生する統計更新エラーを修正します[＃7530](https://github.com/pingcap/tidb/pull/7530)
     -   `Analyze`のリクエストを作成するときは、RC分離レベルと低い優先度を使用します[＃7496](https://github.com/pingcap/tidb/pull/7496)
@@ -44,9 +43,9 @@ aliases: ['/docs/dev/releases/release-2.1-rc.2/','/docs/dev/releases/21rc2/']
     -   TiDBの起動中に内部SQLを高優先度に設定する[＃7616](https://github.com/pingcap/tidb/pull/7616)
     -   異なるラベルを使用して、メトリックの監視で内部SQLとユーザーSQLをフィルタリングします[＃7631](https://github.com/pingcap/tidb/pull/7631)
     -   先週の遅いクエリのトップ30をTiDBサーバーに保存します[＃7646](https://github.com/pingcap/tidb/pull/7646)
-    -   TiDBクラスターのグローバルシステムタイムゾーンを設定する提案を提出する[＃7656](https://github.com/pingcap/tidb/pull/7656)
+    -   TiDBクラスタのグローバルシステムタイムゾーンを設定する提案を提出する[＃7656](https://github.com/pingcap/tidb/pull/7656)
     -   「GCの有効期間がトランザクション期間より短い」というエラーメッセージを充実させる[＃7658](https://github.com/pingcap/tidb/pull/7658)
-    -   TiDBクラスターの起動時にグローバルシステムのタイムゾーンを設定する[＃7638](https://github.com/pingcap/tidb/pull/7638)
+    -   TiDBクラスタの起動時にグローバルシステムのタイムゾーンを設定する[＃7638](https://github.com/pingcap/tidb/pull/7638)
 -   互換性
     -   `Year`タイプ[＃7542](https://github.com/pingcap/tidb/pull/7542)の符号なしフラグを追加します
     -   `Prepare`モード`Execute`で`Year`タイプの結果の長さを構成する問題を修正し[＃7525](https://github.com/pingcap/tidb/pull/7525)
@@ -114,6 +113,6 @@ aliases: ['/docs/dev/releases/release-2.1-rc.2/','/docs/dev/releases/21rc2/']
     -   `snapshot apply` [＃3547](https://github.com/tikv/tikv/pull/3547)への影響を減らすために、ガベージデータのクリーンアップ速度を制限します。
     -   重要なRaftメッセージのコミットメッセージをブロードキャストして、不要な遅延を回避します[＃3592](https://github.com/tikv/tikv/pull/3592)
 -   バグの修正
-    -   新しく分割されたリージョン[＃3557](https://github.com/tikv/tikv/pull/3557)の`PreVote`のメッセージを破棄することによって引き起こされるリーダー選挙の問題を修正します
+    -   新しく分割されたリージョン[＃3557](https://github.com/tikv/tikv/pull/3557)の`PreVote`のメッセージを破棄することによって引き起こされるリーダー選出の問題を修正します
     -   リージョン[＃3573](https://github.com/tikv/tikv/pull/3573)をマージした後のフォロワー関連の統計を修正
     -   ローカルリーダーが廃止されたリージョン情報を使用する問題を修正します[＃3565](https://github.com/tikv/tikv/pull/3565)

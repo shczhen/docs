@@ -1,7 +1,6 @@
 ---
 title: CLUSTER_SYSTEMINFO
-summary: Learn the `CLUSTER_SYSTEMINFO` kernel parameter table.
-aliases: ['/docs/dev/system-tables/system-table-cluster-systeminfo/','/docs/dev/reference/system-databases/cluster-systeminfo/','/tidb/dev/system-table-cluster-systeminfo/']
+summary: `CLUSTER_SYSTEMINFO`カーネルパラメータテーブルを学びます。
 ---
 
 # CLUSTER_SYSTEMINFO {#cluster-systeminfo}
@@ -32,13 +31,13 @@ DESC cluster_systeminfo;
 フィールドの説明：
 
 -   `TYPE` ： [`information_schema.cluster_info`](/information-schema/information-schema-cluster-info.md)テーブルの`TYPE`フィールドに対応します。オプションの値は`tidb` 、および`pd` `tikv` 。
--   `INSTANCE` ： [`information_schema.cluster_info`](/information-schema/information-schema-cluster-info.md)クラスター情報テーブルの`INSTANCE`フィールドに対応します。
+-   `INSTANCE` ： [`information_schema.cluster_info`](/information-schema/information-schema-cluster-info.md)クラスタ情報テーブルの`INSTANCE`フィールドに対応します。
 -   `SYSTEM_TYPE` ：システムタイプ。現在、 `system`のシステムタイプを照会できます。
 -   `SYSTEM_NAME` ：システム名。現在、 `sysctl`のシステム名を照会できます。
 -   `NAME` ： `sysctl`に対応する構成名。
 -   `VALUE` ： `sysctl`に対応する構成項目の値。
 
-次の例は、 `CLUSTER_SYSTEMINFO`のシステム情報テーブルを使用して、クラスター内のすべてのサーバーのカーネルバージョンを照会する方法を示しています。
+次の例は、 `CLUSTER_SYSTEMINFO`のシステム情報テーブルを使用して、クラスタのすべてのサーバーのカーネルバージョンを照会する方法を示しています。
 
 ```sql
 SELECT * FROM cluster_systeminfo WHERE name LIKE '%kernel.osrelease%'

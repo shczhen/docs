@@ -1,18 +1,17 @@
 ---
-title: Key Monitoring Metrics of TiKV
-summary: Learn some key metrics displayed on the Grafana TiKV dashboard.
-aliases: ['/docs/dev/grafana-tikv-dashboard/','/docs/dev/reference/key-monitoring-metrics/tikv-dashboard/']
+title: TiKVの主要な監視指標
+summary: GrafanaTiKVダッシュボードに表示されるいくつかの主要なメトリックを学びます。
 ---
 
 # TiKVの主要な監視指標 {#key-monitoring-metrics-of-tikv}
 
-TiUPを使用してTiDBクラスターをデプロイする場合、監視システム（Prometheus / Grafana）も同時にデプロイされます。詳細については、 [監視フレームワークの概要](/tidb-monitoring-framework.md)を参照してください。
+TiUPを使用してTiDBクラスタをデプロイする場合、監視システム（Prometheus / Grafana）も同時にデプロイされます。詳細については、 [監視フレームワークの概要](/tidb-monitoring-framework.md)を参照してください。
 
 Grafanaダッシュボードは、Overview、PD、TiDB、TiKV、Node_exporterなどを含む一連のサブダッシュボードに分割されています。診断に役立つ多くのメトリックがあります。
 
-コンポーネントのTiKVステータスの概要は、主要なメトリックが表示される<strong>TiKV-詳細</strong>ダッシュボードから取得できます。 [パフォーマンスマップ](https://asktug.com/_/tidb-performance-map/#/)によると、クラスターのステータスが期待どおりであるかどうかを確認できます。
+コンポーネントのTiKVステータスの概要は、主要なメトリックが表示される**TiKV-詳細**ダッシュボードから取得できます。 [パフォーマンスマップ](https://asktug.com/_/tidb-performance-map/#/)によると、クラスタのステータスが期待どおりであるかどうかを確認できます。
 
-このドキュメントでは、 <strong>TiKV-詳細</strong>ダッシュボードでこれらの主要なメトリックについて詳しく説明します。
+このドキュメントでは、 **TiKV-詳細**ダッシュボードでこれらの主要なメトリックについて詳しく説明します。
 
 ## 集まる {#cluster}
 
@@ -355,17 +354,15 @@ Grafanaダッシュボードは、Overview、PD、TiDB、TiKV、Node_exporterな
 -   Blob GC出力ファイルのサイズ：TitanGC出力ファイルのサイズ
 -   Blob GCファイル数：TitanGCに関係するblobファイルの数
 
-## 悲観的なロック {#pessimistic-locking}
+## ロックマネージャー {#lock-manager}
 
--   ロックマネージャースレッドCPU：ロックマネージャースレッドのCPU使用率
--   Lock Managerが処理するタスク：LockManagerが処理するタスクの数
+-   スレッドCPU：ロックマネージャースレッドのCPU使用率
+-   処理されたタスク：ロックマネージャーによって処理されたタスクの数
 -   ウェイターの存続期間：ロックが解放されるまでのトランザクションの待機時間
 -   待機テーブル：ロックの数やロックを待機しているトランザクションの数など、待機テーブルのステータス情報
 -   デッドロック検出期間：デッドロックの検出に費やされた時間
 -   エラーの検出：デッドロックの数を含む、デッドロックの検出時に発生したエラーの数
 -   デッドロック検出器リーダー：デッドロック検出器リーダーが配置されているノードの情報
--   合計ペシミスティックロックのメモリサイズ：メモリ内のペシミスティックロックが占めるメモリサイズ
--   メモリ内のペシミスティックロックの結果：ペシミスティックロックのみをメモリに保存した結果。 `full`は、メモリ制限を超えたためにペシミスティックロックがメモリに保存されなかった回数を意味します。
 
 ## メモリー {#memory}
 

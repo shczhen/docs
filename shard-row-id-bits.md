@@ -1,6 +1,6 @@
 ---
 title: SHARD_ROW_ID_BITS
-summary: Learn the SHARD_ROW_ID_BITS attribute.
+summary: SHARD_ROW_ID_BITS属性を学習します。
 ---
 
 # SHARD_ROW_ID_BITS {#shard-row-id-bits}

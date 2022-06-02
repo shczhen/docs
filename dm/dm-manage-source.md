@@ -1,6 +1,6 @@
 ---
-title: Manage Data Source Configurations
-summary: Learn how to manage upstream MySQL instances in TiDB Data Migration.
+title: データソース構成の管理
+summary: TiDBデータ移行でアップストリームMySQLインスタンスを管理する方法を学びます。
 ---
 
 # データソース構成の管理 {#manage-data-source-configurations}
@@ -23,9 +23,9 @@ MKxn0Qo3m3XOyjCnhEMtsUCm83EhGQDZ/T4=
 
 ## データソースを操作する {#operate-data-source}
 
-`operate-source`コマンドを使用して、データソース構成をDMクラスターにロード、リスト、または削除できます。
+`operate-source`コマンドを使用して、データソース構成をDMクラスタにロード、リスト、または削除できます。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 help operate-source
@@ -63,17 +63,17 @@ Global Flags:
 
 次の`operate-source`のコマンドを使用して、ソース構成ファイルを作成します。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 operate-source create ./source.yaml
 ```
 
-`source.yaml`の構成については、 [アップストリームデータベース構成ファイルの概要](/dm/dm-source-configuration-file.md)を参照してください。
+`source.yaml`の構成については、 [アップストリームデータベースConfiguration / コンフィグレーションファイルの概要](/dm/dm-source-configuration-file.md)を参照してください。
 
 返される結果の例を次に示します。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```
 {
@@ -92,16 +92,16 @@ operate-source create ./source.yaml
 
 ### データソース構成を確認する {#check-data-source-configurations}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> `config`コマンドは、DMv6.0以降のバージョンでのみサポートされます。以前のバージョンでは、 `get-config`コマンドを使用する必要があります。
+> `get-config`コマンドは、DMv2.0.1以降のバージョンでのみサポートされます。
 
-`source-id`がわかっている場合は、 `dmctl --master-addr <master-addr> config source <source-id>`を実行してデータソース構成を取得できます。
+`source-id`がわかっている場合は、 `dmctl --master-addr <master-addr> get-config source <source-id>`を実行してデータソース構成を取得できます。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
-config source mysql-replica-01
+get-config source mysql-replica-01
 ```
 
 ```
@@ -121,7 +121,7 @@ config source mysql-replica-01
 
 `source-id`がわからない場合は、 `dmctl --master-addr <master-addr> operate-source show`を実行して、最初にすべてのデータソースを一覧表示できます。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 operate-source show
@@ -152,7 +152,7 @@ operate-source show
 
 `transfer-source`コマンドを使用して、アップストリームのMySQLインスタンスとDMワーカー間のバインディングを変更できます。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 help transfer-source
@@ -174,7 +174,7 @@ Global Flags:
 
 DMワーカーのバインディングがわからない場合は、 `dmctl --master-addr <master-addr> list-member --worker`を実行して、すべてのワーカーの現在のバインディングを一覧表示できます。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 list-member --worker
@@ -210,7 +210,7 @@ list-member --worker
 
 上記の例では、 `mysql-replica-01`は`dm-worker-1`にバインドされています。次のコマンドは、 `mysql-replica-01`から`dm-worker-2`のバインディングワーカーを転送します。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 transfer-source mysql-replica-01 dm-worker-2
@@ -225,7 +225,7 @@ transfer-source mysql-replica-01 dm-worker-2
 
 `dmctl --master-addr <master-addr> list-member --worker`を実行して、コマンドが有効になるかどうかを確認します。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 list-member --worker

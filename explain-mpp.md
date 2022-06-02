@@ -1,6 +1,6 @@
 ---
-title: Explain Statements in the MPP Mode
-summary: Learn about the execution plan information returned by the EXPLAIN statement in TiDB.
+title: MPPモードでのステートメントの説明
+summary: TiDBのEXPLAINステートメントによって返される実行プラン情報について学習します。
 ---
 
 # MPPモードでのステートメントの説明 {#explain-statements-in-the-mpp-mode}
@@ -65,11 +65,11 @@ EXPLAIN SELECT COUNT(*) FROM t1 GROUP BY id;
 
 `ExchangeSender`演算子の`operator info`列には、交換タイプ情報が表示されます。現在、交換には3つのタイプがあります。以下を参照してください。
 
--   HashPartition： `ExchangeSender`オペレーターは、最初にハッシュ値に従ってデータを分割し、次にアップストリームMPPタスクの`ExchangeReceiver`オペレーターにデータを配布します。この交換タイプは、ハッシュ集約およびシャッフルハッシュ結合アルゴリズムでよく使用されます。
+-   HashPartition： `ExchangeSender`オペレーターは、最初にハッシュ値に従ってデータを分割し、次にアップストリームMPPタスクの`ExchangeReceiver`オペレーターにデータを配布します。この交換タイプは、ハッシュ集計およびシャッフルハッシュ結合アルゴリズムでよく使用されます。
 -   ブロードキャスト： `ExchangeSender`オペレーターは、ブロードキャストを介してデータをアップストリームMPPタスクに配信します。この交換タイプは、ブロードキャスト参加によく使用されます。
 -   PassThrough： `ExchangeSender`オペレーターは、ブロードキャストタイプとは異なる唯一のアップストリームMPPタスクにデータを送信します。この交換タイプは、データをTiDBに返すときによく使用されます。
 
-実行プランの例では、演算子`ExchangeSender_28`の交換タイプはHashPartitionです。これは、HashAggregationアルゴリズムを実行することを意味します。演算子`ExchangeSender_30`の交換タイプはPassThroughです。これは、データをTiDBに返すために使用されることを意味します。
+実行プランの例では、演算子`ExchangeSender_28`の交換タイプはHashPartitionです。これは、 集計アルゴリズムを実行することを意味します。演算子`ExchangeSender_30`の交換タイプはPassThroughです。これは、データをTiDBに返すために使用されることを意味します。
 
 MPPは、結合操作にもよく適用されます。 TiDBのMPPモードは、次の2つの結合アルゴリズムをサポートしています。
 
@@ -81,6 +81,7 @@ MPPは、結合操作にもよく適用されます。 TiDBのMPPモードは、
 {{< copyable "" >}}
 
 ```sql
+SET tidb_opt_broadcast_join=0;
 SET tidb_broadcast_join_threshold_count=0;
 SET tidb_broadcast_join_threshold_size=0;
 EXPLAIN SELECT COUNT(*) FROM t1 a JOIN t1 b ON a.id = b.id;
@@ -169,4 +170,4 @@ EXPLAIN ANALYZE SELECT COUNT(*) FROM t1 GROUP BY id;
 +------------------------------------+---------+---------+-------------------+---------------+---------------------------------------------------------------------------------------------+----------------------------------------------------------------+--------+------+
 ```
 
-`EXPLAIN`の出力と比較すると、演算子`ExchangeSender`の`operator info`列には`tasks`も表示されます。これは、クエリフラグメントがインスタンス化されるMPPタスクのIDを記録します。さらに、各MPPオペレーターには`execution info`列に`threads`フィールドがあり、TiDBがこのオペレーターを実行するときの操作の同時実行性を記録します。クラスターが複数のノードで構成されている場合、この同時実行性は、すべてのノードの同時実行性を合計した結果です。
+`EXPLAIN`の出力と比較すると、演算子`ExchangeSender`の`operator info`列には`tasks`も表示されます。これは、クエリフラグメントがインスタンス化されるMPPタスクのIDを記録します。さらに、各MPPオペレーターには`execution info`列に`threads`フィールドがあり、TiDBがこのオペレーターを実行するときの操作の同時実行性を記録します。クラスタが複数のノードで構成されている場合、この同時実行性は、すべてのノードの同時実行性を合計した結果です。

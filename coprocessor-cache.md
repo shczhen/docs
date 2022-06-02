@@ -1,16 +1,15 @@
 ---
-title: Coprocessor Cache
-summary: Learn the features of Coprocessor Cache.
-aliases: ['/docs/dev/coprocessor-cache/']
+title: コプロセッサーキャッシュ
+summary: コプロセッサーキャッシュの機能を学びます。
 ---
 
 # コプロセッサーキャッシュ {#coprocessor-cache}
 
 v4.0以降、TiDBインスタンスは、TiKV（コプロセッサーキャッシュ機能）にプッシュダウンされる計算結果のキャッシュをサポートします。これにより、一部のシナリオで計算プロセスを高速化できます。
 
-## 構成 {#configuration}
+## Configuration / コンフィグレーション {#configuration}
 
-コプロセッサーキャッシュは、TiDB構成ファイルの`tikv-client.copr-cache`の構成項目を介して構成できます。コプロセッサー・キャッシュを使用可能にして構成する方法の詳細については、 [TiDB構成ファイル](/tidb-configuration-file.md#tikv-clientcopr-cache-new-in-v400)を参照してください。
+コプロセッサーキャッシュは、TiDB構成ファイルの`tikv-client.copr-cache`の構成項目を介して構成できます。コプロセッサー・キャッシュを使用可能にして構成する方法の詳細については、 [TiDBConfiguration / コンフィグレーションファイル](/tidb-configuration-file.md#tikv-clientcopr-cache-new-in-v400)を参照してください。
 
 ## 機能の説明 {#feature-description}
 
@@ -63,4 +62,4 @@ EXPLAIN ANALYZE SELECT * FROM t USE INDEX(a);
 
 ### Grafanaモニタリングパネルを表示する {#view-the-grafana-monitoring-panel}
 
-Grafanaでは、 `tidb`名前空間の下の`distsql`サブシステムに<strong>copr-cache</strong>パネルが表示されます。このパネルは、クラスター全体でのコプロセッサー・キャッシュのヒット、ミス、およびキャッシュ破棄の数を監視します。
+Grafanaでは、 `tidb`名前空間の下の`distsql`サブシステムに**copr-cache**パネルが表示されます。このパネルは、クラスタ全体でのコプロセッサー・キャッシュのヒット、ミス、およびキャッシュ破棄の数を監視します。

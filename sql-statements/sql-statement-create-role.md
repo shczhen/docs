@@ -1,6 +1,6 @@
 ---
-title: CREATE ROLE | TiDB SQL Statement Reference
-summary: An overview of the usage of CREATE ROLE for the TiDB database.
+title: 役割の作成| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのCREATEROLEの使用法の概要。
 ---
 
 # 役割の作成 {#create-role}

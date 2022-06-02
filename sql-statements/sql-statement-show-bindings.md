@@ -1,7 +1,6 @@
 ---
-title: SHOW [GLOBAL|SESSION] BINDINGS
-summary: Use of SHOW BINDINGS binding in TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-bindings/']
+title: [グローバル|セッション]のバインドを表示
+summary: TiDBデータベースでのSHOWBINDINGSバインディングの使用。
 ---
 
 # [グローバル|セッション]のバインドを表示 {#show-global-session-bindings}
@@ -10,19 +9,19 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-bindings/']
 
 ## あらすじ {#synopsis}
 
-<strong>ShowStmt：</strong>
+**ShowStmt：**
 
 ![ShowStmt](/media/sqlgram/ShowStmt.png)
 
-<strong>ShowTargetFilterable：</strong>
+**ShowTargetFilterable：**
 
 ![ShowTargetFilterable](/media/sqlgram/ShowTargetFilterable.png)
 
-<strong>GlobalScope：</strong>
+**GlobalScope：**
 
 ![GlobalScope](/media/sqlgram/GlobalScope.png)
 
-<strong>ShowLikeOrWhereOpt</strong>
+**ShowLikeOrWhereOpt**
 
 ![ShowLikeOrWhereOpt](/media/sqlgram/ShowLikeOrWhereOpt.png)
 
@@ -45,7 +44,7 @@ SHOW [GLOBAL | SESSION] BINDINGS [ShowLikeOrWhereOpt];
 | create_time  | 作成された時間                                                                                                                                        |
 | update_time  | 更新された時間                                                                                                                                        |
 | 文字コード        | キャラクターセット                                                                                                                                      |
-| 照合           | 並べ替えルール                                                                                                                                        |
+| 照合順序         | 並べ替えルール                                                                                                                                        |
 | ソース          | `manual` （ `create [global] binding` SQLステートメントによって作成される）、 `capture` （TiDBによって自動的にキャプチャされる）、および`evolve` （TiDBによって自動的に展開される）を含む、バインディングが作成される方法 |
 
 ## 例 {#examples}

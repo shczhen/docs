@@ -1,6 +1,5 @@
 ---
-title: TiDB 2.1.5 Release Notes
-aliases: ['/docs/dev/releases/release-2.1.5/','/docs/dev/releases/2.1.5/']
+title: TiDB2.1.5リリースノート
 ---
 
 # TiDB2.1.5リリースノート {#tidb-2-1-5-release-notes}
@@ -49,6 +48,6 @@ aliases: ['/docs/dev/releases/release-2.1.5/','/docs/dev/releases/2.1.5/']
 ## ツール {#tools}
 
 -   雷
-    -   トゥームストーンストアがクラスター[＃4223](https://github.com/tikv/tikv/pull/4223)に存在する場合、エラーを報告したり終了したりしないでください
+    -   トゥームストーンストアがクラスタ[＃4223](https://github.com/tikv/tikv/pull/4223)に存在する場合は、エラーを報告したり終了したりしないでください。
 -   TiDB Binlog
     -   DDLイベントレプリケーションの正確性を保証するために、DDLbinlogレプリケーションプランを更新します[＃9304](https://github.com/pingcap/tidb/issues/9304)

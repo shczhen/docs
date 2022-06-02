@@ -1,7 +1,6 @@
 ---
-title: TiCDC Open Protocol
-summary: Learn the concept of TiCDC Open Protocol and how to use it.
-aliases: ['/docs/dev/ticdc/ticdc-open-protocol/','/docs/dev/reference/tools/ticdc/open-protocol/','/docs/dev/ticdc/column-ddl-type-codes/']
+title: TiCDCオープンプロトコル
+summary: TiCDCOpenProtocolの概念とその使用方法を学びます。
 ---
 
 # TiCDCオープンプロトコル {#ticdc-open-protocol}
@@ -48,7 +47,7 @@ TiCDC Open Protocolは、イベントを基本ユニットとして使用して�
 
 ### 行変更イベント {#row-changed-event}
 
--   <strong>鍵：</strong>
+-   **鍵：**
 
     ```
     {
@@ -65,7 +64,7 @@ TiCDC Open Protocolは、イベントを基本ユニットとして使用して�
     | スキーマ名 | 弦   | 行が含まれるスキーマの名前。              |
     | テーブル名 | 弦   | 行が含まれるテーブルの名前。              |
 
--   <strong>価値：</strong>
+-   **価値：**
 
     `Insert`イベント。新しく追加された行データが出力されます。
 
@@ -154,7 +153,7 @@ TiCDC Open Protocolは、イベントを基本ユニットとして使用して�
 
 ### DDLイベント {#ddl-event}
 
--   <strong>鍵：</strong>
+-   **鍵：**
 
     ```
     {
@@ -171,7 +170,7 @@ TiCDC Open Protocolは、イベントを基本ユニットとして使用して�
     | スキーマ名 | 弦   | DDL変更のスキーマ名。空の文字列である可能性があります。 |
     | テーブル名 | 弦   | DDL変更のテーブル名。空の文字列である可能性があります。 |
 
--   <strong>価値：</strong>
+-   **価値：**
 
     ```
     {
@@ -187,7 +186,7 @@ TiCDC Open Protocolは、イベントを基本ユニットとして使用して�
 
 ### 解決されたイベント {#resolved-event}
 
--   <strong>鍵：</strong>
+-   **鍵：**
 
     ```
     {
@@ -200,7 +199,7 @@ TiCDC Open Protocolは、イベントを基本ユニットとして使用して�
     | :---- | :-- | :--------------------------------- |
     | TS    | 番号  | 解決されたタイムスタンプ。このイベントより前のTSが送信されました。 |
 
--   <strong>値：</strong>なし
+-   **値：**なし
 
 ## イベントストリーム出力の例 {#examples-of-the-event-stream-output}
 
@@ -260,7 +259,7 @@ COMMIT;
 ```
 
 -   ログ9は、 `Delete`タイプの行変更イベントです。このタイプのイベントには、主キー列または一意のインデックス列のみが含まれます。
--   ログ13とログ14は解決されたイベントです。解決済みイベントとは、このパーティションで、解決済みTSよりも小さいイベント（行変更イベントとDDLイベントを含む）が送信されたことを意味します。
+-   ログ13とログ14は解決されたイベントです。解決済みイベントとは、このパーティションで、解決済みTSよりも小さいイベント（行変更イベントおよびDDLイベントを含む）が送信されたことを意味します。
 
 ```
 9. [partition=0] [key="{\"ts\":415508881418485761,\"scm\":\"test\",\"tbl\":\"t1\",\"t\":1}"] [value="{\"d\":{\"id\":{\"t\":3,\"h\":true,\"v\":1}}}"]
@@ -384,7 +383,7 @@ COMMIT;
    == MultipleKeyFlag | PrimaryKeyFlag | GeneratedColumnFlag | HandleKeyFlag
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   `BinaryFlag`は、列タイプがBLOB / TEXT（TINYBLOB/TINYTEXTおよびBINARY/CHARを含む）の場合にのみ意味があります。アップストリーム列がBLOBタイプの場合、 `BinaryFlag`の値は`1`に設定されます。アップストリーム列がTEXTタイプの場合、 `BinaryFlag`の値は`0`に設定されます。
 > -   アップストリームからテーブルを複製するために、TiCDCはハンドルインデックスとして[有効なインデックス](/ticdc/ticdc-overview.md#restrictions)を選択します。 Handleインデックス列の`HandleKeyFlag`値は`1`に設定されます。

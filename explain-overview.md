@@ -1,18 +1,17 @@
 ---
-title: TiDB Query Execution Plan Overview
-summary: Learn about the execution plan information returned by the `EXPLAIN` statement in TiDB.
-aliases: ['/docs/dev/query-execution-plan/','/docs/dev/reference/performance/understanding-the-query-execution-plan/','/docs/dev/index-merge/','/docs/dev/reference/performance/index-merge/','/tidb/dev/index-merge','/tidb/dev/query-execution-plan']
+title: TiDBクエリ実行プランの概要
+summary: TiDBの`EXPLAIN`ステートメントによって返される実行プラン情報について学びます。
 ---
 
 # TiDBクエリ実行プランの概要 {#tidb-query-execution-plan-overview}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > MySQLクライアントを使用してTiDBに接続する場合、行を折り返すことなく出力結果をより明確に読み取るために、 `pager less -S`コマンドを使用できます。次に、 `EXPLAIN`の結果が出力されたら、キーボードの右矢印<kbd>→</kbd>ボタンを押して、出力を水平方向にスクロールできます。
 
-SQLは宣言型言語です。これは、クエリの結果がどのように見えるかを説明するものであり、実際にそれらの結果を取得する<strong>方法ではありません</strong>。 TiDBは、テーブルを結合する順序の使用や、潜在的なインデックスを使用できるかどうかなど、クエリを実行できるすべての可能な方法を検討します。<em>クエリ実行プランを検討する</em>プロセスは、SQL最適化として知られています。
+SQLは宣言型言語です。これは、クエリの結果がどのように見えるかを説明するものであり、実際にそれらの結果を取得する**方法ではありません**。 TiDBは、テーブルを結合する順序の使用や、潜在的なインデックスを使用できるかどうかなど、クエリを実行できるすべての可能な方法を検討します。*クエリ実行プランを検討する*プロセスは、SQL最適化として知られています。
 
-`EXPLAIN`ステートメントは、特定のステートメントに対して選択された実行プランを示します。つまり、クエリを実行できる数百または数千の方法を検討した後、TiDBは、この<em>プラン</em>が最小のリソースを消費し、最短の時間で実行されると考えています。
+`EXPLAIN`ステートメントは、特定のステートメントに対して選択された実行プランを示します。つまり、クエリを実行できる数百または数千の方法を検討した後、TiDBは、この*プラン*が最小のリソースを消費し、最短の時間で実行されると考えています。
 
 {{< copyable "" >}}
 
@@ -41,9 +40,9 @@ Records: 2  Duplicates: 0  Warnings: 0
 `EXPLAIN`は実際のクエリを実行しません。 [`EXPLAIN ANALYZE`](/sql-statements/sql-statement-explain-analyze.md)を使用してクエリを実行し、 `EXPLAIN`の情報を表示できます。これは、選択した実行プランが最適ではない場合の診断に役立ちます。 `EXPLAIN`の使用例については、次のドキュメントを参照してください。
 
 -   [インデックス](/explain-indexes.md)
--   [参加する](/explain-joins.md)
+-   [テーブル結合](/explain-joins.md)
 -   [サブクエリ](/explain-subqueries.md)
--   [集約](/explain-aggregation.md)
+-   [集計](/explain-aggregation.md)
 -   [ビュー](/explain-views.md)
 -   [パーティション](/explain-partitions.md)
 
@@ -61,31 +60,31 @@ Records: 2  Duplicates: 0  Warnings: 0
 
 演算子は、クエリ結果を返す一部として実行される特定のステップです。 （ディスクまたはTiKVブロックキャッシュの）テーブルスキャンを実行するオペレーターは次のとおりです。
 
--   <strong>TableFullScan</strong> ：全表スキャン
--   <strong>TableRangeScan</strong> ：指定された範囲のテーブルスキャン
--   <strong>TableRowIDScan</strong> ：RowIDに基づいてテーブルデータをスキャンします。通常、インデックス読み取り操作の後に、一致するデータ行を取得します。
--   <strong>IndexFullScan</strong> ：「フルテーブルスキャン」に似ていますが、テーブルデータではなく、インデックスがスキャンされる点が異なります。
--   <strong>IndexRangeScan</strong> ：指定された範囲でのインデックススキャン。
+-   **TableFullScan** ：全表スキャン
+-   **TableRangeScan** ：指定された範囲のテーブルスキャン
+-   **TableRowIDScan** ：RowIDに基づいてテーブルデータをスキャンします。通常、インデックス読み取り操作の後に、一致するデータ行を取得します。
+-   **IndexFullScan** ：「フルテーブルスキャン」に似ていますが、テーブルデータではなく、インデックスがスキャンされる点が異なります。
+-   **IndexRangeScan** ：指定された範囲でのインデックススキャン。
 
 TiDBは、TiKV/TiFlashからスキャンされたデータまたは計算結果を集約します。データ集約演算子は、次のカテゴリに分類できます。
 
--   <strong>TableReader</strong> ：TiKVの`TableFullScan`や`TableRangeScan`などの基礎となる演算子によって取得されたデータを集約します。
--   <strong>IndexReader</strong> ：TiKVの`IndexFullScan`や`IndexRangeScan`などの基礎となる演算子によって取得されたデータを集約します。
--   <strong>IndexLookUp</strong> ：最初に`Build`面でスキャンされたRowID（TiKV）を集約します。次に、 `Probe`側で、これらのRowIDに基づいてTiKVからデータを正確に読み取ります。 `Build`側には、 `IndexFullScan`や`IndexRangeScan`のような演算子があります。 `Probe`側には、 `TableRowIDScan`人のオペレーターがいます。
--   <strong>IndexMerge</strong> ： `IndexLookUp`に似ています。 `IndexMerge`は`IndexLookupReader`の拡張として見ることができます。 `IndexMerge`は、複数のインデックスの同時読み取りをサポートします。多くの`Build`と1つの`Probe`があります。 `IndexMerge`の実行プロセスは`IndexLookUp`の実行プロセスと同じです。
+-   **TableReader** ：TiKVの`TableFullScan`や`TableRangeScan`などの基礎となる演算子によって取得されたデータを集約します。
+-   **IndexReader** ：TiKVの`IndexFullScan`や`IndexRangeScan`などの基礎となる演算子によって取得されたデータを集約します。
+-   **IndexLookUp** ：最初に`Build`面でスキャンされたRowID（TiKV）を集約します。次に、 `Probe`側で、これらのRowIDに基づいてTiKVからデータを正確に読み取ります。 `Build`側には、 `IndexFullScan`や`IndexRangeScan`のような演算子があります。 `Probe`側には、 `TableRowIDScan`人のオペレーターがいます。
+-   **IndexMerge** ： `IndexLookUp`に似ています。 `IndexMerge`は`IndexLookupReader`の拡張として見ることができます。 `IndexMerge`は、複数のインデックスの同時読み取りをサポートします。多くの`Build`と1つの`Probe`があります。 `IndexMerge`の実行プロセスは`IndexLookUp`の実行プロセスと同じです。
 
-構造はツリーとして表示されますが、クエリを実行するために、親ノードの前に子ノードを完了する必要はありません。 TiDBはクエリ内の並列処理をサポートしているため、実行をより正確に説明する方法は、子ノードが親ノード<em>に流れること</em>です。親、子、および兄弟の演算子は、クエリの一部を並行して実行している<em>可能</em>性があります。
+構造はツリーとして表示されますが、クエリを実行するために、親ノードの前に子ノードを完了する必要はありません。 TiDBはクエリ内の並列処理をサポートしているため、実行をより正確に説明する方法は、子ノードが親ノード*に流れること*です。親、子、および兄弟の演算子は、クエリの一部を並行して実行している<em>可能</em>性があります。
 
 前の例では、 `├─IndexRangeScan_8(Build)`演算子は、 `a(a)`インデックスに一致する行の内部`RowID`を検索します。次に、 `└─TableRowIDScan_9(Probe)`オペレーターは、これらの行をテーブルから取得します。
 
 #### 範囲クエリ {#range-query}
 
-`WHERE`の条件では、 `ON`オプティマイザーは主`HAVING`またはインデックスキークエリによって返された結果を分析します。たとえば、これらの`<=`には、 `>`などの`>=`および`<`タイプと`=`などの文字タイプの比較演算子が含まれる場合があり`LIKE` 。
+`WHERE`条件では、 `HAVING`オプティマイザーは主`ON`またはインデックスキークエリによって返された結果を分析します。たとえば、これらの条件には、 `>`などの`>=`型と`<` `<=` 、および`=`などの文字型の比較演算子が含まれる場合があり`LIKE` 。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> -   インデックスを使用するには、条件が<em>sargable</em>である必要があります。たとえば、条件`YEAR(date_column) < 1992`はインデックスを使用できませんが、 `date_column < '1992-01-01`は使用できます。
-> -   同じタイプと[文字セットと照合](/character-set-and-collation.md)のデータを比較することをお勧めします。タイプを混在させるには、追加の`cast`の操作が必要になるか、インデックスが使用されない場合があります。
+> -   インデックスを使用するには、条件が*sargable*である必要があります。たとえば、条件`YEAR(date_column) < 1992`はインデックスを使用できませんが、 `date_column < '1992-01-01`は使用できます。
+> -   同じタイプと[文字セットと照合順序](/character-set-and-collation.md)のデータを比較することをお勧めします。タイプを混在させるには、追加の`cast`の操作が必要になるか、インデックスが使用されない場合があります。
 > -   `AND` （交差）と`OR` （結合）を使用して、1つの列の範囲クエリ条件を組み合わせることもできます。多次元複合インデックスの場合、複数の列で条件を使用できます。たとえば、複合インデックス`(a, b, c)`について：
 >     -   `a`が同等のクエリである場合、引き続き`b`のクエリ範囲を計算します。 `b`も同等のクエリである場合は、引き続き`c`のクエリ範囲を計算します。
 >     -   それ以外の場合、 `a`が同等でないクエリである場合、 `a`の範囲しか把握できません。

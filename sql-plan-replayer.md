@@ -1,20 +1,20 @@
 ---
-title: Use PLAN REPLAYER to Save and Restore the On-Site Information of a Cluster
-summary: Learn how to use PLAN REPLAYER to save and restore the on-site information of a cluster.
+title: PLAN REPLAYERを使用して、クラスターのオンサイト情報を保存および復元します
+summary: PLAN REPLAYERを使用して、クラスタのオンサイト情報を保存および復元する方法を学びます。
 ---
 
 # PLAN REPLAYERを使用して、クラスターのオンサイト情報を保存および復元します {#use-plan-replayer-to-save-and-restore-the-on-site-information-of-a-cluster}
 
-TiDBクラスターの問題を見つけてトラブルシューティングするときは、多くの場合、システムと実行プランに関する情報を提供する必要があります。より便利で効率的な方法で情報を取得し、クラスターの問題をトラブルシューティングするのに役立つように、 `PLAN REPLAYER`コマンドがTiDBv5.3.0に導入されました。このコマンドを使用すると、クラスターのオンサイト情報を簡単に保存および復元でき、トラブルシューティングの効率が向上し、管理のために問題をより簡単にアーカイブできます。
+TiDBクラスタの問題を見つけてトラブルシューティングするときは、多くの場合、システムと実行プランに関する情報を提供する必要があります。より便利で効率的な方法で情報を取得し、クラスタの問題をトラブルシューティングするのに役立つように、 `PLAN REPLAYER`コマンドがTiDBv5.3.0に導入されました。このコマンドを使用すると、クラスタのオンサイト情報を簡単に保存および復元でき、トラブルシューティングの効率が向上し、管理のために問題をより簡単にアーカイブできます。
 
 `PLAN REPLAYER`の特徴は次のとおりです。
 
--   オンサイトトラブルシューティングでのTiDBクラスターの情報をZIP形式のファイルにエクスポートして保存します。
--   別のTiDBクラスターからエクスポートされたZIP形式のファイルをクラスターにインポートします。このファイルには、オンサイトトラブルシューティングでの後者のTiDBクラスターの情報が含まれています。
+-   オンサイトトラブルシューティングでのTiDBクラスタの情報をZIP形式のファイルにエクスポートして保存します。
+-   別のTiDBクラスタからエクスポートされたZIP形式のファイルをクラスタにインポートします。このファイルには、オンサイトトラブルシューティングでの後者のTiDBクラスタの情報が含まれています。
 
-## <code>PLAN REPLAER</code>を使用してクラスター情報をエクスポートします {#use-code-plan-replaer-code-to-export-cluster-information}
+## <code>PLAN REPLAER</code>を使用してクラスタ情報をエクスポートします {#use-code-plan-replaer-code-to-export-cluster-information}
 
-`PLAN REPLAYER`を使用して、TiDBクラスターのオンサイト情報を保存できます。エクスポートインターフェイスは次のとおりです。
+`PLAN REPLAYER`を使用して、TiDBクラスタのオンサイト情報を保存できます。エクスポートインターフェイスは次のとおりです。
 
 {{< copyable "" >}}
 
@@ -32,9 +32,9 @@ PLAN REPLAYER DUMP EXPLAIN [ANALYZE] sql-statement;
 -   `sql-statement`のテーブルの統計
 -   `EXPLAIN [ANALYZE] sql-statement`の結果
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> `PLAN REPLAYER`テーブルデータをエクスポートし<strong>ません</strong>。
+> `PLAN REPLAYER`テーブルデータをエクスポートし**ません**。
 
 ### クラスタ情報のエクスポートの例 {#examples-of-exporting-cluster-information}
 
@@ -51,9 +51,9 @@ plan replayer dump explain select * from t;
 
 `PLAN REPLAYER DUMP`は、上記のテーブル情報を`ZIP`ファイルにパッケージ化し、実行結果としてファイル識別子を返します。このファイルは1回限りのファイルです。ファイルがダウンロードされた後、TiDBはそれを削除します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> `ZIP`のファイルは最大1時間TiDBクラスターに保存されます。 1時間後、TiDBはそれを削除します。
+> `ZIP`のファイルは最大1時間TiDBクラスタに保存されます。 1時間後、TiDBはそれを削除します。
 
 ```sql
 MySQL [test]> plan replayer dump explain select * from t;
@@ -73,7 +73,7 @@ MySQL [test]> plan replayer dump explain select * from t;
 http://${tidb-server-ip}:${tidb-server-status-port}/plan_replayer/dump/${file_token}
 ```
 
-`${tidb-server-ip}:${tidb-server-status-port}`は、クラスター内の任意のTiDBサーバーのアドレスです。例えば：
+`${tidb-server-ip}:${tidb-server-status-port}`は、クラスタの任意のTiDBサーバーのアドレスです。例えば：
 
 {{< copyable "" >}}
 
@@ -81,13 +81,13 @@ http://${tidb-server-ip}:${tidb-server-status-port}/plan_replayer/dump/${file_to
 curl http://127.0.0.1:10080/plan_replayer/dump/replayer_single_JOGvpu4t7dssySqJfTtS4A==_1635750890568691080.zip > plan_replayer.zip
 ```
 
-## <code>PLAN REPLAYER</code>を使用してクラスター情報をインポートします {#use-code-plan-replayer-code-to-import-cluster-information}
+## <code>PLAN REPLAYER</code>を使用してクラスタ情報をインポートします {#use-code-plan-replayer-code-to-import-cluster-information}
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> TiDBクラスターのオンサイト情報を別のクラスターにインポートすると、後者のクラスターのTiDBセッション変数、SQLバインディング、テーブルスキーマ、および統計が変更されます。
+> TiDBクラスタのオンサイト情報を別のクラスタにインポートすると、後者のクラスタのTiDBセッション変数、SQLバインディング、テーブルスキーマ、および統計が変更されます。
 
-`PLAN REPLAYER`を使用してエクスポートされた既存の`ZIP`ファイルでは、 `PLAN REPLAYER`インポートインターフェイスを使用して、クラスターのオンサイト情報を他のTiDBクラスターに復元できます。構文は次のとおりです。
+`PLAN REPLAYER`を使用してエクスポートされた既存の`ZIP`ファイルでは、 `PLAN REPLAYER`インポートインターフェイスを使用して、クラスタのオンサイト情報を他のTiDBクラスタに復元できます。構文は次のとおりです。
 
 {{< copyable "" >}}
 

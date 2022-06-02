@@ -1,6 +1,5 @@
 ---
-title: TiDB 2.1.9 Release Notes
-aliases: ['/docs/dev/releases/release-2.1.9/','/docs/dev/releases/2.1.9/']
+title: TiDB2.1.9リリースノート
 ---
 
 # TiDB2.1.9リリースノート {#tidb-2-1-9-release-notes}
@@ -17,7 +16,7 @@ TiDB Ansibleバージョン：2.1.9
 -   場合によっては定数畳み込みによって引き起こされるスタックオーバーフローを修正します[＃10189](https://github.com/pingcap/tidb/pull/10189)
 -   場合によってはエイリアスが存在する場合の`Update`の特権チェックの問題を修正し[＃10326](https://github.com/pingcap/tidb/pull/10326) [＃10157](https://github.com/pingcap/tidb/pull/10157)
 -   [＃10197](https://github.com/pingcap/tidb/pull/10197)でのメモリ使用量の追跡と制御
--   照合を`utf8mb4_0900_ai_ci`として指定することを[＃10201](https://github.com/pingcap/tidb/pull/10201)
+-   照合順序を`utf8mb4_0900_ai_ci`として指定することを[＃10201](https://github.com/pingcap/tidb/pull/10201)
 -   主キーが符号なしタイプ[＃10209](https://github.com/pingcap/tidb/pull/10209)の場合の`MAX`関数の誤った結果の問題を修正します
 -   非厳密SQLモード[＃10254](https://github.com/pingcap/tidb/pull/10254)でNULL値がNOTNULL列に挿入される可能性がある問題を修正します。
 -   `DISTINCT` [＃10270](https://github.com/pingcap/tidb/pull/10270)に複数の列が存在する場合の、 `COUNT`関数の誤った結果の問題を修正します。

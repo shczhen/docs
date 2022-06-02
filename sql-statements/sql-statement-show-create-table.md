@@ -1,7 +1,6 @@
 ---
-title: SHOW CREATE TABLE | TiDB SQL Statement Reference
-summary: An overview of the usage of SHOW CREATE TABLE for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-create-table/','/docs/dev/reference/sql/statements/show-create-table/']
+title: 作成テーブルを表示| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのSHOWCREATETABLEの使用法の概要。
 ---
 
 # CREATETABLEを表示する {#show-create-table}
@@ -10,11 +9,11 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-create-table/','/docs/dev
 
 ## あらすじ {#synopsis}
 
-<strong>ShowCreateTableStmt：</strong>
+**ShowCreateTableStmt：**
 
 ![ShowCreateTableStmt](/media/sqlgram/ShowCreateTableStmt.png)
 
-<strong>TableName：</strong>
+**TableName：**
 
 ![TableName](/media/sqlgram/TableName.png)
 

@@ -1,14 +1,13 @@
 ---
-title: Explore SQL with TiDB
-summary: Learn about the basic SQL statements for the TiDB database.
-aliases: ['/docs/dev/basic-sql-operations/','/docs/dev/how-to/get-started/explore-sql/']
+title: TiDBでSQLを探索する
+summary: TiDBデータベースの基本的なSQLステートメントについて学習します。
 ---
 
 # TiDBでSQLを探索する {#explore-sql-with-tidb}
 
 TiDBはMySQLと互換性があり、ほとんどの場合、MySQLステートメントを直接使用できます。サポートされていない機能については、 [MySQLとの互換性](/mysql-compatibility.md#unsupported-features)を参照してください。
 
-SQLを試し、MySQLクエリとのTiDBの互換性をテストするには、次のようにします[TiDBをインストールせずに、Webブラウザで直接実行します](https://tour.tidb.io/) 。また、最初にTiDBクラスターをデプロイしてから、そのクラスターでSQLステートメントを実行することもできます。
+SQLを試し、MySQLクエリとのTiDBの互換性をテストするには、次のようにします[TiDBをインストールせずに、Webブラウザで直接実行します](https://tour.tidb.io/) 。また、最初にTiDBクラスタをデプロイしてから、そのクラスターでSQLステートメントを実行することもできます。
 
 このページでは、DDL、DML、CRUD操作などの基本的なTiDBSQLステートメントについて説明します。 TiDBステートメントの完全なリストについては、 [TiDBSQL構文図](https://pingcap.github.io/sqlgram/)を参照してください。
 
@@ -174,7 +173,7 @@ DROP INDEX person_id ON person;
 ALTER TABLE person DROP INDEX person_unique_id;
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > DDL操作はトランザクションではありません。 DDL操作を実行するときに`COMMIT`ステートメントを実行する必要はありません。
 
@@ -214,7 +213,7 @@ UPDATE person SET birthday='20180808' WHERE id=2;
 DELETE FROM person WHERE id=2;
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > フィルタとして`WHERE`句を含まない`UPDATE`および`DELETE`ステートメントは、テーブル全体で機能します。
 

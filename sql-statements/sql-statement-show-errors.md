@@ -1,7 +1,6 @@
 ---
-title: SHOW ERRORS | TiDB SQL Statement Reference
-summary: An overview of the usage of SHOW ERRORS for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-errors/','/docs/dev/reference/sql/statements/show-errors/']
+title: エラーを表示| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースのSHOWERRORSの使用法の概要。
 ---
 
 # エラーを表示 {#show-errors}
@@ -12,7 +11,7 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-errors/','/docs/dev/refer
 
 ## あらすじ {#synopsis}
 
-<strong>ShowErrorsStmt：</strong>
+**ShowErrorsStmt：**
 
 ![ShowErrorsStmt](/media/sqlgram/ShowErrorsStmt.png)
 

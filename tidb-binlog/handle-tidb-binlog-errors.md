@@ -1,7 +1,6 @@
 ---
-title: TiDB Binlog Error Handling
-summary: Learn how to handle TiDB Binlog errors.
-aliases: ['/docs/dev/tidb-binlog/handle-tidb-binlog-errors/','/docs/dev/reference/tidb-binlog/troubleshoot/error-handling/']
+title: TiDBBinlogエラー処理
+summary: TiDBBinlogエラーを処理する方法を学びます。
 ---
 
 # TiDBBinlogエラー処理 {#tidb-binlog-error-handling}
@@ -14,7 +13,7 @@ aliases: ['/docs/dev/tidb-binlog/handle-tidb-binlog-errors/','/docs/dev/referenc
 
 解決策：以下に示すように、Kafkaの構成パラメーターを調整します。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```
 message.max.bytes=1073741824

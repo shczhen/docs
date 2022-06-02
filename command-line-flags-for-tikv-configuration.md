@@ -1,10 +1,9 @@
 ---
-title: TiKV Configuration Flags
-summary: Learn some configuration flags of TiKV.
-aliases: ['/docs/dev/command-line-flags-for-tikv-configuration/','/docs/dev/reference/configuration/tikv-server/configuration/']
+title: TiKVConfiguration / コンフィグレーションフラグ
+summary: TiKVのいくつかの構成フラグを学びます。
 ---
 
-# TiKV構成フラグ {#tikv-configuration-flags}
+# TiKVConfiguration / コンフィグレーションフラグ {#tikv-configuration-flags}
 
 TiKVは、コマンドラインパラメータの読み取り可能な単位変換をサポートしています。
 
@@ -15,7 +14,7 @@ TiKVは、コマンドラインパラメータの読み取り可能な単位変�
 
 -   TiKVサーバーが監視するアドレス
 -   デフォルト： `"127.0.0.1:20160"`
--   クラスタを展開するには、 `--addr`を使用して現在のホストのIPアドレス（ `"192.168.100.113:20160"`など）を指定する必要があります。クラスターがDockerで実行されている場合は、DockerのIPアドレスを`"0.0.0.0:20160"`として指定します。
+-   クラスタを展開するには、 `--addr`を使用して現在のホストのIPアドレス（ `"192.168.100.113:20160"`など）を指定する必要があります。クラスタがDockerで実行されている場合は、DockerのIPアドレスを`"0.0.0.0:20160"`として指定します。
 
 ## <code>--advertise-addr</code> {#code-advertise-addr-code}
 

@@ -1,5 +1,5 @@
 ---
-title: tiup list
+title: tiupリスト
 ---
 
 # tiupリスト {#tiup-list}

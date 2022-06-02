@@ -1,7 +1,6 @@
 ---
 title: TiDB FAQ
-summary: Learn about the most frequently asked questions (FAQs) relating to TiDB.
-aliases: ['/docs/dev/faq/tidb-faq/','/docs/dev/faq/tidb/','/docs/dev/tiflash/tiflash-faq/','/docs/dev/reference/tiflash/faq/','/tidb/dev/tiflash-faq']
+summary: TiDBに関連する最もよくある質問（FAQ）について学びます。
 ---
 
 # TiDB FAQ {#tidb-faq}
@@ -20,7 +19,7 @@ TiDBは、水平方向のスケーラビリティ、高可用性、および一�
 
 #### TiDBのアーキテクチャは何ですか？ {#what-is-tidb-s-architecture}
 
-TiDBクラスターには、TiDBサーバー、PD（配置ドライバー）サーバー、およびTiKVサーバーの3つのコンポーネントがあります。詳細については、 [TiDBアーキテクチャ](/tidb-architecture.md)を参照してください。
+TiDBクラスタには、TiDBサーバー、PD（配置ドライバー）サーバー、およびTiKVサーバーの3つのコンポーネントがあります。詳細については、 [TiDBアーキテクチャ](/tidb-architecture.md)を参照してください。
 
 #### TiDBはMySQLに基づいていますか？ {#is-tidb-based-on-mysql}
 
@@ -30,7 +29,7 @@ TiDBクラスターには、TiDBサーバー、PD（配置ドライバー）サ�
 
 -   TiDBはSQLコンピューティング層として機能し、主にSQLの解析、クエリプランの指定、およびエグゼキュータの生成を担当します。
 -   TiKVは、実際のデータを格納するために使用される分散キー値ストレージエンジンとして機能します。つまり、TiKVはTiDBのストレージエンジンです。
--   PDは、TiKVメタデータを管理し、タイムスタンプを割り当て、データの配置と負荷分散を決定するTiDBのクラスターマネージャーとして機能します。
+-   PDは、TiKVメタデータを管理し、タイムスタンプを割り当て、データの配置と負荷分散を決定するTiDBのクラスタマネージャーとして機能します。
 
 #### TiDBは使いやすいですか？ {#is-it-easy-to-use-tidb}
 
@@ -42,9 +41,9 @@ TiDBクラスターには、TiDBサーバー、PD（配置ドライバー）サ�
 
 #### TiDBは分散トランザクションをサポートしていますか？ {#does-tidb-support-distributed-transactions}
 
-はい。 TiDBは、単一の場所にある少数のノードであろうと多数の[複数のデータセンターにまたがるノード](/multi-data-centers-in-one-city-deployment.md)であろうと、クラスター全体にトランザクションを分散します。
+はい。 TiDBは、単一の場所にある少数のノードであろうと多数の[複数のデータセンターにまたがるノード](/multi-data-centers-in-one-city-deployment.md)であろうと、クラスタ全体にトランザクションを分散します。
 
-Googleのパーコレーターに触発されたTiDBのトランザクションモデルは、主に2フェーズコミットプロトコルであり、いくつかの実用的な最適化が施されています。このモデルは、タイムスタンプアロケータに依存して、トランザクションごとに単調な増加タイムスタンプを割り当てるため、競合を検出できます。 [PD](/tidb-architecture.md#placement-driver-pd-server)は、TiDBクラスターのタイムスタンプアロケータとして機能します。
+Googleのパーコレーターに触発されたTiDBのトランザクションモデルは、主に2フェーズコミットプロトコルであり、いくつかの実用的な最適化が施されています。このモデルは、タイムスタンプアロケータに依存して、トランザクションごとに単調な増加タイムスタンプを割り当てるため、競合を検出できます。 [PD](/tidb-architecture.md#placement-driver-pd-server)は、TiDBクラスタのタイムスタンプアロケータとして機能します。
 
 #### TiDBを操作するために使用できるプログラミング言語は何ですか？ {#what-programming-language-can-i-use-to-work-with-tidb}
 
@@ -155,7 +154,7 @@ TiKVサーバーがビジーです。これは通常、データベースの負�
 SET GLOBAL tidb_gc_life_time = '30m';
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 「30m」は、30分前に生成されたデータのみをクリーンアップすることを意味し、余分なストレージスペースを消費する可能性があります。
 

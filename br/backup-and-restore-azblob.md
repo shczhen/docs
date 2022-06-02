@@ -1,6 +1,6 @@
 ---
-title: Back up and Restore Data on Azure Blob Storage
-summary: Learn how to use BR to back up and restore data on Azure Blob Storage.
+title: AzureBlobStorageでのデータのバックアップと復元
+summary: BRを使用してAzureBlobStorageのデータをバックアップおよび復元する方法を学びます。
 ---
 
 # AzureBlobStorageでのデータのバックアップと復元 {#back-up-and-restore-data-on-azure-blob-storage}
@@ -11,7 +11,7 @@ BRでサポートされているその他の外部ストレージの詳細につ
 
 ## ユーザーシナリオ {#user-scenario}
 
-Azure仮想マシンは、大規模なデータをAzureBlobStorageにすばやく保存できます。 Azure仮想マシンを使用してクラスターをデプロイしている場合は、AzureBlobStorageにデータをバックアップできます。
+Azure仮想マシンは、大規模なデータをAzureBlobStorageにすばやく保存できます。 Azure仮想マシンを使用してクラスタをデプロイしている場合は、AzureBlobStorageにデータをバックアップできます。
 
 ## 使用法 {#usage}
 
@@ -37,7 +37,7 @@ BRおよびTiKVの動作環境では、環境変数`$AZURE_CLIENT_ID` 、およ�
 
 Azure ADを使用してデータをバックアップする場合は、 `account-name`と`access-tier`を指定する必要があります。 `access-tier`が設定されていない（値が空の）場合、値はデフォルトで`Hot`です。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > Azure Blob Storageを外部ストレージとして使用する場合は、 `send-credentials-to-tikv = true`を設定する必要があります（デフォルトで設定されています）。そうしないと、バックアップタスクが失敗します。
 
@@ -77,7 +77,7 @@ Azure ADを使用してデータを復元する場合は、 `account-name`を指
 
 アクセスキーを使用してデータをバックアップする場合は、 `account-name` 、および`account-key`を指定する必要があり`access-tier` 。 `access-tier`が設定されていない（値が空の）場合、値はデフォルトで`Hot`です。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > Azure Blob Storageを外部ストレージとして使用する場合は、 `send-credentials-to-tikv = true`を設定する必要があります（デフォルトで設定されています）。そうしないと、バックアップタスクが失敗します。
 
@@ -122,9 +122,9 @@ Azure ADを使用してデータを復元する場合は、 `account-name`を指
 
 Azure ADを使用してデータをバックアップおよび復元する場合、環境変数`$AZURE_CLIENT_ID` 、および`$AZURE_TENANT_ID`は、BRおよびTiKVのオペレーティング環境で構成する必要があり`$AZURE_CLIENT_SECRET` 。
 
--   TiUPを使用してクラスターを開始すると、TiKVは「systemd」サービスを使用します。次の例は、上記の3つの環境変数をTiKVのパラメーターとして構成する方法を示しています。
+-   TiUPを使用してクラスタを開始すると、TiKVは「systemd」サービスを使用します。次の例は、上記の3つの環境変数をTiKVのパラメーターとして構成する方法を示しています。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > 手順3でTiKVを再起動する必要があります。TiKVを再起動できない場合は、 [方法2](#method-2-back-up-and-restore-using-an-access-key-easy)を使用してデータをバックアップおよび復元できます。
 
@@ -160,4 +160,4 @@ Azure ADを使用してデータをバックアップおよび復元する場合
 
 ## 互換性 {#compatibility}
 
-この機能は、v5.4.0以降のバージョンとの<strong>み互換性</strong>があります。
+この機能は、v5.4.0以降のバージョンとの**み互換性**があります。

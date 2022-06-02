@@ -1,14 +1,13 @@
 ---
-title: TiDB Data Type
-summary: Learn about default values for data types in TiDB.
-aliases: ['/docs/dev/data-type-default-values/','/docs/dev/reference/sql/data-types/default-values/']
+title: TiDBデータ型
+summary: TiDBのデータ型のデフォルト値について学びます。
 ---
 
 # デフォルト値 {#default-values}
 
 データ型指定の`DEFAULT`値句は、列のデフォルト値を示します。デフォルト値は定数である必要があり、関数または式にすることはできません。ただし、時間タイプの場合、 `LOCALTIME`列と`TIMESTAMP`列のデフォルトとして、 `NOW` 、および`LOCALTIMESTAMP`関数を指定`DATETIME` `CURRENT_TIMESTAMP` 。
 
-`BLOB` 、および`TEXT`列にデフォルト値を割り当てる<strong>ことはできません</strong>`JSON`
+`BLOB` 、および`TEXT`列にデフォルト値を割り当てる**ことはできません**`JSON`
 
 列定義に明示的な`DEFAULT`値が含まれていない場合、TiDBはデフォルト値を次のように決定します。
 

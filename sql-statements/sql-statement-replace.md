@@ -1,7 +1,6 @@
 ---
-title: REPLACE | TiDB SQL Statement Reference
-summary: An overview of the usage of REPLACE for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-replace/','/docs/dev/reference/sql/statements/replace/']
+title: 交換| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースのREPLACEの使用法の概要。
 ---
 
 # 交換 {#replace}

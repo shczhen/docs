@@ -1,6 +1,5 @@
 ---
-title: TiDB 2.1 RC5 Release Notes
-aliases: ['/docs/dev/releases/release-2.1-rc.5/','/docs/dev/releases/21rc5/']
+title: TiDB2.1RC5リリースノート
 ---
 
 <!-- markdownlint-disable MD032 -->
@@ -20,7 +19,7 @@ aliases: ['/docs/dev/releases/release-2.1-rc.5/','/docs/dev/releases/21rc5/']
     -   `Truncate`組み込み関数`int`でunsigned1フラグをサポートし[＃8068](https://github.com/pingcap/tidb/pull/8068) 。
     -   JSONデータを10進タイプ[＃8109](https://github.com/pingcap/tidb/pull/8109)に変換するときに発生したエラーを修正します
     -   `Update`フロートタイプ[＃8170](https://github.com/pingcap/tidb/pull/8170)のときに発生したエラーを修正します
--   統計学
+-   統計
     -   場合によっては、ポイントクエリ中の誤った統計の問題を修正します[＃8035](https://github.com/pingcap/tidb/pull/8035)
     -   場合によっては、主キーの統計の選択性推定を修正します[＃8149](https://github.com/pingcap/tidb/pull/8149)
     -   削除されたテーブルの統計が長期間クリアされない問題を修正します[＃8182](https://github.com/pingcap/tidb/pull/8182)
@@ -34,7 +33,7 @@ aliases: ['/docs/dev/releases/release-2.1-rc.5/','/docs/dev/releases/21rc5/']
 
     -   [＃8096](https://github.com/pingcap/tidb/pull/8096)のテーブルデータを取得するときに発生したエラーを修正し`infoschema.profiling`
     -   UNIXソケットをpumpsクライアントに置き換えて、 [＃8098](https://github.com/pingcap/tidb/pull/8098)を書き込みます。
-    -   `tidb_slow_log_threshold`の環境変数のしきい値を追加します。これにより、低速ログ[＃8094](https://github.com/pingcap/tidb/pull/8094)が動的に設定されます。
+    -   遅いログ[＃8094](https://github.com/pingcap/tidb/pull/8094)を動的に設定する`tidb_slow_log_threshold`の環境変数のしきい値を追加します
     -   `tidb_query_log_max_len`環境変数がログを動的に設定している間に切り捨てられたSQLステートメントの元の長さを追加します[＃8200](https://github.com/pingcap/tidb/pull/8200)
     -   `tidb_opt_write_row_id`の環境変数を追加して、書き込みを許可するかどうかを制御し`_tidb_rowid` [＃8218](https://github.com/pingcap/tidb/pull/8218)
     -   オーバーバウンドスキャンを回避するために、ticlientの`Scan`コマンドに上限を追加し[＃8247](https://github.com/pingcap/tidb/pull/8247) [＃8081](https://github.com/pingcap/tidb/pull/8081)
@@ -63,4 +62,4 @@ aliases: ['/docs/dev/releases/release-2.1-rc.5/','/docs/dev/releases/21rc5/']
 
 ## ツール {#tools}
 
--   古いバージョンの[＃8093](https://github.com/pingcap/tidb/pull/8093)と互換性のないTiDB-Binlogクラスターをサポートし[ドキュメンテーション](/tidb-binlog/tidb-binlog-overview.md)
+-   古いバージョンの[＃8093](https://github.com/pingcap/tidb/pull/8093)と互換性のないTiDB- [ドキュメンテーション](/tidb-binlog/tidb-binlog-overview.md)クラスタをサポートします。

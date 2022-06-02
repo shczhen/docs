@@ -1,13 +1,13 @@
 ---
-title: Resume a Data Migration Task
-summary: Learn how to resume a data migration task.
+title: データ移行タスクを再開します
+summary: データ移行タスクを再開する方法を学びます。
 ---
 
 # データ移行タスクを再開します {#resume-a-data-migration-task}
 
 `resume-task`コマンドを使用して、 `Paused`状態でデータ移行タスクを再開できます。これは通常、タスクを一時停止するエラーを処理した後、データ移行タスクを手動で再開するシナリオで使用されます。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 help resume-task
@@ -28,7 +28,7 @@ Global Flags:
 
 ## 使用例 {#usage-example}
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 resume-task [-s "mysql-replica-01"] task-name
@@ -41,7 +41,7 @@ resume-task [-s "mysql-replica-01"] task-name
 
 ## 返された結果 {#returned-results}
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 resume-task test

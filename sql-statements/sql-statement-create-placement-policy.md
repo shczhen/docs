@@ -1,9 +1,15 @@
 ---
-title: CREATE PLACEMENT POLICY
-summary: The usage of CREATE PLACEMENT POLICY in TiDB.
+title: プレースメントポリシーを作成する
+summary: TiDBでのCREATEPLACEMENTPOLICYの使用法。
 ---
 
 # プレースメントポリシーを作成する {#create-placement-policy}
+
+> **警告：**
+>
+> SQLの配置ルールは実験的機能です。 GAの前に構文が変更される可能性があり、バグもある可能性があります。
+>
+> リスクを理解している場合は、 `SET GLOBAL tidb_enable_alter_placement = 1;`を実行することでこの実験機能を有効にできます。
 
 `CREATE PLACEMENT POLICY`は、後でテーブル、パーティション、またはデータベーススキーマに割り当てることができる名前付き配置ポリシーを作成するために使用されます。
 
@@ -17,34 +23,27 @@ PolicyName ::=
     Identifier
 
 PlacementOptionList ::=
-    PlacementOption
-|   PlacementOptionList PlacementOption
-|   PlacementOptionList ',' PlacementOption
+    DirectPlacementOption
+|   PlacementOptionList DirectPlacementOption
+|   PlacementOptionList ',' DirectPlacementOption
 
-PlacementOption ::=
-    CommonPlacementOption
-|   SugarPlacementOption
-|   AdvancedPlacementOption
-
-CommonPlacementOption ::=
-    "FOLLOWERS" EqOpt LengthNum
-
-SugarPlacementOption ::=
+DirectPlacementOption ::=
     "PRIMARY_REGION" EqOpt stringLit
 |   "REGIONS" EqOpt stringLit
+|   "FOLLOWERS" EqOpt LengthNum
+|   "VOTERS" EqOpt LengthNum
+|   "LEARNERS" EqOpt LengthNum
 |   "SCHEDULE" EqOpt stringLit
-
-AdvancedPlacementOption ::=
-    "LEARNERS" EqOpt LengthNum
 |   "CONSTRAINTS" EqOpt stringLit
 |   "LEADER_CONSTRAINTS" EqOpt stringLit
 |   "FOLLOWER_CONSTRAINTS" EqOpt stringLit
+|   "VOTER_CONSTRAINTS" EqOpt stringLit
 |   "LEARNER_CONSTRAINTS" EqOpt stringLit
 ```
 
 ## 例 {#examples}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > クラスタで使用可能なリージョンを確認するには、 [`SHOW PLACEMENT LABELS`](/sql-statements/sql-statement-show-placement-labels.md)を参照してください。
 >

@@ -1,7 +1,6 @@
 ---
 title: SHOW STATS_HISTOGRAMS
-summary: An overview of the usage of SHOW HISTOGRAMS for TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-histograms/']
+summary: TiDBデータベースのSHOWHISTOGRAMSの使用法の概要。
 ---
 
 # SHOW STATS_HISTOGRAMS {#show-stats-histograms}
@@ -10,15 +9,15 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-histograms/']
 
 ## あらすじ {#synopsis}
 
-<strong>ShowStmt</strong>
+**ShowStmt**
 
 ![ShowStmt](/media/sqlgram/ShowStmt.png)
 
-<strong>ShowTargetFiltertable</strong>
+**ShowTargetFiltertable**
 
 ![ShowTargetFilterable](/media/sqlgram/ShowTargetFilterable.png)
 
-<strong>ShowLikeOrWhereOpt</strong>
+**ShowLikeOrWhereOpt**
 
 ![ShowLikeOrWhereOpt](/media/sqlgram/ShowLikeOrWhereOpt.png)
 

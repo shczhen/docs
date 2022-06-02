@@ -1,7 +1,6 @@
 ---
 title: TiUP FAQ
-summary: Provide answers to common questions asked by TiUP users.
-aliases: ['/docs/dev/tiup/tiup-faq/']
+summary: TiUPユーザーからのよくある質問への回答を提供します。
 ---
 
 # TiUP FAQ {#tiup-faq}
@@ -19,11 +18,11 @@ TiUPは、 `TIUP_MIRRORS`の環境変数を介したミラーソースの指定�
 
 TiUPは当面サードパーティのコンポーネントをサポートしていませんが、TiUPチームはTiUPコンポーネント開発仕様を開発し、tiup-publishコンポーネントを開発しています。すべての準備が整ったら、寄稿者は`tiup publish <comp> <version>`コマンドを使用して、独自のコンポーネントをTiUPの公式ミラーに公開できます。
 
-## TiUPプレイグラウンドとTiUPクラスターコンポーネントの違いは何ですか？ {#what-is-the-difference-between-the-tiup-playground-and-tiup-cluster-components}
+## TiUPプレイグラウンドとTiUPクラスタコンポーネントの違いは何ですか？ {#what-is-the-difference-between-the-tiup-playground-and-tiup-cluster-components}
 
-TiUPプレイグラウンドコンポーネントは、主にLinuxまたはmacOSオペレーティングシステムでスタンドアロンの開発環境を構築するために使用されます。すばやく開始し、指定したバージョンのTiUPクラスターを簡単に実行するのに役立ちます。 TiUPクラスターコンポーネントは、主に本番環境クラスター（通常は大規模クラスター）の展開と保守に使用されます。
+TiUPプレイグラウンドコンポーネントは、主にLinuxまたはmacOSオペレーティングシステムでスタンドアロンの開発環境を構築するために使用されます。すばやく開始し、指定したバージョンのTiUPクラスタを簡単に実行するのに役立ちます。 TiUPクラスタコンポーネントは、主に本番環境クラスタ（通常は大規模クラスタ）の展開と保守に使用されます。
 
-## TiUPクラスターコンポーネントのトポロジファイルを作成するにはどうすればよいですか？ {#how-do-i-write-the-topology-file-for-the-tiup-cluster-component}
+## TiUPクラスタコンポーネントのトポロジファイルを作成するにはどうすればよいですか？ {#how-do-i-write-the-topology-file-for-the-tiup-cluster-component}
 
 トポロジファイルを書き込むには、 [これらのテンプレート](https://github.com/pingcap/tiup/tree/master/examples)を参照してください。テンプレートには次のものが含まれます。
 
@@ -35,11 +34,11 @@ TiUPプレイグラウンドコンポーネントは、主にLinuxまたはmacOS
 
 ## 同じホストに複数のインスタンスをデプロイできますか？ {#can-multiple-instances-be-deployed-on-the-same-host}
 
-TiUPクラスターコンポーネントを使用して、同じホストに複数のインスタンスをデプロイできますが、異なるポートとディレクトリが構成されています。そうしないと、ディレクトリとポートの競合が発生する可能性があります。
+TiUPクラスタコンポーネントを使用して、同じホストに複数のインスタンスをデプロイできますが、異なるポートとディレクトリが構成されています。そうしないと、ディレクトリとポートの競合が発生する可能性があります。
 
-## 同じクラスター内でポートとディレクトリの競合が検出されていますか？ {#are-port-and-directory-conflicts-detected-within-the-same-cluster}
+## 同じクラスタ内でポートとディレクトリの競合が検出されていますか？ {#are-port-and-directory-conflicts-detected-within-the-same-cluster}
 
-同じクラスター内のポートとディレクトリの競合は、展開およびスケーリング中に検出されます。ディレクトリまたはポートの競合がある場合、展開またはスケーリングプロセスが中断されます。
+同じクラスタのポートとディレクトリの競合は、展開およびスケーリング中に検出されます。ディレクトリまたはポートの競合がある場合、展開またはスケーリングプロセスが中断されます。
 
 ## 異なるクラスター間でポートとディレクトリの競合が検出されていますか？ {#are-port-and-directory-conflicts-detected-among-different-clusters}
 
@@ -47,7 +46,7 @@ TiUPクラスターコンポーネントを使用して、同じホストに複�
 
 ## クラスタの展開中に、TiUPは<code>ssh: handshake failed: read tcp 10.10.10.34:38980 -&gt; 10.10.10.34:3600: read: connection reset by peer</code>ました {#during-cluster-deployment-tiup-received-an-code-ssh-handshake-failed-read-tcp-10-10-10-34-38980-10-10-10-34-3600-read-connection-reset-by-peer-code-error}
 
-TiUPのデフォルトの同時スレッド数がデフォルトのSSH接続の最大数を超えているため、エラーが発生する可能性があります。この問題を解決するには、SSH接続のデフォルト数を増やしてから、sshdサービスを再起動します。
+TiUPのデフォルトの同時スレッド数がSSH接続のデフォルトの最大数を超えているため、エラーが発生する可能性があります。この問題を解決するには、SSH接続のデフォルト数を増やしてから、sshdサービスを再起動します。
 
 {{< copyable "" >}}
 

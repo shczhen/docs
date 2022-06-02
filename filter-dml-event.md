@@ -1,6 +1,6 @@
 ---
-title: Filter DML Events Using SQL Expressions
-summary: Learn how to filter DML events using SQL expressions.
+title: SQL式を使用してDMLイベントをフィルタリングする
+summary: SQL式を使用してDMLイベントをフィルタリングする方法を学びます。
 ---
 
 # SQL式を使用してDMLイベントをフィルタリングする {#filter-dml-events-using-sql-expressions}
@@ -54,7 +54,7 @@ MySQL [test]> select * from tbl;
 2 rows in set (0.001 sec)
 ```
 
-## 構成パラメーターと説明 {#configuration-parameters-and-description}
+## Configuration / コンフィグレーションパラメーターと説明 {#configuration-parameters-and-description}
 
 -   `schema` ：一致するアップストリームスキーマの名前。ワイルドカードマッチングまたは通常のマッチングはサポートされていません。
 -   `table` ：照合するアップストリームテーブルの名前。ワイルドカードマッチングまたは通常のマッチングはサポートされていません。
@@ -63,18 +63,18 @@ MySQL [test]> select * from tbl;
 -   `update-new-value-expr` ： `UPDATE`のタイプのbinlogイベント（UPDATE_ROWS_EVENT）によって運ばれる新しい値に影響を与える式を構成します。この式を同じ構成アイテムで`insert-value-expr`または`delete-value-expr`と一緒に使用することはできません。
 -   `delete-value-expr` ： `DELETE`のタイプのbinlogイベント（DELETE_ROWS_EVENT）によって運ばれる値に影響を与える式を構成します。この式を`insert-value-expr` 、または`update-old-value-expr`と一緒に使用することはできませ`update-new-value-expr` 。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   `update-old-value-expr`と`update-new-value-expr`を一緒に構成できます。
-> -   `update-old-value-expr`と`update-new-value-expr`が一緒に構成されている場合、「更新+古い値」が`update-old-value-expr`<strong>に</strong>一致し、「更新+新しい値」が`update-new-value-expr`に一致する行がフィルター処理されます。
-> -   `update-old-value-expr`と`update-new-value-expr`のいずれかが構成されている場合、構成された式は<strong>、行の変更全体</strong>をフィルター処理するかどうかを決定します。つまり、古い値の削除と新しい値の挿入が全体としてフィルター処理されます。
+> -   `update-old-value-expr`と`update-new-value-expr`が一緒に構成されている場合、「更新+古い値」が`update-old-value-expr`**に**一致し、「更新+新しい値」が`update-new-value-expr`に一致する行がフィルター処理されます。
+> -   `update-old-value-expr`と`update-new-value-expr`のいずれかが構成されている場合、構成された式は**、行の変更全体**をフィルター処理するかどうかを決定します。つまり、古い値の削除と新しい値の挿入が全体としてフィルター処理されます。
 
 SQL式は、1つの列または複数の列で使用できます。 `c % 2 = 0`などの`a*a + b*b = c*c`でサポートされているSQL関数を使用することもでき`ts > NOW()` 。
 
 `TIMESTAMP`のデフォルトのタイムゾーンは、タスク構成ファイルで指定されたタイムゾーンです。デフォルト値は、ダウンストリームのタイムゾーンです。 `c_timestamp = '2021-01-01 12:34:56.5678+08:00'`のようにタイムゾーンを明示的に指定できます。
 
-`expression-filter`の構成項目で複数のフィルタリングルールを構成できます。アップストリームデータソースは、 `expression-filters`の必要なルールを参照して、それを有効にします。複数のルールが使用されている場合、<strong>いずれ</strong>かのルールが一致すると、行の変更全体がフィルタリングされます。
+`expression-filter`の構成項目で複数のフィルタリングルールを構成できます。アップストリームデータソースは、 `expression-filters`の必要なルールを参照して、それを有効にします。複数のルールが使用されている場合、**いずれ**かのルールが一致すると、行の変更全体がフィルタリングされます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 構成する式フィルタリングルールが多すぎると、DMの計算オーバーヘッドが増加し、データレプリケーションの速度が低下します。

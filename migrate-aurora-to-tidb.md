@@ -1,12 +1,11 @@
 ---
-title: Migrate Data from Amazon Aurora to TiDB
-summary: Learn how to migrate data from Amazon Aurora to TiDB using DB snapshot.
-aliases: ['/tidb/dev/migrate-from-aurora-using-lightning','/docs/dev/migrate-from-aurora-mysql-database/','/docs/dev/how-to/migrate/from-mysql-aurora/','/docs/dev/how-to/migrate/from-aurora/', '/tidb/dev/migrate-from-aurora-mysql-database/', '/tidb/dev/migrate-from-mysql-aurora/']
+title: AuroraからTiDBへのデータの移行
+summary: DBスナップショットを使用してAuroraからTiDBにデータを移行する方法を学びます。
 ---
 
-# AmazonAuroraからTiDBへのデータの移行 {#migrate-data-from-amazon-aurora-to-tidb}
+# AuroraからTiDBへのデータの移行 {#migrate-data-from-amazon-aurora-to-tidb}
 
-このドキュメントでは、AmazonAuroraからTiDBにデータを移行する方法について説明します。移行プロセスでは[DBスナップショット](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html)を使用するため、スペースと時間が大幅に節約されます。
+このドキュメントでは、 AuroraからTiDBにデータを移行する方法について説明します。移行プロセスでは[DBスナップショット](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html)を使用するため、スペースと時間が大幅に節約されます。
 
 移行全体には2つのプロセスがあります。
 
@@ -20,7 +19,7 @@ aliases: ['/tidb/dev/migrate-from-aurora-using-lightning','/docs/dev/migrate-fro
 
 ## 完全なデータをTiDBにインポートする {#import-full-data-to-tidb}
 
-### ステップ1.AuroraスナップショットをAmazonS3にエクスポートします {#step-1-export-an-aurora-snapshot-to-amazon-s3}
+### ステップAuroraスナップショットをAmazonS3にエクスポートします {#step-1-export-an-aurora-snapshot-to-amazon-s3}
 
 1.  Auroraで、次のコマンドを実行して、現在のbinlogの位置を照会します。
 
@@ -45,14 +44,14 @@ binlogの位置を取得したら、5分以内にスナップショットをエ�
 
 上記の2つの手順を実行した後、次の情報が用意されていることを確認してください。
 
--   スナップショット作成時のAurorabinlogの名前と位置。
+-   スナップショット作成時のAuroraの名前と位置。
 -   スナップショットが保存されているS3パス、およびS3パスにアクセスできるSecretKeyとAccessKey。
 
 ### ステップ2.スキーマをエクスポートする {#step-2-export-schema}
 
-AuroraのスナップショットファイルにはDDLステートメントが含まれていないため、Dumplingを使用してスキーマをエクスポートし、TiDBLightningを使用してターゲットデータベースにスキーマを作成する必要があります。スキーマを手動で作成する場合は、この手順をスキップできます。
+AuroraのスナップショットファイルにはDDLステートメントが含まれていないため、 Dumplingを使用してスキーマをエクスポートし、TiDBLightningを使用してターゲットデータベースにスキーマを作成する必要があります。スキーマを手動で作成する場合は、この手順をスキップできます。
 
-次のコマンドを実行して、Dumplingを使用してスキーマをエクスポートします。このコマンドには、目的のテーブルスキーマのみをエクスポートするための`--filter`つのパラメーターが含まれています。
+次のコマンドを実行して、 Dumplingを使用してスキーマをエクスポートします。このコマンドには、目的のテーブルスキーマのみをエクスポートするための`--filter`つのパラメーターが含まれています。
 
 {{< copyable "" >}}
 
@@ -60,11 +59,11 @@ AuroraのスナップショットファイルにはDDLステートメントが�
 tiup dumpling --host ${host} --port 3306 --user root --password ${password} --filter 'my_db1.table[12]' --no-data --output 's3://my-bucket/schema-backup?region=us-west-2' --filter "mydb.*"
 ```
 
-上記のコマンドで使用されるパラメータは次のとおりです。その他のパラメータについては、 [餃子の概要](/dumpling-overview.md)を参照してください。
+上記のコマンドで使用されるパラメータは次のとおりです。その他のパラメータについては、 [Dumplingの概要](/dumpling-overview.md)を参照してください。
 
 | パラメータ                  | 説明                                                                                              |
 | ---------------------- | ----------------------------------------------------------------------------------------------- |
-| `-u`または`--user`        | AuroraMySQLユーザー                                                                                 |
+| `-u`または`--user`        | Auroraユーザー                                                                                      |
 | `-p`または`--password`    | MySQLユーザーパスワード                                                                                  |
 | `-P`または`--port`        | MySQLポート                                                                                        |
 | `-h`または`--host`        | MySQLIPアドレス                                                                                     |
@@ -87,7 +86,7 @@ tiup dumpling --host ${host} --port 3306 --user root --password ${password} --fi
 vim tidb-lightning.toml
 ```
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```toml
 [tidb]
@@ -120,7 +119,7 @@ table = '$2'
 type = '$3'
 ```
 
-TiDBクラスターでTLSを有効にする必要がある場合は、 [TiDBLightning構成](/tidb-lightning/tidb-lightning-configuration.md)を参照してください。
+TiDBクラスタでTLSを有効にする必要がある場合は、 [TiDBLightningConfiguration / コンフィグレーション](/tidb-lightning/tidb-lightning-configuration.md)を参照してください。
 
 ### ステップ4.完全なデータをTiDBにインポートします {#step-4-import-full-data-to-tidb}
 
@@ -129,7 +128,7 @@ TiDBクラスターでTLSを有効にする必要がある場合は、 [TiDBLigh
     {{< copyable "" >}}
 
     ```shell
-    tiup tidb-lightning -config tidb-lightning.toml -d 's3://my-bucket/schema-backup?region=us-west-2'
+    tiup tidb-lightning -config tidb-lightning.toml -d ./schema -no-schema=false
     ```
 
 2.  `tidb-lightning`を実行してインポートを開始します。コマンドラインで直接プログラムを起動すると、SIGHUP信号を受信した後、プロセスが予期せず終了する場合があります。この場合、 `nohup`または`screen`ツールを使用してプログラムを実行することをお勧めします。例えば：
@@ -141,7 +140,7 @@ TiDBクラスターでTLSを有効にする必要がある場合は、 [TiDBLigh
     ```shell
     export AWS_ACCESS_KEY_ID=${access_key}
     export AWS_SECRET_ACCESS_KEY=${secret_key}
-    nohup tiup tidb-lightning -config tidb-lightning.toml > nohup.out 2>&1 &
+    nohup tiup tidb-lightning -config tidb-lightning.toml -no-schema=true > nohup.out 2>&1 &
     ```
 
 3.  インポートの開始後、次のいずれかの方法でインポートの進行状況を確認できます。
@@ -152,7 +151,7 @@ TiDBクラスターでTLSを有効にする必要がある場合は、 [TiDBLigh
 
 4.  TiDB Lightningがインポートを完了すると、自動的に終了します。ログ印刷`the whole procedure completed`の最後の5行が見つかった場合、インポートは成功しています。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > インポートが成功したかどうかに関係なく、ログの最後の行には`tidb lightning exit`が表示されます。これは、TiDB Lightningが正常に終了することを意味しますが、必ずしもインポートが成功したことを意味するわけではありません。
 
@@ -169,7 +168,7 @@ TiDBクラスターでTLSを有効にする必要がある場合は、 [TiDBLigh
 
 1.  次のように`source1.yaml`のファイルを作成します。
 
-    {{&lt;コピー可能&quot;&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```yaml
     # Must be unique.
@@ -184,7 +183,7 @@ TiDBクラスターでTLSを有効にする必要がある場合は、 [TiDBLigh
       port: 3306
     ```
 
-2.  次のコマンドを実行して、 `tiup dmctl`を使用してデータソース構成をDMクラスターにロードします。
+2.  次のコマンドを実行して、 `tiup dmctl`を使用してデータソース構成をDMクラスタにロードします。
 
     {{< copyable "" >}}
 
@@ -194,16 +193,16 @@ TiDBクラスターでTLSを有効にする必要がある場合は、 [TiDBLigh
 
     上記のコマンドで使用されるパラメーターは、次のとおりです。
 
-    | パラメータ                   | 説明                                                                  |
-    | ----------------------- | ------------------------------------------------------------------- |
-    | `--master-addr`         | `dmctl`が接続されるクラスター内の任意のDMマスターの`{advertise-addr}`例：172.16.10.71：8261 |
-    | `operate-source create` | データソースをDMクラスターにロードします。                                              |
+    | パラメータ                   | 説明                                                                |
+    | ----------------------- | ----------------------------------------------------------------- |
+    | `--master-addr`         | `dmctl`が接続されるクラスタの任意のDMマスターの`{advertise-addr}`例：172.16.10.71：8261 |
+    | `operate-source create` | データソースをDMクラスタにロードします。                                             |
 
 ### ステップ2：移行タスクを作成する {#step-2-create-the-migration-task}
 
 次のように`task1.yaml`のファイルを作成します。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```yaml
 # Task name. Multiple tasks that are running at the same time must each have a unique name.
@@ -244,7 +243,7 @@ mysql-instances:
    #     safe-mode: true  # If this field is set to true, DM changes INSERT of the data source to REPLACE for the target database, and changes UPDATE of the data source to DELETE and REPLACE for the target database. This is to ensure that when the table schema contains a primary key or unique index, DML statements can be imported repeatedly. In the first minute of starting or resuming an incremental replication task, DM automatically enables the safe mode.
 ```
 
-上記のYAMLファイルは、移行タスクに必要な最小限の構成です。その他の設定項目については、 [DM高度なタスク構成ファイル](/dm/task-configuration-file-full.md)を参照してください。
+上記のYAMLファイルは、移行タスクに必要な最小限の構成です。その他の設定項目については、 [DM高度なタスクConfiguration / コンフィグレーションファイル](/dm/task-configuration-file-full.md)を参照してください。
 
 ### ステップ3.移行タスクを実行します {#step-3-run-the-migration-task}
 
@@ -266,10 +265,10 @@ tiup dmctl --master-addr ${advertise-addr} start-task task.yaml
 
 上記のコマンドで使用されるパラメーターは、次のとおりです。
 
-| パラメータ           | 説明                                                                  |
-| --------------- | ------------------------------------------------------------------- |
-| `--master-addr` | `dmctl`が接続されるクラスター内の任意のDMマスターの`{advertise-addr}`例：172.16.10.71：8261 |
-| `start-task`    | 移行タスクを開始します。                                                        |
+| パラメータ           | 説明                                                                |
+| --------------- | ----------------------------------------------------------------- |
+| `--master-addr` | `dmctl`が接続されるクラスタの任意のDMマスターの`{advertise-addr}`例：172.16.10.71：8261 |
+| `start-task`    | 移行タスクを開始します。                                                      |
 
 タスクの開始に失敗した場合は、プロンプトメッセージを確認し、構成を修正してください。その後、上記のコマンドを再実行してタスクを開始できます。
 
@@ -277,7 +276,7 @@ tiup dmctl --master-addr ${advertise-addr} start-task task.yaml
 
 ### 手順4.移行タスクのステータスを確認する {#step-4-check-the-migration-task-status}
 
-DMクラスターに進行中の移行タスクがあるかどうかとタスクのステータスを確認するには、 `tiup dmctl`を使用して`query-status`コマンドを実行します。
+DMクラスタに進行中の移行タスクがあるかどうかとタスクのステータスを確認するには、 `tiup dmctl`を使用して`query-status`コマンドを実行します。
 
 {{< copyable "" >}}
 
@@ -303,5 +302,5 @@ DMの実行中、DM-worker、DM-master、およびdmctlは、関連情報をロ�
 -   [移行タスクを一時停止します](/dm/dm-pause-task.md) 。
 -   [移行タスクを再開します](/dm/dm-resume-task.md) 。
 -   [移行タスクを停止します](/dm/dm-stop-task.md) 。
--   [クラスターデータソースとタスク構成をエクスポートおよびインポートします](/dm/dm-export-import-config.md) 。
+-   [クラスタデータソースとタスク構成をエクスポートおよびインポートします](/dm/dm-export-import-config.md) 。
 -   [失敗したDDLステートメントを処理する](/dm/handle-failed-ddl-statements.md) 。

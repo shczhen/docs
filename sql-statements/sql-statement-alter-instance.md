@@ -1,7 +1,6 @@
 ---
 title: ALTER INSTANCE
-summary: Learn the overview of the `ALTER INSTANCE` usage in TiDB.
-aliases: ['/docs/dev/sql-statements/sql-statement-alter-instance/','/docs/dev/reference/sql/statements/alter-instance/']
+summary: TiDBでの`ALTERINSTANCE`の使用法の概要を学びます。
 ---
 
 # ALTER INSTANCE {#alter-instance}
@@ -18,7 +17,7 @@ aliases: ['/docs/dev/sql-statements/sql-statement-alter-instance/','/docs/dev/re
 
 ## シンタックスダイアグラム {#syntax-diagram}
 
-<strong>AlterInstanceStmt：</strong>
+**AlterInstanceStmt：**
 
 ```ebnf+diagram
 AlterInstanceStmt ::=

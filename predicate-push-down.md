@@ -1,10 +1,9 @@
 ---
-title: Predicates Push Down
-summary: Introduce one of the TiDB's logic optimization rules—Predicate Push Down (PPD).
-aliases: ['/tidb/dev/predicates-push-down']
+title: Predicate Push Down
+summary: TiDBのロジック最適化ルールの1つである述語プッシュダウン（PPD）を導入します。
 ---
 
-# 述語プッシュダウン（PPD） {#predicates-push-down-ppd}
+# Predicate Push Down（PPD） {#predicates-push-down-ppd}
 
 このドキュメントでは、TiDBのロジック最適化ルールの1つである述語プッシュダウン（PPD）を紹介します。これは、述語のプッシュダウンを理解し、その適用可能なシナリオと適用できないシナリオを理解するのに役立つことを目的としています。
 
@@ -29,7 +28,7 @@ explain select * from t where a < 1;
 3 rows in set (0.00 sec)
 ```
 
-このクエリでは、述語`a < 1`をTiKVレイヤーにプッシュダウンしてデータをフィルタリングすると、ネットワーク送信のオーバーヘッドを減らすことができます。
+このクエリでは、述語`a < 1`をTiKV層にプッシュダウンしてデータをフィルタリングすると、ネットワーク送信のオーバーヘッドを減らすことができます。
 
 ### ケース2：述語をストレージレイヤーにプッシュする {#case-2-push-predicates-to-storage-layer}
 

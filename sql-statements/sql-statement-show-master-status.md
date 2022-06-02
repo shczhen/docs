@@ -1,12 +1,11 @@
 ---
-title: SHOW MASTER STATUS
-summary: An overview of the usage of SHOW MASTER STATUS for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-master-status/']
+title: マスターステータスを表示
+summary: TiDBデータベースのSHOWMASTERSTATUSの使用法の概要。
 ---
 
 # マスターステータスを表示 {#show-master-status}
 
-`SHOW MASTER STATUS`ステートメントは、クラスター内の最新のTSOを表示します。
+`SHOW MASTER STATUS`ステートメントは、クラスタの最新のTSOを表示します。
 
 ## 例 {#examples}
 

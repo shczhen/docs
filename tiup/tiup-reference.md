@@ -1,5 +1,5 @@
 ---
-title: TiUP Reference
+title: TiUPリファレンス
 ---
 
 # TiUPリファレンス {#tiup-reference}
@@ -31,13 +31,13 @@ tiup [flags] <component> [args...]      # Runs a component
 
 -   このオプションはデフォルトで無効になっており、デフォルト値は`false`です。このオプションを有効にするには、このオプションをコマンドに追加して、 `true`の値を渡すか、値を渡さないようにします。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > このオプションは、 `tiup [flags] <component> [args...]`形式のコマンドでのみ使用できます。
 
 ### --binpath {#binpath}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > このオプションは、 `tiup [flags] <component> [args...]`形式のコマンドでのみ使用できます。
 
@@ -46,7 +46,7 @@ tiup [flags] <component> [args...]      # Runs a component
 
 ### --skip-version-check {#skip-version-check}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > このオプションは、v1.3.0以降廃止されました。
 
@@ -85,5 +85,5 @@ TiUPには複数のコマンドがあり、これらのコマンドには複数�
 
 ## コンポーネントリスト {#component-list}
 
--   [集まる](/tiup/tiup-component-cluster.md) ：実稼働環境でTiDBクラスターを管理します。
--   [dm](/tiup/tiup-component-dm.md) ：実稼働環境でTiDBデータ移行（DM）クラスターを管理します。
+-   [クラスタ](/tiup/tiup-component-cluster.md) ：実稼働環境でTiDBクラスタを管理します。
+-   [dm](/tiup/tiup-component-dm.md) ：実稼働環境でTiDBデータ移行（DM）クラスタを管理します。

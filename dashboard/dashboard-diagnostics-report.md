@@ -1,7 +1,6 @@
 ---
-title: TiDB Dashboard Diagnostic Report
-summary: Learn the TiDB Dashboard diagnostic report.
-aliases: ['/docs/dev/dashboard/dashboard-diagnostics-report/']
+title: TiDBダッシュボード診断レポート
+summary: TiDBダッシュボード診断レポートをご覧ください。
 ---
 
 # TiDBダッシュボード診断レポート {#tidb-dashboard-diagnostic-report}
@@ -12,24 +11,24 @@ aliases: ['/docs/dev/dashboard/dashboard-diagnostics-report/']
 
 診断レポートは、次の部分で構成されています。
 
--   基本情報：診断レポートの時間範囲、クラスターのハードウェア情報、クラスタートポロジのバージョン情報が含まれます。
+-   基本情報：診断レポートの時間範囲、クラスタのハードウェア情報、クラスタトポロジのバージョン情報が含まれます。
 -   診断情報：自動診断の結果を表示します。
 -   負荷情報：サーバー、TiDB、PD、またはTiKVのCPU、メモリ、およびその他の負荷情報が含まれます。
 -   概要情報：各TiDB、PD、またはTiKVモジュールの消費時間とエラー情報が含まれます。
 -   TiDB / PD / TiKV監視情報：各コンポーネントの監視情報が含まれます。
--   構成情報：各コンポーネントの構成情報が含まれます。
+-   Configuration / コンフィグレーション情報：各コンポーネントの構成情報が含まれます。
 
 診断レポートの例は次のとおりです。
 
 ![Sample report](/media/dashboard/dashboard-diagnostics-example-table.png)
 
-上の画像では、上部の青いボックスの<strong>合計時間消費</strong>がレポート名です。下の赤いボックスの情報は、このレポートの内容とレポートの各フィールドの意味を説明しています。
+上の画像では、上部の青いボックスの**合計時間消費**がレポート名です。下の赤いボックスの情報は、このレポートの内容とレポートの各フィールドの意味を説明しています。
 
 このレポートでは、いくつかの小さなボタンについて次のように説明しています。
 
--   <strong>i</strong>アイコン：マウスを<strong>i</strong>アイコンに移動すると、行の説明文が表示されます。
--   <strong>展開</strong>：[<strong>展開</strong>]をクリックして、この監視メトリックの詳細を表示します。たとえば、上の画像の`tidb_get_token`の詳細情報には、各TiDBインスタンスのレイテンシの監視情報が含まれています。
--   <strong>折りたたみ</strong>：<strong>展開</strong>とは逆に、ボタンは詳細な監視情報を折りたたむために使用されます。
+-   **i**アイコン：マウスを<strong>i</strong>アイコンに移動すると、行の説明文が表示されます。
+-   **展開**：[<strong>展開</strong>]をクリックして、この監視メトリックの詳細を表示します。たとえば、上の画像の`tidb_get_token`の詳細情報には、各TiDBインスタンスのレイテンシの監視情報が含まれています。
+-   **折りたたみ**：<strong>展開</strong>とは逆に、ボタンは詳細な監視情報を折りたたむために使用されます。
 
 すべての監視メトリックは、基本的にTiDBGrafana監視ダッシュボードのメトリックに対応しています。モジュールが異常であることが判明した後、TiDBGrafanaでより多くの監視情報を表示できます。
 
@@ -47,7 +46,7 @@ aliases: ['/docs/dev/dashboard/dashboard-diagnostics-report/']
 
 #### クラスターハードウェア情報 {#cluster-hardware-info}
 
-クラスタハードウェア情報には、クラスタ内の各サーバーのCPU、メモリ、ディスクなどの情報が含まれます。
+クラスタハードウェア情報には、クラスタの各サーバーのCPU、メモリ、ディスクなどの情報が含まれます。
 
 ![Cluster hardware report](/media/dashboard/dashboard-diagnostics-cluster-hardware.png)
 
@@ -62,7 +61,7 @@ aliases: ['/docs/dev/dashboard/dashboard-diagnostics-report/']
 
 #### クラスタートポロジ情報 {#cluster-topology-info}
 
-`Cluster Info`の表は、クラスタートポロジー情報を示しています。この表の情報は、 [information_schema.cluster_info](/information-schema/information-schema-cluster-info.md)システム表からのものです。
+`Cluster Info`の表は、クラスタ・トポロジー情報を示しています。この表の情報は、 [information_schema.cluster_info](/information-schema/information-schema-cluster-info.md)システム表からのものです。
 
 ![Cluster info](/media/dashboard/dashboard-diagnostics-cluster-info.png)
 
@@ -123,7 +122,7 @@ TiDBには自動診断結果が組み込まれています。各フィールド�
 -   `CONFIG_KEY` ：対応するモジュールの関連するスレッド構成。
 -   `CURRENT_CONFIG_VALUE` ：レポート生成時の構成の現在の値。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `CURRENT_CONFIG_VALUE`はレポートが生成されたときの値であり、このレポートの時間範囲内の値ではありません。現在、過去の時間の一部の構成値を取得できません。
 
@@ -137,14 +136,14 @@ TiDBには自動診断結果が組み込まれています。各フィールド�
 
 #### 各コンポーネントにかかる時間 {#time-consumed-by-each-component}
 
-`Time Consumed by Each Component`の表は、監視された消費時間と、クラスター内のTiDB、PD、TiKVモジュールの時間比率を示しています。デフォルトの時間単位は秒です。この表を使用して、より多くの時間を消費するモジュールをすばやく見つけることができます。
+`Time Consumed by Each Component`の表は、監視された消費時間と、クラスタのTiDB、PD、TiKVモジュールの時間比率を示しています。デフォルトの時間単位は秒です。この表を使用して、より多くの時間を消費するモジュールをすばやく見つけることができます。
 
 ![Time Consume report](/media/dashboard/dashboard-diagnostics-total-time-consume.png)
 
 上記の表の列のフィールドは、次のように説明されています。
 
 -   `METRIC_NAME` ：監視メトリックの名前。
--   `Label` ：監視メトリックのラベル情報。 [<strong>展開]</strong>をクリックして、メトリックの各ラベルのより詳細な監視情報を表示します。
+-   `Label` ：監視メトリックのラベル情報。 [**展開]**をクリックして、メトリックの各ラベルのより詳細な監視情報を表示します。
 -   `TIME_RATIO` ：この監視メトリックによって消費された合計時間と監視行の合計時間の比率（ `TIME_RATIO`は`1` ）。たとえば、 `kv_request`の合計消費時間は`tidb_query`の`1.65` （つまり、 `38325.58` / `23223.86` ）倍です。 KVリクエストは同時に実行されるため、すべてのKVリクエストの合計時間がクエリの合計（ `tidb_query` ）実行時間を超える可能性があります。
 -   `TOTAL_TIME` ：この監視メトリックによって消費された合計時間。
 -   `TOTAL_COUNT` ：この監視メトリックが実行された合計回数。
@@ -201,7 +200,7 @@ TiDBには自動診断結果が組み込まれています。各フィールド�
 
 `TOTAL_TIME` 、P999時間、およびP99時間を使用して、上記の時間消費量の関係に従って、どのモジュールがより長い時間を消費するかを判別し、関連する監視メトリックを確認できます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > Raft KVの書き込みは`tikv_raft_commit_log` `tikv_raft_apply_wait`のバッチで処理される可能性があるため、 `TOTAL_TIME`を使用して各モジュールで消費される時間を測定することは、Raft KVの書き込みに関連するメトリック（具体的には`tikv_raft_process` 、および`tikv_raft_append_log` ）の監視には適用でき`tikv_raft_apply_log`ん。この状況では、各モジュールの消費時間をP999およびP99の時間と比較する方が合理的です。
 >
@@ -234,10 +233,10 @@ TiDBには自動診断結果が組み込まれています。各フィールド�
 ![Transaction report](/media/dashboard/dashboard-diagnostics-tidb-txn.png)
 
 -   `TOTAL_VALUE` ：レポートの時間範囲内のすべての値の合計（SUM）。
--   `TOTAL_COUNT` ：この監視メトリックの合計発生数。
+-   `TOTAL_COUNT` ：この監視メトリックの発生の総数。
 -   `P999` ：この監視メトリックの最大P999値。
 -   `P99` ：この監視メトリックの最大P99値。
--   `P90` ：このモニタリングメトリックの最大P90値。
+-   `P90` ：この監視メトリックの最大P90値。
 -   `P80` ：この監視メトリックの最大P80値。
 
 例：
@@ -250,7 +249,7 @@ TiDBには自動診断結果が組み込まれています。各フィールド�
 
 上の表は、 `2020-05-21 14:40:00`から、クラスターの`DDL OWNER`が`10.0.1.13:10080`ノードにあることを示しています。所有者が変更された場合、上の表に複数行のデータが存在します`Min_Time`列は、対応する既知の所有者の最小時間を示します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 所有者情報が空の場合は、この期間に所有者が存在しないことを意味するものではありません。この場合、 `ddl_worker`の監視情報に基づいてDDL所有者が決定されるため、この期間に`ddl_worker`がDDLジョブを実行しておらず、所有者情報が空になっている可能性があります。
 
@@ -266,8 +265,8 @@ TiDBの他の監視テーブルは次のとおりです。
 PDモジュールの監視情報に関する表は以下のとおりです。
 
 -   `Time Consumed by PD Component` ：PD内の関連モジュールの監視メトリックによって消費される時間。
--   `Blance Leader/Region` ： `balance-region`と`balance leader`の監視情報は、 `tikv_note_1`からスケジュールされたリーダーの数やでスケジュールされたリーダーの数など、レポートの時間範囲内でクラスター内で発生しました。
--   `Cluster Status` ：TiKVノードの総数、クラスターの総ストレージ容量、リージョンの数、オフラインTiKVノードの数などのクラスターステータス情報。
+-   `Blance Leader/Region` ： `balance-region`と`balance leader`の監視情報は、 `tikv_note_1`からスケジュールされたリーダーの数やでスケジュールされたリーダーの数など、レポートの時間範囲内でクラスタ内で発生しました。
+-   `Cluster Status` ：TiKVノードの総数、クラスタの総ストレージ容量、リージョンの数、オフラインTiKVノードの数などのクラスタステータス情報。
 -   `Store Status` ：リージョンスコア、リーダースコア、リージョン/リーダーの数など、各TiKVノードのステータス情報を記録します。
 -   `Etcd Status` ：PDのetcd関連情報。
 
@@ -285,7 +284,7 @@ TiKVモジュールの監視情報に関する表は次のとおりです。
 -   `GC Info` ：TiKVのガベージコレクション（GC）関連の監視情報。
 -   `Cache Hit` ：TiKVのRocksDBの各キャッシュのヒット率情報。
 
-### 構成情報 {#configuration-information}
+### Configuration / コンフィグレーション情報 {#configuration-information}
 
 構成情報では、一部のモジュールの構成値がレポート時間範囲内に表示されます。ただし、これらのモジュールの他の構成の履歴値は取得できないため、これらの構成の表示値は現在の（レポートが生成されたときの）値です。
 

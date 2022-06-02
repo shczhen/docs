@@ -1,7 +1,6 @@
 ---
-title: String types
-summary: Learn about the string types supported in TiDB.
-aliases: ['/docs/dev/data-type-string/','/docs/dev/reference/sql/data-types/string/']
+title: 文字列タイプ
+summary: TiDBでサポートされている文字列タイプについて学びます。
 ---
 
 # 文字列タイプ {#string-types}
@@ -12,7 +11,7 @@ aliases: ['/docs/dev/data-type-string/','/docs/dev/reference/sql/data-types/stri
 
 ### <code>CHAR</code>タイプ {#code-char-code-type}
 
-`CHAR`は固定長の文字列です。 Mは、列の長さを文字数（バイトではなく）で表します。 Mの範囲は0〜255です`VARCHAR`タイプとは異なり、データが`CHAR`列に挿入されると、末尾のスペースが切り捨てられます。
+`CHAR`は固定長の文字列です。 Mは、列の長さを文字（バイトではなく）で表します。 Mの範囲は0〜255です`VARCHAR`タイプとは異なり、データが`CHAR`列に挿入されると、末尾のスペースが切り捨てられます。
 
 ```sql
 [NATIONAL] CHAR[(M)] [CHARACTER SET charset_name] [COLLATE collation_name]
@@ -20,7 +19,7 @@ aliases: ['/docs/dev/data-type-string/','/docs/dev/reference/sql/data-types/stri
 
 ### <code>VARCHAR</code>タイプ {#code-varchar-code-type}
 
-`VARCHAR`は可変長の文字列です。 Mは、列の最大長を文字数（バイトではなく）で表します。 `VARCHAR`の最大サイズは65,535バイトを超えることはできません。最大行長と使用されている文字セットによって、 `VARCHAR`の長さが決まります。
+`VARCHAR`は可変長の文字列です。 Mは、列の最大長を文字数（バイトではなく）で表します。 `VARCHAR`の最大サイズは65,535バイトを超えることはできません。最大行長と使用される文字セットによって、 `VARCHAR`の長さが決まります。
 
 1つの文字が占めるスペースは、文字セットによって異なる場合があります。次の表は、1文字で消費されるバイト数と、各文字セットの`VARCHAR`列の長さの範囲を示しています。
 

@@ -1,6 +1,5 @@
 ---
-title: TiDB 1.0.4 Release Notes
-aliases: ['/docs/dev/releases/release-1.0.4/','/docs/dev/releases/104/']
+title: TiDB1.0.4リリースノート
 ---
 
 # TiDB1.0.4リリースノート {#tidb-1-0-4-release-notes}
@@ -12,7 +11,7 @@ aliases: ['/docs/dev/releases/release-1.0.4/','/docs/dev/releases/104/']
 -   [`tidb-server`を起動するときの統計のロードを高速化する](https://github.com/pingcap/tidb/pull/5362)
 -   [`show variables`ステートメントのパフォーマンスを改善します](https://github.com/pingcap/tidb/pull/5363)
 -   [`Add Index`ステートメントを使用して結合されたインデックスを処理する際の潜在的な問題を修正します](https://github.com/pingcap/tidb/pull/5323)
--   [`Rename Table`ステートメントを使用してテーブルを別のデータベースに移動するときに発生する可能性のある問題を修正します](https://github.com/pingcap/tidb/pull/5314)
+-   [`Rename Table`ステートメントを使用してテーブルを別のデータベースに移動する際の潜在的な問題を修正します](https://github.com/pingcap/tidb/pull/5314)
 -   [`Alter/Drop User`ステートメントの有効性を加速します](https://github.com/pingcap/tidb/pull/5226)
 
 ## TiKV {#tikv}

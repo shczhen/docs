@@ -1,14 +1,13 @@
 ---
-title: Placement Rules
-summary: Learn how to configure Placement Rules.
-aliases: ['/docs/dev/configure-placement-rules/','/docs/dev/how-to/configure/placement-rules/']
+title: 配置ルール
+summary: 配置ルールを構成する方法を学びます。
 ---
 
 # 配置ルール {#placement-rules}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> このドキュメントでは、配置ドライバ（PD）で配置ルールを手動で指定する方法を紹介します。現在、 [SQLの配置ルール](/placement-rules-in-sql.md)を使用することをお勧めします。これにより、テーブルとパーティションの配置を構成するためのより便利な方法が提供されます。
+> TiDB v5.3.0では、 [SQLの配置ルール](/placement-rules-in-sql.md)の実験的サポートが導入されています。これにより、テーブルとパーティションの配置を構成するためのより便利な方法が提供されます。 SQLの配置ルールは、将来のリリースで配置構成をPDに置き換える可能性があります。
 
 v5.0で導入された配置ルールは、PDがさまざまなタイプのデータに対応するスケジュールを生成するようにガイドするレプリカルールシステムです。さまざまなスケジューリングルールを組み合わせることで、レプリカの数、保存場所、ホストタイプ、Raft選挙に参加するかどうか、Raftリーダーとして機能するかどうかなど、任意の連続データ範囲の属性を細かく制御できます。
 
@@ -49,7 +48,7 @@ v5.0で導入された配置ルールは、PDがさまざまなタイプのデ�
 -   `exists` ：指定されたラベルキーを含みます。
 -   `notExists` ：指定されたラベルキーは含まれません。
 
-`LocationLabels`の意味と機能は、v4.0より前のものと同じです。たとえば、3層トポロジを定義する`[zone,rack,host]`を展開した場合、クラスターには複数のゾーン（Availability Zones）があり、各ゾーンには複数のラックがあり、各ラックには複数のホストがあります。スケジュールを実行するとき、PDは最初にリージョンのピアを異なるゾーンに配置しようとします。この試行が失敗した場合（レプリカが3つあるが、合計でゾーンが2つしかない場合など）、PDはこれらのレプリカを異なるラックに配置することを保証します。ラックの数が分離を保証するのに十分でない場合、PDはホストレベルの分離を試みます。
+`LocationLabels`の意味と機能は、v4.0より前のものと同じです。たとえば、3層トポロジを定義する`[zone,rack,host]`を展開した場合、クラスタには複数のゾーン（Availability Zones）があり、各ゾーンには複数のラックがあり、各ラックには複数のホストがあります。スケジュールを実行するとき、PDは最初にリージョンのピアを異なるゾーンに配置しようとします。この試行が失敗した場合（レプリカが3つあるが、合計でゾーンが2つしかない場合など）、PDはこれらのレプリカを異なるラックに配置することを保証します。ラックの数が分離を保証するのに十分でない場合、PDはホストレベルの分離を試みます。
 
 `IsolationLevel`の意味と機能は[クラスタートポロジ構成](/schedule-replicas-by-topology-labels.md)で詳しく説明されています。たとえば、 `LocationLabels`で3層トポロジを定義し、 `IsolationLevel`を`zone`に設定する`[zone,rack,host]`を展開した場合、PDは、スケジューリング中に各リージョンのすべてのピアが異なるゾーンに配置されるようにします。 `IsolationLevel`の最小分離レベル制限を満たすことができない場合（たとえば、3つのレプリカが構成されているが、合計で2つのデータゾーンしかない場合）、PDはこの制限を満たすことを試みません。デフォルト値の`IsolationLevel`は空の文字列です。これは、無効になっていることを意味します。
 
@@ -69,18 +68,18 @@ v5.0で導入された配置ルールは、PDがさまざまなタイプのデ�
 
 ### 配置ルールを有効にする {#enable-placement-rules}
 
-配置ルール機能は、v5.0以降のバージョンのTiDBではデフォルトで有効になっています。無効にするには、 [配置ルールを無効にする](#disable-placement-rules)を参照してください。無効にした後でこの機能を有効にするには、クラスターを初期化する前に、PD構成ファイルを次のように変更します。
+配置ルール機能は、v5.0以降のバージョンのTiDBではデフォルトで有効になっています。無効にするには、 [配置ルールを無効にする](#disable-placement-rules)を参照してください。無効にした後でこの機能を有効にするには、クラスタを初期化する前に、PD構成ファイルを次のように変更できます。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```toml
 [replication]
 enable-placement-rules = true
 ```
 
-このように、PDは、クラスターが正常にブートストラップされた後にこの機能を有効にし、 `max-replicas`および`location-labels`の構成に従って対応するルールを生成します。
+このように、PDは、クラスタが正常にブートストラップされた後にこの機能を有効にし、 `max-replicas`および`location-labels`の構成に従って対応するルールを生成します。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```json
 {
@@ -95,7 +94,7 @@ enable-placement-rules = true
 }
 ```
 
-ブートストラップされたクラスターの場合、pd-ctlを使用してオンラインで配置ルールを有効にすることもできます。
+ブートストラップされたクラスタの場合、pd-ctlを使用してオンラインで配置ルールを有効にすることもできます。
 
 {{< copyable "" >}}
 
@@ -105,7 +104,7 @@ pd-ctl config placement-rules enable
 
 PDは、 `max-replicas`および`location-labels`の構成に基づいてデフォルトのルールも生成します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 配置ルールを有効にすると、以前に構成した`max-replicas`と`location-labels`は有効になりません。レプリカポリシーを調整するには、配置ルールに関連するインターフェイスを使用します。
 
@@ -119,13 +118,13 @@ pd-ctlを使用して、配置ルール機能を無効にし、以前のスケ�
 pd-ctl config placement-rules disable
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 配置ルールを無効にした後、PDは元の`max-replicas`および`location-labels`構成を使用します。ルールを変更すると（配置ルールが有効になっている場合）、これら2つの構成はリアルタイムで更新されません。さらに、構成されたすべてのルールはPDに残り、次に配置ルールを有効にしたときに使用されます。
 
 ### pd-ctlを使用してルールを設定する {#set-rules-using-pd-ctl}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > ルールの変更は、リアルタイムのPDスケジューリングに影響します。ルール設定が不適切な場合、レプリカが少なくなり、システムの高可用性に影響を与える可能性があります。
 
@@ -334,7 +333,7 @@ table ttt ranges: (NOTE: key range might be changed after DDL)
   table rows: (7480000000000000ff2d5f720000000000fa, 7480000000000000ff2e00000000000000f8)
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > DDLおよびその他の操作により、テーブルIDが変更される可能性があるため、対応するルールを同時に更新する必要があります。
 
@@ -342,11 +341,11 @@ table ttt ranges: (NOTE: key range might be changed after DDL)
 
 このセクションでは、配置ルールの一般的な使用シナリオを紹介します。
 
-### シナリオ1：クラスターの災害耐性を向上させるために、通常のテーブルに3つのレプリカを使用し、メタデータに5つのレプリカを使用する {#scenario-1-use-three-replicas-for-normal-tables-and-five-replicas-for-the-metadata-to-improve-cluster-disaster-tolerance}
+### シナリオ1：クラスタの災害耐性を向上させるために、通常のテーブルに3つのレプリカを使用し、メタデータに5つのレプリカを使用する {#scenario-1-use-three-replicas-for-normal-tables-and-five-replicas-for-the-metadata-to-improve-cluster-disaster-tolerance}
 
 キーの範囲をメタデータの範囲に制限するルールを追加し、値を`count`に設定するだけ`5` 。このルールの例を次に示します。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```json
 {
@@ -366,7 +365,7 @@ table ttt ranges: (NOTE: key range might be changed after DDL)
 
 3つのルールを作成します。レプリカの数をそれぞれ`2` 、および`2`に設定し`1` 。各ルールで、レプリカを対応するデータセンターから`label_constraints`までに制限します。さらに、リーダーを必要としないデータセンターの場合は`role`を`follower`に変更します。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```json
 [
@@ -413,7 +412,7 @@ table ttt ranges: (NOTE: key range might be changed after DDL)
 
 テーブルの行キーに別のルールを追加し、 `count`から`2`に制限します。 `label_constraints`を使用して、レプリカが`engine = tiflash`のノードで生成されるようにします。このルールがシステム内の他のソースからのルールと重複または競合しないようにするために、ここでは別の`group_id`が使用されていることに注意してください。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```json
 {
@@ -434,7 +433,7 @@ table ttt ranges: (NOTE: key range might be changed after DDL)
 
 次の例は、より複雑な`label_constraints`構成を示しています。このルールでは、レプリカは`bj1`または`bj2`のマシンルームに配置する必要があり、ディスクタイプは`hdd`であってはなりません。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```json
 {
@@ -452,13 +451,13 @@ table ttt ranges: (NOTE: key range might be changed after DDL)
 }
 ```
 
-### シナリオ5：テーブルをTiFlashクラスターに移行する {#scenario-5-migrate-a-table-to-the-tiflash-cluster}
+### シナリオ5：テーブルをTiFlashクラスタに移行する {#scenario-5-migrate-a-table-to-the-tiflash-cluster}
 
 シナリオ3とは異なり、このシナリオでは、既存の構成に基づいて新しいレプリカを追加するのではなく、データ範囲の他の構成を強制的にオーバーライドします。したがって、既存のルールを上書きするには、十分な大きさの`index`の値を指定し、ルールグループ構成で`override`から`true`を設定する必要があります。
 
 ルール：
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```json
 {
@@ -477,7 +476,7 @@ table ttt ranges: (NOTE: key range might be changed after DDL)
 
 ルールグループ：
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```json
 {

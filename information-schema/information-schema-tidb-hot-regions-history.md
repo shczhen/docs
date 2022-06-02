@@ -1,6 +1,6 @@
 ---
 title: TIDB_HOT_REGIONS_HISTORY
-summary: Learn the `TIDB_HOT_REGIONS_HISTORY` information_schema table.
+summary: `TIDB_HOT_REGIONS_HISTORY`information_schemaテーブルを学びます。
 ---
 
 # TIDB_HOT_REGIONS_HISTORY {#tidb-hot-regions-history}
@@ -57,7 +57,7 @@ DESC tidb_hot_regions_history;
 -   KEY_RATE：リージョンで書き込まれ、読み取られたキーの数。
 -   QUERY_RATE：リージョンで書き込まれ、読み取られたクエリの数。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `UPDATE_TIME` 、 `PEER_ID` `REGION_ID` `IS_LEARNER`は、 `TYPE`のために`IS_LEADER`サーバーにプッシュダウンされ`STORE_ID` 。テーブルを使用するオーバーヘッドを減らすには、検索の時間範囲を指定し、できるだけ多くの条件を指定する必要があります。たとえば、 `select * from tidb_hot_regions_history where store_id = 11 and update_time > '2020-05-18 20:40:00' and update_time < '2020-05-18 21:40:00' and type='write'` 。
 
@@ -71,7 +71,7 @@ DESC tidb_hot_regions_history;
     SELECT * FROM INFORMATION_SCHEMA.TIDB_HOT_REGIONS_HISTORY WHERE update_time >'2021-08-18 21:40:00' and update_time <'2021-09-19 00:00:00';
     ```
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > `UPDATE_TIME`はUnixタイムスタンプもサポートします。たとえば、 `update_time >TIMESTAMP('2021-08-18 21:40:00')`または`update_time > FROM_UNIXTIME(1629294000.000)` 。
 

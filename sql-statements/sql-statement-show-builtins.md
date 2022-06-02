@@ -1,7 +1,6 @@
 ---
-title: SHOW BUILTINS
-summary: The usage of SHOW BUILTINS in TiDB.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-builtins/']
+title: ビルトインを表示
+summary: TiDBでのSHOWBUILTINSの使用法。
 ---
 
 # ビルトインを表示 {#show-builtins}
@@ -10,7 +9,7 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-builtins/']
 
 ## あらすじ {#synopsis}
 
-<strong>ShowBuiltinsStmt：</strong>
+**ShowBuiltinsStmt：**
 
 ![ShowBuiltinsStmt](/media/sqlgram/ShowBuiltinsStmt.png)
 

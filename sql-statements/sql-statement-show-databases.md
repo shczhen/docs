@@ -1,7 +1,6 @@
 ---
-title: SHOW DATABASES | TiDB SQL Statement Reference
-summary: An overview of the usage of SHOW DATABASES for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-databases/','/docs/dev/reference/sql/statements/show-databases/']
+title: データベースを表示する| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのSHOWDATABASESの使用法の概要。
 ---
 
 # データベースを表示する {#show-databases}
@@ -12,11 +11,11 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-databases/','/docs/dev/re
 
 ## あらすじ {#synopsis}
 
-<strong>ShowDatabasesStmt：</strong>
+**ShowDatabasesStmt：**
 
 ![ShowDatabasesStmt](/media/sqlgram/ShowDatabasesStmt.png)
 
-<strong>ShowLikeOrWhereOpt：</strong>
+**ShowLikeOrWhereOpt：**
 
 ![ShowLikeOrWhereOpt](/media/sqlgram/ShowLikeOrWhereOpt.png)
 

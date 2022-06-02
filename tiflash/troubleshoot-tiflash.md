@@ -1,7 +1,6 @@
 ---
-title: Troubleshoot a TiFlash Cluster
-summary: Learn common operations when you troubleshoot a TiFlash cluster.
-aliases: ['/docs/dev/tiflash/troubleshoot-tiflash/']
+title: TiFlashクラスターのトラブルシューティング
+summary: TiFlashクラスタのトラブルシューティングを行う際の一般的な操作について説明します。
 ---
 
 # TiFlashクラスターのトラブルシューティング {#troubleshoot-a-tiflash-cluster}
@@ -30,7 +29,7 @@ aliases: ['/docs/dev/tiflash/troubleshoot-tiflash/']
     ulimit -n 1000000
     ```
 
-3.  PD制御ツールを使用して、ノード（同じIPとポート）でオフラインにできなかったTiFlashインスタンスがあるかどうかを確認し、インスタンスを強制的にオフラインにします。詳細な手順については、 [TiFlashクラスターでのスケーリング](/scale-tidb-using-tiup.md#scale-in-a-tiflash-cluster)を参照してください。
+3.  PD制御ツールを使用して、ノード（同じIPとポート）でオフラインにできなかったTiFlashインスタンスがあるかどうかを確認し、インスタンスを強制的にオフラインにします。詳細な手順については、 [TiFlashクラスタでのスケーリング](/scale-tidb-using-tiup.md#scale-in-a-tiflash-cluster)を参照してください。
 
 上記の方法で問題を解決できない場合は、TiFlashログファイルと電子メールを[info@pingcap.com](mailto:info@pingcap.com)に保存して詳細を確認してください。
 
@@ -63,7 +62,7 @@ aliases: ['/docs/dev/tiflash/troubleshoot-tiflash/']
 
 4.  `pd buddy`がログを正しく印刷できるかどうかを確認します（ログパスは[flash.flash_cluster]構成項目の値`log`です。デフォルトのログパスは、TiFlash構成ファイルで構成された`tmp`ディレクトリの下にあります）。
 
-5.  構成されたレプリカの数がクラスター内のTiKVノードの数以下であるかどうかを確認します。そうでない場合、PDはデータをTiFlashに複製できません。
+5.  構成されたレプリカの数がクラスタのTiKVノードの数以下であるかどうかを確認します。そうでない場合、PDはデータをTiFlashに複製できません。
 
     {{< copyable "" >}}
 
@@ -73,7 +72,7 @@ aliases: ['/docs/dev/tiflash/troubleshoot-tiflash/']
 
     `default: count`の値を再確認します。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > [配置ルール](/configure-placement-rules.md)機能を有効にすると、以前に構成した`max-replicas`と`location-labels`は無効になります。レプリカポリシーを調整するには、配置ルールに関連するインターフェイスを使用します。
 
@@ -81,7 +80,7 @@ aliases: ['/docs/dev/tiflash/troubleshoot-tiflash/']
 
 ## TiFlashのクエリ時間は不安定であり、エラーログには多くの<code>Lock Exception</code>メッセージが出力されます {#tiflash-query-time-is-unstable-and-the-error-log-prints-many-code-lock-exception-code-messages}
 
-これは、大量のデータがクラスターに書き込まれるため、TiFlashクエリでロックが発生し、クエリの再試行が必要になるためです。
+これは、大量のデータがクラスタに書き込まれるため、TiFlashクエリでロックが発生し、クエリの再試行が必要になるためです。
 
 TiDBでは、クエリのタイムスタンプを1秒前に設定できます。たとえば、現在の時刻が「2020-04-08 20:15:01」の場合、クエリを実行する前に`set @@tidb_snapshot='2020-04-08 20:15:00';`を実行できます。これにより、TiFlashクエリでロックが発生することが少なくなり、クエリ時間が不安定になるリスクが軽減されます。
 
@@ -97,7 +96,7 @@ TiFlashの負荷圧力が大きすぎて、TiFlashデータレプリケーショ
 
 1.  対応するTiFlashノードを停止するには、 [TiFlashノードを停止します](/scale-tidb-using-tiup.md#scale-in-a-tiflash-cluster)を参照してください。
 2.  TiFlashノードの関連データを削除します。
-3.  クラスターにTiFlashノードを再デプロイします。
+3.  クラスタにTiFlashノードを再デプロイします。
 
 ## TiFlash分析は遅い {#tiflash-analysis-is-slow}
 
@@ -153,11 +152,11 @@ TiFlashノードをデプロイしてレプリケーションを開始した後�
 
 4.  `max-replicas`の構成が正しいかどうかを確認します。
 
-    -   `max-replicas`の値がクラスター内のTiKVノードの数を超えない場合は、次の手順に進みます。
+    -   `max-replicas`の値がクラスタのTiKVノードの数を超えない場合は、次の手順に進みます。
 
-    -   `max-replicas`の値がクラスター内のTiKVノードの数より大きい場合、PDはデータをTiFlashノードに複製しません。この問題に対処するには、 `max-replicas`をクラスター内のTiKVノードの数以下の整数に変更します。
+    -   `max-replicas`の値がクラスタのTiKVノードの数よりも大きい場合、PDはデータをTiFlashノードに複製しません。この問題に対処するには、 `max-replicas`をクラスタのTiKVノードの数以下の整数に変更します。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > `max-replicas`はデフォルトで3に設定されます。実稼働環境では、値は通常、TiKVノードの数よりも少なくなります。テスト環境では、値は1にすることができます。
 
@@ -194,7 +193,7 @@ TiFlashノードをデプロイしてレプリケーションを開始した後�
 
         -   ノードが相互にpingできるかどうかを確認します。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > 問題が解決しない場合は、トラブルシューティングのために対応するコンポーネントのログを収集します。
 
@@ -212,7 +211,7 @@ TiFlashノードをデプロイしてレプリケーションを開始した後�
     -   キーワードが見つかった場合、PDは適切にスケジュールします。
     -   そうでない場合、PDは適切にスケジュールされません。ヘルプが必要な場合は、PingCAPテクニカルサポートにお問い合わせください。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 複製するテーブルに多数の小さなリージョンがあり、 `region merge`パラメーターが有効になっているか、大きな値に設定されている場合、複製の進行状況は変わらないか、一定期間減少する可能性があります。
 
@@ -222,7 +221,7 @@ TiFlashでのデータ複製は正常に開始されますが、一定期間後�
 
 1.  ディスク容量を確認してください。
 
-    ディスクスペースの比率が値`low-space-ratio` （デフォルトは0.8。ノードのスペース使用量が80％を超えると、ディスクスペースの枯渇を防ぐためにPDはこのノードへのデータの移行を停止します）より大きいかどうかを確認します。
+    ディスクスペース率が値`low-space-ratio` （デフォルトは0.8）より大きいかどうかを確認します。ノードのスペース使用量が80％を超えると、PDはディスクスペースの枯渇を防ぐためにこのノードへのデータの移行を停止します。
 
     -   ディスク使用率が`low-space-ratio`以上の場合、ディスク容量が不足しています。ディスク容量を減らすには、 `${data}/flash/`フォルダの下にある`space_placeholder_file`などの不要なファイルを削除します（必要に応じて、ファイルを削除した後、 `reserve-space`を0MBに設定します）。
     -   ディスク使用率が`low-space-ratio`未満の場合は、ディスク容量で十分です。次のステップに進みます。
@@ -239,7 +238,7 @@ TiFlashでのデータ複製は正常に開始されますが、一定期間後�
 
 3.  CPU使用率を確認してください。
 
-    Grafanaで、 <strong>TiFlash-Proxy-Details</strong> &gt; <strong>Thread CPU</strong> &gt; Regiontaskworkerの<strong>事前処理/スナップショットCPUの生成を</strong>選択します。 `<instance-ip>:<instance-port>-region-worker`のCPU使用率を確認します。
+    Grafanaで、 **TiFlash-Proxy-Details** &gt; <strong>Thread CPU</strong> &gt; Regiontaskworkerの<strong>事前処理/スナップショットCPUの生成を</strong>選択します。 `<instance-ip>:<instance-port>-region-worker`のCPU使用率を確認します。
 
     曲線が直線の場合、TiFlashノードはスタックしています。 TiFlashプロセスを終了して再起動するか、PingCAPテクニカルサポートに問い合わせてください。
 
@@ -255,7 +254,7 @@ TiFlashでのデータ複製は正常に開始されますが、一定期間後�
 
 2.  TiFlshの負荷を調整します。
 
-    TiFlashの負荷が高すぎると、レプリケーションが遅くなる可能性もあります。 TiFlashインジケーターの負荷は、Grafanaの<strong>TiFlash-Summary</strong>パネルで確認できます。
+    TiFlashの負荷が高すぎると、レプリケーションが遅くなる可能性もあります。 TiFlashインジケーターの負荷は、Grafanaの**TiFlash-Summary**パネルで確認できます。
 
     -   `Applying snapshots Count` ： `TiFlash-summary` &gt; `raft` &gt; `Applying snapshots Count`
     -   `Snapshot Predecode Duration` ： `TiFlash-summary` &gt; `raft` &gt; `Snapshot Predecode Duration`

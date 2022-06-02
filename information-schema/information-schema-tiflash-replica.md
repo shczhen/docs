@@ -1,6 +1,6 @@
 ---
 title: TIFLASH_REPLICA
-summary: Learn the `TIFLASH_REPLICA` information_schema table.
+summary: `TIFLASH_REPLICA`information_schemaテーブルを学びます。
 ---
 
 # TIFLASH_REPLICA {#tiflash-replica}

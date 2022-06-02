@@ -1,7 +1,6 @@
 ---
-title: TiDB Data Migration Glossary
-summary: Learn the terms used in TiDB Data Migration.
-aliases: ['/docs/tidb-data-migration/dev/glossary/']
+title: TiDBデータ移行用語集
+summary: TiDBデータ移行で使用される用語を学びます。
 ---
 
 # TiDBデータ移行用語集 {#tidb-data-migration-glossary}
@@ -20,7 +19,7 @@ Binlogイベントは、MySQLまたはMariaDBサーバーインスタンスに�
 
 ### Binlogイベントフィルター {#binlog-event-filter}
 
-[Binlogイベントフィルター](/dm/dm-key-features.md#binlog-event-filter)は、ブロックおよび許可リストのフィルタリングルールよりもきめ細かいフィルタリング機能です。詳細は[binlogイベントフィルター](/dm/dm-key-features.md#binlog-event-filter)を参照してください。
+[Binlogイベントフィルター](/dm/dm-key-features.md#binlog-event-filter)は、ブロックおよび許可リストのフィルタリングルールよりもきめ細かいフィルタリング機能です。詳細は[binlogイベントフィルター](/dm/dm-overview.md#binlog-event-filtering)を参照してください。
 
 ### ビンログの位置 {#binlog-position}
 
@@ -32,7 +31,7 @@ Binlogレプリケーション処理ユニットは、DM-workerでアップス�
 
 ### テーブルリストをブロックして許可する {#block-x26-allow-table-list}
 
-テーブルリストのブロックと許可は、一部のデータベースまたは一部のテーブルのすべての操作をフィルタリングまたは移行する機能です。詳細は[テーブルリストをブロックして許可する](/dm/dm-key-features.md#block-and-allow-table-lists)を参照してください。この機能は、 [MySQLレプリケーションフィルタリング](https://dev.mysql.com/doc/refman/5.6/en/replication-rules.html)および[MariaDBレプリケーションフィルター](https://mariadb.com/kb/en/replication-filters/)に似ています。
+テーブルリストのブロックと許可は、一部のデータベースまたは一部のテーブルのすべての操作をフィルタリングまたは移行する機能です。詳細は[テーブルリストをブロックして許可する](/dm/dm-overview.md#block-and-allow-lists-migration-at-the-schema-and-table-levels)を参照してください。この機能は、 [MySQLレプリケーションフィルタリング](https://dev.mysql.com/doc/refman/5.6/en/replication-rules.html)および[MariaDBレプリケーションフィルター](https://mariadb.com/kb/en/replication-filters/)に似ています。
 
 ## C {#c}
 
@@ -67,7 +66,7 @@ GTIDは、MySQLまたはMariaDBのグローバルトランザクションIDで�
 
 ### 移行/移行 {#migrate-migration}
 
-TiDBデータ移行ツールを使用して、アップストリームデータベースの<strong>完全なデータ</strong>をダウンストリームデータベースにコピーするプロセス。
+TiDBデータ移行ツールを使用して、アップストリームデータベースの**完全なデータ**をダウンストリームデータベースにコピーするプロセス。
 
 「フル」を明示的に言及し、「フルまたはインクリメンタル」を明示的に言及せず、「フル+インクリメンタル」を明確に言及する場合は、レプリケート/レプリケーションの代わりに移行/移行を使用してください。
 
@@ -85,7 +84,7 @@ TiDBデータ移行ツールを使用して、アップストリームデータ�
 
 ### 複製/複製 {#replicate-replication}
 
-TiDBデータ移行ツールを使用して、アップストリームデータベースの<strong>インクリメンタルデータ</strong>をダウンストリームデータベースにコピーするプロセス。
+TiDBデータ移行ツールを使用して、アップストリームデータベースの**インクリメンタルデータ**をダウンストリームデータベースにコピーするプロセス。
 
 「インクリメンタル」について明確に言及する場合は、移行/移行の代わりにレプリケート/レプリケーションを使用してください。
 

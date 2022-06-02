@@ -1,6 +1,6 @@
 ---
-title: Pause a Data Migration Task
-summary: Learn how to pause a data migration task in TiDB Data Migration.
+title: データ移行タスクを一時停止します
+summary: TiDBデータ移行でデータ移行タスクを一時停止する方法を学びます。
 ---
 
 # データ移行タスクを一時停止します {#pause-a-data-migration-task}
@@ -9,11 +9,11 @@ summary: Learn how to pause a data migration task in TiDB Data Migration.
 
 `pause-task`は`stop-task`とは次の点で異なります。
 
--   `pause-task`は移行タスクを一時停止するだけです。 `query-status`を使用して、タスクのステータス情報（メモリに保持されている）を照会できます。 `stop-task`は移行タスクを終了し、このタスクに関連するすべての情報をメモリから削除します。これは、 `query-status`を使用してステータス情報を照会できないことを意味します。 「チェックポイント」のような`dm_meta`と、ダウンストリームに移行されたデータは削除されません。
+-   `pause-task`は、移行タスクを一時停止するだけです。 `query-status`を使用して、タスクのステータス情報（メモリに保持されている）を照会できます。 `stop-task`は移行タスクを終了し、このタスクに関連するすべての情報をメモリから削除します。これは、 `query-status`を使用してステータス情報を照会できないことを意味します。 「チェックポイント」のような`dm_meta`と、ダウンストリームに移行されたデータは削除されません。
 -   移行タスクを一時停止するために`pause-task`を実行した場合、同じ名前で新しいタスクを開始することはできません。また、このタスクが存在するため、一時停止したタスクのリレーログを削除することもできません。 `stop-task`を実行してタスクを停止すると、同じ名前で新しいタスクを開始できます。また、このタスクは存在しないため、停止したタスクのリレーログを削除できます。
 -   `pause-task`は通常、トラブルシューティングのためにタスクを一時停止するために使用され、 `stop-task`は移行タスクを完全に削除するため、または`start-task`と連携して構成情報を更新するために使用されます。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 help pause-task
@@ -34,7 +34,7 @@ Global Flags:
 
 ## 使用例 {#usage-example}
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 pause-task [-s "mysql-replica-01"] task-name
@@ -47,7 +47,7 @@ pause-task [-s "mysql-replica-01"] task-name
 
 ## 返された結果 {#returned-results}
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 pause-task test

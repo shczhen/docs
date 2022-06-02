@@ -1,12 +1,11 @@
 ---
-title: Precision Math
-summary: Learn about the precision math in TiDB.
-aliases: ['/docs/dev/functions-and-operators/precision-math/','/docs/dev/reference/sql/functions-and-operators/precision-math/']
+title: 精密計算
+summary: TiDBの精密数学について学びます。
 ---
 
-# 精密数学 {#precision-math}
+# 精密計算 {#precision-math}
 
-TiDBでの高精度の数学サポートは、MySQLと一貫性があります。詳細については、 [MySQLの精密数学](https://dev.mysql.com/doc/refman/5.7/en/precision-math.html)を参照してください。
+TiDBでの高精度の数学サポートは、MySQLと一貫性があります。詳細については、 [MySQLの精密計算](https://dev.mysql.com/doc/refman/5.7/en/precision-math.html)を参照してください。
 
 ## 数値タイプ {#numeric-types}
 
@@ -45,7 +44,7 @@ DECIMAL列の値は、10進数の9桁を4バイトにパックするバイナリ
 | 5–6   | 3    |
 | 7–9   | 4    |
 
-たとえば、 `DECIMAL(18,9)`列の小数点の両側に9桁があるため、整数部分と小数部分にはそれぞれ4バイトが必要です。 `DECIMAL(20,6)`列には、14桁の整数桁と6桁の小数桁があります。整数桁には、9桁で4バイト、残りの5桁で3バイトが必要です。 6桁の小数は3バイトを必要とします。
+たとえば、 `DECIMAL(18,9)`列の小数点の両側に9桁があるため、整数部分と小数部分にはそれぞれ4バイトが必要です。 `DECIMAL(20,6)`列には、14桁の整数と6桁の小数桁があります。整数桁には、9桁で4バイト、残りの5桁で3バイトが必要です。 6桁の小数は3バイトを必要とします。
 
 DECIMAL列には、先頭の`+`文字または`-`文字または先頭の`0`桁は格納されません。 `DECIMAL(5,1)`列に`+0003.1`を挿入すると、 `3.1`として格納されます。負の数の場合、文字通りの`-`文字は格納されません。
 

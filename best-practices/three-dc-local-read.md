@@ -1,6 +1,6 @@
 ---
-title: Local Read under Three Data Centers Deployment
-summary: Learn how to use the Stale Read feature to read local data under three DCs deployment and thus reduce cross-center requests.
+title: 3つのデータセンター展開でのローカル読み取り
+summary: Stale Read機能を使用して、3つのDC展開でローカルデータを読み取り、クロスセンターリクエストを減らす方法を学びます。
 ---
 
 # 3つのデータセンター展開でのローカル読み取り {#local-read-under-three-data-centers-deployment}
@@ -9,9 +9,9 @@ summary: Learn how to use the Stale Read feature to read local data under three 
 
 このドキュメントでは、 [古い読み取り](/stale-read.md)つの機能を使用して、クロスセンターアクセスを回避し、リアルタイムのデータ可用性を犠牲にしてアクセス遅延を削減する方法について説明します。
 
-## 3つのデータセンターのTiDBクラスターを展開する {#deploy-a-tidb-cluster-of-three-data-centers}
+## 3つのデータセンターのTiDBクラスタをデプロイする {#deploy-a-tidb-cluster-of-three-data-centers}
 
-3データセンターの導入方法については、 [1つの都市展開における複数のデータセンター](/multi-data-centers-in-one-city-deployment.md)を参照してください。
+3データセンターの導入方法については、 [1 つの地域展開における複数のデータセンター](/multi-data-centers-in-one-city-deployment.md)を参照してください。
 
 TiKVノードとTiDBノードの両方に構成項目`labels`が構成されている場合、同じデータセンター内のTiKVノードとTiDBノードの`zone`ラベルの値は同じである必要があることに注意してください。たとえば、TiKVノードとTiDBノードの両方がデータセンター`dc-1`にある場合、2つのノードは次のラベルで構成する必要があります。
 

@@ -1,8 +1,8 @@
 ---
-title: tiup cluster help
+title: tiupクラスタヘルプ
 ---
 
-# tiupクラスターヘルプ {#tiup-cluster-help}
+# tiupクラスタヘルプ {#tiup-cluster-help}
 
 tiup-clusterは、コマンドラインインターフェイスでユーザーに豊富なヘルプ情報を提供します。 `help`コマンドまたは`--help`オプションで取得できます。 `tiup cluster help <command>`は基本的に`tiup cluster <command> --help`と同等です。
 

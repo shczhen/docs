@@ -1,7 +1,6 @@
 ---
-title: Aggregate (GROUP BY) Functions
-summary: Learn about the supported aggregate functions in TiDB.
-aliases: ['/docs/dev/functions-and-operators/aggregate-group-by-functions/','/docs/dev/reference/sql/functions-and-operators/aggregate-group-by-functions/']
+title: 集約（GROUP BY）関数
+summary: TiDBでサポートされている集計関数について説明します。
 ---
 
 # 集約（GROUP BY）関数 {#aggregate-group-by-functions}

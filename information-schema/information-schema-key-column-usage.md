@@ -1,6 +1,6 @@
 ---
 title: KEY_COLUMN_USAGE
-summary: Learn the `KEY_COLUMN_USAGE` information_schema table.
+summary: `KEY_COLUMN_USAGE`information_schemaテーブルを学びます。
 ---
 
 # KEY_COLUMN_USAGE {#key-column-usage}

@@ -1,5 +1,5 @@
 ---
-title: TiDB 4.0.3 Release Notes
+title: TiDB4.0.3リリースノート
 ---
 
 # TiDB4.0.3リリースノート {#tidb-4-0-3-release-notes}
@@ -14,7 +14,7 @@ TiDBバージョン：4.0.3
 
     -   詳細なTiDBダッシュボードのバージョン情報を表示する[＃679](https://github.com/pingcap-incubator/tidb-dashboard/pull/679)
     -   サポートされていないブラウザまたは古いブラウザのブラウザ互換性通知を表示する[＃654](https://github.com/pingcap-incubator/tidb-dashboard/pull/654)
-    -   <strong>SQLステートメント</strong>ページ[＃658](https://github.com/pingcap-incubator/tidb-dashboard/pull/658)での検索のサポート
+    -   **SQLステートメント**ページ[＃658](https://github.com/pingcap-incubator/tidb-dashboard/pull/658)での検索のサポート
 
 -   TiFlash
 
@@ -35,7 +35,7 @@ TiDBバージョン：4.0.3
         -   Avro形式での変更の出力をサポート[＃753](https://github.com/pingcap/tiflow/pull/753)
         -   ApachePulsarシンクをサポートする[＃751](https://github.com/pingcap/tiflow/pull/751)
 
-    -   団子
+    -   Dumpling
 
         -   専用のCSV区切り文字と区切り文字をサポートする[＃116](https://github.com/pingcap/dumpling/pull/116)
         -   出力ファイル名の形式の指定をサポート[＃122](https://github.com/pingcap/dumpling/pull/122)
@@ -51,7 +51,7 @@ TiDBバージョン：4.0.3
     -   構成チェッカーを以前のバージョンの構成ファイルと互換性があるようにする[＃18046](https://github.com/pingcap/tidb/pull/18046)
     -   デフォルトで実行情報の収集を有効にする[＃18518](https://github.com/pingcap/tidb/pull/18518)
     -   `tiflash_tables`と`tiflash_segments`のシステムテーブルを追加します[＃18536](https://github.com/pingcap/tidb/pull/18536)
-    -   実験的な機能から`AUTO RANDOM`移動し、その一般提供を発表します。改善点と互換性の変更は次のとおりです。
+    -   実験的機能から`AUTO RANDOM`移動し、その一般提供を発表します。改善点と互換性の変更は次のとおりです。
         -   構成ファイルで`experimental.allow-auto-random`を廃止します。このアイテムがどのように構成されていても、列に`AUTO RANDOM`の機能をいつでも定義できます。 [＃18613](https://github.com/pingcap/tidb/pull/18613) [＃18623](https://github.com/pingcap/tidb/pull/18623)
         -   `tidb_allow_auto_random_explicit_insert`セッション変数を追加して、 `AUTO RANDOM`列への明示的な書き込みを制御します。デフォルト値は`false`です。これは、列への明示的な書き込みによって引き起こされる`AUTO_RANDOM_BASE`しない更新を回避するためです。 [＃18508](https://github.com/pingcap/tidb/pull/18508)
         -   `BIGINT`列と`UNSIGNED BIGINT`列にのみ`AUTO_RANDOM`を定義できるようにし、シャードビットの最大数を`15`に制限します。これにより、割り当て可能なスペースが急速に消費されるのを防ぎます[＃18538](https://github.com/pingcap/tidb/pull/18538)
@@ -78,8 +78,8 @@ TiDBバージョン：4.0.3
 
 -   TiFlash
 
-    -   Grafanaの<strong>DDLジョブ</strong>パネルの単位を`operations per minute`に変更します
-    -   Grafanaに新しいダッシュボードを追加して、 <strong>TiFlash-Proxy</strong>に関するその他の指標を表示します
+    -   Grafanaの**DDLジョブ**パネルの単位を`operations per minute`に変更します
+    -   Grafanaに新しいダッシュボードを追加して、 **TiFlash-Proxy**に関するその他の指標を表示します
     -   TiFlashプロキシのIOPSを削減
 
 -   ツール
@@ -113,12 +113,12 @@ TiDBバージョン：4.0.3
     -   生成された列[＃17907](https://github.com/pingcap/tidb/pull/17907)を含むテーブルで`REPLACE INTO`ステートメントが機能するときに報告されるエラーを修正します
     -   `IndexHashJoin`人と`IndexMergeJoin`人の労働者がパニックになったときにOOMエラーを返す[＃18527](https://github.com/pingcap/tidb/pull/18527)
     -   `Index Join`で使用されるインデックスに整数の主キー[＃18565](https://github.com/pingcap/tidb/pull/18565)が含まれている場合に、 `Index Join`を実行すると、特殊なケースで誤った結果が返される可能性があるというバグを修正します。
-    -   クラスターで新しい照合が有効になっている場合、トランザクションで新しい照合を使用して列で更新されたデータを一意のインデックス[＃18703](https://github.com/pingcap/tidb/pull/18703)から読み取ることができない問題を修正します。
+    -   クラスタで新しい照合順序が有効になっている場合、トランザクション内の新しい照合順序で列で更新されたデータを一意のインデックス[＃18703](https://github.com/pingcap/tidb/pull/18703)から読み取ることができない問題を修正します。
 
 -   TiKV
 
     -   マージ中に読み取りで古いデータが取得される可能性がある問題を修正します[＃8113](https://github.com/tikv/tikv/pull/8113)
-    -   集約がTiKV5にプッシュダウンされると、 `min` / `max`関数で照合が機能しない問題を修正し[＃8108](https://github.com/tikv/tikv/pull/8108) 。
+    -   集約がTiKV5にプッシュダウンされると、 `min` / `max`関数で照合順序が機能しない問題を修正し[＃8108](https://github.com/tikv/tikv/pull/8108) 。
 
 -   PD
 
@@ -131,7 +131,7 @@ TiDBバージョン：4.0.3
     -   PDリーダーが切り替えられたときにTSO要求に時間がかかりすぎる可能性がある問題を修正します[＃2622](https://github.com/pingcap/pd/pull/2622)
     -   リーダー変更後の古いスケジューラーの問題を修正[＃2608](https://github.com/pingcap/pd/pull/2608)
     -   配置ルールが有効になっている場合、リージョンのレプリカを最適な場所に調整できないことがある問題を修正します[＃2605](https://github.com/pingcap/pd/pull/2605)
-    -   デプロイメントディレクトリの変更に応じてストアのデプロイメントパスが更新されない問題を修正します[＃2600](https://github.com/pingcap/pd/pull/2600)
+    -   展開ディレクトリの変更に伴い、ストアの展開パスが更新されない問題を修正[＃2600](https://github.com/pingcap/pd/pull/2600)
     -   `store limit`がゼロに変わるのを防ぐ[＃2588](https://github.com/pingcap/pd/pull/2588)
 
 -   TiDBダッシュボード
@@ -159,9 +159,9 @@ TiDBバージョン：4.0.3
 
         -   バックアップ時間がマイナスになる可能性がある問題を修正します[＃405](https://github.com/pingcap/br/pull/405)
 
-    -   団子
+    -   Dumpling
 
-        -   `--r`が指定されている場合に餃子が`NULL`の値を省略してしまう問題を修正します[＃119](https://github.com/pingcap/dumpling/pull/119)
+        -   `--r`が指定されている場合にDumplingが`NULL`の値を省略してしまう問題を修正します[＃119](https://github.com/pingcap/dumpling/pull/119)
         -   テーブルがダンプするためにテーブルのフラッシュが機能しない可能性があるバグを修正します[＃117](https://github.com/pingcap/dumpling/pull/117)
 
     -   TiDB Lightning

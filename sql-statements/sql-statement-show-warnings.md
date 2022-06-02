@@ -1,7 +1,6 @@
 ---
-title: SHOW WARNINGS | TiDB SQL Statement Reference
-summary: An overview of the usage of SHOW WARNINGS for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-warnings/','/docs/dev/reference/sql/statements/show-warnings/']
+title: 警告を表示| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースのSHOWWARNINGSの使用法の概要。
 ---
 
 # 警告を表示 {#show-warnings}
@@ -10,7 +9,7 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-warnings/','/docs/dev/ref
 
 ## あらすじ {#synopsis}
 
-<strong>ShowWarningsStmt：</strong>
+**ShowWarningsStmt：**
 
 ![ShowWarningsStmt](/media/sqlgram/ShowWarningsStmt.png)
 

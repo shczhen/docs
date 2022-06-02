@@ -1,7 +1,6 @@
 ---
-title: AUTO_INCREMENT
-summary: Learn the `AUTO_INCREMENT` column attribute of TiDB.
-aliases: ['/docs/dev/auto-increment/']
+title: 自動増加
+summary: TiDBの`AUTO_INCREMENT`列属性を学びます。
 ---
 
 # 自動増加 {#auto-increment}
@@ -79,7 +78,7 @@ TiDBは、次の方法で`AUTO_INCREMENT`の暗黙的な割り当てを実装し
 CREATE TABLE t(id int UNIQUE KEY AUTO_INCREMENT, c int);
 ```
 
-クラスタ内に2つのTiDBインスタンス`A`と`B`があると仮定します。それぞれ`A`と`B`の`t`テーブルで`INSERT`ステートメントを実行する場合：
+クラスタに2つのTiDBインスタンス`A`と`B`があると仮定します。それぞれ`A`と`B`の`t`テーブルで`INSERT`ステートメントを実行する場合：
 
 ```sql
 INSERT INTO t (c) VALUES (1)
@@ -91,7 +90,7 @@ INSERT INTO t (c) VALUES (1)
 
 ### 独自性 {#uniqueness}
 
-> <strong>警告：</strong>
+> **警告：**
 >
 > クラスタに複数のTiDBインスタンスがある場合、テーブルスキーマに自動インクリメントIDが含まれている場合は、明示的な挿入と暗黙的な割り当てを同時に使用しないことをお勧めします。つまり、自動インクリメント列とカスタムのデフォルト値を使用します。値。そうしないと、暗黙的に割り当てられた値の一意性が損なわれる可能性があります。
 
@@ -172,7 +171,7 @@ Records: 2  Duplicates: 1  Warnings: 0
 
 ## AUTO_ID_CACHE {#auto-id-cache}
 
-別のTiDBサーバーに対して`INSERT`の操作を実行すると、 `AUTO_INCREMENT`のシーケンスが劇的に<em>ジャンプ</em>するように見える場合があります。これは、各サーバーが`AUTO_INCREMENT`の値の独自のキャッシュを持っているという事実が原因です。
+別のTiDBサーバーに対して`INSERT`の操作を実行すると、 `AUTO_INCREMENT`のシーケンスが劇的に*ジャンプ*するように見える場合があります。これは、各サーバーが`AUTO_INCREMENT`の値の独自のキャッシュを持っているという事実が原因です。
 
 {{< copyable "" >}}
 
@@ -197,7 +196,7 @@ Query OK, 1 row affected (0.03 sec)
 4 rows in set (0.00 sec)
 ```
 
-最初のTiDBサーバーに対する新しい`INSERT`操作は、 `4`の`AUTO_INCREMENT`値を生成します。これは、最初のTiDBサーバーの`AUTO_INCREMENT`キャッシュに、割り当て用のスペースがまだ残っているためです。この場合、値のシーケンスはグローバルに単調であると見なすことはできません。これは、値`4`が値`2000001`の後に挿入されるためです。
+最初のTiDBサーバーに対する新しい`INSERT`操作は、 `4`の`AUTO_INCREMENT`値を生成します。これは、最初のTiDBサーバーの`AUTO_INCREMENT`キャッシュに割り当て用のスペースが残っているためです。この場合、値のシーケンスはグローバルに単調であると見なすことはできません。これは、値`4`が値`2000001`の後に挿入されるためです。
 
 ```sql
 mysql> INSERT INTO t (a) VALUES (NULL);
@@ -339,6 +338,4 @@ v3.0.9およびv4.0.0-rc.1以降、MySQLの動作と同様に、自動インク�
 -   `INTEGER` 、または`FLOAT`タイプの列で定義する必要があり`DOUBLE` 。
 -   `DEFAULT`列の値と同じ列に指定することはできません。
 -   `ALTER TABLE`を使用して`AUTO_INCREMENT`属性を追加することはできません。
--   `ALTER TABLE`は、 `AUTO_INCREMENT`属性を削除するために使用できます。ただし、v2.1.18およびv3.0.4以降、TiDBはセッション変数`@@tidb_allow_remove_auto_inc`を使用して、列の`AUTO_INCREMENT`属性を削除するために`ALTER TABLE MODIFY`または`ALTER TABLE CHANGE`を使用できるかどうかを制御します。デフォルトでは、 `ALTER TABLE MODIFY`または`ALTER TABLE CHANGE`を使用して`AUTO_INCREMENT`属性を削除することはできません。
--   `ALTER TABLE`には、 `AUTO_INCREMENT`の値を小さい値に設定するための`FORCE`のオプションが必要です。
--   `AUTO_INCREMENT`を`MAX(<auto_increment_column>)`より小さい値に設定すると、既存の値がスキップされないため、キーが重複します。
+-   `ALTER TABLE`を使用して`AUTO_INCREMENT`属性を削除できます。ただし、v2.1.18およびv3.0.4以降、TiDBはセッション変数`@@tidb_allow_remove_auto_inc`を使用して、 `ALTER TABLE MODIFY`または`ALTER TABLE CHANGE`を使用して列の`AUTO_INCREMENT`属性を削除できるかどうかを制御します。デフォルトでは、 `ALTER TABLE MODIFY`または`ALTER TABLE CHANGE`を使用して`AUTO_INCREMENT`属性を削除することはできません。

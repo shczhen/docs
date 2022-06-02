@@ -1,5 +1,5 @@
 ---
-title: TiDB 5.0.4 Release Notes
+title: TiDB5.0.4リリースノート
 ---
 
 # TiDB5.0.4リリースノート {#tidb-5-0-4-release-notes}
@@ -23,15 +23,15 @@ TiDBバージョン：5.0.4
         -   `last_day`関数の動作がSQLモード[＃26000](https://github.com/pingcap/tidb/pull/26000)で互換性がないという問題を修正します
         -   `having`句が正しく機能しない可能性がある問題を修正します[＃26496](https://github.com/pingcap/tidb/issues/26496)
         -   `between`式の周りの照合が異なる場合に発生する誤った実行結果を修正します[＃27146](https://github.com/pingcap/tidb/issues/27146)
-        -   `group_concat`関数の列に非ビン照合がある場合に発生する誤った実行結果を修正します[＃27429](https://github.com/pingcap/tidb/issues/27429)
-        -   複数の列で`count(distinct)`式を使用すると、新しい照合が有効になっているときに誤った結果が返される問題を修正します[＃27091](https://github.com/pingcap/tidb/issues/27091)
+        -   `group_concat`関数の列に非ビン照合順序がある場合に発生する誤った実行結果を修正します[＃27429](https://github.com/pingcap/tidb/issues/27429)
+        -   複数の列で`count(distinct)`式を使用すると、新しい照合順序が有効になっているときに誤った結果が返される問題を修正します[＃27091](https://github.com/pingcap/tidb/issues/27091)
         -   `extract`関数の引数が負の期間[＃27236](https://github.com/pingcap/tidb/issues/27236)である場合に発生する誤った結果を修正します
         -   `SQL_MODE`が&#39; [＃26762](https://github.com/pingcap/tidb/issues/26762)の場合、無効な日付を挿入してもエラーが報告されない問題を修正します。
         -   `SQL_MODE`が「NO_ZERO_IN_DATE」の場合に無効なデフォルトの日付を使用してもエラーが報告されない問題を修正します[＃26766](https://github.com/pingcap/tidb/issues/26766)
         -   プレフィックスインデックス[＃26029](https://github.com/pingcap/tidb/issues/26029)のクエリ範囲のバグを修正
         -   `LOAD DATA`ステートメントがutf8以外のデータを異常にインポートする可能性がある問題を修正します[＃25979](https://github.com/pingcap/tidb/issues/25979)
         -   二次インデックスが主キー[＃25809](https://github.com/pingcap/tidb/issues/25809)と同じ列を持っている場合、 `insert ignore on duplicate update`が間違ったデータを挿入する可能性がある問題を修正します。
-        -   パーティション表にクラスター化インデックス[＃25846](https://github.com/pingcap/tidb/issues/25846)がある場合、 `insert ignore duplicate update`が間違ったデータを挿入する可能性がある問題を修正します。
+        -   パーティションテーブルにクラスター化されたインデックスがある場合に`insert ignore duplicate update`が間違ったデータを挿入する可能性がある問題を修正します[＃25846](https://github.com/pingcap/tidb/issues/25846)
         -   キーが`ENUM`タイプのポイント取得またはバッチポイント取得[＃24562](https://github.com/pingcap/tidb/issues/24562)の場合、クエリ結果が間違っている可能性がある問題を修正します。
         -   `BIT`タイプの値を除算するときに発生する間違った結果を修正します[＃23479](https://github.com/pingcap/tidb/issues/23479)
         -   `prepared`ステートメントと直接クエリの結果に一貫性がない可能性があるという問題を修正します[＃22949](https://github.com/pingcap/tidb/issues/22949)
@@ -71,7 +71,7 @@ TiDBバージョン：5.0.4
     -   MPPモード[＃25861](https://github.com/pingcap/tidb/pull/25861)で`COUNT(DISTINCT)`集約機能を徹底的に押し下げます。
     -   `EXPLAIN`のステートメントで集計関数をプッシュダウンできない場合のログ警告の出力[＃25736](https://github.com/pingcap/tidb/pull/25736)
     -   Grafanaダッシュボード[＃25327](https://github.com/pingcap/tidb/pull/25327)に`TiFlashQueryTotalCounter`のエラーラベルを追加します
-    -   [＃24209](https://github.com/pingcap/tidb/issues/24209)によるセカンダリインデックスを介したクラスター化インデックステーブルのMVCCデータの取得をサポートします。
+    -   [＃24209](https://github.com/pingcap/tidb/issues/24209)によるセカンダリインデックスを介したクラスター化インデックステーブルのMVCCデータの取得をサポート
     -   パーサー[＃24371](https://github.com/pingcap/tidb/pull/24371)の`prepared`のステートメントのメモリ割り当てを最適化します
 
 -   TiKV
@@ -82,7 +82,7 @@ TiDBバージョン：5.0.4
     -   TiKVコプロセッサーの遅いログに、要求の処理に費やされた時間のみを考慮させる[＃10841](https://github.com/tikv/tikv/issues/10841)
     -   未確定のエラーの可能性を減らすために、可能な限りべき等の事前書き込みを行います[＃10587](https://github.com/tikv/tikv/pull/10587)
     -   書き込みフローが少ない場合の誤った「GCが機能しない」アラートを回避する[＃10662](https://github.com/tikv/tikv/pull/10662)
-    -   復元するデータベースを、バックアップ中に常に元のクラスターサイズと一致させるようにします。 [＃10643](https://github.com/tikv/tikv/pull/10643)
+    -   復元するデータベースを、バックアップ中に常に元のクラスタサイズと一致させるようにします。 [＃10643](https://github.com/tikv/tikv/pull/10643)
     -   パニック出力がログ[＃9955](https://github.com/tikv/tikv/pull/9955)にフラッシュされることを確認します
 
 -   PD
@@ -91,7 +91,7 @@ TiDBバージョン：5.0.4
 
 -   ツール
 
-    -   団子
+    -   Dumpling
 
         -   `START TRANSACTION ... WITH CONSISTENT SNAPSHOT`または`SHOW CREATE TABLE`構文をサポートしないMySQL互換データベースのバックアップをサポートする[＃309](https://github.com/pingcap/dumpling/issues/309)
 
@@ -112,13 +112,13 @@ TiDBバージョン：5.0.4
 
     -   パーティションテーブルをクエリするときにTiDBがパニックになり、パーティションキーの条件が`IS NULL`になる問題を修正し[＃23802](https://github.com/pingcap/tidb/issues/23802) 。
     -   `FLOAT64`タイプのオーバーフローチェックがMySQL3のオーバーフローチェックと異なる問題を修正し[＃23897](https://github.com/pingcap/tidb/issues/23897)
-    -   `case when`式[＃26662](https://github.com/pingcap/tidb/issues/26662)の間違った文字セットと照合を修正します
+    -   `case when`式[＃26662](https://github.com/pingcap/tidb/issues/26662)の間違った文字セットと照合順序を修正します
     -   悲観的なトランザクションをコミットすると書き込みの競合が発生する可能性があるという問題を修正します[＃25964](https://github.com/pingcap/tidb/issues/25964)
     -   悲観的なトランザクションのインデックスキーが繰り返しコミットされる可能性があるバグを修正し[＃10600](https://github.com/tikv/tikv/pull/10600) [＃26359](https://github.com/pingcap/tidb/issues/26359)
     -   非同期コミットロックを解決するときにTiDBがパニックになる可能性がある問題を修正します[＃25778](https://github.com/pingcap/tidb/issues/25778)
     -   [＃25045](https://github.com/pingcap/tidb/issues/25045)を使用すると列が見つからない可能性があるバグを修正し`INDEX MERGE`
     -   `ALTER USER REQUIRE SSL`がユーザーの[＃25225](https://github.com/pingcap/tidb/issues/25225)をクリアするバグを修正し`authentication_string`
-    -   新しいクラスターの`tidb_gc_scan_lock_mode`グローバル変数の値が実際のデフォルトモード「LEGACY」ではなく「PHYSICAL」と表示されるバグを修正します[＃25100](https://github.com/pingcap/tidb/issues/25100)
+    -   新しいクラスタの`tidb_gc_scan_lock_mode`グローバル変数の値が実際のデフォルトモード「LEGACY」ではなく「PHYSICAL」と表示されるバグを修正します[＃25100](https://github.com/pingcap/tidb/issues/25100)
     -   `TIKV_REGION_PEERS`システムテーブルに正しい`DOWN`ステータスが表示されないバグを修正します[＃24879](https://github.com/pingcap/tidb/issues/24879)
     -   HTTPAPIの使用時に発生するメモリリークの問題を修正します[＃24649](https://github.com/pingcap/tidb/pull/24649)
     -   ビューが[＃24414](https://github.com/pingcap/tidb/issues/24414)をサポートしない問題を修正し`DEFINER`
@@ -128,7 +128,7 @@ TiDBバージョン：5.0.4
     -   射影演算子[＃24264](https://github.com/pingcap/tidb/issues/24264)を実行するときにTiDBがパニックになる問題を修正します
     -   統計によってクエリがパニックになる可能性がある問題を修正します[＃24061](https://github.com/pingcap/tidb/pull/24061)
     -   `BIT`列で`approx_percentile`関数を使用するとパニックになる可能性がある問題を修正します[＃23662](https://github.com/pingcap/tidb/issues/23662)
-    -   Grafanaの<strong>コプロセッサーキャッシュ</strong>パネルのメトリックが間違っている問題を修正します[＃26338](https://github.com/pingcap/tidb/issues/26338)
+    -   Grafanaの**コプロセッサーキャッシュ**パネルのメトリックが間違っている問題を修正します[＃26338](https://github.com/pingcap/tidb/issues/26338)
     -   同じパーティションを同時に切り捨てると、DDLステートメントがスタックする問題を修正します[＃26229](https://github.com/pingcap/tidb/issues/26229)
     -   セッション変数が`GROUP BY`項目として使用されたときに発生する誤ったクエリ結果の問題を修正します[＃27106](https://github.com/pingcap/tidb/issues/27106)
     -   テーブル[＃25902](https://github.com/pingcap/tidb/issues/25902)を結合するときの`VARCHAR`とタイムスタンプの間の誤った暗黙の変換を修正しました
@@ -139,7 +139,7 @@ TiDBバージョン：5.0.4
     -   破損したスナップショットファイルによって引き起こされる潜在的なディスクフルの問題を修正する[＃10813](https://github.com/tikv/tikv/issues/10813)
     -   Titanが有効になっている5.0より前のバージョンからアップグレードするときに発生するTiKVパニックの問題を修正します[＃10843](https://github.com/tikv/tikv/pull/10843)
     -   新しいバージョンのTiKVをv5.0.xにロールバックできない問題を修正します[＃10843](https://github.com/tikv/tikv/pull/10843)
-    -   5.0より前のバージョンから5.0以降のバージョンにアップグレードするときに発生するTiKVパニックの問題を修正します。アップグレード前にTitanを有効にしてクラスターをTiKVv3.xからアップグレードした場合、このクラスターで問題が発生する可能性があります。 [＃10774](https://github.com/tikv/tikv/issues/10774)
+    -   5.0より前のバージョンから5.0以降のバージョンにアップグレードするときに発生するTiKVパニックの問題を修正します。アップグレード前にTitanを有効にしてクラスタをTiKVv3.xからアップグレードした場合、このクラスタで問題が発生する可能性があります。 [＃10774](https://github.com/tikv/tikv/issues/10774)
     -   左の悲観的なロックによって引き起こされた解析の失敗を修正します[＃26404](https://github.com/pingcap/tidb/issues/26404)
     -   特定のプラットフォームで期間を計算するときに発生するパニックを修正する[＃10571](https://github.com/tikv/tikv/pull/10571)
     -   LoadBaseSplitの`batch_get_command`のキーがエンコードされていない[＃10542](https://github.com/tikv/tikv/issues/10542)の問題を修正します
@@ -172,7 +172,7 @@ TiDBバージョン：5.0.4
 
 -   ツール
 
-    -   団子
+    -   Dumpling
 
         -   MySQL8.0.3以降のバージョン[＃322](https://github.com/pingcap/dumpling/issues/322)で`show table status`の実行がスタックする問題を修正します
 

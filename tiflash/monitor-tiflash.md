@@ -1,24 +1,23 @@
 ---
-title: Monitor the TiFlash Cluster
-summary: Learn the monitoring items of TiFlash.
-aliases: ['/docs/dev/tiflash/monitor-tiflash/','/docs/dev/reference/tiflash/monitor/']
+title: TiFlashクラスターを監視する
+summary: TiFlashの監視項目を学びます。
 ---
 
 # TiFlashクラスターを監視する {#monitor-the-tiflash-cluster}
 
 本書では、TiFlashの監視項目について説明します。
 
-TiUPを使用してTiDBクラスターをデプロイする場合、監視システム（Prometheus＆Grafana）も同時にデプロイされます。詳細については、 [監視フレームワークの概要](/tidb-monitoring-framework.md)を参照してください。
+TiUPを使用してTiDBクラスタをデプロイする場合、監視システム（Prometheus＆Grafana）が同時にデプロイされます。詳細については、 [監視フレームワークの概要](/tidb-monitoring-framework.md)を参照してください。
 
 Grafanaダッシュボードは、Overview、PD、TiDB、TiKV、Node_exporterなどを含む一連のサブダッシュボードに分割されています。診断に役立つ多くのメトリックがあります。
 
-TiFlashには、TiFlash <strong>-Summary</strong> 、 <strong>TiFlash-Proxy-Summary</strong> 、および<strong>TiFlash-Proxy-Detailsの</strong>3つのダッシュボードパネルがあります。これらのパネルのメトリックは、TiFlashの現在のステータスを示します。 <strong>TiFlash-Proxy-Summary</strong>パネルと<strong>TiFlash-Proxy-Details</strong>パネルは、主にRaftレイヤーの情報を表示し、メトリックは[TiKVの主要な監視指標](/grafana-tikv-dashboard.md)で詳しく説明されています。
+TiFlashには、TiFlash **-Summary** 、 <strong>TiFlash-Proxy-Summary</strong> 、および<strong>TiFlash-Proxy-Detailsの</strong>3つのダッシュボードパネルがあります。これらのパネルのメトリックは、TiFlashの現在のステータスを示します。 <strong>TiFlash-Proxy-Summary</strong>パネルと<strong>TiFlash-Proxy-Details</strong>パネルは、主にRaftレイヤーの情報を表示し、メトリックは[TiKVの主要な監視指標](/grafana-tikv-dashboard.md)で詳しく説明されています。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > TiFlashのモニターを改善するには、TiDBv4.0.5以降のバージョンを使用することをお勧めします。
 
-次のセクションでは、 <strong>TiFlash-Summary</strong>のデフォルトの監視情報を紹介します。
+次のセクションでは、 **TiFlash-Summary**のデフォルトの監視情報を紹介します。
 
 ## サーバ {#server}
 
@@ -32,7 +31,7 @@ TiFlashには、TiFlash <strong>-Summary</strong> 、 <strong>TiFlash-Proxy-Summ
 -   File Open OPS：1秒あたりのTiFlashインスタンスごとの`open`回の操作の数。
 -   開いているファイル数：各TiFlashインスタンスによって現在開かれているファイル記述子の数。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > ストアサイズ、FSync OPS、ファイルオープンOPS、およびオープンファイル数は現在、TiFlashストレージレイヤーの監視情報のみを対象としており、TiFlash-Proxyの監視情報は対象としていません。
 
@@ -46,19 +45,6 @@ TiFlashには、TiFlash <strong>-Summary</strong> 、 <strong>TiFlash-Proxy-Summ
 -   応答バイト/秒：すべてのTiFlashインスタンスからの応答の合計バイト。
 -   コップタスクのメモリ使用量：コプロセッサー要求を処理するすべてのTiFlashインスタンスの合計メモリー使用量。
 -   要求数の処理：コプロセッサー要求を処理するすべてのTiFlashインスタンスの総数。リクエストの分類は、リクエストQPSの分類と同じです。
--   RPCのスレッド：各TiFlashインスタンスで使用されるRPCスレッドのリアルタイム数。
--   RPCの最大スレッド数：各TiFlashインスタンスで最近使用されたRPCスレッドの最大数。
--   スレッド：各TiFlashインスタンスで使用されるリアルタイムのスレッド数。
--   最大スレッド数：各TiFlashインスタンスで最近使用されたスレッドの最大数。
-
-## タスクスケジューラ {#task-scheduler}
-
--   最小TSO：各TiFlashインスタンスで実行されているすべてのクエリの中で最小のTSO。この値により、TSOが最小のクエリの実行をスケジュールできます。クエリが実行されていない場合、この値は符号なし64ビット整数の最大値です。
--   推定スレッド使用量と制限：各TiFlashインスタンスで実行されているすべてのクエリで使用されるスレッドの推定量、および量のソフト制限とハード制限。
--   アクティブおよび待機中のクエリ数：各TiFlashインスタンスで実行中のクエリの量と待機中のクエリの数。
--   アクティブおよび待機中のタスク数：各TiFlashインスタンスで実行中のタスクの数と待機中のタスクの数。
--   Hard Limit Exceeded Count：各TiFlashインスタンスで実行されているクエリによって使用されるスレッドの推定量がハード制限を超えた回数。
--   タスク待機時間：各TiFlashインスタンスでのタスクの初期化からタスクのスケジューリングまでの時間。
 
 ## DDL {#ddl}
 
@@ -82,7 +68,7 @@ TiFlashには、TiFlash <strong>-Summary</strong> 、 <strong>TiFlash-Proxy-Summ
 -   書き込みフロー：すべてのTiFlashインスタンスによるディスク書き込みのトラフィック。
 -   読み取りフロー：すべてのTiFlashインスタンスによるディスク読み取りのトラフィック。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > これらのメトリックは、TiFlashストレージレイヤーの監視情報のみを対象としており、TiFlash-Proxyの監視情報は対象としていません。
 

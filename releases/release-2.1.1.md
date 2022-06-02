@@ -1,6 +1,5 @@
 ---
-title: TiDB 2.1.1 Release Notes
-aliases: ['/docs/dev/releases/release-2.1.1/','/docs/dev/releases/2.1.1/']
+title: TiDB2.1.1リリースノート
 ---
 
 # TiDB2.1.1リリースノート {#tidb-2-1-1-release-notes}
@@ -21,9 +20,9 @@ aliases: ['/docs/dev/releases/release-2.1.1/','/docs/dev/releases/2.1.1/']
     -   ANSI規格に準拠していないステートメントによって引き起こされるブートストラップの失敗を修正します[＃8576](https://github.com/pingcap/tidb/pull/8576)
     -   トランザクションの再試行で誤ったパラメーターが使用される問題を修正します[＃8638](https://github.com/pingcap/tidb/pull/8638)
 -   DDL
-    -   デフォルトの文字セットとテーブルの照合を[＃8590](https://github.com/pingcap/tidb/pull/8590)に変更し`utf8mb4`
+    -   デフォルトの文字セットとテーブルの照合順序を[＃8590](https://github.com/pingcap/tidb/pull/8590)に変更し`utf8mb4`
     -   `ddl_reorg_batch_size`変数を追加して、インデックスの追加速度を制御します[＃8614](https://github.com/pingcap/tidb/pull/8614)
-    -   文字セットと照合オプションのコンテンツをDDLで大文字と小文字を区別しないようにする[＃8611](https://github.com/pingcap/tidb/pull/8611)
+    -   文字セットと照合順序オプションのコンテンツをDDLで大文字と小文字を区別しないようにする[＃8611](https://github.com/pingcap/tidb/pull/8611)
     -   生成された列のインデックスを追加する問題を修正します[＃8655](https://github.com/pingcap/tidb/pull/8655)
 
 ## PD {#pd}

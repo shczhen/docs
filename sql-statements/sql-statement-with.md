@@ -1,15 +1,15 @@
 ---
-title: WITH | TiDB SQL Statement Reference
-summary: An overview of the usage of WITH (Common Table Expression) for the TiDB database.
+title: と| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのWITH（共通テーブル式）の使用法の概要。
 ---
 
 # と {#with}
 
-Common Table Expression（CTE）は、SQLステートメント内で複数回参照できる一時的な結果セットであり、ステートメントの可読性と実行効率を向上させます。 `WITH`ステートメントを適用して、共通テーブル式を使用できます。
+Common Table Expression（CTE）は、SQLステートメント内で複数回参照できる一時的な結果セットであり、ステートメントの読みやすさと実行効率を向上させます。 `WITH`ステートメントを適用して、共通テーブル式を使用できます。
 
 ## あらすじ {#synopsis}
 
-<strong>WithClause：</strong>
+**WithClause：**
 
 ```ebnf+diagram
 WithClause ::=
@@ -17,7 +17,7 @@ WithClause ::=
 |       "WITH" recursive WithList
 ```
 
-<strong>WithList：</strong>
+**WithList：**
 
 ```ebnf+diagram
 WithList ::=
@@ -25,14 +25,14 @@ WithList ::=
 |       CommonTableExpr
 ```
 
-<strong>CommonTableExpr：</strong>
+**CommonTableExpr：**
 
 ```ebnf+diagram
 CommonTableExpr ::=
         Identifier IdentListWithParenOpt "AS" SubSelect
 ```
 
-<strong>IdentListWithParenOpt：</strong>
+**IdentListWithParenOpt：**
 
 ```ebnf+diagram
 IdentListWithParenOpt ::=

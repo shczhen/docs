@@ -1,14 +1,13 @@
 ---
 title: CLUSTER_LOG
-summary: Learn the `CLUSTER_LOG` information_schema table.
-aliases: ['/docs/dev/system-tables/system-table-cluster-log/','/docs/dev/reference/system-databases/cluster-log/','/tidb/dev/system-table-cluster-log/']
+summary: `CLUSTER_LOG`information_schemaテーブルを学びます。
 ---
 
 # CLUSTER_LOG {#cluster-log}
 
-`CLUSTER_LOG`クラスターログテーブルでクラスターログを照会できます。クエリ条件を各インスタンスにプッシュダウンすることにより、クラスターのパフォーマンスに対するクエリの影響は、 `grep`コマンドの影響よりも少なくなります。
+`CLUSTER_LOG`クラスタログテーブルでクラスタログを照会できます。クエリ条件を各インスタンスにプッシュダウンすることにより、クラスタのパフォーマンスに対するクエリの影響は、 `grep`コマンドの影響よりも少なくなります。
 
-v4.0より前のTiDBクラスターのログを取得するには、各インスタンスにログインしてログを要約する必要があります。 4.0のこのクラスターログテーブルは、グローバルで時間順に並べられたログ検索結果を提供します。これにより、フルリンクイベントの追跡が容易になります。たとえば、 `region id`に従ってログを検索することにより、このリージョンのライフサイクル内のすべてのログをクエリできます。同様に、低速ログの`txn id`を介して完全なリンクログを検索することにより、各インスタンスでこのトランザクションによってスキャンされたフローとキーの数を照会できます。
+v4.0より前のTiDBクラスタのログを取得するには、各インスタンスにログインしてログを要約する必要があります。 4.0のこのクラスタログテーブルは、グローバルで時間順に並べられたログ検索結果を提供します。これにより、フルリンクイベントの追跡が容易になります。たとえば、 `region id`に従ってログを検索することにより、このリージョンのライフサイクル内のすべてのログをクエリできます。同様に、低速ログの`txn id`を介して完全なリンクログを検索することにより、各インスタンスでこのトランザクションによってスキャンされたフローとキーの数を照会できます。
 
 {{< copyable "" >}}
 
@@ -38,11 +37,11 @@ DESC cluster_log;
 -   `LEVEL` ：ログレベル。
 -   `MESSAGE` ：ログの内容。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   クラスタログテーブルのすべてのフィールドは、実行のために対応するインスタンスにプッシュダウンされます。クラスタログテーブルを使用するオーバーヘッドを減らすには、検索に使用するキーワード、時間範囲、および可能な限り多くの条件を指定する必要があります。たとえば、 `select * from cluster_log where message like '%ddl%' and time > '2020-05-18 20:40:00' and time<'2020-05-18 21:40:00' and type='tidb'` 。
 >
-> -   `message`フィールドは`like`と`regexp`の正規表現をサポートし、対応するパターンは`regexp`としてエンコードされます。複数の`message`条件を指定することは、 `grep`コマンドの`pipeline`形式と同等です。たとえば、 `select * from cluster_log where message like 'coprocessor%' and message regexp '.*slow.*' and time > '2020-05-18 20:40:00' and time<'2020-05-18 21:40:00'`ステートメントを実行することは、すべてのクラスターインスタンスで`grep 'coprocessor' xxx.log | grep -E '.*slow.*'`を実行することと同じです。
+> -   `message`フィールドは`like`と`regexp`の正規表現をサポートし、対応するパターンは`regexp`としてエンコードされます。複数の`message`条件を指定することは、 `grep`コマンドの`pipeline`形式と同等です。たとえば、 `select * from cluster_log where message like 'coprocessor%' and message regexp '.*slow.*' and time > '2020-05-18 20:40:00' and time<'2020-05-18 21:40:00'`ステートメントを実行することは、すべてのクラスタインスタンスで`grep 'coprocessor' xxx.log | grep -E '.*slow.*'`を実行することと同じです。
 
 次の例は、 `CLUSTER_LOG`テーブルを使用してDDLステートメントの実行プロセスを照会する方法を示しています。
 

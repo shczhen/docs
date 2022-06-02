@@ -1,6 +1,5 @@
 ---
-title: TiDB 4.0.1 Release Notes
-aliases: ['/docs/dev/releases/release-4.0.1/']
+title: TiDB4.0.1リリースノート
 ---
 
 # TiDB4.0.1リリースノート {#tidb-4-0-1-release-notes}
@@ -22,7 +21,7 @@ TiDBバージョン：4.0.1
 
 -   TiFlash
 
-    -   TiDBの新しい照合フレームワークをサポートする
+    -   TiDBの新しい照合順序フレームワークをサポートする
     -   `BitAnd/BitOr` `Json_length`を`If`に`BitXor/BitNot`ダウンすることをサポート
     -   TiFlashでの大規模なトランザクションのロックの解決ロジックをサポートする
 
@@ -30,7 +29,7 @@ TiDBバージョン：4.0.1
 
     -   バックアップと復元（BR）
 
-        -   BRとTiDBクラスターに互換性がないという問題を回避するために、BRの起動時にバージョンチェックを追加します[＃311](https://github.com/pingcap/br/pull/311)
+        -   BRとTiDBクラスタに互換性がないという問題を回避するために、BRの起動時にバージョンチェックを追加します[＃311](https://github.com/pingcap/br/pull/311)
 
 ## バグの修正 {#bug-fixes}
 

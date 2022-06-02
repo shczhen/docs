@@ -1,7 +1,6 @@
 ---
-title: Import Example Database
-summary: Install the Bikeshare example database.
-aliases: ['/docs/dev/import-example-data/','/docs/dev/how-to/get-started/import-example-database/']
+title: サンプルデータベースのインポート
+summary: Bikeshareサンプルデータベースをインストールします。
 ---
 
 # サンプルデータベースのインポート {#import-example-database}
@@ -55,7 +54,7 @@ end_station_number, end_station, bike_number, member_type);
 
 ### すべてのファイルをインポートする {#import-all-files}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > MySQLクライアントを起動するときは、 `--local-infile=1`オプションを使用します。
 

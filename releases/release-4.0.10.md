@@ -1,5 +1,5 @@
 ---
-title: TiDB 4.0.10 Release Notes
+title: TiDB4.0.10リリースノート
 ---
 
 # TiDB4.0.10リリースノート {#tidb-4-0-10-release-notes}
@@ -36,7 +36,7 @@ TiDBバージョン：4.0.10
         -   `maxwell`プロトコル[＃1144](https://github.com/pingcap/tiflow/pull/1144)の古い値機能を有効にします
         -   統合ソーター機能をデフォルトで有効にする[＃1230](https://github.com/pingcap/tiflow/pull/1230)
 
-    -   団子
+    -   Dumpling
 
         -   認識されない引数のチェックと、ダンプ中の現在の進行状況の出力をサポート[＃228](https://github.com/pingcap/dumpling/pull/228)
 
@@ -85,12 +85,12 @@ TiDBバージョン：4.0.10
         -   `base64`のデータ出力の問題やUNIXタイムスタンプ[＃1173](https://github.com/pingcap/tiflow/pull/1173)へのTSOの出力の問題など、 `maxwell`のプロトコルの問題を修正します。
         -   古いメタデータが新しく作成されたチェンジフィードの異常を引き起こす可能性があるバグを修正します[＃1184](https://github.com/pingcap/tiflow/pull/1184)
         -   閉じた通知機能[＃1199](https://github.com/pingcap/tiflow/pull/1199)でレシーバーを作成する問題を修正します
-        -   TiCDCの所有者がetcdウォッチクライアントで大量のメモリを消費する可能性があるバグを修正します[＃1227](https://github.com/pingcap/tiflow/pull/1227)
+        -   TiCDC所有者がetcdウォッチクライアントでメモリを過剰に消費する可能性があるバグを修正します[＃1227](https://github.com/pingcap/tiflow/pull/1227)
         -   `max-batch-size`が有効にならない問題を修正します[＃1253](https://github.com/pingcap/tiflow/pull/1253)
         -   キャプチャ情報が構築される前に古いタスクをクリーンアップする問題を修正します[＃1280](https://github.com/pingcap/tiflow/pull/1280)
         -   MySQLシンク[＃1285](https://github.com/pingcap/tiflow/pull/1285)で`rollback`が呼び出されないため、dbconnのリサイクルがブロックされる問題を修正します。
 
-    -   団子
+    -   Dumpling
 
         -   デフォルトの動作を`tidb_mem_quota_query`に設定して、 [＃233](https://github.com/pingcap/dumpling/pull/233)のメモリ不足（OOM）を回避します。
 

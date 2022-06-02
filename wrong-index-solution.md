@@ -1,9 +1,9 @@
 ---
-title: Wrong Index Solution
-summary: Learn how to solve the wrong index issue.
+title: インデックス問題の解決方法
+summary: 間違ったインデックスの問題を解決する方法を学びます。
 ---
 
-# 間違ったインデックスソリューション {#wrong-index-solution}
+# インデックス問題の解決方法 {#wrong-index-solution}
 
 一部のクエリの実行速度が期待に達していないことがわかった場合、オプティマイザはクエリを実行するために間違ったインデックスを選択する可能性があります。
 

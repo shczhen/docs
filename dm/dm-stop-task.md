@@ -1,13 +1,13 @@
 ---
-title: Stop a Data Migration Task
-summary: Learn how to stop a data migration task.
+title: データ移行タスクを停止する
+summary: データ移行タスクを停止する方法を学びます。
 ---
 
 # データ移行タスクを停止する {#stop-a-data-migration-task}
 
 `stop-task`コマンドを使用して、データ移行タスクを停止できます。 `stop-task`と`pause-task`の違いについては、 [データ移行タスクを一時停止します](/dm/dm-pause-task.md)を参照してください。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 help stop-task
@@ -28,7 +28,7 @@ Global Flags:
 
 ## 使用例 {#usage-example}
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 stop-task [-s "mysql-replica-01"]  task-name
@@ -41,7 +41,7 @@ stop-task [-s "mysql-replica-01"]  task-name
 
 ## 返された結果 {#returned-results}
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 stop-task test

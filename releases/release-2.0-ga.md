@@ -1,6 +1,5 @@
 ---
-title: TiDB 2.0 Release Notes
-aliases: ['/docs/dev/releases/release-2.0-ga/','/docs/dev/releases/2.0ga/']
+title: TiDB2.0リリースノート
 ---
 
 # TiDB2.0リリースノート {#tidb-2-0-release-notes}
@@ -17,13 +16,13 @@ aliases: ['/docs/dev/releases/release-2.0-ga/','/docs/dev/releases/2.0ga/']
     -   `Count-Min Sketch`を使用して、ポイントクエリのコストをより正確に見積もります
     -   より複雑な条件の分析をサポートして、インデックスを最大限に活用します
     -   `STRAIGHT_JOIN`構文を使用して`Join`の順序を手動で指定することをサポート
-    -   パフォーマンスを向上させるために、 `GROUP BY`句が空の場合はStreamAggregation演算子を使用します
+    -   パフォーマンスを向上させるために、 `GROUP BY`句が空の場合は集計演算子を使用します
     -   `MAX/MIN`関数のインデックスの使用をサポート
     -   相関サブクエリの処理アルゴリズムを最適化して、より多くのタイプの相関サブクエリの非相関化をサポートし、それらを`Left Outer Join`に変換します。
     -   インデックスプレフィックスの照合に使用される拡張`IndexLookupJoin`
 -   SQL実行エンジン
     -   チャンクアーキテクチャを使用してすべてのオペレーターをリファクタリングし、分析クエリの実行パフォーマンスを向上させ、メモリ使用量を削減します。 TPC-Hベンチマークの結果に大幅な改善が見られます。
-    -   StreamingAggregationオペレーターのプッシュダウンをサポートする
+    -   集計オペレーターのプッシュダウンをサポートする
     -   `Insert Into Ignore`のステートメントを最適化して、パフォーマンスを10倍以上向上させます
     -   `Insert On Duplicate Key Update`のステートメントを最適化して、パフォーマンスを10倍以上向上させます
     -   `Load Data`を最適化して、パフォーマンスを10倍以上向上させます
@@ -79,7 +78,7 @@ aliases: ['/docs/dev/releases/release-2.0-ga/','/docs/dev/releases/2.0ga/']
 -   デバッグインターフェイス
     -   `Drop Region`のデバッグインターフェイスを追加します
     -   インターフェイスを追加して、各PDのヘルスステータスを列挙します
--   統計学
+-   統計
     -   異常な地域に関する統計を追加する
     -   リージョン分離レベルに関する統計を追加する
     -   スケジューリング関連のメトリックを追加する
@@ -96,7 +95,7 @@ aliases: ['/docs/dev/releases/release-2.0-ga/','/docs/dev/releases/2.0ga/']
     -   `GetMetric`のAPIを追加します
     -   `Raw Batch Put`を`Raw Batch Delete` `Raw Batch Scan` `Raw Batch Get`
     -   RawKV APIの列ファミリーオプションを追加し、特定の列ファミリーでの操作の実行をサポートします
-    -   コプロセッサーでのストリーミングとストリーミング集約のサポート
+    -   コプロセッサーでのストリーミングとストリーミング集計のサポート
     -   コプロセッサーの要求タイムアウトの構成をサポート
     -   リージョンハートビートでタイムスタンプを運ぶ
     -   `block-cache-size`などの一部のRocksDBパラメーターのオンライン変更をサポート
@@ -105,7 +104,7 @@ aliases: ['/docs/dev/releases/release-2.0-ga/','/docs/dev/releases/2.0ga/']
     -   リージョンを手動で半分に分割することをサポート
     -   データ回復ツールの改善`tikv-ctl`
     -   コプロセッサーでより多くの統計を返し、TiDBの動作をガイドします
-    -   SSTファイルをインポートするための`ImportSST`をサポートする[実験的]
+    -   SSTファイルをインポートするための`ImportSST`をサポート[実験的]
     -   TiKVImporterバイナリを追加してTiDBLightningと統合し、データをすばやくインポートします[実験的]
 -   パフォーマンス
     -   `ReadPool`を使用して読み取りパフォーマンスを最適化し、 `raw_get/get/batch_get`を30％増やします

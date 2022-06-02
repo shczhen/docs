@@ -1,7 +1,6 @@
 ---
-title: TiDB Dashboard User Management
-summary: Learn how to create SQL users to access TiDB Dashboard.
-aliases: ['/docs/dev/dashboard/dashboard-user/']
+title: TiDBダッシュボードユーザー管理
+summary: TiDBダッシュボードにアクセスするSQLユーザーを作成する方法を学びます。
 ---
 
 # TiDBダッシュボードユーザー管理 {#tidb-dashboard-user-management}
@@ -12,14 +11,14 @@ TiDB SQLユーザーを制御および管理する方法の詳細については
 
 ## 必要な特権 {#required-privileges}
 
--   接続されたTiDBサーバーで[セキュリティ拡張モード（SEM）](/system-variables.md#tidb_enable_enhanced_security)が有効になっていないときにTiDBダッシュボードにアクセスするには、SQLユーザーに次の<strong>すべて</strong>の権限が必要です。
+-   接続されたTiDBサーバーで[セキュリティ拡張モード（SEM）](/system-variables.md#tidb_enable_enhanced_security)が有効になっていないときにTiDBダッシュボードにアクセスするには、SQLユーザーに次の**すべて**の権限が必要です。
 
     -   処理する
     -   データベースを表示する
     -   CONFIG
     -   DASHBOARD_CLIENT
 
--   接続されたTiDBサーバーで[セキュリティ拡張モード（SEM）](/system-variables.md#tidb_enable_enhanced_security)が有効になっているときにTiDBダッシュボードにアクセスするには、SQLユーザーに次の<strong>すべて</strong>の権限が必要です。
+-   接続されたTiDBサーバーで[セキュリティ拡張モード（SEM）](/system-variables.md#tidb_enable_enhanced_security)が有効になっているときにTiDBダッシュボードにアクセスするには、SQLユーザーに次の**すべて**の権限が必要です。
 
     -   処理する
     -   データベースを表示する
@@ -33,9 +32,9 @@ TiDB SQLユーザーを制御および管理する方法の詳細については
 
     -   SYSTEM_VARIABLES_ADMIN
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> `ALL PRIVILEGES`や`SUPER`などの高い権限を持つユーザーは、TiDBダッシュボードにもサインインできます。したがって、最小特権の原則に準拠するために、意図しない操作を防ぐためにのみ、必要な特権を持つユーザーを作成することを強くお勧めします。これらの特権の詳細については、 [特権管理](/privilege-management.md)を参照してください。
+> `ALL PRIVILEGES`や`SUPER`などの高い権限を持つユーザーは、TiDBダッシュボードにもサインインできます。したがって、最小特権の原則に準拠するために、意図しない操作を防ぐためにのみ、必要な特権を持つユーザーを作成することを強くお勧めします。これらの特権の詳細については、 [権限管理](/privilege-management.md)を参照してください。
 
 SQLユーザーが前述の特権要件を満たしていない場合、以下に示すように、ユーザーはTiDBダッシュボードへのサインインに失敗します。
 

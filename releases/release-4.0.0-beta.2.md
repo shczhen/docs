@@ -1,6 +1,5 @@
 ---
-title: TiDB 4.0.0 Beta.2 Release Notes
-aliases: ['/docs/dev/releases/release-4.0.0-beta.2/','/docs/dev/releases/4.0.0-beta.2/']
+title: TiDB4.0.0Beta.2リリースノート
 ---
 
 # TiDB4.0.0Beta.2リリースノート {#tidb-4-0-0-beta-2-release-notes}
@@ -37,7 +36,7 @@ TiDB Ansibleバージョン：4.0.0-beta.2
             -   変更されたデータのKafkaへの複製をサポートし、最終的なデータの一貫性または行レベルの秩序のいずれかを保証します
             -   プロセスレベルの高可用性を提供する
     -   バックアップと復元（BR）
-        -   増分バックアップや[＃175](https://github.com/pingcap/br/pull/175)へのファイルのバックアップなどの実験的な機能を有効にする
+        -   増分バックアップや[＃175](https://github.com/pingcap/br/pull/175)へのファイルのバックアップなどの実験的機能を有効にする
 
 -   TiDB Ansible
     -   [＃1196](https://github.com/pingcap/tidb-ansible/pull/1196)へのノード情報の注入をサポートします。

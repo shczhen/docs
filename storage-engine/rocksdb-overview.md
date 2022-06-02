@@ -1,6 +1,6 @@
 ---
-title: RocksDB Overview
-summary: Learn the basic concepts and working principles of RocksDB.
+title: RocksDBの概要
+summary: RocksDBの基本的な概念と動作原理を学びます。
 category: reference
 ---
 
@@ -49,7 +49,7 @@ RocksDBでは、MemTableをSSTファイルに変換したり、さまざまな�
 
 RocksDBのL0は他のレベルとは異なります。 L0のSSTは、生成順に並べられています。 SST間のキー範囲は重複する可能性があります。したがって、クエリを実行するときに、L0の各SSTを順番にクエリする必要があります。クエリのパフォーマンスに影響を与えないように、L0にファイルが多すぎる場合、WriteStallがトリガーされて書き込みがブロックされます。
 
-書き込み遅延が急激に増加した場合は、最初にGrafanaRocksDBKVパネルで<strong>WriteStallReason</strong>メトリックを確認できます。 L0ファイルが多すぎるために発生したWriteStallの場合は、次の構成を64に調整できます。
+書き込み遅延が急激に増加した場合は、最初にGrafanaRocksDBKVパネルで**WriteStallReason**メトリックを確認できます。 L0ファイルが多すぎるために発生したWriteStallの場合は、次の構成を64に調整できます。
 
 ```
 rocksdb.defaultcf.level0-slowdown-writes-trigger

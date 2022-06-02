@@ -1,7 +1,6 @@
 ---
-title: FLASHBACK TABLE
-summary: Learn how to recover tables using the `FLASHBACK TABLE` statement.
-aliases: ['/docs/dev/sql-statements/sql-statement-flashback-table/','/docs/dev/reference/sql/statements/flashback-table/']
+title: フラッシュバックテーブル
+summary: `FLASHBACKTABLE`ステートメントを使用してテーブルを回復する方法を学びます。
 ---
 
 # フラッシュバックテーブル {#flashback-table}
@@ -46,7 +45,7 @@ FlashbackToNewName ::=
 TiDB Binlogを有効にして、 `FLASHBACK TABLE`ステートメントを使用するときは、次の条件と要件に注意してください。
 
 -   ダウンストリームセカンダリクラスタも`FLASHBACK TABLE`をサポートする必要があります。
--   セカンダリクラスターのGCライフタイムは、プライマリクラスターのGCライフタイムより長くする必要があります。
+-   セカンダリクラスタのGCライフタイムは、プライマリクラスタのGCライフタイムより長くする必要があります。
 -   アップストリームとダウンストリーム間のレプリケーションの遅延も、ダウンストリームへのデータの回復に失敗する原因となる可能性があります。
 -   TiDB Binlogがテーブルを複製しているときにエラーが発生した場合は、TiDB Binlogでそのテーブルをフィルタリングし、そのテーブルのすべてのデータを手動でインポートする必要があります。
 
@@ -96,7 +95,7 @@ TiDB Binlogを有効にして、 `FLASHBACK TABLE`ステートメントを使用
 
 上記のプロセスから、TiDBは常にテーブルのメタデータを操作し、テーブルのユーザーデータは変更されていないことがわかります。復元されたテーブル`t1`は以前に削除されたテーブル`t`と同じIDを持っているため、 `t1`は`t`のユーザーデータを読み取ることができます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 復元されたテーブルのIDは削除されたテーブルのIDと同じであり、TiDBでは既存のすべてのテーブルにグローバルに一意のテーブルIDが必要であるため、 `FLASHBACK`のステートメントを使用して同じ削除済みテーブルを複数回復元することはできません。
 

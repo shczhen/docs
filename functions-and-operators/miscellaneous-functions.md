@@ -1,7 +1,6 @@
 ---
-title: Miscellaneous Functions
-summary: Learn about miscellaneous functions in TiDB.
-aliases: ['/docs/dev/functions-and-operators/miscellaneous-functions/','/docs/dev/reference/sql/functions-and-operators/miscellaneous-functions/']
+title: その他の機能
+summary: TiDBのその他の機能について学びます。
 ---
 
 # その他の機能 {#miscellaneous-functions}
@@ -33,7 +32,7 @@ TiDBは、MySQL5.7で利用可能な[その他の機能](https://dev.mysql.com/d
 
 | 名前                                                                                                                   | 説明                                                                                        |
 | :------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------- |
-| [`GET_LOCK()`](https://dev.mysql.com/doc/refman/5.7/en/miscellaneous-functions.html#function_get-lock)               | 名前付きロックを取得する[TiDB＃10929](https://github.com/pingcap/tidb/issues/14994)                    |
-| [`RELEASE_LOCK()`](https://dev.mysql.com/doc/refman/5.7/en/miscellaneous-functions.html#function_release-lock)       | 名前付きロックを解放します[TiDB＃10929](https://github.com/pingcap/tidb/issues/14994)                   |
+| [`GET_LOCK()`](https://dev.mysql.com/doc/refman/5.7/en/miscellaneous-functions.html#function_get-lock)               | 名前付きロックを取得する[TiDB＃10929](https://github.com/pingcap/tidb/issues/10929)                    |
+| [`RELEASE_LOCK()`](https://dev.mysql.com/doc/refman/5.7/en/miscellaneous-functions.html#function_release-lock)       | 名前付きロックを解放します[TiDB＃10929](https://github.com/pingcap/tidb/issues/10929)                   |
 | [`UUID_SHORT()`](https://dev.mysql.com/doc/refman/5.7/en/miscellaneous-functions.html#function_uuid-short)           | TiDB1に存在しない特定の仮定を前提として一意のUUIDを提供し[TiDB＃4620](https://github.com/pingcap/tidb/issues/4620) |
 | [`MASTER_WAIT_POS()`](https://dev.mysql.com/doc/refman/5.7/en/miscellaneous-functions.html#function_master-pos-wait) | MySQLレプリケーションに関連します                                                                       |

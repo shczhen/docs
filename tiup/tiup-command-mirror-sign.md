@@ -1,5 +1,5 @@
 ---
-title: tiup mirror sign
+title: tiupミラーサイン
 ---
 
 # tiupミラーサイン {#tiup-mirror-sign}
@@ -36,7 +36,7 @@ tiup mirror sign <manifest-file> [flags]
 -   データ型： `INT`
 -   デフォルト：10
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > このオプションは、 `<manifest-file>`がネットワークアドレスの場合にのみ有効です。
 

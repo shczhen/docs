@@ -1,6 +1,6 @@
 ---
 title: USER_PRIVILEGES
-summary: Learn the `USER_PRIVILEGES` information_schema table.
+summary: `USER_PRIVILEGES`information_schemaテーブルを学びます。
 ---
 
 # USER_PRIVILEGES {#user-privileges}

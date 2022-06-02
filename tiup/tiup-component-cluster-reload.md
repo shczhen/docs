@@ -1,10 +1,10 @@
 ---
-title: tiup cluster reload
+title: tiupクラスタのリロード
 ---
 
-# tiupクラスターのリロード {#tiup-cluster-reload}
+# tiupクラスタのリロード {#tiup-cluster-reload}
 
-[クラスター構成の変更](/tiup/tiup-component-cluster-edit-config.md)の後、設定を有効にするには、 `tiup cluster reload`コマンドを使用してクラスタをリロードする必要があります。このコマンドは、制御マシンの構成をサービスが実行されているリモートマシンに公開し、アップグレードプロセスに従って、アップグレードプロセスに従ってサービスを再起動します。クラスターは、再起動プロセス中も引き続き使用できます。
+[クラスタ構成の変更](/tiup/tiup-component-cluster-edit-config.md)の後、設定を有効にするには、 `tiup cluster reload`コマンドを使用してクラスタをリロードする必要があります。このコマンドは、制御マシンの構成をサービスが実行されているリモートマシンに公開し、アップグレードプロセスに従って、アップグレードプロセスに従ってサービスを再起動します。クラスタは、再起動プロセス中も引き続き使用できます。
 
 ## 構文 {#syntax}
 
@@ -12,7 +12,7 @@ title: tiup cluster reload
 tiup cluster reload <cluster-name> [flags]
 ```
 
-`<cluster-name>` ：操作するクラスター名。
+`<cluster-name>` ：操作するクラスタ名。
 
 ## オプション {#options}
 
@@ -28,7 +28,7 @@ tiup cluster reload <cluster-name> [flags]
 -   データ型： `UINT`
 -   デフォルト：300
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 待機をスキップして直接再起動した場合、サービスのパフォーマンスが低下する可能性があります。
 
@@ -40,22 +40,22 @@ tiup cluster reload <cluster-name> [flags]
 
 ### -N、-node {#n-node}
 
--   再起動するノードを指定します。指定しない場合、すべてのノードが再起動されます。このオプションの値は、ノードIDのコンマ区切りのリストです。 [`tiup cluster display`](/tiup/tiup-component-cluster-display.md)コマンドによって返されるクラスターステータステーブルの最初の列からノードIDを取得できます。
+-   再起動するノードを指定します。指定しない場合、すべてのノードが再起動されます。このオプションの値は、ノードIDのコンマ区切りのリストです。 [`tiup cluster display`](/tiup/tiup-component-cluster-display.md)コマンドによって返されるクラスタステータステーブルの最初の列からノードIDを取得できます。
 -   データ型： `STRINGS`
 -   コマンドでこのオプションが指定されていない場合、デフォルトですべてのノードが選択されます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   `-R, --role`オプションを同時に指定すると、 `-N, --node`と`-R, --role`の両方の仕様に一致するサービスノードのみが再起動されます。
 > -   `--skip-restart`オプションが指定されている場合、 `-N, --node`オプションは無効です。
 
 ### -R、-role {#r-role}
 
--   再起動するロールを指定します。指定しない場合、すべての役割が再開されます。このオプションの値は、ノードの役割のコンマ区切りのリストです。役割は、 [クラスターステータス](/tiup/tiup-component-cluster-display.md)テーブルの2番目の列です。
+-   再起動するロールを指定します。指定しない場合、すべての役割が再開されます。このオプションの値は、ノードの役割のコンマ区切りのリストです。役割は、 [クラスタステータス](/tiup/tiup-component-cluster-display.md)テーブルの2番目の列です。
 -   データ型： `STRINGS`
 -   このオプションがコマンドで指定されていない場合、デフォルトですべての役割が選択されます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 1.  `-N, --node`オプションを同時に指定すると、 `-N, --node`と`-R, --role`の両方の仕様に一致するサービスノードのみが再起動されます。
 > 2.  `--skip-restart`オプションが指定されている場合、 `-R, --role`オプションは無効です。

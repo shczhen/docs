@@ -1,7 +1,6 @@
 ---
-title: TiDB Binlog Deployment Topology
-summary: Learn the deployment topology of TiDB Binlog based on the minimal TiDB topology.
-aliases: ['/docs/dev/tidb-binlog-deployment-topology/']
+title: TiDBBinlogデプロイメントトポロジ
+summary: 最小限のTiDBトポロジに基づいて、TiDBBinlogの展開トポロジを学習します。
 ---
 
 # TiDBBinlogデプロイメントトポロジ {#tidb-binlog-deployment-topology}
@@ -12,7 +11,7 @@ TiDB Binlogは、インクリメンタルデータを複製するために広く
 
 ## トポロジー情報 {#topology-information}
 
-| 実例    | カウント | 物理マシン構成        | IP                                   | 構成                                                                                                      |
+| 実例    | カウント | 物理マシン構成        | IP                                   | Configuration / コンフィグレーション                                                                              |
 | :---- | :--- | :------------- | :----------------------------------- | :------------------------------------------------------------------------------------------------------ |
 | TiDB  | 3    | 16 VCore 32 GB | 10.0.1.1<br/> 10.0.1.2<br/> 10.0.1.3 | デフォルトのポート構成。<br/> `enable_binlog`を有効にします。<br/> `ignore-error`を有効にする                                     |
 | PD    | 3    | 4 VCore 8 GB   | 10.0.1.4<br/> 10.0.1.5<br/> 10.0.1.6 | デフォルトのポート構成                                                                                             |
@@ -26,7 +25,7 @@ TiDB Binlogは、インクリメンタルデータを複製するために広く
 -   [TiDB Binlogトポロジの単純なテンプレート（ダウンストリームタイプとして`file`を使用）](https://github.com/pingcap/docs/blob/master/config-templates/simple-file-binlog.yaml)
 -   [TiDBBinlogトポロジの複雑なテンプレート](https://github.com/pingcap/docs/blob/master/config-templates/complex-tidb-binlog.yaml)
 
-上記のTiDBクラスタートポロジファイルの構成項目の詳細については、 [TiUPを使用してTiDBを展開するためのトポロジ構成ファイル](/tiup/tiup-cluster-topology-reference.md)を参照してください。
+上記のTiDBクラスタトポロジファイルの構成項目の詳細については、 [TiUPを使用してTiDBを展開するためのトポロジConfiguration / コンフィグレーションファイル](/tiup/tiup-cluster-topology-reference.md)を参照してください。
 
 ### 重要なパラメータ {#key-parameters}
 
@@ -49,10 +48,10 @@ TiDB Binlogは、インクリメンタルデータを複製するために広く
 
 -   `drainer_servers.config.syncer.to`
 
-    TiDBBinlogのダウンストリーム構成。異なる`db-type`に応じて、この構成項目を使用して、ダウンストリーム・データベースの接続パラメーター、Kafkaの接続パラメーター、およびファイル保存パスを構成できます。詳しくは[TiDBBinlog構成ファイル](/tidb-binlog/tidb-binlog-configuration-file.md#syncerto)をご覧ください。
+    TiDBBinlogのダウンストリーム構成。異なる`db-type`に応じて、この構成項目を使用して、ダウンストリーム・データベースの接続パラメーター、Kafkaの接続パラメーター、およびファイル保存パスを構成できます。詳しくは[TiDBBinlogConfiguration / コンフィグレーションファイル](/tidb-binlog/tidb-binlog-configuration-file.md#syncerto)をご覧ください。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   構成ファイルテンプレートを編集するときに、カスタムポートまたはディレクトリが必要ない場合は、IPのみを変更します。
-> -   構成ファイルに`tidb`人のユーザーを手動で作成する必要はありません。 TiUPクラスターコンポーネントは、ターゲットマシン上に`tidb`のユーザーを自動的に作成します。ユーザーをカスタマイズすることも、ユーザーを制御マシンとの一貫性を保つこともできます。
-> -   展開ディレクトリを相対パスとして構成すると、クラスターはユーザーのホームディレクトリに展開されます。
+> -   構成ファイルに`tidb`人のユーザーを手動で作成する必要はありません。 TiUPクラスタコンポーネントは、ターゲットマシン上に`tidb`のユーザーを自動的に作成します。ユーザーをカスタマイズすることも、ユーザーを制御マシンとの一貫性を保つこともできます。
+> -   展開ディレクトリを相対パスとして構成すると、クラスタはユーザーのホームディレクトリに展開されます。

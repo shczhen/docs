@@ -1,6 +1,5 @@
 ---
-title: TiDB 2.0 RC1 Release Notes
-aliases: ['/docs/dev/releases/release-2.0-rc.1/','/docs/dev/releases/2rc1/']
+title: TiDB2.0RC1リリースノート
 ---
 
 # TiDB2.0RC1リリースノート {#tidb-2-0-rc1-release-notes}
@@ -34,6 +33,6 @@ aliases: ['/docs/dev/releases/release-2.0-rc.1/','/docs/dev/releases/2rc1/']
 -   PDリーダーが切り替わったときにgRPC呼び出しがキャンセルされない問題を修正します
 -   初期構成後に変更できない重要な構成を保護する
 -   メトリックの取得に使用されるgRPCAPIを追加します
--   クラスターの起動時にSSDが使用されているかどうかを確認します
+-   クラスタの起動時にSSDが使用されているかどうかを確認します
 -   ReadPoolを使用して読み取りパフォーマンスを最適化し、 `raw get`のテストでパフォーマンスを30％向上させます
 -   メトリックを改善し、メトリックの使用を最適化する

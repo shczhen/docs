@@ -1,6 +1,5 @@
 ---
-title: TiDB 3.1 Beta.1 Release Notes
-aliases: ['/docs/dev/releases/release-3.1.0-beta.1/','/docs/dev/releases/3.1.0-beta.1/']
+title: TiDB3.1Beta.1リリースノート
 ---
 
 # TiDB3.1Beta.1リリースノート {#tidb-3-1-beta-1-release-notes}

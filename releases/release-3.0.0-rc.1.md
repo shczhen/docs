@@ -1,6 +1,5 @@
 ---
-title: TiDB 3.0.0-rc.1 Release Notes
-aliases: ['/docs/dev/releases/release-3.0.0-rc.1/','/docs/dev/releases/3.0.0-rc.1/']
+title: TiDB3.0.0-rc.1リリースノート
 ---
 
 # TiDB3.0.0-rc.1リリースノート {#tidb-3-0-0-rc-1-release-notes}
@@ -38,7 +37,7 @@ TiDB Ansibleバージョン：3.0.0-rc.1
     -   TiDBの起動時にのみDDL所有者にブートストラップの実行を許可する[＃10029](https://github.com/pingcap/tidb/pull/10029)
     -   変数`tidb_skip_isolation_level_check`を追加して、トランザクション分離レベルをSERIALIZABLE3に設定するときに[＃10065](https://github.com/pingcap/tidb/pull/10065)がエラーを報告しないようにします。
     -   スローログ[＃10294](https://github.com/pingcap/tidb/pull/10294)の暗黙的なコミット時間とSQL実行時間をマージします
-        -   SQLロールのサポート（RBAC特権管理）
+        -   SQLロールのサポート（RBAC権限管理）
         -   [＃10016](https://github.com/pingcap/tidb/pull/10016) `SHOW GRANT`
         -   [＃9949](https://github.com/pingcap/tidb/pull/9949) `SET DEFAULT ROLE`
     -   [＃9721](https://github.com/pingcap/tidb/pull/9721) `GRANT ROLE`
@@ -67,7 +66,7 @@ TiDB Ansibleバージョン：3.0.0-rc.1
     -   後続のリクエストのブロックを回避できない「提案」および「読み取り」リクエストの高速ドロップをサポート
     -   リースのデッドロックの問題を修正
 -   ホットストアがキーの誤った統計を作成する問題を修正します[＃1487](https://github.com/pingcap/pd/pull/1487)
--   単一のPDノードからのPDクラスターの強制的な再構築をサポート[＃1485](https://github.com/pingcap/pd/pull/1485)
+-   単一のPDノードからのPDクラスタの強制的な再構築をサポート[＃1485](https://github.com/pingcap/pd/pull/1485)
 -   `regionScatterer`が無効な[＃1482](https://github.com/pingcap/pd/pull/1482)を生成する可能性がある問題を修正し`OperatorStep`
 -   `MergeRegion`演算子[＃1495](https://github.com/pingcap/pd/pull/1495)の短すぎるタイムアウトの問題を修正します
 -   ホットリージョンスケジューリングを優先するサポート[＃1492](https://github.com/pingcap/pd/pull/1492)
@@ -121,7 +120,7 @@ TiDB Ansibleバージョン：3.0.0-rc.1
     -   行IDまたはデフォルトの列値を使用して、ダンプファイルで欠落している列データを入力します[＃170](https://github.com/pingcap/tidb-lightning/pull/170)
     -   SSTの一部がインポートに失敗した場合でも、インポートの成功が返される可能性があるというImporterのバグを修正します[＃4566](https://github.com/tikv/tikv/pull/4566)
     -   SSTを[＃4412](https://github.com/tikv/tikv/pull/4412)にアップロードする際のインポーターの速度制限をサポート
-    -   サイズごとのテーブルのインポートをサポートして、大きなテーブルのChecksumとAnalyzeによるクラスターへの影響を減らし、Checksumと[＃156](https://github.com/pingcap/tidb-lightning/pull/156)の成功率を向上させます。
+    -   サイズごとのテーブルのインポートをサポートして、大きなテーブルのChecksumとAnalyzeによるクラスタへの影響を減らし、Checksumと[＃156](https://github.com/pingcap/tidb-lightning/pull/156)の成功率を向上させます。
     -   データソースファイルをtypes.Datumとして直接解析し、KVエンコーダーからの余分な解析オーバーヘッドを節約することで、LightningのSQLエンコーディングパフォーマンスを50％向上させます[＃145](https://github.com/pingcap/tidb-lightning/pull/145)
     -   ログ形式を[統合ログ形式](https://github.com/tikv/rfcs/blob/master/text/2018-12-19-unified-log-format.md)に変更し[＃162](https://github.com/pingcap/tidb-lightning/pull/162)
     -   構成ファイルが欠落している場合に使用するコマンドラインオプションをいくつか追加します[＃157](https://github.com/pingcap/tidb-lightning/pull/157)

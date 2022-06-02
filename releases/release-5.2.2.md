@@ -1,5 +1,5 @@
 ---
-title: TiDB 5.2.2 Release Notes
+title: TiDB5.2.2リリースノート
 ---
 
 # TiDB5.2.2リリースノート {#tidb-5-2-2-release-notes}
@@ -48,7 +48,7 @@ TiDBバージョン：5.2.2
     -   プランナーが`join` 、場合によっては[＃28087](https://github.com/pingcap/tidb/issues/28087)の無効なプランをキャッシュする可能性がある問題を修正します
     -   ハッシュ列タイプが列挙型[＃27893](https://github.com/pingcap/tidb/issues/27893)の場合の誤ったインデックスハッシュ結合を修正
     -   まれに、アイドル状態の接続をリサイクルするとリクエストの送信がブロックされる可能性があるというバッチクライアントのバグを修正します[＃27688](https://github.com/pingcap/tidb/pull/27688)
-    -   ターゲットクラスターでチェックサムを実行できない場合のTiDBLightningパニックの問題を修正します[＃27686](https://github.com/pingcap/tidb/pull/27686)
+    -   ターゲットクラスタでチェックサムを実行できない場合のTiDBLightningパニックの問題を修正します[＃27686](https://github.com/pingcap/tidb/pull/27686)
     -   場合によっては`date_add`と`date_sub`の関数の間違った結果を修正します[＃27232](https://github.com/pingcap/tidb/issues/27232)
     -   ベクトル化された式[＃28643](https://github.com/pingcap/tidb/issues/28643)の`hour`関数の誤った結果を修正します
     -   MySQL5.1または古いクライアントバージョン[＃27855](https://github.com/pingcap/tidb/issues/27855)に接続する際の認証の問題を修正します
@@ -66,8 +66,8 @@ TiDBバージョン：5.2.2
     -   安全でない3DES（トリプルデータ暗号化アルゴリズム）ベースのTLS暗号スイートのサポートを削除します[＃27859](https://github.com/pingcap/tidb/pull/27859)
     -   事前チェック中にLightningがオフラインのTiKVノードに接続し、インポートの失敗を引き起こす問題を修正します[＃27826](https://github.com/pingcap/tidb/pull/27826)
     -   多くのファイルをテーブルにインポートするときに事前チェックに時間がかかりすぎる問題を修正します[＃27605](https://github.com/pingcap/tidb/issues/27605)
-    -   式を書き換えると、 `between`が間違った照合を推測する[＃27146](https://github.com/pingcap/tidb/issues/27146)という問題を修正します。
-    -   `group_concat`の関数が照合[＃27429](https://github.com/pingcap/tidb/issues/27429)を考慮しなかった問題を修正します
+    -   式を書き換えると、 `between`が間違った照合順序を推測する[＃27146](https://github.com/pingcap/tidb/issues/27146)という問題を修正します。
+    -   `group_concat`の関数が照合順序[＃27429](https://github.com/pingcap/tidb/issues/27429)を考慮しなかった問題を修正します
     -   `extract`関数の引数が負の期間[＃27236](https://github.com/pingcap/tidb/issues/27236)である場合に発生する誤った結果を修正します
     -   `NO_UNSIGNED_SUBTRACTION`が設定されている場合にパーティションの作成が失敗する問題を修正します[＃26765](https://github.com/pingcap/tidb/issues/26765)
     -   列のプルーニングと集計のプッシュダウンで副作用のある式を避ける[＃27106](https://github.com/pingcap/tidb/issues/27106)

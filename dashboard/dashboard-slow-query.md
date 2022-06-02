@@ -1,16 +1,15 @@
 ---
-title: Slow Queries Page of TiDB Dashboard
-summary: Learn the Slow Queries page of TiDB Dashboard.
-aliases: ['/docs/dev/dashboard/dashboard-slow-query/']
+title: TiDBダッシュボードの低速クエリページ
+summary: TiDBダッシュボードの低速クエリページをご覧ください。
 ---
 
 # TiDBダッシュボードの低速クエリページ {#slow-queries-page-of-tidb-dashboard}
 
-TiDBダッシュボードの[低速クエリ]ページで、クラスター内のすべての低速クエリを検索および表示できます。
+TiDBダッシュボードの[低速クエリ]ページで、クラスタのすべての低速クエリを検索および表示できます。
 
 デフォルトでは、実行時間が300ミリ秒を超えるSQLクエリは低速クエリと見なされます。これらのクエリは[遅いクエリログ](/identify-slow-queries.md)に記録され、TiDBダッシュボードを介して検索できます。 [`tidb_slow_log_threshold`](/system-variables.md#tidb_slow_log_threshold)セッション変数または[`slow-threshold`](/tidb-configuration-file.md#slow-threshold)パラメーターを使用して、低速クエリのしきい値を調整できます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 低速クエリログが無効になっている場合、この機能は使用できなくなります。低速クエリログはデフォルトで有効になっており、 [`enable-slow-log`](/tidb-configuration-file.md#enable-slow-log)つのTiDB構成アイテムを使用して低速クエリログを有効または無効にできます。
 
@@ -18,7 +17,7 @@ TiDBダッシュボードの[低速クエリ]ページで、クラスター内�
 
 次の2つの方法のいずれかを使用して、低速クエリページにアクセスできます。
 
--   TiDBダッシュボードにログインした後、左側のナビゲーションメニューで[<strong>低速クエリ</strong>]をクリックします。
+-   TiDBダッシュボードにログインした後、左側のナビゲーションメニューで[**低速クエリ**]をクリックします。
 
 ![Access slow query page](/media/dashboard/dashboard-slow-queries-access.png)
 
@@ -34,13 +33,13 @@ TiDBダッシュボードの[低速クエリ]ページで、クラスター内�
 
 ### その他の列を表示する {#display-more-columns}
 
-ページの[<strong>列]</strong>をクリックすると、さらに列を表示するように選択できます。列名の右側にある<strong>（i）</strong>アイコンにマウスを移動すると、この列の説明が表示されます。
+ページの[**列]**をクリックすると、さらに列を表示するように選択できます。列名の右側にある<strong>（i）</strong>アイコンにマウスを移動すると、この列の説明が表示されます。
 
 ![Show more columns](/media/dashboard/dashboard-slow-queries-list2.png)
 
 ### 列で並べ替え {#sort-by-column}
 
-デフォルトでは、リストは<strong>終了時間</strong>の降順で並べ替えられます。列見出しをクリックして列で並べ替えるか、並べ替え順序を切り替えます。
+デフォルトでは、リストは**終了時間**の降順で並べ替えられます。列見出しをクリックして列で並べ替えるか、並べ替え順序を切り替えます。
 
 ![Modify sorting basis](/media/dashboard/dashboard-slow-queries-list3.png)
 
@@ -54,7 +53,7 @@ TiDBダッシュボードの[低速クエリ]ページで、クラスター内�
 
 ![View execution details](/media/dashboard/dashboard-slow-queries-detail1.png)
 
-アイテムの詳細情報を表示するには、 <strong>[展開]</strong>リンクをクリックします。 [<strong>コピー]</strong>リンクをクリックして、詳細情報をクリップボードにコピーします。
+アイテムの詳細情報を表示するには、 **[展開]**リンクをクリックします。 [<strong>コピー]</strong>リンクをクリックして、詳細情報をクリップボードにコピーします。
 
 対応するタブタイトルをクリックして、ソートされたさまざまなSQL実行の情報を切り替えます。
 

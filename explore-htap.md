@@ -1,13 +1,13 @@
 ---
-title: Explore HTAP
-summary: Learn how to explore and use the features of TiDB HTAP.
+title: HTAPを探索する
+summary: TiDBHTAPの機能を調べて使用する方法を学びます。
 ---
 
 # HTAPを探索する {#explore-htap}
 
 このガイドでは、TiDBハイブリッドトランザクションおよび分析処理（HTAP）の機能を調査および使用する方法について説明します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > TiDB HTAPを初めて使用し、すぐに使い始めたい場合は、 [HTAPのクイックスタート](/quick-start-with-htap.md)を参照してください。
 
@@ -19,7 +19,7 @@ HTAPの一般的な使用例は次のとおりです。
 
 -   ハイブリッドワークロード
 
-    ハイブリッドロードシナリオでリアルタイムオンライン分析処理（OLAP）にTiDBを使用する場合、データへのTiDBのエントリポイントを提供するだけで済みます。 TiDBは、特定のビジネスに基づいてさまざまな処理エンジンを自動的に選択します。
+    ハイブリッド負荷シナリオでリアルタイムオンライン分析処理（OLAP）にTiDBを使用する場合、データへのTiDBのエントリポイントを提供するだけで済みます。 TiDBは、特定のビジネスに基づいてさまざまな処理エンジンを自動的に選択します。
 
 -   リアルタイムストリーム処理
 
@@ -43,12 +43,12 @@ TiDB HTAPの機能を調べる前に、データ量に応じてTiDBと対応す�
 
 -   TiFlash
 
-    -   TiFlashノードのないTiDBクラスターをデプロイした場合は、現在のTiDBクラスターにTiFlashノードを追加します。詳細については、 [TiFlashクラスターをスケールアウトする](/scale-tidb-using-tiup.md#scale-out-a-tiflash-cluster)を参照してください。
-    -   TiDBクラスターをデプロイしていない場合は、 [TiUPを使用してTiDBクラスターをデプロイする](/production-deployment-using-tiup.md)を参照してください。最小限のTiDBトポロジに基づいて、 [TiFlashのトポロジー](/tiflash-deployment-topology.md)を展開する必要もあります。
+    -   TiFlashノードのないTiDBクラスタをデプロイした場合は、現在のTiDBクラスタにTiFlashノードを追加します。詳細については、 [TiFlashクラスタをスケールアウトする](/scale-tidb-using-tiup.md#scale-out-a-tiflash-cluster)を参照してください。
+    -   TiDBクラスタをデプロイしていない場合は、 [TiUPを使用してTiDBクラスターをデプロイする](/production-deployment-using-tiup.md)を参照してください。最小限のTiDBトポロジに基づいて、 [TiFlashのトポロジー](/tiflash-deployment-topology.md)を展開する必要もあります。
     -   TiFlashノードの数を選択する方法を決定するときは、次のシナリオを考慮してください。
 
         -   ユースケースで小規模な分析処理とアドホッククエリを使用するOLTPが必要な場合は、1つまたは複数のTiFlashノードをデプロイします。それらは分析クエリの速度を劇的に向上させることができます。
-        -   OLTPスループットがTiFlashノードのI/O使用率に大きな圧力をかけない場合、各TiFlashノードは計算により多くのリソースを使用するため、TiFlashクラスターはほぼ線形のスケーラビリティを持つことができます。 TiFlashノードの数は、予想されるパフォーマンスと応答時間に基づいて調整する必要があります。
+        -   OLTPスループットがTiFlashノードのI/O使用率に大きな圧力をかけない場合、各TiFlashノードは計算により多くのリソースを使用するため、TiFlashクラスタはほぼ線形のスケーラビリティを持つことができます。 TiFlashノードの数は、予想されるパフォーマンスと応答時間に基づいて調整する必要があります。
         -   ネットワークと物理ディスクの書き込み容量が限られているために、OLTPスループットが比較的高い場合（たとえば、書き込みまたは更新のスループットが1,000万ライン/時間より高い場合）、TiKVとTiFlash間のI/Oがボトルネックになります。また、ホットスポットの読み取りと書き込みを行う傾向があります。この場合、TiFlashノードの数は分析処理の計算量と複雑な非線形関係にあるため、システムの実際の状態に基づいてTiFlashノードの数を調整する必要があります。
 
 -   TiSpark
@@ -63,13 +63,13 @@ TiDB HTAPの機能を調べる前に、データ量に応じてTiDBと対応す�
 TiFlashがデプロイされた後、TiKVはデータをTiFlashに自動的に複製しません。 TiFlashに複製する必要があるテーブルを手動で指定する必要があります。その後、TiDBは対応するTiFlashレプリカを作成します。
 
 -   TiDBクラスターにデータがない場合は、最初にデータをTiDBに移行します。詳細については、 [データ移行](/migration-overview.md)を参照してください。
--   TiDBクラスターにアップストリームからレプリケートされたデータが既にある場合、TiFlashがデプロイされた後、データレプリケーションは自動的に開始されません。 TiFlashに複製するテーブルを手動で指定する必要があります。詳細については、 [TiFlashを使用する](/tiflash/use-tiflash.md)を参照してください。
+-   TiDBクラスタにアップストリームからレプリケートされたデータが既にある場合、TiFlashがデプロイされた後、データレプリケーションは自動的に開始されません。 TiFlashに複製するテーブルを手動で指定する必要があります。詳細については、 [TiFlashを使用する](/tiflash/use-tiflash.md)を参照してください。
 
 ## 情報処理 {#data-processing}
 
 TiDBを使用すると、クエリまたは書き込み要求のSQLステートメントを入力するだけで済みます。 TiFlashレプリカを含むテーブルの場合、TiDBはフロントエンドオプティマイザーを使用して、最適な実行プランを自動的に選択します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > TiFlashのMPPモードはデフォルトで有効になっています。 SQLステートメントが実行されると、TiDBはオプティマイザーを介してMPPモードで実行するかどうかを自動的に決定します。
 >
@@ -79,12 +79,12 @@ TiDBを使用すると、クエリまたは書き込み要求のSQLステート�
 
 ## パフォーマンス監視 {#performance-monitoring}
 
-TiDBを使用する場合、次のいずれかの方法でTiDBクラスターのステータスとパフォーマンスメトリックを監視できます。
+TiDBを使用する場合、次のいずれかの方法でTiDBクラスタのステータスとパフォーマンスメトリックを監視できます。
 
--   [TiDBダッシュボード](/dashboard/dashboard-intro.md) ：TiDBクラスターの全体的な実行状況を確認し、読み取りおよび書き込みトラフィックの分布と傾向を分析し、低速クエリの詳細な実行情報を学習できます。
+-   [TiDBダッシュボード](/dashboard/dashboard-intro.md) ：TiDBクラスタの全体的な実行状況を確認し、読み取りおよび書き込みトラフィックの分布と傾向を分析し、低速クエリの詳細な実行情報を学習できます。
 -   [監視システム（Prometheus＆Grafana）](/grafana-overview-dashboard.md) ：PD、TiDB、TiKV、TiFlash、TiCDC、Node_exporterなどのTiDBクラスター関連コンポーネントの監視パラメーターを確認できます。
 
-TiDBクラスターとTiFlashクラスターのアラートルールを確認するには、 [TiDBクラスターアラートルール](/alert-rules.md)と[TiFlashアラートルール](/tiflash/tiflash-alert-rules.md)を参照してください。
+TiDBクラスタとTiFlashクラスタのアラートルールを確認するには、 [TiDBクラスタアラートルール](/alert-rules.md)と[TiFlashアラートルール](/tiflash/tiflash-alert-rules.md)を参照してください。
 
 ## トラブルシューティング {#troubleshooting}
 
@@ -93,12 +93,12 @@ TiDBの使用中に問題が発生した場合は、次のドキュメントを�
 -   [遅いクエリを分析する](/analyze-slow-queries.md)
 -   [高価なクエリを特定する](/identify-expensive-queries.md)
 -   [ホットスポットの問題のトラブルシューティング](/troubleshoot-hot-spot-issues.md)
--   [TiDBクラスタートラブルシューティングガイド](/troubleshoot-tidb-cluster.md)
+-   [TiDBクラスタトラブルシューティングガイド](/troubleshoot-tidb-cluster.md)
 -   [TiFlashクラスターのトラブルシューティング](/tiflash/troubleshoot-tiflash.md)
 
 [Githubの問題](https://github.com/pingcap/tiflash/issues)を作成するか、 [AskTUG](https://asktug.com/)に質問を送信することもできます。
 
 ## 次は何ですか {#what-s-next}
 
--   TiFlashのバージョン、重要なログ、システムテーブルを確認するには、 [TiFlashクラスターを維持する](/tiflash/maintain-tiflash.md)を参照してください。
--   特定のTiFlashノードを削除するには、 [TiFlashクラスターをスケールアウトする](/scale-tidb-using-tiup.md#scale-out-a-tiflash-cluster)を参照してください。
+-   TiFlashのバージョン、重要なログ、システムテーブルを確認するには、 [TiFlashクラスタを管理する](/tiflash/maintain-tiflash.md)を参照してください。
+-   特定のTiFlashノードを削除するには、 [TiFlashクラスタをスケールアウトする](/scale-tidb-using-tiup.md#scale-out-a-tiflash-cluster)を参照してください。

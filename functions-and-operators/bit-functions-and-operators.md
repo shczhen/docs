@@ -1,14 +1,13 @@
 ---
-title: Bit Functions and Operators
-summary: Learn about the bit functions and operators.
-aliases: ['/docs/dev/functions-and-operators/bit-functions-and-operators/','/docs/dev/reference/sql/functions-and-operators/bit-functions-and-operators/']
+title: ビット関数と演算子
+summary: ビット関数と演算子について学びます。
 ---
 
 # ビット関数と演算子 {#bit-functions-and-operators}
 
 TiDBは、MySQL5.7で利用可能な[ビット関数と演算子](https://dev.mysql.com/doc/refman/5.7/en/bit-functions.html)すべてをサポートします。
 
-<strong>ビット関数と演算子：</strong>
+**ビット関数と演算子：**
 
 | 名前                                                                                             | 説明                 |
 | :--------------------------------------------------------------------------------------------- | :----------------- |

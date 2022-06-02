@@ -1,10 +1,9 @@
 ---
-title: Introduction to Join Reorder
-summary: Use the Join Reorder algorithm to join multiple tables in TiDB.
-aliases: ['/docs/dev/join-reorder/','/docs/dev/reference/performance/join-reorder/']
+title: 再注文に結合したテーブルの再配置ための概要
+summary: 結合したテーブルの再配置アルゴリズムを使用して、TiDB内の複数のテーブルを結合します。
 ---
 
-# 再注文に参加するための概要 {#introduction-to-join-reorder}
+# 再注文に結合したテーブルの再配置ための概要 {#introduction-to-join-reorder}
 
 実際のアプリケーションシナリオでは、複数のテーブルを結合するのが一般的です。結合の実行効率は、各テーブルが結合する順序に関連しています。
 
@@ -23,9 +22,9 @@ SELECT * FROM t1, t2, t3 WHERE t1.a=t2.a AND t3.a=t2.a;
 
 t1とt3のデータ量と分散は異なるため、これら2つの実行順序は異なるパフォーマンスを示す可能性があります。
 
-したがって、オプティマイザには、結合順序を決定するためのアルゴリズムが必要です。現在、TiDBは、欲張りアルゴリズムとも呼ばれる結合並べ替えアルゴリズムを使用しています。
+したがって、オプティマイザには、結合順序を決定するためのアルゴリズムが必要です。現在、TiDBは、欲張りアルゴリズムとも呼ばれる結合したテーブルの再配置アルゴリズムを使用しています。
 
-## 結合並べ替えアルゴリズムのインスタンス {#instance-of-join-reorder-algorithm}
+## 結合したテーブルの再配置アルゴリズムのインスタンス {#instance-of-join-reorder-algorithm}
 
 上記の3つの表（t1、t2、およびt3）を例として取り上げます。
 
@@ -43,13 +42,13 @@ t1とt3のデータ量と分散は異なるため、これら2つの実行順序
 
 ![join-reorder-3](/media/join-reorder-3.png)
 
-上記のプロセスは、現在TiDBで使用されているJoinReorderアルゴリズムです。
+上記のプロセスは、現在TiDBで使用されている結合したテーブルの再配置アルゴリズムです。
 
-## 結合並べ替えアルゴリズムの制限 {#limitations-of-join-reorder-algorithm}
+## 結合したテーブルの再配置アルゴリズムの制限 {#limitations-of-join-reorder-algorithm}
 
-現在のJoinReorderアルゴリズムには、次の制限があります。
+現在の結合したテーブルの再配置アルゴリズムには、次の制限があります。
 
--   外部結合の結合順序はサポートされていません
+-   外部結合の結合したテーブルの再配置はサポートされていません
 -   結果セットの計算方法によって制限されるため、アルゴリズムは最適な結合順序を選択することを保証できません。
 
 現在、結合順序を強制するために`STRAIGHT_JOIN`構文がTiDBでサポートされています。詳細については、 [構文要素の説明](/sql-statements/sql-statement-select.md#description-of-the-syntax-elements)を参照してください。

@@ -1,6 +1,5 @@
 ---
-title: TiDB 2.1 Beta Release Notes
-aliases: ['/docs/dev/releases/release-2.1-beta/','/docs/dev/releases/21beta/']
+title: TiDB2.1ベータリリースノート
 ---
 
 # TiDB2.1ベータリリースノート {#tidb-2-1-beta-release-notes}
@@ -23,7 +22,7 @@ aliases: ['/docs/dev/releases/release-2.1-beta/','/docs/dev/releases/21beta/']
     -   一部のシナリオで`INSERT … ON DUPLICATE KEY UPDATE …`の誤った結果を修正
     -   `CONCAT_WS` 、および`CEIL`の`DIV`関数の誤った結果を修正し`FLOOR`
 -   サーバ
-    -   HTTP APIを追加して、TiKVクラスター内のテーブルリージョンの分布を分散させます
+    -   HTTP APIを追加して、TiKVクラスタのテーブルリージョンの分布を分散させます
     -   自動`Analyze`のしきい値を制御するには、 `auto_analyze_ratio`のシステム変数を追加します
     -   一般ログを開くかどうかを制御するHTTPAPIを追加します
     -   HTTP APIを追加して、ログレベルをオンラインで変更します
@@ -54,7 +53,7 @@ aliases: ['/docs/dev/releases/release-2.1-beta/','/docs/dev/releases/21beta/']
     -   同時実行シナリオでのテーブルの名前変更の問題を修正します
     -   `AlterTableForce`構文をサポートする
     -   `FromKey`と`ToKey`で`AlterTableRenameIndex`構文をサポートする
-    -   `admin show ddl jobs`の出力情報にテーブル名とデータベース名を追加します
+    -   `admin show ddl jobs`の出力情報にテーブル名とデータベース名を追加します。
 
 ## PD {#pd}
 
@@ -68,7 +67,7 @@ aliases: ['/docs/dev/releases/release-2.1-beta/','/docs/dev/releases/21beta/']
 -   tikv-ctlの安全でないリカバリ後にリージョン情報が更新されない問題を修正します
 -   一部のシナリオでレプリカの移行が原因でTiKVディスクスペースが使い果たされる問題を修正します
 -   互換性に関する注意事項
-    -   新しいバージョンのストレージエンジンが更新されたため、v2.0.x以前へのロールバックはサポートされていません
+    -   新しいバージョンのストレージエンジンの更新により、v2.0.x以前へのロールバックはサポートされません
     -   新しいバージョンのPDでは、デフォルトで`raft learner`を有効にします。クラスタを1.xから2.1にアップグレードする場合は、アップグレードする前にマシンを停止するか、ローリングアップデートを最初にTiKVに適用してからPDに適用する必要があります。
 
 ## TiKV {#tikv}

@@ -1,7 +1,6 @@
 ---
-title: Expression Syntax
-summary: Learn about the expression syntax in TiDB.
-aliases: ['/docs/dev/expression-syntax/','/docs/dev/reference/sql/language-structure/expression-syntax/']
+title: 式の構文
+summary: TiDBの式の構文について学びます。
 ---
 
 # 式の構文 {#expression-syntax}

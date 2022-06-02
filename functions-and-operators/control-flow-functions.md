@@ -1,7 +1,6 @@
 ---
-title: Control Flow Functions
-summary: Learn about the Control Flow functions.
-aliases: ['/docs/dev/functions-and-operators/control-flow-functions/','/docs/dev/reference/sql/functions-and-operators/control-flow-functions/']
+title: 制御フロー機能
+summary: 制御フロー機能について学びます。
 ---
 
 # 制御フロー機能 {#control-flow-functions}

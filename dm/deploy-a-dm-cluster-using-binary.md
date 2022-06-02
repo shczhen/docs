@@ -1,16 +1,15 @@
 ---
-title: Deploy Data Migration Using DM Binary
-summary: Learn how to deploy a Data Migration cluster using DM binary.
-aliases: ['/docs/tidb-data-migration/dev/deploy-a-dm-cluster-using-binary/']
+title: DMバイナリを使用したデータ移行のデプロイ
+summary: DMバイナリを使用してデータ移行クラスタを展開する方法を学びます。
 ---
 
-# DMバイナリを使用したデータ移行の展開 {#deploy-data-migration-using-dm-binary}
+# DMバイナリを使用したデータ移行のデプロイ {#deploy-data-migration-using-dm-binary}
 
-このドキュメントでは、DMバイナリを使用してデータ移行（DM）クラスターを迅速に展開する方法を紹介します。
+このドキュメントでは、DMバイナリを使用してデータ移行（DM）クラスタを迅速に展開する方法を紹介します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> 実稼働環境では、 [TiUPを使用してDMクラスターをデプロイする](/dm/deploy-a-dm-cluster-using-tiup.md)にすることをお勧めします。
+> 実稼働環境では、 [TiUPを使用してDMクラスタをデプロイする](/dm/deploy-a-dm-cluster-using-tiup.md)にすることをお勧めします。
 
 ## 準備 {#preparations}
 
@@ -20,7 +19,7 @@ aliases: ['/docs/tidb-data-migration/dev/deploy-a-dm-cluster-using-binary/']
 | :------------------------------------------------------------- | :---- | :---- | :------------------------------------------------------------- |
 | `https://download.pingcap.org/dm-{version}-linux-amd64.tar.gz` | Linux | amd64 | `https://download.pingcap.org/dm-{version}-linux-amd64.sha256` |
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 上記のダウンロードリンクの`{version}`は、TiDBのバージョン番号を示します。たとえば、 `v1.0.1`のダウンロードリンクは`https://download.pingcap.org/dm-v1.0.1-linux-amd64.tar.gz`です。公開されているDMのバージョンは[DMリリース](https://github.com/pingcap/tiflow/releases)ページで確認できます。
 
@@ -28,7 +27,7 @@ aliases: ['/docs/tidb-data-migration/dev/deploy-a-dm-cluster-using-binary/']
 
 ## サンプルシナリオ {#sample-scenario}
 
-このサンプルシナリオに基づいてDMクラスターを展開するとします。
+このサンプルシナリオに基づいてDMクラスタを展開するとします。
 
 2つのDM-workerノードと3つのDM-masterノードが5つのサーバーにデプロイされます。
 
@@ -42,22 +41,22 @@ aliases: ['/docs/tidb-data-migration/dev/deploy-a-dm-cluster-using-binary/']
 | DM-worker1 | 192.168.0.7 | 8262 |
 | DM-worker2 | 192.168.0.8 | 8262 |
 
-このシナリオに基づいて、次のセクションではDMクラスターをデプロイする方法について説明します。
+このシナリオに基づいて、次のセクションでは、DMクラスタをデプロイする方法について説明します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   複数のDM-masterまたはDM-workerインスタンスを単一のサーバーにデプロイする場合、各インスタンスのポートと作業ディレクトリは一意である必要があります。
 >
-> -   DMクラスターの高可用性を確保する必要がない場合は、DMマスターノードを1つだけデプロイし、デプロイされるDMワーカーノードの数は、移行するアップストリームのMySQL/MariaDBインスタンスの数以上である必要があります。
+> -   DMクラスタの高可用性を確保する必要がない場合は、DMマスターノードを1つだけデプロイし、デプロイされるDMワーカーノードの数は、移行するアップストリームのMySQL/MariaDBインスタンスの数以上である必要があります。
 >
-> -   DMクラスターの高可用性を確保するには、3つのDM-masterノードをデプロイすることをお勧めします。デプロイされるDM-workerノードの数は、移行するアップストリームのMySQL / MariaDBインスタンスの数（たとえば、 DMワーカーノードの数は、アップストリームインスタンスの数より2つ多くなります）。
+> -   DMクラスタの高可用性を確保するには、3つのDM-masterノードをデプロイすることをお勧めします。デプロイされるDM-workerノードの数は、移行するアップストリームのMySQL / MariaDBインスタンスの数（たとえば、 DMワーカーノードの数は、アップストリームインスタンスの数より2つ多くなります）。
 >
 > -   次のコンポーネント間のポートが相互接続されていることを確認してください。
 >     -   DMマスターノード間の`8291`のポートは相互接続されています。
 >     -   各DMマスターノードは、すべてのDMワーカーノードの`8262`のポートに接続できます。
 >     -   各DM-workerノードは、すべてのDM-masterノードの`8261`のポートに接続できます。
 
-### DMマスターをデプロイする {#deploy-dm-master}
+### DMマスターをデプロイ {#deploy-dm-master}
 
 [コマンドラインパラメータ](#dm-master-command-line-parameters)または[構成ファイル](#dm-master-configuration-file)を使用してDMマスターを構成できます。
 
@@ -66,7 +65,7 @@ aliases: ['/docs/tidb-data-migration/dev/deploy-a-dm-cluster-using-binary/']
 以下は、DM-masterコマンドラインパラメーターの説明です。
 
 ```bash
-./dm-master --help
+./bin/dm-master --help
 ```
 
 ```
@@ -98,7 +97,7 @@ Usage of dm-master:
         print sample config file of dm-worker
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 一部の構成はコマンドラインに公開されていないため、状況によっては、上記の方法を使用してDMマスターを構成できない場合があります。このような場合は、代わりに構成ファイルを使用してください。
 
@@ -131,16 +130,16 @@ Usage of dm-master:
     {{< copyable "" >}}
 
     ```bash
-    ./dm-master -config conf/dm-master1.toml
+    ./bin/dm-master -config conf/dm-master1.toml
     ```
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > このコマンドが実行された後、コンソールはログを出力しません。ランタイムログを表示する場合は、 `tail -f dm-master.log`を実行できます。
 
 3.  DM-master2とDM-master3の場合、構成ファイルの`name`をそれぞれ`master2`と`master3`に変更し、 `peer-urls`をそれぞれ`192.168.0.5:8291`と`192.168.0.6:8291`に変更します。次に、手順2を繰り返します。
 
-### DM-workerをデプロイする {#deploy-dm-worker}
+### DM-workerをデプロイ {#deploy-dm-worker}
 
 [コマンドラインパラメータ](#dm-worker-command-line-parameters)または[構成ファイル](#dm-worker-configuration-file)を使用してDM-workerを構成できます。
 
@@ -151,7 +150,7 @@ Usage of dm-master:
 {{< copyable "" >}}
 
 ```bash
-./dm-worker --help
+./bin/dm-worker --help
 ```
 
 ```
@@ -177,7 +176,7 @@ Usage of worker:
         listen address for client traffic
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 一部の構成はコマンドラインに公開されていないため、状況によっては、上記の方法を使用してDM-workerを構成できない場合があります。このような場合は、代わりに構成ファイルを使用してください。
 
@@ -207,9 +206,9 @@ Usage of worker:
     {{< copyable "" >}}
 
     ```bash
-    ./dm-worker -config conf/dm-worker1.toml
+    ./bin/dm-worker -config conf/dm-worker1.toml
     ```
 
 3.  DM-worker2の場合、構成ファイルの`name`を`worker2`に変更します。次に、手順2を繰り返します。
 
-これで、DMクラスターが正常にデプロイされました。
+これで、DMクラスタが正常にデプロイされました。

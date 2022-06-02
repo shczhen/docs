@@ -1,6 +1,6 @@
 ---
-title: SEQUENCES
-summary: Learn the `SEQUENCES` information_schema table.
+title: シーケンス
+summary: `SEQUENCES`information_schemaテーブルを学びます。
 ---
 
 # シーケンス {#sequences}

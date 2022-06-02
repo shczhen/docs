@@ -1,6 +1,6 @@
 ---
 title: COLLATION_CHARACTER_SET_APPLICABILITY
-summary: Learn the `COLLATION_CHARACTER_SET_APPLICABILITY` information_schema table.
+summary: `COLLATION_CHARACTER_SET_APPLICABILITY`information_schemaテーブルを学びます。
 ---
 
 # COLLATION_CHARACTER_SET_APPLICABILITY {#collation-character-set-applicability}
@@ -41,5 +41,5 @@ SELECT * FROM collation_character_set_applicability WHERE character_set_name='ut
 
 `COLLATION_CHARACTER_SET_APPLICABILITY`テーブルの列の説明は次のとおりです。
 
--   `COLLATION_NAME` ：照合の名前。
--   `CHARACTER_SET_NAME` ：照合が属する文字セットの名前。
+-   `COLLATION_NAME` ：照合順序の名前。
+-   `CHARACTER_SET_NAME` ：照合順序が属する文字セットの名前。

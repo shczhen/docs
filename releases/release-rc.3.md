@@ -1,6 +1,5 @@
 ---
-title: TiDB RC3 Release Notes
-aliases: ['/docs/dev/releases/release-rc.3/','/docs/dev/releases/rc3/']
+title: TiDBRC3リリースノート
 ---
 
 # TiDBRC3リリースノート {#tidb-rc3-release-notes}
@@ -12,7 +11,7 @@ aliases: ['/docs/dev/releases/release-rc.3/','/docs/dev/releases/rc3/']
 -   特権管理は、ユーザーがMySQLと同じ方法を使用してデータアクセス特権を管理できるように改良されています。
 -   DDLが高速化されます。
 -   負荷分散のポリシーとプロセスは、パフォーマンスが最適化されています。
--   TiDBAnsibleはオープンソースです。 TiDB-Ansibleを使用すると、ワンクリックでTiDBクラスターをデプロイ、アップグレード、開始、シャットダウンできます。
+-   TiDBAnsibleはオープンソースです。 TiDB-Ansibleを使用すると、ワンクリックでTiDBクラスタをデプロイ、アップグレード、開始、シャットダウンできます。
 
 ## 詳細な更新 {#detailed-updates}
 
@@ -51,7 +50,7 @@ aliases: ['/docs/dev/releases/release-rc.3/','/docs/dev/releases/rc3/']
 ## TiKV {#tikv}
 
 -   gRPCをサポートする
--   ソートされた文字列テーブル（SST）形式のスナップショットをサポートして、クラスターの負荷分散速度を向上させます
+-   ソートされた文字列テーブル（SST）形式のスナップショットをサポートして、クラスタの負荷分散速度を向上させます
 -   ヒーププロファイルを使用したメモリリークの発見をサポート
 -   ストリーミングSIMD拡張命令（SSE）をサポートし、CRC32計算を高速化します
 -   転送リーダーを高速化して、負荷分散を高速化します

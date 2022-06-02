@@ -1,16 +1,15 @@
 ---
-title: TiDB Binlog Configuration File
-summary: Learn the configuration items of TiDB Binlog.
-aliases: ['/docs/dev/tidb-binlog/tidb-binlog-configuration-file/','/docs/dev/reference/tidb-binlog/config/']
+title: TiDBBinlogConfiguration / コンフィグレーションファイル
+summary: TiDBBinlogの設定項目をご覧ください。
 ---
 
-# TiDBBinlog構成ファイル {#tidb-binlog-configuration-file}
+# TiDBBinlogConfiguration / コンフィグレーションファイル {#tidb-binlog-configuration-file}
 
 このドキュメントでは、TiDBBinlogの構成項目を紹介します。
 
 ## ポンプ {#pump}
 
-このセクションでは、Pumpの構成項目を紹介します。完全なポンプ構成ファイルの例については、 [ポンプ構成](https://github.com/pingcap/tidb-binlog/blob/master/cmd/pump/pump.toml)を参照してください。
+このセクションでは、Pumpの構成項目を紹介します。完全なポンプ構成ファイルの例については、 [ポンプConfiguration / コンフィグレーション](https://github.com/pingcap/tidb-binlog/blob/master/cmd/pump/pump.toml)を参照してください。
 
 ### addr {#addr}
 
@@ -64,7 +63,7 @@ aliases: ['/docs/dev/tidb-binlog/tidb-binlog-configuration-file/','/docs/dev/ref
 
 ### node-id {#node-id}
 
--   ポンプノードIDを指定します。このIDを使用すると、このポンププロセスをクラスター内で識別できます。
+-   ポンプノードIDを指定します。このIDを使用すると、このポンププロセスをクラスタで識別できます。
 -   デフォルト値： `hostname:port number` 。たとえば、 `node-1:8250` 。
 
 ### 安全 {#security}
@@ -92,7 +91,7 @@ aliases: ['/docs/dev/tidb-binlog/tidb-binlog-configuration-file/','/docs/dev/ref
 
 #### 同期ログ {#sync-log}
 
--   データの安全性を確保するために、binlogへの各<strong>バッチ</strong>書き込みの後に`fsync`を使用するかどうかを指定します。
+-   データの安全性を確保するために、binlogへの各**バッチ**書き込みの後に`fsync`を使用するかどうかを指定します。
 -   デフォルト値： `true`
 
 #### kv_chan_cap {#kv-chan-cap}
@@ -107,7 +106,7 @@ aliases: ['/docs/dev/tidb-binlog/tidb-binlog-configuration-file/','/docs/dev/ref
 
 #### stop-write-at-available-space {#stop-write-at-available-space}
 
--   使用可能なストレージスペースがこの指定された値を下回ると、Binlog書き込み要求は受け入れられなくなります。 `900 MB`などの形式を使用して、 `12 GiB`スペースを指定でき`5 GB` 。クラスタ内に複数のPumpノードがある場合、スペースが不足しているためにPumpノードが書き込み要求を拒否すると、TiDBは自動的に他のPumpノードにbinlogを書き込みます。
+-   使用可能なストレージスペースがこの指定された値を下回ると、Binlog書き込み要求は受け入れられなくなります。 `900 MB`などの形式を使用して、 `12 GiB`スペースを指定でき`5 GB` 。クラスタに複数のPumpノードがある場合、スペースが不足しているためにPumpノードが書き込み要求を拒否すると、TiDBは自動的に他のPumpノードにbinlogを書き込みます。
 -   デフォルト値： `10 GiB`
 
 #### kv {#kv}
@@ -115,7 +114,7 @@ aliases: ['/docs/dev/tidb-binlog/tidb-binlog-configuration-file/','/docs/dev/ref
 現在、Pumpのストレージは[GoLevelDB](https://github.com/syndtr/goleveldb)に基づいて実装されています。 `storage`の下には、GoLevel構成を調整するために使用される`kv`のサブグループもあります。サポートされている構成項目は次のとおりです。
 
 -   ブロックキャッシュ容量
--   ブロック-再起動-間隔
+-   block-restart-interval
 -   ブロックサイズ
 -   圧縮-L0トリガー
 -   圧縮テーブルサイズ
@@ -129,7 +128,7 @@ aliases: ['/docs/dev/tidb-binlog/tidb-binlog-configuration-file/','/docs/dev/ref
 
 ## ドレイナー {#drainer}
 
-このセクションでは、Drainerの構成項目を紹介します。完全なDrainer構成ファイルの例については、 [ドレイナー構成](https://github.com/pingcap/tidb-binlog/blob/master/cmd/drainer/drainer.toml)を参照してください。
+このセクションでは、Drainerの構成項目を紹介します。完全なDrainer構成ファイルの例については、 [ドレイナーConfiguration / コンフィグレーション](https://github.com/pingcap/tidb-binlog/blob/master/cmd/drainer/drainer.toml)を参照してください。
 
 ### addr {#addr}
 
@@ -153,7 +152,7 @@ aliases: ['/docs/dev/tidb-binlog/tidb-binlog-configuration-file/','/docs/dev/ref
 
 ### node-id {#node-id}
 
--   ドレイナーノードIDを指定します。このIDを使用すると、このドレイナープロセスをクラスター内で識別できます。
+-   ドレイナーノードIDを指定します。このIDを使用すると、このドレイナープロセスをクラスタで識別できます。
 -   デフォルト値： `hostname:port number` 。たとえば、 `node-1:8249` 。
 
 ### data-dir {#data-dir}
@@ -176,7 +175,7 @@ aliases: ['/docs/dev/tidb-binlog/tidb-binlog-configuration-file/','/docs/dev/ref
 -   トランザクションのどのコミットタイムスタンプからレプリケーションプロセスを開始するかを指定します。この構成は、初めてレプリケーションプロセスにあるDrainerノードにのみ適用できます。チェックポイントがダウンストリームにすでに存在する場合、レプリケーションはチェックポイントに記録された時間に従って実行されます。
 -   commit ts（コミットタイムスタンプ）は、TiDBでの[取引](/transaction-overview.md#transactions)のコミットの特定の時点です。これは、現在のトランザクションの一意のIDとして、グローバルに一意であり、PDから増加するタイムスタンプです。次の一般的な方法で`initial-commit-ts`の構成を取得できます。
     -   BRを使用する場合、BR（backupmeta）によってバックアップされたメタデータに記録されたバックアップTSから`initial-commit-ts`を取得できます。
-    -   餃子を使用する場合、餃子（メタデータ）によってバックアップされたメタデータに記録されたPosから`initial-commit-ts`を取得できます。
+    -   Dumplingを使用する場合、Dumpling（メタデータ）によってバックアップされたメタデータに記録されたPosから`initial-commit-ts`を取得できます。
     -   PD制御を使用する場合、 `tso`コマンドの出力に`initial-commit-ts`が含まれます。
 -   デフォルト値： `-1` 。 Drainerは、開始時刻としてPDから新しいタイムスタンプを取得します。これは、レプリケーションプロセスが現在の時刻から開始されることを意味します。
 
@@ -243,7 +242,7 @@ aliases: ['/docs/dev/tidb-binlog/tidb-binlog-configuration-file/','/docs/dev/ref
 
 レプリケーション中に指定されたテーブルの変更を無視します。 `toml`のファイルで無視する複数のテーブルを指定できます。例えば：
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```toml
 [[syncer.ignore-table]]
@@ -268,7 +267,7 @@ binlogファイル内のすべての変更がフィルタリングされると�
 
 複製するテーブルを指定します。例えば：
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```toml
 [[syncer.replicate-do-table]]
@@ -342,9 +341,9 @@ tbl-name = "~^a.*"
 
 -   デフォルトでは`schema` ： `"tidb_binlog"` 。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
-    > 同じTiDBクラスターに複数のDrainerノードをデプロイする場合は、ノードごとに異なるチェックポイントスキーマを指定する必要があります。そうしないと、2つのインスタンスのレプリケーションの進行状況が相互に上書きされます。
+    > 同じTiDBクラスタに複数のDrainerノードをデプロイする場合は、ノードごとに異なるチェックポイントスキーマを指定する必要があります。そうしないと、2つのインスタンスのレプリケーションの進行状況が相互に上書きされます。
 
 -   `host`
 

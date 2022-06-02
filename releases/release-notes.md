@@ -1,13 +1,8 @@
 ---
-title: Release Notes
-aliases: ['/docs/dev/releases/release-notes/','/docs/dev/releases/rn/']
+title: リリースノート
 ---
 
 # TiDBリリースノート {#tidb-release-notes}
-
-## 6.0 {#6-0}
-
--   [6.0.0-DMR](/releases/release-6.0.0-dmr.md)
 
 ## 5.4 {#5-4}
 

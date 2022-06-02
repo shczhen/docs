@@ -1,6 +1,5 @@
 ---
-title: TiDB 2.1.13 Release Notes
-aliases: ['/docs/dev/releases/release-2.1.13/','/docs/dev/releases/2.1.13/']
+title: TiDB2.1.13リリースノート
 ---
 
 # TiDB2.1.13リリースノート {#tidb-2-1-13-release-notes}
@@ -14,7 +13,7 @@ TiDB Ansibleバージョン：2.1.13
 ## TiDB {#tidb}
 
 -   ホットスポットの問題を軽減するために、列に`AUTO_INCREMENT`属性が含まれている場合に、 `SHARD_ROW_ID_BITS`を使用して行IDを分散する機能を追加します[＃10788](https://github.com/pingcap/tidb/pull/10788)
--   無効なDDLメタデータの存続期間を最適化して、TiDBクラスターのアップグレード後のDDL操作の通常の実行の回復を高速化します[＃10789](https://github.com/pingcap/tidb/pull/10789)
+-   無効なDDLメタデータの存続期間を最適化して、TiDBクラスタのアップグレード後のDDL操作の通常の実行の回復を高速化します[＃10789](https://github.com/pingcap/tidb/pull/10789)
 -   `execdetails.ExecDetails`ポインター[＃10833](https://github.com/pingcap/tidb/pull/10833)に起因する、コプロセッサー・リソースの迅速な解放の失敗によって引き起こされる、同時発生率の高いシナリオでのOOMの問題を修正します。
 -   `update-stats`の構成項目を追加して、統計を更新するかどうかを制御します[＃10772](https://github.com/pingcap/tidb/pull/10772)
 -   ホットスポットの問題を解決するためにRegionpresplitをサポートするには、次のTiDB固有の構文を追加します。

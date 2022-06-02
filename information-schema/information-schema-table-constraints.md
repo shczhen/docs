@@ -1,6 +1,6 @@
 ---
 title: TABLE_CONSTRAINTS
-summary: Learn the `TABLE_CONSTRAINTS` information_schema table.
+summary: `TABLE_CONSTRAINTS`information_schemaテーブルを学びます。
 ---
 
 # TABLE_CONSTRAINTS {#table-constraints}

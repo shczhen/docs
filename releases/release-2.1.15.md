@@ -1,6 +1,5 @@
 ---
-title: TiDB 2.1.15 Release Notes
-aliases: ['/docs/dev/releases/release-2.1.15/','/docs/dev/releases/2.1.15/']
+title: TiDB2.1.15リリースノート
 ---
 
 # TiDB2.1.15リリースノート {#tidb-2-1-15-release-notes}
@@ -16,7 +15,7 @@ TiDB Ansibleバージョン：2.1.15
 -   マイクロ秒[＃11289](https://github.com/pingcap/tidb/pull/11289)を処理するときに、 `DATE_ADD`関数が誤った配置のために、誤った結果を返す問題を修正します。
 -   文字列列の空の値が`FLOAT`または[＃11279](https://github.com/pingcap/tidb/pull/11279)と比較されたときにエラーが報告される問題を修正し`INT`
 -   パラメータが[＃11249](https://github.com/pingcap/tidb/pull/11249)の場合、 `INSERT`関数が`NULL`値を正しく返さない問題を修正し`NULL` 。
--   非文字列タイプで長さ`0`の列にインデックスを付けるときにエラーが発生する問題を修正します[＃11215](https://github.com/pingcap/tidb/pull/11215)
+-   非文字列型で長さ`0`の列にインデックスを付けるときにエラーが発生する問題を修正します[＃11215](https://github.com/pingcap/tidb/pull/11215)
 -   `SHOW TABLE REGIONS`ステートメントを追加して、SQLステートメント[＃11238](https://github.com/pingcap/tidb/pull/11238)を介してテーブルのリージョン分布をクエリします。
 -   `SELECT`のサブクエリのルールを最適化するために射影除去が使用されるため、 `UPDATE … SELECT`のステートメントを使用するとエラーが報告される問題を修正します[＃11254](https://github.com/pingcap/tidb/pull/11254)
 -   プラグインを動的に有効または無効にするには、 `ADMIN PLUGINS ENABLE` / `ADMIN PLUGINS DISABLE`ステートメントを追加します[＃11189](https://github.com/pingcap/tidb/pull/11189)
@@ -25,7 +24,7 @@ TiDB Ansibleバージョン：2.1.15
 -   テーブルを作成するときに、 `tidb_scatter_region`の構成アイテムをスキャッターテーブルリージョンに追加します[＃11213](https://github.com/pingcap/tidb/pull/11213)
 -   `RAND`関数[＃11170](https://github.com/pingcap/tidb/pull/11170)を使用するときに非スレッドセーフ`rand.Rand`によって引き起こされるデータ競合の問題を修正します
 -   整数と非整数の比較結果が正しくない場合がある問題を修正します[＃11191](https://github.com/pingcap/tidb/pull/11191)
--   データベースまたはテーブルの照合の変更をサポートしますが、データベース/テーブルの文字セットはUTF-8または[＃11085](https://github.com/pingcap/tidb/pull/11085)である必要があります。
+-   データベースまたはテーブルの照合順序の変更をサポートしますが、データベース/テーブルの文字セットはUTF-8または[＃11085](https://github.com/pingcap/tidb/pull/11085)である必要があります。
 -   列のデフォルト値として`CURRENT_TIMESTAMP`が使用され、float精度が指定されている場合、 `SHOW CREATE TABLE`ステートメントによって示される精度が不完全であるという問題を修正します[＃11087](https://github.com/pingcap/tidb/pull/11087)
 
 ## TiKV {#tikv}

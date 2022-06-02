@@ -1,6 +1,5 @@
 ---
-title: TiDB 4.0 Beta Release Notes
-aliases: ['/docs/dev/releases/release-4.0.0-beta/','/docs/dev/releases/4.0.0-beta/']
+title: TiDB4.0ベータリリースノート
 ---
 
 # TiDB4.0ベータリリースノート {#tidb-4-0-beta-release-notes}
@@ -23,7 +22,7 @@ TiDB Ansibleバージョン：4.0.0-ベータ版
 -   インデックスマージ機能をサポートすることにより、テーブルクエリのパフォーマンスを向上させます[＃10121](https://github.com/pingcap/tidb/pull/10121) [＃10512](https://github.com/pingcap/tidb/pull/10512) [＃11245](https://github.com/pingcap/tidb/pull/11245) [＃12225](https://github.com/pingcap/tidb/pull/12225) [＃12248](https://github.com/pingcap/tidb/pull/12248) [＃12305](https://github.com/pingcap/tidb/pull/12305) [＃12843](https://github.com/pingcap/tidb/pull/12843)
 -   インデックス結果をキャッシュし、重複する結果を排除することで、範囲計算のパフォーマンスを向上させ、CPUオーバーヘッドを削減します[＃12856](https://github.com/pingcap/tidb/pull/12856)
 -   遅いログのレベルを通常のログのレベルから切り離します[＃12359](https://github.com/pingcap/tidb/pull/12359)
--   `oom-use-tmp-storage`つのパラメーター（デフォルトでは`true` ）を追加して、単一のSQLステートメントの実行のメモリ使用量が`mem-quota-query`を超え、SQLに`Hash Join` [＃11832](https://github.com/pingcap/tidb/pull/11832) [＃11937](https://github.com/pingcap/tidb/pull/11937) [＃12116](https://github.com/pingcap/tidb/pull/12116) [＃12067](https://github.com/pingcap/tidb/pull/12067)が含まれている場合に、一時ファイルを使用して中間結果をキャッシュするかどうかを制御します
+-   `oom-use-tmp-storage`つのパラメーター（デフォルトでは`true` ）を追加して、単一のSQLステートメントの実行のメモリ使用量が`mem-quota-query`を超え、SQLに`Hash Join` [＃11832](https://github.com/pingcap/tidb/pull/11832) [＃11937](https://github.com/pingcap/tidb/pull/11937) [＃12116](https://github.com/pingcap/tidb/pull/12116) [＃12067](https://github.com/pingcap/tidb/pull/12067)が含まれている場合に、一時ファイルを使用して中間結果をキャッシュするかどうかを制御します。
 -   `create index`を使用して式インデックスを作成し、 `alter table`を使用して式インデックスを削除することをサポートし`drop index` [＃14117](https://github.com/pingcap/tidb/pull/14117)
 -   `query-log-max-len`パラメーターのデフォルト値を`4096`に増やして、切り捨てられたSQL出力の数を減らします。このパラメータは動的に調整できます。 [＃12491](https://github.com/pingcap/tidb/pull/12491)
 -   列属性に`AutoRandom`キーワードを追加して、システムがランダムな整数を主キーに自動的に割り当てるかどうかを制御することをサポートします。これにより、 `AUTO_INCREMENT`主キー[＃13127](https://github.com/pingcap/tidb/pull/13127)によって引き起こされるホットスポットの問題が回避されます。
@@ -41,7 +40,7 @@ TiDB Ansibleバージョン：4.0.0-ベータ版
 -   `Chunk`を使用してTiKVとの通信のエンコード形式を最適化し、通信パフォーマンスを向上させます[＃12023](https://github.com/pingcap/tidb/pull/12023) [＃12536](https://github.com/pingcap/tidb/pull/12536) [＃12613](https://github.com/pingcap/tidb/pull/12613) [＃12621](https://github.com/pingcap/tidb/pull/12621) [＃12899](https://github.com/pingcap/tidb/pull/12899) [＃13060](https://github.com/pingcap/tidb/pull/13060) [＃13349](https://github.com/pingcap/tidb/pull/13349)
 -   ワイドテーブル[＃12634](https://github.com/pingcap/tidb/pull/12634)のパフォーマンスを向上させるために、新しい行ストア形式をサポートします。
 -   `Recover Binlog`のインターフェイスを最適化して、すべてのトランザクションがコミットされるのを待ってからクライアントに戻るようにします[＃13740](https://github.com/pingcap/tidb/pull/13740)
--   `info/all`インターフェイスを介してクラスター内のTiDBサーバーによって有効にされたbinlogステータスのクエリをサポートします[＃13025](https://github.com/pingcap/tidb/pull/13025)
+-   `info/all`インターフェイスを介してクラスタのTiDBサーバーによって有効にされたbinlogステータスのクエリをサポートします[＃13025](https://github.com/pingcap/tidb/pull/13025)
 -   悲観的トランザクションモード[＃14087](https://github.com/pingcap/tidb/pull/14087)を使用する場合は、MySQL互換の`Read Committed`トランザクション分離レベルをサポートします。
 -   大規模なトランザクションをサポートします。トランザクションサイズは、物理メモリのサイズによって制限されます。
     -   [＃11999](https://github.com/pingcap/tidb/pull/11999) [＃11986](https://github.com/pingcap/tidb/pull/11986) [＃11974](https://github.com/pingcap/tidb/pull/11974) [＃11817](https://github.com/pingcap/tidb/pull/11817) [＃11807](https://github.com/pingcap/tidb/pull/11807)

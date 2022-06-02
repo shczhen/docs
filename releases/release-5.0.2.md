@@ -1,5 +1,5 @@
 ---
-title: TiDB 5.0.2 Release Notes
+title: TiDB5.0.2リリースノート
 ---
 
 # TiDB5.0.2リリースノート {#tidb-5-0-2-release-notes}
@@ -52,10 +52,10 @@ TiDBバージョン：5.0.2
     -   バックアップと復元（BR）
 
         -   いくつかのあいまいなエラーメッセージを明確にする[＃1132](https://github.com/pingcap/br/pull/1132)
-        -   バックアップのクラスターバージョンのチェックをサポート[＃1091](https://github.com/pingcap/br/pull/1091)
+        -   バックアップのクラスタバージョンのチェックをサポート[＃1091](https://github.com/pingcap/br/pull/1091)
         -   `mysql` [＃1078](https://github.com/pingcap/br/pull/1078) [＃1143](https://github.com/pingcap/br/pull/1143)でのシステムテーブルのバックアップと復元のサポート
 
-    -   団子
+    -   Dumpling
 
         -   バックアップ操作が失敗したときにエラーが出力されない問題を修正します[＃280](https://github.com/pingcap/dumpling/pull/280)
 
@@ -65,9 +65,9 @@ TiDBバージョン：5.0.2
 
     -   場合によっては[＃24717](https://github.com/pingcap/tidb/issues/24717)インデックスとインデックス結合を使用することによって引き起こされるパニックの問題を修正し[＃24547](https://github.com/pingcap/tidb/issues/24547) [＃24716](https://github.com/pingcap/tidb/issues/24716)
     -   準備されたプランキャッシュ`point get`がトランザクション[＃24741](https://github.com/pingcap/tidb/issues/24741)の`point get`ステートメントによって誤って使用される問題を修正します。
-    -   照合が`ascii_bin`または[＃24569](https://github.com/pingcap/tidb/issues/24569)の場合に間違ったプレフィックスインデックス値を書き込む問題を修正し`latin1_bin`
+    -   照合順序が`ascii_bin`または[＃24569](https://github.com/pingcap/tidb/issues/24569)の場合に間違ったプレフィックスインデックス値を書き込む問題を修正し`latin1_bin`
     -   進行中のトランザクションがGCワーカーによって中断される可能性があるという問題を修正します[＃24591](https://github.com/pingcap/tidb/issues/24591)
-    -   `new-collation`が有効になっているが、 `new-row-format`が無効になっている場合に、クラスター化されたインデックスでポイントクエリが間違ってしまう可能性があるバグを修正します[＃24541](https://github.com/pingcap/tidb/issues/24541)
+    -   `new-collation`が有効になっているが、 `new-row-format`が無効になっている場合に、クラスター化インデックスでポイントクエリが間違ってしまう可能性があるバグを修正します[＃24541](https://github.com/pingcap/tidb/issues/24541)
     -   シャッフルハッシュ結合[＃24490](https://github.com/pingcap/tidb/pull/24490)のパーティションキーの変換をリファクタリングします
     -   `HAVING`節[＃24045](https://github.com/pingcap/tidb/issues/24045)を含むクエリの計画を作成するときに発生するパニックの問題を修正します
     -   列プルーニングの改善により、 `Apply`および`Join`オペレーターの結果が正しくなくなる問題を修正します[＃23887](https://github.com/pingcap/tidb/issues/23887)
@@ -77,13 +77,13 @@ TiDBバージョン：5.0.2
     -   sql_modeに`ANSI_QUOTES`が含まれていると、数値リテラルが認識されない問題を修正し[＃24429](https://github.com/pingcap/tidb/issues/24429) 。
     -   リストされていないパーティションからデータを読み取るための`INSERT INTO table PARTITION (<partitions>) ... ON DUPLICATE KEY UPDATE`などのステートメントの禁止[＃24746](https://github.com/pingcap/tidb/issues/24746)
     -   SQLステートメントに`GROUP BY`と[＃24281](https://github.com/pingcap/tidb/issues/24281)の両方が含まれている場合の潜在的な`index out of range`エラーを修正し`UNION` 。
-    -   `CONCAT`関数が照合[＃24296](https://github.com/pingcap/tidb/issues/24296)を誤って処理する問題を修正します
+    -   `CONCAT`関数が照合順序[＃24296](https://github.com/pingcap/tidb/issues/24296)を誤って処理する問題を修正します
     -   `collation_server`グローバル変数が新しいセッションで有効にならない問題を修正します[＃24156](https://github.com/pingcap/tidb/pull/24156)
 
 -   TiKV
 
     -   古い値の読み取りによって引き起こされる[＃9981](https://github.com/tikv/tikv/issues/9981)の問題を修正します[＃9996](https://github.com/tikv/tikv/issues/9996)
-    -   照合が`latin1_bin`の場合に、クラスター化された主キー列の2次インデックスの値が空になる問題を修正し[＃24548](https://github.com/pingcap/tidb/issues/24548) 。
+    -   照合順序が`latin1_bin`の場合に、クラスター化された主キー列の2次インデックスの値が空になる問題を修正し[＃24548](https://github.com/pingcap/tidb/issues/24548) 。
     -   パニックが発生したときにTiKVがコアダンプファイルを生成できるようにする`abort-on-panic`の構成を追加します。ユーザーは、コアダンプ[＃10216](https://github.com/tikv/tikv/pull/10216)を有効にするために環境を正しく構成する必要があります。
     -   TiKVがビジーでないときに発生する`point get`クエリのパフォーマンスリグレッションの問題を修正します[＃10046](https://github.com/tikv/tikv/issues/10046)
 

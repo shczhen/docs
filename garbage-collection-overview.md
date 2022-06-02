@@ -1,7 +1,6 @@
 ---
-title: GC Overview
-summary: Learn about Garbage Collection in TiDB.
-aliases: ['/docs/dev/garbage-collection-overview/','/docs/dev/reference/garbage-collection/overview/']
+title: GCの概要
+summary: TiDBのガベージコレクションについて学びます。
 ---
 
 # GCの概要 {#gc-overview}
@@ -10,7 +9,7 @@ TiDBは、MVCCを使用してトランザクションの同時実行性を制御
 
 ## GCプロセス {#gc-process}
 
-各TiDBクラスターには、GCプロセスを制御するGCリーダーとして選択されたTiDBインスタンスが含まれています。
+各TiDBクラスタには、GCプロセスを制御するGCリーダーとして選択されたTiDBインスタンスが含まれています。
 
 GCはTiDBで定期的に実行されます。各GCについて、TiDBは最初に「セーフポイント」と呼ばれるタイムスタンプを計算します。次に、TiDBは、セーフポイント以降のすべてのスナップショットがデータの整合性を保持していることを前提として、廃止されたデータをクリアします。具体的には、各GCプロセスには次の3つのステップが含まれます。
 
@@ -30,9 +29,9 @@ TiDBトランザクションモデルは[Googleのパーコレーター](https:/
 
 ロックの解決ステップは、システム変数[`tidb_gc_scan_lock_mode`](/system-variables.md#tidb_gc_scan_lock_mode-new-in-v50)を使用して構成できる次の2つの方法のいずれかで実装されます。
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> 現在、 `PHYSICAL` （Green GC）は実験的な機能です。実稼働環境で使用することはお勧めしません。
+> 現在、 `PHYSICAL` （Green GC）は実験的機能です。実稼働環境で使用することはお勧めしません。
 
 -   `LEGACY` （デフォルト）：GCリーダーは、廃止されたロックをスキャンする要求をすべてのリージョンに送信し、スキャンされたロックの主キーステータスを確認し、対応するトランザクションをコミットまたはロールバックする要求を送信します。
 -   `PHYSICAL` ：TiDBはRaftレイヤーをバイパスし、各TiKVノードのデータを直接スキャンします。
@@ -47,6 +46,6 @@ Do GCステップは、すべてのキーの古いバージョンをクリアし
 
 このステップでは、TiDBがセーフポイントをPDに送信するだけで、GCのラウンド全体が完了します。 TiKVはセーフポイントの変更を自動的に検出し、現在のノードのすべてのリージョンリーダーに対してGCを実行します。同時に、GCリーダーはGCの次のラウンドをトリガーし続けることができます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > TiDB 5.0以降、DoGCステップは常に`DISTRIBUTED`モードを使用します。これは、各リージョンにGCリクエストを送信するTiDBサーバーによって実装されていた以前の`CENTRAL`モードに代わるものです。

@@ -1,7 +1,6 @@
 ---
-title: MySQL Compatibility
-summary: Learn about the compatibility of TiDB with MySQL, and the unsupported and different features.
-aliases: ['/docs/dev/mysql-compatibility/','/docs/dev/reference/mysql-compatibility/']
+title: MySQLの互換性
+summary: TiDBとMySQLの互換性、およびサポートされていないさまざまな機能について説明します。
 ---
 
 # MySQLの互換性 {#mysql-compatibility}
@@ -14,7 +13,7 @@ TiDBは、MySQL5.7プロトコルおよびMySQL5.7の一般的な機能と構文
     -   MySQLからのデータの複製： [TiDBデータ移行（DM）](/dm/dm-overview.md)は、MySQL/MariaDBからTiDBへの完全なデータ移行と増分データ複製をサポートするツールです。
     -   MySQLへのデータの複製： [TiCDC](/ticdc/ticdc-overview.md)は、TiKV変更ログをプルすることによってTiDBの増分データを複製するためのツールです。 TiCDCは[MySQLシンク](/ticdc/ticdc-overview.md#sink-support)を使用して、TiDBの増分データをMySQLに複製します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > このページでは、MySQLとTiDBの一般的な違いについて説明します。 [安全](/security-compatibility-with-mysql.md)と[悲観的なトランザクションモード](/pessimistic-transaction.md#difference-with-mysql-innodb)の互換性については、専用ページを参照してください。
 
@@ -41,6 +40,7 @@ TiDBは、MySQL5.7プロトコルおよびMySQL5.7の一般的な機能と構文
 -   `REPAIR TABLE`構文
 -   `OPTIMIZE TABLE`構文
 -   `GET_LOCK`と`RELEASE_LOCK`の機能[＃14994](https://github.com/pingcap/tidb/issues/14994)
+-   [`LOAD DATA`](/sql-statements/sql-statement-load-data.md)と`REPLACE`キーワード[＃24515](https://github.com/pingcap/tidb/issues/24515)
 -   `HANDLER`ステートメント
 -   `CREATE TABLESPACE`ステートメント
 
@@ -48,7 +48,7 @@ TiDBは、MySQL5.7プロトコルおよびMySQL5.7の一般的な機能と構文
 
 ### 自動インクリメントID {#auto-increment-id}
 
--   TiDBでは、自動増分列はグローバルに一意です。これらは単一のTiDBサーバーではインクリメンタルですが、複数のTiDBサーバー間でインクリメンタルである必要<em>はなく</em>、順番に割り当てられる必要もありません。デフォルト値とカスタム値を混在させないことをお勧めします。そうしないと、 `Duplicated Error`のエラーメッセージが表示される場合があります。
+-   TiDBでは、自動増分列はグローバルに一意です。これらは単一のTiDBサーバーではインクリメンタルですが、複数のTiDBサーバー間でインクリメンタルである必要*はなく*、順番に割り当てられる必要もありません。デフォルト値とカスタム値を混在させないことをお勧めします。そうしないと、 `Duplicated Error`のエラーメッセージが表示される場合があります。
 
 -   `tidb_allow_remove_auto_inc`システム変数を使用して、 `AUTO_INCREMENT`列属性の削除を許可または禁止できます。列属性を削除する構文は`ALTER TABLE MODIFY`または`ALTER TABLE CHANGE`です。
 
@@ -56,7 +56,7 @@ TiDBは、MySQL5.7プロトコルおよびMySQL5.7の一般的な機能と構文
 
 -   詳細については、 [`AUTO_INCREMENT`](/auto-increment.md)を参照してください。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   テーブルの作成時に主キーを指定しなかった場合、TiDBは`_tidb_rowid`を使用して行を識別します。この値の割り当ては、自動インクリメント列とアロケータを共有します（そのような列が存在する場合）。主キーとして自動インクリメント列を指定すると、TiDBはこの列を使用して行を識別します。この状況では、次の状況が発生する可能性があります。
 
@@ -147,11 +147,9 @@ TiDBのビューは更新できません。 `UPDATE`などの`INSERT`操作は�
 
 -   GBK文字セットのMySQL互換性については、 [GBKの互換性](/character-set-gbk.md#mysql-compatibility)を参照してください。
 
--   TiDBは、テーブルで使用されている文字セットを国別文字セットとして継承します。
-
 ### ストレージエンジン {#storage-engines}
 
-互換性の理由から、TiDBは代替ストレージエンジンでテーブルを作成するための構文をサポートしています。実装では、TiDBはメタデータをInnoDBストレージエンジンとして記述します。
+互換性の理由から、TiDBは代替ストレージエンジンでテーブルを作成する構文をサポートしています。実装では、TiDBはメタデータをInnoDBストレージエンジンとして記述します。
 
 TiDBはMySQLと同様のストレージエンジンの抽象化をサポートしていますが、TiDBサーバーを起動するときに[`--store`](/command-line-flags-for-tidb-configuration.md#--store)オプションを使用してストレージエンジンを指定する必要があります。
 
@@ -169,10 +167,10 @@ TiDBはほとんどの[SQLモード](/sql-mode.md)をサポートします：
     -   TiDBのデフォルト値は`utf8mb4`です。
     -   MySQL5.7のデフォルト値は`latin1`です。
     -   MySQL8.0のデフォルト値は`utf8mb4`です。
--   デフォルトの照合：
-    -   TiDBでのデフォルトの`utf8mb4`の照合は`utf8mb4_bin`です。
-    -   MySQL5.7の`utf8mb4`のデフォルトの照合は`utf8mb4_general_ci`です。
-    -   MySQL8.0のデフォルトの`utf8mb4`の照合は`utf8mb4_0900_ai_ci`です。
+-   デフォルトの照合順序：
+    -   TiDBでのデフォルトの`utf8mb4`の照合順序は`utf8mb4_bin`です。
+    -   MySQL5.7の`utf8mb4`のデフォルトの照合順序は`utf8mb4_general_ci`です。
+    -   MySQL8.0のデフォルトの`utf8mb4`の照合順序は`utf8mb4_0900_ai_ci`です。
 -   デフォルト値`foreign_key_checks` ：
     -   TiDBのデフォルト値は`OFF`で、現在TiDBは`OFF`のみをサポートしています。
     -   MySQL5.7のデフォルト値は`ON`です。
@@ -202,7 +200,7 @@ TiDBはほとんどの[SQLモード](/sql-mode.md)をサポートします：
 
 ### 型システムの違い {#type-system-differences}
 
-次の列タイプはMySQLでサポートされていますが、TiDBではサポートされてい<strong>ません</strong>。
+次の列タイプはMySQLでサポートされていますが、TiDBではサポートされてい**ません**。
 
 -   FLOAT4 / FLOAT8
 -   `SQL_TSI_*` （SQL_TSI_MONTH、SQL_TSI_WEEK、SQL_TSI_DAY、SQL_TSI_HOUR、SQL_TSI_MINUTE、およびSQL_TSI_SECONDを含み、SQL_TSI_YEARを除く）

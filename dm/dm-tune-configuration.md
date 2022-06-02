@@ -1,9 +1,9 @@
 ---
-title: Optimize Configuration of DM
-summary: Learn how to optimize the configuration of the data migration task to improve the performance of data migration.
+title: DMのConfiguration / コンフィグレーションを最適化する
+summary: データ移行タスクの構成を最適化して、データ移行のパフォーマンスを向上させる方法を学びます。
 ---
 
-# DMの構成を最適化する {#optimize-configuration-of-dm}
+# DMのConfiguration / コンフィグレーションを最適化する {#optimize-configuration-of-dm}
 
 このドキュメントでは、データ移行タスクの構成を最適化して、データ移行のパフォーマンスを向上させる方法を紹介します。
 
@@ -21,7 +21,7 @@ summary: Learn how to optimize the configuration of the data migration task to i
 
 フルバックアップ中、DMは、 `chunk-filesize`オプションの値に従って、各テーブルのデータを複数のチャンクに分割します。各チャンクは、約`chunk-filesize`のサイズのファイルに保存されます。このように、データは複数のファイルに分割され、DMロードユニットの並列処理を使用してインポート速度を向上させることができます。このオプションのデフォルト値は64（MB単位）です。通常、このオプションを設定する必要はありません。設定する場合は、完全なデータのサイズに応じてこのオプションの値を調整してください。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   移行タスクの作成後に値`mydumpers`を更新することはできません。タスクを作成する前に、各オプションの値を確認してください。値を更新する必要がある場合は、dmctlを使用してタスクを停止し、構成ファイルを更新して、タスクを再作成してください。
 > -   `mydumpers` 。簡単にするために、 `threads`を`mydumper-thread`構成アイテムに置き換えることができます。
@@ -35,7 +35,7 @@ summary: Learn how to optimize the configuration of the data migration task to i
 
 `pool-size`オプションは、DMロードユニットのスレッド数を決定します。デフォルト値は16です。通常、このオプションを設定する必要はありません。設定する場合は、完全なデータのサイズとデータベースのパフォーマンスに応じて、このオプションの値を調整してください。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   移行タスクの作成後に値`loaders`を更新することはできません。タスクを作成する前に、各オプションの値を確認してください。値を更新する必要がある場合は、dmctlを使用してタスクを停止し、構成ファイルを更新して、タスクを再作成してください。
 > -   `loaders` 。簡単にするために、 `pool-size`を`loader-thread`構成アイテムに置き換えることができます。
@@ -52,7 +52,7 @@ summary: Learn how to optimize the configuration of the data migration task to i
 
 `batch`は、DMSyncユニット中にデータがダウンストリームデータベースに複製されるときに各トランザクションに含まれるDMLの数を決定します。デフォルト値は100です。通常、このオプションの値を変更する必要はありません。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   レプリケーションタスクの作成後に値`syncers`を更新することはできません。タスクを作成する前に、各オプションの値を確認してください。値を更新する必要がある場合は、dmctlを使用してタスクを停止し、構成ファイルを更新して、タスクを再作成してください。
 > -   `syncers` 。簡単にするために、 `worker-count`を`syncer-thread`構成アイテムに置き換えることができます。

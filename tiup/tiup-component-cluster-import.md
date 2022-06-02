@@ -1,14 +1,14 @@
 ---
-title: tiup cluster import
+title: tiupクラスタのインポート
 ---
 
-# tiupクラスターのインポート {#tiup-cluster-import}
+# tiupクラスタのインポート {#tiup-cluster-import}
 
 TiDB v4.0より前は、TiDBクラスターは主にTiDBAnsibleを使用してデプロイされていました。 TiDB v4.0以降のリリースでは、TiUP Clusterは、管理のためにクラスターをtiup-clusterコンポーネントに転送するための`import`のコマンドを提供します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> -   管理のためにTiDBAnsible構成をTiUPにインポートした後は、クラスター操作に<strong>TiDBAnsible</strong>を使用しないでください。そうしないと、一貫性のないメタ情報が原因で競合が発生する可能性があります。
+> -   管理のためにTiDBAnsible構成をTiUPにインポートした後は、クラスタ操作に**TiDBAnsible**を使用しないでください。そうしないと、一貫性のないメタ情報が原因で競合が発生する可能性があります。
 > -   TiDB Ansibleを使用してデプロイされたクラスターが次のいずれかの状況にある場合は、 `import`コマンドを使用しないでください。
 >     -   TLS暗号化が有効になっているクラスター
 >     -   純粋なKVクラスター（TiDBインスタンスのないクラスター）
@@ -17,7 +17,7 @@ TiDB v4.0より前は、TiDBクラスターは主にTiDBAnsibleを使用して�
 >     -   TiDB Lightning/TiKVインポーターが有効になっているクラスター
 >     -   監視メトリックを収集するために引き続き古い`push`モードを使用しているクラスター（デフォルトのモード`pull`を変更しない場合は、 `import`コマンドの使用がサポートされます）
 >     -   デフォルト以外のポート（ `group_vars`ディレクトリで構成されたポートが互換性がある）が`node_exporter_port`を使用して`inventory.ini`構成ファイルで個別に構成されている`blackbox_exporter_port`
-> -   TiDB Ansibleを使用してデプロイされたクラスター内の一部のノードがモニタリングコンポーネントなしでデプロイされる場合は、最初にTiDB Ansibleを使用して対応するノード情報を`inventory.ini`ファイルの`monitored_servers`セクションに追加し、次に`deploy.yaml`プレイブックを使用してモニタリングコンポーネントを完全にデプロイする必要があります。そうしないと、クラスターがTiUPにインポートされた後に保守操作を実行するときに、監視コンポーネントが不足しているためにエラーが発生する可能性があります。
+> -   TiDB Ansibleを使用してデプロイされたクラスタの一部のノードがモニタリングコンポーネントなしでデプロイされる場合は、最初にTiDB Ansibleを使用して対応するノード情報を`inventory.ini`ファイルの`monitored_servers`セクションに追加し、次に`deploy.yaml`プレイブックを使用してモニタリングコンポーネントを完全にデプロイする必要があります。そうしないと、クラスタがTiUPにインポートされた後に保守操作を実行するときに、監視コンポーネントが不足しているためにエラーが発生する可能性があります。
 
 ## 構文 {#syntax}
 
@@ -53,9 +53,9 @@ tiup cluster import [flags]
 
 ### --名前を変更 {#rename}
 
--   インポートしたクラスターの名前を変更します。
+-   インポートしたクラスタの名前を変更します。
 -   データ型： `STRING`
--   デフォルト：NULL。このオプションがコマンドで指定されていない場合、inventoryで指定されたcluster_nameがクラスター名として使用されます。
+-   デフォルト：NULL。このオプションがコマンドで指定されていない場合、inventoryで指定されたcluster_nameがクラスタ名として使用されます。
 
 ### -h、-help {#h-help}
 

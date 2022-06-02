@@ -1,15 +1,14 @@
 ---
-title: Identify Expensive Queries
-aliases: ['/docs/dev/identify-expensive-queries/','/docs/dev/how-to/maintain/identify-abnormal-queries/identify-expensive-queries/']
+title: 高価なクエリを特定する
 ---
 
 # 高価なクエリを特定する {#identify-expensive-queries}
 
 TiDBを使用すると、SQL実行中にコストのかかるクエリを識別できるため、SQL実行の診断とパフォーマンスの向上を実現できます。具体的には、TiDBは、実行時間が[`tidb_expensive_query_time_threshold`](/system-variables.md#tidb_expensive_query_time_threshold) （デフォルトでは60秒）を超える、またはメモリ使用量が[`mem-quota-query`](/tidb-configuration-file.md#mem-quota-query) （デフォルトでは1 GB）を超えるステートメントに関する情報を[tidb-serverログファイル](/tidb-configuration-file.md#logfile) （デフォルトでは「tidb.log」）に出力します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> 高価なクエリログは、次の点で[遅いクエリログ](/identify-slow-queries.md)とは異なります。TiDBは、ステートメントがリソース使用量のしきい値（実行時間またはメモリ使用量）を超える<strong>とすぐに</strong>、ステートメント情報を高価なクエリログに出力します。一方、TiDBは、ステートメントの実行<strong>後</strong>にステートメント情報を低速クエリログに出力します。
+> 高価なクエリログは、次の点で[遅いクエリログ](/identify-slow-queries.md)とは異なります。TiDBは、ステートメントがリソース使用量のしきい値（実行時間またはメモリ使用量）を超える**とすぐに**、ステートメント情報を高価なクエリログに出力します。一方、TiDBは、ステートメントの実行<strong>後</strong>にステートメント情報を低速クエリログに出力します。
 
 ## 高価なクエリログの例 {#expensive-query-log-example}
 

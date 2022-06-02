@@ -1,6 +1,6 @@
 ---
 title: ANALYZE_STATUS
-summary: Learn the `ANALYZE_STATUS` information_schema table.
+summary: `ANALYZE_STATUS`information_schemaテーブルを学びます。
 ---
 
 # ANALYZE_STATUS {#analyze-status}

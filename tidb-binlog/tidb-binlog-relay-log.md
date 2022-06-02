@@ -1,7 +1,6 @@
 ---
-title: TiDB Binlog Relay Log
-summary: Learn how to use relay log to maintain data consistency in extreme cases.
-aliases: ['/docs/dev/tidb-binlog/tidb-binlog-relay-log/','/docs/dev/reference/tidb-binlog/relay-log/']
+title: TiDBBinlogリレーログ
+summary: 極端な場合にデータの一貫性を維持するためにリレーログを使用する方法を学びます。
 ---
 
 # TiDBBinlogリレーログ {#tidb-binlog-relay-log}
@@ -38,7 +37,7 @@ Drainerはリレーログを有効にした後、最初にbinlogイベントを�
 
 アップストリームクラスターが使用できない場合、Drainerはリレーログを読み取ることにより、ダウンストリームクラスターを一貫した状態に復元できます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > リレーログデータが同時に失われる場合、この方法は機能しませんが、その発生率は非常に低くなります。さらに、ネットワークファイルシステムを使用して、リレーログのデータの安全性を確保できます。
 
@@ -50,11 +49,11 @@ Drainerの起動時に、アップストリームクラスターの配置ドラ�
 
 データがダウンストリームに複製される前に、Drainerはデータをリレーログファイルに書き込みます。リレーログファイルのサイズが10MB（デフォルト）に達し、現在のトランザクションのbinlogデータが完全に書き込まれると、Drainerは次のリレーログファイルへのデータの書き込みを開始します。 Drainerは、データをダウンストリームに正常に複製した後、データが複製されたリレーログファイルを自動的にクリーンアップします。現在データが書き込まれているリレーログはクリーンアップされません。
 
-## 構成 {#configuration}
+## Configuration / コンフィグレーション {#configuration}
 
 リレーログを有効にするには、Drainerに次の構成を追加します。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```
 [syncer.relay]

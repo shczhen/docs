@@ -1,7 +1,6 @@
 ---
-title: MODIFY COLUMN | TiDB SQL Statement Reference
-summary: An overview of the usage of MODIFY COLUMN for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-modify-column/','/docs/dev/reference/sql/statements/modify-column/']
+title: MODIFY COLUMN | TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのMODIFYCOLUMNの使用法の概要。
 ---
 
 # 列の変更 {#modify-column}
@@ -154,7 +153,7 @@ CREATE TABLE `t1` (
 1 row in set (0.00 sec)
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   変更されたデータ型が既存のデータ行と競合する場合、TiDBはエラーを返します。上記の例では、TiDBは次のエラーを返します。
 >
@@ -183,12 +182,6 @@ CREATE TABLE `t1` (
     ```sql
     CREATE TABLE t (a int primary key);
     ALTER TABLE t MODIFY COLUMN a VARCHAR(10);
-    ERROR 8200 (HY000): Unsupported modify column: column has primary key flag
-    ```
-
-    ```sql
-    CREATE TABLE t (a int primary key);
-    ALTER TABLE t MODIFY COLUMN a INT(10) UNSIGNED;
     ERROR 8200 (HY000): Unsupported modify column: column has primary key flag
     ```
 

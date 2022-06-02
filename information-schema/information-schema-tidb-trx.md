@@ -1,6 +1,6 @@
 ---
 title: TIDB_TRX
-summary: Learn the `TIDB_TRX` information_schema table.
+summary: `TIDB_TRX`information_schemaテーブルを学びます。
 ---
 
 # TIDB_TRX {#tidb-trx}
@@ -53,11 +53,11 @@ DESC tidb_trx;
 -   `DB` ：トランザクションが実行されるセッションの現在のデフォルトデータベース名。
 -   `ALL_SQL_DIGESTS` ：トランザクションによって実行されたステートメントのダイジェストリスト。リストは、JSON形式の文字列配列として表示されます。各トランザクションは、最大で最初の50個のステートメントを記録します。 [`TIDB_DECODE_SQL_DIGESTS`](/functions-and-operators/tidb-functions.md#tidb_decode_sql_digests)関数を使用すると、この列の情報を対応する正規化されたSQLステートメントのリストに変換できます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   この表の完全な情報を取得できるのは、 [処理する](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_process)の特権を持つユーザーのみです。 PROCESS権限を持たないユーザーは、現在のユーザーによって実行されたトランザクションの情報のみを照会できます。
 > -   `CURRENT_SQL_DIGEST`列と`ALL_SQL_DIGESTS`列の情報（SQLダイジェスト）は、正規化されたSQLステートメントから計算されたハッシュ値です。 `CURRENT_SQL_DIGEST_TEXT`列の情報と`TIDB_DECODE_SQL_DIGESTS`関数から返される結果は、ステートメントの要約テーブルから内部的に照会されるため、対応するステートメントが内部で見つからない可能性があります。 SQLダイジェストとステートメントの要約テーブルの詳細については、 [ステートメント要約表](/statement-summary-tables.md)を参照してください。
-> -   [`TIDB_DECODE_SQL_DIGESTS`](/functions-and-operators/tidb-functions.md#tidb_decode_sql_digests)の関数呼び出しには高いオーバーヘッドがあります。多数のトランザクションの履歴SQLステートメントを照会するために関数が呼び出された場合、照会に長い時間がかかる可能性があります。クラスターが大きく、同時トランザクションが多い場合は、 `TIDB_TRX`のテーブル全体を照会するときに、 `ALL_SQL_DIGEST`列でこの関数を直接使用しないでください。これは、 `select *, tidb_decode_sql_digests(all_sql_digests) from tidb_trx`のようなSQLステートメントを回避することを意味します。
+> -   [`TIDB_DECODE_SQL_DIGESTS`](/functions-and-operators/tidb-functions.md#tidb_decode_sql_digests)の関数呼び出しには高いオーバーヘッドがあります。多数のトランザクションの履歴SQLステートメントを照会するために関数が呼び出された場合、照会に長い時間がかかる可能性があります。クラスタが大きく、同時トランザクションが多い場合は、 `TIDB_TRX`のテーブル全体を照会するときに、 `ALL_SQL_DIGEST`列でこの関数を直接使用しないでください。これは、 `select *, tidb_decode_sql_digests(all_sql_digests) from tidb_trx`のようなSQLステートメントを回避することを意味します。
 > -   現在、 `TIDB_TRX`テーブルはTiDB内部トランザクションの情報の表示をサポートしていません。
 
 ## 例 {#example}
@@ -117,11 +117,11 @@ all_sql_digests: ["e6f07d43b5c21db0fbb9a31feac2dc599787763393dd5acbfad80e247eb02
        all_sqls: ["begin","update `t` set `v` = `v` + ? where `id` = ?"]
 ```
 
-このクエリは、 `TIDB_TRX`テーブルの`ALL_SQL_DIGESTS`列で[`TIDB_DECODE_SQL_DIGESTS`](/functions-and-operators/tidb-functions.md#tidb_decode_sql_digests)関数を呼び出し、システム内部クエリを介してSQLダイジェスト配列を正規化されたSQLステートメントの配列に変換します。これは、トランザクションによって過去に実行されたステートメントの情報を視覚的に取得するのに役立ちます。ただし、上記のクエリは`TIDB_TRX`のテーブル全体をスキャンし、各行に対して`TIDB_DECODE_SQL_DIGESTS`関数を呼び出すことに注意してください。 `TIDB_DECODE_SQL_DIGESTS`関数を呼び出すと、オーバーヘッドが高くなります。したがって、クラスター内に多数の同時トランザクションが存在する場合は、このタイプのクエリを回避するようにしてください。
+このクエリは、 `TIDB_TRX`テーブルの`ALL_SQL_DIGESTS`列で[`TIDB_DECODE_SQL_DIGESTS`](/functions-and-operators/tidb-functions.md#tidb_decode_sql_digests)関数を呼び出し、システム内部クエリを介してSQLダイジェスト配列を正規化されたSQLステートメントの配列に変換します。これは、トランザクションによって過去に実行されたステートメントの情報を視覚的に取得するのに役立ちます。ただし、上記のクエリは`TIDB_TRX`のテーブル全体をスキャンし、各行に対して`TIDB_DECODE_SQL_DIGESTS`関数を呼び出すことに注意してください。 `TIDB_DECODE_SQL_DIGESTS`関数を呼び出すと、オーバーヘッドが高くなります。したがって、クラスタに多数の同時トランザクションが存在する場合は、このタイプのクエリを回避するようにしてください。
 
 ## CLUSTER_TIDB_TRX {#cluster-tidb-trx}
 
-`TIDB_TRX`の表は、単一のTiDBノードで実行されているトランザクションに関する情報のみを提供します。クラスタ全体のすべてのTiDBノードで実行されているトランザクションの情報を表示する場合は、 `CLUSTER_TIDB_TRX`テーブルをクエリする必要があります。 `TIDB_TRX`テーブルのクエリ結果と比較すると、 `CLUSTER_TIDB_TRX`テーブルのクエリ結果には追加の`INSTANCE`フィールドが含まれています。 `INSTANCE`フィールドには、クラスター内の各ノードのIPアドレスとポートが表示されます。これは、トランザクションが配置されているTiDBノードを区別するために使用されます。
+`TIDB_TRX`の表は、単一のTiDBノードで実行されているトランザクションに関する情報のみを提供します。クラスタ全体のすべてのTiDBノードで実行されているトランザクションの情報を表示する場合は、 `CLUSTER_TIDB_TRX`のテーブルをクエリする必要があります。 `TIDB_TRX`テーブルのクエリ結果と比較すると、 `CLUSTER_TIDB_TRX`テーブルのクエリ結果には追加の`INSTANCE`フィールドが含まれています。 `INSTANCE`フィールドには、クラスタの各ノードのIPアドレスとポートが表示されます。これは、トランザクションが配置されているTiDBノードを区別するために使用されます。
 
 {{< copyable "" >}}
 

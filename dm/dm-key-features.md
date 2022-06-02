@@ -1,7 +1,6 @@
 ---
-title: Key Features
-summary: Learn about the key features of DM and appropriate parameter configurations.
-aliases: ['/docs/tidb-data-migration/dev/feature-overview/']
+title: 主な機能
+summary: DMの主な機能と適切なパラメーター構成について説明します。
 ---
 
 # 主な機能 {#key-features}
@@ -10,7 +9,7 @@ aliases: ['/docs/tidb-data-migration/dev/feature-overview/']
 
 異なるDMバージョンの場合、テーブルルーティング、ブロックおよび許可リスト、およびbinlogイベントフィルター機能のスキーマ名またはテーブル名の異なる一致ルールに注意してください。
 
--   DM v1.0.5以降のバージョンでは、上記のすべての機能が[ワイルドカード一致](https://en.wikipedia.org/wiki/Glob_(programming)#Syntax)をサポートします。 DMのすべてのバージョンで、ワイルドカード式に含めることができる`*`は<strong>1つだけ</strong>であり、 `*`<strong>を最後に配置する必要が</strong>あることに注意してください。
+-   DM v1.0.5以降のバージョンでは、上記のすべての機能が[ワイルドカード一致](https://en.wikipedia.org/wiki/Glob_(programming)#Syntax)をサポートします。 DMのすべてのバージョンで、ワイルドカード式に含めることができる`*`は**1つだけ**であり、 `*`<strong>を最後に配置する必要が</strong>あることに注意してください。
 -   v1.0.5より前のDMバージョンの場合、テーブルルーティングとbinlogイベントフィルターはワイルドカードをサポートしますが、 `[...]`および`[!...]`式はサポートしません。ブロック＆許可リストは正規表現のみをサポートします。
 
 単純なシナリオでの照合には、ワイルドカードを使用することをお勧めします。
@@ -19,7 +18,7 @@ aliases: ['/docs/tidb-data-migration/dev/feature-overview/']
 
 テーブルルーティング機能により、DMはアップストリームのMySQLまたはMariaDBインスタンスの特定のテーブルをダウンストリームの指定されたテーブルに移行できます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   1つのテーブルに複数の異なるルーティングルールを設定することはサポートされていません。
 > -   スキーマの一致ルールは個別に構成する必要があります。これは、 [パラメータ設定](#parameter-configuration)つのうち`rule-2`に示すように、 `CREATE/DROP SCHEMA xx`を移行するために使用されます。
@@ -55,7 +54,7 @@ DMは、 [テーブルセレクターによって提供される`schema-pattern`
 -   `rule-1`は、 `schema-pattern: "test_*"`と`table-pattern: "t_*"`に一致するテーブルのDMLまたはDDLステートメントをダウンストリーム`test`に移行するために使用されます。 `t` 。
 -   `rule-2`は、 `CREATE/DROP SCHEMA xx`などの`schema-pattern: "test_*"`に一致するスキーマのDDLステートメントを移行するために使用されます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   ダウンストリーム`schema: test`がすでに存在し、削除しない場合は、 `rule-2`を省略できます。
 > -   ダウンストリーム`schema: test`が存在せず、 `rule-1`だけが構成されている場合、移行中に`schema test doesn't exist`エラーが報告されます。
@@ -140,9 +139,9 @@ block-allow-list:             # Use black-white-list if the DM version is earlie
 
 ### フィルタリングプロセス {#filtering-process}
 
-`do-dbs`と`ignore-dbs`に対応するフィルタリングルールは、MySQLの[データベースレベルのレプリケーションとバイナリログオプションの評価](https://dev.mysql.com/doc/refman/5.7/en/replication-rules-db-options.html)に似ています。 `do-tables`と`ignore-tables`に対応するフィルタリングルールは、MySQLの[テーブルレベルのレプリケーションオプションの評価](https://dev.mysql.com/doc/refman/5.7/en/replication-rules-table-options.html)に似ています。
+`do-dbs`と`ignore-dbs`に対応するフィルタリングルールは、MySQLの[データベースレベルのレプリケーションとバイナリロギングオプションの評価](https://dev.mysql.com/doc/refman/5.7/en/replication-rules-db-options.html)に似ています。 `do-tables`と`ignore-tables`に対応するフィルタリングルールは、MySQLの[テーブルレベルのレプリケーションオプションの評価](https://dev.mysql.com/doc/refman/5.7/en/replication-rules-table-options.html)に似ています。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > DMとMySQLでは、許可リストとブロックリストのフィルタリングルールは次の点で異なります。
 >
@@ -180,7 +179,7 @@ block-allow-list:             # Use black-white-list if the DM version is earlie
 
     3.  `do-tables`と`ignore-tables`の両方が空の場合は、 `test`を移行します。 `t` 。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > スキーマ`test`をフィルタリングする必要があるかどうかを判断するには、スキーマレベルでフィルタリングするだけで済みます。
 
@@ -233,10 +232,10 @@ block-allow-list:  # Use black-white-list if the DM version is earlier than or e
 
 Binlogイベントフィルターは、ブロックおよび許可リストのフィルタリングルールよりもきめ細かいフィルタリングルールです。 `INSERT`や`TRUNCATE TABLE`などのステートメントを使用して、移行またはフィルターで除外する必要がある`schema/table`のbinlogイベントを指定できます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   同じテーブルが複数のルールに一致する場合、これらのルールが順番に適用され、ブロックリストが許可リストよりも優先されます。これは、 `Ignore`と`Do`の両方のルールがテーブルに適用される場合、 `Ignore`のルールが有効になることを意味します。
-> -   DM v2.0.2以降では、ソース構成ファイルでbinlogイベントフィルターを構成できます。詳細については、 [アップストリームデータベース構成ファイル](/dm/dm-source-configuration-file.md)を参照してください。
+> -   DM v2.0.2以降では、ソース構成ファイルでbinlogイベントフィルターを構成できます。詳細については、 [アップストリームデータベースConfiguration / コンフィグレーションファイル](/dm/dm-source-configuration-file.md)を参照してください。
 
 ### パラメータ設定 {#parameter-configuration}
 
@@ -319,7 +318,7 @@ filters:
 -   `do-table-rule`は、 `insert`に一致するすべてのテーブルの`create table` 、および`update` `test_*`のみを移行し`delete` 。 `t_*`パターン。
 -   `do-schema-rule`は、 `test_*`パターンに一致するすべてのスキーマの`create database`ステートメントのみを移行します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `create database/table`ステートメントがマイグレーションされる理由は、スキーマとテーブルが作成された後にのみDMLステートメントをマイグレーションできるためです。
 
@@ -355,7 +354,7 @@ filters:
 
 `table`パーサーがサポートしていないSQLステートメントの場合、DMはそれらを解析して`schema`情報を取得できません。したがって、グローバルフィルタリングルールを使用する必要があります： `schema-pattern: "*"` 。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 移行する必要のあるデータが除外されないようにするには、グローバルフィルタリングルールをできるだけ厳密に構成する必要があります。
 
@@ -376,7 +375,7 @@ MySQLエコシステムでは、gh-ostやpt-oscなどのツールが広く使用
 ### 制限 {#restrictions}
 
 -   DMはgh-ostとpt-oscのみをサポートします。
--   `online-ddl`が有効になっている場合、インクリメンタルレプリケーションに対応するチェックポイントはオンラインDDL実行のプロセスにあるべきではありません。たとえば、アップストリームオンラインDDL操作がbinlogの`position-A`で開始し、 `position-B`で終了する場合、増分レプリケーションの開始点は`position-A`より前または`position-B`より後である必要があります。そうしないと、エラーが発生します。詳しくは[よくある質問](/dm/dm-faq.md#how-to-handle-the-error-returned-by-the-ddl-operation-related-to-the-gh-ost-table-after-online-ddl-scheme-gh-ost-is-set)をご覧ください。
+-   `online-ddl`が有効になっている場合、インクリメンタルレプリケーションに対応するチェックポイントはオンラインDDL実行のプロセスにあるべきではありません。たとえば、アップストリームオンラインDDL操作がbinlogの`position-A`で開始し、 `position-B`で終了する場合、増分レプリケーションの開始点は`position-A`より前または`position-B`より後である必要があります。そうしないと、エラーが発生します。詳しくは[FAQ](/dm/dm-faq.md#how-to-handle-the-error-returned-by-the-ddl-operation-related-to-the-gh-ost-table-after-online-ddl-scheme-gh-ost-is-set)をご覧ください。
 
 ### パラメータ設定 {#parameter-configuration}
 
@@ -391,7 +390,7 @@ v2.0.5以降のバージョンでは、 `task`の構成ファイルの`online-dd
 online-ddl: true
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > v2.0.5以降、 `online-ddl-scheme`は非推奨になっているため、 `online-ddl-scheme`ではなく`online-ddl`を使用する必要があります。つまり、設定`online-ddl: true`は`online-ddl-scheme`を上書きし、設定`online-ddl-scheme: "pt"`または`online-ddl-scheme: "gh-ost"`は`online-ddl: true`に変換されます。
 

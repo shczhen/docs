@@ -1,7 +1,6 @@
 ---
-title: TiDB Control User Guide
-summary: Use TiDB Control to obtain TiDB status information for debugging.
-aliases: ['/docs/dev/tidb-control/','/docs/dev/reference/tools/tidb-control/']
+title: TiDBControlユーザーガイド
+summary: TiDB Controlを使用して、デバッグ用のTiDBステータス情報を取得します。
 ---
 
 # TiDBControlユーザーガイド {#tidb-control-user-guide}
@@ -12,9 +11,9 @@ TiDB Controlは、TiDBのコマンドラインツールであり、通常、デ�
 
 TiDB Controlは、TiUPを使用してインストールするか、ソースコードからコンパイルすることで入手できます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> 使用する制御ツールのバージョンは、クラスターのバージョンと一致していることをお勧めします。
+> 使用する制御ツールのバージョンは、クラスタのバージョンと一致していることをお勧めします。
 
 ### TiUPを使用してTiDBControlをインストールします {#install-tidb-control-using-tiup}
 

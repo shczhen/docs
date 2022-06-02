@@ -1,6 +1,5 @@
 ---
-title: TiDB 1.0 release notes
-aliases: ['/docs/dev/releases/release-1.0-ga/','/docs/dev/releases/ga/']
+title: TiDB1.0リリースノート
 ---
 
 # TiDB1.0リリースノート {#tidb-1-0-release-notes}
@@ -15,7 +14,7 @@ aliases: ['/docs/dev/releases/release-1.0-ga/','/docs/dev/releases/ga/']
     -   機能シグネチャプッシュダウン
 -   内部データ形式を最適化して、中間データサイズを削減します
 -   MySQLの互換性を強化する
--   `NO_SQL_CACHE`構文をサポートし、ストレージエンジンでのキャッシュ使用を制限します
+-   `NO_SQL_CACHE`構文をサポートし、ストレージエンジンのキャッシュ使用量を制限します
 -   ハッシュアグリゲーターオペレーターをリファクタリングして、メモリ使用量を削減します
 -   StreamAggregatorオペレーターをサポートする
 

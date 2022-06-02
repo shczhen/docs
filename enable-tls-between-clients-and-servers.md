@@ -1,14 +1,13 @@
 ---
-title: Enable TLS Between TiDB Clients and Servers
-summary: Use the encrypted connection to ensure data security.
-aliases: ['/docs/dev/enable-tls-between-clients-and-servers/','/docs/dev/how-to/secure/enable-tls-clients/','/docs/dev/encrypted-connections-with-tls-protocols/']
+title: TiDBクライアントとサーバー間のTLSを有効にする
+summary: 暗号化された接続を使用して、データのセキュリティを確保します。
 ---
 
 # TiDBクライアントとサーバー間のTLSを有効にする {#enable-tls-between-tidb-clients-and-servers}
 
 TiDBのサーバーとクライアント間の暗号化されていない接続がデフォルトで許可されます。これにより、チャネルトラフィックを監視するサードパーティは、クエリコンテンツ、クエリ結果などを含むがこれらに限定されない、サーバーとクライアント間で送受信されるデータを知ることができます。 。チャネルが信頼できない場合（クライアントがパブリックネットワークを介してTiDBサーバーに接続されている場合など）、暗号化されていない接続では情報が漏洩する傾向があります。この場合、セキュリティ上の理由から、暗号化された接続を要求することをお勧めします。
 
-TiDBサーバーは、TLS（Transport Layer Security）に基づく暗号化された接続をサポートします。プロトコルはMySQL暗号化接続と一貫性があり、MySQLクライアント、MySQLシェル、MySQLドライバーなどの既存のMySQLクライアントによって直接サポートされます。 TLSはSSL（Secure Sockets Layer）と呼ばれることもあります。 SSLプロトコルには[既知のセキュリティの脆弱性](https://en.wikipedia.org/wiki/Transport_Layer_Security)があるため、TiDBはSSLをサポートしていません。 TiDBは、TLSv1.0、TLSv1.1、TLSv1.2、およびTLSv1.3のプロトコルをサポートしています。
+TiDBサーバーは、TLS（Transport Layer Security）に基づく暗号化された接続をサポートします。プロトコルはMySQL暗号化接続と一貫性があり、MySQLクライアント、MySQLシェル、MySQLドライバーなどの既存のMySQLクライアントによって直接サポートされます。 TLSはSSL（セキュリティ Sockets Layer）と呼ばれることもあります。 SSLプロトコルには[既知のセキュリティの脆弱性](https://en.wikipedia.org/wiki/Transport_Layer_Security)があるため、TiDBはSSLをサポートしていません。 TiDBは、TLSv1.0、TLSv1.1、TLSv1.2、およびTLSv1.3のプロトコルをサポートしています。
 
 暗号化された接続を使用する場合、接続には次のセキュリティプロパティがあります。
 
@@ -29,7 +28,7 @@ MySQLと同様に、TiDBは同じTCPポートでTLS接続と非TLS接続を許�
     CREATE USER 'u1'@'%' IDENTIFIED BY 'my_random_password' REQUIRE SSL;
     ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > ログインユーザーが[ログイン用のTiDB証明書ベースの認証](/certificate-authentication.md#configure-the-user-certificate-information-for-login-verification)を使用して構成した場合、ユーザーはTiDBへの暗号化された接続を有効にする必要があります。
 
@@ -68,7 +67,7 @@ MySQL 8.0クライアントには、このパラメーターに加えて2つのS
 -   `--ssl-mode=VERIFY_CA` ： `--ssl-ca`を必要とするCAに対して、サーバーからの証明書を検証します。
 -   `--ssl-mode=VERIFY_IDENTITY` ： `VERIFY_CA`と同じですが、接続先のホスト名が証明書と一致するかどうかも検証します。
 
-詳細については、MySQLの[暗号化された接続のクライアント側の構成](https://dev.mysql.com/doc/refman/5.7/en/using-encrypted-connections.html#using-encrypted-connections-client-side-configuration)を参照してください。
+詳細については、MySQLの[暗号化された接続のクライアント側のConfiguration / コンフィグレーション](https://dev.mysql.com/doc/refman/5.7/en/using-encrypted-connections.html#using-encrypted-connections-client-side-configuration)を参照してください。
 
 ## 認証を有効にする {#enable-authentication}
 
@@ -97,7 +96,7 @@ TiDBサーバーまたはMySQLクライアントで`ssl-ca`パラメーターが
 create user 'u1'@'%'  require x509;
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > ログインユーザーが[ログイン用のTiDB証明書ベースの認証](/certificate-authentication.md#configure-the-user-certificate-information-for-login-verification)を使用して構成した場合、ユーザーはTiDBへの暗号化された接続を有効にする必要があります。
 

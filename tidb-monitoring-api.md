@@ -1,19 +1,18 @@
 ---
-title: TiDB Monitoring API
-summary: Learn the API of TiDB monitoring services.
-aliases: ['/docs/dev/tidb-monitoring-api/']
+title: TiDBモニタリングAPI
+summary: TiDB監視サービスのAPIを学びます。
 ---
 
 # TiDBモニタリングAPI {#tidb-monitoring-api}
 
-次のタイプのインターフェースを使用して、TiDBクラスターのステータスをモニターできます。
+次のタイプのインターフェースを使用して、TiDBクラスタのステータスをモニターできます。
 
 -   [ステータスインターフェイス](#use-the-status-interface) ：このインターフェースはHTTPインターフェースを使用してコンポーネント情報を取得します。このインターフェイスを使用すると、現在のTiDBサーバーの[実行ステータス](#running-status)つとテーブルの[ストレージ情報](#storage-information)を取得できます。
 -   [メトリックインターフェイス](#use-the-metrics-interface) ：このインターフェースはPrometheusを使用してコンポーネントのさまざまな操作の詳細情報を記録し、Grafanaを使用してこれらのメトリックを表示します。
 
 ## ステータスインターフェイスを使用する {#use-the-status-interface}
 
-ステータスインターフェイスは、TiDBクラスタ内の特定のコンポーネントの基本情報を監視します。キープアライブメッセージの監視インターフェイスとしても機能します。さらに、配置ドライバー（PD）のステータスインターフェイスは、TiKVクラスター全体の詳細を取得できます。
+ステータスインターフェイスは、TiDBクラスタの特定のコンポーネントの基本情報を監視します。キープアライブメッセージの監視インターフェイスとしても機能します。さらに、配置ドライバー（PD）のステータスインターフェイスは、TiKVクラスタ全体の詳細を取得できます。
 
 ### TiDBサーバー {#tidb-server}
 
@@ -22,7 +21,7 @@ aliases: ['/docs/dev/tidb-monitoring-api/']
 
 ### 実行ステータス {#running-status}
 
-次の例では、 `http://${host}:${port}/status`を使用して、TiDBサーバーの現在のステータスを取得し、サーバーが稼働しているかどうかを判別します。結果は<strong>JSON</strong>形式で返されます。
+次の例では、 `http://${host}:${port}/status`を使用して、TiDBサーバーの現在のステータスを取得し、サーバーが稼働しているかどうかを判別します。結果は**JSON**形式で返されます。
 
 ```bash
 curl http://127.0.0.1:10080/status
@@ -35,7 +34,7 @@ curl http://127.0.0.1:10080/status
 
 #### ストレージ情報 {#storage-information}
 
-次の例では、 `http://${host}:${port}/schema_storage/${db}/${table}`を使用して特定のデータテーブルのストレージ情報を取得します。結果は<strong>JSON</strong>形式で返されます。
+次の例では、 `http://${host}:${port}/schema_storage/${db}/${table}`を使用して特定のデータテーブルのストレージ情報を取得します。結果は**JSON**形式で返されます。
 
 {{< copyable "" >}}
 
@@ -81,7 +80,7 @@ curl http://127.0.0.1:10080/schema_storage/test
 -   デフォルトのポート： `2379`
 -   API名の詳細： [PDAPIドキュメント](https://download.pingcap.com/pd-api-v1.html)を参照
 
-PDインターフェイスは、すべてのTiKVサーバーのステータスと負荷分散に関する情報を提供します。シングルノードTiKVクラスターについては、次の例を参照してください。
+PDインターフェースは、すべてのTiKVサーバーのステータスと負荷分散に関する情報を提供します。シングルノードTiKVクラスタについては、次の例を参照してください。
 
 ```bash
 curl http://127.0.0.1:2379/pd/api/v1/stores
@@ -117,7 +116,7 @@ curl http://127.0.0.1:2379/pd/api/v1/stores
 
 ## メトリックインターフェイスを使用する {#use-the-metrics-interface}
 
-メトリックインターフェイスは、TiDBクラスター全体のステータスとパフォーマンスを監視します。
+メトリックインターフェイスは、TiDBクラスタ全体のステータスとパフォーマンスを監視します。
 
 -   他の展開方法を使用する場合は、このインターフェイスを使用する前に[PrometheusとGrafanaをデプロイする](/deploy-monitoring-services.md) 。
 

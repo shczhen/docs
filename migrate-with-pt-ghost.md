@@ -1,6 +1,6 @@
 ---
-title: Continuous Replication from Databases that Use gh-ost or pt-osc
-summary: Learn how to use DM to replicate incremental data from databases that use online DDL tools gh-ost or pt-osc
+title: gh-ostまたはpt-oscを使用するデータベースからの継続的なレプリケーション
+summary: DMを使用して、オンラインDDLツールgh-ostまたはpt-oscを使用するデータベースから増分データを複製する方法を学習します
 ---
 
 # gh-ostまたはpt-oscを使用するデータベースからの継続的なレプリケーション {#continuous-replication-from-databases-that-use-gh-ost-or-pt-osc}

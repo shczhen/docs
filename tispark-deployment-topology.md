@@ -1,23 +1,23 @@
 ---
-title: TiSpark Deployment Topology
-summary: Learn the deployment topology of TiSpark using TiUP based on the minimal TiDB topology.
+title: TiSparkデプロイメントトポロジ
+summary: 最小限のTiDBトポロジに基づくTiUPを使用したTiSparkの展開トポロジを学習します。
 ---
 
 # TiSparkデプロイメントトポロジ {#tispark-deployment-topology}
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> TiUPクラスターでのTiSparkのサポートは、まだ実験的な機能です。実稼働環境での使用はお勧めし<strong>ません</strong>。
+> TiUPクラスタでのTiSparkのサポートは、まだ実験的機能です。実稼働環境での使用はお勧めし**ません**。
 
-このドキュメントでは、TiSparkの展開トポロジと、最小クラスタートポロジに基づいてTiSparkを展開する方法を紹介します。
+このドキュメントでは、TiSparkの展開トポロジと、最小クラスタトポロジに基づいてTiSparkを展開する方法を紹介します。
 
-TiSparkは、TiDB /TiKV上でApacheSparkを実行して、複雑なOLAPクエリに応答するために構築されたコンポーネントです。 Sparkプラットフォームと分散TiKVクラスターの両方の利点をTiDBにもたらし、TiDBをオンライントランザクションと分析の両方のワンストップソリューションにします。
+TiSparkは、TiDB /TiKV上でApacheSparkを実行して、複雑なOLAPクエリに応答するために構築されたコンポーネントです。 Sparkプラットフォームと分散TiKVクラスタの両方の利点をTiDBにもたらし、TiDBをオンライントランザクションと分析の両方のワンストップソリューションにします。
 
 TiSparkアーキテクチャとその使用方法の詳細については、 [TiSparkユーザーガイド](/tispark-overview.md)を参照してください。
 
 ## トポロジー情報 {#topology-information}
 
-| 実例             | カウント | 物理マシン構成                        | IP                                                      | 構成                          |
+| 実例             | カウント | 物理マシン構成                        | IP                                                      | Configuration / コンフィグレーション  |
 | :------------- | :--- | :----------------------------- | :------------------------------------------------------ | :-------------------------- |
 | TiDB           | 3    | 16 VCore 32GB * 1              | 10.0.1.1<br/> 10.0.1.2<br/> 10.0.1.3                    | デフォルトのポート<br/>グローバルディレクトリ構成 |
 | PD             | 3    | 4 VCore 8GB * 1                | 10.0.1.4<br/> 10.0.1.5<br/> 10.0.1.6                    | デフォルトのポート<br/>グローバルディレクトリ構成 |
@@ -30,16 +30,16 @@ TiSparkアーキテクチャとその使用方法の詳細については、 [Ti
 -   [シンプルなTiSparkトポロジテンプレート](https://github.com/pingcap/docs/blob/master/config-templates/simple-tispark.yaml)
 -   [複雑なTiSparkトポロジテンプレート](https://github.com/pingcap/docs/blob/master/config-templates/complex-tispark.yaml)
 
-上記のTiDBクラスタートポロジファイルの構成項目の詳細については、 [TiUPを使用してTiDBを展開するためのトポロジ構成ファイル](/tiup/tiup-cluster-topology-reference.md)を参照してください。
+上記のTiDBクラスタトポロジファイルの構成項目の詳細については、 [TiUPを使用してTiDBを展開するためのトポロジConfiguration / コンフィグレーションファイル](/tiup/tiup-cluster-topology-reference.md)を参照してください。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> -   構成ファイルに`tidb`人のユーザーを手動で作成する必要はありません。 TiUPクラスターコンポーネントは、ターゲットマシン上に`tidb`のユーザーを自動的に作成します。ユーザーをカスタマイズすることも、ユーザーを制御マシンとの一貫性を保つこともできます。
-> -   展開ディレクトリを相対パスとして構成すると、クラスターはユーザーのホームディレクトリに展開されます。
+> -   構成ファイルに`tidb`人のユーザーを手動で作成する必要はありません。 TiUPクラスタコンポーネントは、ターゲットマシン上に`tidb`のユーザーを自動的に作成します。ユーザーをカスタマイズすることも、ユーザーを制御マシンとの一貫性を保つこともできます。
+> -   展開ディレクトリを相対パスとして構成すると、クラスタはユーザーのホームディレクトリに展開されます。
 
 ## 前提条件 {#prerequisites}
 
-TiSparkはApacheSparkクラスターに基づいているため、TiSparkを含むTiDBクラスターを起動する前に、TiSparkをデプロイするサーバーにJavaランタイム環境（JRE）8がインストールされていることを確認する必要があります。そうしないと、TiSparkを開始できません。
+TiSparkはApacheSparkクラスタに基づいているため、TiSparkを含むTiDBクラスタを起動する前に、TiSparkをデプロイするサーバーにJavaランタイム環境（JRE）8がインストールされていることを確認する必要があります。そうしないと、TiSparkを開始できません。
 
 TiUPは、JREの自動インストールをサポートしていません。自分でインストールする必要があります。インストール手順の詳細については、 [ビルド済みのOpenJDKパッケージをダウンロードしてインストールする方法](https://openjdk.java.net/install/)を参照してください。
 

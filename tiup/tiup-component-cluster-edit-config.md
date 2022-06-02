@@ -1,14 +1,14 @@
 ---
-title: tiup cluster edit-config
+title: tiup クラスタ edit-config
 ---
 
-# tiup cluster edit-config {#tiup-cluster-edit-config}
+# tiup クラスタ edit-config {#tiup-cluster-edit-config}
 
-クラスターのデプロイ後にクラスター構成を変更する必要がある場合は、エディターを起動する`tiup cluster edit-config`コマンドを使用して、クラスターの[トポロジーファイル](/tiup/tiup-cluster-topology-reference.md)を変更できます。このエディターは、デフォルトで`$EDITOR`環境変数で指定されています。 `$EDITOR`環境変数が存在しない場合は、 `vi`エディターが使用されます。
+クラスタのデプロイ後にクラスタ構成を変更する必要がある場合は、エディターを起動する`tiup cluster edit-config`コマンドを使用して、クラスタの[トポロジーファイル](/tiup/tiup-cluster-topology-reference.md)を変更できます。このエディターは、デフォルトで`$EDITOR`環境変数で指定されています。 `$EDITOR`環境変数が存在しない場合は、 `vi`エディターが使用されます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> -   構成を変更する場合、マシンを追加または削除することはできません。マシンを追加する方法については、 [クラスターをスケールアウトする](/tiup/tiup-component-cluster-scale-out.md)を参照してください。マシンを削除する方法については、 [クラスターでのスケーリング](/tiup/tiup-component-cluster-scale-in.md)を参照してください。
+> -   構成を変更する場合、マシンを追加または削除することはできません。マシンを追加する方法については、 [クラスタをスケールアウトする](/tiup/tiup-component-cluster-scale-out.md)を参照してください。マシンを削除する方法については、 [クラスタでのスケーリング](/tiup/tiup-component-cluster-scale-in.md)を参照してください。
 > -   `tiup cluster edit-config`コマンドを実行すると、制御マシンでのみ構成が変更されます。次に、 `tiup cluster reload`コマンドを実行して構成を再ロードする必要があります。
 
 ## 構文 {#syntax}
@@ -17,7 +17,7 @@ title: tiup cluster edit-config
 tiup cluster edit-config <cluster-name> [flags]
 ```
 
-`<cluster-name>`は操作するクラスターです。
+`<cluster-name>`は操作するクラスタです。
 
 ## オプション {#option}
 

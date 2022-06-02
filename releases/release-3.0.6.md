@@ -1,6 +1,5 @@
 ---
-title: TiDB 3.0.6 Release Notes
-aliases: ['/docs/dev/releases/release-3.0.6/','/docs/dev/releases/3.0.6/']
+title: TiDB3.0.6リリースノート
 ---
 
 # TiDB3.0.6リリースノート {#tidb-3-0-6-release-notes}
@@ -34,7 +33,7 @@ TiDB Ansibleバージョン：3.0.6
     -   count-minスケッチから上位N値を抽出して、推定精度を向上させます[＃13429](https://github.com/pingcap/tidb/pull/13429)
 -   サーバ
     -   gRPCダイヤルがタイムアウトしたときにTiKVに送信されたリクエストをすぐに失敗させる[＃12926](https://github.com/pingcap/tidb/pull/12926)
-    -   次の仮想テーブルを追加します[＃13009](https://github.com/pingcap/tidb/pull/13009)
+    -   次の仮想テーブルを追加します： [＃13009](https://github.com/pingcap/tidb/pull/13009)
         -   `performance_schema.tidb_profile_allocs`
         -   `performance_schema.tidb_profile_block`
         -   `performance_schema.tidb_profile_cpu`

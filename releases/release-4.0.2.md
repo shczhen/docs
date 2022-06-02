@@ -1,6 +1,5 @@
 ---
-title: TiDB 4.0.2 Release Notes
-aliases: ['/docs/dev/releases/release-4.0.2/']
+title: TiDB4.0.2リリースノート
 ---
 
 # TiDB4.0.2リリースノート {#tidb-4-0-2-release-notes}
@@ -32,13 +31,13 @@ TiDBバージョン：4.0.2
 
     -   `INSERT`のステートメントで`MEMORY_QUOTA()`のヒントをサポートする[＃18101](https://github.com/pingcap/tidb/pull/18101)
     -   TLS証明書の`SAN`フィールドに基づく認証をサポート[＃17698](https://github.com/pingcap/tidb/pull/17698)
-    -   `REGEXP()`関数[＃17581](https://github.com/pingcap/tidb/pull/17581)の照合をサポートします
+    -   `REGEXP()`関数[＃17581](https://github.com/pingcap/tidb/pull/17581)の照合順序をサポートします
     -   `sql_select_limit`セッションとグローバル変数[＃17604](https://github.com/pingcap/tidb/pull/17604)をサポートします
     -   デフォルトで新しく追加されたパーティションのリージョンの分割をサポート[＃17665](https://github.com/pingcap/tidb/pull/17665)
     -   `BITXOR()`機能の`IF()` `BITNEG()` `JSON_LENGTH()`への[＃17592](https://github.com/pingcap/tidb/pull/17592)をサポート[＃17651](https://github.com/pingcap/tidb/pull/17651)
     -   `COUNT(DISTINCT)` [＃18120](https://github.com/pingcap/tidb/pull/18120)の近似結果を計算するために、新しい集計関数`APPROX_COUNT_DISTINCT()`をサポートします。
-    -   TiFlashでの照合をサポートし、照合関連機能を[＃17705](https://github.com/pingcap/tidb/pull/17705)にプッシュします。
-    -   サーバー[＃17695](https://github.com/pingcap/tidb/pull/17695)のステータスアドレスを示すために、 `INFORMATION_SCHEMA.INSPECTION_RESULT`のテーブルに`STATUS_ADDRESS`の列を追加します。
+    -   TiFlashでの照合順序をサポートし、照合関連機能を[＃17705](https://github.com/pingcap/tidb/pull/17705)にプッシュします。
+    -   `INFORMATION_SCHEMA.INSPECTION_RESULT`テーブルに`STATUS_ADDRESS`列を追加して、サーバー[＃17695](https://github.com/pingcap/tidb/pull/17695)のステータスアドレスを示します。
     -   `MYSQL.BIND_INFO`テーブルに`SOURCE`列を追加して、バインディングの作成方法を示します[＃17587](https://github.com/pingcap/tidb/pull/17587)
     -   `PERFORMANCE_SCHEMA.EVENTS_STATEMENTS_SUMMARY_BY_DIGEST`テーブルに`PLAN_IN_CACHE`列と`PLAN_CACHE_HITS`列を追加して、SQLステートメントのプランキャッシュ使用量を示します[＃17493](https://github.com/pingcap/tidb/pull/17493)
     -   `enable-collect-execution-info`の構成アイテムと`tidb_enable_collect_execution_info`のセッション変数を追加して、各オペレーターの実行情報を収集し、その情報を低速クエリログに記録するかどうかを制御します[＃18073](https://github.com/pingcap/tidb/pull/18073) [＃18072](https://github.com/pingcap/tidb/pull/18072)
@@ -76,7 +75,7 @@ TiDBバージョン：4.0.2
 -   TiDB
 
     -   CM-Sketchが大量のメモリを消費する場合にGolangのメモリ割り当てによって引き起こされるクエリの待ち時間を短縮する[＃17545](https://github.com/pingcap/tidb/pull/17545)
-    -   TiKVサーバーが障害回復プロセスにある場合、クラスターのQPS回復期間を短縮します[＃17681](https://github.com/pingcap/tidb/pull/17681)
+    -   TiKVサーバーが障害回復プロセスにある場合、クラスタのQPS回復期間を短縮します[＃17681](https://github.com/pingcap/tidb/pull/17681)
     -   パーティションテーブル[＃17655](https://github.com/pingcap/tidb/pull/17655)のTiKV/TiFlashコプロセッサーへの集約関数のプッシュをサポート
     -   インデックスが等しい条件の行数推定の精度を向上させる[＃17611](https://github.com/pingcap/tidb/pull/17611)
 
@@ -123,7 +122,7 @@ TiDBバージョン：4.0.2
     -   入力のタイプがバイナリ文字列[＃17620](https://github.com/pingcap/tidb/pull/17620)の場合の`HEX()`関数の誤った結果を修正します
     -   フィルタ条件[＃17697](https://github.com/pingcap/tidb/pull/17697)なしで`INFORMATION_SCHEMA.INSPECTION_SUMMARY`のテーブルをクエリすると、空の結果が返される問題を修正します。
     -   `ALTER USER`ステートメントがユーザー情報を更新するために使用するハッシュパスワードが予期しないものであるという問題を修正します[＃17646](https://github.com/pingcap/tidb/pull/17646)
-    -   `ENUM`と`SET`の値の照合をサポート[＃17701](https://github.com/pingcap/tidb/pull/17701)
+    -   `ENUM`と`SET`の値の照合順序をサポート[＃17701](https://github.com/pingcap/tidb/pull/17701)
     -   テーブル[＃17619](https://github.com/pingcap/tidb/pull/17619)を作成するときに、リージョンを事前分割するためのタイムアウトメカニズムが機能しない問題を修正します。
     -   DDLジョブが再試行されたときにスキーマが予期せず更新され、DDLジョブのアトミック性が損なわれる可能性がある問題を修正します[＃17608](https://github.com/pingcap/tidb/pull/17608)
     -   引数に列[＃17562](https://github.com/pingcap/tidb/pull/17562)が含まれている場合の`FIELD()`関数の誤った結果を修正します

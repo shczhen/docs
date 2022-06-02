@@ -1,7 +1,6 @@
 ---
-title: Numeric Types
-summary: Learn about numeric data types supported in TiDB.
-aliases: ['/docs/dev/data-type-numeric/','/docs/dev/reference/sql/data-types/numeric/']
+title: 数値タイプ
+summary: TiDBでサポートされている数値データ型について学習します。
 ---
 
 # 数値タイプ {#numeric-types}
@@ -128,7 +127,7 @@ FLOAT[(M,D)] [UNSIGNED] [ZEROFILL]
 FLOAT(p) [UNSIGNED] [ZEROFILL]
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > MySQLと同様に、 `FLOAT`データ型は概算値を格納します。通貨などの値の場合は、代わりに`DECIMAL`タイプを使用することをお勧めします。 TiDBでは、 `FLOAT`データ型のデフォルトの精度は8ビットですが、MySQLでは、デフォルトの精度は6ビットです。たとえば、TiDBとMySQLの両方で`FLOAT`タイプの列に`123456789`と`1.23456789`を挿入すると、MySQLで対応する値をクエリすると、 `123457000`と`1.23457`が得られますが、TiDBでは`123456790`と`1.2345679`が得られます。
 
@@ -141,7 +140,7 @@ DOUBLE[(M,D)] [UNSIGNED] [ZEROFILL]
 DOUBLE PRECISION [(M,D)] [UNSIGNED] [ZEROFILL], REAL[(M,D)] [UNSIGNED] [ZEROFILL]
 ```
 
-> <strong>警告：</strong>
+> **警告：**
 >
 > MySQLと同様に、 `DOUBLE`データ型は概算値を格納します。通貨などの値の場合は、代わりに`DECIMAL`タイプを使用することをお勧めします。
 

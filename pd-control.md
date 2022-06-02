@@ -1,18 +1,17 @@
 ---
-title: PD Control User Guide
-summary: Use PD Control to obtain the state information of a cluster and tune a cluster.
-aliases: ['/docs/dev/pd-control/','/docs/dev/reference/tools/pd-control/']
+title: PD制御ユーザーガイド
+summary: PD制御を使用して、クラスターの状態情報を取得し、クラスタを調整しクラスタ。
 ---
 
 # PD制御ユーザーガイド {#pd-control-user-guide}
 
-PDのコマンドラインツールとして、PD制御はクラスターの状態情報を取得し、クラスターを調整します。
+PDのコマンドラインツールとして、PD制御はクラスターの状態情報を取得し、クラスタを調整しクラスタ。
 
 ## PD制御をインストールします {#install-pd-control}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> 使用する制御ツールのバージョンは、クラスターのバージョンと一致していることをお勧めします。
+> 使用する制御ツールのバージョンは、クラスタのバージョンと一致していることをお勧めします。
 
 ### TiUPコマンドを使用する {#use-tiup-command}
 
@@ -26,9 +25,9 @@ PD制御を使用するには、 `tiup ctl:<cluster-version> pd -u http://<pd_ip
 | :------------------------------------------------------------------------ | :---- | :---- | :--------------------------------------------------------------- |
 | `https://download.pingcap.org/tidb-{version}-linux-amd64.tar.gz` （pd-ctl） | Linux | amd64 | `https://download.pingcap.org/tidb-{version}-linux-amd64.sha256` |
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> `{version}`はTiDBのバージョン番号を示します。たとえば、 `{version}`が`v6.0.0`の場合、パッケージのダウンロードリンクは`https://download.pingcap.org/tidb-v6.0.0-linux-amd64.tar.gz`です。
+> `{version}`はTiDBのバージョン番号を示します。たとえば、 `{version}`が`v5.4.1`の場合、パッケージのダウンロードリンクは`https://download.pingcap.org/tidb-v5.4.1-linux-amd64.tar.gz`です。
 
 ### ソースコードからコンパイルする {#compile-from-source-code}
 
@@ -109,7 +108,7 @@ tiup ctl pd -u https://127.0.0.1:2379 --cacert="path/to/ca" --cert="path/to/cert
 
 ### <code>cluster</code> {#code-cluster-code}
 
-このコマンドを使用して、クラスターの基本情報を表示します。
+このコマンドを使用して、クラスタの基本情報を表示します。
 
 使用法：
 
@@ -216,7 +215,7 @@ tiup ctl pd -u https://127.0.0.1:2379 --cacert="path/to/ca" --cert="path/to/cert
     >> config set enable-cross-table-merge true  // Enable cross table merge.
     ```
 
--   `key-type`は、クラスターに使用されるキーエンコードタイプを指定します。サポートされているオプションは[&quot;table&quot;、 &quot;raw&quot;、 &quot;txn&quot;]で、デフォルト値は&quot;table&quot;です。
+-   `key-type`は、クラスタに使用されるキーエンコードタイプを指定します。サポートされているオプションは[&quot;table&quot;、 &quot;raw&quot;、 &quot;txn&quot;]で、デフォルト値は&quot;table&quot;です。
 
     -   クラスタにTiDBインスタンスが存在しない場合、 `key-type`は「raw」または「txn」になり、PDは、 `enable-cross-table-merge`の設定に関係なく、テーブル間でリージョンをマージできます。
     -   クラスタにTiDBインスタンスが存在する場合、 `key-type`は「テーブル」である必要があります。 PDがテーブル間でリージョンをマージできるかどうかは`enable-cross-table-merge`によって決定されます。 `key-type`が「生」の場合、配置ルールは機能しません。
@@ -227,7 +226,7 @@ tiup ctl pd -u https://127.0.0.1:2379 --cacert="path/to/ca" --cert="path/to/cert
 
 -   `region-score-formula-version`は、リージョンスコア式のバージョンを制御します。値のオプションは`v1`と`v2`です。式のバージョン2は、TiKVノードをオンラインまたはオフラインにするなど、一部のシナリオで冗長バランス領域スケジューリングを削減するのに役立ちます。
 
-    {{&lt;コピー可能&quot;&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     >> config set region-score-formula-version v2
@@ -295,7 +294,7 @@ tiup ctl pd -u https://127.0.0.1:2379 --cacert="path/to/ca" --cert="path/to/cert
     config set high-space-ratio 0.5             // Set the threshold value of sufficient space to 0.5
     ```
 
--   `cluster-version`はクラスターのバージョンであり、一部の機能を有効または無効にし、互換性の問題に対処するために使用されます。デフォルトでは、これはクラスター内で通常実行されているすべてのTiKVノードの最小バージョンです。以前のバージョンにロールバックする必要がある場合にのみ、手動で設定できます。
+-   `cluster-version`はクラスタのバージョンであり、一部の機能を有効または無効にし、互換性の問題に対処するために使用されます。デフォルトでは、これはクラスタで通常実行されているすべてのTiKVノードの最小バージョンです。以前のバージョンにロールバックする必要がある場合にのみ、手動で設定できます。
 
     ```bash
     config set cluster-version 1.0.8              // Set the version of the cluster to 1.0.8
@@ -327,7 +326,7 @@ tiup ctl pd -u https://127.0.0.1:2379 --cacert="path/to/ca" --cert="path/to/cert
 
 -   たとえば、値を`flow-round-by-digit`から`4`に設定します。
 
-    {{&lt;コピー可能&quot;&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```bash
     config set flow-round-by-digit 4
@@ -339,7 +338,7 @@ tiup ctl pd -u https://127.0.0.1:2379 --cacert="path/to/ca" --cert="path/to/cert
 
 ### <code>health</code> {#code-health-code}
 
-このコマンドを使用して、クラスターのヘルス情報を表示します。
+このコマンドを使用して、クラスタのヘルス情報を表示します。
 
 使用法：
 
@@ -361,7 +360,7 @@ tiup ctl pd -u https://127.0.0.1:2379 --cacert="path/to/ca" --cert="path/to/cert
 
 ### <code>hot [read | write | store|  history &#x3C;start_time> &#x3C;end_time> [&#x3C;key> &#x3C;value>]]</code> {#code-hot-read-write-store-history-x3c-start-time-x3c-end-time-x3c-key-x3c-value-code}
 
-このコマンドを使用して、クラスターのホットスポット情報を表示します。
+このコマンドを使用して、クラスタのホットスポット情報を表示します。
 
 使用法：
 
@@ -415,7 +414,7 @@ tiup ctl pd -u https://127.0.0.1:2379 --cacert="path/to/ca" --cert="path/to/cert
 
 ### <code>label [store &#x3C;name> &#x3C;value>]</code> {#code-label-store-x3c-name-x3c-value-code}
 
-このコマンドを使用して、クラスターのラベル情報を表示します。
+このコマンドを使用して、クラスタのラベル情報を表示します。
 
 使用法：
 
@@ -748,7 +747,7 @@ time: 43.12698ms
 使用法：
 
 ```bash
->> scheduler show                                 // Display all created schedulers
+>> scheduler show                                 // Display all schedulers
 >> scheduler add grant-leader-scheduler 1         // Schedule all the leaders of the Regions on store 1 to store 1
 >> scheduler add evict-leader-scheduler 1         // Move all the Region leaders on store 1 out
 >> scheduler config evict-leader-scheduler        // Display the stores in which the scheduler is located since v4.0.0
@@ -761,18 +760,6 @@ time: 43.12698ms
 >> scheduler resume balance-region-scheduler      // Continue to run the balance-region scheduler
 >> scheduler resume all                           // Continue to run all schedulers
 >> scheduler config balance-hot-region-scheduler  // Display the configuration of the balance-hot-region scheduler
-```
-
-### <code>scheduler config balance-leader-scheduler</code> {#code-scheduler-config-balance-leader-scheduler-code}
-
-このコマンドを使用して、 `balance-leader-scheduler`のポリシーを表示および制御します。
-
-TiDB v6.0.0以降、PDは、バランスリーダーがタスクを処理する速度を制御するために`balance-leader-scheduler`に`Batch`パラメーターを導入しています。このパラメーターを使用するには、pd-ctlを使用して`balance-leader batch`の構成項目を変更できます。
-
-v6.0.0より前では、PDにはこの構成項目がありません。これは`balance-leader batch=1`を意味します。 v6.0.0以降のバージョンでは、デフォルト値の`balance-leader batch`は`4`です。この構成項目を`4`より大きい値に設定するには、同時に[`scheduler-max-waiting-operator`](#config-show--set-option-value--placement-rules) （デフォルト値は`5` ）に大きい値を設定する必要があります。両方の構成アイテムを変更した後にのみ、期待される加速効果を得ることができます。
-
-```bash
->> scheduler config balance-leader-scheduler set batch 3 // Set the size of the operator that the balance-leader scheduler can execute in a batch to 3
 ```
 
 #### <code>scheduler config balance-hot-region-scheduler</code> {#code-scheduler-config-balance-hot-region-scheduler-code}
@@ -862,7 +849,7 @@ v6.0.0より前では、PDにはこの構成項目がありません。これは
 
     -   `write-peer-priorities`は、書き込みピアタイプのホットリージョンをスケジュールするためにスケジューラが優先するディメンションを制御します。寸法オプションは`byte`と`key`です。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > クラスタコンポーネントがv5.2より前の場合、 `query`次元の構成は有効になりません。一部のコンポーネントがv5.2以降にアップグレードされた場合でも、デフォルトでは`byte`ディメンションと`key`ディメンションがホットリージョンスケジューリングの優先順位を持ちます。クラスタのすべてのコンポーネントがv5.2以降にアップグレードされた後も、互換性のためにそのような構成が有効になります。 `pd-ctl`コマンドを使用して、リアルタイム構成を表示できます。通常、これらの構成を変更する必要はありません。
 
@@ -912,7 +899,7 @@ v6.0.0より前では、PDにはこの構成項目がありません。これは
 >> store limit all 5 remove-peer       // Set the limit of removing-peer operations to 5 per minute for all stores
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   `store limit`コマンドの元の`region-add`および`region-remove`パラメーターは廃止され、 `add-peer`および`remove-peer`に置き換えられました。
 > -   `pd-ctl`を使用して、TiKVストアのステータス（アップ、切断、オフライン、ダウン、またはトゥームストーン）を確認できます。各ステータスの関係については、 [TiKVストアの各ステータス間の関係](/tidb-scheduling.md#information-collection)を参照してください。
@@ -941,13 +928,13 @@ logic:  120102
 
 ### <code>unsafe remove-failed-stores [store-ids | show | history]</code> {#code-unsafe-remove-failed-stores-store-ids-show-history-code}
 
-> <strong>警告：</strong>
+> **警告：**
 >
 > -   この機能は不可逆リカバリであるため、TiKVは、この機能の使用後にデータの整合性とデータインデックスの整合性を保証できません。
-> -   Online Unsafe Recoveryは実験的な機能であり、実稼働環境で使用することはお勧めし<strong>ません</strong>。この機能のインターフェース、戦略、および内部実装は、一般提供（GA）になると変更される可能性があります。この機能はいくつかのシナリオでテストされていますが、完全には検証されておらず、システムが使用できなくなる可能性があります。
-> -   TiDBチームのサポートを受けて、機能関連の操作を実行することをお勧めします。誤操作が発生した場合、クラスターの復旧が困難になる可能性があります。
+> -   Online Unsafe Recoveryは実験的機能であり、実稼働環境で使用することはお勧めし**ません**。この機能のインターフェース、戦略、および内部実装は、一般提供（GA）になると変更される可能性があります。この機能はいくつかのシナリオでテストされていますが、完全には検証されておらず、システムが使用できなくなる可能性があります。
+> -   TiDBチームのサポートを受けて、機能関連の操作を実行することをお勧めします。誤操作が発生した場合、クラスタの復旧が困難になる場合があります。
 
-このコマンドを使用して、永続的に損傷したレプリカが原因でデータが使用できなくなった場合に、損失のあるリカバリ操作を実行します。例えば：
+このコマンドを使用して、永続的に損傷したレプリカが原因でデータが使用できなくなった場合に、損失の多いリカバリ操作を実行します。例えば：
 
 Online Unsafe Recoveryを実行して、恒久的に損傷したストアを削除します。
 
@@ -1016,7 +1003,7 @@ OnlineUnsafeRecoveryの現在または過去の状態を表示します。
 
 ### ステータスが<code>Up</code>ではないすべてのノードをクエリします {#query-all-nodes-whose-status-is-not-code-up-code}
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 >> store --jq='.stores[].store | select(.state_name!="Up") | { id, address, state_name}'
@@ -1030,7 +1017,7 @@ OnlineUnsafeRecoveryの現在または過去の状態を表示します。
 
 ### すべてのTiFlashノードをクエリします {#query-all-tiflash-nodes}
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```bash
 >> store --jq='.stores[].store | select(.labels | length>0 and contains([{"key":"engine","value":"tiflash"}])) | { id, address, state_name}'

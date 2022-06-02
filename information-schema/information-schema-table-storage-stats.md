@@ -1,11 +1,11 @@
 ---
 title: TABLE_STORAGE_STATS
-summary: Learn the `TABLE_STORAGE_STATS` information_schema table.
+summary: `TABLE_STORAGE_STATS`information_schemaテーブルを学びます。
 ---
 
 # TABLE_STORAGE_STATS {#table-storage-stats}
 
-`TABLE_STORAGE_STATS`テーブルは、ストレージエンジン（TiKV）によって格納されたテーブルサイズに関する情報を提供します。
+`TABLE_STORAGE_STATS`のテーブルは、ストレージエンジン（TiKV）によって格納されたテーブルサイズに関する情報を提供します。
 
 {{< copyable "" >}}
 

@@ -1,7 +1,6 @@
 ---
-title: SET PASSWORD | TiDB SQL Statement Reference
-summary: An overview of the usage of SET PASSWORD for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-set-password/','/docs/dev/reference/sql/statements/set-password/']
+title: パスワードの設定| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースのSETPASSWORDの使用法の概要。
 ---
 
 # パスワードを設定してください {#set-password}
@@ -10,7 +9,7 @@ aliases: ['/docs/dev/sql-statements/sql-statement-set-password/','/docs/dev/refe
 
 ## あらすじ {#synopsis}
 
-<strong>SetStmt：</strong>
+**SetStmt：**
 
 ![SetStmt](/media/sqlgram/SetStmt.png)
 
@@ -61,4 +60,4 @@ mysql> SHOW CREATE USER 'newuser';
 ## も参照してください {#see-also}
 
 -   [ユーザーを作成](/sql-statements/sql-statement-create-user.md)
--   [特権管理](/privilege-management.md)
+-   [権限管理](/privilege-management.md)

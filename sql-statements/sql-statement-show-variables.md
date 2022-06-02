@@ -1,7 +1,6 @@
 ---
-title: SHOW [GLOBAL|SESSION] VARIABLES | TiDB SQL Statement Reference
-summary: An overview of the usage of SHOW [GLOBAL|SESSION] VARIABLES for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-variables/','/docs/dev/reference/sql/statements/show-variables/']
+title: [グローバル|セッション]変数を表示| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのSHOW[GLOBAL|SESSION]VARIABLESの使用法の概要。
 ---
 
 # [グローバル|セッション]変数を表示 {#show-global-session-variables}
@@ -10,15 +9,15 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-variables/','/docs/dev/re
 
 ## あらすじ {#synopsis}
 
-<strong>ShowStmt：</strong>
+**ShowStmt：**
 
 ![ShowStmt](/media/sqlgram/ShowStmt.png)
 
-<strong>ShowTargetFilterable：</strong>
+**ShowTargetFilterable：**
 
 ![ShowTargetFilterable](/media/sqlgram/ShowTargetFilterable.png)
 
-<strong>GlobalScope：</strong>
+**GlobalScope：**
 
 ![GlobalScope](/media/sqlgram/GlobalScope.png)
 

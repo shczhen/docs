@@ -1,6 +1,5 @@
 ---
-title: TiDB 2.0.7 Release Notes
-aliases: ['/docs/dev/releases/release-2.0.7/','/docs/dev/releases/207/']
+title: TiDB2.0.7リリースノート
 ---
 
 # TiDB2.0.7リリースノート {#tidb-2-0-7-release-notes}
@@ -31,6 +30,6 @@ aliases: ['/docs/dev/releases/release-2.0.7/','/docs/dev/releases/207/']
 ## TiKV {#tikv}
 
 -   改善
-    -   スペースの増幅を減らすために、デフォルトで空のクラスターで`dynamic-level-bytes`パラメーターを開きます
+    -   スペースの増幅を減らすために、デフォルトで空のクラスタで`dynamic-level-bytes`パラメーターを開きます
 -   バグ修正
     -   リージョンのマージ後、リージョンの`approximate size`と`approximate keys count`を更新します

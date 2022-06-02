@@ -1,6 +1,6 @@
 ---
-title: Generate Self-signed Certificates
-summary: Use `openssl` to generate self-signed certificates.
+title: 自己署名証明書を生成する
+summary: `openssl`を使用して、自己署名証明書を生成します。
 ---
 
 # 自己署名証明書を生成する {#generate-self-signed-certificates}
@@ -100,7 +100,7 @@ DMマスターインスタンスに証明書を発行するには、次の手順
     find / -name openssl.cnf
     ```
 
-3.  `openssl.cnf`を編集し、 `[ req ]`フィールドの下に`req_extensions = v3_req`を追加し、 `[ v3_req ]`フィールドの下に`subjectAltName = @alt_names`を追加します。最後に、新しいフィールドを作成し、上記のクラスタートポロジの説明に従って`Subject Alternative Name` （SAN）の情報を編集します。
+3.  `openssl.cnf`を編集し、 `[ req ]`フィールドの下に`req_extensions = v3_req`を追加し、 `[ v3_req ]`フィールドの下に`subjectAltName = @alt_names`を追加します。最後に、新しいフィールドを作成し、上記のクラスタトポロジの説明に従って`Subject Alternative Name` （SAN）の情報を編集します。
 
     ```
     [ alt_names ]
@@ -118,7 +118,7 @@ DMマスターインスタンスに証明書を発行するには、次の手順
 
     -   `URI`
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > `0.0.0.0`などの特殊なIPを接続や通信に使用する場合は、 `alt_names`にも追加する必要があります。
 
@@ -154,7 +154,7 @@ DMマスターインスタンスに証明書を発行するには、次の手順
     master-key.pem
     ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > DM-workerインスタンスの証明書を発行するプロセスも同様であり、このドキュメントでは繰り返されません。
 

@@ -1,7 +1,6 @@
 ---
-title: TiFlash Overview
-summary: Learn the architecture and key features of TiFlash.
-aliases: ['/docs/dev/tiflash/tiflash-overview/','/docs/dev/reference/tiflash/overview/']
+title: TiFlashの概要
+summary: TiFlashのアーキテクチャと主な機能について学びます。
 ---
 
 # TiFlashの概要 {#tiflash-overview}
@@ -24,7 +23,7 @@ TiFlashはTiDBとTiSparkの両方と互換性があり、これら2つのコン�
 
 ワークロードを確実に分離するために、TiKVとは異なるノードにTiFlashをデプロイすることをお勧めします。ビジネスの分離が必要ない場合は、TiFlashとTiKVを同じノードに展開することもできます。
 
-現在、TiFlashに直接データを書き込むことはできません。学習者の役割としてTiDBクラスターに接続するため、TiKVでデータを書き込んでから、それをTiFlashに複製する必要があります。 TiFlashは、テーブル単位でのデータレプリケーションをサポートしていますが、展開後、デフォルトではデータはレプリケートされません。指定されたテーブルのデータを複製するには、 [テーブルのTiFlashレプリカを作成する](/tiflash/use-tiflash.md#create-tiflash-replicas-for-tables)を参照してください。
+現在、TiFlashに直接データを書き込むことはできません。学習者の役割としてTiDBクラスタに接続するため、TiKVでデータを書き込んでから、それをTiFlashに複製する必要があります。 TiFlashは、テーブル単位でのデータレプリケーションをサポートしていますが、展開後、デフォルトではデータはレプリケートされません。指定されたテーブルのデータを複製するには、 [テーブルのTiFlashレプリカを作成する](/tiflash/use-tiflash.md#create-tiflash-replicas-for-tables)を参照してください。
 
 TiFlashには、列型ストレージモジュール、 `tiflash proxy` 、および`pd buddy`の3つのコンポーネントがあります。 `tiflash proxy`は、マルチラフトコンセンサスアルゴリズムを使用した通信を担当します。 `pd buddy`はPDと連携して、テーブル単位でTiKVからTiFlashにデータを複製します。
 
@@ -71,12 +70,12 @@ TiFlashは、TiKVコプロセッサーと同じ方法でコンピューティン
 
 ## も参照してください {#see-also}
 
--   TiFlashノードを使用して新しいクラスターをデプロイするには、 [TiUPを使用してTiDBクラスターをデプロイする](/production-deployment-using-tiup.md)を参照してください。
--   デプロイされたクラスターにTiFlashノードを追加するには、 [TiFlashクラスターをスケールアウトする](/scale-tidb-using-tiup.md#scale-out-a-tiflash-cluster)を参照してください。
+-   TiFlashノードを使用して新しいクラスタをデプロイするには、 [TiUPを使用してTiDBクラスタをデプロイする](/production-deployment-using-tiup.md)を参照してください。
+-   デプロイされたクラスタにTiFlashノードを追加するには、 [TiFlashクラスタをスケールアウトする](/scale-tidb-using-tiup.md#scale-out-a-tiflash-cluster)を参照してください。
 -   [TiFlashを使用する](/tiflash/use-tiflash.md) 。
--   [TiFlashクラスターを維持する](/tiflash/maintain-tiflash.md) 。
+-   [TiFlashクラスタを管理する](/tiflash/maintain-tiflash.md) 。
 -   [TiFlashのパフォーマンスを調整する](/tiflash/tune-tiflash-performance.md) 。
 -   [TiFlashを構成する](/tiflash/tiflash-configuration.md) 。
--   [TiFlashクラスターを監視する](/tiflash/monitor-tiflash.md) 。
+-   [TiFlashクラスタを監視する](/tiflash/monitor-tiflash.md) 。
 -   学ぶ[TiFlashアラートルール](/tiflash/tiflash-alert-rules.md) 。
--   [TiFlashクラスターのトラブルシューティング](/tiflash/troubleshoot-tiflash.md) 。
+-   [TiFlashクラスタのトラブルシューティング](/tiflash/troubleshoot-tiflash.md) 。

@@ -1,6 +1,5 @@
 ---
-title: TiDB 3.1 Beta.2 Release Notes
-aliases: ['/docs/dev/releases/release-3.1.0-beta.2/','/docs/dev/releases/3.1.0-beta.2/']
+title: TiDB3.1Beta.2リリースノート
 ---
 
 # TiDB3.1Beta.2リリースノート {#tidb-3-1-beta-2-release-notes}
@@ -11,7 +10,7 @@ TiDBバージョン：3.1.0-beta.2
 
 TiDB Ansibleバージョン：3.1.0-beta.2
 
-> <strong>警告：</strong>
+> **警告：**
 >
 > このバージョンにはいくつかの既知の問題があり、これらの問題は新しいバージョンで修正されています。最新の3.1.xバージョンを使用することをお勧めします。
 
@@ -19,7 +18,7 @@ TiDB Ansibleバージョン：3.1.0-beta.2
 
 -   ツール
     -   TiDB Lightning
-        -   構成ファイル[＃255](https://github.com/pingcap/tidb-lightning/pull/255)で構成されていない特定の項目には、 [TiDBLightning構成](/tidb-lightning/tidb-lightning-configuration.md)で指定されたデフォルト構成を使用します。
+        -   構成ファイル[＃255](https://github.com/pingcap/tidb-lightning/pull/255)で構成されていない特定の項目には、 [TiDBLightningConfiguration / コンフィグレーション](/tidb-lightning/tidb-lightning-configuration.md)で指定されたデフォルト構成を使用します。
         -   `--tidb-password` CLIパラメーターを追加して、TiDBパスワードを設定します[＃253](https://github.com/pingcap/tidb-lightning/pull/253)
 
 ## 新機能 {#new-features}
@@ -43,7 +42,7 @@ TiDB Ansibleバージョン：3.1.0-beta.2
 -   TiFlash
     -   初回リリース
 -   TiDB Ansible
-    -   1つのクラスターでの複数のGrafana/Prometheus/Alertmanagerのデプロイをサポート[＃1143](https://github.com/pingcap/tidb-ansible/pull/1143)
+    -   1つのクラスタでの複数のGrafana/Prometheus/Alertmanagerのデプロイをサポート[＃1143](https://github.com/pingcap/tidb-ansible/pull/1143)
     -   TiFlashコンポーネントの展開をサポートする[＃1148](https://github.com/pingcap/tidb-ansible/pull/1148)
     -   TiFlashコンポーネントに関連する監視メトリックを追加する[＃1152](https://github.com/pingcap/tidb-ansible/pull/1152)
 

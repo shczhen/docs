@@ -1,6 +1,5 @@
 ---
-title: TiDB RC2 Release Notes
-aliases: ['/docs/dev/releases/release-rc.2/','/docs/dev/releases/rc2/']
+title: TiDBRC2リリースノート
 ---
 
 # TiDBRC2リリースノート {#tidb-rc2-release-notes}
@@ -23,7 +22,7 @@ aliases: ['/docs/dev/releases/release-rc.2/','/docs/dev/releases/rc2/']
 -   CreateTableLikeステートメントをサポートする
 -   警告の表示ステートメントをサポートする
 -   RenameTableステートメントをサポートする
--   単一のトランザクションのサイズを制限して、大規模なトランザクションのクラスターブロッキングを回避します
+-   単一のトランザクションのサイズを制限して、大規模なトランザクションのクラスタブロッキングを回避します
 -   データのロード中にデータを自動的に分割
 -   AddIndexおよびDeleteステートメントのパフォーマンスを最適化する
 -   「ANSI_QUOTES」sql_modeをサポート

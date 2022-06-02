@@ -1,6 +1,6 @@
 ---
-title: PROCESSLIST
-summary: Learn the `PROCESSLIST` information_schema table.
+title: プロセスリスト
+summary: `PROCESSLIST`information_schemaテーブルを学びます。
 ---
 
 # プロセスリスト {#processlist}
@@ -73,7 +73,7 @@ TxnStart:
 
 ## CLUSTER_PROCESSLIST {#cluster-processlist}
 
-`CLUSTER_PROCESSLIST`は、 `PROCESSLIST`に対応するクラスターシステムテーブルです。これは、クラスター内のすべてのTiDBノードの`PROCESSLIST`の情報を照会するために使用されます。 `CLUSTER_PROCESSLIST`のテーブルスキーマには、 `PROCESSLIST`よりも1つ多い列があります`INSTANCE`列には、このデータ行の元のTiDBノードのアドレスが格納されます。
+`CLUSTER_PROCESSLIST`は、 `PROCESSLIST`に対応するクラスタシステムテーブルです。これは、クラスタのすべてのTiDBノードの`PROCESSLIST`の情報を照会するために使用されます。 `CLUSTER_PROCESSLIST`のテーブルスキーマには、 `PROCESSLIST`よりも1つ多い列があります`INSTANCE`列には、このデータ行の元のTiDBノードのアドレスが格納されます。
 
 {{< copyable "" >}}
 

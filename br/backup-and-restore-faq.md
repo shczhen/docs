@@ -1,14 +1,13 @@
 ---
-title: Backup & Restore FAQ
-summary: Learn about Frequently Asked Questions (FAQ) and the solutions of BR.
-aliases: ['/docs/dev/br/backup-and-restore-faq/']
+title: バックアップと復元FAQ
+summary: よくある質問（FAQ）とBRの解決策について学びます。
 ---
 
-# バックアップと復元に関するFAQ {#backup-x26-restore-faq}
+# バックアップと復元FAQ {#backup-x26-restore-faq}
 
 このドキュメントには、よくある質問（FAQ）とバックアップと復元（BR）に関するソリューションが記載されています。
 
-## TiDB v5.4.0以降のバージョンでは、高負荷のクラスターでバックアップタスクを実行すると、バックアップタスクの速度が遅くなるのはなぜですか。 {#in-tidb-v5-4-0-and-later-versions-when-backup-tasks-are-performed-on-the-cluster-under-high-workload-why-does-the-speed-of-backup-tasks-become-slow}
+## TiDB v5.4.0以降のバージョンでは、高負荷のクラスタでバックアップタスクを実行すると、バックアップタスクの速度が遅くなるのはなぜですか。 {#in-tidb-v5-4-0-and-later-versions-when-backup-tasks-are-performed-on-the-cluster-under-high-workload-why-does-the-speed-of-backup-tasks-become-slow}
 
 TiDB v5.4.0以降、BRはバックアップタスクの自動調整機能を導入しています。 v5.4.0以降のバージョンのクラスターの場合、この機能はデフォルトで有効になっています。クラスタのワークロードが重い場合、この機能はバックアップタスクで使用されるリソースを制限して、オンラインクラスタへの影響を軽減します。詳細については、 [BRオートチューン](/br/br-auto-tune.md)を参照してください。
 
@@ -21,33 +20,33 @@ TiKVは[動的に構成する](/tikv-control.md#modify-the-tikv-configuration-dy
 
 さらに、この機能により、バックアップタスクで使用されるデフォルトのスレッド数も削減されます。詳細については、 `backup.num-threads` ]（/ tikv-configuration-file.md＃num-threads-1）を参照してください。したがって、Grafanaダッシュボードでは、バックアップタスクで使用される速度、CPU使用率、およびI / Oリソース使用率は、v5.4より前のバージョンよりも低くなります。 v5.4より前のデフォルト値の`backup.num-threads`は`CPU * 0.75`でした。つまり、バックアップタスクで使用されるスレッドの数が論理CPUコアの75％を占めていました。最大値は`32`でした。 v5.4以降、この構成アイテムのデフォルト値は`CPU * 0.5`で、最大値は`8`です。
 
-オフラインクラスターでバックアップタスクを実行する場合、バックアップを高速化するために、 `tikv-ctl`を使用して`backup.num-threads`の値をより大きな数に変更できます。
+オフラインクラスタでバックアップタスクを実行する場合、バックアップを高速化するために、 `tikv-ctl`を使用して`backup.num-threads`の値をより大きな数に変更できます。
 
 ## エラーメッセージ<code>could not read local://...:download sst failed</code>場合、データの復元中に返されますが、どうすればよいですか？ {#what-should-i-do-if-the-error-message-code-could-not-read-local-download-sst-failed-code-is-returned-during-data-restoration}
 
-データを復元する場合、各ノードは<strong>すべての</strong>バックアップファイル（SSTファイル）にアクセスできる必要があります。デフォルトでは、 `local`のストレージが使用されている場合、バックアップファイルは異なるノードに分散しているため、データを復元することはできません。したがって、各TiKVノードのバックアップファイルを他のTiKVノードにコピーする必要があります。
+データを復元する場合、各ノードは**すべての**バックアップファイル（SSTファイル）にアクセスできる必要があります。デフォルトでは、 `local`のストレージが使用されている場合、バックアップファイルは異なるノードに分散しているため、データを復元することはできません。したがって、各TiKVノードのバックアップファイルを他のTiKVノードにコピーする必要があります。
 
 バックアップ中にNFSディスクをバックアップディスクとしてマウントすることをお勧めします。詳細については、 [1つのテーブルをネットワークディスクにバックアップします](/br/backup-and-restore-use-cases.md#back-up-a-single-table-to-a-network-disk-recommended-in-production-environment)を参照してください。
 
-## BRを使用したバックアップ中にクラスターにどの程度影響しますか？ {#how-much-does-it-affect-the-cluster-during-backup-using-br}
+## BRを使用したバックアップ中にクラスタにどの程度影響しますか？ {#how-much-does-it-affect-the-cluster-during-backup-using-br}
 
-TiDB v5.4.0以降のバージョンでは、BRは、バックアップタスクで使用されるデフォルトのCPU使用率を下げるだけでなく、ワークロードが重いクラスターでバックアップタスクで使用されるリソースを制限します。したがって、ワークロードが重いv5.4.0クラスターのバックアップタスクにデフォルト構成を使用する場合、クラスターのパフォーマンスに対するタスクの影響は、v5.4.0より前のクラスターの影響よりも大幅に小さくなります。詳細については、 [BRオートチューン](/br/br-auto-tune.md)を参照してください。
+TiDB v5.4.0以降のバージョンでは、BRは、バックアップタスクで使用されるデフォルトのCPU使用率を下げるだけでなく、ワークロードが重いクラスタでバックアップタスクで使用されるリソースを制限します。したがって、ワークロードが重いv5.4.0クラスタのバックアップタスクにデフォルト構成を使用する場合、クラスタのパフォーマンスに対するタスクの影響は、v5.4.0より前のクラスターの影響よりも大幅に小さくなります。詳細については、 [BRオートチューン](/br/br-auto-tune.md)を参照してください。
 
-以下は、単一ノードでの内部テストです。テスト結果は、<strong>フルスピードバックアップ</strong>シナリオでv5.4.0とv5.3.0のデフォルト構成を使用する場合、クラスターのパフォーマンスに対するBRを使用したバックアップの影響がまったく異なることを示しています。詳細なテスト結果は次のとおりです。
+以下は、単一ノードでの内部テストです。テスト結果は、**フルスピードバックアップ**シナリオでv5.4.0とv5.3.0のデフォルト構成を使用する場合、クラスタパフォーマンスに対するBRを使用したバックアップの影響がまったく異なることを示しています。詳細なテスト結果は次のとおりです。
 
 -   BRがv5.3.0のデフォルト構成を使用する場合、書き込み専用ワークロードのQPSは75％削減されます。
 -   BRがv5.4.0のデフォルト構成を使用する場合、同じワークロードのQPSは25％削減されます。ただし、この構成を使用すると、BRを使用したバックアップタスクの速度がそれに応じて遅くなります。必要な時間は、v5.3.0構成の1.7倍です。
 
-バックアップタスクがクラスターのパフォーマンスに与える影響を手動で制御する必要がある場合は、次のソリューションを使用できます。これらの2つの方法は、クラスターへのバックアップタスクの影響を減らすことができますが、バックアップタスクの速度も低下させます。
+バックアップタスクがクラスタのパフォーマンスに与える影響を手動で制御する必要がある場合は、次のソリューションを使用できます。これらの2つの方法は、クラスタへのバックアップタスクの影響を減らすことができますが、バックアップタスクの速度も低下させます。
 
--   `--ratelimit`パラメータを使用して、バックアップタスクの速度を制限します。このパラメータは、<strong>バックアップファイルを外部ストレージに保存</strong>する速度を制限することに注意してください。バックアップファイルの合計サイズを計算するときは、バックアップログの`backup data size(after compressed)`をベンチマークとして使用します。
--   TiKV構成項目[`backup.num-threads`](/tikv-configuration-file.md#num-threads-1)を調整して、バックアップタスクで使用されるリソースを制限します。この構成項目は、バックアップタスクで使用されるスレッドの数を決定します。 BRがバックアップタスクに使用するスレッドが`8`以下であり、クラスターの合計CPU使用率が60％を超えない場合、読み取りおよび書き込みのワークロードに関係なく、バックアップタスクはクラスターにほとんど影響を与えません。
+-   `--ratelimit`パラメータを使用して、バックアップタスクの速度を制限します。このパラメータは、**バックアップファイルを外部ストレージに保存**する速度を制限することに注意してください。バックアップファイルの合計サイズを計算するときは、バックアップログの`backup data size(after compressed)`をベンチマークとして使用します。
+-   TiKV構成項目[`backup.num-threads`](/tikv-configuration-file.md#num-threads-1)を調整して、バックアップタスクで使用されるリソースを制限します。この構成項目は、バックアップタスクで使用されるスレッドの数を決定します。 BRがバックアップタスクに使用するスレッドが`8`以下であり、クラスタの合計CPU使用率が60％を超えない場合、読み取りおよび書き込みのワークロードに関係なく、バックアップタスクはクラスタにほとんど影響を与えません。
 
 ## BRはシステムテーブルをバックアップしますか？データの復元中に、競合が発生しますか？ {#does-br-back-up-system-tables-during-data-restoration-do-they-raise-conflicts}
 
-v5.1.0より前では、BRはバックアップ中にシステムスキーマ`mysql`からデータを除外していました。 v5.1.0以降、BRは、システムスキーマ`mysql.*`を含むすべてのデータをデフォルトで<strong>バックアップ</strong>します。
+v5.1.0より前では、BRはバックアップ中にシステムスキーマ`mysql`からデータを除外していました。 v5.1.0以降、BRは、システムスキーマ`mysql.*`を含むすべてのデータをデフォルトで**バックアップ**します。
 
-データの復元中、システムテーブルで競合が発生することはありません。 `mysql.*`でシステムテーブルを復元する技術的な実装はまだ完了していないため、システムスキーマ`mysql`のテーブルはデフォルトでは復元され<strong>ません</strong>。つまり、競合は発生しません。詳細については、 [`mysql`システムスキーマのテーブルデータのバックアップと復元（実験的機能）](/br/backup-and-restore-tool.md#back-up-and-restore-table-data-in-the-mysql-system-schema-experimental-feature)を参照してください。
+データの復元中、システムテーブルで競合が発生することはありません。 `mysql.*`でシステムテーブルを復元する技術的な実装はまだ完了していないため、システムスキーマ`mysql`のテーブルはデフォルトでは復元され**ません**。つまり、競合は発生しません。詳細については、 [`mysql`システムスキーマのテーブルデータのバックアップと復元（実験的機能）](/br/backup-and-restore-tool.md#back-up-and-restore-table-data-in-the-mysql-system-schema-experimental-feature)を参照してください。
 
 ## ルートを使用してBRを実行しようとしても、 <code>Permission denied</code>た、または<code>No such file or directory</code>エラーが発生しないようにするにはどうすればよいですか？ {#what-should-i-do-to-handle-the-code-permission-denied-code-or-code-no-such-file-or-directory-code-error-even-if-i-have-tried-to-run-br-using-root-in-vain}
 
@@ -57,9 +56,9 @@ TiKVがバックアップディレクトリにアクセスできるかどうか�
 
 バックアップファイル（SSTファイル）はTiKVによって保存されるため、ルートアクセスでBRを実行すると、ディスクのアクセス許可が原因で失敗する可能性があります。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> データの復元中にも同じ問題が発生する可能性があります。 SSTファイルを初めて読み取るときに、読み取り権限が検証されます。 DDLの実行期間は、権限の確認とBRの実行の間に長い間隔がある可能性があることを示しています。長時間待つと、エラーメッセージ`Permission denied`が表示される場合があります。
+> データの復元中にも同じ問題が発生する可能性があります。 SSTファイルを初めて読み取るときに、読み取り権限が検証されます。 DDLの実行期間は、権限の確認とBRの実行の間に長い間隔がある可能性があることを示しています。長時間待つとエラーメッセージ`Permission denied`が表示される場合があります。
 >
 > したがって、次の手順に従って、データを復元する前に権限を確認することをお勧めします。
 
@@ -93,7 +92,7 @@ TiKVがバックアップディレクトリにアクセスできるかどうか�
     tidb_ouo
     ```
 
-2.  TiUPコマンドを使用して、クラスターのスタートアップ情報を照会します。
+2.  TiUPコマンドを使用して、クラスタのスタートアップ情報を照会します。
 
     {{< copyable "" >}}
 
@@ -132,15 +131,15 @@ TiKVがバックアップディレクトリにアクセスできるかどうか�
 
 ## <code>Io(Os...)</code>エラーを処理するにはどうすればよいですか？ {#what-should-i-do-to-handle-the-code-io-os-code-error}
 
-これらの問題のほとんどすべては、TiKVがディスクにデータを書き込むときに発生するシステムコールエラーです。たとえば、 `Io(Os {code: 13, kind: PermissionDenied...})`や`Io(Os {code: 2, kind: NotFound...})`などのエラーメッセージが表示された場合は、最初にマウント方法とバックアップディレクトリのファイルシステムを確認してから、別のフォルダまたは別のハードディスクにデータをバックアップしてみてください。
+これらの問題のほとんどすべては、TiKVがディスクにデータを書き込むときに発生するシステムコールエラーです。たとえば、 `Io(Os {code: 13, kind: PermissionDenied...})`や`Io(Os {code: 2, kind: NotFound...})`などのエラーメッセージが表示された場合は、最初にバックアップディレクトリのマウント方法とファイルシステムを確認してから、別のフォルダまたは別のハードディスクにデータをバックアップしてみてください。
 
 たとえば、 `samba`で構築されたネットワークディスクにデータをバックアップするときに`Code: 22(invalid argument)`エラーが発生する場合があります。
 
 ## <code>rpc error: code = Unavailable desc =...</code> BRでエラーが発生しましたか？ {#what-should-i-do-to-handle-the-code-rpc-error-code-unavailable-desc-code-error-occurred-in-br}
 
-このエラーは、（BRを使用して）復元するクラスターの容量が不十分な場合に発生する可能性があります。このクラスターの監視メトリックまたはTiKVログを確認することで、原因をさらに確認できます。
+このエラーは、（BRを使用して）復元するクラスタの容量が不十分な場合に発生する可能性があります。このクラスタの監視メトリックまたはTiKVログを確認することで、原因をさらに確認できます。
 
-この問題を処理するには、クラスターリソースをスケールアウトし、復元中の同時実行性を減らし、 `RATE_LIMIT`オプションを有効にすることができます。
+この問題を処理するには、クラスタリソースをスケールアウトし、復元中の同時実行性を減らし、 `RATE_LIMIT`オプションを有効にすることができます。
 
 ## <code>local</code>ストレージを使用すると、バックアップされたファイルはどこに保存されますか？ {#where-are-the-backed-up-files-stored-when-i-use-code-local-code-storage}
 
@@ -152,11 +151,11 @@ TiKVがバックアップディレクトリにアクセスできるかどうか�
 
 ただし、ローカルストレージからデータを復元する場合は、各TiKVがすべてのバックアップファイルにアクセスできる必要があるため、レプリカの数はTiKVノードの数と同じです。
 
-## BRがTiCDC/Drainerのアップストリームクラスターにデータを復元する場合はどうすればよいですか？ {#what-should-i-do-when-br-restores-data-to-the-upstream-cluster-of-ticdc-drainer}
+## BRがTiCDC/Drainerのアップストリームクラスタにデータを復元する場合はどうすればよいですか？ {#what-should-i-do-when-br-restores-data-to-the-upstream-cluster-of-ticdc-drainer}
 
--   <strong>BRを使用して復元されたデータは、ダウンストリームに複製できません</strong>。これは、BRがSSTファイルを直接インポートしますが、現在、ダウンストリームクラスターがこれらのファイルをアップストリームから取得できないためです。
+-   **BRを使用して復元されたデータは、ダウンストリームに複製できません**。これは、BRがSSTファイルを直接インポートしますが、現在、ダウンストリームクラスタがこれらのファイルをアップストリームから取得できないためです。
 
--   v4.0.3より前では、BRの復元中に生成されたDDLジョブにより、TiCDC/Drainerで予期しないDDL実行が発生する可能性がありました。したがって、TiCDC / Drainerのアップストリームクラスターで復元を実行する必要がある場合は、BRを使用して復元されたすべてのテーブルをTiCDC/Drainerブロックリストに追加します。
+-   v4.0.3より前では、BRの復元中に生成されたDDLジョブにより、TiCDC/Drainerで予期しないDDL実行が発生する可能性がありました。したがって、TiCDC / Drainerのアップストリームクラスタで復元を実行する必要がある場合は、BRを使用して復元されたすべてのテーブルをTiCDC/Drainerブロックリストに追加します。
 
 [`filter.rules`](https://github.com/pingcap/tiflow/blob/7c3c2336f98153326912f3cf6ea2fbb7bcc4a20c/cmd/changefeed.toml#L16)を使用してTiCDCのブロックリストを構成し、 [`syncer.ignore-table`](/tidb-binlog/tidb-binlog-configuration-file.md#ignore-table)を使用してDrainerのブロックリストを構成できます。
 
@@ -164,15 +163,9 @@ TiKVがバックアップディレクトリにアクセスできるかどうか�
 
 はい。 BRは、テーブルの[`SHARD_ROW_ID_BITS`および<code>PRE_SPLIT_REGIONS</code>](/sql-statements/sql-statement-split-region.md#pre_split_regions)の情報をバックアップします。復元されたテーブルのデータも複数のリージョンに分割されます。
 
-## <code>the entry too large, the max entry size is 6291456, the size of data is 7690800</code>というエラーメッセージが表示されて復元が失敗した場合は、どうすればよいですか？ {#what-should-i-do-if-the-restore-fails-with-the-error-message-code-the-entry-too-large-the-max-entry-size-is-6291456-the-size-of-data-is-7690800-code}
-
-`--ddl-batch-size`から`128`以下の値を設定することにより、バッチで作成されるテーブルの数を減らすことができます。
-
-BRを使用して[ `--ddl-batch-size` ]（/br/br-batch-create-table.md#how to use）の値が`1`より大きいバックアップデータを復元する場合、TiDBはテーブル作成のDDLジョブをDDLジョブキューに書き込みますそれはTiKVによって維持されています。現時点では、ジョブメッセージの最大値はデフォルトで`6 MB`であるため、TiDBによって一度に送信されるすべてのテーブルスキーマの合計サイズは6 MBを超えないようにする必要があります（この値を変更することは<strong>お勧め</strong>しません。詳細については、 [`txn-entry-size-limit`](/tidb-configuration-file.md#txn-entry-size-limit-new-in-v50)および[`raft-entry-max-size`](/tikv-configuration-file.md#raft-entry-max-size) ）。したがって、 `--ddl-batch-size`を過度に大きな値に設定すると、TiDBによって一度にバッチで送信されるテーブルのスキーマサイズが指定された値を超え、BRが`entry too large, the max entry size is 6291456, the size of data is 7690800`エラーを報告します。
-
 ## BRを使用してバックアップデータを復元した後、SQLクエリで<code>region is unavailable</code>というエラーが報告されるのはなぜですか？ {#why-is-the-code-region-is-unavailable-code-error-reported-for-a-sql-query-after-i-use-br-to-restore-the-backup-data}
 
-BRを使用してバックアップされたクラスターにTiFlashがある場合、BRがバックアップデータを復元するときに`TableInfo`はTiFlash情報を保存します。復元するクラスターにTiFlashがない場合は、 `region is unavailable`エラーが報告されます。
+BRを使用してバックアップされたクラスタにTiFlashがある場合、BRがバックアップデータを復元するときに`TableInfo`はTiFlash情報を保存します。復元するクラスタにTiFlashがない場合は、 `region is unavailable`エラーが報告されます。
 
 ## BRは、一部の履歴バックアップのインプレース完全リカバリをサポートしていますか？ {#does-br-support-in-place-full-recovery-of-some-historical-backup}
 
@@ -194,10 +187,10 @@ v4.0.9では、BRはデフォルトで統計をバックアップしますが、
 
 テーブルで`ANALYZE`を実行しない場合、統計が不正確であるため、TiDBは最適化された実行プランを選択できません。クエリのパフォーマンスが重要な問題でない場合は、 `ANALYZE`を無視できます。
 
-## 複数のBRプロセスを同時に使用して、単一のクラスターのデータを復元できますか？ {#can-i-use-multiple-br-processes-at-the-same-time-to-restore-the-data-of-a-single-cluster}
+## 複数のBRプロセスを同時に使用して、単一のクラスタのデータを復元できますか？ {#can-i-use-multiple-br-processes-at-the-same-time-to-restore-the-data-of-a-single-cluster}
 
-次の理由により、複数のBRプロセスを同時に使用して単一のクラスターのデータを復元する<strong>ことは強くお勧め</strong>しません。
+次の理由により、複数のBRプロセスを同時に使用して単一のクラスタのデータを復元する**ことは強くお勧め**しません。
 
--   BRがデータを復元するとき、PDのいくつかのグローバル構成を変更します。したがって、データの復元に複数のBRプロセスを同時に使用すると、これらの構成が誤って上書きされ、異常なクラスターステータスが発生する可能性があります。
--   BRはデータを復元するために多くのクラスターリソースを消費するため、実際、BRプロセスを並行して実行すると、復元速度は限られた範囲でしか向上しません。
+-   BRがデータを復元するとき、PDのいくつかのグローバル構成を変更します。したがって、データの復元に複数のBRプロセスを同時に使用すると、これらの構成が誤って上書きされ、異常なクラスタステータスが発生する可能性があります。
+-   BRはデータを復元するために多くのクラスタリソースを消費するため、実際、BRプロセスを並行して実行すると、復元速度は限られた範囲でしか向上しません。
 -   データ復元のために複数のBRプロセスを並行して実行するテストは行われていないため、成功する保証はありません。

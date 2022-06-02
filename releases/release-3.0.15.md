@@ -1,6 +1,5 @@
 ---
-title: TiDB 3.0.15 Release Notes
-aliases: ['/docs/dev/releases/release-3.0.15/']
+title: TiDB3.0.15リリースノート
 ---
 
 # TiDB3.0.15リリースノート {#tidb-3-0-15-release-notes}
@@ -13,7 +12,7 @@ TiDBバージョン：3.0.15
 
 -   TiDB
 
-    -   パーティション化されたテーブルでのクエリを禁止して、プランキャッシュ機能を使用する[＃16759](https://github.com/pingcap/tidb/pull/16759)
+    -   プランキャッシュ機能を使用するためにパーティションテーブルでのクエリを禁止する[＃16759](https://github.com/pingcap/tidb/pull/16759)
     -   パーティションテーブルで`admin recover index`および`admin check index` [＃17390](https://github.com/pingcap/tidb/pull/17390)をサポートする[＃17315](https://github.com/pingcap/tidb/pull/17315)
     -   Rangeパーティションテーブル[＃17318](https://github.com/pingcap/tidb/pull/17318)の`in`条件のパーティションプルーニングをサポートします。
     -   `SHOW CREATE TABLE`の出力を最適化し、パーティション名[＃16315](https://github.com/pingcap/tidb/pull/16315)に引用符を追加します。
@@ -42,6 +41,6 @@ TiDBバージョン：3.0.15
 
 -   TiKV
 
-    -   長時間実行した後、メモリの最適化が効果的でない問題を修正します[＃7790](https://github.com/tikv/tikv/pull/7790)
+    -   長時間実行するとメモリの最適化が有効にならない問題を修正します[＃7790](https://github.com/tikv/tikv/pull/7790)
     -   TiKVが誤って再起動された後にスナップショットファイルを誤って削除することによって引き起こされるパニックの問題を修正します[＃7925](https://github.com/tikv/tikv/pull/7925)
     -   メッセージパッケージが大きすぎるために発生するgRPC切断を修正します[＃7822](https://github.com/tikv/tikv/pull/7822)

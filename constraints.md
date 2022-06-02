@@ -1,7 +1,6 @@
 ---
-title: Constraints
-summary: Learn how SQL Constraints apply to TiDB.
-aliases: ['/docs/dev/constraints/','/docs/dev/reference/sql/constraints/']
+title: 制約
+summary: SQL制約がTiDBにどのように適用されるかを学びます。
 ---
 
 # 制約 {#constraints}
@@ -273,7 +272,7 @@ Query OK, 0 rows affected (0.10 sec)
 
 ## 外部キー {#foreign-key}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > TiDBは、外部キー制約のサポートが制限されています。
 

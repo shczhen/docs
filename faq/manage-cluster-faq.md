@@ -1,6 +1,6 @@
 ---
-title: Cluster Management FAQs
-summary: Learn about the FAQs related to TiDB cluster management.
+title: クラスタ管理に関するFAQ
+summary: TiDBクラスタ管理に関連するFAQについて学びます。
 ---
 
 # クラスタ管理に関するFAQ {#cluster-management-faqs}
@@ -8,6 +8,8 @@ summary: Learn about the FAQs related to TiDB cluster management.
 このドキュメントは、TiDBクラスタ管理に関連するFAQをまとめたものです。
 
 ## 日常の管理 {#daily-management}
+
+このセクションでは、日常のクラスタ管理中に発生する可能性のある一般的な問題、その原因、および解決策について説明します。
 
 ### TiDBにログインする方法は？ {#how-to-log-into-tidb}
 
@@ -35,16 +37,23 @@ MySQLと同様に、TiDBにはシステムテーブルも含まれており、�
 
 ### TiDBを安全に停止する方法は？ {#how-to-safely-stop-tidb}
 
-`kill`を直接使用してすべてのサービスを強制終了します。 TiDBのコンポーネントは`graceful shutdown`を実行します。
+-   ロードバランサーが実行されている場合（推奨）：ロードバランサーを停止し、SQLステートメント`SHUTDOWN`を実行します。次に、TiDBは、すべてのセッションが終了するまで、 [`graceful-wait-before-shutdown`](/tidb-configuration-file.md#graceful-wait-before-shutdown-new-in-v50)で指定された期間待機します。その後、TiDBは実行を停止します。
+
+-   ロードバランサーが実行されていない場合： `SHUTDOWN`ステートメントを実行します。その後、TiDBコンポーネントは正常に停止します。
 
 ### <code>kill</code>はTiDBで実行できますか？ {#can-code-kill-code-be-executed-in-tidb}
 
--   `kill`のDMLステートメントを実行できます。最初に`show processlist`を使用してセッションに対応するIDを見つけ、次に`kill tidb [session id]`を実行します。
--   `kill`のDDLステートメントを使用できます。最初に`admin show ddl jobs`を使用して、強制終了する必要のあるDDLジョブのIDを見つけてから、 `admin cancel ddl jobs 'job_id' [, 'job_id'] ...`を実行します。詳細については、 [`ADMIN`ステートメント](/sql-statements/sql-statement-admin.md)を参照してください。
+-   DMLステートメントを強制終了します。
+
+    最初に`information_schema.cluster_processlist`を使用して、TiDBインスタンスアドレスとセッションIDを見つけます。 DMLステートメントを実行しているTiDBインスタンスにクライアントを直接接続します。次に、 `kill tidb session_id`ステートメントを実行します。
+
+    クライアントが別のTiDBインスタンスに接続するか、クライアントとTiDBクラスタの間にプロキシがある場合、 `kill tidb session_id`ステートメントが別のTiDBインスタンスにルーティングされ、別のセッションが誤って終了する可能性があります。詳細については、 [`KILL`](/sql-statements/sql-statement-kill.md)を参照してください。
+
+-   DDLステートメントを強制終了します。最初に`admin show ddl jobs`を使用して終了する必要のあるDDLジョブのIDを見つけてから、 `admin cancel ddl jobs 'job_id' [, 'job_id'] ...`を実行します。詳細については、 [`ADMIN`ステートメント](/sql-statements/sql-statement-admin.md)を参照してください。
 
 ### TiDBはセッションタイムアウトをサポートしていますか？ {#does-tidb-support-session-timeout}
 
-TiDBは現在、データベースレベルでのセッションタイムアウトをサポートしていません。現在、タイムアウトを実現したい場合、LB（負荷分散）がない場合は、アプリケーション側で開始したセッションのIDを記録する必要があります。アプリケーションを介してタイムアウトをカスタマイズできます。タイムアウト後、クエリ使用`kill tidb [session id]`を開始したノードに移動してSQLを強制終了する必要があります。現在、セッションタイムアウトを実現するには、アプリケーションプログラムを使用することをお勧めします。タイムアウト期間に達すると、アプリケーション層は例外をスローし、後続のプログラムセグメントの実行を続行します。
+TiDBは現在、 [`wait_timeout`](/system-variables.md#wait_timeout)と[`interactive_timeout`](/system-variables.md#interactive_timeout)の2つのタイムアウトをサポートしています。
 
 ### 本番環境のTiDBバージョン管理戦略は何ですか？頻繁なアップグレードを回避する方法は？ {#what-is-the-tidb-version-management-strategy-for-production-environment-how-to-avoid-frequent-upgrade}
 
@@ -115,13 +124,15 @@ TiDBコミュニティは非常に活発です。 1.0 GAのリリース後、エ
 
 ## PD管理 {#pd-management}
 
+このセクションでは、PD管理中に発生する可能性のある一般的な問題、その原因、および解決策について説明します。
+
 ### PDにアクセスすると、 <code>TiKV cluster is not bootstrapped</code>というメッセージが表示されます {#the-code-tikv-cluster-is-not-bootstrapped-code-message-is-displayed-when-i-access-pd}
 
-PDのほとんどのAPIは、TiKVクラスターが初期化されている場合にのみ使用できます。このメッセージは、新しいクラスターがデプロイされたときにTiKVが開始されていないときに、PDが開始されたときにPDにアクセスした場合に表示されます。このメッセージが表示された場合は、TiKVクラスターを起動してください。 TiKVが初期化されると、PDにアクセスできます。
+PDのほとんどのAPIは、TiKVクラスタが初期化されている場合にのみ使用できます。このメッセージは、新しいクラスタがデプロイされたときにTiKVが開始されていないときに、PDが開始されたときにPDにアクセスした場合に表示されます。このメッセージが表示された場合は、TiKVクラスタを起動してください。 TiKVが初期化されると、PDにアクセスできます。
 
 ### PDの開始時に<code>etcd cluster ID mismatch</code>メッセージが表示されます {#the-code-etcd-cluster-id-mismatch-code-message-is-displayed-when-starting-pd}
 
-これは、PDスタートアップパラメータの`--initial-cluster`に、このクラスタに属していないメンバーが含まれているためです。この問題を解決するには、各メンバーの対応するクラスターを確認し、間違ったメンバーを削除してから、PDを再起動します。
+これは、PDスタートアップパラメータの`--initial-cluster`に、このクラスタに属していないメンバーが含まれているためです。この問題を解決するには、各メンバーの対応するクラスタを確認し、間違ったメンバーを削除してから、PDを再起動します。
 
 ### PDの時刻同期誤差の最大許容値はどれくらいですか？ {#what-s-the-maximum-tolerance-for-time-synchronization-error-of-pd}
 
@@ -129,9 +140,9 @@ PDは同期エラーを許容できますが、エラー値が大きいほど、
 
 ### クライアント接続はどのようにしてPDを見つけますか？ {#how-does-the-client-connection-find-pd}
 
-クライアント接続は、TiDBを介してのみクラスターにアクセスできます。 TiDBはPDとTiKVを接続します。 PDとTiKVはクライアントに対して透過的です。 TiDBがPDに接続すると、PDはTiDBに現在のリーダーを通知します。このPDがリーダーでない場合、TiDBはリーダーPDに再接続します。
+クライアント接続は、TiDBを介してのみクラスタにアクセスできます。 TiDBはPDとTiKVを接続します。 PDとTiKVはクライアントに対して透過的です。 TiDBがPDに接続すると、PDはTiDBに現在のリーダーを通知します。このPDがリーダーでない場合、TiDBはリーダーPDに再接続します。
 
-### TiKVストアの各ステータス（アップ、切断、オフライン、ダウン、トゥームストーン）間の関係は何ですか？ {#what-is-the-relationship-between-each-status-up-disconnect-offline-down-tombstone-of-a-tikv-store}
+### TiKVストアの各ステータス（アップ、切断、オフライン、ダウン、トゥームストーン）の間にはどのような関係がありますか？ {#what-is-the-relationship-between-each-status-up-disconnect-offline-down-tombstone-of-a-tikv-store}
 
 各ステータスの関係については、 [TiKVストアの各ステータス間の関係](/tidb-scheduling.md#information-collection)を参照してください。
 
@@ -148,11 +159,11 @@ PD制御を使用して、TiKVストアのステータス情報を確認でき�
 
 TiKVインスタンスの総数が、設定したレプリカの数以上であることを常に確認してください。たとえば、3つのレプリカには少なくとも3つのTiKVインスタンスが必要です。レプリカの数を増やす前に、追加のストレージ要件を見積もる必要があります。 pd-ctlの詳細については、 [PD制御ユーザーガイド](/pd-control.md)を参照してください。
 
-### コマンドラインクラスター管理ツールがない場合にクラスター全体のヘルスステータスを確認するにはどうすればよいですか？ {#how-to-check-the-health-status-of-the-whole-cluster-when-lacking-command-line-cluster-management-tools}
+### コマンドラインクラスタ管理ツールがない場合にクラスタ全体のヘルスステータスを確認するにはどうすればよいですか？ {#how-to-check-the-health-status-of-the-whole-cluster-when-lacking-command-line-cluster-management-tools}
 
-pd-ctlツールを使用して、クラスターの一般的なステータスを判別できます。クラスターのステータスの詳細については、モニターを使用して判別する必要があります。
+pd-ctlツールを使用して、クラスタの一般的なステータスを判別できます。クラスタのステータスの詳細については、モニターを使用して判別する必要があります。
 
-### オフラインのクラスターノードの監視データを削除するにはどうすればよいですか？ {#how-to-delete-the-monitoring-data-of-a-cluster-node-that-is-offline}
+### オフラインのクラスタノードの監視データを削除するにはどうすればよいですか？ {#how-to-delete-the-monitoring-data-of-a-cluster-node-that-is-offline}
 
 オフラインノードは通常、TiKVノードを示します。オフラインプロセスがpd-ctlまたはモニターのどちらで終了したかを判別できます。ノードがオフラインになったら、次の手順を実行します。
 
@@ -160,6 +171,8 @@ pd-ctlツールを使用して、クラスターの一般的なステータス�
 2.  Prometheus構成ファイルから対応するノードの`node_exporter`のデータを削除します。
 
 ## TiDBサーバー管理 {#tidb-server-management}
+
+このセクションでは、TiDBサーバーの管理中に発生する可能性のある一般的な問題、その原因、および解決策について説明します。
 
 ### TiDBで<code>lease</code>パラメータを設定するにはどうすればよいですか？ {#how-to-set-the-code-lease-code-parameter-in-tidb}
 
@@ -179,10 +192,10 @@ DDL要求を受信するTiDBサーバーインスタンスが、DDL所有者が�
 
 考えられる理由：
 
--   複数のDDLステートメントを一緒に実行すると、最後のいくつかのDDLステートメントの実行が遅くなる可能性があります。これは、DDLステートメントがTiDBクラスターでシリアルに実行されるためです。
--   クラスターを正常に開始した後、最初のDDL操作の実行に時間がかかる場合があります（通常は約30秒）。これは、TiDBクラスターがDDLステートメントを処理するリーダーを選択しているためです。
+-   複数のDDLステートメントを一緒に実行すると、最後のいくつかのDDLステートメントの実行が遅くなる可能性があります。これは、DDLステートメントがTiDBクラスタでシリアルに実行されるためです。
+-   クラスタを正常に開始した後、最初のDDL操作の実行に時間がかかる場合があります（通常は約30秒）。これは、TiDBクラスタがDDLステートメントを処理するリーダーを選択しているためです。
 -   以下の条件を満たした場合、TiDB開始後の最初の10分間のDDLステートメントの処理時間は通常の場合よりもはるかに長くなります。1）TiDBを停止しているとき（停電の場合を含む）、TiDBは通常どおりPDと通信できません。 ）; 2）TiDBは`kill -9`コマンドで停止しているため、PDからの登録データのクリーンアップに間に合いません。この期間中にDDLステートメントを実行する場合、各DDLの状態変化のために、2 *リース（リース= 45秒）を待つ必要があります。
--   クラスター内のTiDBサーバーとPDサーバーの間で通信の問題が発生した場合、TiDBサーバーはPDサーバーからバージョン情報を時間内に取得または更新できません。この場合、各DDLの状態処理のために2*リースを待つ必要があります。
+-   クラスタのTiDBサーバーとPDサーバーの間で通信の問題が発生した場合、TiDBサーバーはPDサーバーからバージョン情報を時間内に取得または更新できません。この場合、各DDLの状態処理のために2*リースを待つ必要があります。
 
 ### TiDBのバックエンドストレージエンジンとしてS3を使用できますか？ {#can-i-use-s3-as-the-backend-storage-engine-in-tidb}
 
@@ -264,25 +277,27 @@ GROUP BY
 
 さらに、上記のステートメントでは：
 
--   `store_size_amplification`は、クラスター圧縮率の平均を示します。 `SELECT * FROM METRICS_SCHEMA.store_size_amplification;`を使用してこの情報を照会することに加えて、 <strong>GrafanaMonitoringPD-統計バランス</strong>パネルで各ノードの<strong>サイズ増幅</strong>メトリックを確認することもできます。クラスタ圧縮率の平均は、すべてのノードのサイズ増幅の平均です。
+-   `store_size_amplification`は、クラスタ圧縮率の平均を示します。 `SELECT * FROM METRICS_SCHEMA.store_size_amplification;`を使用してこの情報を照会することに加えて、 **GrafanaMonitoringPD-統計バランス**パネルで各ノードの<strong>サイズ増幅</strong>メトリックを確認することもできます。クラスタ圧縮率の平均は、すべてのノードのサイズ増幅の平均です。
 -   `Approximate_Size`は、圧縮前のレプリカ内のテーブルのサイズを示します。これは概算値であり、正確な値ではないことに注意してください。
 -   `Disk_Size`は、圧縮後のテーブルのサイズを示します。これは概算値であり、 `Approximate_Size`と`store_size_amplification`に従って計算できます。
 
 ## TiKVサーバー管理 {#tikv-server-management}
 
-### TiKVクラスターのレプリカの推奨数はいくつですか？高可用性のために最小数を維持する方が良いですか？ {#what-is-the-recommended-number-of-replicas-in-the-tikv-cluster-is-it-better-to-keep-the-minimum-number-for-high-availability}
+このセクションでは、TiKVサーバーの管理中に発生する可能性のある一般的な問題、その原因、および解決策について説明します。
 
-テスト環境には、リージョンごとに3つのレプリカで十分です。ただし、実稼働シナリオでは、3ノード未満のTiKVクラスターを操作しないでください。インフラストラクチャ、ワークロード、および復元力のニーズに応じて、この数を増やすことをお勧めします。コピーが高いほどパフォーマンスは低下しますが、セキュリティは高くなることに注意してください。
+### TiKVクラスタのレプリカの推奨数はいくつですか？高可用性のために最小数を維持する方が良いですか？ {#what-is-the-recommended-number-of-replicas-in-the-tikv-cluster-is-it-better-to-keep-the-minimum-number-for-high-availability}
+
+テスト環境には、リージョンごとに3つのレプリカで十分です。ただし、実稼働シナリオでは、3ノード未満のTiKVクラスタを操作しないでください。インフラストラクチャ、ワークロード、および復元力のニーズに応じて、この数を増やすことをお勧めします。コピーが高いほどパフォーマンスは低下しますが、セキュリティは高くなることに注意してください。
 
 ### TiKVの起動時に、 <code>cluster ID mismatch</code>メッセージが表示されます {#the-code-cluster-id-mismatch-code-message-is-displayed-when-starting-tikv}
 
-これは、ローカルTiKVに格納されているクラスターIDがPDで指定されているクラスターIDと異なるためです。新しいPDクラスターがデプロイされると、PDはランダムなクラスターIDを生成します。 TiKVはPDからクラスターIDを取得し、初期化時にクラスターIDをローカルに保存します。次回TiKVを起動すると、ローカルクラスターIDとPDのクラスターIDがチェックされます。クラスタIDが一致しない場合は、 `cluster ID mismatch`メッセージが表示され、TiKVが終了します。
+これは、ローカルTiKVに格納されているクラスタIDがPDで指定されているクラスタIDと異なるためです。新しいPDクラスタがデプロイされると、PDはランダムなクラスタIDを生成します。 TiKVはPDからクラスタIDを取得し、初期化時にクラスタIDをローカルに保存します。次回TiKVを起動すると、ローカルクラスタIDとPDのクラスタIDがチェックされます。クラスタIDが一致しない場合は、 `cluster ID mismatch`メッセージが表示され、TiKVが終了します。
 
-以前にPDクラスターをデプロイした後、PDデータを削除して新しいPDクラスターをデプロイした場合、TiKVが古いデータを使用して新しいPDクラスターに接続するため、このエラーが発生します。
+以前にPDクラスタをデプロイした後、PDデータを削除して新しいPDクラスタをデプロイした場合、TiKVが古いデータを使用して新しいPDクラスタに接続するため、このエラーが発生します。
 
 ### TiKVを起動すると、 <code>duplicated store address</code>メッセージが表示されます {#the-code-duplicated-store-address-code-message-is-displayed-when-starting-tikv}
 
-これは、スタートアップパラメータのアドレスが他のTiKVによってPDクラスタに登録されているためです。このエラーの原因となる一般的な条件：TiKV `--data-dir`で指定されたパスにデータフォルダーがありません（削除または移動後に更新--data-dirがありません）、前のパラメーターでTiKVを再起動してください.pd-ctlの[ストア削除](https://github.com/pingcap/pd/tree/55db505e8f35e8ab4e00efd202beb27a8ecc40fb/tools/pd-ctl#store-delete--label--weight-store_id----jqquery-string)の機能を試してください。前のストアを削除してから、TiKVを再起動します。
+これは、スタートアップパラメータのアドレスが他のTiKVによってPDクラスタに登録されているためです。このエラーの原因となる一般的な条件：TiKV `--data-dir`で指定されたパスにデータフォルダーがありません（削除または移動後に更新--data-dirがありません）、前のパラメーターでTiKVを再起動します.pd-ctlの[ストア削除](https://github.com/pingcap/pd/tree/55db505e8f35e8ab4e00efd202beb27a8ecc40fb/tools/pd-ctl#store-delete--label--weight-store_id----jqquery-string)の機能を試してください。前のストアを削除してから、TiKVを再起動します。
 
 ### TiKVプライマリノードとセカンダリノードは同じ圧縮アルゴリズムを使用していますが、なぜ結果が異なるのですか？ {#tikv-primary-node-and-secondary-node-use-the-same-compression-algorithm-why-the-results-are-different}
 
@@ -320,7 +335,7 @@ TiKVで大量のデータを読み書きすると、高いI / O、メモリ、�
 
 ### TiKVはSAS/SATAディスクまたはSSD/SASディスクの混合展開をサポートしていますか？ {#does-tikv-support-sas-sata-disks-or-mixed-deployment-of-ssd-sas-disks}
 
-いいえ。OLTPシナリオの場合、TiDBはデータアクセスと操作のために高I/Oディスクを必要とします。一貫性の高い分散データベースとして、TiDBには、レプリカレプリケーションや最下層ストレージの圧縮などの書き込み増幅機能があります。したがって、TiDBのベストプラクティスでは、ストレージディスクとしてNVMeSSDを使用することをお勧めします。 TiKVとPDの混合展開はサポートされていません。
+いいえ。OLTPシナリオの場合、TiDBはデータアクセスと操作のために高I/Oディスクを必要とします。強一貫性のある分散データベースとして、TiDBには、レプリカレプリケーションや最下層ストレージの圧縮などの書き込み増幅機能があります。したがって、TiDBのベストプラクティスでは、ストレージディスクとしてNVMeSSDを使用することをお勧めします。 TiKVとPDの混合展開はサポートされていません。
 
 ### キーデータテーブルの範囲は、データアクセスの前に分割されていますか？ {#is-the-range-of-the-key-data-table-divided-before-data-access}
 
@@ -377,11 +392,13 @@ TiKVは、インターフェースの個別呼び出しをサポートしてい�
 
 TiKVのメモリ使用量は、主にRocksDBのブロックキャッシュから発生します。これは、デフォルトでシステムメモリサイズの40％です。 TiKVでOOMエラーが頻繁に発生する場合は、 `block-cache-size`の値が高すぎるかどうかを確認する必要があります。さらに、複数のTiKVインスタンスが単一のマシンにデプロイされている場合、複数のインスタンスがOOMエラーを引き起こすシステムメモリを使いすぎないように、パラメータを明示的に設定する必要があります。
 
-### TiDBデータとRawKVデータの両方を同じTiKVクラスターに保存できますか？ {#can-both-tidb-data-and-rawkv-data-be-stored-in-the-same-tikv-cluster}
+### TiDBデータとRawKVデータの両方を同じTiKVクラスタに保存できますか？ {#can-both-tidb-data-and-rawkv-data-be-stored-in-the-same-tikv-cluster}
 
 いいえ。TiDB（またはトランザクションAPIから作成されたデータ）は特定のキー形式に依存しています。 RawKV APIから作成されたデータ（または他のRawKVベースのサービスからのデータ）とは互換性がありません。
 
 ## TiDBテスト {#tidb-testing}
+
+このセクションでは、TiDBテスト中に発生する可能性のある一般的な問題、その原因、および解決策について説明します。
 
 ### Sysbenchを使用したTiDBのパフォーマンステストの結果は何ですか？ {#what-is-the-performance-test-result-for-tidb-using-sysbench}
 
@@ -390,7 +407,7 @@ TiKVのメモリ使用量は、主にRocksDBのブロックキャッシュから
 -   ベンチマークテストに時間をかけすぎないでください。 TiDBを使用するシナリオの違いにもっと注意を払ってください。
 -   [Sysbenchを使用したTiDBのパフォーマンステスト結果](/benchmark/v3.0-performance-benchmarking-with-sysbench.md)を参照してください。
 
-### TiDBクラスター容量（QPS）とノード数の関係は何ですか？ TiDBはMySQLとどのように比較されますか？ {#what-s-the-relationship-between-the-tidb-cluster-capacity-qps-and-the-number-of-nodes-how-does-tidb-compare-to-mysql}
+### TiDBクラスタ容量（QPS）とノード数の関係は何ですか？ TiDBはMySQLとどのように比較されますか？ {#what-s-the-relationship-between-the-tidb-cluster-capacity-qps-and-the-number-of-nodes-how-does-tidb-compare-to-mysql}
 
 -   10ノード内では、TiDB書き込み容量（TPSの挿入）とノード数の関係は約40％直線的に増加します。 MySQLはシングルノード書き込みを使用するため、その書き込み容量をスケーリングすることはできません。
 -   MySQLでは、セカンダリデータベースを追加することで読み取り容量を増やすことができますが、多くの問題があるシャーディングを使用しない限り、書き込み容量を増やすことはできません。
@@ -404,6 +421,10 @@ TiDBは、小さなサイズのデータと限られたリージョンでは同�
 
 ## バックアップと復元 {#backup-and-restoration}
 
+このセクションでは、バックアップと復元中に発生する可能性のある一般的な問題、その原因、および解決策について説明します。
+
 ### TiDBでデータをバックアップする方法は？ {#how-to-back-up-data-in-tidb}
 
-現在、大量のデータのバックアップには、 [BR](/br/backup-and-restore-tool.md)を使用することをお勧めします。それ以外の場合、推奨されるツールは[団子](/dumpling-overview.md)です。公式のMySQLツール`mysqldump`はデータのバックアップと復元のためにTiDBでもサポートされていますが、そのパフォーマンスは[BR](/br/backup-and-restore-tool.md)よりも悪く、大量のデータのバックアップと復元にははるかに長い時間が必要です。
+現在、大量のデータのバックアップには、 [BR](/br/backup-and-restore-tool.md)を使用することをお勧めします。それ以外の場合、推奨されるツールは[Dumpling](/dumpling-overview.md)です。公式のMySQLツール`mysqldump`はデータのバックアップと復元のためにTiDBでもサポートされていますが、そのパフォーマンスは[BR](/br/backup-and-restore-tool.md)よりも悪く、大量のデータのバックアップと復元にははるかに長い時間が必要です。
+
+BRに関するその他のFAQについては、 [BRのよくある質問](/br/backup-and-restore-faq.md)を参照してください。

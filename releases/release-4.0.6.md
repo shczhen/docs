@@ -1,5 +1,5 @@
 ---
-title: TiDB 4.0.6 Release Notes
+title: TiDB4.0.6リリースノート
 ---
 
 # TiDB4.0.6リリースノート {#tidb-4-0-6-release-notes}
@@ -16,9 +16,9 @@ TiDBバージョン：4.0.6
 
 -   TiDBダッシュボード
 
-    -   クエリエディタと実行UIの追加（実験的） [＃713](https://github.com/pingcap-incubator/tidb-dashboard/pull/713)
+    -   クエリエディタと実行UIを追加する（実験的） [＃713](https://github.com/pingcap-incubator/tidb-dashboard/pull/713)
     -   店舗の場所のトポロジーの視覚化をサポートする[＃719](https://github.com/pingcap-incubator/tidb-dashboard/pull/719)
-    -   クラスター構成UIの追加（実験的） [＃733](https://github.com/pingcap-incubator/tidb-dashboard/pull/733)
+    -   クラスタ構成UIの追加（実験的） [＃733](https://github.com/pingcap-incubator/tidb-dashboard/pull/733)
     -   現在のセッションの共有をサポートする[＃741](https://github.com/pingcap-incubator/tidb-dashboard/pull/741)
     -   SQLステートメントリスト[＃746](https://github.com/pingcap-incubator/tidb-dashboard/pull/746)での実行プランの数の表示をサポート
 
@@ -82,7 +82,7 @@ TiDBバージョン：4.0.6
 
         -   サマリーログ[＃486](https://github.com/pingcap/br/issues/486)にリアルタイムのコストを追加します
 
-    -   団子
+    -   Dumpling
 
         -   列名[＃135](https://github.com/pingcap/dumpling/pull/135)で`INSERT`を出力することをサポートします
         -   `--filesize`と`--statement-size`の定義をmydumper5の定義と統合し[＃142](https://github.com/pingcap/dumpling/pull/142)
@@ -149,7 +149,7 @@ TiDBバージョン：4.0.6
 
 -   TiKV
 
-    -   照合が有効になっている場合の非インデックス列の推定エラーを修正[＃8620](https://github.com/tikv/tikv/pull/8620)
+    -   照合順序が有効になっている場合の非インデックス列の推定エラーを修正[＃8620](https://github.com/tikv/tikv/pull/8620)
     -   リージョン転送[＃8460](https://github.com/tikv/tikv/pull/8460)のプロセス中にGreenGCがロックを見逃す可能性がある問題を修正します
     -   Raftメンバーシップの変更中にTiKVの実行が非常に遅い場合に発生するパニックの問題を修正します[＃8497](https://github.com/tikv/tikv/pull/8497)
     -   PD同期要求を呼び出すときにPDクライアントスレッドと他のスレッドの間で発生するデッドロックの問題を修正します[＃8612](https://github.com/tikv/tikv/pull/8612)
@@ -188,7 +188,7 @@ TiDBバージョン：4.0.6
         -   チェックサム[＃479](https://github.com/pingcap/br/pull/479)中に発生する可能性のあるパニックを修正する
         -   PDリーダー[＃496](https://github.com/pingcap/br/pull/496)の変更後に発生する可能性のあるパニックを修正します
 
-    -   団子
+    -   Dumpling
 
         -   バイナリタイプの`NULL`値が適切に処理されない問題を修正します[＃137](https://github.com/pingcap/dumpling/pull/137)
 

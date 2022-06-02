@@ -1,7 +1,6 @@
 ---
-title: TiDB Limitations
-summary: Learn the usage limitations of TiDB.
-aliases: ['/docs/dev/tidb-limitations/']
+title: TiDBの制限
+summary: TiDBの使用制限について学びます。
 ---
 
 # TiDBの制限 {#tidb-limitations}

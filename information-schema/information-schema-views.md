@@ -1,6 +1,6 @@
 ---
-title: VIEWS
-summary: Learn the `VIEWS` information_schema table.
+title: ビュー
+summary: `VIEWS`information_schemaテーブルを学びます。
 ---
 
 # ビュー {#views}

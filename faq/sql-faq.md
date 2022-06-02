@@ -1,6 +1,6 @@
 ---
-title: SQL FAQs
-summary: Learn about the FAQs related to TiDB SQL.
+title: SQLのFAQ
+summary: TiDBSQLに関連するFAQについて学びます。
 ---
 
 # SQLのFAQ {#sql-faqs}
@@ -91,7 +91,7 @@ TiDBの自動インクリメントID機能は、自動的にインクリメン�
 
 ## <code>sql_mode</code>でsql_modeを変更するにはどうすればよいですか？ {#how-do-i-modify-the-code-sql-mode-code-in-tidb}
 
-TiDBは、SESSIONまたはGLOBALベースで[`sql_mode`](/system-variables.md#sql_mode)のシステム変数の変更をサポートします。 [`GLOBAL`](/sql-statements/sql-statement-set-variable.md)のスコープ変数への変更は、クラスターの残りのサーバーに伝播し、再起動後も保持されます。これは、各TiDBサーバーで`sql_mode`の値を変更する必要がないことを意味します。
+TiDBは、SESSIONまたはGLOBALベースで[`sql_mode`](/system-variables.md#sql_mode)のシステム変数の変更をサポートします。 [`GLOBAL`](/sql-statements/sql-statement-set-variable.md)のスコープ変数への変更は、クラスタの残りのサーバーに伝播し、再起動後も保持されます。これは、各TiDBサーバーで`sql_mode`の値を変更する必要がないことを意味します。
 
 ## エラー： <code>java.sql.BatchUpdateExecption:statement count 5001 exceeds the transaction limitation</code>ます {#error-code-java-sql-batchupdateexecption-statement-count-5001-exceeds-the-transaction-limitation-code-while-using-sqoop-to-write-data-into-tidb-in-batches}
 
@@ -124,6 +124,10 @@ Sqoopでは、 `--batch`は各バッチで100個のステートメントをコ�
 
 `DELETE` 、および`TRUNCATE`の操作のいずれも、データをすぐに解放しませ`DROP` 。 `TRUNCATE`および`DROP`の操作では、TiDB GC（ガベージコレクション）時間（デフォルトでは10分）の後、データが削除され、スペースが解放されます。 `DELETE`回の操作では、データは削除されますが、圧縮が実行されるまでスペースはすぐには解放されません。
 
+## TiDBは<code>REPLACE INTO</code>構文をサポートしていますか？ {#does-tidb-support-the-code-replace-into-code-syntax}
+
+はい。例外は、 `LOAD DATA`が現在`REPLACE INTO`構文をサポートしていないことです。
+
 ## データが削除された後、クエリ速度が遅くなるのはなぜですか？ {#why-does-the-query-speed-get-slow-after-data-is-deleted}
 
 大量のデータを削除すると、多くの役に立たないキーが残り、クエリの効率に影響します。現在、この問題を解決することが期待される[リージョンマージ](/best-practices/massive-regions-best-practices.md)つの機能が開発中です。詳細については、 [TiDBベストプラクティスのデータセクションの削除](https://en.pingcap.com/blog/tidb-best-practice/#write)を参照してください。
@@ -136,8 +140,8 @@ TiDBはマルチバージョン同時実行制御（MVCC）を使用するため
 
 TiDB1の表示内容は`SHOW PROCESSLIST`とほぼ同じ`SHOW PROCESSLIST` 。 `show processlist`はシステムプロセスIDを表示しません。表示されるIDは、現在のセッションIDです。 `show processlist`と`show processlist`の違いは次のとおりです。
 
--   TiDBは分散データベースであるため、 `tidb-server`インスタンスはSQLステートメントを解析および実行するためのステートレスエンジンです（詳細については、 [TiDBアーキテクチャ](/tidb-architecture.md)を参照してください）。 `show processlist`は、クラスターで実行されているすべてのセッションのリストではなく、ユーザーがMySQLクライアントからログインする`tidb-server`インスタンスで実行されたセッションリストを表示します。ただし、MySQLはスタンドアロンデータベースであり、その`show processlist`はMySQLで実行されたすべてのSQLステートメントを表示します。
--   TiDBの`State`列は、クエリの実行中に継続的に更新されません。 TiDBは並列クエリをサポートしているため、各ステートメントは一度に複数の<em>状態</em>になる可能性があり、したがって単一の値に単純化することは困難です。
+-   TiDBは分散データベースであるため、 `tidb-server`インスタンスはSQLステートメントを解析および実行するためのステートレスエンジンです（詳細については、 [TiDBアーキテクチャ](/tidb-architecture.md)を参照してください）。 `show processlist`は、クラスタで実行されているすべてのセッションのリストではなく、ユーザーがMySQLクライアントからログインする`tidb-server`インスタンスで実行されたセッションリストを表示します。ただし、MySQLはスタンドアロンデータベースであり、その`show processlist`はMySQLで実行されたすべてのSQLステートメントを表示します。
+-   TiDBの`State`列は、クエリの実行中に継続的に更新されません。 TiDBは並列クエリをサポートしているため、各ステートメントは一度に複数の*状態*になる可能性があり、したがって単一の値に単純化することは困難です。
 
 ## SQLコミットの実行優先度を制御または変更するにはどうすればよいですか？ {#how-to-control-or-change-the-execution-priority-of-sql-commits}
 
@@ -190,7 +194,7 @@ TiDBは、 `schema`回を使用してSQLステートメントを処理し、オ�
 -   DML要求を受け入れるTiDBサーバーは、 `schema information`を長時間ロードできません（TiDBとPDまたはTiKV間の接続障害が原因である可能性があります）。この期間中に、多くのDDLステートメントが実行されたため、100を超える`schema`のバージョン変更が発生します。
 -   TiDBの再起動後、最初のDDL操作が実行される前に、DML操作が実行され、最初のDDL操作が発生します（つまり、最初のDDL操作が実行される前に、DMLに対応するトランザクションが開始されます。最初の`schema`バージョンの後DDLが変更されると、DMLに対応するトランザクションがコミットされます）、このDML操作はこのエラーを報告します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   現在、TiDBは`schema`のバージョン変更をすべてキャッシュしているわけではありません。
 > -   DDL操作ごとに、 `schema`のバージョン変更の数は、対応する`schema state`のバージョン変更の数と同じです。

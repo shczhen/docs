@@ -1,7 +1,6 @@
 ---
-title: Tune TiFlash Performance
-summary: Learn how to tune the performance of TiFlash.
-aliases: ['/docs/dev/tiflash/tune-tiflash-performance/','/docs/dev/reference/tiflash/tune-performance/']
+title: TiFlashのパフォーマンスを調整する
+summary: TiFlashのパフォーマンスを調整する方法を学びます。
 ---
 
 # TiFlashのパフォーマンスを調整する {#tune-tiflash-performance}

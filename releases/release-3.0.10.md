@@ -1,6 +1,5 @@
 ---
-title: TiDB 3.0.10 Release Notes
-aliases: ['/docs/dev/releases/release-3.0.10/','/docs/dev/releases/3.0.10/']
+title: TiDB3.0.10リリースノート
 ---
 
 # TiDB3.0.10リリースノート {#tidb-3-0-10-release-notes}
@@ -11,7 +10,7 @@ TiDBバージョン：3.0.10
 
 TiDB Ansibleバージョン：3.0.10
 
-> <strong>警告：</strong>
+> **警告：**
 >
 > このバージョンにはいくつかの既知の問題があり、これらの問題は新しいバージョンで修正されています。最新の3.0.xバージョンを使用することをお勧めします。
 
@@ -44,7 +43,7 @@ TiDB Ansibleバージョン：3.0.10
 -   `&`などのJSONの文字が誤って[＃14637](https://github.com/pingcap/tidb/pull/14637)される問題を修正し`>` `<`
 -   `HashJoin`の操作がハッシュテーブルを構築しているときに過度のメモリ使用量によって引き起こされるシステムパニックの問題を修正します[＃14642](https://github.com/pingcap/tidb/pull/14642)
 -   SQLバインディングが不正なレコードを処理するときに誤った処理ロジックによって引き起こされるパニックの問題を修正します[＃14645](https://github.com/pingcap/tidb/pull/14645)
--   ix小数部の計算に切り捨てられたエラー検出を追加することによるMySQLの非互換性の問題[＃14673](https://github.com/pingcap/tidb/pull/14673)
+-   ix小数点以下の除算の計算に切り捨てられたエラー検出を追加することによるMySQLの非互換性の問題[＃14673](https://github.com/pingcap/tidb/pull/14673)
 -   存在しないテーブルに対する特権をユーザーに正常に付与する問題を修正します[＃14611](https://github.com/pingcap/tidb/pull/14611)
 
 ## TiKV {#tikv}

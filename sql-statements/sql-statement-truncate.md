@@ -1,7 +1,6 @@
 ---
-title: TRUNCATE | TiDB SQL Statement Reference
-summary: An overview of the usage of TRUNCATE for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-truncate/','/docs/dev/reference/sql/statements/truncate/']
+title: 切り捨て| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのTRUNCATEの使用法の概要。
 ---
 
 # 切り捨てる {#truncate}
@@ -12,15 +11,15 @@ aliases: ['/docs/dev/sql-statements/sql-statement-truncate/','/docs/dev/referenc
 
 ## あらすじ {#synopsis}
 
-<strong>TruncateTableStmt：</strong>
+**TruncateTableStmt：**
 
 ![TruncateTableStmt](/media/sqlgram/TruncateTableStmt.png)
 
-<strong>OptTable：</strong>
+**OptTable：**
 
 ![OptTable](/media/sqlgram/OptTable.png)
 
-<strong>TableName：</strong>
+**TableName：**
 
 ![TableName](/media/sqlgram/TableName.png)
 

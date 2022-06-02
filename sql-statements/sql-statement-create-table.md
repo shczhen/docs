@@ -1,7 +1,6 @@
 ---
-title: CREATE TABLE | TiDB SQL Statement Reference
-summary: An overview of the usage of CREATE TABLE for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-create-table/','/docs/dev/reference/sql/statements/create-table/']
+title: テーブルの作成| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのCREATETABLEの使用法の概要。
 ---
 
 # CREATE TABLE {#create-table}
@@ -88,7 +87,7 @@ OnCommitOpt ::=
     ('ON' 'COMMIT' 'DELETE' 'ROWS')?
 ```
 
-次の<em>table_options</em>がサポートされています。 `AVG_ROW_LENGTH` `ENGINE` `MIN_ROWS` `CONNECTION`の`DELAY_KEY_WRITE`は`MAX_ROWS` `ROW_FORMAT` `STATS_PERSISTENT` `CHECKSUM`が、 `KEY_BLOCK_SIZE`され`COMPRESSION` 。
+次の*table_options*がサポートされています。 `AVG_ROW_LENGTH` `ENGINE` `MIN_ROWS` `CONNECTION`の`DELAY_KEY_WRITE`は`MAX_ROWS` `ROW_FORMAT` `STATS_PERSISTENT` `CHECKSUM`が、 `KEY_BLOCK_SIZE`され`COMPRESSION` 。
 
 | オプション                                        | 説明                                                                                | 例                                  |
 | -------------------------------------------- | --------------------------------------------------------------------------------- | ---------------------------------- |
@@ -100,7 +99,7 @@ OnCommitOpt ::=
 | `CHARACTER SET`                              | テーブルに[キャラクターセット](/character-set-and-collation.md)を指定するには                          | `CHARACTER SET` =&#39;utf8mb4&#39; |
 | `COMMENT`                                    | コメント情報                                                                            | `COMMENT` =&#39;コメント情報&#39;        |
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `split-table`構成オプションはデフォルトで有効になっています。有効にすると、新しく作成されたテーブルごとに個別のリージョンが作成されます。詳細については、 [TiDB構成ファイル](/tidb-configuration-file.md)を参照してください。
 

@@ -1,6 +1,5 @@
 ---
-title: TiDB 3.1.0 GA Release Notes
-aliases: ['/docs/dev/releases/release-3.1.0-ga/','/docs/dev/releases/3.1.0-ga/']
+title: TiDB3.1.0GAリリースノート
 ---
 
 # TiDB3.1.0GAリリースノート {#tidb-3-1-0-ga-release-notes}
@@ -21,7 +20,7 @@ TiDB Ansibleバージョン：3.1.0 GA
 
     -   バックアップと復元（BR）
 
-        -   BRは、3.1GA1より前の[＃233](https://github.com/pingcap/br/pull/233)クラスターからのデータの復元をサポートしていません。
+        -   BRは、3.1GA1より前の[＃233](https://github.com/pingcap/br/pull/233)クラスタからのデータの復元をサポートしていません。
 
 ## 新機能 {#new-features}
 

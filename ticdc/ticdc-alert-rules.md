@@ -1,11 +1,11 @@
 ---
-title: TiCDC Alert Rules
-summary: Learn about TiCDC alert rules and how to handle the alerts.
+title: TiCDCアラートルール
+summary: TiCDCアラートルールとアラートの処理方法について説明します。
 ---
 
 # TiCDCアラートルール {#ticdc-alert-rules}
 
-このドキュメントでは、TiCDCアラートルールと対応するソリューションについて説明します。降順で、重大度レベルは次のとおりです。<strong>重大</strong>、<strong>警告</strong>。
+このドキュメントでは、TiCDCアラートルールと対応するソリューションについて説明します。降順で、重大度レベルは次のとおりです。**重大**、<strong>警告</strong>。
 
 ## 重要なアラート {#critical-alerts}
 
@@ -67,7 +67,7 @@ summary: Learn about TiCDC alert rules and how to handle the alerts.
 
 -   説明：
 
-    TiCDCクラスターには複数の所有者がいます。
+    TiCDCクラスタには複数の所有者がいます。
 
 -   解決：
 

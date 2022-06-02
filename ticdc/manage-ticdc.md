@@ -1,37 +1,36 @@
 ---
-title: Manage TiCDC Cluster and Replication Tasks
-summary: Learn how to manage a TiCDC cluster and replication tasks.
-aliases: ['/docs/dev/ticdc/manage-ticdc/','/docs/dev/reference/tools/ticdc/manage/']
+title: TiCDCクラスターおよびレプリケーションタスクの管理
+summary: TiCDCクラスタとレプリケーションタスクを管理する方法を学びます。
 ---
 
 # TiCDCクラスターおよびレプリケーションタスクの管理 {#manage-ticdc-cluster-and-replication-tasks}
 
-このドキュメントでは、TiUPを使用してTiCDCクラスターをアップグレードし、TiCDCクラスターの構成を変更する方法と、コマンドラインツールを使用してTiCDCクラスターとレプリケーションタスクを管理する方法について説明します`cdc cli` 。
+このドキュメントでは、TiUPを使用してTiCDCクラスタの構成を変更する方法と、コマンドラインツールを使用してTiCDCクラスタとレプリケーションタスクを管理する方法について説明します`cdc cli` 。
 
-HTTPインターフェイス（TiCDC OpenAPI機能）を使用して、TiCDCクラスターおよびレプリケーションタスクを管理することもできます。詳細については、 [TiCDC OpenAPI](/ticdc/ticdc-open-api.md)を参照してください。
+HTTPインターフェイス（TiCDC OpenAPI機能）を使用して、TiCDCクラスタおよびレプリケーションタスクを管理することもできます。詳細については、 [TiCDC OpenAPI](/ticdc/ticdc-open-api.md)を参照してください。
 
 ## TiUPを使用してTiCDCをアップグレードする {#upgrade-ticdc-using-tiup}
 
-このセクションでは、TiUPを使用してTiCDCクラスターをアップグレードする方法を紹介します。次の例では、TiCDCとTiDBクラスター全体をv6.0.0にアップグレードする必要があると想定しています。
+このセクションでは、TiUPを使用してTiCDCクラスタをアップグレードする方法を紹介します。次の例では、TiCDCとTiDBクラスタ全体をv5.4.1にアップグレードする必要があると想定しています。
 
 {{< copyable "" >}}
 
 ```shell
 tiup update --self && \
 tiup update --all && \
-tiup cluster upgrade <cluster-name> v6.0.0
+tiup cluster upgrade <cluster-name> v5.4.1
 ```
 
 ### アップグレードに関する注意事項 {#notes-for-upgrade}
 
 -   `changefeed`の構成はTiCDCv4.0.2で変更されました。詳細については、 [構成ファイルの互換性に関する注意事項](/production-deployment-using-tiup.md#step-3-initialize-cluster-topology-file)を参照してください。
--   問題が発生した場合は、 [TiUPを使用してTiDBをアップグレードする-FAQ](/upgrade-tidb-using-tiup.md#faq)を参照してください。
+-   問題が発生した場合は、 [TiUPを使用してTiDBをアップグレードするFAQ](/upgrade-tidb-using-tiup.md#faq)を参照してください。
 
 ## TiUPを使用してTiCDC構成を変更する {#modify-ticdc-configuration-using-tiup}
 
-このセクションでは、TiUPの[`tiup cluster edit-config`](/tiup/tiup-component-cluster-edit-config.md)コマンドを使用してTiCDCクラスターの構成を変更する方法を紹介します。次の例では、 `gc-ttl`の値をデフォルトの`86400`から`3600` 、つまり1時間に変更します。
+このセクションでは、TiUPの[`tiup cluster edit-config`](/tiup/tiup-component-cluster-edit-config.md)コマンドを使用してTiCDCクラスタの構成を変更する方法を紹介します。次の例では、 `gc-ttl`の値をデフォルトの`86400`から`3600` 、つまり1時間に変更します。
 
-まず、次のコマンドを実行します。 `<cluster-name>`を実際のクラスター名に置き換える必要があります。
+まず、次のコマンドを実行します。 `<cluster-name>`を実際のクラスタ名に置き換える必要があります。
 
 {{< copyable "" >}}
 
@@ -60,14 +59,14 @@ tiup cluster edit-config <cluster-name>
 
 暗号化データ伝送（TLS）の使用の詳細については、 [TiDBコンポーネント間のTLSを有効にする](/enable-tls-between-components.md)を参照してください。
 
-## <code>cdc cli</code>を使用して、クラスターステータスとデータレプリケーションタスクを管理します {#use-code-cdc-cli-code-to-manage-cluster-status-and-data-replication-task}
+## <code>cdc cli</code>を使用して、クラスタステータスとデータレプリケーションタスクを管理します {#use-code-cdc-cli-code-to-manage-cluster-status-and-data-replication-task}
 
-このセクションでは、 `cdc cli`を使用してTiCDCクラスターおよびデータレプリケーションタスクを管理する方法を紹介します。 `cdc cli`は、 `cdc`バイナリを使用して実行される`cli`サブコマンドです。次の説明は、次のことを前提としています。
+このセクションでは、 `cdc cli`を使用してTiCDCクラスタおよびデータレプリケーションタスクを管理する方法を紹介します。 `cdc cli`は、 `cdc`バイナリを使用して実行される`cli`サブコマンドです。次の説明は、次のことを前提としています。
 
 -   `cli`コマンドは`cdc`バイナリを使用して直接実行されます。
 -   PDは`10.0.10.25`でリッスンし、ポートは`2379`です。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > PDがリッスンするIPアドレスとポートは、 `pd-server`の起動時に指定された`advertise-client-urls`つのパラメーターに対応します。複数の`pd-server`には複数の`advertise-client-urls`のパラメーターがあり、1つまたは複数のパラメーターを指定できます。たとえば、 `--pd=http://10.0.10.25:2379`または`--pd=http://10.0.10.25:2379,http://10.0.10.26:2379,http://10.0.10.27:2379` 。
 
@@ -149,7 +148,7 @@ Info: {"sink-uri":"mysql://root:123456@127.0.0.1:3306/","opts":{},"create-time":
 
 -   `--sink-uri` ：レプリケーションタスクのダウンストリームアドレス。次の形式に従って`--sink-uri`を構成します。現在、この`kafka`は`mysql` `local` `pulsar`して`s3` `tidb` 。
 
-    {{&lt;コピー可能&quot;&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```
     [scheme]://[userinfo@][host]:[port][/path]?[query_parameters]
@@ -157,19 +156,19 @@ Info: {"sink-uri":"mysql://root:123456@127.0.0.1:3306/","opts":{},"create-time":
 
     URIに特殊文字が含まれている場合、URLエンコードを使用してこれらの特殊文字を処理する必要があります。
 
--   `--start-ts` ： `changefeed`の開始TSOを指定します。このTSOから、TiCDCクラスターはデータのプルを開始します。デフォルト値は現在の時刻です。
+-   `--start-ts` ： `changefeed`の開始TSOを指定します。このTSOから、TiCDCクラスタはデータのプルを開始します。デフォルト値は現在の時刻です。
 
--   `--target-ts` ： `changefeed`の終了TSOを指定します。このTSOに対して、TiCDCクラスターはデータのプルを停止します。デフォルト値は空です。これは、TiCDCがデータのプルを自動的に停止しないことを意味します。
+-   `--target-ts` ： `changefeed`の終了TSOを指定します。このTSOに対して、TiCDCクラスタはデータのプルを停止します。デフォルト値は空です。これは、TiCDCがデータのプルを自動的に停止しないことを意味します。
 
 -   `--sort-engine` ： `changefeed`のソートエンジンを指定します。 TiDBとTiKVは分散アーキテクチャを採用しているため、TiCDCはデータの変更をシンクに書き込む前にソートする必要があります。このオプションは、 `unified` （デフォルト）/ `memory` / `file`をサポートします。
 
     -   `unified` ： `unified`が使用されている場合、TiCDCはメモリ内のデータの並べ替えを優先します。メモリが不足している場合、TiCDCは自動的にディスクを使用して一時データを保存します。これはデフォルト値の`--sort-engine`です。
-    -   `memory` ：メモリ内のデータ変更を並べ替えます。大量のデータを複製するとOOMが簡単にトリガーされるため、この並べ替えエンジンの使用は<strong>お勧めしません</strong>。
-    -   `file` ：ディスクを完全に使用して一時データを保存します。この機能は<strong>廃止され</strong>ました。<strong>いかなる</strong>状況でも使用することは<strong>お勧めしません</strong>。
+    -   `memory` ：メモリ内のデータ変更を並べ替えます。大量のデータを複製するとOOMが簡単にトリガーされるため、この並べ替えエンジンの使用は**お勧めしません**。
+    -   `file` ：ディスクを完全に使用して一時データを保存します。この機能は**廃止され**ました。<strong>いかなる</strong>状況でも使用することは<strong>お勧めしません</strong>。
 
 -   `--config` ： `changefeed`の設定ファイルを指定します。
 
--   `sort-dir` ：ソートエンジンが使用する一時ファイルディレクトリを指定します。 <strong>TiDB v4.0.13、v5.0.3、およびv5.1.0以降、このオプションはサポートされていないことに注意してください。もう使用しないでください</strong>。
+-   `sort-dir` ：ソートエンジンが使用する一時ファイルディレクトリを指定します。 **TiDB v4.0.13、v5.0.3、およびv5.1.0以降、このオプションはサポートされていないことに注意してください。もう使用しないでください**。
 
 #### <code>mysql</code> / <code>tidb</code>を使用してシンクURIを構成します {#configure-sink-uri-with-code-mysql-code-code-tidb-code}
 
@@ -215,11 +214,11 @@ Info: {"sink-uri":"mysql://root:123456@127.0.0.1:3306/","opts":{},"create-time":
 | `topic-name`            | 変数。カフカトピックの名前                                                                                                                                                             |
 | `kafka-version`         | ダウンストリームKafkaのバージョン（オプション、デフォルトで`2.4.0`現在、サポートされている最も古いKafkaバージョンは`0.11.0.2`で、最新のバージョンは`2.7.0`です。この値はダウンストリームKafkaの実際のバージョンと一致している必要があります）                                |
 | `kafka-client-id`       | レプリケーションタスクのKafkaクライアントIDを指定します（オプション。デフォルトでは`TiCDC_sarama_producer_replication ID` ）。                                                                                    |
-| `partition-num`         | ダウンストリームKafkaパーティションの数（オプション。値は実際のパーティション数を<strong>超えてはなりません</strong>。そうでない場合、レプリケーションタスクを正常に作成できません。デフォルトでは`3` ）                                                         |
+| `partition-num`         | ダウンストリームKafkaパーティションの数（オプション。値は実際のパーティション数を**超えてはなりません**。そうでない場合、レプリケーションタスクを正常に作成できません。デフォルトでは`3` ）                                                                      |
 | `max-message-bytes`     | 毎回Kafkaブローカーに送信されるデータの最大サイズ（オプション、デフォルトでは`10MB` ）。 v5.0.6およびv4.0.6から、デフォルト値が64MBおよび256MBから10MBに変更されました。                                                                   |
 | `replication-factor`    | 保存できるKafkaメッセージレプリカの数（オプション、デフォルトで`1` ）                                                                                                                                   |
 | `protocol`              | メッセージがKafkaに出力されるプロトコル。値の`maxwell`は、 `canal-json` 、 `avro` `canal` `open-protocol` 。                                                                                      |
-| `auto-create-topic`     | 渡された`topic-name`がKafkaクラスターに存在しない場合にTiCDCがトピックを自動的に作成するかどうかを決定します（オプション、デフォルトでは`true` ）                                                                                   |
+| `auto-create-topic`     | 渡された`topic-name`がKafkaクラスタに存在しない場合にTiCDCがトピックを自動的に作成するかどうかを決定します（オプション、デフォルトでは`true` ）                                                                                    |
 | `enable-tidb-extension` | 出力プロトコルが`canal-json`の場合、値が`true`の場合、TiCDCはResolvedイベントを送信し、TiDB拡張フィールドをKafkaメッセージに追加します。 （オプション、デフォルトで`false` ）                                                           |
 | `max-batch-size`        | v4.0.9の新機能。メッセージプロトコルが1つのKafkaメッセージへの複数のデータ変更の出力をサポートしている場合、このパラメーターは1つのKafkaメッセージでのデータ変更の最大数を指定します。現在、Kafkaの`protocol`が`open-protocol`の場合にのみ有効になります。 （オプション、デフォルトで`16` ） |
 | `ca`                    | ダウンストリームのKafkaインスタンスに接続するために必要なCA証明書ファイルのパス（オプション）                                                                                                                        |
@@ -228,9 +227,6 @@ Info: {"sink-uri":"mysql://root:123456@127.0.0.1:3306/","opts":{},"create-time":
 | `sasl-user`             | ダウンストリームのKafkaインスタンスに接続するために必要なSASL/SCRAM認証のID（authcid）（オプション）                                                                                                            |
 | `sasl-password`         | ダウンストリームのKafkaインスタンスに接続するために必要なSASL/SCRAM認証のパスワード（オプション）                                                                                                                  |
 | `sasl-mechanism`        | ダウンストリームのKafkaインスタンスに接続するために必要なSASL/SCRAM認証の名前（オプション）                                                                                                                     |
-| `dial-timeout`          | ダウンストリームKafkaとの接続を確立する際のタイムアウト。デフォルト値は`10s`です                                                                                                                             |
-| `read-timeout`          | ダウンストリームのKafkaから返される応答を取得する際のタイムアウト。デフォルト値は`10s`です                                                                                                                        |
-| `write-timeout`         | ダウンストリームKafkaにリクエストを送信する際のタイムアウト。デフォルト値は`10s`です                                                                                                                           |
 
 ベストプラクティス：
 
@@ -238,15 +234,15 @@ Info: {"sink-uri":"mysql://root:123456@127.0.0.1:3306/","opts":{},"create-time":
 -   まだ存在しないトピックを使用してチェンジフィードを作成する場合、TiCDCは`partition-num`および`replication-factor`パラメーターを使用してトピックを作成しようとします。これらのパラメーターを明示的に指定することをお勧めします。
 -   ほとんどの場合、 `canal-json`プロトコルを使用することをお勧めします。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `protocol`が`open-protocol`の場合、TiCDCは長さが`max-message-bytes`を超えるメッセージの生成を回避しようとします。ただし、行が大きすぎて1回の変更だけで長さが`max-message-bytes`を超える場合、サイレント障害を回避するために、TiCDCはこのメッセージを出力しようとし、ログに警告を出力します。
 
 #### TiCDCをKafkaConnect（Confluent Platform）と統合する {#integrate-ticdc-with-kafka-connect-confluent-platform}
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> これはまだ実験的な機能です。実稼働環境では使用し<strong>ない</strong>でください。
+> これはまだ実験的機能です。実稼働環境では使用し**ない**でください。
 
 構成例：
 
@@ -257,15 +253,15 @@ Info: {"sink-uri":"mysql://root:123456@127.0.0.1:3306/","opts":{},"create-time":
 --opts registry="http://127.0.0.1:8081"
 ```
 
-Confluentが提供する[データコネクタ](https://docs.confluent.io/current/connect/managing/connectors.html)を使用して、データをリレーショナルデータベースまたは非リレーショナルデータベースにストリーミングするには、 `avro`プロトコルを使用し、 `opts`のURLを指定する必要があり[コンフルエントなスキーマレジストリ](https://www.confluent.io/product/confluent-platform/data-compatibility/) 。 `avro`プロトコルとConfluent統合は<strong>実験的な</strong>ものであることに注意してください。
+Confluentが提供する[データコネクタ](https://docs.confluent.io/current/connect/managing/connectors.html)を使用して、データをリレーショナルデータベースまたは非リレーショナルデータベースにストリーミングするには、 `avro`プロトコルを使用し、 `opts`のURLを指定する必要があり[コンフルエントなスキーマレジストリ](https://www.confluent.io/product/confluent-platform/data-compatibility/) 。 `avro`プロトコルとConfluent統合は**実験的**ものであることに注意してください。
 
 詳細な統合ガイドについては、 [TiDBとConfluentプラットフォームの統合に関するクイックスタートガイド](/ticdc/integrate-confluent-using-ticdc.md)を参照してください。
 
 #### <code>pulsar</code>を使用してシンクURIを構成する {#configure-sink-uri-with-code-pulsar-code}
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> これはまだ実験的な機能です。実稼働環境では使用し<strong>ない</strong>でください。
+> これはまだ実験的機能です。実稼働環境では使用し**ない**でください。
 
 構成例：
 
@@ -611,40 +607,40 @@ protocol = "canal-json"
 
 ## 行変更イベントの履歴値を出力する<span class="version-mark">v4.0.5の新機能</span> {#output-the-historical-value-of-a-row-changed-event-span-class-version-mark-new-in-v4-0-5-span}
 
-> <strong>警告：</strong>
->
-> 現在、行変更イベントの履歴値を出力することはまだ実験的な機能です。実稼働環境での使用はお勧めし<strong>ません</strong>。
-
-デフォルトの構成では、レプリケーションタスクで出力されるTiCDC Open Protocolの行変更イベントには変更された値のみが含まれ、変更前の値は含まれません。したがって、出力値はTiDB v4.0で導入された[新しい照合フレームワーク](/character-set-and-collation.md#new-framework-for-collations)をサポートせず、行変更イベントの履歴値としてTiCDCOpenProtocolのコンシューマー側で使用することもできません。
+デフォルトの構成では、レプリケーションタスクで出力されるTiCDC Open Protocolの行変更イベントには変更された値のみが含まれ、変更前の値は含まれません。したがって、出力値は、行変更イベントの履歴値としてTiCDCOpenProtocolのコンシューマー側で使用することはできません。
 
 v4.0.5以降、TiCDCは行変更イベントの履歴値の出力をサポートします。この機能を有効にするには、ルートレベルの`changefeed`の構成ファイルで次の構成を指定します。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```toml
 enable-old-value = true
 ```
 
-この機能を有効にすると、詳細な出力形式として[TiCDCオープンプロトコル-行変更イベント](/ticdc/ticdc-open-protocol.md#row-changed-event)が表示されます。 MySQLシンクを使用すると、新しいTiDBv4.0照合フレームワークもサポートされます。
+この機能は、v5.0以降デフォルトで有効になっています。この機能を有効にした後のTiCDCOpenProtocolの出力形式については、 [TiCDCオープンプロトコル-行変更イベント](/ticdc/ticdc-open-protocol.md#row-changed-event)を参照してください。
+
+## 照合用の新しいフレームワークを有効にしてテーブルを複製する {#replicate-tables-with-the-new-framework-for-collations-enabled}
+
+v4.0.15、v5.0.4、v5.1.1、およびv5.2.0以降、TiCDCは[照合のための新しいフレームワーク](/character-set-and-collation.md#new-framework-for-collations)を有効にしたテーブルをサポートします。
 
 ## 有効なインデックスなしでテーブルを複製する {#replicate-tables-without-a-valid-index}
 
 v4.0.8以降、TiCDCは、タスク構成を変更することにより、有効なインデックスを持たないテーブルの複製をサポートします。この機能を有効にするには、 `changefeed`の構成ファイルで次のように構成します。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```toml
 enable-old-value = true
 force-replicate = true
 ```
 
-> <strong>警告：</strong>
+> **警告：**
 >
 > 有効なインデックスのないテーブルの場合、 `INSERT`や`REPLACE`などの操作は再入可能ではないため、データが冗長になるリスクがあります。 TiCDCは、レプリケーションプロセス中にデータが少なくとも1回だけ配布されることを保証します。したがって、この機能を有効にして有効なインデックスなしでテーブルを複製できるようにすると、データの冗長性が確実に発生します。データの冗長性を受け入れない場合は、 `AUTO RANDOM`属性を持つ主キー列を追加するなど、効果的なインデックスを追加することをお勧めします。
 
 ## ユニファイドソーター {#unified-sorter}
 
-ユニファイドソーターは、TiCDCのソーティングエンジンです。次のシナリオによって引き起こされるOOMの問題を軽減できます。
+統合ソーターは、TiCDCのソーティングエンジンです。次のシナリオによって引き起こされるOOMの問題を軽減できます。
 
 -   TiCDCのデータ複製タスクは長時間一時停止されます。その間、大量の増分データが蓄積され、複製する必要があります。
 -   データ複製タスクは早いタイムスタンプから開始されるため、大量の増分データを複製する必要があります。
@@ -661,7 +657,7 @@ cdc cli --pd="http://10.0.10.25:2379" changefeed query --changefeed-id=simple-re
 
 上記のコマンドの出力で、値`sort-engine`が「unified」の場合、チェンジフィードでUnifiedSorterが有効になっていることを意味します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   サーバーで、待ち時間が長いか帯域幅が制限されている機械式ハードドライブやその他のストレージデバイスを使用している場合は、統合ソーターの使用に注意してください。
 > -   デフォルトでは、UnifiedSorterは`data_dir`を使用して一時ファイルを保存します。空きディスク容量が500GiB以上であることを確認することをお勧めします。実稼働環境では、各ノードの空きディスク容量が（ビジネスで許可されている最大`checkpoint-ts`の遅延）*（ビジネスのピーク時のアップストリーム書き込みトラフィック）よりも大きいことを確認することをお勧めします。さらに、 `changefeed`が作成された後に大量の履歴データを複製する場合は、各ノードの空き領域が複製されたデータの量よりも大きいことを確認してください。
@@ -670,21 +666,21 @@ cdc cli --pd="http://10.0.10.25:2379" changefeed query --changefeed-id=simple-re
 
 ## 災害シナリオでの結果整合性レプリケーション {#eventually-consistent-replication-in-disaster-scenarios}
 
-v5.3.0以降、TiCDCは、アップストリームTiDBクラスターからS3ストレージまたはダウンストリームクラスターのNFSファイルシステムへのインクリメンタルデータのバックアップをサポートします。アップストリームクラスターで災害が発生して使用できなくなった場合、TiCDCはダウンストリームデータを結果整合性のある最近の状態に復元できます。これは、TiCDCによって提供される結果整合性のある複製機能です。この機能を使用すると、アプリケーションをダウンストリームクラスターにすばやく切り替えることができ、長時間のダウンタイムを回避し、サービスの継続性を向上させることができます。
+v5.3.0以降、TiCDCは、アップストリームTiDBクラスタからS3ストレージまたはダウンストリームクラスタのNFSファイルシステムへのインクリメンタルデータのバックアップをサポートします。アップストリームクラスタで災害が発生して使用できなくなった場合、TiCDCはダウンストリームデータを結果整合性のある最近の状態に復元できます。これは、TiCDCによって提供される結果整合性のある複製機能です。この機能を使用すると、アプリケーションをダウンストリームクラスタにすばやく切り替えることができ、長時間のダウンタイムを回避し、サービスの継続性を向上させることができます。
 
-現在、TiCDCは、増分データをTiDBクラスターから別のTiDBクラスターまたはMySQL互換データベースシステム（Aurora、MySQL、MariaDBを含む）に複製できます。アップストリームクラスターがクラッシュした場合、災害前のTiCDCのレプリケーションステータスは正常であり、レプリケーションラグが小さいという条件で、TiCDCは5分以内にダウンストリームクラスターのデータを復元できます。これにより、最大で10秒のデータ損失が可能になります。つまり、RTO &lt;= 5分、P95 RPO&lt;=10秒です。
+現在、TiCDCは、増分データをTiDBクラスタから別のTiDBクラスタまたはMySQL互換データベースシステム（ Aurora、MySQL、MariaDBを含む）に複製できます。アップストリームクラスタがクラッシュした場合、災害前のTiCDCのレプリケーションステータスは正常であり、レプリケーションラグが小さいという条件で、TiCDCは5分以内にダウンストリームクラスタのデータを復元できます。これにより、最大で10秒のデータ損失が可能になります。つまり、RTO &lt;= 5分、P95 RPO&lt;=10秒です。
 
 TiCDCレプリケーションラグは、次のシナリオで増加します。
 
 -   TPSは短時間で大幅に増加します
 -   大規模または長いトランザクションがアップストリームで発生します
--   アップストリームのTiKVまたはTiCDCクラスターがリロードまたはアップグレードされます
+-   アップストリームのTiKVまたはTiCDCクラスタがリロードまたはアップグレードされます
 -   `add index`などの時間のかかるDDLステートメントはアップストリームで実行されます
 -   PDは積極的なスケジューリング戦略で構成されているため、リージョンリーダーが頻繁に異動したり、リージョンのマージや分割が頻繁に行われたりします。
 
 ### 前提条件 {#prerequisites}
 
--   TiCDCのリアルタイムインクリメンタルデータバックアップファイルを保存するための高可用性AmazonS3ストレージまたはNFSシステムを準備します。これらのファイルは、プライマリクラスターの障害が発生した場合にアクセスできます。
+-   TiCDCのリアルタイムインクリメンタルデータバックアップファイルを保存するための高可用性AmazonS3ストレージまたはNFSシステムを準備します。これらのファイルは、プライマリクラスタの障害が発生した場合にアクセスできます。
 -   災害シナリオで結果整合性が必要なチェンジフィードに対してこの機能を有効にします。これを有効にするには、チェンジフィード構成ファイルに次の構成を追加します。
 
 ```toml
@@ -721,4 +717,4 @@ cdc redo apply --tmp-dir="/tmp/cdc/redo/apply" \
 
 -   `tmp-dir` ：TiCDCインクリメンタルデータバックアップファイルをダウンロードするための一時ディレクトリを指定します。
 -   `storage` ：AmazonS3ストレージまたはNFSディレクトリのいずれかのTiCDCインクリメンタルデータバックアップファイルを保存するためのアドレスを指定します。
--   `sink-uri` ：データを復元するセカンダリクラスターアドレスを指定します。スキームは`mysql`のみです。
+-   `sink-uri` ：データを復元するセカンダリクラスタアドレスを指定します。スキームは`mysql`のみです。

@@ -1,7 +1,6 @@
 ---
-title: Table Selector
-summary: Learn about Table Selector used by the table routing, binlog event filtering, and column mapping rule of Data Migration.
-aliases: ['/docs/tidb-data-migration/dev/table-selector/']
+title: テーブルセレクター
+summary: データ移行のテーブルルーティング、binlogイベントフィルタリング、および列マッピングルールで使用されるテーブルセレクターについて説明します。
 ---
 
 # テーブルセレクター {#table-selector}

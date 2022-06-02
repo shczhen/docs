@@ -1,5 +1,5 @@
 ---
-title: TiDB 4.0.9 Release Notes
+title: TiDB4.0.9リリースノート
 ---
 
 # TiDB4.0.9リリースノート {#tidb-4-0-9-release-notes}
@@ -16,7 +16,7 @@ TiDBバージョン：4.0.9
 
 -   TiKV
 
-    -   保管時の暗号化が有効になっている場合のI/Oとミューテックスの競合を減らします。変更は後方互換性がありません。ユーザーがクラスターをv4.0.9より前のバージョンにダウングレードする必要がある場合は、ダウングレードの前に`security.encryption.enable-file-dictionary-log`を無効にし、TiKVを再起動する必要があります。 [＃9195](https://github.com/tikv/tikv/pull/9195)
+    -   保管時の暗号化が有効になっている場合のI/Oとミューテックスの競合を減らします。変更は後方互換性がありません。ユーザーがクラスタをv4.0.9より前のバージョンにダウングレードする必要がある場合は、ダウングレードの前に`security.encryption.enable-file-dictionary-log`を無効にし、TiKVを再起動する必要があります。 [＃9195](https://github.com/tikv/tikv/pull/9195)
 
 ## 新機能 {#new-features}
 
@@ -26,13 +26,13 @@ TiDBバージョン：4.0.9
 
 -   TiDBダッシュボード
 
-    -   <strong>SQLステートメント</strong>ページ[＃749](https://github.com/pingcap/tidb-dashboard/pull/749)のすべてのフィールドによる表示と並べ替えをサポート
+    -   **SQLステートメント**ページ[＃749](https://github.com/pingcap/tidb-dashboard/pull/749)のすべてのフィールドによる表示と並べ替えをサポート
     -   トポロジグラフのズームとパンのサポート[＃772](https://github.com/pingcap/tidb-dashboard/pull/772)
-    -   <strong>SQLステートメント</strong>および<strong>低速クエリ</strong>ページ[＃777](https://github.com/pingcap/tidb-dashboard/pull/777)でのディスク使用量情報の表示のサポート
-    -   <strong>SQLステートメント</strong>および<strong>低速クエリ</strong>ページ[＃778](https://github.com/pingcap/tidb-dashboard/pull/778)でのリストデータのエクスポートのサポート
+    -   **SQLステートメント**および<strong>低速クエリ</strong>ページ[＃777](https://github.com/pingcap/tidb-dashboard/pull/777)でのディスク使用量情報の表示のサポート
+    -   **SQLステートメント**および<strong>低速クエリ</strong>ページ[＃778](https://github.com/pingcap/tidb-dashboard/pull/778)でのリストデータのエクスポートのサポート
     -   Prometheusアドレスのカスタマイズのサポート[＃808](https://github.com/pingcap/tidb-dashboard/pull/808)
     -   クラスタ統計のページを追加する[＃815](https://github.com/pingcap/tidb-dashboard/pull/815)
-    -   <strong>低速クエリ</strong>の詳細に時間関連のフィールドを追加する[＃810](https://github.com/pingcap/tidb-dashboard/pull/810)
+    -   **低速クエリ**の詳細に時間関連のフィールドを追加する[＃810](https://github.com/pingcap/tidb-dashboard/pull/810)
 
 ## 改善 {#improvements}
 
@@ -45,7 +45,7 @@ TiDBバージョン：4.0.9
     -   `LOCK IN SHARE MODE`構文[＃21005](https://github.com/pingcap/tidb/pull/21005)を使用するステートメントにエラーメッセージを提供します
     -   ショートカット可能な式で定数を折りたたむときに、不要な警告やエラーを出力しないようにする[＃21040](https://github.com/pingcap/tidb/pull/21040)
     -   `LOAD DATA`ステートメント[＃21199](https://github.com/pingcap/tidb/pull/21199)を準備するときにエラーを発生させます
-    -   整数列タイプを変更するときは、整数のゼロフィルサイズの属性を無視します[＃20986](https://github.com/pingcap/tidb/pull/20986)
+    -   整数列タイプ[＃20986](https://github.com/pingcap/tidb/pull/20986)を変更するときは、整数のゼロフィルサイズの属性を無視してください。
     -   `EXPLAIN ANALYZE` [＃21066](https://github.com/pingcap/tidb/pull/21066)の結果に、DMLステートメントのエグゼキュータ関連のランタイム情報を追加します。
     -   単一のSQLステートメントの主キーに対する複数の更新を禁止する[＃21113](https://github.com/pingcap/tidb/pull/21113)
     -   接続アイドル時間の監視メトリックを追加します[＃21301](https://github.com/pingcap/tidb/pull/21301)
@@ -66,14 +66,14 @@ TiDBバージョン：4.0.9
 
 -   PD
 
-    -   TiKVストアが`Tombstone`になったときにTiKVクラスターのバージョンを確認します。これにより、ユーザーはダウングレードまたはアップグレードのプロセス中に互換性のない機能を有効にできなくなります[＃3213](https://github.com/pingcap/pd/pull/3213)
+    -   TiKVストアが`Tombstone`になったときにTiKVクラスタのバージョンを確認します。これにより、ユーザーはダウングレードまたはアップグレードのプロセス中に互換性のない機能を有効にできなくなります[＃3213](https://github.com/pingcap/pd/pull/3213)
     -   下位バージョンの[＃3206](https://github.com/pingcap/pd/pull/3206)ストアを`Tombstone`から35に変更することを禁止し`Up`
 
 -   TiDBダッシュボード
 
     -   SQLステートメント[＃775](https://github.com/pingcap/tidb-dashboard/pull/775)で[展開]をクリックしても展開を続ける
-    -   <strong>SQLステートメント</strong>と<strong>低速クエリ</strong>の詳細ページを新しいウィンドウで開きます[＃816](https://github.com/pingcap/tidb-dashboard/pull/816)
-    -   <strong>SlowQueries</strong>の詳細[＃817](https://github.com/pingcap/tidb-dashboard/pull/817)の時間関連フィールドの説明を改善する
+    -   **SQLステートメント**と<strong>低速クエリ</strong>の詳細ページを新しいウィンドウで開きます[＃816](https://github.com/pingcap/tidb-dashboard/pull/816)
+    -   **SlowQueries**の詳細[＃817](https://github.com/pingcap/tidb-dashboard/pull/817)の時間関連フィールドの説明を改善する
     -   詳細なエラーメッセージを表示する[＃794](https://github.com/pingcap/tidb-dashboard/pull/794)
 
 -   TiFlash
@@ -99,7 +99,7 @@ TiDBバージョン：4.0.9
         -   インクリメンタルスキャンのデータサイズが大きい場合にレプリケーションを高速化する統合ソーターの機能を追加します（実験的） [＃1122](https://github.com/pingcap/tiflow/pull/1122)
         -   TiCDC Open Protocolメッセージでの最大メッセージサイズと最大メッセージバッチの構成のサポート（Kafkaシンクの場合のみ） [＃1079](https://github.com/pingcap/tiflow/pull/1079)
 
-    -   団子
+    -   Dumpling
 
         -   失敗したチャンクでデータのダンプを再試行します[＃182](https://github.com/pingcap/dumpling/pull/182)
         -   `-F`つと`-r`の引数の両方を同時に構成することをサポートします[＃177](https://github.com/pingcap/dumpling/pull/177)
@@ -125,13 +125,13 @@ TiDBバージョン：4.0.9
     -   `OR`条件[＃21287](https://github.com/pingcap/tidb/pull/21287)でプレフィックスインデックスを使用した場合の誤った結果の問題を修正します。
     -   自動再試行が有効になっているときにパニックを引き起こす可能性のあるバグを修正します[＃21285](https://github.com/pingcap/tidb/pull/21285)
     -   列タイプ[＃21273](https://github.com/pingcap/tidb/pull/21273)に従ってパーティション定義をチェックするときに発生するバグを修正します
-    -   パーティション式の値タイプがパーティション列タイプ[＃21136](https://github.com/pingcap/tidb/pull/21136)と一致しないバグを修正します
+    -   パーティション式の値の型がパーティションの列の型[＃21136](https://github.com/pingcap/tidb/pull/21136)と一致しないというバグを修正しました
     -   ハッシュタイプのパーティションがパーティション名が一意であるかどうかをチェックしないバグを修正します[＃21257](https://github.com/pingcap/tidb/pull/21257)
-    -   非`INT`タイプの値をハッシュパーティションテーブル[＃21238](https://github.com/pingcap/tidb/pull/21238)に挿入した後に返される誤った結果を修正します
+    -   非`INT`タイプの値をハッシュ分割テーブル[＃21238](https://github.com/pingcap/tidb/pull/21238)に挿入した後に返される誤った結果を修正します。
     -   場合によっては`INSERT`ステートメントでインデックス結合を使用するときの予期しないエラーを修正します[＃21249](https://github.com/pingcap/tidb/pull/21249)
     -   `CASE WHEN`演算子の`BigInt`の符号なし列の値が`BigInt`の符号付きの値に誤って変換される問題を修正します[＃21236](https://github.com/pingcap/tidb/pull/21236)
-    -   インデックスハッシュ結合とインデックスマージ結合が照合を考慮しないバグを修正します[＃21219](https://github.com/pingcap/tidb/pull/21219)
-    -   パーティション化されたテーブルが`CREATE TABLE`および`SELECT`構文の照合を考慮しないバグを修正します[＃21181](https://github.com/pingcap/tidb/pull/21181)
+    -   インデックスハッシュ結合とインデックスマージ結合が照合順序を考慮しないバグを修正します[＃21219](https://github.com/pingcap/tidb/pull/21219)
+    -   パーティション化されたテーブルが`CREATE TABLE`および`SELECT`構文の照合順序を考慮しないバグを修正します[＃21181](https://github.com/pingcap/tidb/pull/21181)
     -   `slow_query`のクエリ結果が一部の行[＃21211](https://github.com/pingcap/tidb/pull/21211)を見逃す可能性がある問題を修正します
     -   データベース名が純粋な下位表現でない場合に`DELETE`がデータを正しく削除しない可能性があるという問題を修正します[＃21206](https://github.com/pingcap/tidb/pull/21206)
     -   DML操作後にスキーマ変更を引き起こすバグを修正する[＃21050](https://github.com/pingcap/tidb/pull/21050)
@@ -211,11 +211,11 @@ TiDBバージョン：4.0.9
         -   TiCDCとPDの間のネットワークにジッターがあり、同時に再開される一時停止された変更フィードがある場合に、一部のテーブルの行変更が失われる可能性があるバグを修正します[＃1213](https://github.com/pingcap/tiflow/pull/1213)
         -   TiCDCとPDの間のネットワークが安定していない場合にTiCDCプロセスが終了する可能性があるバグを修正します[＃1218](https://github.com/pingcap/tiflow/pull/1218)
         -   TiCDCでシングルトンPDクライアントを使用し、TiCDCが誤ってPDクライアントを閉じてレプリケーションブロック[＃1217](https://github.com/pingcap/tiflow/pull/1217)を引き起こすバグを修正します。
-        -   TiCDCの所有者がetcdウォッチクライアントで大量のメモリを消費する可能性があるバグを修正します[＃1224](https://github.com/pingcap/tiflow/pull/1224)
+        -   TiCDC所有者がetcdウォッチクライアントでメモリを過剰に消費する可能性があるバグを修正します[＃1224](https://github.com/pingcap/tiflow/pull/1224)
 
-    -   団子
+    -   Dumpling
 
-        -   MySQLデータベースサーバーへの接続が閉じられたときに餃子がブロックされる可能性がある問題を修正します[＃190](https://github.com/pingcap/dumpling/pull/190)
+        -   MySQLデータベースサーバーへの接続が閉じられたときにDumplingがブロックされる可能性がある問題を修正します[＃190](https://github.com/pingcap/dumpling/pull/190)
 
     -   TiDB Lightning
 

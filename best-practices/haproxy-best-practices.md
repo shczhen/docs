@@ -1,7 +1,6 @@
 ---
-title: Best Practices for Using HAProxy in TiDB
-summary: This document describes best practices for configuration and usage of HAProxy in TiDB.
-aliases: ['/docs/dev/best-practices/haproxy-best-practices/','/docs/dev/reference/best-practices/haproxy/']
+title: TiDBでHAProxyを使用するためのベストプラクティス
+summary: このドキュメントでは、TiDBでのHAProxyの設定と使用に関するベストプラクティスについて説明します。
 ---
 
 # TiDBでHAProxyを使用するためのベストプラクティス {#best-practices-for-using-haproxy-in-tidb}
@@ -53,7 +52,7 @@ HAProxyをデプロイする前に、ハードウェアとソフトウェアの�
 | Oracle Enterprise Linux  | 7または8         |
 | Ubuntu LTS               | 18.04以降のバージョン |
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   サポートされているその他のオペレーティングシステムの詳細については、 [HAProxyのドキュメント](https://github.com/haproxy/haproxy/blob/master/INSTALL)を参照してください。
 
@@ -71,7 +70,7 @@ HAProxyをデプロイする前に、ハードウェアとソフトウェアの�
 yum -y install epel-release gcc systemd-devel
 ```
 
-## HAProxyをデプロイする {#deploy-haproxy}
+## HAProxyをデプロイ {#deploy-haproxy}
 
 HAProxyを使用して、負荷分散されたデータベース環境を簡単に構成およびセットアップできます。このセクションでは、一般的な展開操作について説明します。実際のシナリオに基づいて[構成ファイル](http://cbonte.github.io/haproxy-dconv/2.5/configuration.html)をカスタマイズできます。
 

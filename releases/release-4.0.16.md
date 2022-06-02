@@ -1,5 +1,5 @@
 ---
-title: TiDB 4.0.16 Release Notes
+title: TiDB4.0.16リリースノート
 ---
 
 # TiDB4.0.16リリースノート {#tidb-4-0-16-release-notes}
@@ -106,7 +106,7 @@ TiDBバージョン：4.0.16
         -   チェンジフィードがない場合に`tikv_cdc_min_resolved_ts_no_change_for_1m`がアラートを出し続ける問題を修正します[＃11017](https://github.com/tikv/tikv/issues/11017)
         -   Kafkaメッセージの書き込み中にエラーが発生したときにTiCDC同期タスクが一時停止する可能性がある問題を修正します[＃2978](https://github.com/pingcap/tiflow/issues/2978)
         -   `force-replicate`が有効になっている場合、有効なインデックスのない一部のパーティションテーブルが無視される可能性がある問題を修正します[＃2834](https://github.com/pingcap/tiflow/issues/2834)
-        -   新しいチェンジフィードを作成するときのメモリリークの問題を修正する[＃2389](https://github.com/pingcap/tiflow/issues/2389)
+        -   新しいチェンジフィードを作成するときのメモリリークの問題を修正します[＃2389](https://github.com/pingcap/tiflow/issues/2389)
         -   シンクコンポーネントが早期に解決されたtsを進めるためにデータの一貫性が失われる可能性がある問題を修正します[＃3503](https://github.com/pingcap/tiflow/issues/3503)
         -   ストックデータのスキャンに時間がかかりすぎると、TiKVがGCを実行するためにストックデータのスキャンが失敗する可能性がある問題を修正します[＃2470](https://github.com/pingcap/tiflow/issues/2470)
         -   changefeedupdateコマンドがグローバルコマンドラインパラメーターを認識しない問題を修正します[＃2803](https://github.com/pingcap/tiflow/issues/2803)

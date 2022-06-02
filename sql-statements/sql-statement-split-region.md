@@ -1,7 +1,6 @@
 ---
-title: Split Region
-summary: An overview of the usage of Split Region for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-split-region/','/docs/dev/reference/sql/statements/split-region/']
+title: スプリットリージョン
+summary: TiDBデータベースの分割領域の使用法の概要。
 ---
 
 # スプリットリージョン {#split-region}
@@ -14,31 +13,31 @@ TiDBで作成された新しいテーブルごとに、このテーブルのデ�
 
 ## あらすじ {#synopsis}
 
-<strong>SplitRegionStmt：</strong>
+**SplitRegionStmt：**
 
 ![SplitRegionStmt](/media/sqlgram/SplitRegionStmt.png)
 
-<strong>SplitSyntaxOption：</strong>
+**SplitSyntaxOption：**
 
 ![SplitSyntaxOption](/media/sqlgram/SplitSyntaxOption.png)
 
-<strong>TableName：</strong>
+**TableName：**
 
 ![TableName](/media/sqlgram/TableName.png)
 
-<strong>PartitionNameListOpt：</strong>
+**PartitionNameListOpt：**
 
 ![PartitionNameListOpt](/media/sqlgram/PartitionNameListOpt.png)
 
-<strong>SplitOption：</strong>
+**SplitOption：**
 
 ![SplitOption](/media/sqlgram/SplitOption.png)
 
-<strong>RowValue：</strong>
+**RowValue：**
 
 ![RowValue](/media/sqlgram/RowValue.png)
 
-<strong>Int64Num：</strong>
+**Int64Num：**
 
 ![Int64Num](/media/sqlgram/Int64Num.png)
 
@@ -79,7 +78,7 @@ TiDBで作成された新しいテーブルごとに、このテーブルのデ�
 -   `TOTAL_SPLIT_REGION` ：新しく分割されたリージョンの数。
 -   `SCATTER_FINISH_RATIO` ：新しく分割されたリージョンの散乱の完了率。 `1.0`は、すべてのリージョンが分散していることを意味します。 `0.5`は、リージョンの半分だけが分散され、残りが分散されていることを意味します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 次の2つのセッション変数は、 `SPLIT`ステートメントの動作に影響を与える可能性があります。
 >
@@ -208,7 +207,7 @@ SPLIT TABLE t INDEX idx2 BETWEEN ("2020-06-01 00:00:00") AND ("2020-07-01 00:00:
 
 ジョイントインデックスのデータ領域分割の場合、唯一の違いは、複数の列の値を指定できることです。
 
-たとえば、インデックス`idx3 (a, b)`には2つの列があり、列`a`はタイムスタンプタイプで、列`b`はintです。列`a`に従って時間範囲を分割するだけの場合は、SQLステートメントを使用して単一の列の時間インデックスを分割できます。この場合、 `lower_value`と`upper_velue`の列`b`の値を指定しないでください。
+たとえば、インデックス`idx3 (a, b)`には2つの列があり、列`a`はタイムスタンプタイプで、列`b`はintです。列`a`に従って時間範囲を分割するだけの場合は、SQLステートメントを使用して単一の列の時間インデックスを分割できます。この場合、 `lower_value`列と`upper_velue`列の列`b`の値を指定しないでください。
 
 {{< copyable "" >}}
 
@@ -304,7 +303,7 @@ region4  [("c", "")                    , maxIndexValue               )
 
     上記のステートメントで、 `0`と`10000`はそれぞれ、分散するホットスポットデータに対応する上限と下限の`row_id`を表します。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > この例は、ホットスポットデータが均等に分散されているシナリオにのみ適用されます。ホットスポットデータが指定されたデータ範囲に不均一に分散している場合は、 [パーティション化されたテーブルの分割領域](#split-regions-for-partitioned-tables)の不均一な分割の構文を参照してください。
 
@@ -404,7 +403,7 @@ region4  [("c", "")                    , maxIndexValue               )
 
 テーブルの作成時にリージョンを均等に分割するには、 `SHARD_ROW_ID_BITS`と`PRE_SPLIT_REGIONS`を一緒に使用することをお勧めします。テーブルが正常に作成されると、 `PRE_SPLIT_REGIONS`は、 `2^(PRE_SPLIT_REGIONS)`で指定された数のリージョンにテーブルを事前にスピルします。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `PRE_SPLIT_REGIONS`の値は`SHARD_ROW_ID_BITS`の値以下でなければなりません。
 

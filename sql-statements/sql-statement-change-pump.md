@@ -1,14 +1,13 @@
 ---
-title: CHANGE PUMP
-summary: An overview of the usage of CHANGE PUMP for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-change-pump/']
+title: ポンプの交換
+summary: TiDBデータベースでのCHANGEPUMPの使用法の概要。
 ---
 
 # ポンプの交換 {#change-pump}
 
-`CHANGE PUMP`ステートメントは、クラスター内のPumpの状況情報を変更します。
+`CHANGE PUMP`ステートメントは、クラスタのPumpのステータス情報を変更します。
 
-> <strong>ヒント：</strong>
+> **ヒント：**
 >
 > ポンプの状態は、実行中にPDに自動的に報告されます。 Pumpが異常な状況にあり、その状態がPDに格納されている状態情報と矛盾している場合にのみ、 `CHANGE PUMP`ステートメントを使用してPDに格納されている状態情報を変更できます。
 

@@ -1,7 +1,6 @@
 ---
-title: Views
-summary: Learn how to use views in TiDB.
-aliases: ['/docs/dev/views/','/docs/dev/reference/sql/views/']
+title: ビュー
+summary: TiDBでビューを使用する方法を学びます。
 ---
 
 # ビュー {#views}
@@ -65,7 +64,7 @@ select * from information_schema.views;
 
 使用例：
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```sql
 curl http://127.0.0.1:10080/schema/test/v

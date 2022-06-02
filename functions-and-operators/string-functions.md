@@ -1,7 +1,6 @@
 ---
-title: String Functions
-summary: Learn about the string functions in TiDB.
-aliases: ['/docs/dev/functions-and-operators/string-functions/','/docs/dev/reference/sql/functions-and-operators/string-functions/']
+title: 文字列関数
+summary: TiDBの文字列関数について学びます。
 ---
 
 # 文字列関数 {#string-functions}

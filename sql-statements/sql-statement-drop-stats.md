@@ -1,7 +1,6 @@
 ---
-title: DROP STATS
-summary: An overview of the usage of DROP STATS for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-drop-stats/']
+title: ドロップ統計
+summary: TiDBデータベースのDROPSTATSの使用法の概要。
 ---
 
 # ドロップ統計 {#drop-stats}

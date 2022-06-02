@@ -1,6 +1,5 @@
 ---
-title: TiDB 2.1 RC4 Release Notes
-aliases: ['/docs/dev/releases/release-2.1-rc.4/','/docs/dev/releases/21rc4/']
+title: TiDB2.1RC4リリースノート
 ---
 
 # TiDB2.1RC4リリースノート {#tidb-2-1-rc4-release-notes}
@@ -18,7 +17,7 @@ aliases: ['/docs/dev/releases/release-2.1-rc.4/','/docs/dev/releases/21rc4/']
     -   テーブルの列が結果セット[＃7943](https://github.com/pingcap/tidb/pull/7943)に複数回表示される場合の、 `PointGet`演算子のパニックの問題を修正します。
     -   `Limit`節[＃8002](https://github.com/pingcap/tidb/pull/8002)の値が大きすぎるために発生するパニックの問題を修正します。
     -   場合によっては`AddDate`ステートメントの実行プロセス中のパニックの問題を修正し[＃8009](https://github.com/pingcap/tidb/pull/8009) `SubDate`
--   統計学
+-   統計
     -   結合されたインデックスのヒストグラムの下限のプレフィックスが範囲[＃7856](https://github.com/pingcap/tidb/pull/7856)外であると判断する問題を修正します。
     -   統計収集によって引き起こされるメモリリークの問題を修正します[＃7873](https://github.com/pingcap/tidb/pull/7873)
     -   ヒストグラムが空の場合のパニックの問題を修正します[＃7928](https://github.com/pingcap/tidb/pull/7928)

@@ -1,6 +1,6 @@
 ---
-title: Index Selection
-summary: Choose the best indexes for TiDB query optimization.
+title: インデックスの選択
+summary: TiDBクエリの最適化に最適なインデックスを選択してください。
 ---
 
 # インデックスの選択 {#index-selection}
@@ -9,7 +9,7 @@ summary: Choose the best indexes for TiDB query optimization.
 
 このドキュメントでは、テーブルにアクセスするためのインデックスを選択する方法と、インデックスの選択を制御するためのいくつかの関連する方法を紹介します。
 
-## テーブルにアクセスする {#access-tables}
+## テーブルにアクセス {#access-tables}
 
 インデックスの選択を導入する前に、TiDBがテーブルにアクセスする方法、各方法でトリガーされるもの、各方法でどのような違いが生じるか、および長所と短所を理解することが重要です。
 
@@ -23,7 +23,7 @@ summary: Choose the best indexes for TiDB query optimization.
 | IndexReader              | テーブルには1つ以上のインデックスがあり、計算に必要な列がインデックスに含まれています。            | インデックスに狭い範囲のクエリがある場合、またはインデックス付きの列の順序要件がある場合。 | 複数のインデックスが存在する場合、コスト見積もりに基づいて適切なインデックスが選択されます。                                                                            |
 | IndexLookupReader        | テーブルには1つ以上のインデックスがあり、計算に必要な列がインデックスに完全に含まれているわけではありません。 | IndexReaderと同じです。                             | インデックスは計算列を完全にはカバーしていないため、TiDBはインデックスを読み取った後にテーブルから行を取得する必要があります。 IndexReaderオペレーターと比較して追加コストがかかります。                      |
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > TableReader演算子は`_tidb_rowid`列のインデックスに基づいており、TiFlashは列ストレージインデックスを使用するため、インデックスの選択はテーブルにアクセスするための演算子の選択です。
 
@@ -136,6 +136,6 @@ mysql> SHOW WARNINGS;
 
 インデックスの選択は、 [オプティマイザーのヒント](/optimizer-hints.md)を介した単一のクエリで制御できます。
 
--   `USE_INDEX`は、オプティマイザに特定のインデックスを使用する`IGNORE_INDEX`使用しないように強制することができます。 `FORCE_INDEX`と`USE_INDEX`は同じ効果があります。
+-   `USE_INDEX`は、オプティマイザに特定のインデックスを使用する`IGNORE_INDEX`使用しないように強制することができます。
 
 -   `READ_FROM_STORAGE`を指定すると、オプティマイザは、クエリを実行するために特定のテーブルに対してTiKV/TiFlashストレージエンジンを選択するように強制できます。

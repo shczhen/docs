@@ -1,6 +1,5 @@
 ---
-title: Pre-GA release notes
-aliases: ['/docs/dev/releases/release-pre-ga/','/docs/dev/releases/prega/']
+title: GA以前のリリースノート
 ---
 
 # GA以前のリリースノート {#pre-ga-release-notes}
@@ -12,7 +11,7 @@ aliases: ['/docs/dev/releases/release-pre-ga/','/docs/dev/releases/prega/']
 -   SQLクエリオプティマイザ：
     -   コストモデルを調整する
     -   インデックススキャンを使用して、両側に異なるタイプを持つ`compare`式の`where`句を処理します
-    -   欲張りアルゴリズムベースのJoinReorderをサポートする
+    -   欲張りアルゴリズムベースの結合したテーブルの再配置をサポートする
 -   MySQLとの互換性を高めるために、多くの拡張機能が導入されました
 -   サポート`Natural Join`
 -   JSONフィールドのクエリ、更新、インデックスなど、JSONタイプ（実験的）をサポートします
@@ -22,7 +21,7 @@ aliases: ['/docs/dev/releases/release-pre-ga/','/docs/dev/releases/prega/']
 
 ## 配置ドライバー（PD） {#placement-driver-pd}
 
--   PDクラスターのリーダーの手動変更をサポート
+-   PDクラスタのリーダーの手動変更をサポート
 
 ## TiKV {#tikv}
 

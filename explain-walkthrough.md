@@ -1,6 +1,6 @@
 ---
-title: EXPLAIN Walkthrough
-summary: Learn how to use EXPLAIN by walking through an example statement
+title: EXPLAIN コマンド / EXPLAIN機能
+summary: ステートメントの例を見て、EXPLAINの使用方法を学びます
 ---
 
 # <code>EXPLAIN</code>ウォークスルー {#code-explain-code-walkthrough}
@@ -36,7 +36,7 @@ EXPLAIN SELECT count(*) FROM trips WHERE start_date BETWEEN '2017-07-01 00:00:00
 4.  `StreamAgg_9`の結果は、TiDBサーバー内にある`TableReader_21`オペレーターに送信されます（ `root`のタスク）。この演算子の`estRows`列の値は`1`です。これは、演算子がアクセスされる各TiKV領域から1行を受け取ることを意味します。これらのリクエストの詳細については、 [`EXPLAIN ANALYZE`](/sql-statements/sql-statement-explain-analyze.md)を参照してください。
 5.  次に、 `StreamAgg_20`演算子は、 `└─TableReader_21`演算子の各行に`count`関数を適用します。これは、 [`SHOW TABLE REGIONS`](/sql-statements/sql-statement-show-table-regions.md)から見ることができ、約56行になります。これはルート演算子であるため、結果をクライアントに返します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > テーブルに含まれるリージョンの一般的なビューについては、 [`SHOW TABLE REGIONS`](/sql-statements/sql-statement-show-table-regions.md)を実行します。
 
@@ -143,7 +143,7 @@ Create Table: CREATE TABLE `trips` (
 1 row in set (0.00 sec)
 ```
 
-`start_date`には<strong>インデックス</strong>がありません。この述語をインデックスリーダー演算子にプッシュするには、インデックスが必要になります。次のようにインデックスを追加します。
+`start_date`には**インデックス**がありません。この述語をインデックスリーダー演算子にプッシュするには、インデックスが必要になります。次のようにインデックスを追加します。
 
 {{< copyable "" >}}
 
@@ -155,7 +155,7 @@ ALTER TABLE trips ADD INDEX (start_date);
 Query OK, 0 rows affected (2 min 10.23 sec)
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > [`ADMIN SHOW DDL JOBS`](/sql-statements/sql-statement-admin.md)コマンドを使用して、DDLジョブの進行状況を監視できます。 TiDBのデフォルトは、インデックスの追加が本番ワークロードにあまり影響を与えないように慎重に選択されています。テスト環境では、 [`tidb_ddl_reorg_batch_size`](/system-variables.md#tidb_ddl_reorg_batch_size)と[`tidb_ddl_reorg_worker_cnt`](/system-variables.md#tidb_ddl_reorg_worker_cnt)の値を増やすことを検討してください。参照システムでは、バッチサイズが`10240`でワーカー数が`32`の場合、デフォルトの10倍のパフォーマンス向上を実現できます。
 
@@ -201,6 +201,6 @@ EXPLAIN ANALYZE SELECT count(*) FROM trips WHERE start_date BETWEEN '2017-07-01 
 
 上記の結果から、クエリ時間は1.03秒から0.0秒に短縮されました。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > ここで適用されるもう1つの最適化は、コプロセッサーキャッシュです。インデックスを追加できない場合は、 [コプロセッサーキャッシュ](/coprocessor-cache.md)を有効にすることを検討してください。有効にすると、オペレーターが最後に実行されてからリージョンが変更されていない限り、TiKVはキャッシュから値を返します。これは、高価な`TableFullScan`および`Selection`オペレーターのコストの多くを削減するのにも役立ちます。

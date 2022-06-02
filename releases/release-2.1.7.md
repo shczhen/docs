@@ -1,6 +1,5 @@
 ---
-title: TiDB 2.1.7 Release Notes
-aliases: ['/docs/dev/releases/release-2.1.7/','/docs/dev/releases/2.1.7/']
+title: TiDB2.1.7リリースノート
 ---
 
 # TiDB2.1.7リリースノート {#tidb-2-1-7-release-notes}
@@ -25,7 +24,7 @@ TiDB Ansibleバージョン：2.1.7
 -   プラグインフレームワークをサポートする[＃9880](https://github.com/pingcap/tidb/pull/9880) 、 [＃9888](https://github.com/pingcap/tidb/pull/9888)
 -   `log_bin`システム変数[＃9634](https://github.com/pingcap/tidb/pull/9634)を使用して、binlogの有効化状態のチェックをサポートします。
 -   SQLステートメントを使用したポンプ/ドレイナーステータスのチェックのサポート[＃9896](https://github.com/pingcap/tidb/pull/9896)
--   TiDB1をアップグレードするときにutf8でmb4文字をチェックする際の互換性の問題を修正し[＃9887](https://github.com/pingcap/tidb/pull/9887)
+-   TiDB1をアップグレードするときにutf8でmb4文字をチェックすることに関する互換性の問題を修正し[＃9887](https://github.com/pingcap/tidb/pull/9887)
 -   集計関数が場合によってはJSONデータを計算するときのパニックの問題を修正します[＃9927](https://github.com/pingcap/tidb/pull/9927)
 
 ## PD {#pd}

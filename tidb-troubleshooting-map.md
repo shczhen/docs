@@ -1,7 +1,6 @@
 ---
-title: TiDB Troubleshooting Map
-summary: Learn how to troubleshoot common errors in TiDB.
-aliases: ['/docs/dev/tidb-troubleshooting-map/','/docs/dev/how-to/troubleshoot/diagnose-map/']
+title: TiDBトラブルシューティングマップ
+summary: TiDBの一般的なエラーのトラブルシューティング方法を学びます。
 ---
 
 # TiDBトラブルシューティングマップ {#tidb-troubleshooting-map}
@@ -31,16 +30,16 @@ aliases: ['/docs/dev/tidb-troubleshooting-map/','/docs/dev/how-to/troubleshoot/d
 ### 2.1一時的な増加 {#2-1-transient-increase}
 
 -   2.1.1 TiDB実行プランが間違っていると、遅延が増加します。 [3.3](#33-wrong-execution-plan)を参照してください。
--   2.1.2PDリーダー選挙問題またはOOM。 [5.2](#52-pd-election)と[5.3](#53-pd-oom)を参照してください。
+-   2.1.2PDリーダー選出問題またはOOM。 [5.2](#52-pd-election)と[5.3](#53-pd-oom)を参照してください。
 -   2.1.3一部のTiKVインスタンスでは、かなりの数のリーダーがドロップします。 [4.4](#44-some-tikv-nodes-drop-leader-frequently)を参照してください。
 
 ### 2.2持続的かつ大幅な増加 {#2-2-persistent-and-significant-increase}
 
 -   2.2.1TiKVシングルスレッドのボトルネック
 
-    -   TiKVインスタンスのリージョンが多すぎると、単一のgRPCスレッドがボトルネックになります（Grafana-&gt; <strong>TiKV</strong> <strong>-details-</strong> &gt; <strong>Thread CPU / gRPC CPU Per Thread</strong>メトリックを確認してください）。 v3.x以降のバージョンでは、 `Hibernate Region`を有効にして問題を解決できます。中国語の[ケース-612](https://github.com/pingcap/tidb-map/blob/master/maps/diagnose-case-study/case612.md)を参照してください。
+    -   TiKVインスタンスのリージョンが多すぎると、単一のgRPCスレッドがボトルネックになります（Grafana-&gt; **TiKV** <strong>-details-</strong> &gt; <strong>Thread CPU / gRPC CPU Per Thread</strong>メトリックを確認してください）。 v3.x以降のバージョンでは、 `Hibernate Region`を有効にして問題を解決できます。中国語の[ケース-612](https://github.com/pingcap/tidb-map/blob/master/maps/diagnose-case-study/case612.md)を参照してください。
 
-    -   v3.0より前のバージョンでは、raftstoreスレッドまたはapplyスレッドがボトルネックになった場合（ <strong>Grafana-</strong> &gt; <strong>TiKV-details-</strong> &gt; <strong>Thread CPU / raft</strong> storeCPUおよび<strong>AsyncapplyCPU</strong>メトリックが`80%`を超える場合）、TiKV（v2 .x）インスタンスまたはマルチスレッドを使用したv3.xへのアップグレード。 <!-- See [case-517](https://github.com/pingcap/tidb-map/blob/master/maps/diagnose-case-study/case517.md) in Chinese. -->
+    -   v3.0より前のバージョンでは、raftstoreスレッドまたはapplyスレッドがボトルネックになった場合（ **Grafana-** &gt; <strong>TiKV-details-</strong> &gt; <strong>Thread CPU / raft</strong> storeCPUおよび<strong>AsyncapplyCPU</strong>メトリックが`80%`を超える場合）、TiKV（v2 .x）インスタンスまたはマルチスレッドを使用したv3.xへのアップグレード。 <!-- See [case-517](https://github.com/pingcap/tidb-map/blob/master/maps/diagnose-case-study/case517.md) in Chinese. -->
 
 -   2.2.2CPU負荷が増加します。
 
@@ -73,7 +72,7 @@ aliases: ['/docs/dev/tidb-troubleshooting-map/','/docs/dev/how-to/troubleshoot/d
     -   DDL所有者の移行：
 
         -   TiDBサーバーに接続できる場合は、所有者選択コマンドを再度実行します`curl -X POST http://{TiDBIP}:10080/ddl/owner/resign`
-        -   TiDBサーバーに接続できない場合は、 `tidb-ctl`を使用してPDクラスターのetcdからDDL所有者を削除し、再選をトリガーします`tidb-ctl etcd delowner [LeaseID] [flags] + ownerKey`
+        -   TiDBサーバーに接続できない場合は、 `tidb-ctl`を使用してPDクラスタのetcdからDDL所有者を削除し、再選をトリガーします`tidb-ctl etcd delowner [LeaseID] [flags] + ownerKey`
 
 -   3.1.3TiDBはログに`information schema is changed`のエラーを報告します
 
@@ -93,7 +92,7 @@ aliases: ['/docs/dev/tidb-troubleshooting-map/','/docs/dev/how-to/troubleshoot/d
 
     -   原因2：TiDBサーバーは、DMLステートメントの実行中にPDまたはTiKVに接続できません。その結果、TiDBサーバーが1つのDDLリース（デフォルトでは`45s` ）内に新しいスキーマをロードしなかったか、TiDBサーバーが`keep alive`の設定でPDから切断されました。
 
-    -   原因3：TiKVの負荷が高いか、ネットワークがタイムアウトしました。 <strong>Grafana-</strong> &gt; <strong>TiDB</strong>および<strong>TiKV</strong>でノードの負荷を確認します。
+    -   原因3：TiKVの負荷が高いか、ネットワークがタイムアウトしました。 **Grafana-** &gt; <strong>TiDB</strong>および<strong>TiKV</strong>でノードの負荷を確認します。
 
     -   解決：
 
@@ -125,7 +124,7 @@ aliases: ['/docs/dev/tidb-troubleshooting-map/','/docs/dev/how-to/troubleshoot/d
 
     -   バージョン&lt;v3.0.0の場合、grepは`tidb.log`で「メモリがクォータを超えています」と入力して、メモリクォータを超えるSQLクエリを検索します。
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > 単一のSQLメモリ使用量のデフォルトのしきい値は`1GB`です（バイト単位、スコープ： `SESSION` ）。このパラメーターは、 `tidb_mem_quota_query`を構成することで設定できます。構成アイテムをホットロードすることにより、構成ファイルの`mem-quota-query`アイテム（バイト単位）を変更することもできます。
 
@@ -173,7 +172,7 @@ aliases: ['/docs/dev/tidb-troubleshooting-map/','/docs/dev/how-to/troubleshoot/d
 
         MySQLでは、2つの高精度`Decimal`が分割され、結果が最大10進精度（ `30` ）を超える場合、 `30`桁のみが予約され、エラーは報告されません。
 
-        TiDBでは、計算結果はMySQLの場合と同じですが、 `Decimal`を表すデータ構造内では、10進精度のフィールドは実際の精度を保持します。
+        TiDBでは、計算結果はMySQLと同じですが、 `Decimal`を表すデータ構造内では、10進精度のフィールドは実際の精度を保持します。
 
         例として`(0.1^30) / 10`を取り上げます。精度が最大で`30`であるため、TiDBとMySQLの結果は両方とも`0`です。ただし、TiDBでは、小数精度のフィールドは`31`のままです。
 
@@ -201,13 +200,13 @@ aliases: ['/docs/dev/tidb-troubleshooting-map/','/docs/dev/how-to/troubleshoot/d
 
 -   4.2.1 `block-cache`の構成が大きすぎると、OOMが発生する可能性があります。
 
-    問題の原因を確認するには、モニター<strong>Grafana-</strong> &gt; <strong>TiKV-details</strong>で対応するインスタンスを選択して、RocksDBの`block cache size`を確認します。
+    問題の原因を確認するには、モニター**Grafana-** &gt; <strong>TiKV-details</strong>で対応するインスタンスを選択して、RocksDBの`block cache size`を確認します。
 
     その間、 `[storage.block-cache] capacity = # "1GB"`パラメータが正しく設定されているか確認してください。デフォルトでは、TiKVの`block-cache`はマシンの合計メモリの`45%`に設定されています。 TiKVは物理マシンのメモリを取得するため、コンテナにTiKVをデプロイするときに、このパラメータを明示的に指定する必要があります。これは、コンテナのメモリ制限を超える可能性があります。
 
 -   4.2.2コプロセッサーは多くの大きなクエリを受け取り、大量のデータを返します。 gRPCは、コプロセッサーがデータを返すのと同じ速さでデータを送信できず、その結果、OOMになります。
 
-    原因を確認するには、モニターの<strong>Grafana-</strong> &gt; <strong>TiKV-details-</strong> &gt;<strong>コプロセッサーの概要</strong>を表示して、 `response size`が`network outbound`トラフィックを超えているかどうかを確認できます。
+    原因を確認するには、モニターの**Grafana-** &gt; <strong>TiKV-details-</strong> &gt;<strong>コプロセッサーの概要</strong>を表示して、 `response size`が`network outbound`トラフィックを超えているかどうかを確認できます。
 
 -   4.2.3他のコンポーネントが大量のメモリを占有します。
 
@@ -215,7 +214,7 @@ aliases: ['/docs/dev/tidb-troubleshooting-map/','/docs/dev/how-to/troubleshoot/d
 
 ### 4.3クライアントは<code>server is busy</code>エラーであると報告します {#4-3-the-client-reports-the-code-server-is-busy-code-error}
 
-モニターの<strong>Grafana-</strong> &gt; <strong>TiKV-</strong> &gt;<strong>エラー</strong>を表示して、ビジーの特定の原因を確認します。 `server is busy`は、TiKVのフロー制御メカニズムによって引き起こされます。これは、 `tidb/ti-client`に現在圧力がかかりすぎていることを通知し、後で再試行します。
+モニターの**Grafana-** &gt; <strong>TiKV-</strong> &gt;<strong>エラー</strong>を表示して、ビジーの特定の原因を確認します。 `server is busy`は、TiKVのフロー制御メカニズムによって引き起こされます。これは、 `tidb/ti-client`に現在圧力がかかりすぎていることを通知し、後で再試行します。
 
 -   4.3.1TiKVRocksDBが`write stall`に遭遇します。
 
@@ -239,7 +238,7 @@ aliases: ['/docs/dev/tidb-troubleshooting-map/','/docs/dev/how-to/troubleshoot/d
 
 -   `scheduler too busy`
 
-    -   深刻な書き込みの競合。 `latch wait duration`は高いです。モニターで`latch wait duration`を表示できます<strong>Grafana-</strong> &gt; <strong>TiKV-詳細</strong>-&gt;<strong>スケジューラー</strong>プリライト/<strong>スケジューラーコミット</strong>。書き込みタスクがスケジューラーに積み重なると、保留中の書き込みタスクが`[storage] scheduler-pending-write-threshold`で設定されたしきい値（100MB）を超えます。 `MVCC_CONFLICT_COUNTER`に対応するメトリックを表示することにより、原因を確認できます。
+    -   深刻な書き込みの競合。 `latch wait duration`は高いです。モニターで`latch wait duration`を表示できます**Grafana-** &gt; <strong>TiKV-詳細</strong>-&gt;<strong>スケジューラー</strong>プリライト/<strong>スケジューラーコミット</strong>。書き込みタスクがスケジューラーに積み重なると、保留中の書き込みタスクが`[storage] scheduler-pending-write-threshold`で設定されたしきい値（100MB）を超えます。 `MVCC_CONFLICT_COUNTER`に対応するメトリックを表示することにより、原因を確認できます。
 
     -   書き込みが遅いと、書き込みタスクが山積みになります。 TiKVに書き込まれるデータが、 `[storage] scheduler-pending-write-threshold`で設定されたしきい値（100MB）を超えています。 [4.5](#45-tikv-write-is-slow)を参照してください。
 
@@ -263,7 +262,7 @@ aliases: ['/docs/dev/tidb-troubleshooting-map/','/docs/dev/how-to/troubleshoot/d
 
     -   `THP` （Transparent Hugepage）を動的に調整するため、TiKVがハングします。中国語のケース[ケース-500](https://github.com/pingcap/tidb-map/blob/master/maps/diagnose-case-study/case500.md)を参照してください。
 
--   4.4.2 TiKV RocksDBで書き込みストールが発生したため、再選されました。モニターの<strong>Grafana-</strong> &gt; <strong>TiKV-details-</strong> &gt;<strong>エラー</strong>が`server is busy`を示しているかどうかを確認できます。 [4.3.1](#43-the-client-reports-the-server-is-busy-error)を参照してください。
+-   4.4.2 TiKV RocksDBで書き込みストールが発生したため、再選されました。モニターの**Grafana-** &gt; <strong>TiKV-details-</strong> &gt;<strong>エラー</strong>が`server is busy`を示しているかどうかを確認できます。 [4.3.1](#43-the-client-reports-the-server-is-busy-error)を参照してください。
 
 -   4.4.3ネットワークの分離による再選。
 
@@ -279,34 +278,34 @@ aliases: ['/docs/dev/tidb-troubleshooting-map/','/docs/dev/how-to/troubleshoot/d
 
 -   4.5.3追加ログが遅い。
 
-    TiKVGrafanaの<strong>RaftIO</strong> / `append log duration`は高く、通常はディスクの書き込み操作が遅いためです。 RocksDBの`WAL Sync Duration max`の値--raftを確認することで、原因を確認できます。
+    TiKVGrafanaの**RaftIO** / `append log duration`は高く、通常はディスクの書き込み操作が遅いためです。 RocksDBの`WAL Sync Duration max`の値--raftを確認することで、原因を確認できます。
 
     その他の状況では、 [バグを報告](https://github.com/tikv/tikv/issues/new?template=bug-report.md) 。
 
 -   4.5.4raftstoreスレッドがビジーです。
 
-    <strong>Raft Propose</strong> / `propose wait duration`は、TiKVGrafanaの追加ログ期間よりも大幅に長くなっています。次の方法を取ります。
+    **Raft Propose** / `propose wait duration`は、TiKVGrafanaの追加ログ期間よりも大幅に長くなっています。次の方法を取ります。
 
     -   `[raftstore] store-pool-size`構成値が小さすぎないか確認してください。値は`1`の範囲で、大きすぎないように設定することをお勧めし`5` 。
     -   本機のCPUリソースが不足していないか確認してください。
 
 -   4.5.5適用が遅い。
 
-    TiKVGrafanaの<strong>RaftIO</strong> / `apply log duration`は高く、通常は高い<strong>Raft Propose</strong> / `apply wait duration`が付属しています。考えられる原因は次のとおりです。
+    TiKVGrafanaの**RaftIO** / `apply log duration`は高く、通常は高い<strong>Raft Propose</strong> / `apply wait duration`が付属しています。考えられる原因は次のとおりです。
 
-    -   `[raftstore] apply-pool-size`は小さすぎ（ `1`の値を設定し、大きすぎないようにすることをお勧めし`5` ）、<strong>スレッドCPU</strong> / `apply CPU`は大きすぎます。
+    -   `[raftstore] apply-pool-size`は小さすぎ（ `1`の値を設定し、大きすぎないようにすることをお勧めし`5` ）、**スレッドCPU** / `apply CPU`は大きすぎます。
 
     -   マシンのCPUリソースが不足しています。
 
     -   リージョン書き込みホットスポット。単一の適用スレッドはCPU使用率が高くなります。現在、改善されている単一のリージョンのホットスポットの問題に適切に対処することはできません。各スレッドのCPU使用率を表示するには、Grafana式を変更して`by (instance, name)`を追加します。
 
-    -   RocksDBの書き込みが遅い。 <strong>RocksDB kv</strong> / `max write duration`は高いです。 1つのRaftログに複数のKVが含まれる場合があります。 RocksDBに書き込む場合、128KVが書き込みバッチでRocksDBに書き込まれます。したがって、適用ログはRocksDBでの複数の書き込みに関連付けられている可能性があります。
+    -   RocksDBの書き込みが遅い。 **RocksDB kv** / `max write duration`は高いです。 1つのRaftログに複数のKVが含まれる場合があります。 RocksDBに書き込む場合、128KVが書き込みバッチでRocksDBに書き込まれます。したがって、適用ログはRocksDBでの複数の書き込みに関連付けられている可能性があります。
 
     -   その他の状況では、 [バグを報告](https://github.com/tikv/tikv/issues/new?template=bug-report.md) 。
 
 -   4.5.6Raftコミットログが遅い。
 
-    TiKVGrafanaの<strong>RaftIO</strong> / `commit log duration`は高いです（このメトリックは、v4.x以降のGrafanaでのみサポートされます）。すべての地域は、独立したRaftグループに対応しています。 Raftには、TCPのスライディングウィンドウメカニズムと同様のフロー制御メカニズムがあります。 `[raftstore] raft-max-inflight-msgs = 256`パラメータを設定することにより、スライディングウィンドウのサイズを制御できます。書き込みホットスポットがあり、 `commit log duration`が高い場合は、 `1024`に増やすなど、パラメーターを調整できます。
+    TiKVGrafanaの**RaftIO** / `commit log duration`は高いです（このメトリックは、v4.x以降のGrafanaでのみサポートされます）。すべての地域は、独立したRaftグループに対応しています。 Raftには、TCPのスライディングウィンドウメカニズムと同様のフロー制御メカニズムがあります。 `[raftstore] raft-max-inflight-msgs = 256`パラメータを設定することにより、スライディングウィンドウのサイズを制御できます。書き込みホットスポットがあり、 `commit log duration`が高い場合は、 `1024`に増やすなど、パラメーターを調整できます。
 
 -   4.5.7その他の状況については、 [パフォーマンスマップ](https://github.com/pingcap/tidb-map/blob/master/maps/performance-map.png)の書き込みパスを参照して、原因を分析してください。
 
@@ -318,7 +317,7 @@ aliases: ['/docs/dev/tidb-troubleshooting-map/','/docs/dev/how-to/troubleshoot/d
 
     -   テーブル全体の空のリージョンはマージできません。 TiKVの`[coprocessor] split-region-on-table`パラメーターを変更する必要があります。これは、デフォルトでv4.xでは`false`に設定されています。中国語の[ケース-896](https://github.com/pingcap/tidb-map/blob/master/maps/diagnose-case-study/case896.md)を参照してください。
 
-    -   リージョンのマージは遅いです。マージされた演算子が生成されているかどうかは、 <strong>Grafana-</strong> &gt; <strong>PD-</strong> &gt; <strong>operator</strong>のモニターダッシュボードにアクセスして確認できます。マージを高速化するには、 `merge-schedule-limit`の値を増やします。
+    -   リージョンのマージは遅いです。マージされた演算子が生成されているかどうかは、 **Grafana-** &gt; <strong>PD-</strong> &gt; <strong>operator</strong>のモニターダッシュボードにアクセスして確認できます。マージを高速化するには、 `merge-schedule-limit`の値を増やします。
 
 -   5.1.2レプリカを追加するか、レプリカをオンライン/オフラインで取得します
 
@@ -334,9 +333,9 @@ aliases: ['/docs/dev/tidb-troubleshooting-map/','/docs/dev/how-to/troubleshoot/d
 
 -   5.2.1PDスイッチリーダー。
 
-    -   原因1：ディスク。 PDノードが配置されているディスクには、完全なI/O負荷があります。 PDが、I/Oの需要が高くディスクの状態が高い他のコンポーネントとともに展開されているかどうかを調査します。 <strong>Grafana-</strong> &gt;<strong>ディスクパフォーマンス</strong>-&gt;<strong>レイテンシ</strong>/<strong>ロード</strong>でモニターメトリックを表示することで、原因を確認できます。必要に応じて、FIOツールを使用してディスクのチェックを実行することもできます。中国語の[ケース-292](https://github.com/pingcap/tidb-map/blob/master/maps/diagnose-case-study/case292.md)を参照してください。
+    -   原因1：ディスク。 PDノードが配置されているディスクには、完全なI/O負荷があります。 PDが、I/Oの需要が高くディスクの状態が高い他のコンポーネントとともに展開されているかどうかを調査します。 **Grafana-** &gt;<strong>ディスクパフォーマンス</strong>-&gt;<strong>レイテンシ</strong>/<strong>ロード</strong>でモニターメトリックを表示することで、原因を確認できます。必要に応じて、FIOツールを使用してディスクのチェックを実行することもできます。中国語の[ケース-292](https://github.com/pingcap/tidb-map/blob/master/maps/diagnose-case-study/case292.md)を参照してください。
 
-    -   原因2：ネットワーク。 PDログには`lost the TCP streaming connection`が表示されます。 PDノード間のネットワークに問題があるかどうかを確認し、モニター<strong>Grafana-</strong> &gt; <strong>PD-</strong> &gt; <strong>etcd</strong>で`round trip`を表示して、原因を確認する必要があります。中国語の[ケース-177](https://github.com/pingcap/tidb-map/blob/master/maps/diagnose-case-study/case177.md)を参照してください。
+    -   原因2：ネットワーク。 PDログには`lost the TCP streaming connection`が表示されます。 PDノード間のネットワークに問題があるかどうかを確認し、モニター**Grafana-** &gt; <strong>PD-</strong> &gt; <strong>etcd</strong>で`round trip`を表示して、原因を確認する必要があります。中国語の[ケース-177](https://github.com/pingcap/tidb-map/blob/master/maps/diagnose-case-study/case177.md)を参照してください。
 
     -   原因3：システム負荷が高い。ログには`server is likely overloaded`が表示されます。中国語の[ケース-214](https://github.com/pingcap/tidb-map/blob/master/maps/diagnose-case-study/case214.md)を参照してください。
 
@@ -350,7 +349,7 @@ aliases: ['/docs/dev/tidb-troubleshooting-map/','/docs/dev/how-to/troubleshoot/d
 
     -   PDにはリーダーがないか、リーダーを切り替えます。 [5.2.1](#52-pd-election)と[5.2.2](#52-pd-election)を参照してください。
 
-    -   ネットワークの問題。モニター<strong>Grafana-</strong> &gt; <strong>blackbox_exporter-</strong> &gt; <strong>pingレイテンシー</strong>にアクセスして、TiDBからPDリーダーへのネットワークが正常に実行されているかどうかを確認します。
+    -   ネットワークの問題。モニター**Grafana-** &gt; <strong>blackbox_exporter-</strong> &gt; <strong>pingレイテンシー</strong>にアクセスして、TiDBからPDリーダーへのネットワークが正常に実行されているかどうかを確認します。
 
     -   PDはパニックになります。 [バグを報告](https://github.com/pingcap/pd/issues/new?labels=kind%2Fbug&#x26;template=bug-report.md) 。
 
@@ -372,7 +371,7 @@ aliases: ['/docs/dev/tidb-troubleshooting-map/','/docs/dev/how-to/troubleshoot/d
 
 ### 5.4Grafanaディスプレイ {#5-4-grafana-display}
 
--   <strong>5.4.1Grafana-</strong> &gt; <strong>PD-</strong> &gt;<strong>クラスター</strong>-&gt;<strong>ロール</strong>のモニターにフォロワーが表示されます。 Grafana式の問題はv3.0.8（ [＃1065](https://github.com/pingcap/tidb-ansible/pull/1065) ）で修正されています。詳細については、 [ケース-1022](https://github.com/pingcap/tidb-map/blob/master/maps/diagnose-case-study/case1022.md)を参照してください。
+-   **5.4.1Grafana-** &gt; <strong>PD-</strong> &gt;<strong>クラスタ</strong>-&gt;<strong>ロール</strong>のモニターにフォロワーが表示されます。 Grafana式の問題はv3.0.8（ [＃1065](https://github.com/pingcap/tidb-ansible/pull/1065) ）で修正されています。詳細については、 [ケース-1022](https://github.com/pingcap/tidb-map/blob/master/maps/diagnose-case-study/case1022.md)を参照してください。
 
 ## 6.エコシステムツール {#6-ecosystem-tools}
 
@@ -418,7 +417,7 @@ aliases: ['/docs/dev/tidb-troubleshooting-map/','/docs/dev/how-to/troubleshoot/d
 
     -   ダウンストリームはTiDB/MySQLであり、アップストリームは頻繁にDDL操作を実行します。中国語の[ケース-1023](https://github.com/pingcap/tidb-map/blob/master/maps/diagnose-case-study/case1023.md)を参照してください。
 
-    -   ダウンストリームはTiDB/MySQLであり、レプリケートされるテーブルには主キーと一意のインデックスがないため、binlogのパフォーマンスが低下します。主キーまたは一意のインデックスを追加することをお勧めします。
+    -   ダウンストリームはTiDB/MySQLであり、複製されるテーブルには主キーと一意のインデックスがないため、binlogのパフォーマンスが低下します。主キーまたは一意のインデックスを追加することをお勧めします。
 
     -   ダウンストリームがファイルに出力する場合は、出力ディスクまたはネットワークディスクの速度が遅いかどうかを確認してください。
 
@@ -454,7 +453,7 @@ aliases: ['/docs/dev/tidb-troubleshooting-map/','/docs/dev/how-to/troubleshoot/d
 
     -   すべてのDM構成ファイルのデータベース関連のパスワードは、 `dmctl`で暗号化する必要があります。データベースのパスワードが空の場合、パスワードを暗号化する必要はありません。 v1.0.6以降、クリアテキストのパスワードを使用できます。
     -   DM操作中、アップストリームおよびダウンストリームデータベースのユーザーは、対応する読み取りおよび書き込み権限を持っている必要があります。データ複製タスクの開始時に、データ移行も自動的に[対応する特権を事前にチェックします](/dm/dm-precheck.md)になります。
-    -   異なるバージョンのDM-worker/DM-master / dmctlをDMクラスターにデプロイするには、中国語の[AskTUGのケーススタディ](https://asktug.com/t/dm1-0-0-ga-access-denied-for-user/1049/5)を参照してください。
+    -   異なるバージョンのDM-worker/DM-master / dmctlをDMクラスタにデプロイするには、中国語の[AskTUGのケーススタディ](https://asktug.com/t/dm1-0-0-ga-access-denied-for-user/1049/5)を参照してください。
 
 -   6.2.3レプリケーションタスクが中断され、 `driver: bad connection`のエラーが返されます。
 
@@ -496,7 +495,7 @@ aliases: ['/docs/dev/tidb-troubleshooting-map/','/docs/dev/how-to/troubleshoot/d
 
 ### 6.3TiDBライトニング {#6-3-tidb-lightning}
 
--   6.3.1 TiDB Lightningは、大量のデータをTiDBクラスターに高速に完全にインポートするためのツールです。 [GitHub上のTiDBLightning](https://github.com/pingcap/tidb-lightning)を参照してください。
+-   6.3.1 TiDB Lightningは、大量のデータをTiDBクラスタに高速に完全にインポートするためのツールです。 [GitHub上のTiDBLightning](https://github.com/pingcap/tidb-lightning)を参照してください。
 
 -   6.3.2インポート速度が遅すぎます。
 
@@ -514,7 +513,7 @@ aliases: ['/docs/dev/tidb-troubleshooting-map/','/docs/dev/how-to/troubleshoot/d
 
     -   原因1：テーブルにすでにデータが含まれている可能性があります。これらの古いデータは、最終的なチェックサムに影響を与える可能性があります。
 
-    -   原因2：ターゲット・データベースのチェックサムが0の場合、つまり何もインポートされていない場合は、クラスターが過熱しており、データの取り込みに失敗している可能性があります。
+    -   原因2：ターゲット・データベースのチェックサムが0の場合、つまり何もインポートされていない場合は、クラスタが過熱しており、データの取り込みに失敗している可能性があります。
 
     -   原因3：データソースがマシンによって生成され、 [Mydumper](https://docs.pingcap.com/tidb/v4.0/mydumper-overview)によってバックアップされていない場合は、テーブルの制約を尊重していることを確認してください。例えば：
 
@@ -572,7 +571,7 @@ aliases: ['/docs/dev/tidb-troubleshooting-map/','/docs/dev/how-to/troubleshoot/d
 
     TiKVのリクエストがタイムアウトになり、リージョンキャッシュがトリガーされて、リクエストが他のノードに切り替わります。ログの`addr`フィールドで`grep "<addr> cancelled`コマンドを引き続き実行し、 `grep`の結果に従って次の手順を実行できます。
 
-    -   `send request is cancelled` ：送信フェーズ中にリクエストがタイムアウトしました。監視中の<strong>Grafana-</strong> &gt; <strong>TiDB-</strong> &gt; <strong>Batch Client</strong> / `Pending Request Count by TiKV`を調査し、保留中のリクエスト数が128を超えているかどうかを確認できます。
+    -   `send request is cancelled` ：送信フェーズ中にリクエストがタイムアウトしました。監視中の**Grafana-** &gt; <strong>TiDB-</strong> &gt; <strong>Batch Client</strong> / `Pending Request Count by TiKV`を調査し、保留中のリクエスト数が128を超えているかどうかを確認できます。
 
         -   値が128より大きい場合、送信はKVの処理能力を超えるため、送信は山積みになります。
         -   値が128以下の場合は、ログをチェックして、レポートが対応するKVの操作および保守の変更によって引き起こされているかどうかを確認します。それ以外の場合、このエラーは予期しないものであり、 [バグを報告](https://github.com/pingcap/tidb/issues/new?labels=type%2Fbug&#x26;template=bug-report.md)にする必要があります。

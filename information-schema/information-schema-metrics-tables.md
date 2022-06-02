@@ -1,7 +1,6 @@
 ---
 title: METRICS_TABLES
-summary: Learn the `METRICS_TABLES` system table.
-aliases: ['/docs/dev/system-tables/system-table-metrics-tables/','/docs/dev/reference/system-databases/metrics-tables/','/tidb/dev/system-table-metrics-tables/']
+summary: `METRICS_TABLES`システムテーブルを学びます。
 ---
 
 # METRICS_TABLES {#metrics-tables}

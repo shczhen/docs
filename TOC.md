@@ -4,16 +4,15 @@
 
 -   TiDBについて
     -   [TiDBの紹介](/overview.md)
-    -   [TiDB6.0リリースノート](/releases/release-6.0.0-dmr.md)
+    -   [TiDB5.4リリースノート](/releases/release-5.4.0.md)
     -   [基本的な機能](/basic-features.md)
     -   [実験的特徴](/experimental-features.md)
     -   ベンチマーク
-        -   [v6.0Sysbenchパフォーマンステストレポート](/benchmark/benchmark-sysbench-v6.0.0-vs-v5.4.0.md)
-        -   [v6.0TPC-Cパフォーマンステストレポート](/benchmark/v6.0-performance-benchmarking-with-tpcc.md)
-        -   [TiFlashとGreenplum/Sparkのパフォーマンス比較](/benchmark/v6.0-performance-benchmarking-with-tpch.md)
+        -   [v5.4Sysbenchパフォーマンステストレポート](/benchmark/benchmark-sysbench-v5.4.0-vs-v5.3.0.md)
+        -   [v5.4TPC-Cパフォーマンステストレポート](/benchmark/v5.4-performance-benchmarking-with-tpcc.md)
+        -   [v5.4MPPモードTPC-H100GBパフォーマンステスト](/benchmark/v5.4-performance-benchmarking-with-tpch.md)
     -   [MySQLの互換性](/mysql-compatibility.md)
     -   [TiDBの制限](/tidb-limitations.md)
-    -   [TiDB採用者](/adopters.md)
     -   [クレジット](/credits.md)
 -   クイックスタート
     -   [TiDBをお試しください](/quick-start-with-tidb.md)
@@ -21,65 +20,9 @@
     -   [TiDBSQLを学ぶ](/basic-sql-operations.md)
     -   [HTAPを学ぶ](/explore-htap.md)
     -   [サンプルデータベースのインポート](/import-example-data.md)
--   発展させる
-    -   [概要](/develop/dev-guide-overview.md)
-    -   クイックスタート
-        -   [TiDBクラウドでTiDBクラスターを構築する（DevTier）](/develop/dev-guide-build-cluster-in-cloud.md)
-        -   [TiDBのCRUDSQL](/develop/dev-guide-tidb-crud-sql.md)
-        -   TiDBを使用してシンプルなCRUDアプリを構築する
-            -   [Java](/develop/dev-guide-sample-application-java.md)
-    -   アプリケーション例
-        -   [SpringBootを使用してTiDBアプリケーションを構築する](/develop/dev-guide-sample-application-spring-boot.md)
-    -   TiDBに接続する
-        -   [DriverまたはORMを選択します](/develop/dev-guide-choose-driver-or-orm.md)
-        -   [TiDBに接続する](/develop/dev-guide-connect-to-tidb.md)
-        -   [接続プールと接続パラメータ](/develop/dev-guide-connection-parameters.md)
-    -   データベーススキーマの設計
-        -   [概要](/develop/dev-guide-schema-design-overview.md)
-        -   [データベースを作成する](/develop/dev-guide-create-database.md)
-        -   [テーブルを作成する](/develop/dev-guide-create-table.md)
-        -   [セカンダリインデックスを作成する](/develop/dev-guide-create-secondary-indexes.md)
-    -   データの書き込み
-        -   [データを挿入](/develop/dev-guide-insert-data.md)
-        -   [データの更新](/develop/dev-guide-update-data.md)
-        -   [データの削除](/develop/dev-guide-delete-data.md)
-        -   [プリペアドステートメント](/develop/dev-guide-prepared-statement.md)
-    -   データの読み取り
-        -   [単一のテーブルからのデータのクエリ](/develop/dev-guide-get-data-from-single-table.md)
-        -   [マルチテーブル結合クエリ](/develop/dev-guide-join-tables.md)
-        -   [サブクエリ](/develop/dev-guide-use-subqueries.md)
-        -   [結果をページングする](/develop/dev-guide-paginate-results.md)
-        -   [ビュー](/develop/dev-guide-use-views.md)
-        -   [一時的なテーブル](/develop/dev-guide-use-temporary-tables.md)
-        -   [共通テーブル式](/develop/dev-guide-use-common-table-expression.md)
-        -   レプリカデータの読み取り
-            -   [フォロワー読み取り](/develop/dev-guide-use-follower-read.md)
-            -   [古い読み取り](/develop/dev-guide-use-stale-read.md)
-        -   [HTAPクエリ](/develop/dev-guide-hybrid-oltp-and-olap-queries.md)
-    -   取引
-        -   [概要](/develop/dev-guide-transaction-overview.md)
-        -   [楽観的および悲観的なトランザクション](/develop/dev-guide-optimistic-and-pessimistic-transaction.md)
-        -   [トランザクションの制限](/develop/dev-guide-transaction-restraints.md)
-        -   [トランザクションエラーの処理](/develop/dev-guide-transaction-troubleshoot.md)
-    -   最適化
-        -   [概要](/develop/dev-guide-optimize-sql-overview.md)
-        -   [SQLパフォーマンスチューニング](/develop/dev-guide-optimize-sql.md)
-        -   [ベストプラクティス](/develop/dev-guide-optimize-sql-best-practices.md)
-        -   その他の最適化方法
-            -   [暗黙的な型変換を避ける](/develop/dev-guide-implicit-type-conversion.md)
-            -   [一意のシリアル番号の生成](/develop/dev-guide-unique-serial-number-generation.md)
-    -   トラブルシューティング
-        -   [SQLまたはトランザクションの問題](/develop/dev-guide-troubleshoot-overview.md)
-        -   [不安定な結果セット](/develop/dev-guide-unstable-result-set.md)
-        -   [タイムアウト](/develop/dev-guide-timeouts-in-tidb.md)
-    -   参照
-        -   [書店のサンプルアプリケーション](/develop/dev-guide-bookshop-schema-design.md)
-        -   ガイドライン
-            -   [オブジェクト命名規則](/develop/dev-guide-object-naming-guidelines.md)
-            -   [SQL開発仕様](/develop/dev-guide-sql-development-specification.md)
--   配備
+-   デプロイ
     -   [ソフトウェアとハードウェアの要件](/hardware-and-software-requirements.md)
-    -   [環境構成チェックリスト](/check-before-deployment.md)
+    -   [環境Configuration / コンフィグレーションチェックリスト](/check-before-deployment.md)
     -   クラスタトポロジを計画する
         -   [最小限のトポロジー](/minimal-deployment-topology.md)
         -   [TiFlashトポロジ](/tiflash-deployment-topology.md)
@@ -90,7 +33,7 @@
         -   [ハイブリッドトポロジ](/hybrid-deployment-topology.md)
     -   インストールして開始
         -   [TiUPを使用する（推奨）](/production-deployment-using-tiup.md)
-        -   [Kubernetesにデプロイする](/tidb-in-kubernetes.md)
+        -   [Kubernetesにデプロイ](/tidb-in-kubernetes.md)
     -   [クラスターステータスの確認](/post-installation-check.md)
     -   クラスターのパフォーマンスをテストする
         -   [Sysbenchを使用してTiDBをテストする](/benchmark/benchmark-tidb-using-sysbench.md)
@@ -99,27 +42,26 @@
     -   [概要](/migration-overview.md)
     -   [移行ツール](/migration-tools.md)
     -   移行シナリオ
-        -   [オーロラから移行する](/migrate-aurora-to-tidb.md)
+        -   [Auroraから移行する](/migrate-aurora-to-tidb.md)
         -   [小さなデータセットのMySQLを移行する](/migrate-small-mysql-to-tidb.md)
         -   [大規模なデータセットのMySQLを移行する](/migrate-large-mysql-to-tidb.md)
         -   [小さなデータセットのMySQLシャードを移行およびマージする](/migrate-small-mysql-shards-to-tidb.md)
         -   [大規模なデータセットのMySQLシャードを移行およびマージする](/migrate-large-mysql-shards-to-tidb.md)
         -   [CSVファイルから移行する](/migrate-from-csv-files-to-tidb.md)
         -   [SQLファイルからの移行](/migrate-from-sql-files-to-tidb.md)
-        -   [1つのTiDBクラスターから別のTiDBクラスターに移行する](/migrate-from-tidb-to-tidb.md)
-        -   [TiDBからKafkaにデータを複製する](/replicate-data-to-kafka.md)
+        -   [TiDBクラスター間でインクリメンタルデータを複製する](/incremental-replication-between-clusters.md)
     -   高度な移行
         -   [gh-ostまたはpt-oscを使用した連続レプリケーション](/migrate-with-pt-ghost.md)
         -   [より多くの列を持つダウンストリームテーブルに移行します](/migrate-with-more-columns-downstream.md)
         -   [Binlogイベントをフィルタリングする](/filter-binlog-event.md)
         -   [SQL式を使用してDMLイベントをフィルタリングする](/filter-dml-event.md)
--   維持
+-   管理
     -   アップグレード
         -   [TiUPを使用する（推奨）](/upgrade-tidb-using-tiup.md)
-        -   [TiDBオペレーターを使用する](https://docs.pingcap.com/tidb-in-kubernetes/stable/upgrade-a-tidb-cluster)
+        -   [TiDB Operatorを使用する](https://docs.pingcap.com/tidb-in-kubernetes/stable/upgrade-a-tidb-cluster)
     -   規模
         -   [TiUPを使用する（推奨）](/scale-tidb-using-tiup.md)
-        -   [TiDBオペレーターを使用する](https://docs.pingcap.com/tidb-in-kubernetes/stable/scale-a-tidb-cluster)
+        -   [TiDB Operatorを使用する](https://docs.pingcap.com/tidb-in-kubernetes/stable/scale-a-tidb-cluster)
     -   バックアップと復元
         -   BRツールを使用する（推奨）
             -   [BRツールの概要](/br/backup-and-restore-tool.md)
@@ -130,19 +72,17 @@
                 -   [AzureBlobStorageでのデータのバックアップと復元](/br/backup-and-restore-azblob.md)
             -   BRの機能
                 -   [オートチューン](/br/br-auto-tune.md)
-                -   [テーブルのバッチ作成](/br/br-batch-create-table.md)
             -   [BR FAQ](/br/backup-and-restore-faq.md)
     -   [タイムゾーンの構成](/configure-time-zone.md)
     -   [毎日のチェックリスト](/daily-check.md)
-    -   [TiFlashを維持する](/tiflash/maintain-tiflash.md)
-    -   [TiUPを使用してTiDBを維持する](/maintain-tidb-using-tiup.md)
-    -   [オンラインで構成を変更する](/dynamic-config.md)
+    -   [TiFlashを管理する](/tiflash/maintain-tiflash.md)
+    -   [TiUPを使用してTiDBを管理する](/maintain-tidb-using-tiup.md)
+    -   [オンラインでConfiguration / コンフィグレーションを変更する](/dynamic-config.md)
     -   [オンラインの安全でない回復](/online-unsafe-recovery.md)
-    -   [プライマリクラスターとセカンダリクラスター間でデータを複製する](/replicate-betwwen-primary-and-secondary-clusters.md)
 -   監視と警告
     -   [モニタリングフレームワークの概要](/tidb-monitoring-framework.md)
     -   [モニタリングAPI](/tidb-monitoring-api.md)
-    -   [監視サービスの展開](/deploy-monitoring-services.md)
+    -   [監視サービスのデプロイ](/deploy-monitoring-services.md)
     -   [Grafanaスナップショットのエクスポート](/exporting-grafana-snapshots.md)
     -   [TiDBクラスターアラートルール](/alert-rules.md)
     -   [TiFlashアラートルール](/tiflash/tiflash-alert-rules.md)
@@ -152,7 +92,7 @@
     -   [遅いクエリを特定する](/identify-slow-queries.md)
     -   [遅いクエリを分析する](/analyze-slow-queries.md)
     -   [SQL診断](/information-schema/information-schema-sql-diagnostics.md)
-    -   [トップSQLを使用して高価なクエリを特定する](/dashboard/top-sql.md)
+    -   [Top SQLを使用して高価なクエリを特定する](/dashboard/top-sql.md)
     -   [ログを使用して高価なクエリを特定する](/identify-expensive-queries.md)
     -   [ステートメント要約表](/statement-summary-tables.md)
     -   [ホットスポットの問題のトラブルシューティング](/troubleshoot-hot-spot-issues.md)
@@ -163,16 +103,15 @@
     -   [ロックの競合のトラブルシューティング](/troubleshoot-lock-conflicts.md)
     -   [TiFlashのトラブルシューティング](/tiflash/troubleshoot-tiflash.md)
     -   [楽観的なトランザクションでの書き込みの競合のトラブルシューティング](/troubleshoot-write-conflicts.md)
-    -   [データとインデックス間の不整合のトラブルシューティング](/troubleshoot-data-inconsistency-errors.md)
--   性能調整
+-   性能チューニング
     -   システムチューニング
         -   [オペレーティングシステムのチューニング](/tune-operating-system.md)
     -   ソフトウェアのチューニング
-        -   構成
+        -   Configuration / コンフィグレーション
             -   [TiDBメモリを調整する](/configure-memory-usage.md)
             -   [TiKVスレッドを調整する](/tune-tikv-thread-performance.md)
             -   [TiKVメモリを調整する](/tune-tikv-memory-performance.md)
-            -   [TiKVフォロワー読み取り](/follower-read.md)
+            -   [TiKV Follower Readの調整](/follower-read.md)
             -   [TiFlashチューニング](/tiflash/tune-tiflash-performance.md)
         -   [コプロセッサーキャッシュ](/coprocessor-cache.md)
     -   SQLチューニング
@@ -181,10 +120,10 @@
             -   [概要](/explain-overview.md)
             -   [`EXPLAIN`ウォークスルー](/explain-walkthrough.md)
             -   [インデックス](/explain-indexes.md)
-            -   [参加する](/explain-joins.md)
+            -   [テーブル結合](/explain-joins.md)
             -   [MPPクエリ](/explain-mpp.md)
             -   [サブクエリ](/explain-subqueries.md)
-            -   [集約](/explain-aggregation.md)
+            -   [集計](/explain-aggregation.md)
             -   [ビュー](/explain-views.md)
             -   [パーティション](/explain-partitions.md)
         -   SQL最適化プロセス
@@ -192,19 +131,19 @@
             -   ロジックの最適化
                 -   [概要](/sql-logical-optimization.md)
                 -   [サブクエリ関連の最適化](/subquery-optimization.md)
-                -   [列の剪定](/column-pruning.md)
+                -   [カラムの剪定](/column-pruning.md)
                 -   [相関サブクエリの無相関化](/correlated-subquery-optimization.md)
                 -   [最大/最小を排除する](/max-min-eliminate.md)
-                -   [述語プッシュダウン](/predicate-push-down.md)
+                -   [Predicate Push Down](/predicate-push-down.md)
                 -   [パーティションの剪定](/partition-pruning.md)
                 -   [TopNとLimitプッシュダウン](/topn-limit-push-down.md)
-                -   [再注文に参加](/join-reorder.md)
+                -   [結合したテーブルの再配置](/join-reorder.md)
             -   物理的最適化
                 -   [概要](/sql-physical-optimization.md)
                 -   [インデックスの選択](/choose-index.md)
-                -   [統計学](/statistics.md)
-                -   [間違ったインデックスソリューション](/wrong-index-solution.md)
-                -   [明確な最適化](/agg-distinct-optimization.md)
+                -   [統計](/statistics.md)
+                -   [インデックス問題の解決方法](/wrong-index-solution.md)
+                -   [クエリの最適化](/agg-distinct-optimization.md)
             -   [実行プランキャッシュを準備する](/sql-prepared-plan-cache.md)
         -   実行計画の管理
             -   [概要](/control-execution-plan.md)
@@ -212,7 +151,7 @@
             -   [SQL計画管理](/sql-plan-management.md)
             -   [最適化ルールと式のプッシュダウンのブロックリスト](/blocklist-control-plan.md)
 -   チュートリアル
-    -   [1つの都市展開における複数のデータセンター](/multi-data-centers-in-one-city-deployment.md)
+    -   [1 つの地域展開における複数のデータセンター](/multi-data-centers-in-one-city-deployment.md)
     -   [2つの都市に配置された3つのデータセンター](/three-data-centers-in-two-cities-deployment.md)
     -   [1つの都市展開における2つのデータセンター](/two-data-centers-in-one-city-deployment.md)
     -   履歴データを読む
@@ -228,7 +167,7 @@
         -   [非常に同時書き込み](/best-practices/high-concurrency-best-practices.md)
         -   [Grafanaモニタリング](/best-practices/grafana-monitor-best-practices.md)
         -   [PDスケジューリング](/best-practices/pd-scheduling-best-practices.md)
-        -   [大規模な領域でのTiKVパフォーマンスチューニング](/best-practices/massive-regions-best-practices.md)
+        -   [大規模な領域でのTiKV性能チューニング](/best-practices/massive-regions-best-practices.md)
         -   [3ノードハイブリッド展開](/best-practices/three-nodes-hybrid-deployment.md)
         -   [3つのデータセンター展開でのローカル読み取り](/best-practices/three-dc-local-read.md)
     -   [配置ルールを使用する](/configure-placement-rules.md)
@@ -243,7 +182,7 @@
         -   [概要](/tiup/tiup-overview.md)
         -   [用語と概念](/tiup/tiup-terminology-and-concepts.md)
         -   [TiUPコンポーネントを管理する](/tiup/tiup-component-management.md)
-        -   [よくある質問](/tiup/tiup-faq.md)
+        -   [FAQ](/tiup/tiup-faq.md)
         -   [トラブルシューティングガイド](/tiup/tiup-troubleshooting-guide.md)
         -   コマンドリファレンス
             -   [概要](/tiup/tiup-reference.md)
@@ -272,30 +211,30 @@
                 -   [tiupアップデート](/tiup/tiup-command-update.md)
             -   TiUPクラスターコマンド
                 -   [概要](/tiup/tiup-component-cluster.md)
-                -   [tiupクラスター監査](/tiup/tiup-component-cluster-audit.md)
-                -   [tiupクラスターチェック](/tiup/tiup-component-cluster-check.md)
-                -   [tiupクラスタークリーン](/tiup/tiup-component-cluster-clean.md)
-                -   [tiupクラスターデプロイ](/tiup/tiup-component-cluster-deploy.md)
-                -   [tiupクラスター破棄](/tiup/tiup-component-cluster-destroy.md)
-                -   [tiupクラスターの無効化](/tiup/tiup-component-cluster-disable.md)
-                -   [tiupクラスター表示](/tiup/tiup-component-cluster-display.md)
-                -   [tiup cluster edit-config](/tiup/tiup-component-cluster-edit-config.md)
-                -   [tiup cluster enable](/tiup/tiup-component-cluster-enable.md)
-                -   [tiupクラスターヘルプ](/tiup/tiup-component-cluster-help.md)
-                -   [tiupクラスターのインポート](/tiup/tiup-component-cluster-import.md)
-                -   [tiupクラスターリスト](/tiup/tiup-component-cluster-list.md)
-                -   [tiupクラスターパッチ](/tiup/tiup-component-cluster-patch.md)
-                -   [tiupクラスタープルーン](/tiup/tiup-component-cluster-prune.md)
-                -   [tiupクラスターのリロード](/tiup/tiup-component-cluster-reload.md)
-                -   [tiupclusterの名前変更](/tiup/tiup-component-cluster-rename.md)
-                -   [tiupクラスターの再生](/tiup/tiup-component-cluster-replay.md)
-                -   [tiupクラスターの再起動](/tiup/tiup-component-cluster-restart.md)
-                -   [tiupクラスターのスケールイン](/tiup/tiup-component-cluster-scale-in.md)
-                -   [tiupクラスターのスケールアウト](/tiup/tiup-component-cluster-scale-out.md)
-                -   [tiupクラスター開始](/tiup/tiup-component-cluster-start.md)
-                -   [tiupクラスター停止](/tiup/tiup-component-cluster-stop.md)
-                -   [tiupクラスターテンプレート](/tiup/tiup-component-cluster-template.md)
-                -   [tiupクラスターのアップグレード](/tiup/tiup-component-cluster-upgrade.md)
+                -   [tiupクラスタ監査](/tiup/tiup-component-cluster-audit.md)
+                -   [tiupクラスタチェック](/tiup/tiup-component-cluster-check.md)
+                -   [tiupクラスタクリーン](/tiup/tiup-component-cluster-clean.md)
+                -   [tiupクラスタデプロイ](/tiup/tiup-component-cluster-deploy.md)
+                -   [tiupクラスタ破棄](/tiup/tiup-component-cluster-destroy.md)
+                -   [tiupクラスタの無効化](/tiup/tiup-component-cluster-disable.md)
+                -   [tiupクラスタ表示](/tiup/tiup-component-cluster-display.md)
+                -   [tiup クラスタ edit-config](/tiup/tiup-component-cluster-edit-config.md)
+                -   [tiup クラスタ enable](/tiup/tiup-component-cluster-enable.md)
+                -   [tiupクラスタヘルプ](/tiup/tiup-component-cluster-help.md)
+                -   [tiupクラスタのインポート](/tiup/tiup-component-cluster-import.md)
+                -   [tiupクラスタリスト](/tiup/tiup-component-cluster-list.md)
+                -   [tiupクラスタパッチ](/tiup/tiup-component-cluster-patch.md)
+                -   [tiupクラスタプルーン](/tiup/tiup-component-cluster-prune.md)
+                -   [tiupクラスタのリロード](/tiup/tiup-component-cluster-reload.md)
+                -   [クラスタの名前変更](/tiup/tiup-component-cluster-rename.md)
+                -   [tiupクラスタの再生](/tiup/tiup-component-cluster-replay.md)
+                -   [tiupクラスタの再起動](/tiup/tiup-component-cluster-restart.md)
+                -   [tiupクラスタのスケールイン](/tiup/tiup-component-cluster-scale-in.md)
+                -   [tiupクラスタのスケールアウト](/tiup/tiup-component-cluster-scale-out.md)
+                -   [tiupクラスタ開始](/tiup/tiup-component-cluster-start.md)
+                -   [tiupクラスタ停止](/tiup/tiup-component-cluster-stop.md)
+                -   [tiupクラスタテンプレート](/tiup/tiup-component-cluster-template.md)
+                -   [tiupクラスタのアップグレード](/tiup/tiup-component-cluster-upgrade.md)
             -   TiUPDMコマンド
                 -   [概要](/tiup/tiup-component-dm.md)
                 -   [tiupdm監査](/tiup/tiup-component-dm-audit.md)
@@ -327,116 +266,7 @@
             -   [tiup-cluster](/tiup/tiup-cluster.md)
             -   [tiup-mirror](/tiup/tiup-mirror.md)
             -   [tiup-bench](/tiup/tiup-bench.md)
-    -   PingCAPクリニック診断サービス（テクニカルプレビュー）
-        -   [概要](/clinic/clinic-introduction.md)
-        -   [PingCAPクリニックを使用する](/clinic/clinic-user-guide-for-tiup.md)
-        -   [PingCAPクリニックの診断データ](/clinic/clinic-data-instruction-for-tiup.md)
-    -   [TiDBオペレーター](/tidb-operator-overview.md)
-    -   [団子](/dumpling-overview.md)
-    -   TiDB Lightning
-        -   [概要](/tidb-lightning/tidb-lightning-overview.md)
-        -   事前チェックと要件
-            -   [事前チェック](/tidb-lightning/tidb-lightning-prechecks.md)
-            -   [ダウンストリーム特権要件](/tidb-lightning/tidb-lightning-requirements.md)
-            -   [ダウンストリームストレージスペースの要件](/tidb-lightning/tidb-lightning-requirements.md#downstream-storage-space-requirements)
-        -   主な機能
-            -   [チェックポイント](/tidb-lightning/tidb-lightning-checkpoints.md)
-            -   [テーブルフィルター](/table-filter.md)
-            -   [CSVサポート](/tidb-lightning/migrate-from-csv-using-tidb-lightning.md)
-            -   [バックエンド](/tidb-lightning/tidb-lightning-backends.md)
-            -   [データを並行してインポートする](/tidb-lightning/tidb-lightning-distributed-import.md)
-            -   [エラー解決](/tidb-lightning/tidb-lightning-error-resolution.md)
-            -   [Webインターフェイス](/tidb-lightning/tidb-lightning-web-interface.md)
-        -   [チュートリアル](/get-started-with-tidb-lightning.md)
-        -   [配備](/tidb-lightning/deploy-tidb-lightning.md)
-        -   [構成、設定](/tidb-lightning/tidb-lightning-configuration.md)
-        -   [モニター](/tidb-lightning/monitor-tidb-lightning.md)
-        -   [よくある質問](/tidb-lightning/tidb-lightning-faq.md)
-        -   [用語集](/tidb-lightning/tidb-lightning-glossary.md)
-    -   TiDBデータ移行
-        -   [TiDBデータ移行について](/dm/dm-overview.md)
-        -   [クイックスタート](/dm/quick-start-with-dm.md)
-        -   DMクラスターを展開する
-            -   [ハードウェアとソフトウェアの要件](/dm/dm-hardware-and-software-requirements.md)
-            -   [TiUPを使用する（推奨）](/dm/deploy-a-dm-cluster-using-tiup.md)
-            -   [TiUPをオフラインで使用する](/dm/deploy-a-dm-cluster-using-tiup-offline.md)
-            -   [バイナリを使用する](/dm/deploy-a-dm-cluster-using-binary.md)
-            -   [Kubernetesを使用する](https://docs.pingcap.com/tidb-in-kubernetes/dev/deploy-tidb-dm)
-        -   チュートリアル
-            -   [データソースを作成する](/dm/quick-start-create-source.md)
-            -   [データソースの管理](/dm/dm-manage-source.md)
-            -   [タスクの構成](/dm/dm-task-configuration-guide.md)
-            -   [テーブルルーティング](/dm/dm-key-features.md)
-            -   [リストをブロックして許可する](/dm/dm-key-features.md#block-and-allow-table-lists)
-            -   [Binlogイベントフィルター](/dm/dm-key-features.md#binlog-event-filter)
-            -   [SQL式を使用してDMLをフィルタリングする](/dm/feature-expression-filter.md)
-            -   データ移行タスクの管理
-                -   [タスクの事前チェック](/dm/dm-precheck.md)
-                -   [タスクを作成する](/dm/dm-create-task.md)
-                -   [クエリステータス](/dm/dm-query-status.md)
-                -   [タスクを一時停止します](/dm/dm-pause-task.md)
-                -   [タスクを再開する](/dm/dm-resume-task.md)
-                -   [タスクを停止する](/dm/dm-stop-task.md)
-        -   高度なチュートリアル
-            -   シャーディングされたテーブルからのデータのマージと移行
-                -   [概要](/dm/feature-shard-merge.md)
-                -   [悲観的なモード](/dm/feature-shard-merge-pessimistic.md)
-                -   [楽観的モード](/dm/feature-shard-merge-optimistic.md)
-                -   [シャーディングDDLロックを手動で処理する](/dm/manually-handling-sharding-ddl-locks.md)
-            -   [GH-ost/PT-oscを使用するMySQLデータベースからの移行](/dm/feature-online-ddl.md)
-            -   [より多くの列を持つダウンストリームTiDBテーブルにデータを移行する](/migrate-with-more-columns-downstream.md)
-        -   維持
-            -   クラスターのアップグレード
-                -   [TiUPを使用してDMクラスターを維持する（推奨）](/dm/maintain-dm-using-tiup.md)
-                -   [v1.0.xからv2.0+に手動でアップグレードする](/dm/manually-upgrade-dm-1.0-to-2.0.md)
-            -   ツール
-                -   [WebUIを使用して管理する](/dm/dm-webui-guide.md)
-                -   [dmctlを使用して管理する](/dm/dmctl-introduction.md)
-            -   性能調整
-                -   [ベンチマーク](/dm/dm-benchmark-v5.4.0.md)
-                -   [構成の最適化](/dm/dm-tune-configuration.md)
-                -   [DMパフォーマンスのテスト](/dm/dm-performance-test.md)
-                -   [パフォーマンスの問題を処理する](/dm/dm-handle-performance-issues.md)
-            -   データソースの管理
-                -   [移行するMySQLインスタンスを切り替える](/dm/usage-scenario-master-slave-switch.md)
-            -   タスクの管理
-                -   [失敗したDDLステートメントの処理](/dm/handle-failed-ddl-statements.md)
-                -   [移行するテーブルのスキーマを管理する](/dm/dm-manage-schema.md)
-            -   [クラスターのデータソースとタスク構成のエクスポートとインポート](/dm/dm-export-import-config.md)
-            -   [アラートを処理する](/dm/dm-handle-alerts.md)
-            -   [デイリーチェック](/dm/dm-daily-check.md)
-        -   参照
-            -   建築
-                -   [DMアーキテクチャ](/dm/dm-arch.md)
-                -   [DMワーカー](/dm/dm-worker-intro.md)
-                -   [リレーログ](/dm/relay-log.md)
-            -   コマンドライン
-                -   [DM-マスター＆DM-ワーカー](/dm/dm-command-line-flags.md)
-            -   構成ファイル
-                -   [概要](/dm/dm-config-overview.md)
-                -   [アップストリームデータベース構成](/dm/dm-source-configuration-file.md)
-                -   [タスク構成](/dm/task-configuration-file-full.md)
-                -   [DMマスター構成](/dm/dm-master-configuration-file.md)
-                -   [DMワーカーの構成](/dm/dm-worker-configuration-file.md)
-                -   [テーブルセレクター](/dm/table-selector.md)
-            -   [OpenAPI](/dm/dm-open-api.md)
-            -   [互換性カタログ](/dm/dm-compatibility-catalog.md)
-            -   安全
-                -   [DM接続のTLSを有効にする](/dm/dm-enable-tls.md)
-                -   [自己署名証明書を生成する](/dm/dm-generate-self-signed-certificates.md)
-            -   監視とアラート
-                -   [モニタリング指標](/dm/monitor-a-dm-cluster.md)
-                -   [アラートルール](/dm/dm-alert-rules.md)
-            -   [エラーコード](/dm/dm-error-handling.md#handle-common-errors)
-            -   [用語集](/dm/dm-glossary.md)
-        -   例
-            -   [DMを使用してデータを移行する](/dm/migrate-data-using-dm.md)
-            -   [データ移行タスクを作成する](/dm/quick-start-create-task.md)
-            -   [シャードマージシナリオでのデータ移行のベストプラクティス](/dm/shard-merge-best-practices.md)
-        -   トラブルシューティング
-            -   [よくある質問](/dm/dm-faq.md)
-            -   [エラーの処理](/dm/dm-error-handling.md)
-        -   [リリースノート](/dm/dm-release-notes.md)
+    -   [TiDB Operator](/tidb-operator-overview.md)
     -   バックアップと復元（BR）
         -   [BRツールの概要](/br/backup-and-restore-tool.md)
         -   [バックアップと復元にBRコマンドラインを使用する](/br/use-br-command-line-tool.md)
@@ -448,8 +278,8 @@
     -   TiDB Binlog
         -   [概要](/tidb-binlog/tidb-binlog-overview.md)
         -   [クイックスタート](/tidb-binlog/get-started-with-tidb-binlog.md)
-        -   [配備](/tidb-binlog/deploy-tidb-binlog.md)
-        -   [維持](/tidb-binlog/maintain-tidb-binlog-cluster.md)
+        -   [デプロイ](/tidb-binlog/deploy-tidb-binlog.md)
+        -   [管理](/tidb-binlog/maintain-tidb-binlog-cluster.md)
         -   [構成、設定](/tidb-binlog/tidb-binlog-configuration-file.md)
             -   [ポンプ](/tidb-binlog/tidb-binlog-configuration-file.md#pump)
             -   [ドレイナー](/tidb-binlog/tidb-binlog-configuration-file.md#drainer)
@@ -464,11 +294,113 @@
         -   トラブルシューティング
             -   [トラブルシューティング](/tidb-binlog/troubleshoot-tidb-binlog.md)
             -   [エラーの処理](/tidb-binlog/handle-tidb-binlog-errors.md)
-        -   [よくある質問](/tidb-binlog/tidb-binlog-faq.md)
+        -   [FAQ](/tidb-binlog/tidb-binlog-faq.md)
+    -   TiDB Lightning
+        -   [概要](/tidb-lightning/tidb-lightning-overview.md)
+        -   [チュートリアル](/get-started-with-tidb-lightning.md)
+        -   [デプロイ](/tidb-lightning/deploy-tidb-lightning.md)
+        -   [事前チェック](/tidb-lightning/tidb-lightning-prechecks.md)
+        -   [構成、設定](/tidb-lightning/tidb-lightning-configuration.md)
+        -   主な機能
+            -   [チェックポイント](/tidb-lightning/tidb-lightning-checkpoints.md)
+            -   [テーブルフィルター](/table-filter.md)
+            -   [CSVサポート](/tidb-lightning/migrate-from-csv-using-tidb-lightning.md)
+            -   [バックエンド](/tidb-lightning/tidb-lightning-backends.md)
+            -   [データを並行してインポートする](/tidb-lightning/tidb-lightning-distributed-import.md)
+            -   [エラー解決](/tidb-lightning/tidb-lightning-error-resolution.md)
+            -   [Webインターフェイス](/tidb-lightning/tidb-lightning-web-interface.md)
+        -   [モニター](/tidb-lightning/monitor-tidb-lightning.md)
+        -   [FAQ](/tidb-lightning/tidb-lightning-faq.md)
+        -   [用語集](/tidb-lightning/tidb-lightning-glossary.md)
+    -   TiDBデータ移行
+        -   TiDBデータ移行について
+            -   [DMの概要](/dm/dm-overview.md)
+            -   基本的な機能
+                -   [テーブルルーティング](/dm/dm-key-features.md)
+                -   [リストをブロックして許可する](/dm/dm-key-features.md#block-and-allow-table-lists)
+                -   [Binlogイベントフィルター](/dm/dm-key-features.md#binlog-event-filter)
+            -   高度な機能
+                -   シャーディングされたテーブルからのデータのマージと移行
+                    -   [概要](/dm/feature-shard-merge.md)
+                    -   [悲観的なモード](/dm/feature-shard-merge-pessimistic.md)
+                    -   [楽観的モード](/dm/feature-shard-merge-optimistic.md)
+                -   [GH-ost/PT-oscを使用するMySQLデータベースからの移行](/dm/feature-online-ddl.md)
+                -   [SQL式を使用してDMLをフィルタリングする](/dm/feature-expression-filter.md)
+            -   [DMアーキテクチャ](/dm/dm-arch.md)
+            -   [ベンチマーク](/dm/dm-benchmark-v5.4.0.md)
+        -   クイックスタート
+            -   [クイックスタート](/dm/quick-start-with-dm.md)
+            -   [TiUPを使用してDMクラスタをデプロイする](/dm/deploy-a-dm-cluster-using-tiup.md)
+            -   [データソースを作成する](/dm/quick-start-create-source.md)
+        -   [データ移行シナリオ](/dm/quick-create-migration-task.md)
+        -   デプロイ
+            -   [ソフトウェアとハードウェアの要件](/dm/dm-hardware-and-software-requirements.md)
+            -   DMクラスターをデプロイする
+                -   [TiUPを使用する（推奨）](/dm/deploy-a-dm-cluster-using-tiup.md)
+                -   [TiUPをオフラインで使用する](/dm/deploy-a-dm-cluster-using-tiup-offline.md)
+                -   [バイナリを使用する](/dm/deploy-a-dm-cluster-using-binary.md)
+                -   [Kubernetesを使用する](https://docs.pingcap.com/tidb-in-kubernetes/stable/deploy-tidb-dm)
+            -   [DMを使用してデータを移行する](/dm/migrate-data-using-dm.md)
+            -   [DMパフォーマンスのテスト](/dm/dm-performance-test.md)
+        -   管理
+            -   ツール
+                -   [TiUPを使用してDMクラスターを管理する（推奨）](/dm/maintain-dm-using-tiup.md)
+                -   [dmctlを使用してDMクラスターを管理する](/dm/dmctl-introduction.md)
+                -   [OpenAPIを使用してDMクラスターを管理する](/dm/dm-open-api.md)
+            -   クラスターのアップグレード
+                -   [v1.0.xからv2.0+に手動でアップグレードする](/dm/manually-upgrade-dm-1.0-to-2.0.md)
+            -   [データソースを作成する](/dm/quick-start-create-source.md)
+            -   [データソースの管理](/dm/dm-manage-source.md)
+            -   データ移行タスクの管理
+                -   [タスクConfiguration / コンフィグレーションガイド](/dm/dm-task-configuration-guide.md)
+                -   [タスクの事前チェック](/dm/dm-precheck.md)
+                -   [タスクを作成する](/dm/dm-create-task.md)
+                -   [クエリステータス](/dm/dm-query-status.md)
+                -   [タスクを一時停止します](/dm/dm-pause-task.md)
+                -   [タスクを再開する](/dm/dm-resume-task.md)
+                -   [タスクを停止する](/dm/dm-stop-task.md)
+                -   [データソースのエクスポートとインポート、およびクラスターのタスクConfiguration / コンフィグレーション](/dm/dm-export-import-config.md)
+                -   [失敗したDDLステートメントの処理](/dm/handle-failed-ddl-statements.md)
+            -   [シャーディングDDLロックを手動で処理する](/dm/manually-handling-sharding-ddl-locks.md)
+            -   [移行するMySQLインスタンスを切り替える](/dm/usage-scenario-master-slave-switch.md)
+            -   [移行するテーブルのスキーマを管理する](/dm/dm-manage-schema.md)
+            -   [アラートを処理する](/dm/dm-handle-alerts.md)
+            -   [デイリーチェック](/dm/dm-daily-check.md)
+        -   トラブルシューティング
+            -   [エラーの処理](/dm/dm-error-handling.md)
+            -   [パフォーマンスの問題を処理する](/dm/dm-handle-performance-issues.md)
+        -   性能チューニング
+            -   [Configuration / コンフィグレーションの最適化](/dm/dm-tune-configuration.md)
+        -   参照
+            -   建築
+                -   [DMアーキテクチャの概要](/dm/dm-overview.md)
+                -   [DMワーカー](/dm/dm-worker-intro.md)
+                -   [リレーログ](/dm/relay-log.md)
+            -   [コマンドラインフラグ](/dm/dm-command-line-flags.md)
+            -   Configuration / コンフィグレーション
+                -   [概要](/dm/dm-config-overview.md)
+                -   [DMマスターConfiguration / コンフィグレーション](/dm/dm-master-configuration-file.md)
+                -   [DMワーカーのConfiguration / コンフィグレーション](/dm/dm-worker-configuration-file.md)
+                -   [アップストリームデータベースConfiguration / コンフィグレーション](/dm/dm-source-configuration-file.md)
+                -   [データ移行タスクのConfiguration / コンフィグレーション](/dm/dm-task-configuration-guide.md)
+                -   [テーブルセレクター](/dm/table-selector.md)
+            -   [互換性カタログ](/dm/dm-compatibility-catalog.md)
+        -   セキュリティ
+            -   [DM接続のTLSを有効にする](/dm/dm-enable-tls.md)
+            -   [自己署名証明書を生成する](/dm/dm-generate-self-signed-certificates.md)
+        -   [モニタリング指標](/dm/monitor-a-dm-cluster.md)
+        -   [アラートルール](/dm/dm-alert-rules.md)
+        -   [エラーコード](/dm/dm-error-handling.md#handle-common-errors)
+        -   [FAQ](/dm/dm-faq.md)
+        -   [用語集](/dm/dm-glossary.md)
+        -   例
+            -   [データ移行タスクを作成する](/dm/quick-start-create-task.md)
+            -   [シャードマージシナリオでのデータ移行のベストプラクティス](/dm/shard-merge-best-practices.md)
+        -   [リリースノート](/dm/dm-release-notes.md)
     -   TiCDC
         -   [概要](/ticdc/ticdc-overview.md)
-        -   [配備](/ticdc/deploy-ticdc.md)
-        -   [維持](/ticdc/manage-ticdc.md)
+        -   [デプロイ](/ticdc/deploy-ticdc.md)
+        -   [管理](/ticdc/manage-ticdc.md)
         -   [トラブルシューティング](/ticdc/troubleshoot-ticdc.md)
         -   [モニター](/ticdc/monitor-ticdc.md)
         -   [アラートルール](/ticdc/ticdc-alert-rules.md)
@@ -477,7 +409,7 @@
         -   [TiCDC運河-JSONプロトコル](/ticdc/ticdc-canal-json.md)
         -   [TiDBをConfluentプラットフォームと統合する](/ticdc/integrate-confluent-using-ticdc.md)
         -   [用語集](/ticdc/ticdc-glossary.md)
-    -   [団子](/dumpling-overview.md)
+    -   [Dumpling](/dumpling-overview.md)
     -   sync-diff-inspector
         -   [概要](/sync-diff-inspector/sync-diff-inspector-overview.md)
         -   [スキーマ/テーブル名が異なるテーブルのデータチェック](/sync-diff-inspector/route-diff.md)
@@ -499,16 +431,16 @@
         -   [TiKV](/grafana-tikv-dashboard.md)
         -   [TiFlash](/tiflash/monitor-tiflash.md)
         -   [TiCDC](/ticdc/monitor-ticdc.md)
-    -   安全
+    -   セキュリティ
         -   [TiDBクライアントとサーバー間のTLSを有効にする](/enable-tls-between-clients-and-servers.md)
         -   [TiDBコンポーネント間のTLSを有効にする](/enable-tls-between-components.md)
         -   [自己署名証明書を生成する](/generate-self-signed-certificates.md)
-        -   [保管時の暗号化](/encryption-at-rest.md)
-        -   [ディスクスピルの暗号化を有効にする](/enable-disk-spill-encrypt.md)
+        -   [保存時の暗号化](/encryption-at-rest.md)
+        -   [ディスク流出時の暗号化機能を有効にする](/enable-disk-spill-encrypt.md)
         -   [ログ編集](/log-redaction.md)
-    -   特権
+    -   権限
         -   [MySQLとのセキュリティの互換性](/security-compatibility-with-mysql.md)
-        -   [特権管理](/privilege-management.md)
+        -   [権限管理](/privilege-management.md)
         -   [ユーザーアカウント管理](/user-account-management.md)
         -   [ロールベースのアクセス制御](/role-based-access-control.md)
         -   [証明書ベースの認証](/certificate-authentication.md)
@@ -675,7 +607,7 @@
             -   [集約（GROUP BY）関数](/functions-and-operators/aggregate-group-by-functions.md)
             -   [ウィンドウ関数](/functions-and-operators/window-functions.md)
             -   [その他の機能](/functions-and-operators/miscellaneous-functions.md)
-            -   [精密数学](/functions-and-operators/precision-math.md)
+            -   [精密計算](/functions-and-operators/precision-math.md)
             -   [セット操作](/functions-and-operators/set-operators.md)
             -   [プッシュダウンの式のリスト](/functions-and-operators/expressions-pushed-down.md)
             -   [TiDB固有の機能](/functions-and-operators/tidb-functions.md)
@@ -691,11 +623,10 @@
             -   [悲観的なトランザクション](/pessimistic-transaction.md)
         -   ガベージコレクション（GC）
             -   [概要](/garbage-collection-overview.md)
-            -   [構成](/garbage-collection-configuration.md)
+            -   [Configuration / コンフィグレーション](/garbage-collection-configuration.md)
         -   [ビュー](/views.md)
         -   [パーティショニング](/partitioned-table.md)
         -   [一時的なテーブル](/temporary-tables.md)
-        -   [キャッシュされたテーブル](/cached-tables.md)
         -   キャラクターセットと照合
             -   [概要](/character-set-and-collation.md)
             -   [GBK](/character-set-gbk.md)
@@ -729,7 +660,7 @@
                 -   [`METRICS_SUMMARY`](/information-schema/information-schema-metrics-summary.md)
                 -   [`METRICS_TABLES`](/information-schema/information-schema-metrics-tables.md)
                 -   [`PARTITIONS`](/information-schema/information-schema-partitions.md)
-                -   [`PLACEMENT_POLICIES`](/information-schema/information-schema-placement-policies.md)
+                -   [`PLACEMENT_RULES`](/information-schema/information-schema-placement-rules.md)
                 -   [`PROCESSLIST`](/information-schema/information-schema-processlist.md)
                 -   [`REFERENTIAL_CONSTRAINTS`](/information-schema/information-schema-referential-constraints.md)
                 -   [`SCHEMATA`](/information-schema/information-schema-schemata.md)
@@ -755,15 +686,15 @@
     -   UI
         -   TiDBダッシュボード
             -   [概要](/dashboard/dashboard-intro.md)
-            -   維持
-                -   [配備](/dashboard/dashboard-ops-deploy.md)
+            -   管理
+                -   [デプロイ](/dashboard/dashboard-ops-deploy.md)
                 -   [リバースプロキシ](/dashboard/dashboard-ops-reverse-proxy.md)
                 -   [ユーザー管理](/dashboard/dashboard-user.md)
-                -   [安全](/dashboard/dashboard-ops-security.md)
+                -   [セキュリティ](/dashboard/dashboard-ops-security.md)
             -   [アクセス](/dashboard/dashboard-access.md)
             -   [概要ページ](/dashboard/dashboard-overview.md)
             -   [クラスター情報ページ](/dashboard/dashboard-cluster-info.md)
-            -   [トップSQLページ](/dashboard/top-sql.md)
+            -   [Top SQL](/dashboard/top-sql.md)
             -   [キービジュアライザーページ](/dashboard/dashboard-key-visualizer.md)
             -   [メトリクス関係グラフ](/dashboard/dashboard-metrics-relation.md)
             -   SQLステートメント分析
@@ -778,10 +709,10 @@
             -   インスタンスプロファイリング
                 -   [手動プロファイリング](/dashboard/dashboard-profiling.md)
                 -   [継続的なプロファイリング](/dashboard/continuous-profiling.md)
-            -   セッションの管理と構成
+            -   セッションの管理とConfiguration / コンフィグレーション
                 -   [共有セッション](/dashboard/dashboard-session-share.md)
                 -   [SSOを構成する](/dashboard/dashboard-session-sso.md)
-            -   [よくある質問](/dashboard/dashboard-faq.md)
+            -   [FAQ](/dashboard/dashboard-faq.md)
     -   CLI
         -   [tikv-ctl](/tikv-control.md)
         -   [pd-ctl](/pd-control.md)
@@ -792,7 +723,7 @@
         -   [tikv-server](/command-line-flags-for-tikv-configuration.md)
         -   [tiflash-server](/tiflash/tiflash-command-line-flags.md)
         -   [pd-server](/command-line-flags-for-pd-configuration.md)
-    -   構成ファイルのパラメーター
+    -   Configuration / コンフィグレーションファイルのパラメーター
         -   [tidb-server](/tidb-configuration-file.md)
         -   [tikv-server](/tikv-configuration-file.md)
         -   [tiflash-server](/tiflash/tiflash-configuration.md)
@@ -803,14 +734,14 @@
             -   [TiKVの概要](/tikv-overview.md)
             -   [RocksDBの概要](/storage-engine/rocksdb-overview.md)
             -   [Titanの概要](/storage-engine/titan-overview.md)
-            -   [タイタン構成](/storage-engine/titan-configuration.md)
+            -   [タイタンConfiguration / コンフィグレーション](/storage-engine/titan-configuration.md)
         -   TiFlash
             -   [概要](/tiflash/tiflash-overview.md)
             -   [TiFlashを使用する](/tiflash/use-tiflash.md)
     -   [テレメトリー](/telemetry.md)
     -   [エラーコード](/error-codes.md)
     -   [テーブルフィルター](/table-filter.md)
-    -   [トポロジラベルによるレプリカのスケジュール](/schedule-replicas-by-topology-labels.md)
+    -   [トポロジラベルごとにレプリカをスケジュールする](/schedule-replicas-by-topology-labels.md)
 -   よくある質問
     -   [TiDBのよくある質問](/faq/tidb-faq.md)
     -   [SQLのFAQ](/faq/sql-faq.md)
@@ -825,8 +756,6 @@
     -   [すべてのリリース](/releases/release-notes.md)
     -   [リリースタイムライン](/releases/release-timeline.md)
     -   [TiDBバージョニング](/releases/versioning.md)
-    -   v6.0
-        -   [6.0.0-DMR](/releases/release-6.0.0-dmr.md)
     -   v5.4
         -   [5.4.1](/releases/release-5.4.1.md)
         -   [5.4.0](/releases/release-5.4.0.md)

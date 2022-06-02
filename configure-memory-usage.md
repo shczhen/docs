@@ -1,7 +1,6 @@
 ---
-title: TiDB Memory Control
-summary: Learn how to configure the memory quota of a query and avoid OOM (out of memory).
-aliases: ['/docs/dev/configure-memory-usage/','/docs/dev/how-to/configure/memory-control/']
+title: TiDBメモリ制御
+summary: クエリのメモリクォータを構成し、OOM（メモリ不足）を回避する方法を学びます。
 ---
 
 # TiDBメモリ制御 {#tidb-memory-control}
@@ -66,7 +65,7 @@ TiDB構成ファイルでは、 [`server-memory-quota`](/tidb-configuration-file
 
 次の例では、tidb-serverインスタンスの合計メモリ使用量を32GBに設定します。
 
-{{&lt;コピー可能&quot;&quot;&gt;}}
+{{< copyable "" >}}
 
 ```toml
 [performance]
@@ -75,9 +74,9 @@ server-memory-quota = 34359738368
 
 この構成では、tidb-serverインスタンスのメモリ使用量が32 GBに達すると、メモリ使用量が32 GBを下回るまで、インスタンスは実行中のSQLステートメントをランダムに強制終了し始めます。強制終了するSQL操作は、クライアントに`Out Of Global Memory Limit!`エラーメッセージを返します。
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> -   `server-memory-quota`はまだ実験的な機能です。実稼働環境で使用することはお勧めし<strong>ません</strong>。
+> -   `server-memory-quota`はまだ実験的機能です。実稼働環境で使用することはお勧めし**ません**。
 > -   デフォルト値の`server-memory-quota`は`0`です。これは、メモリ制限がないことを意味します。
 
 ## 過度のメモリ使用量のアラームをトリガーします {#trigger-the-alarm-of-excessive-memory-usage}
@@ -90,7 +89,7 @@ server-memory-quota = 34359738368
 
 1.  `memory-usage-alarm-ratio`から`0.8`に設定：
 
-    {{&lt;コピー可能&quot;&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```toml
     mem-quota-query = 34359738368  // Increases the memory limit of each query to construct SQL statements that take up larger memory.
@@ -138,7 +137,7 @@ TiDBは、実行オペレーターのディスクスピルをサポートしま�
 -   Sort、MergeJoin、およびHashJoinオペレーターのディスクスピルはv4.0.0で導入されました。 HashAggオペレーターのディスクスピルはv5.2.0で導入されました。
 -   Sort、MergeJoin、またはHashJoinを含むSQL実行によってOOMが発生すると、TiDBはデフォルトでディスクスピルをトリガーします。 HashAggを含むSQL実行がOOMを引き起こす場合、TiDBはデフォルトでディスクスピルをトリガーしません。 HashAggのディスクスピルをトリガーするようにシステム変数`tidb_executor_concurrency = 1`を構成できます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > HashAggのディスクスピルは、 `DISTINCT`集約関数を含むSQL実行をサポートしていません。 `DISTINCT`集計関数を含むSQL実行が大量のメモリを使用する場合、ディスクスピルは適用されません。
 

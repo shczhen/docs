@@ -1,12 +1,7 @@
 ---
-title: Export Grafana Snapshots
-summary: Learn how to export snapshots of Grafana Dashboard, and how to visualize these files.
+title: Grafanaスナップショットのエクスポート
+summary: Grafanaダッシュボードのスナップショットをエクスポートする方法と、これらのファイルを視覚化する方法を学びます。
 ---
-
-> <strong>警告：</strong>
->
-> -   TiDB v6.0.0以降、PingCAPはMetricsToolを維持しなくなりました。
-> -   監視メトリックデータをエクスポートするには、 [PingCAPクリニック診断サービス](/clinic/clinic-introduction.md)を使用して、監視メトリック、ログ、クラスタートポロジ、構成、パラメーターなど、TiDBクラスターの診断に必要な情報を取得します。
 
 # Grafanaスナップショットのエクスポート {#export-grafana-snapshots}
 
@@ -16,15 +11,15 @@ summary: Learn how to export snapshots of Grafana Dashboard, and how to visualiz
 
 MetricsToolには[https://metricstool.pingcap.com/](https://metricstool.pingcap.com/)からアクセスできます。これは、次の3セットのツールで構成されています。
 
--   <strong>エクスポート</strong>：ブラウザの開発者ツールで実行されているユーザースクリプト。Grafanav6.xxサーバーの現在のダッシュボードに表示されているすべてのパネルのスナップショットをダウンロードできます。
+-   **エクスポート**：ブラウザの開発者ツールで実行されているユーザースクリプト。Grafanav6.xxサーバーの現在のダッシュボードに表示されているすべてのパネルのスナップショットをダウンロードできます。
 
     ![Screenshot of MetricsTool Exporter after running the user script](/media/metricstool-export.png)
 
--   <strong>視覚化</strong>：エクスポートされたスナップショットファイルを視覚化するWebページ。視覚化されたスナップショットは、ライブのGrafanaダッシュボードと同じ方法で操作できます。
+-   **視覚化**：エクスポートされたスナップショットファイルを視覚化するWebページ。視覚化されたスナップショットは、ライブのGrafanaダッシュボードと同じ方法で操作できます。
 
     ![Screenshot of MetricsTool Visualizer](/media/metricstool-visualize.png)
 
--   <strong>インポート</strong>：エクスポートされたスナップショットを実際のGrafanaインスタンスにインポートして戻す手順。
+-   **インポート**：エクスポートされたスナップショットを実際のGrafanaインスタンスにインポートして戻す手順。
 
 ## よくある質問 {#faqs}
 

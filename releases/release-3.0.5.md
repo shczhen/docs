@@ -1,6 +1,5 @@
 ---
-title: TiDB 3.0.5 Release Notes
-aliases: ['/docs/dev/releases/release-3.0.5/','/docs/dev/releases/3.0.5/']
+title: TiDB3.0.5リリースノート
 ---
 
 # TiDB3.0.5リリースノート {#tidb-3-0-5-release-notes}
@@ -34,7 +33,7 @@ TiDB Ansibleバージョン：3.0.5
     -   悲観的なトランザクションをサポートするために、必要に応じてトランザクションTTLの拡張をサポートします（最大10分） [＃12579](https://github.com/pingcap/tidb/pull/12579)
     -   TiDBがスキーマの変更と対応する変更されたテーブル情報を100から1024にキャッシュする回数を調整し、 `tidb_max_delta_schema_count`のシステム変数[＃12502](https://github.com/pingcap/tidb/pull/12502)を使用して変更をサポートします。
     -   `kvrpc.Cleanup`プロトコルの動作を更新して、時間外でないトランザクションのロックをクリーンアップしないようにします[＃12417](https://github.com/pingcap/tidb/pull/12417)
-    -   `information_schema.tables`のテーブルへのパーティションテーブル情報のログ記録をサポート[＃12631](https://github.com/pingcap/tidb/pull/12631)
+    -   `information_schema.tables`のテーブルへのパーティションテーブル情報のロギングをサポート[＃12631](https://github.com/pingcap/tidb/pull/12631)
     -   `region-cache-ttl` [＃12683](https://github.com/pingcap/tidb/pull/12683)を構成することにより、リージョンキャッシュのTTLの変更をサポートします
     -   実行プランの圧縮エンコードされた情報を低速ログに出力することをサポートします。この機能はデフォルトで有効になっており、 `slow-log-plan`構成または`tidb_record_plan_in_slow_log`変数を使用して制御できます。さらに、 `tidb_decode_plan`関数は、スローログ内の実行プラン列にエンコードされた情報を実行プラン情報にデコードできます。 [＃12808](https://github.com/pingcap/tidb/pull/12808)
     -   `information_schema.processlist`テーブル[＃12801](https://github.com/pingcap/tidb/pull/12801)でのメモリ使用量情報の表示をサポートします。
@@ -45,7 +44,7 @@ TiDB Ansibleバージョン：3.0.5
     -   `Create Table`操作でSet列[＃12267](https://github.com/pingcap/tidb/pull/12267)のIntタイプのデフォルト値が正しく設定されない問題を修正します。
     -   `Create Table`ステートメントで一意のインデックスを作成するときに複数の`unique`をサポートする[＃12463](https://github.com/pingcap/tidb/pull/12463)
     -   この列のデフォルト値を既存の行に入力すると、 `Alter Table`を使用してビットタイプの列を追加するときにエラーが発生する可能性がある問題を修正し[＃12489](https://github.com/pingcap/tidb/pull/12489) 。
-    -   RangeパーティションテーブルがDateまたはDatetimeタイプの列をパーティションキーとして使用する場合のパーティションの追加の失敗を修正します[＃12815](https://github.com/pingcap/tidb/pull/12815)
+    -   Rangeパーティションテーブルが日付または日時タイプの列をパーティションキーとして使用する場合のパーティションの追加の失敗を修正します[＃12815](https://github.com/pingcap/tidb/pull/12815)
     -   テーブルの作成時またはパーティションの追加時に、パーティションキーとして[日付]または[日時タイプ]列を持つ範囲パーティションテーブルのパーティションタイプとパーティションキータイプの整合性のチェックをサポートします[＃12792](https://github.com/pingcap/tidb/pull/12792)
     -   範囲パーティションテーブルを作成するときに、一意キー列セットがパーティション列セット以上である必要があるというチェックを追加します[＃12718](https://github.com/pingcap/tidb/pull/12718)
 -   モニター

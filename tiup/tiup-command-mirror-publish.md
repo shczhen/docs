@@ -1,5 +1,5 @@
 ---
-title: tiup mirror publish
+title: tiupミラー公開
 ---
 
 # tiupミラー公開 {#tiup-mirror-publish}
@@ -39,7 +39,7 @@ tiup mirror publish <comp-name> <version> <tarball> <entry> [flags]
 
 -   デフォルト： &quot;$ {GOARCH}&quot;
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `--arch`が`any`に設定されている場合、 `--os`も`any`に設定する必要があります。
 
@@ -55,7 +55,7 @@ tiup mirror publish <comp-name> <version> <tarball> <entry> [flags]
 
 -   デフォルト：「${GOOS}」
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `--os`が`any`に設定されている場合、 `--arch`も`any`に設定する必要があります。
 
@@ -73,7 +73,7 @@ tiup mirror publish <comp-name> <version> <tarball> <entry> [flags]
 
 ### -スタンドアロン {#standalone}
 
--   コンポーネントをスタンドアロンで実行できるかどうかを制御します。このオプションは現在<strong>利用できません</strong>。
+-   コンポーネントをスタンドアロンで実行できるかどうかを制御します。このオプションは現在**利用できません**。
 -   データ型： `BOOLEAN`
 -   このオプションはデフォルトで無効になっており、デフォルト値は`false`です。このオプションを有効にするには、このオプションをコマンドに追加して、 `true`の値を渡すか、値を渡さないようにします。
 

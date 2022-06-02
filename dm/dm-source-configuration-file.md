@@ -1,14 +1,13 @@
 ---
-title: Upstream Database Configuration File
-summary: Learn the configuration file of the upstream database
-aliases: ['/docs/tidb-data-migration/dev/source-configuration-file/']
+title: アップストリームデータベースConfiguration / コンフィグレーションファイル
+summary: アップストリームデータベースの構成ファイルを学習する
 ---
 
-# アップストリームデータベース構成ファイル {#upstream-database-configuration-file}
+# アップストリームデータベースConfiguration / コンフィグレーションファイル {#upstream-database-configuration-file}
 
 このドキュメントでは、アップストリームデータベースの構成ファイルを紹介します。これには、構成ファイルテンプレートと、このファイルの各構成パラメーターの説明が含まれます。
 
-## 構成ファイルテンプレート {#configuration-file-template}
+## Configuration / コンフィグレーションファイルテンプレート {#configuration-file-template}
 
 次に、アップストリームデータベースの構成ファイルテンプレートを示します。
 
@@ -56,11 +55,11 @@ from:
 #   action: Ignore
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > DM v2.0.1では、 `enable-gtid`と`enable-relay`を同時に`true`に設定しないでください。そうしないと、増分データが失われる可能性があります。
 
-## 構成パラメーター {#configuration-parameters}
+## Configuration / コンフィグレーションパラメーター {#configuration-parameters}
 
 このセクションでは、構成ファイルの各構成パラメーターについて説明します。
 
@@ -78,7 +77,7 @@ from:
 | `port`              | アップストリームデータベースのポートを指定します。                                                                                                                                                                |
 | `user`              | アップストリームデータベースのユーザー名を指定します。                                                                                                                                                              |
 | `password`          | アップストリームデータベースのユーザーパスワードを指定します。 dmctlで暗号化されたパスワードを使用することをお勧めします。                                                                                                                         |
-| `security`          | アップストリームデータベースのTLS構成を指定します。証明書の構成済みファイルパスは、すべてのノードからアクセスできる必要があります。構成されたファイルパスがローカルパスである場合、クラスター内のすべてのノードは、各ホストの同じパスに証明書のコピーを格納する必要があります。                                                |
+| `security`          | アップストリームデータベースのTLS構成を指定します。証明書の構成済みファイルパスは、すべてのノードからアクセスできる必要があります。構成されたファイルパスがローカルパスである場合、クラスタのすべてのノードは、各ホストの同じパスに証明書のコピーを格納する必要があります。                                                  |
 
 ### リレーログクリーンアップ戦略の構成（ <code>purge</code> ） {#relay-log-cleanup-strategy-configuration-code-purge-code}
 
@@ -90,7 +89,7 @@ from:
 | `expires`      | リレーログの有効期限を時間単位で設定します。リレー処理ユニットによって書き込まれない、または既存のデータ移行タスクによって読み取る必要のないリレーログは、有効期限を超えるとDMによって削除されます。このパラメーターが指定されていない場合、自動パージは実行されません。 | `0`    |
 | `remain-space` | ギガバイト単位で、空きディスク容量の最小量を設定します。使用可能なディスク容量がこの値よりも小さい場合、DM-workerはリレーログを削除しようとします。                                                        | `15`   |
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 自動データパージ戦略は、 `interval`が0でなく、2つの構成項目`expires`および`remain-space`の少なくとも1つが0でない場合にのみ有効になります。
 

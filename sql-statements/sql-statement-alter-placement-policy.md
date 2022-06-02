@@ -1,18 +1,17 @@
 ---
-title: ALTER PLACEMENT POLICY
-summary: The usage of ALTER PLACEMENT POLICY in TiDB.
+title: 配置ポリシーの変更
+summary: TiDBでのALTERPLACEMENTPOLICYの使用。
 ---
 
 # 配置ポリシーの変更 {#alter-placement-policy}
 
+> **警告：**
+>
+> SQLの配置ルールは実験的機能です。 GAの前に構文が変更される可能性があり、バグもある可能性があります。
+>
+> リスクを理解している場合は、 `SET GLOBAL tidb_enable_alter_placement = 1;`を実行することでこの実験機能を有効にできます。
+
 `ALTER PLACEMENT POLICY`は、以前に作成された既存の配置ポリシーを変更するために使用されます。配置ポリシーを使用するすべてのテーブルとパーティションは自動的に更新されます。
-
-`ALTER PLACEMENT POLICY`は、以前のポリシーを新しい定義に<em>置き換え</em>ます。古いポリシーを新しいポリシーと<em>マージ</em>しません。次の例では、 `ALTER PLACEMENT POLICY`が実行されると`FOLLOWERS=4`が失われます。
-
-```sql
-CREATE PLACEMENT POLICY p1 FOLLOWERS=4;
-ALTER PLACEMENT POLICY p1 PRIMARY_REGION="us-east-1" REGIONS="us-east-1,us-west-1";
-```
 
 ## あらすじ {#synopsis}
 
@@ -24,34 +23,27 @@ PolicyName ::=
     Identifier
 
 PlacementOptionList ::=
-    PlacementOption
-|   PlacementOptionList PlacementOption
-|   PlacementOptionList ',' PlacementOption
+    DirectPlacementOption
+|   PlacementOptionList DirectPlacementOption
+|   PlacementOptionList ',' DirectPlacementOption
 
-PlacementOption ::=
-    CommonPlacementOption
-|   SugarPlacementOption
-|   AdvancedPlacementOption
-
-CommonPlacementOption ::=
-    "FOLLOWERS" EqOpt LengthNum
-
-SugarPlacementOption ::=
+DirectPlacementOption ::=
     "PRIMARY_REGION" EqOpt stringLit
 |   "REGIONS" EqOpt stringLit
+|   "FOLLOWERS" EqOpt LengthNum
+|   "VOTERS" EqOpt LengthNum
+|   "LEARNERS" EqOpt LengthNum
 |   "SCHEDULE" EqOpt stringLit
-
-AdvancedPlacementOption ::=
-    "LEARNERS" EqOpt LengthNum
 |   "CONSTRAINTS" EqOpt stringLit
 |   "LEADER_CONSTRAINTS" EqOpt stringLit
 |   "FOLLOWER_CONSTRAINTS" EqOpt stringLit
+|   "VOTER_CONSTRAINTS" EqOpt stringLit
 |   "LEARNER_CONSTRAINTS" EqOpt stringLit
 ```
 
 ## 例 {#examples}
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > クラスタで使用可能なリージョンを確認するには、 [`SHOW PLACEMENT LABELS`](/sql-statements/sql-statement-show-placement-labels.md)を参照してください。
 >
@@ -61,9 +53,8 @@ AdvancedPlacementOption ::=
 
 ```sql
 CREATE PLACEMENT POLICY p1 PRIMARY_REGION="us-east-1" REGIONS="us-east-1,us-west-1";
-CREATE TABLE t1 (i INT) PLACEMENT POLICY=p1; -- Assign policy p1 to table t1
-ALTER PLACEMENT POLICY p1 PRIMARY_REGION="us-east-1" REGIONS="us-east-1,us-west-1,us-west-2" FOLLOWERS=4; -- The rules of t1 will be updated automatically.
-SHOW CREATE PLACEMENT POLICY p1\G;
+ALTER PLACEMENT POLICY p1 PRIMARY_REGION="us-east-1" REGIONS="us-east-1,us-west-1,us-west-2" FOLLOWERS=4;
+SHOW CREATE PLACEMENT POLICY p1\G
 ```
 
 ```
@@ -71,9 +62,9 @@ Query OK, 0 rows affected (0.08 sec)
 
 Query OK, 0 rows affected (0.10 sec)
 
-***************************[ 1. row ]***************************
-Policy        | p1
-Create Policy | CREATE PLACEMENT POLICY `p1` PRIMARY_REGION="us-east-1" REGIONS="us-east-1,us-west-1,us-west-2" FOLLOWERS=4
+*************************** 1. row ***************************
+       Policy: p1
+Create Policy: CREATE PLACEMENT POLICY `p1` PRIMARY_REGION="us-east-1" REGIONS="us-east-1,us-west-1,us-west-2" FOLLOWERS=4
 1 row in set (0.00 sec)
 ```
 

@@ -1,12 +1,11 @@
 ---
 title: CLUSTER_HARDWARE
-summary: Learn the `CLUSTER_HARDWARE` information_schema table.
-aliases: ['/docs/dev/system-tables/system-table-cluster-hardware/','/docs/dev/reference/system-databases/cluster-hardware/','/tidb/dev/system-table-cluster-hardware/']
+summary: `CLUSTER_HARDWARE`information_schemaテーブルを学びます。
 ---
 
 # CLUSTER_HARDWARE {#cluster-hardware}
 
-`CLUSTER_HARDWARE`ハードウェアシステムテーブルは、クラスターの各インスタンスが配置されているサーバーのハードウェア情報を提供します。
+`CLUSTER_HARDWARE`ハードウェアシステムテーブルは、クラスタの各インスタンスが配置されているサーバーのハードウェア情報を提供します。
 
 {{< copyable "" >}}
 
@@ -32,7 +31,7 @@ DESC cluster_hardware;
 フィールドの説明：
 
 -   `TYPE` ： [`information_schema.cluster_info`](/information-schema/information-schema-cluster-info.md)テーブルの`TYPE`フィールドに対応します。オプションの値は`tidb` 、および`pd` `tikv` 。
--   `INSTANCE` ： [`information_schema.cluster_info`](/information-schema/information-schema-cluster-info.md)クラスター情報テーブルの`INSTANCE`フィールドに対応します。
+-   `INSTANCE` ： [`information_schema.cluster_info`](/information-schema/information-schema-cluster-info.md)クラスタ情報テーブルの`INSTANCE`フィールドに対応します。
 -   `DEVICE_TYPE` ：ハードウェアタイプ。現在、 `cpu` 、および`memory`タイプを`net`でき`disk` 。
 -   `DEVICE_NAME` ：ハードウェア名。 `DEVICE_NAME`の値は`DEVICE_TYPE`によって異なります。
     -   `cpu` ：ハードウェア名はcpuです。

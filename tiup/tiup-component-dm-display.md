@@ -1,10 +1,10 @@
 ---
-title: tiup dm display
+title: tiupdmディスプレイ
 ---
 
 # tiupdmディスプレイ {#tiup-dm-display}
 
-DMクラスター内の各コンポーネントの動作状態を確認したい場合は、各マシンに1台ずつログインするのは非効率的です。したがって、tiup-dmは、このジョブを効率的に実行するための`tiup dm display`のコマンドを提供します。
+DMクラスタの各コンポーネントの動作状態を確認したい場合は、各マシンに1つずつログインするのは非効率的です。したがって、tiup-dmは、このジョブを効率的に実行するための`tiup dm display`のコマンドを提供します。
 
 ## 構文 {#syntax}
 
@@ -12,7 +12,7 @@ DMクラスター内の各コンポーネントの動作状態を確認したい
 tiup dm display <cluster-name> [flags]
 ```
 
-`<cluster-name>`は、操作するクラスターの名前です。クラスタ名を忘れた場合は、 [`tiup dm list`](/tiup/tiup-component-dm-list.md)コマンドで確認できます。
+`<cluster-name>`は、操作するクラスタの名前です。クラスタ名を忘れた場合は、 [`tiup dm list`](/tiup/tiup-component-dm-list.md)コマンドで確認できます。
 
 ## オプション {#options}
 
@@ -22,7 +22,7 @@ tiup dm display <cluster-name> [flags]
 -   データ型： `STRING`
 -   このオプションはデフォルトで有効になっており、 `[]` （すべてのノードを意味します）が渡されます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `-R, --role`も指定されている場合、 `-N, --node`と`-R, --role`の両方の仕様に一致するサービスノードのみが照会されます。
 
@@ -32,7 +32,7 @@ tiup dm display <cluster-name> [flags]
 -   データ型： `STRING`
 -   このオプションはデフォルトで有効になっており、 `[]` （すべての役割を意味します）が渡されます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `-N, --node`も指定されている場合、 `-N, --node`と`-R, --role`の両方の仕様に一致するサービスノードのみが照会されます。
 

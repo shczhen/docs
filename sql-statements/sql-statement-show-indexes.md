@@ -1,7 +1,6 @@
 ---
-title: SHOW INDEXES [FROM|IN] | TiDB SQL Statement Reference
-summary: An overview of the usage of SHOW INDEXES [FROM|IN] for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-show-indexes/','/docs/dev/reference/sql/statements/show-indexes/']
+title: インデックスを表示[FROM|IN] | TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのSHOWINDEXES[FROM|IN]の使用法の概要。
 ---
 
 # インデックスを表示[FROM|IN] {#show-indexes-from-in}
@@ -10,23 +9,23 @@ aliases: ['/docs/dev/sql-statements/sql-statement-show-indexes/','/docs/dev/refe
 
 ## あらすじ {#synopsis}
 
-<strong>ShowIndexStmt：</strong>
+**ShowIndexStmt：**
 
 ![ShowIndexStmt](/media/sqlgram/ShowIndexStmt.png)
 
-<strong>ShowIndexKwd：</strong>
+**ShowIndexKwd：**
 
 ![ShowIndexKwd](/media/sqlgram/ShowIndexKwd.png)
 
-<strong>FromOrIn：</strong>
+**FromOrIn：**
 
 ![FromOrIn](/media/sqlgram/FromOrIn.png)
 
-<strong>TableName：</strong>
+**TableName：**
 
 ![TableName](/media/sqlgram/TableName.png)
 
-<strong>ShowLikeOrWhereOpt：</strong>
+**ShowLikeOrWhereOpt：**
 
 ![ShowLikeOrWhereOpt](/media/sqlgram/ShowLikeOrWhereOpt.png)
 

@@ -1,7 +1,6 @@
 ---
-title: CREATE DATABASE | TiDB SQL Statement Reference
-summary: An overview of the usage of CREATE DATABASE for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-create-database/','/docs/dev/reference/sql/statements/create-database/']
+title: データベースの作成| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのCREATEDATABASEの使用法の概要。
 ---
 
 # データベースの作成 {#create-database}
@@ -26,7 +25,7 @@ DatabaseOptionListOpt ::=
 
 ## 構文 {#syntax}
 
-`CREATE DATABASE`ステートメントは、データベースを作成し、デフォルトの文字セットや照合など、データベースのデフォルトのプロパティを指定するために使用されます。 `CREATE SCHEMA`は`CREATE DATABASE`の同義語です。
+`CREATE DATABASE`ステートメントは、データベースを作成し、デフォルトの文字セットや照合順序など、データベースのデフォルトのプロパティを指定するために使用されます。 `CREATE SCHEMA`は`CREATE DATABASE`の同義語です。
 
 ```sql
 CREATE {DATABASE | SCHEMA} [IF NOT EXISTS] db_name

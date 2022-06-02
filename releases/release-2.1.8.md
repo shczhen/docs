@@ -1,6 +1,5 @@
 ---
-title: TiDB 2.1.8 Release Notes
-aliases: ['/docs/dev/releases/release-2.1.8/','/docs/dev/releases/2.1.8/']
+title: TiDB2.1.8リリースノート
 ---
 
 # TiDB2.1.8リリースノート {#tidb-2-1-8-release-notes}
@@ -15,7 +14,7 @@ TiDB Ansibleバージョン：2.1.8
 
 -   NULL値のパラメーター[＃9930](https://github.com/pingcap/tidb/pull/9930)がある場合、 `GROUP_CONCAT`の関数の処理ロジックがMySQLと互換性がないという問題を修正します。
 -   `Distinct`モード[＃9931](https://github.com/pingcap/tidb/pull/9931)での10進値の等価性チェックの問題を修正しました
--   `SHOW FULL COLUMNS`ステートメントの日付、日時、およびタイムスタンプタイプの照合互換性の問題を修正します
+-   `SHOW FULL COLUMNS`ステートメントの日付、日時、およびタイムスタンプタイプの照合順序互換性の問題を修正します
     -   [＃9938](https://github.com/pingcap/tidb/pull/9938)
     -   [＃10114](https://github.com/pingcap/tidb/pull/10114)
 -   フィルタリング条件に相関列が含まれている場合に行数の推定が不正確になる問題を修正します[＃9937](https://github.com/pingcap/tidb/pull/9937)
@@ -50,7 +49,7 @@ TiDB Ansibleバージョン：2.1.8
 
 ## ツール {#tools}
 
--   Lightningのテーブルのインポート順序を最適化して、インポートプロセス中にクラスターで`Checksum`と`Analyze`を実行する大きなテーブルの影響を減らし、 `Checksum`と[＃156](https://github.com/pingcap/tidb-lightning/pull/156)の成功率を向上させ`Analyze` 。
+-   Lightningのテーブルのインポート順序を最適化して、インポートプロセス中にクラスタで`Checksum`と`Analyze`を実行する大きなテーブルの影響を減らし、 `Checksum`と[＃156](https://github.com/pingcap/tidb-lightning/pull/156)の成功率を向上させ`Analyze` 。
 -   KVエンコーダー[＃145](https://github.com/pingcap/tidb-lightning/pull/145)の追加の解析作業を回避するために、データソースファイルのコンテンツをTiDBの`types.Datum`に直接解析することにより、LightningのエンコードSQLパフォーマンスを50％向上させます。
 -   PiDB Binlog Pumpに`storage.sync-log`の構成アイテムを追加して、 [＃529](https://github.com/pingcap/tidb-binlog/pull/529)でローカルストレージのディスクのフラッシュを非同期でサポートします。
 -   TiDBBinlogPumpとDrainer1間の通信のトラフィック圧縮をサポートし[＃530](https://github.com/pingcap/tidb-binlog/pull/530)

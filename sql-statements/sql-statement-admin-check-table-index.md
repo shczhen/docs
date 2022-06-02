@@ -1,6 +1,6 @@
 ---
-title: ADMIN CHECK [TABLE|INDEX] | TiDB SQL Statement Reference
-summary: An overview of the usage of ADMIN for the TiDB database.
+title: 管理者チェック[テーブル|インデックス]| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのADMINの使用法の概要。
 category: reference
 ---
 

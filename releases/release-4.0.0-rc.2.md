@@ -1,6 +1,5 @@
 ---
-title: TiDB 4.0 RC.2 Release Notes
-aliases: ['/docs/dev/releases/release-4.0.0-rc.2/']
+title: TiDB4.0RC.2リリースノート
 ---
 
 # TiDB4.0RC.2リリースノート {#tidb-4-0-rc-2-release-notes}
@@ -71,7 +70,7 @@ TiDBバージョン：4.0.0-rc.2
 
 -   TiKV
 
-    -   tikv-ctlの暗号化デバッグをサポートし、暗号化ストレージが有効になっているときにtikv-ctlを使用してクラスターを操作および管理できるようにします[＃7698](https://github.com/tikv/tikv/pull/7698)
+    -   tikv-ctlの暗号化デバッグをサポートし、暗号化ストレージが有効になっているときにtikv-ctlを使用してクラスタを操作および管理できるようにします[＃7698](https://github.com/tikv/tikv/pull/7698)
     -   スナップショット[＃7712](https://github.com/tikv/tikv/pull/7712)でロック列ファミリーの暗号化をサポートする
     -   GrafanaダッシュボードのRaftstoreレイテンシーサマリーのヒートマップを使用して、ジッターの問題をより適切に診断します[＃7717](https://github.com/tikv/tikv/pull/7717)
     -   gRPCメッセージのサイズの上限設定のサポート[＃7824](https://github.com/tikv/tikv/pull/7824)
@@ -87,7 +86,7 @@ TiDBバージョン：4.0.0-rc.2
 
 -   TiFlash
 
-    -   <strong>Grafana</strong>のReadIndexのカウントグラフの名前を<strong>Ops</strong>に変更します
+    -   **Grafana**のReadIndexのカウントグラフの名前を<strong>Ops</strong>に変更します
     -   システム負荷が低いときにファイル記述子を開くためにデータを最適化して、システムリソースの消費を削減します
     -   容量関連の構成パラメーターを追加して、データストレージ容量を制限します
 
@@ -95,7 +94,7 @@ TiDBバージョン：4.0.0-rc.2
 
     -   TiDB Lightning
 
-        -   tidb-lightning-ctlに`fetch-mode`つのサブコマンドを追加して、TiKVクラスターモード[＃287](https://github.com/pingcap/tidb-lightning/pull/287)を出力します。
+        -   tidb-lightning-ctlに`fetch-mode`つのサブコマンドを追加して、TiKVクラスタモード[＃287](https://github.com/pingcap/tidb-lightning/pull/287)を出力します。
 
     -   TiCDC
 
@@ -116,14 +115,14 @@ TiDBバージョン：4.0.0-rc.2
     -   `INSERT` `DELETE`がシーケンスオブジェクト`ANALYZE`で[＃16957](https://github.com/pingcap/tidb/pull/16957)できる問題を修正し`UPDATE`
     -   ブートストラップフェーズの内部SQLステートメントがステートメントの概要テーブル[＃17062](https://github.com/pingcap/tidb/pull/17062)で内部クエリとして正しくマークされない問題を修正します。
     -   TiFlashではサポートされているがTiKVではサポートされていないフィルター条件が`IndexLookupJoin`オペレーター[＃17036](https://github.com/pingcap/tidb/pull/17036)にプッシュダウンされたときに発生するエラーを修正します。
-    -   照合を有効にした後に発生する可能性がある`LIKE`式の同時実行の問題を修正します[＃16997](https://github.com/pingcap/tidb/pull/16997)
-    -   照合を有効にした後、 `LIKE`関数が`Range`クエリインデックスを正しく構築できない問題を修正します[＃16783](https://github.com/pingcap/tidb/pull/16783)
+    -   照合順序を有効にした後に発生する可能性がある`LIKE`式の同時実行の問題を修正します[＃16997](https://github.com/pingcap/tidb/pull/16997)
+    -   照合順序を有効にした後、 `LIKE`関数が`Range`クエリインデックスを正しく構築できない問題を修正します[＃16783](https://github.com/pingcap/tidb/pull/16783)
     -   `Plan Cache`ステートメントがトリガーされた後に`@@LAST_PLAN_FROM_CACHE`を実行すると、間違った値が返される問題を修正します[＃16831](https://github.com/pingcap/tidb/pull/16831)
     -   `IndexMerge` [＃16947](https://github.com/pingcap/tidb/pull/16947)の候補パスを計算するときに、インデックスの`TableFilter`が失われる問題を修正します。
     -   `MergeJoin`ヒントを使用し、 `TableDual`演算子が存在する場合、物理クエリプランを生成できない問題を修正します[＃17016](https://github.com/pingcap/tidb/pull/17016)
-    -   ステートメントの要約表[＃17018](https://github.com/pingcap/tidb/pull/17018)の`Stmt_Type`列の値の誤った大文字化を修正します。
+    -   ステートメント要約表[＃17018](https://github.com/pingcap/tidb/pull/17018)の`Stmt_Type`列の値の誤った大文字化を修正します。
     -   異なるユーザーが同じ[＃16996](https://github.com/pingcap/tidb/pull/16996)を使用するとサービスを開始できないため、 `Permission Denied`エラーが報告される問題を修正し`tmp-storage-path` 。
-    -   結果タイプが[＃16995](https://github.com/pingcap/tidb/pull/16995)などの複数の入力列によって決定される式に対して`NotNullFlag`結果タイプが誤って設定される問題を修正し`CASE WHEN` 。
+    -   結果タイプが[＃16995](https://github.com/pingcap/tidb/pull/16995)などの複数の入力列によって決定される式に対して、 `NotNullFlag`の結果タイプが誤って設定される問題を修正し`CASE WHEN` 。
     -   ダーティストアが存在する場合、緑色のGCが未解決のロックを残す可能性がある問題を修正します[＃16949](https://github.com/pingcap/tidb/pull/16949)
     -   複数の異なるロックを持つ単一のキーに遭遇したときに、緑色のGCが未解決のロックを残す可能性がある問題を修正します[＃16948](https://github.com/pingcap/tidb/pull/16948)
     -   サブクエリが親クエリ列[＃16952](https://github.com/pingcap/tidb/pull/16952)を参照するため、 `INSERT VALUE`ステートメントに間違った値を挿入する問題を修正します。
@@ -143,10 +142,10 @@ TiDBバージョン：4.0.0-rc.2
     -   Floatタイプで`XOR`の操作を実行した結果が、 [＃16978](https://github.com/pingcap/tidb/pull/16978)の結果と矛盾する問題を修正します。
     -   サポートされていない`ALTER TABLE REORGANIZE PARTITION`ステートメントが実行されたときにエラーが報告されない問題を修正します[＃17178](https://github.com/pingcap/tidb/pull/17178)
     -   `EXPLAIN FORMAT="dot"  FOR CONNECTION ID`がサポートされていないプランに遭遇したときにエラーが報告される問題を修正します[＃17160](https://github.com/pingcap/tidb/pull/17160)
-    -   ステートメント要約表[＃17086](https://github.com/pingcap/tidb/pull/17086)の`EXEC_COUNT`列にある準備済みステートメントのレコードの問題を修正します。
+    -   ステートメント要約表[＃17086](https://github.com/pingcap/tidb/pull/17086)の`EXEC_COUNT`列にあるプリペアドステートメントのレコードの問題を修正します。
     -   ステートメントサマリーシステム変数[＃17129](https://github.com/pingcap/tidb/pull/17129)を設定するときに値が検証されない問題を修正します
     -   プランキャッシュが有効になっているときにオーバーフロー値を使用して`UNSIGNED BIGINT`主キーをクエリすると、エラーが報告される問題を修正します[＃17120](https://github.com/pingcap/tidb/pull/17120)
-    -   <strong>GrafanaTiDBサマリー</strong>ダッシュボードのマシンインスタンスとリクエストタイプによる誤ったQPS表示を修正します[＃17105](https://github.com/pingcap/tidb/pull/17105)
+    -   **GrafanaTiDBサマリー**ダッシュボードのマシンインスタンスとリクエストタイプによる誤ったQPS表示を修正します[＃17105](https://github.com/pingcap/tidb/pull/17105)
 
 -   TiKV
 

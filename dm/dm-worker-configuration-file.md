@@ -1,14 +1,13 @@
 ---
-title: DM-worker Configuration File
-summary: Learn the configuration file of DM-worker.
-aliases: ['/docs/tidb-data-migration/dev/dm-worker-configuration-file/','/docs/tidb-data-migration/dev/dm-worker-configuration-file-full/']
+title: DM-workerConfiguration / コンフィグレーションファイル
+summary: DM-workerの設定ファイルをご覧ください。
 ---
 
-# DM-worker構成ファイル {#dm-worker-configuration-file}
+# DM-workerConfiguration / コンフィグレーションファイル {#dm-worker-configuration-file}
 
 このドキュメントでは、DMワーカーの構成を紹介します。これには、構成ファイルテンプレートと、このファイルの各構成パラメーターの説明が含まれます。
 
-## 構成ファイルテンプレート {#configuration-file-template}
+## Configuration / コンフィグレーションファイルテンプレート {#configuration-file-template}
 
 以下は、DM-workerの構成ファイルテンプレートです。
 
@@ -35,7 +34,7 @@ ssl-key = "/path/to/key.pem"
 cert-allowed-cn = ["dm"]
 ```
 
-## 構成パラメーター {#configuration-parameters}
+## Configuration / コンフィグレーションパラメーター {#configuration-parameters}
 
 ### グローバル {#global}
 

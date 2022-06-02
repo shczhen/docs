@@ -1,7 +1,6 @@
 ---
-title: Statement Execution Details of TiDB Dashboard
-summary: View the execution details of a single SQL statement in TiDB Dashboard.
-aliases: ['/docs/dev/dashboard/dashboard-statement-details/']
+title: TiDBダッシュボードのステートメント実行の詳細
+summary: TiDBダッシュボードで単一のSQLステートメントの実行の詳細を表示します。
 ---
 
 # TiDBダッシュボードのステートメント実行の詳細 {#statement-execution-details-of-tidb-dashboard}
@@ -26,15 +25,15 @@ aliases: ['/docs/dev/dashboard/dashboard-statement-details/']
 
 ### 基本タブ {#basic-tab}
 
-SQL実行の基本情報には、テーブル名、インデックス名、実行カウント、および合計レイテンシーが含まれます。 [<strong>説明</strong>]列には、各フィールドの詳細な説明が表示されます。
+SQL実行の基本情報には、テーブル名、インデックス名、実行カウント、および合計待機時間が含まれます。 [**説明**]列には、各フィールドの詳細な説明が表示されます。
 
 ![Basic information](/media/dashboard/dashboard-statement-plans-basic.png)
 
 ### 時間タブ {#time-tab}
 
-[<strong>時間</strong>]タブをクリックすると、実行プランの各段階がどのくらい続くかを確認できます。
+[**時間**]タブをクリックすると、実行プランの各段階がどのくらい続くかを確認できます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 一部の操作は単一のSQLステートメント内で並行して実行される可能性があるため、各ステージの累積期間がSQLステートメントの実際の実行時間を超える可能性があります。
 
@@ -42,19 +41,19 @@ SQL実行の基本情報には、テーブル名、インデックス名、実�
 
 ### コプロセッサー読み取りタブ {#coprocessor-read-tab}
 
-「<strong>コプロセッサー読み取り」</strong>タブをクリックすると、コプロセッサー読み取りに関連する情報が表示されます。
+「**コプロセッサー読み取り」**タブをクリックすると、コプロセッサー読み取りに関連する情報が表示されます。
 
 ![Coprocessor read](/media/dashboard/dashboard-statement-plans-cop-read.png)
 
 ### [トランザクション]タブ {#transaction-tab}
 
-[<strong>トランザクション</strong>]タブをクリックすると、書き込まれたキーの平均数や書き込まれたキーの最大数など、実行計画とトランザクションに関連する情報が表示されます。
+[**トランザクション**]タブをクリックすると、書き込まれたキーの平均数や書き込まれたキーの最大数など、実行計画とトランザクションに関連する情報が表示されます。
 
 ![Transaction](/media/dashboard/dashboard-statement-plans-transaction.png)
 
 ### 遅いクエリタブ {#slow-query-tab}
 
-実行プランの実行が遅すぎる場合は、[<strong>低速クエリ</strong>]タブで関連する低速クエリレコードを確認できます。
+実行プランの実行が遅すぎる場合は、[**低速クエリ**]タブで関連する低速クエリレコードを確認できます。
 
 ![Slow Query](/media/dashboard/dashboard-statement-plans-slow-queries.png)
 

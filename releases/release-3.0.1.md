@@ -1,6 +1,5 @@
 ---
-title: TiDB 3.0.1 Release Notes
-aliases: ['/docs/dev/releases/release-3.0.1/','/docs/dev/releases/3.0.1/']
+title: TiDB3.0.1リリースノート
 ---
 
 # TiDB3.0.1リリースノート {#tidb-3-0-1-release-notes}
@@ -24,7 +23,7 @@ TiDB Ansibleバージョン：3.0.1
 -   仮想生成列を保存された生成列に変更することを禁止する[＃11068](https://github.com/pingcap/tidb/pull/11068)
 -   生成された列式をインデックス[＃11068](https://github.com/pingcap/tidb/pull/11068)で変更することを禁止します
 -   ARM64アーキテクチャでのTiDBのコンパイルのサポート[＃11150](https://github.com/pingcap/tidb/pull/11150)
--   データベースまたはテーブルの照合の変更をサポートしますが、データベース/テーブルの文字セットはUTF-8または[＃11086](https://github.com/pingcap/tidb/pull/11086)である必要があります。
+-   データベースまたはテーブルの照合順序の変更をサポートしますが、データベース/テーブルの文字セットはUTF-8または[＃11086](https://github.com/pingcap/tidb/pull/11086)である必要があります。
 -   `UPDATE … SELECT`ステートメントの`SELECT`サブクエリが`UPDATE`式の列の解析に失敗し、列が誤ってプルーニングされた場合にエラーが報告される問題を修正します[＃11252](https://github.com/pingcap/tidb/pull/11252)
 -   列が複数回クエリされ、ポイントクエリ中に返された結果がNULLである場合に発生するパニックの問題を修正します[＃11226](https://github.com/pingcap/tidb/pull/11226)
 -   `RAND`関数[＃11169](https://github.com/pingcap/tidb/pull/11169)を使用するときに非スレッドセーフ`rand.Rand`によって引き起こされるデータ競合の問題を修正します

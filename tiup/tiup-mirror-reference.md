@@ -1,6 +1,6 @@
 ---
-title: TiUP Mirror Reference Guide
-summary: Learn the general information of TiUP mirrors.
+title: TiUPミラーリファレンスガイド
+summary: TiUPミラーの一般的な情報を学びます。
 ---
 
 # TiUPミラーリファレンスガイド {#tiup-mirror-reference-guide}
@@ -47,7 +47,7 @@ TiUPミラーは、コンポーネントとそのメタデータを格納するT
    |-- {hash}-timestamp.json                    # Private key of the timestamps
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   `commits`ディレクトリには、ミラーの更新プロセスで生成されたログが格納され、ミラーをロールバックするために使用されます。ディスク容量が不足している場合は、古いログディレクトリを定期的に削除できます。
 > -   `keys`ディレクトリに保存されている秘密鍵は機密情報です。別々に保管することをお勧めします。

@@ -1,7 +1,6 @@
 ---
-title: TiDB Binlog Troubleshooting
-summary: Learn the troubleshooting process of TiDB Binlog.
-aliases: ['/docs/dev/tidb-binlog/troubleshoot-tidb-binlog/','/docs/dev/reference/tidb-binlog/troubleshoot/binlog/','/docs/dev/how-to/troubleshoot/tidb-binlog/']
+title: TiDBBinlogのトラブルシューティング
+summary: TiDBBinlogのトラブルシューティングプロセスを学びます。
 ---
 
 # TiDBBinlogのトラブルシューティング {#tidb-binlog-troubleshooting}
@@ -16,4 +15,4 @@ TiDB Binlogの実行中にエラーが発生した場合は、次の手順を実
 
 3.  ポンプログまたはドレイナーログに`ERROR`または`WARN`が存在するかどうかを確認します。
 
-上記の手順で問題を見つけたら、 [よくある質問](/tidb-binlog/tidb-binlog-faq.md)と[TiDBBinlogエラー処理](/tidb-binlog/handle-tidb-binlog-errors.md)を参照して解決策を確認してください。解決策が見つからない場合、または提供されている解決策が役に立たない場合は、 [問題](https://github.com/pingcap/tidb-binlog/issues)を送信してください。
+上記の手順で問題を見つけたら、 [FAQ](/tidb-binlog/tidb-binlog-faq.md)と[TiDBBinlogエラー処理](/tidb-binlog/handle-tidb-binlog-errors.md)を参照して解決策を確認してください。解決策が見つからない場合、または提供されている解決策が役に立たない場合は、 [問題](https://github.com/pingcap/tidb-binlog/issues)を送信してください。

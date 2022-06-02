@@ -1,10 +1,9 @@
 ---
-title: Privilege Management
-summary: Learn how to manage the privilege.
-aliases: ['/docs/dev/privilege-management/','/docs/dev/reference/security/privilege-system/']
+title: 権限管理
+summary: 特権を管理する方法を学びます。
 ---
 
-# 特権管理 {#privilege-management}
+# 権限管理 {#privilege-management}
 
 TiDBは、構文や特権タイプなど、MySQL5.7の特権管理システムをサポートしています。 MySQL8.0の次の機能もサポートされています。
 
@@ -55,7 +54,7 @@ mysql> SELECT user,host,authentication_string FROM mysql.user WHERE user='idonte
 Empty set (0.00 sec)
 ```
 
-次の例では、SQLモード`NO_AUTO_CREATE_USER`が設定されていないため、ユーザー`idontexist`は空のパスワードで自動的に作成されます。これはセキュリティ上のリスクがあるため、<strong>お勧めしません</strong>。ユーザー名のスペルを間違えると、空のパスワードで新しいユーザーが作成されます。
+次の例では、SQLモード`NO_AUTO_CREATE_USER`が設定されていないため、ユーザー`idontexist`は空のパスワードで自動的に作成されます。これはセキュリティ上のリスクがあるため、**お勧めしません**。ユーザー名のスペルを間違えると、空のパスワードで新しいユーザーが作成されます。
 
 ```sql
 mysql> SET @@sql_mode='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
@@ -111,7 +110,7 @@ mysql> SELECT user,host,db FROM mysql.db WHERE user='genius';
 REVOKE ALL PRIVILEGES ON `test`.* FROM 'genius'@'localhost';
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 特権を取り消すには、完全に一致する必要があります。一致する結果が見つからない場合は、エラーが表示されます。
 
@@ -195,7 +194,7 @@ v5.1以降、TiDB機能は動的特権をサポートします。これはMySQL8
 -   `ROLE_ADMIN`
 -   `CONNECTION_ADMIN`
 -   `SYSTEM_VARIABLES_ADMIN`
--   `RESTRICTED_REPLICA_WRITER_ADMIN`を使用すると、特権所有者は、TiDBクラスターで読み取り専用モードが有効になっている場合に影響を受けることなく書き込みまたは更新操作を実行できます。詳細については、 [`tidb_restricted_read_only`](/system-variables.md#tidb_restricted_read_only-new-in-v520)を参照してください。
+-   `RESTRICTED_REPLICA_WRITER_ADMIN`を使用すると、特権所有者は、TiDBクラスタで読み取り専用モードが有効になっている場合に影響を受けることなく書き込みまたは更新操作を実行できます。詳細については、 [`tidb_restricted_read_only`](/system-variables.md#tidb_restricted_read_only-new-in-v520)を参照してください。
 
 動的特権の完全なセットを表示するには、 `SHOW PRIVILEGES`ステートメントを実行します。プラグインは新しい特権を追加することが許可されているため、割り当て可能な特権のリストは、TiDBのインストールによって異なる場合があります。
 
@@ -250,7 +249,7 @@ mysql> SELECT * FROM INFORMATION_SCHEMA.USER_PRIVILEGES WHERE grantee = "'root'@
 -   `ALTER...DROP`ステートメントの場合、ユーザーは対応するテーブルに対して`DROP`特権を持っている必要があります。
 -   `ALTER...RENAME TO`ステートメントの場合、ユーザーは、名前を変更する前にテーブルに対して`DROP`の特権を持ち、名前を変更した後にテーブルに対して`CREATE`と`INSERT`の特権を持っている必要があります。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > MySQL 5.7のドキュメントでは、ユーザーはテーブルに対して`ALTER`の操作を実行するために`INSERT`と`CREATE`の特権が必要です。ただし、実際にはMySQL 5.7.25の場合、この場合は`ALTER`の特権のみが必要です。現在、TiDBの`ALTER`特権は、MySQLの実際の動作と一致しています。
 
@@ -276,7 +275,7 @@ mysql> SELECT * FROM INFORMATION_SCHEMA.USER_PRIVILEGES WHERE grantee = "'root'@
 
 `CREATE VIEW`の特権が必要です。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > 現在のユーザーがビューを作成したユーザーでない場合は、 `CREATE VIEW`と`SUPER`の両方の権限が必要です。
 
@@ -294,7 +293,7 @@ mysql> SELECT * FROM INFORMATION_SCHEMA.USER_PRIVILEGES WHERE grantee = "'root'@
 
 ### データを読み込む {#load-data}
 
-テーブルに`INSERT`の特権が必要です。 `REPLACE INTO`を使用する場合は、 `DELETE`特権も必要です。
+テーブルに`INSERT`の特権が必要です。
 
 ### 切り捨てテーブル {#truncate-table}
 
@@ -391,7 +390,7 @@ mysql> SELECT User,Host,Select_priv,Insert_priv FROM mysql.user LIMIT 1;
 
 `mysql.db`の`Host`と`User`は、ユーザーがアクセスできるデータベースを決定します。有効射程はデータベースです。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `GRANT`などの提供された`DROP USER`を介してのみ特権テーブルを更新することをお勧めし`CREATE USER` 。基になる特権テーブルを直接編集しても、特権キャッシュは自動的に更新されないため、 `FLUSH PRIVILEGES`が実行されるまで予期しない動作が発生します。
 

@@ -1,6 +1,6 @@
 ---
-title: GRANT <role> | TiDB SQL Statement Reference
-summary: An overview of the usage of GRANT <role> for the TiDB database.
+title: GRANT<役割>| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースのGRANT<role>の使用法の概要。
 ---
 
 # <code>GRANT &#x3C;role></code> {#code-grant-x3c-role-code}

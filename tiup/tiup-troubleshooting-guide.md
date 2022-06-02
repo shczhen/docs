@@ -1,7 +1,6 @@
 ---
-title: TiUP Troubleshooting Guide
-summary: Introduce the troubleshooting methods and solutions if you encounter issues when using TiUP.
-aliases: ['/docs/dev/tiup/tiup-troubleshooting-guide/']
+title: TiUPトラブルシューティングガイド
+summary: TiUPの使用中に問題が発生した場合は、トラブルシューティングの方法と解決策を紹介します。
 ---
 
 # TiUPトラブルシューティングガイド {#tiup-troubleshooting-guide}
@@ -26,7 +25,7 @@ TiUPは、ミラーサーバーからの最新のコンポーネントリスト�
 
 CDNサーバーのキャッシュ時間は短いため、新しいチェックサムファイルがコンポーネントパッケージと一致しない可能性があります。 5分後にもう一度ダウンロードしてみてください。それでも新しいチェックサムファイルがコンポーネントパッケージと一致しない場合は、問題[ここ](https://github.com/pingcap/tiup/issues)を報告してください。
 
-## TiUPクラスターコンポーネントのトラブルシューティング {#troubleshoot-tiup-cluster-component}
+## TiUPクラスタコンポーネントのトラブルシューティング {#troubleshoot-tiup-cluster-component}
 
 ### <code>unable to authenticate, attempted methods [none publickey]</code>がプロンプトされます {#code-unable-to-authenticate-attempted-methods-none-publickey-code-is-prompted-during-deployment}
 
@@ -38,9 +37,9 @@ CDNサーバーのキャッシュ時間は短いため、新しいチェック�
 -   `-i`フラグが指定されている場合、TiUPは指定された秘密鍵を使用してリモートホストにログインできない可能性があります。 `ssh -i identity_file user@remote`コマンドを手動で実行することで確認できます。
 -   リモートホストへのログインにパスワードを使用する場合は、 `-p`フラグを指定し、正しいログインパスワードを入力したことを確認してください。
 
-### TiUPクラスターコンポーネントを使用してクラスターをアップグレードするプロセスが中断されます {#the-process-of-upgrading-the-cluster-using-the-tiup-cluster-component-is-interrupted}
+### TiUPクラスタコンポーネントを使用してクラスタをアップグレードするプロセスが中断されます {#the-process-of-upgrading-the-cluster-using-the-tiup-cluster-component-is-interrupted}
 
-誤用を避けるために、TiUPクラスターコンポーネントは指定されたノードのアップグレードをサポートしていません。そのため、アップグレードが失敗した後、アップグレードプロセス中のべき等操作を含むアップグレード操作を再度実行する必要があります。
+誤用を避けるために、TiUPクラスタコンポーネントは指定されたノードのアップグレードをサポートしていません。そのため、アップグレードが失敗した後、アップグレードプロセス中のべき等操作を含むアップグレード操作を再度実行する必要があります。
 
 アップグレードプロセスは、次の手順に分けることができます。
 
@@ -54,4 +53,4 @@ CDNサーバーのキャッシュ時間は短いため、新しいチェック�
 
 ### アップグレード中に、 <code>node_exporter-9100.service/blackbox_exporter-9115.service</code>が存在しないことがわかりました {#during-the-upgrade-you-find-that-code-node-exporter-9100-service-blackbox-exporter-9115-service-code-does-not-exist}
 
-以前にクラスターをTiDBAnsibleから移行し、エクスポーターがTiDB Ansibleにデプロイされていなかった場合、この状況が発生する可能性があります。これを解決するには、当面の間、不足しているファイルを他のノードから新しいノードに手動でコピーします。 TiUPチームは、移行プロセス中に不足しているコンポーネントを完了します。
+以前にクラスタをTiDBAnsibleから移行し、エクスポーターがTiDB Ansibleにデプロイされていなかった場合、この状況が発生する可能性があります。これを解決するには、当面の間、不足しているファイルを他のノードから新しいノードに手動でコピーします。 TiUPチームは、移行プロセス中に不足しているコンポーネントを完了します。

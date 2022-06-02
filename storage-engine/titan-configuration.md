@@ -1,9 +1,9 @@
 ---
-title: Titan Configuration
-summary: Learn how to configure Titan.
+title: タイタンConfiguration / コンフィグレーション
+summary: Titanを構成する方法を学びます。
 ---
 
-# タイタン構成 {#titan-configuration}
+# タイタンConfiguration / コンフィグレーション {#titan-configuration}
 
 このドキュメントでは、対応する構成アイテムを使用して[巨人](/storage-engine/titan-overview.md)を有効または無効にする方法、および関連するパラメーターとレベルマージ機能を紹介します。
 
@@ -11,7 +11,7 @@ summary: Learn how to configure Titan.
 
 TitanはRocksDBと互換性があるため、RocksDBを使用する既存のTiKVインスタンスでTitanを直接有効にすることができます。次の2つの方法のいずれかを使用して、Titanを有効にできます。
 
--   方法1：TiUPを使用してクラスターをデプロイした場合は、次の例に示すように、 `tiup cluster edit-config ${cluster-name}`コマンドを実行してTiKV構成ファイルを編集できます。
+-   方法1：TiUPを使用してクラスタをデプロイした場合は、次の例に示すように、 `tiup cluster edit-config ${cluster-name}`コマンドを実行してTiKV構成ファイルを編集できます。
 
     {{< copyable "" >}}
 
@@ -30,32 +30,32 @@ TitanはRocksDBと互換性があるため、RocksDBを使用する既存のTiKV
 
     詳細なコマンドについては、 [TiUPを使用して構成を変更します](/maintain-tidb-using-tiup.md#modify-the-configuration)を参照してください。
 
--   方法2：TiKV構成ファイルを直接編集して、Titanを有効にします（実稼働環境では推奨され<strong>ません</strong>）。
+-   方法2：TiKV構成ファイルを直接編集して、Titanを有効にします（実稼働環境では推奨され**ません**）。
 
-    {{&lt;コピー可能&quot;&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```toml
     [rocksdb.titan]
     enabled = true
     ```
 
-Titanを有効にした後、RocksDBに保存されている既存のデータはすぐにはTitanエンジンに移動されません。新しいデータがTiKVフォアグラウンドに書き込まれ、RocksDBが圧縮を実行すると、値はキーから徐々に分離され、Titanに書き込まれます。 <strong>TiKVの詳細</strong>-&gt; <strong>Titankv-</strong> &gt; <strong>blobファイルサイズ</strong>パネルを表示して、Titanに保存されているデータのサイズを確認できます。
+Titanを有効にした後、RocksDBに保存されている既存のデータはすぐにはTitanエンジンに移動されません。新しいデータがTiKVフォアグラウンドに書き込まれ、RocksDBが圧縮を実行すると、値はキーから徐々に分離され、Titanに書き込まれます。 **TiKVの詳細**-&gt; <strong>Titankv-</strong> &gt; <strong>blobファイルサイズ</strong>パネルを表示して、Titanに保存されているデータのサイズを確認できます。
 
-書き込みプロセスを高速化する場合は、tikv-ctlを使用してTiKVクラスター全体のデータを手動で圧縮します。詳細については、 [手動圧縮](/tikv-control.md#compact-data-of-the-whole-tikv-cluster-manually)を参照してください。
+書き込みプロセスを高速化する場合は、tikv-ctlを使用してTiKVクラスタ全体のデータを手動で圧縮します。詳細については、 [手動圧縮](/tikv-control.md#compact-data-of-the-whole-tikv-cluster-manually)を参照してください。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > Titanが無効になっている場合、RocksDBはTitanに移行されたデータを読み取ることができません。 Titanがすでに有効になっているTiKVインスタンスでTitanが誤って無効にされている場合（誤って`rocksdb.titan.enabled`から`false`に設定されている場合）、TiKVは開始に失敗し、 `You have disabled titan when its data directory is not empty`エラーがTiKVログに表示されます。 Titanを正しく無効にするには、 [タイタンを無効にする](#disable-titan-experimental)を参照してください。
 
 ## パラメーター {#parameters}
 
-TiUPを使用してTitan関連のパラメーターを調整するには、 [構成を変更する](/maintain-tidb-using-tiup.md#modify-the-configuration)を参照してください。
+TiUPを使用してTitan関連のパラメータを調整するには、 [構成を変更する](/maintain-tidb-using-tiup.md#modify-the-configuration)を参照してください。
 
 -   タイタンGCスレッド数。
 
-    [ <strong>TiKVの詳細]</strong> -&gt;[<strong>スレッドCPU</strong> ]-&gt;[ <strong>RocksDBCPU</strong> ]パネルから、Titan GCスレッドが長時間フルキャパシティーになっていることを確認した場合は、TitanGCスレッドプールのサイズを増やすことを検討してください。
+    [ **TiKVの詳細]** -&gt;[<strong>スレッドCPU</strong> ]-&gt;[ <strong>RocksDBCPU</strong> ]パネルから、Titan GCスレッドが長時間フルキャパシティーになっていることを確認した場合は、TitanGCスレッドプールのサイズを増やすことを検討してください。
 
-    {{&lt;コピー可能&quot;&quot;&gt;}}
+    {{< copyable "" >}}
 
     ```toml
     [rocksdb.titan]
@@ -120,9 +120,9 @@ Titanを無効にするには、 `rocksdb.defaultcf.titan.blob-run-mode`オプ�
 
 Titanを無効にするには、 `blob-run-mode = "fallback"`を設定し、tikv-ctlを使用して完全な圧縮を実行します。その後、監視メトリックを確認し、blobファイルのサイズが`0`に減少することを確認します。次に、 `rocksdb.titan.enabled`を`false`に設定して、TiKVを再起動できます。
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> Titanを無効にすることは実験的な機能です。必要が<strong>ない</strong>場合は使用しないでください。
+> Titanを無効にすることは実験的機能です。必要が**ない**場合は使用しないでください。
 
 ## レベルマージ（実験的） {#level-merge-experimental}
 

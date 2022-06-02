@@ -1,5 +1,5 @@
 ---
-title: TiDB Data Migration Release Notes
+title: TiDBデータ移行リリースノート
 ---
 
 # TiDBデータ移行リリースノート {#tidb-data-migration-release-notes}

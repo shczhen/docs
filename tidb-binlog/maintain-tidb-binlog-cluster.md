@@ -1,16 +1,15 @@
 ---
-title: TiDB Binlog Cluster Operations
-summary: Learn how to operate the cluster version of TiDB Binlog.
-aliases: ['/docs/dev/tidb-binlog/maintain-tidb-binlog-cluster/','/docs/dev/reference/tidb-binlog/maintain/','/docs/dev/how-to/maintain/tidb-binlog/','/docs/dev/reference/tools/tidb-binlog/maintain/']
+title: TiDBBinlogクラスターの操作
+summary: TiDBBinlogのクラスタバージョンを操作する方法を学びます。
 ---
 
 # TiDBBinlogクラスターの操作 {#tidb-binlog-cluster-operations}
 
-このドキュメントでは、次のTiDBBinlogクラスター操作を紹介します。
+このドキュメントでは、次のTiDBBinlogクラスタ操作を紹介します。
 
 -   ポンプノードとドレイナーノードの状態
 -   ポンプまたはドレイナープロセスの開始または終了
--   binlogctlツールを使用するか、TiDBでSQL操作を直接実行することによるTiDBBinlogクラスターの管理
+-   binlogctlツールを使用するか、TiDBでSQL操作を直接実行することによるTiDBBinlogクラスタの管理
 
 ## ポンプまたはドレイナーの状態 {#pump-or-drainer-state}
 
@@ -22,7 +21,7 @@ aliases: ['/docs/dev/tidb-binlog/maintain-tidb-binlog-cluster/','/docs/dev/refer
 -   `closing` ：オフラインプロセス中
 -   `offline` ：オフラインになっています
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > ポンプノードまたはドレイナーノードの状態情報は、サービス自体によって維持され、配置ドライバー（PD）に定期的に更新されます。
 
@@ -132,9 +131,9 @@ binlog関連の状態を表示または変更するには、TiDBで対応するS
     Query OK, 0 rows affected (0.01 sec)
     ```
 
-    上記のSQLステートメントの実行は、binlogctlの`update-pump`または`update-drainer`コマンドと同じように機能します。上記のSQLステートメント<strong>は、PumpノードまたはDrainerノードが異常な状況にある場合にのみ</strong>使用してください。
+    上記のSQLステートメントの実行は、binlogctlの`update-pump`または`update-drainer`コマンドと同じように機能します。上記のSQLステートメント**は、PumpノードまたはDrainerノードが異常な状況にある場合にのみ**使用してください。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   binlogが有効になっているかどうか、およびポンプまたはドレイナーの実行ステータスがTiDBv2.1.7以降のバージョンでサポートされているかどうかを確認します。
 > -   ポンプまたはドレイナーのステータスの変更は、TiDBv3.0.0-rc.1以降のバージョンでサポートされています。この機能は、PDに保存されているポンプノードまたはドレイナーノードのステータスの変更のみをサポートします。ノードを一時停止または閉じるには、 `binlogctl`ツールを使用します。

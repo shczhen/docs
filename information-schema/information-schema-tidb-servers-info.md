@@ -1,6 +1,6 @@
 ---
 title: TIDB_SERVERS_INFO
-summary: Learn the `TIDB_SERVERS_INFO` information_schema table.
+summary: `TIDB_SERVERS_INFO`information_schemaテーブルを学びます。
 ---
 
 # TIDB_SERVERS_INFO {#tidb-servers-info}

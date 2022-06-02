@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot Lock Conflicts
-summary: Learn to analyze and resolve lock conflicts in TiDB.
+title: ロックの競合のトラブルシューティング
+summary: TiDBでのロックの競合を分析して解決する方法を学びます。
 ---
 
 # ロックの競合のトラブルシューティング {#troubleshoot-lock-conflicts}
@@ -27,13 +27,13 @@ TiDBサーバーは、クライアントから読み取り要求を受信する�
 
 Txn0はプリライトフェーズを完了し、コミットフェーズに入ります。このとき、Txn1は同じターゲットキーの読み取りを要求します。 Txn1は、start_tsよりも小さい最新のcommit_tsのターゲットキーを読み取る必要があります。 Txn1のstart_tsはTxn0のlock_tsよりも大きいため、Txn1はターゲットキーのロックがクリアされるのを待つ必要がありますが、まだ実行されていません。その結果、Txn1はTxn0がコミットされているかどうかを確認できません。したがって、Txn1とTxn0の間で読み取りと書き込みの競合が発生します。
 
-次の方法で、TiDBクラスターの読み取り/書き込みの競合を検出できます。
+次の方法で、TiDBクラスタの読み取り/書き込みの競合を検出できます。
 
 1.  TiDBサーバーのメトリックとログの監視
 
     -   Grafanaを介したデータの監視
 
-        TiDBダッシュボードの`KV Errors`のパネルには、トランザクションの読み取りと書き込みの競合をチェックするために使用できる2つの監視メトリック`Lock Resolve OPS`と`KV Backoff OPS`があります。 `Lock Resolve OPS`未満の`not_expired`と`resolve`の両方の値が増加すると、多くの読み取り/書き込みの競合が発生する可能性があります。 `not_expired`項目は、トランザクションのロックがタイムアウトしていないことを意味します。 `resolve`項目は、他のトランザクションがロックをクリーンアップしようとすることを意味します。 `KV Backoff OPS`未満の別の`txnLockFast`アイテムの値が増加すると、読み取りと書き込みの競合も発生する可能性があります。
+        TiDBダッシュボードの`KV Errors`のパネルには、トランザクションの読み取りと書き込みの競合をチェックするために使用できる2つの監視メトリック`Lock Resolve OPS`と`KV Backoff OPS`があります。 `Lock Resolve OPS`未満の`not_expired`と`resolve`の両方の値が増加すると、多くの読み取り/書き込みの競合が発生する可能性があります。 `not_expired`項目は、トランザクションのロックがタイムアウトしていないことを意味します。 `resolve`項目は、他のトランザクションがロックをクリーンアップしようとすることを意味します。 `KV Backoff OPS`未満の別の`txnLockFast`項目の値が増加すると、読み取りと書き込みの競合も発生する可能性があります。
 
         ![KV-Errors-resolve-optimistic](/media/troubleshooting-lock-pic-08.png) ![KV-backoff-txnLockFast-optimistic](/media/troubleshooting-lock-pic-09.png)
 
@@ -235,11 +235,11 @@ TTL manager has timed out, pessimistic locks may expire, please commit or rollba
 
 v5.1以降、TiDBはロックビュー機能をサポートしています。この機能には、ペシミスティックロックの競合とペシミスティックロックの待機に関する詳細情報を提供するいくつかのシステムテーブルが組み込まれてい`information_schema` 。これらの表の詳細な紹介については、次のドキュメントを参照してください。
 
--   [`TIDB_TRX`および<code>CLUSTER_TIDB_TRX</code>](/information-schema/information-schema-tidb-trx.md) ：トランザクションがロック待機状態にあるかどうか、ロック待機時間、トランザクションで実行されたステートメントのダイジェストなど、現在のTiDBノードまたはクラスター全体で実行中のすべてのトランザクションの情報を提供します。
+-   [`TIDB_TRX`および<code>CLUSTER_TIDB_TRX</code>](/information-schema/information-schema-tidb-trx.md) ：トランザクションがロック待機状態にあるかどうか、ロック待機時間、トランザクションで実行されたステートメントのダイジェストなど、現在のTiDBノードまたはクラスタ全体で実行中のすべてのトランザクションの情報を提供します。
 -   [`DATA_LOCK_WAITS`](/information-schema/information-schema-data-lock-waits.md) ：ブロックおよびブロックされたトランザクションの`start_ts` 、ブロックされたSQLステートメントのダイジェスト、および待機が発生するキーを含む、TiKVの悲観的なロック待機情報を提供します。
--   [`DEADLOCKS`および<code>CLUSTER_DEADLOCKS</code>](/information-schema/information-schema-deadlocks.md) ：現在のTiDBノードまたはクラスター全体で最近発生したいくつかのデッドロックイベントの情報を提供します。これには、デッドロックループ内のトランザクション間の待機関係、トランザクションで現在実行されているステートメントのダイジェスト、およびキーが含まれます。待機が発生する場所。
+-   [`DEADLOCKS`および<code>CLUSTER_DEADLOCKS</code>](/information-schema/information-schema-deadlocks.md) ：現在のTiDBノードまたはクラスタ全体で最近発生したいくつかのデッドロックイベントの情報を提供します。これには、デッドロックループ内のトランザクション間の待機関係、トランザクションで現在実行されているステートメントのダイジェスト、およびキーが含まれます。待機が発生する場所。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > ロックビュー関連のシステムテーブルに表示されるSQLステートメントは正規化されたSQLステートメント（つまり、フォーマットと引数のないSQLステートメント）であり、SQLダイジェストに従った内部クエリによって取得されるため、テーブルは、フォーマットと引数。 SQLダイジェストと正規化されたSQLステートメントの詳細については、 [ステートメント要約表](/statement-summary-tables.md)を参照してください。
 

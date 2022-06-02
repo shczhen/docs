@@ -1,6 +1,6 @@
 ---
-title: ADMIN SHOW TELEMETRY | TiDB SQL Statement Reference
-summary: An overview of the usage of ADMIN SHOW TELEMETRY for the TiDB database.
+title: ADMIN SHOW TELEMETRY | TiDBSQLステートメントリファレンス
+summary: TiDBデータベースでのADMINSHOWTELEMETRYの使用法の概要。
 ---
 
 # ADMIN SHOW TELEMETRY {#admin-show-telemetry}

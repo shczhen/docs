@@ -1,24 +1,23 @@
 ---
-title: Configuration Options
-summary: Learn the configuration options in TiDB.
-aliases: ['/docs/dev/command-line-flags-for-tidb-configuration/','/docs/dev/reference/configuration/tidb-server/configuration/','/docs/dev/reference/configuration/tidb-server/server-command-option/']
+title: Configuration / コンフィグレーションオプション
+summary: TiDBの構成オプションについて説明します。
 ---
 
-# 構成オプション {#configuration-options}
+# Configuration / コンフィグレーションオプション {#configuration-options}
 
-TiDBクラスターを起動するときは、コマンドラインオプションまたは環境変数を使用してクラスターを構成できます。このドキュメントでは、TiDBのコマンドオプションを紹介します。デフォルトのTiDBポートは、クライアント要求用に`4000`つ、ステータスレポート用に`10080`です。
+TiDBクラスタを起動すると、コマンドラインオプションまたは環境変数を使用してクラスターを構成できます。このドキュメントでは、TiDBのコマンドオプションを紹介します。デフォルトのTiDBポートは、クライアント要求用に`4000`つ、ステータスレポート用に`10080`です。
 
 ## <code>--advertise-address</code> {#code-advertise-address-code}
 
 -   TiDBサーバーにログインするためのIPアドレス
 -   デフォルト： `""`
--   このアドレスには、残りのTiDBクラスターとユーザーがアクセスできる必要があります。
+-   このアドレスには、残りのTiDBクラスタとユーザーがアクセスできる必要があります。
 
 ## <code>--config</code> {#code-config-code}
 
 -   構成ファイル
 -   デフォルト： `""`
--   構成ファイルを指定した場合、TiDBは構成ファイルを読み取ります。対応する構成がコマンドラインオプションにも存在する場合、TiDBはコマンドラインオプションの構成を使用して、構成ファイルの構成を上書きします。構成の詳細については、 [TiDB構成ファイルの説明](/tidb-configuration-file.md)を参照してください。
+-   構成ファイルを指定した場合、TiDBは構成ファイルを読み取ります。対応する構成がコマンドラインオプションにも存在する場合、TiDBはコマンドラインオプションの構成を使用して、構成ファイルの構成を上書きします。構成の詳細については、 [TiDBConfiguration / コンフィグレーションファイルの説明](/tidb-configuration-file.md)を参照してください。
 
 ## <code>--config-check</code> {#code-config-check-code}
 
@@ -55,7 +54,7 @@ TiDBクラスターを起動するときは、コマンドラインオプショ�
 
 ## <code>--lease</code> {#code-lease-code}
 
--   スキーマリースの期間。自分が何をしているのかわからない限り、値を変更するのは<strong>危険</strong>です。
+-   スキーマリースの期間。自分が何をしているのかわからない限り、値を変更するのは**危険**です。
 -   デフォルト： `45s`
 
 ## <code>--log-file</code> {#code-log-file-code}
@@ -104,7 +103,7 @@ TiDBクラスターを起動するときは、コマンドラインオプショ�
 -   通常、リバースプロキシの背後でTiDBにアクセスすると、TiDBはリバースプロキシサーバーのIPアドレスをクライアントのIPアドレスとして使用します。 PROXYプロトコルを有効にすることにより、HAProxyなどのこのプロトコルをサポートするリバースプロキシは、実際のクライアントIPアドレスをTiDBに渡すことができます。
 -   このフラグを設定した後、TiDBは、設定された送信元IPアドレスがPROXYプロトコルを使用してTiDBに接続できるようにします。 PROXY以外のプロトコルが使用されている場合、この接続は拒否されます。このフラグを空のままにすると、PROXYプロトコルを使用してIPアドレスをTiDBに接続できなくなります。値は、IPアドレス（192.168.1.50）またはCIDR（192.168.1.0/24）で、区切り文字として`,`を使用できます。 `*`は任意のIPアドレスを意味します。
 
-> <strong>警告：</strong>
+> **警告：**
 >
 > `*`は、任意のIPアドレスのクライアントがそのIPアドレスを報告できるようにすることでセキュリティリスクをもたらす可能性があるため、注意して使用してください。さらに、 `*`を使用すると、TiDBに直接接続する内部コンポーネント（TiDBダッシュボードなど）が使用できなくなる可能性もあります。
 
@@ -113,7 +112,7 @@ TiDBクラスターを起動するときは、コマンドラインオプショ�
 -   PROXYプロトコルヘッダー読み取りのタイムアウト
 -   デフォルト： `5` （秒）
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > 値を`0`に設定しないでください。特別な状況を除いて、デフォルト値を使用してください。
 
@@ -125,7 +124,7 @@ TiDBクラスターを起動するときは、コマンドラインオプショ�
 
 ## <code>--run-ddl</code> {#code-run-ddl-code}
 
--   `tidb-server`がDDLステートメントを実行するかどうかを確認し、クラスター内で`tidb-server`の数が2を超える場合に設定します
+-   `tidb-server`がDDLステートメントを実行するかどうかを確認し、クラスタで`tidb-server`の数が2を超える場合に設定します
 -   デフォルト： `true`
 -   値は（true）または（false）になります。 （true）は、 `tidb-server`がDDL自体を実行することを示します。 （false）は、 `tidb-server`がDDL自体を実行しないことを示します。
 

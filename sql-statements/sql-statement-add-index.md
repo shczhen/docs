@@ -1,18 +1,17 @@
 ---
-title: ADD INDEX | TiDB SQL Statement Reference
-summary: An overview of the usage of ADD INDEX for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-add-index/','/docs/dev/reference/sql/statements/add-index/']
+title: インデックスを追加| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースのADDINDEXの使用法の概要。
 ---
 
 # インデックスを追加 {#add-index}
 
 `ALTER TABLE.. ADD INDEX`ステートメントは、既存のテーブルにインデックスを追加します。この操作はTiDBでオンラインです。つまり、インデックスを追加しても、テーブルへの読み取りも書き込みもブロックされません。
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> -   DDLステートメントがクラスターで実行されているときは<strong>TiDB</strong>クラスターをアップグレードしないでください（通常、 `ADD INDEX`などの時間のかかるDDLステートメントや列タイプの変更の場合）。
-> -   アップグレードする前に、 [`ADMIN SHOW DDL`](/sql-statements/sql-statement-admin-show-ddl.md)コマンドを使用して、TiDBクラスターに進行中のDDLジョブがあるかどうかを確認することをお勧めします。クラスタにDDLジョブがある場合、クラスタをアップグレードするには、DDLの実行が終了するまで待つか、 [`ADMIN CANCEL DDL`](/sql-statements/sql-statement-admin-cancel-ddl.md)コマンドを使用してDDLジョブをキャンセルしてからクラスタをアップグレードします。
-> -   さらに、クラスターのアップグレード中は、DDLステートメントを実行し<strong>ない</strong>でください。そうしないと、未定義動作の問題が発生する可能性があります。
+> -   DDLステートメントがクラスタで実行されているときは**TiDB**クラスタをアップグレードしないでください（通常、 `ADD INDEX`などの時間のかかるDDLステートメントや列タイプの変更の場合）。
+> -   アップグレードする前に、 [`ADMIN SHOW DDL`](/sql-statements/sql-statement-admin-show-ddl.md)コマンドを使用して、TiDBクラスタに進行中のDDLジョブがあるかどうかを確認することをお勧めします。クラスタにDDLジョブがある場合、クラスタをアップグレードするには、DDLの実行が終了するまで待つか、 [`ADMIN CANCEL DDL`](/sql-statements/sql-statement-admin-cancel-ddl.md)コマンドを使用してDDLジョブをキャンセルしてからクラスタをアップグレードします。
+> -   さらに、クラスタのアップグレード中は、DDLステートメントを実行し**ない**でください。そうしないと、未定義動作の問題が発生する可能性があります。
 
 ## あらすじ {#synopsis}
 
@@ -134,7 +133,7 @@ mysql> EXPLAIN SELECT * FROM t1 WHERE c1 = 3;
 ## も参照してください {#see-also}
 
 -   [インデックスの選択](/choose-index.md)
--   [間違ったインデックスソリューション](/wrong-index-solution.md)
+-   [インデックス問題の解決方法](/wrong-index-solution.md)
 -   [インデックスの作成](/sql-statements/sql-statement-create-index.md)
 -   [ドロップインデックス](/sql-statements/sql-statement-drop-index.md)
 -   [インデックスの名前を変更](/sql-statements/sql-statement-rename-index.md)

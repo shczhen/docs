@@ -1,7 +1,6 @@
 ---
-title: Highly Concurrent Write Best Practices
-summary: Learn best practices for highly-concurrent write-intensive workloads in TiDB.
-aliases: ['/docs/dev/best-practices/high-concurrency-best-practices/','/docs/dev/reference/best-practices/high-concurrency/']
+title: 非常に同時の書き込みのベストプラクティス
+summary: TiDBでの書き込みが集中するワークロードのベストプラクティスを学びます。
 ---
 
 # 非常に同時の書き込みのベストプラクティス {#highly-concurrent-write-best-practices}
@@ -43,7 +42,7 @@ TiDBは、データをリージョンに分割します。各リージョンは�
 
 ただし、実際の状況は理論上の仮定とは異なることがよくあります。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > アプリケーションに書き込みホットスポットがないということは、書き込みシナリオに`AUTO_INCREMENT`の主キーまたは単調に増加するインデックスがないことを意味します。
 
@@ -62,35 +61,17 @@ CREATE TABLE IF NOT EXISTS TEST_HOTSPOT(
 )
 ```
 
-このテーブルは構造が単純です。主キーとしての`id`に加えて、副次インデックスは存在しません。次のステートメントを実行して、このテーブルにデータを書き込みます。 `id`はランダムな数として離散的に生成されます。
+このテーブルは構造が単純です。主キーとしての`id`に加えて、二次インデックスは存在しません。次のステートメントを実行して、このテーブルにデータを書き込みます。 `id`はランダムな数として離散的に生成されます。
 
 {{< copyable "" >}}
 
 ```sql
-SET SESSION cte_max_recursion_depth = 1000000;
-INSERT INTO TEST_HOTSPOT
-SELECT
-  n,                                       -- ID
-  RAND()*80,                               -- Number between 0 and 80
-  CONCAT('user-',n),
-  CONCAT(
-    CHAR(65 + (RAND() * 25) USING ascii),  -- Number between 65 and 65+25, converted to a character, A-Z
-    '-user-',
-    n,
-    '@example.com'
-  )
-FROM
-  (WITH RECURSIVE nr(n) AS 
-    (SELECT 1                              -- Start CTE at 1
-      UNION ALL SELECT n + 1               -- increase n with 1 every loop
-      FROM nr WHERE n < 1000000            -- stop loop at 1_000_000 
-    ) SELECT n FROM nr
-  ) a;
+INSERT INTO TEST_HOTSPOT(id, age, user_name, email) values(%v, %v, '%v', '%v');
 ```
 
 負荷は、上記のステートメントを短時間で集中的に実行することから発生します。
 
-理論的には、上記の操作はTiDBのベストプラクティスに準拠しているようであり、アプリケーションでホットスポットは発生しません。 TiDBの分散容量は、適切なマシンで十分に使用できます。それが本当にベストプラクティスに沿っているかどうかを検証するために、次のように説明されているテストが実験環境で実行されます。
+理論的には、上記の操作はTiDBのベストプラクティスに準拠しているようであり、アプリケーションでホットスポットは発生しません。 TiDBの分散容量は、適切なマシンで十分に使用できます。それが本当にベストプラクティスに沿っているかどうかを検証するために、次のように説明されているテストが実験的環境で実行されます。
 
 クラスタトポロジでは、2つのTiDBノード、3つのPDノード、および6つのTiKVノードが展開されます。このテストはベンチマークではなく原理を明確にするためのものであるため、QPSのパフォーマンスは無視してください。
 
@@ -126,13 +107,13 @@ PDの監視メトリックは、ホットスポットが発生したことも確
 
 ![QPS5](/media/best-practices/QPS5.png)
 
-継続的な書き込みの期間の後、PDは、圧力が均等に分散される状態にTiKVクラスター全体を自動的にスケジュールします。その時までに、クラスター全体の容量を完全に使用することができます。
+継続的な書き込みの期間の後、PDは、圧力が均等に分散される状態にTiKVクラスタ全体を自動的にスケジュールします。その時までに、クラスタ全体の容量を完全に使用することができます。
 
 ほとんどの場合、ホットスポットを発生させる上記のプロセスは正常です。これは、データベースのリージョンウォーミングアップフェーズです。ただし、書き込みが集中するシナリオでは、このフェーズを回避する必要があります。
 
 ## ホットスポットソリューション {#hotspot-solution}
 
-理論的に期待される理想的なパフォーマンスを実現するには、リージョンを目的の数のリージョンに直接分割し、クラスター内の他のノードに事前にこれらのリージョンをスケジュールすることで、ウォームアップフェーズをスキップできます。
+理論的に期待される理想的なパフォーマンスを実現するには、リージョンを目的の数のリージョンに直接分割し、クラスタの他のノードに事前にこれらのリージョンをスケジュールすることで、ウォームアップフェーズをスキップできます。
 
 v3.0.x、v2.1.13以降のバージョンでは、TiDBは[スプリットリージョン](/sql-statements/sql-statement-split-region.md)と呼ばれる新機能をサポートします。この新機能は、次の新しい構文を提供します。
 
@@ -198,7 +179,7 @@ SPLIT TABLE TEST_HOTSPOT BETWEEN (0) AND (9223372036854775807) REGIONS 128;
 
 ## 複雑なホットスポットの問題 {#complex-hotspot-problems}
 
-<strong>問題1：</strong>
+**問題1：**
 
 テーブルに主キーがない場合、または主キーが`Int`タイプではなく、ランダムに分散された主キーIDを生成したくない場合、TiDBは行IDとして暗黙の`_tidb_rowid`列を提供します。一般に、 `SHARD_ROW_ID_BITS`パラメーターを使用しない場合、 `_tidb_rowid`列の値も単調に増加し、ホットスポットも発生する可能性があります。詳細については、 [`SHARD_ROW_ID_BITS`](/shard-row-id-bits.md)を参照してください。
 
@@ -206,7 +187,7 @@ SPLIT TABLE TEST_HOTSPOT BETWEEN (0) AND (9223372036854775807) REGIONS 128;
 
 `SHARD_ROW_ID_BITS`は、 `_tidb_rowid`列で生成された行IDをランダムに分散させるために使用されます。 `PRE_SPLIT_REGIONS`は、テーブルの作成後にリージョンを事前に分割するために使用されます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `PRE_SPLIT_REGIONS`の値は、 `SHARD_ROW_ID_BITS`の値以下である必要があります。
 
@@ -223,15 +204,15 @@ create table t (a int, b int) SHARD_ROW_ID_BITS = 4 PRE_SPLIT_REGIONS=3;
 
 データがテーブル`t`に書き込まれ始めると、データは事前に分割された8つのリージョンに書き込まれます。これにより、テーブルの作成後にリージョンが1つしかない場合に発生する可能性のあるホットスポットの問題が回避されます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > `tidb_scatter_region`グローバル変数は`PRE_SPLIT_REGIONS`の動作に影響を与えます。
 >
 > この変数は、テーブルの作成後に結果を返す前に、リージョンが事前に分割および分散されるのを待つかどうかを制御します。テーブルの作成後に集中的な書き込みがある場合は、この変数の値を`1`に設定する必要があります。そうすると、すべてのリージョンが分割されて分散されるまで、TiDBは結果をクライアントに返しません。そうしないと、TiDBはスキャッタリングが完了する前にデータを書き込み、書き込みパフォーマンスに大きな影響を与えます。
 
-<strong>問題2：</strong>
+**問題2：**
 
-テーブルの主キーが整数型であり、テーブルが主キーの一意性を確保するために`AUTO_INCREMENT`を使用する場合（必ずしも連続または増分である必要はありません）、TiDBは行の値を直接使用するため、 `SHARD_ROW_ID_BITS`を使用してこのテーブルのホットスポットを分散させることはできません。主キーの`_tidb_rowid`として。
+テーブルの主キーが整数型であり、テーブルが`AUTO_INCREMENT`を使用して主キーの一意性を保証する場合（必ずしも連続または増分である必要はありません）、TiDBは行の値を直接使用するため、 `SHARD_ROW_ID_BITS`を使用してこのテーブルのホットスポットを分散させることはできません。主キーの`_tidb_rowid`として。
 
 このシナリオの問題に対処するために、データを挿入するときに`AUTO_INCREMENT`を[`AUTO_RANDOM`](/auto-random.md) （列属性）に置き換えることができます。次に、TiDBは整数の主キー列に値を自動的に割り当てます。これにより、行IDの連続性が排除され、ホットスポットが分散されます。
 

@@ -1,7 +1,6 @@
 ---
-title: RECOVER TABLE
-summary: An overview of the usage of RECOVER TABLE for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-recover-table/','/docs/dev/reference/sql/statements/recover-table/']
+title: 回復表
+summary: TiDBデータベースのRECOVERTABLEの使用法の概要。
 ---
 
 # 回復表 {#recover-table}
@@ -36,7 +35,7 @@ Int64Num ::= NUM
 NUM ::= intLit
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   テーブルが削除され、GCの有効期間が切れている場合、テーブルを`RECOVER TABLE`で回復することはできません。このシナリオで`RECOVER TABLE`を実行すると、次のようなエラーが返されます`snapshot is older than GC safe point 2019-07-10 13:45:57 +0800 CST` 。
 >
@@ -45,8 +44,8 @@ NUM ::= intLit
 > -   Binlogバージョン3.0.1では`RECOVER TABLE`がサポートされているため、次の3つの状況で`RECOVER TABLE`を使用できます。
 >
 >     -   Binlogのバージョンは3.0.1以降です。
->     -   TiDB 3.0は、アップストリームクラスターとダウンストリームクラスターの両方で使用されます。
->     -   セカンダリクラスターのGCライフタイムは、プライマリクラスターのGCライフタイムより長くする必要があります。ただし、アップストリームデータベースとダウンストリームデータベース間のデータレプリケーション中に遅延が発生するため、ダウンストリームでデータリカバリが失敗する可能性があります。
+>     -   TiDB 3.0は、アップストリームクラスタとダウンストリームクラスタの両方で使用されます。
+>     -   セカンダリクラスタのGCライフタイムは、プライマリクラスタのGCライフタイムより長くする必要があります。ただし、アップストリームデータベースとダウンストリームデータベース間のデータレプリケーション中に遅延が発生するため、ダウンストリームでデータリカバリが失敗する可能性があります。
 
 ### TiDBBinlogレプリケーション中のエラーのトラブルシューティング {#troubleshoot-errors-during-tidb-binlog-replication}
 

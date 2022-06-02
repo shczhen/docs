@@ -1,7 +1,6 @@
 ---
-title: TiFlash Command-line Flags
-summary: Learn the command-line startup flags of TiFlash.
-aliases: ['/docs/dev/tiflash/tiflash-command-line-flags/']
+title: TiFlashコマンドラインフラグ
+summary: TiFlashのコマンドライン起動フラグについて学びます。
 ---
 
 # TiFlashコマンドラインフラグ {#tiflash-command-line-flags}
@@ -29,19 +28,19 @@ aliases: ['/docs/dev/tiflash/tiflash-command-line-flags/']
     -   `--version` ：DTFileのバージョン。値のオプションは`1`と`2` （デフォルト）です。 `1`は古いバージョンで、 `2`は新しいチェックサムに対応するバージョンです。
     -   `--algorithm` ：データ検証に使用されるハッシュアルゴリズム。値のオプションは、 `xxh3` （デフォルト）、 `city128` 、 `none` `crc32` `crc64`このパラメーターは、 `version`が`2`の場合にのみ有効です。
     -   `--frame` ：検証フレームのサイズ。デフォルト値は`1048576`です。このパラメータは、 `version`が`2`の場合にのみ有効です。
-    -   `--compression` ：ターゲット圧縮アルゴリズム。値のオプションは、 `LZ4` （デフォルト）、 `LZ4HC` 、および`zstd` `none` 。
-    -   `--level` ：目標圧縮レベル。指定しない場合、推奨される圧縮レベルが圧縮アルゴリズムに従ってデフォルトで使用されます。 `compression`が`LZ4`または`zstd`に設定されている場合、デフォルトレベルは1です`compression`が`LZ4HC`に設定されている場合、デフォルトレベルは9です。
+    -   `--compression` ：ターゲット圧縮アルゴリズム。値のオプションは、 `lz4` （デフォルト）、 `lz4hc` 、および`zstd` `none` 。
+    -   `--level` ：目標圧縮レベル。デフォルト値は`-1`で、これは自動モードを意味します。値の範囲は、圧縮アルゴリズムによって異なります。
     -   `--config-file` ： `dttool migrate`の設定ファイルは[`server`の構成ファイル](/tiflash/tiflash-command-line-flags.md#server---config-file)と同じです。構成ファイルを使用する場合は、ローカルTiFlashサーバーインスタンスを終了します。詳細については、 `--imitative`を参照してください。
     -   `--file-id` ：DTFileのID。たとえば、 `dmf_123`のIDは`123`です。
     -   `--workdir` ： `dmf_xxx`の親ディレクトリ。
     -   `--dry` ：ドライランモード。移行プロセスのみが出力されます。
     -   `--nokeep` ：元のデータを保持しません。このオプションを有効にしない場合、 `dmf_xxx.old`のファイルが作成されます。
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> TiFlashは、カスタム圧縮アルゴリズムと圧縮レベルを使用するDTFileを読み取ることができます。ただし、デフォルトの圧縮レベルを持つ`lz4`のアルゴリズムのみが公式にサポートされています。カスタム圧縮パラメータは徹底的にテストされておらず、実験的なものにすぎません。
+> TiFlashは、カスタム圧縮アルゴリズムと圧縮レベルを使用するDTFileを読み取ることができます。ただし、デフォルトの圧縮レベルを持つ`lz4`のアルゴリズムのみが公式にサポートされています。カスタム圧縮パラメータは徹底的にテストされておらず、実験的ものにすぎません。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > セキュリティ上の理由から、DTToolは移行モードで作業ディレクトリにロックを追加しようとします。したがって、同じディレクトリ内で、同時に移行タスクを実行できるのは1つのDTToolだけです。ロックが解除されていない状態でDTToolを強制的に停止した場合、後でDTToolを再実行しようとすると、移行タスクの実行が拒否される可能性があります。
 >

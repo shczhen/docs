@@ -1,7 +1,6 @@
 ---
-title: Geo-distributed Deployment topology
-summary: Learn the geo-distributed deployment topology of TiDB.
-aliases: ['/docs/dev/geo-distributed-deployment-topology/']
+title: 地理的に分散された展開トポロジ
+summary: TiDBの地理的に分散された展開トポロジを学習します。
 ---
 
 # 地理的に分散された展開トポロジ {#geo-distributed-deployment-topology}
@@ -10,7 +9,7 @@ aliases: ['/docs/dev/geo-distributed-deployment-topology/']
 
 ## トポロジー情報 {#topology-information}
 
-| 実例             | カウント | 物理マシン構成                        | BJ IP                                                  | 輸送する      | 構成                          |
+| 実例             | カウント | 物理マシン構成                        | BJ IP                                                  | 輸送する      | Configuration / コンフィグレーション  |
 | :------------- | :--- | :----------------------------- | :----------------------------------------------------- | :-------- | :-------------------------- |
 | TiDB           | 5    | 16 VCore 32GB * 1              | 10.0.1.1<br/> 10.0.1.2<br/> 10.0.1.3<br/> 10.0.1.4     | 10.0.1.5  | デフォルトのポート<br/>グローバルディレクトリ構成 |
 | PD             | 5    | 4 VCore 8GB * 1                | 10.0.1.6<br/> 10.0.1.7<br/> 10.0.1.8<br/> 10.0.1.9     | 10.0.1.10 | デフォルトのポート<br/>グローバルディレクトリ構成 |
@@ -21,7 +20,7 @@ aliases: ['/docs/dev/geo-distributed-deployment-topology/']
 
 -   [地理的に分散されたトポロジテンプレート](https://github.com/pingcap/docs/blob/master/config-templates/geo-redundancy-deployment.yaml)
 
-上記のTiDBクラスタートポロジファイルの構成項目の詳細については、 [TiUPを使用してTiDBを展開するためのトポロジ構成ファイル](/tiup/tiup-cluster-topology-reference.md)を参照してください。
+上記のTiDBクラスタトポロジファイルの構成項目の詳細については、 [TiUPを使用してTiDBを展開するためのトポロジConfiguration / コンフィグレーションファイル](/tiup/tiup-cluster-topology-reference.md)を参照してください。
 
 ### 重要なパラメータ {#key-parameters}
 
@@ -39,7 +38,7 @@ aliases: ['/docs/dev/geo-distributed-deployment-topology/']
 
 -   ラベル構成：
 
-    TiKVはさまざまなデータセンターに展開されているため、物理マシンがダウンすると、Raft Groupはデフォルトの5つのレプリカのうち3つを失い、クラスターが使用できなくなる可能性があります。この問題に対処するには、PDのスマートスケジューリングを有効にするようにラベルを構成できます。これにより、Raft Groupは、同じデータセンターの同じキャビネット内の同じマシン上のTiKVインスタンスに3つのレプリカを配置できなくなります。
+    TiKVはさまざまなデータセンターに展開されているため、物理マシンがダウンすると、Raft Groupはデフォルトの5つのレプリカのうち3つを失い、クラスタが使用できなくなる可能性があります。この問題に対処するには、PDのスマートスケジューリングを有効にするようにラベルを構成できます。これにより、Raft Groupは、同じデータセンターの同じキャビネット内の同じマシン上のTiKVインスタンスに3つのレプリカを配置できなくなります。
 
 -   TiKV構成：
 
@@ -63,13 +62,13 @@ aliases: ['/docs/dev/geo-distributed-deployment-topology/']
 
 #### PDパラメータ {#pd-parameters}
 
--   PDメタデータ情報は、TiKVクラスターのトポロジーを記録します。 PDは、RaftGroupレプリカを次の4つのディメンションでスケジュールします。
+-   PDメタデータ情報は、TiKVクラスタのトポロジーを記録します。 PDは、RaftGroupレプリカを次の4つのディメンションでスケジュールします。
 
     ```yaml
     replication.location-labels: ["zone","dc","rack","host"]
     ```
 
--   クラスターの高可用性を確保するには、RaftGroupレプリカの数を`5`に調整します。
+-   クラスタの高可用性を確保するには、RaftGroupレプリカの数を`5`に調整します。
 
     ```yaml
     replication.max-replicas: 5
@@ -84,13 +83,13 @@ aliases: ['/docs/dev/geo-distributed-deployment-topology/']
               value: "sha"
     ```
 
-    > <strong>ノート：</strong>
+    > **ノート：**
     >
     > TiDB 5.2以降、 `label-property`構成はデフォルトでサポートされていません。レプリカポリシーを設定するには、 [配置ルール](/configure-placement-rules.md)を使用します。
 
-ラベルとRaftGroupレプリカの数の詳細については、 [トポロジラベルによるレプリカのスケジュール](/schedule-replicas-by-topology-labels.md)を参照してください。
+ラベルとRaftGroupレプリカの数の詳細については、 [トポロジラベルごとにレプリカをスケジュールする](/schedule-replicas-by-topology-labels.md)を参照してください。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
-> -   構成ファイルに`tidb`人のユーザーを手動で作成する必要はありません。 TiUPクラスターコンポーネントは、ターゲットマシン上に`tidb`のユーザーを自動的に作成します。ユーザーをカスタマイズすることも、ユーザーを制御マシンとの一貫性を保つこともできます。
-> -   展開ディレクトリを相対パスとして構成すると、クラスターはユーザーのホームディレクトリに展開されます。
+> -   構成ファイルに`tidb`人のユーザーを手動で作成する必要はありません。 TiUPクラスタコンポーネントは、ターゲットマシン上に`tidb`のユーザーを自動的に作成します。ユーザーをカスタマイズすることも、ユーザーを制御マシンとの一貫性を保つこともできます。
+> -   展開ディレクトリを相対パスとして構成すると、クラスタはユーザーのホームディレクトリに展開されます。

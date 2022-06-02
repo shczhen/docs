@@ -1,17 +1,17 @@
 ---
-title: SHOW PLACEMENT
-summary: The usage of SHOW PLACEMENT in TiDB.
+title: 配置を表示
+summary: TiDBでのSHOWPLACEMENTの使用法。
 ---
 
 # 配置を表示 {#show-placement}
 
-`SHOW PLACEMENT`は、配置ポリシーのすべての配置オプションを要約し、それらを標準形式で表示します。
+> **警告：**
+>
+> SQLの配置ルールは実験的機能です。 GAの前に構文が変更される可能性があり、バグもある可能性があります。
+>
+> リスクを理解している場合は、 `SET GLOBAL tidb_enable_alter_placement = 1;`を実行することでこの実験機能を有効にできます。
 
-このステートメントは、配置ドライバー（PD）が配置のスケジューリングで行った現在の進行状況を`Scheduling_State`フィールドが示す結果セットを返します。
-
--   `PENDING` ：PDはまだ配置のスケジュールを開始していません。これは、配置ルールが意味的に正しいが、現在クラスターが満たすことができないことを示している可能性があります。たとえば、フォロワーの候補となるTiKVストアが`FOLLOWERS=4`あるが、3つしかない場合。
--   `INPROGRESS` ：PDは現在配置をスケジュールしています。
--   `SCHEDULED` ：PDは配置を正常にスケジュールしました。
+`SHOW PLACEMENT`は、直接配置および配置ポリシーからのすべての配置オプションを要約し、それらを標準形式で表示します。
 
 ## あらすじ {#synopsis}
 
@@ -27,11 +27,14 @@ ShowStmt ::=
 ```sql
 CREATE PLACEMENT POLICY p1 PRIMARY_REGION="us-east-1" REGIONS="us-east-1,us-west-1" FOLLOWERS=4;
 CREATE TABLE t1 (a INT) PLACEMENT POLICY=p1;
+CREATE TABLE t2 (a INT) PRIMARY_REGION="us-east-1" REGIONS="us-east-1,us-west-1" FOLLOWERS=4;
 SHOW PLACEMENT;
 ```
 
 ```
 Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.00 sec)
 
 Query OK, 0 rows affected (0.00 sec)
 
@@ -41,6 +44,7 @@ Query OK, 0 rows affected (0.00 sec)
 | POLICY p1     | PRIMARY_REGION="us-east-1" REGIONS="us-east-1,us-west-1" FOLLOWERS=4 | NULL             |
 | DATABASE test | PRIMARY_REGION="us-east-1" REGIONS="us-east-1,us-west-1" FOLLOWERS=4 | INPROGRESS       |
 | TABLE test.t1 | PRIMARY_REGION="us-east-1" REGIONS="us-east-1,us-west-1" FOLLOWERS=4 | INPROGRESS       |
+| TABLE test.t2 | PRIMARY_REGION="us-east-1" REGIONS="us-east-1,us-west-1" FOLLOWERS=4 | INPROGRESS       |
 +---------------+----------------------------------------------------------------------+------------------+
 4 rows in set (0.00 sec)
 ```

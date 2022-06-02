@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot High Disk I/O Usage in TiDB
-summary: Learn how to locate and address the issue of high TiDB storage I/O usage.
+title: TiDBでのディスクI/Oの使用率が高い場合のトラブルシューティング
+summary: TiDBストレージのI/O使用率が高い問題を見つけて対処する方法を学びます。
 ---
 
 # TiDBでのディスクI/Oの使用率が高い場合のトラブルシューティング {#troubleshoot-high-disk-i-o-usage-in-tidb}
@@ -13,31 +13,31 @@ CPUのボトルネックとトランザクションの競合によって引き�
 
 ### モニターからI/Oの問題を特定する {#locate-i-o-issues-from-monitor}
 
-I / Oの問題を見つける最も簡単な方法は、TiUPによってデフォルトで展開されるGrafanaダッシュボードなど、モニターから全体的なI/Oステータスを表示することです。 I / Oに関連するダッシュボードパネルには、 <strong>Overview</strong> 、 <strong>Node_exporter</strong> 、および<strong>Disk-Performance</strong>が含まれます。
+I / Oの問題を見つける最も簡単な方法は、TiUPによってデフォルトで展開されるGrafanaダッシュボードなど、モニターから全体的なI/Oステータスを表示することです。 I / Oに関連するダッシュボードパネルには、 **Overview** 、 <strong>Node_exporter</strong> 、および<strong>Disk-Performance</strong>が含まれます。
 
 #### 最初のタイプの監視パネル {#the-first-type-of-monitoring-panels}
 
-[<strong>概要</strong>]&gt;[<strong>システム情報</strong>]&gt;[ <strong>IOUtil]</strong>で、クラスター内の各マシンのI/Oステータスを確認できます。このメトリックは、 `iostat`モニターの`util`に似ています。パーセンテージが高いほど、ディスクI/Oの使用率が高くなります。
+[**概要**]&gt;[<strong>システム情報</strong>]&gt;[ <strong>IOUtil]</strong>で、クラスタの各マシンのI/Oステータスを確認できます。このメトリックは、 `iostat`モニターの`util`に似ています。パーセンテージが高いほど、ディスクI/Oの使用率が高くなります。
 
 -   モニターにI/O使用率の高いマシンが1つしかない場合、現在、このマシンに読み取りおよび書き込みのホットスポットがある可能性があります。
--   モニター内のほとんどのマシンのI/O使用率が高い場合、クラスターのI/O負荷は高くなります。
+-   モニター内のほとんどのマシンのI/O使用率が高い場合、クラスタのI/O負荷は高くなります。
 
-上記の最初の状況（I / O使用率が高い1台のマシンのみ）の場合、 `Disk Latency`や`Disk Load`などの<strong>ディスクパフォーマンスダッシュボード</strong>からI / Oメトリックをさらに観察して、異常が存在するかどうかを判断できます。必要に応じて、fioツールを使用してディスクをチェックします。
+上記の最初の状況（I / O使用率が高い1台のマシンのみ）の場合、 `Disk Latency`や`Disk Load`などの**ディスクパフォーマンスダッシュボード**からI / Oメトリックをさらに観察して、異常が存在するかどうかを判断できます。必要に応じて、fioツールを使用してディスクをチェックします。
 
 #### 2番目のタイプの監視パネル {#the-second-type-of-monitoring-panels}
 
-TiDBクラスターの主なストレージコンポーネントはTiKVです。 1つのTiKVインスタンスには2つのRocksDBインスタンスが含まれています。1つは`data/raft`にあるRaftログを保存するためのもので、もう1つは`data/db`にある実際のデータを保存するためのものです。
+TiDBクラスタの主なストレージコンポーネントはTiKVです。 1つのTiKVインスタンスには2つのRocksDBインスタンスが含まれています。1つは`data/raft`にあるRaftログを保存するためのもので、もう1つは`data/db`にある実際のデータを保存するためのものです。
 
-<strong>TiKV-Details</strong> &gt; <strong>Raft IO</strong>で、次の2つのインスタンスのディスク書き込みに関連するメトリックを確認できます。
+**TiKV-Details** &gt; <strong>Raft IO</strong>で、次の2つのインスタンスのディスク書き込みに関連するメトリックを確認できます。
 
 -   `Append log duration` ：このメトリックは、Raftログを格納するRockDBへの書き込みの応答時間を示します。 `.99`の応答時間は50ミリ秒以内である必要があります。
 -   `Apply log duration` ：このメトリックは、実際のデータを格納するRockDBへの書き込みの応答時間を示します。 `.99`の応答は100ミリ秒以内である必要があります。
 
-これらの2つのメトリックには、書き込みホットスポットを表示するのに役立つ<strong>サーバーごと</strong>の監視パネルもあります。
+これらの2つのメトリックには、書き込みホットスポットを表示するのに役立つ**サーバーごと**の監視パネルもあります。
 
 #### 3番目のタイプの監視パネル {#the-third-type-of-monitoring-panels}
 
-<strong>TiKV-詳細</strong>&gt;<strong>ストレージ</strong>には、ストレージに関連する監視メトリックがあります。
+**TiKV-詳細**&gt;<strong>ストレージ</strong>には、ストレージに関連する監視メトリックがあります。
 
 -   `Storage command total` ：受信したさまざまなコマンドの数を示します。
 -   `Storage async write duration` ：Raft I/Oに関連する可能性のある`disk sync duration`などの監視メトリックが含まれます。異常が発生した場合は、ログを確認して関連部品の動作状態を確認してください。
@@ -46,7 +46,7 @@ TiDBクラスターの主なストレージコンポーネントはTiKVです。
 
 さらに、他のいくつかのパネルメトリックは、ボトルネックがI / Oであるかどうかを判断するのに役立つ場合があり、いくつかのパラメーターを設定してみることができます。 TiKVgRPC期間のprewrite/commit / raw-put（rawキー値クラスターの場合のみ）を確認することで、ボトルネックが実際に遅いTiKV書き込みであると判断できます。 TiKVの書き込みが遅い一般的な状況は次のとおりです。
 
--   `append log`は遅いです。 TiKV Grafanaの`Raft I/O`および`append log duration`メトリックは比較的高く、これは多くの場合、ディスク書き込みが遅いことが原因です。 <strong>RocksDB-raft</strong>で`WAL Sync Duration max`の値を確認して、 `append log`が遅い原因を特定できます。それ以外の場合は、バグを報告する必要があります。
+-   `append log`は遅いです。 TiKV Grafanaの`Raft I/O`および`append log duration`メトリックは比較的高く、これは多くの場合、ディスク書き込みが遅いことが原因です。 **RocksDB-raft**で`WAL Sync Duration max`の値を確認して、 `append log`が遅い原因を特定できます。それ以外の場合は、バグを報告する必要があります。
 
 -   `raftstore`スレッドはビジーです。 TiKV Grafanaでは、 `Raft Propose` / `propose wait duration`は`append log duration`よりも大幅に高くなっています。トラブルシューティングについては、次の側面を確認してください。
 
@@ -67,7 +67,7 @@ TiDBクラスターの主なストレージコンポーネントはTiKVです。
 
 -   クライアントが`server is busy`または特に`raftstore is busy`などのエラーを報告した場合、エラーはI/Oの問題に関連している可能性があります。
 
-    監視パネル（ <strong>Grafana-</strong> &gt; <strong>TiKV-</strong> &gt;<strong>エラー</strong>）をチェックして、 `busy`エラーの具体的な原因を確認できます。 `server is busy`はTiKVのフロー制御メカニズムです。このようにして、TiKVは`tidb/ti-client`の現在の圧力が高すぎることを通知し、クライアントは後で試す必要があります。
+    監視パネル（ **Grafana-** &gt; <strong>TiKV-</strong> &gt;<strong>エラー</strong>）をチェックして、 `busy`エラーの具体的な原因を確認できます。 `server is busy`はTiKVのフロー制御メカニズムです。このようにして、TiKVは`tidb/ti-client`の現在の圧力が高すぎることを通知し、クライアントは後で試す必要があります。
 
 -   `Write stall`はTiKVRocksDBログに表示されます。
 
@@ -79,7 +79,7 @@ TiDBクラスターの主なストレージコンポーネントはTiKVです。
 
 ### アラートで見つかったI/Oの問題 {#i-o-issues-found-in-alerts}
 
-クラスター展開ツール（TiUP）は、アラート項目としきい値が組み込まれているアラートコンポーネントをデフォルトで使用してクラスターを展開します。次のアラート項目はI/Oに関連しています。
+クラスタ展開ツール（TiUP）は、アラート項目としきい値が組み込まれているアラートコンポーネントをデフォルトで使用してクラスタを展開します。次のアラート項目はI/Oに関連しています。
 
 -   TiKV_write_stall
 -   TiKV_raft_log_lag

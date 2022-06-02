@@ -1,7 +1,6 @@
 ---
-title: Migrate and Merge MySQL Shards of Small Datasets to TiDB
-summary: Learn how to migrate and merge small datasets of shards from MySQL to TiDB.
-aliases: ['/tidb/dev/usage-scenario-shard-merge/', '/tidb/dev/usage-scenario-simple-migration/']
+title: 小さなデータセットのMySQLシャードをTiDBに移行およびマージする
+summary: シャードの小さなデータセットをMySQLからTiDBに移行してマージする方法を学びます。
 ---
 
 # 小さなデータセットのMySQLシャードをTiDBに移行およびマージする {#migrate-and-merge-mysql-shards-of-small-datasets-to-tidb}
@@ -10,7 +9,7 @@ aliases: ['/tidb/dev/usage-scenario-shard-merge/', '/tidb/dev/usage-scenario-sim
 
 このドキュメントは、合計1TiB未満のMySQLシャードの移行に適用されます。合計1TiBを超えるデータを含むMySQLシャードを移行する場合、DMのみを使用して移行するには長い時間がかかります。この場合、 [大規模なデータセットのMySQLシャードをTiDBに移行およびマージする](/migrate-large-mysql-shards-to-tidb.md)で紹介した操作に従って移行することをお勧めします。
 
-このドキュメントでは、移行手順を説明するための簡単な例を取り上げます。この例の2つのデータソースMySQLインスタンスのMySQLシャードは、ダウンストリームTiDBクラスターに移行されます。図を以下に示します。
+このドキュメントでは、移行手順を説明するための簡単な例を取り上げます。この例の2つのデータソースMySQLインスタンスのMySQLシャードは、ダウンストリームTiDBクラスタに移行されます。図を以下に示します。
 
 ![Use DM to Migrate Sharded Tables](/media/migrate-shard-tables-within-1tb-en.png)
 
@@ -32,7 +31,7 @@ MySQLインスタンス1とMySQLインスタンス2の両方に、次のスキ�
 移行を開始する前に、次のタスクを完了していることを確認してください。
 
 -   [TiUPを使用してDMクラスターをデプロイする](/dm/deploy-a-dm-cluster-using-tiup.md)
--   [DM-workerに必要な特権](/dm/dm-worker-intro.md)
+-   [DM-workerに必要な権限](/dm/dm-worker-intro.md)
 
 ### シャーディングされたテーブルの競合を確認します {#check-conflicts-for-the-sharded-tables}
 
@@ -88,7 +87,7 @@ from:
   port: ${port}             # For example: 3306
 ```
 
-ターミナルで次のコマンドを実行します。 `tiup dmctl`を使用して、データソース構成をDMクラスターにロードします。
+ターミナルで次のコマンドを実行します。 `tiup dmctl`を使用して、データソース構成をDMクラスタにロードします。
 
 {{< copyable "" >}}
 
@@ -98,12 +97,12 @@ tiup dmctl --master-addr ${advertise-addr} operate-source create source1.yaml
 
 パラメータは次のとおりです。
 
-| パラメータ         | 説明                                                              |
-| ------------- | --------------------------------------------------------------- |
-| --master-addr | dmctlが接続するクラスター内のDMマスターノードの{advertise-addr}。例：172.16.10.71：8261 |
-| 操作-ソース作成      | データソースをDMクラスターにロードします。                                          |
+| パラメータ         | 説明                                                            |
+| ------------- | ------------------------------------------------------------- |
+| --master-addr | dmctlが接続するクラスタのDMマスターノードの{advertise-addr}。例：172.16.10.71：8261 |
+| 操作-ソース作成      | データソースをDMクラスターにロードします。                                        |
 
-すべてのデータソースがDMクラスターに追加されるまで、上記の手順を繰り返します。
+すべてのデータソースがDMクラスタに追加されるまで、上記の手順を繰り返します。
 
 ## ステップ2.移行タスクを構成します {#step-2-configure-the-migration-task}
 
@@ -169,7 +168,7 @@ block-allow-list:           # filter or only migrate all operations of some data
     do-dbs: ["store_*"]     # The allow list of the schemas to be migrated, similar to replicate-do-db in MySQL.
 ```
 
-上記の例は、移行タスクを実行するための最小構成です。詳細については、 [DM高度なタスク構成ファイル](/dm/task-configuration-file-full.md)を参照してください。
+上記の例は、移行タスクを実行するための最小構成です。詳細については、 [DM高度なタスクConfiguration / コンフィグレーションファイル](/dm/task-configuration-file-full.md)を参照してください。
 
 タスクファイルの`routes` 、 `filters`その他の構成の詳細については、次のドキュメントを参照してください。
 
@@ -196,12 +195,12 @@ tiup dmctl --master-addr ${advertise-addr} check-task task.yaml
 tiup dmctl --master-addr ${advertise-addr} start-task task.yaml
 ```
 
-| パラメータ         | 説明                                                              |
-| ------------- | --------------------------------------------------------------- |
-| --master-addr | dmctlが接続するクラスター内のDMマスターノードの{advertise-addr}。例：172.16.10.71：8261 |
-| 開始タスク         | データ移行タスクを開始します。                                                 |
+| パラメータ         | 説明                                                            |
+| ------------- | ------------------------------------------------------------- |
+| --master-addr | dmctlが接続するクラスタのDMマスターノードの{advertise-addr}。例：172.16.10.71：8261 |
+| 開始タスク         | データ移行タスクを開始します。                                               |
 
-移行タスクの開始に失敗した場合は、エラー情報に従って構成情報を変更してから、もう一度`start-task task.yaml`を実行して移行タスクを開始してください。問題が発生した場合は、 [エラーの処理](/dm/dm-error-handling.md)および[よくある質問](/dm/dm-faq.md)を参照してください。
+移行タスクの開始に失敗した場合は、エラー情報に従って構成情報を変更してから、もう一度`start-task task.yaml`を実行して移行タスクを開始してください。問題が発生した場合は、 [エラーの処理](/dm/dm-error-handling.md)および[FAQ](/dm/dm-faq.md)を参照してください。
 
 ## ステップ4.タスクを確認します {#step-4-check-the-task}
 
@@ -221,7 +220,7 @@ Grafanaまたはログを介して、移行タスクの履歴と内部運用メ�
 
 -   Grafana経由
 
-    TiUPを使用してDMクラスターをデプロイするときに、Prometheus、Alertmanager、およびGrafanaが正しくデプロイされている場合、GrafanaでDMモニタリングメトリックを表示できます。具体的には、Grafanaでのデプロイ時に指定したIPアドレスとポートを入力し、DMダッシュボードを選択します。
+    TiUPを使用してDMクラスタをデプロイするときに、Prometheus、Alertmanager、およびGrafanaが正しくデプロイされている場合、GrafanaでDMモニタリングメトリックを表示できます。具体的には、Grafanaでのデプロイ時に指定したIPアドレスとポートを入力し、DMダッシュボードを選択します。
 
 -   ログ経由
 
@@ -237,4 +236,4 @@ Grafanaまたはログを介して、移行タスクの履歴と内部運用メ�
 -   [シャードマージシナリオでのデータ移行のベストプラクティス](/dm/shard-merge-best-practices.md)
 -   [エラーの処理](/dm/dm-error-handling.md)
 -   [パフォーマンスの問題を処理する](/dm/dm-handle-performance-issues.md)
--   [よくある質問](/dm/dm-faq.md)
+-   [FAQ](/dm/dm-faq.md)

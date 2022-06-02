@@ -1,21 +1,21 @@
 ---
-title: DM Cluster Performance Test
-summary: Learn how to test the performance of DM clusters.
+title: DMクラスターパフォーマンステスト
+summary: DMクラスターのパフォーマンスをテストする方法を学びます。
 ---
 
 # DMクラスターパフォーマンステスト {#dm-cluster-performance-test}
 
-このドキュメントでは、データ移行に関する速度テストや遅延テストなど、DMクラスターでパフォーマンステストを実行するためのテストシナリオを構築する方法について説明します。
+このドキュメントでは、データ移行に関する速度テストや遅延テストなど、DMクラスタでパフォーマンステストを実行するためのテストシナリオを構築する方法について説明します。
 
 ## 移行データフロー {#migration-data-flow}
 
-単純な移行データフロー、つまりMySQL-&gt; DM-&gt; TiDBを使用して、DMクラスターのデータ移行パフォーマンスをテストできます。
+単純な移行データフロー、つまりMySQL-&gt; DM-&gt; TiDBを使用して、DMクラスタのデータ移行パフォーマンスをテストできます。
 
-## テスト環境を展開する {#deploy-test-environment}
+## テスト環境をデプロイ {#deploy-test-environment}
 
--   すべてのデフォルト構成で、TiUPを使用してTiDBテストクラスターをデプロイします。
+-   すべてのデフォルト構成で、TiUPを使用してTiDBテストクラスタをデプロイします。
 -   MySQLサービスをデプロイします。 binlogに対して`ROW`モードを有効にし、他の構成アイテムにはデフォルト構成を使用します。
--   DMワーカーとDMマスターを使用してDMクラスターをデプロイします。
+-   DMワーカーとDMマスターを使用してDMクラスタをデプロイします。
 
 ## 性能テスト {#performance-test}
 
@@ -86,7 +86,7 @@ mydumpers:
 
 移行タスクの作成方法の詳細については、 [データ移行タスクを作成する](/dm/dm-create-task.md)を参照してください。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   マルチスレッドを使用して単一のテーブルからデータを同時にエクスポートできるようにするには、 `mydumpers`の構成項目で`rows`のオプションを使用できます。これにより、データのエクスポートが高速化されます。
 > -   さまざまな構成でパフォーマンスをテストするには、 `mysql-instances`の構成で`loader-thread`を調整し、 `mydumpers`の構成項目で`rows`と`threads`を調整します。
@@ -144,7 +144,7 @@ syncers:
 
 データ移行タスクの作成方法の詳細については、 [データ移行タスクを作成する](/dm/dm-create-task.md)を参照してください。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > さまざまな構成でパフォーマンスをテストするために、 `syncers`の構成項目で`worker-count`と`batch`を調整できます。
 
@@ -158,7 +158,7 @@ syncers:
 sysbench --test=oltp_insert --tables=4 --num-threads=32 --mysql-host=172.17.4.40 --mysql-port=3306 --mysql-user=root --mysql-db=dm_benchmark --db-driver=mysql --report-interval=10 --time=1800 run
 ```
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > さまざまな`sysbench`ステートメントを使用して、さまざまなシナリオでデータ移行のパフォーマンスをテストできます。
 

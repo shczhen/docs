@@ -1,14 +1,13 @@
 ---
-title: TiDB Data Type
-summary: Learn about the JSON data type in TiDB.
-aliases: ['/docs/dev/data-type-json/','/docs/dev/reference/sql/data-types/json/']
+title: TiDBデータ型
+summary: TiDBのJSONデータ型について学びます。
 ---
 
 # JSONタイプ {#json-type}
 
-> <strong>警告：</strong>
+> **警告：**
 >
-> これはまだ実験的な機能です。実稼働環境で使用することはお勧めし<strong>ません</strong>。
+> これはまだ実験的機能です。実稼働環境で使用することはお勧めし**ません**。
 
 TiDBは、半構造化データの保存に役立つ`JSON` （JavaScript Object Notation）データ型をサポートしています。 `JSON`データ型には、 `JSON`形式の文字列を文字列列に格納するよりも次の利点があります。
 

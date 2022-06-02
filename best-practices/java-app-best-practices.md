@@ -1,7 +1,6 @@
 ---
-title: Best Practices for Developing Java Applications with TiDB
-summary: Learn the best practices for developing Java applications with TiDB.
-aliases: ['/docs/dev/best-practices/java-app-best-practices/','/docs/dev/reference/best-practices/java-app/']
+title: TiDBを使用してJavaアプリケーションを開発するためのベストプラクティス
+summary: TiDBを使用してJavaアプリケーションを開発するためのベストプラクティスを学びます。
 ---
 
 # TiDBを使用してJavaアプリケーションを開発するためのベストプラクティス {#best-practices-for-developing-java-applications-with-tidb}
@@ -44,7 +43,7 @@ JDBC APIの使用法については、 [JDBC公式チュートリアル](https:/
 
 OLTP（Online Transactional Processing）シナリオの場合、プログラムによってデータベースに送信されるSQLステートメントは、パラメーターの変更を削除した後に使い果たされる可能性のあるいくつかのタイプです。したがって、通常の[テキストファイルからの実行](https://docs.oracle.com/javase/tutorial/jdbc/basics/processingsqlstatements.html#executing_queries)ではなく[プリペアドステートメント](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html)を使用し、プリペアドステートメントを再利用して直接実行することをお勧めします。これにより、TiDBでSQL実行プランを繰り返し解析および生成するオーバーヘッドが回避されます。
 
-現在、ほとんどの上位レベルのフレームワークは、SQL実行のために準備APIを呼び出します。開発にJDBCAPIを直接使用する場合は、PrepareAPIの選択に注意してください。
+現在、ほとんどの上位レベルのフレームワークは、SQL実行用の準備APIを呼び出します。開発にJDBCAPIを直接使用する場合は、PrepareAPIの選択に注意してください。
 
 さらに、MySQL Connector / Jのデフォルトの実装では、クライアント側のステートメントのみが前処理され、クライアントで`?`が置き換えられた後、ステートメントはテキストファイルでサーバーに送信されます。したがって、Prepare APIを使用することに加えて、TiDBサーバーでステートメントの前処理を実行する前に、JDBC接続パラメーターで`useServerPrepStmts = true`を構成する必要もあります。詳細なパラメータ設定については、 [MySQLJDBCパラメータ](#mysql-jdbc-parameters)を参照してください。
 
@@ -52,7 +51,7 @@ OLTP（Online Transactional Processing）シナリオの場合、プログラム
 
 バッチ挿入の場合は、 [`addBatch` / <code>executeBatch</code> API](https://www.tutorialspoint.com/jdbc/jdbc-batch-processing)を使用できます。 `addBatch()`メソッドは、最初にクライアントで複数のSQLステートメントをキャッシュし、次に`executeBatch`メソッドを呼び出すときにそれらをデータベースサーバーに一緒に送信するために使用されます。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > デフォルトのMySQLConnector/ J実装では、 `addBatch()`でバッチに追加されたSQLステートメントの送信時間は、 `executeBatch()`が呼び出された時間まで遅延しますが、実際のネットワーク転送中にステートメントは1つずつ送信されます。したがって、この方法では通常、通信のオーバーヘッドを減らすことはできません。
 >
@@ -88,7 +87,7 @@ JDBCは通常、実装関連の構成をJDBCURLパラメーターの形式で提
 
 この設定がすでに有効になっていることを確認するには、次のようにします。
 
--   TiDBモニタリングダッシュボードに移動し、[ <strong>Query Summary</strong> ]&gt; [ <strong>QPSByInstance</strong> ]からリクエストコマンドタイプを表示します。
+-   TiDBモニタリングダッシュボードに移動し、[ **Query Summary** ]&gt; [ <strong>QPSByInstance</strong> ]からリクエストコマンドタイプを表示します。
 -   リクエストで`COM_QUERY`が`COM_STMT_EXECUTE`または`COM_STMT_PREPARE`に置き換えられた場合、この設定はすでに有効になっていることを意味します。
 
 ##### <code>cachePrepStmts</code> {#code-cacheprepstmts-code}
@@ -97,7 +96,7 @@ JDBCは通常、実装関連の構成をJDBCURLパラメーターの形式で提
 
 この設定がすでに有効になっていることを確認するには、次のようにします。
 
--   TiDBモニタリングダッシュボードに移動し、[ <strong>Query Summary</strong> ]&gt; [ <strong>QPSByInstance</strong> ]からリクエストコマンドタイプを表示します。
+-   TiDBモニタリングダッシュボードに移動し、[ **Query Summary** ]&gt; [ <strong>QPSByInstance</strong> ]からリクエストコマンドタイプを表示します。
 -   リクエストの`COM_STMT_EXECUTE`の数が`COM_STMT_PREPARE`の数よりはるかに多い場合は、この設定がすでに有効になっていることを意味します。
 
 ![QPS By Instance](/media/java-practice-2.png)
@@ -112,7 +111,7 @@ JDBCは通常、実装関連の構成をJDBCURLパラメーターの形式で提
 
 次の場合は、この設定が小さすぎるかどうかを確認する必要があります。
 
--   TiDBモニタリングダッシュボードに移動し、[ <strong>Query Summary</strong> ]&gt; [ <strong>QPSByInstance</strong> ]からリクエストコマンドタイプを表示します。
+-   TiDBモニタリングダッシュボードに移動し、[ **Query Summary** ]&gt; [ <strong>QPSByInstance</strong> ]からリクエストコマンドタイプを表示します。
 -   そして、 `cachePrepStmts=true`が構成されているが、 `COM_STMT_PREPARE`はまだほとんど`COM_STMT_EXECUTE`に等しく、 `COM_STMT_CLOSE`が存在することを確認します。
 
 ##### <code>prepStmtCacheSize</code> {#code-prepstmtcachesize-code}
@@ -121,7 +120,7 @@ JDBCは通常、実装関連の構成をJDBCURLパラメーターの形式で提
 
 この設定がすでに有効になっていることを確認するには、次のようにします。
 
--   TiDBモニタリングダッシュボードに移動し、[ <strong>Query Summary</strong> ]&gt; [ <strong>QPSByInstance</strong> ]からリクエストコマンドタイプを表示します。
+-   TiDBモニタリングダッシュボードに移動し、[ **Query Summary** ]&gt; [ <strong>QPSByInstance</strong> ]からリクエストコマンドタイプを表示します。
 -   リクエストの`COM_STMT_EXECUTE`の数が`COM_STMT_PREPARE`の数よりはるかに多い場合は、この設定がすでに有効になっていることを意味します。
 
 #### バッチ関連のパラメーター {#batch-related-parameters}
@@ -196,7 +195,7 @@ update t set a = 10 where id = 1; update t set a = 11 where id = 2; update t set
 
 #### パラメータを統合する {#integrate-parameters}
 
-監視を通じて、アプリケーションがTiDBクラスターに対して`INSERT`の操作しか実行しないにもかかわらず、冗長な`SELECT`のステートメントが多数あることに気付く場合があります。通常、これは、JDBCが設定をクエリするためにいくつかのSQLステートメントを送信するために発生します（例： `select @@session.transaction_read_only` ）。これらのSQLステートメントはTiDBには役に立たないため、余分なオーバーヘッドを回避するために`useConfigs=maxPerformance`を構成することをお勧めします。
+監視を通じて、アプリケーションがTiDBクラスタに対して`INSERT`の操作しか実行しないにもかかわらず、冗長な`SELECT`のステートメントが多数あることに気付く場合があります。通常、これは、JDBCが設定をクエリするためにいくつかのSQLステートメントを送信するために発生します（例： `select @@session.transaction_read_only` ）。これらのSQLステートメントはTiDBには役に立たないため、余分なオーバーヘッドを回避するために`useConfigs=maxPerformance`を構成することをお勧めします。
 
 `useConfigs=maxPerformance`構成には、構成のグループが含まれます。
 

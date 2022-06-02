@@ -1,7 +1,6 @@
 ---
-title: Upgrade and After Upgrade FAQs
-summary: Learn about some FAQs and the solutions during and after upgrading TiDB.
-aliases: ['/docs/dev/faq/upgrade-faq/','/docs/dev/faq/upgrade/']
+title: アップグレードおよびアップグレード後のFAQ
+summary: TiDBのアップグレード中およびアップグレード後のいくつかのFAQとソリューションについて学びます。
 ---
 
 # アップグレードおよびアップグレード後のFAQ {#upgrade-and-after-upgrade-faqs}
@@ -14,19 +13,19 @@ aliases: ['/docs/dev/faq/upgrade-faq/','/docs/dev/faq/upgrade/']
 
 ### ローリングアップデートの効果は何ですか？ {#what-are-the-effects-of-rolling-updates}
 
-ローリング更新をTiDBサービスに適用する場合、実行中のアプリケーションは影響を受けません。最小クラスタートポロジ（TiDB * 2、PD * 3、TiKV * 3）を構成する必要があります。ポンプまたはドレイナーサービスがクラスターに含まれている場合は、更新をローリングする前にドレイナーを停止することをお勧めします。 TiDBをアップグレードすると、Pumpもアップグレードされます。
+ローリング更新をTiDBサービスに適用すると、実行中のアプリケーションはさまざまな程度で影響を受けます。したがって、ビジネスのピーク時にローリング更新を実行することはお勧めしません。最小クラスタトポロジ（TiDB * 2、PD * 3、TiKV * 3）を構成する必要があります。ポンプまたはドレイナーサービスがクラスタに含まれている場合は、更新をローリングする前にドレイナーを停止することをお勧めします。 TiDBをアップグレードすると、Pumpもアップグレードされます。
 
-### DDL実行中にTiDBクラスターをアップグレードできますか？ {#can-i-upgrade-the-tidb-cluster-during-the-ddl-execution}
+### DDL実行中にTiDBクラスタをアップグレードできますか？ {#can-i-upgrade-the-tidb-cluster-during-the-ddl-execution}
 
-DDLステートメントがクラスターで実行されているときは<strong>TiDB</strong>クラスターをアップグレードしないでください（通常、 `ADD INDEX`などの時間のかかるDDLステートメントや列タイプの変更の場合）。
+DDLステートメントがクラスタで実行されているときは**TiDB**クラスタをアップグレードしないでください（通常、 `ADD INDEX`などの時間のかかるDDLステートメントや列タイプの変更の場合）。
 
-アップグレードする前に、 [`ADMIN SHOW DDL`](/sql-statements/sql-statement-admin-show-ddl.md)コマンドを使用して、TiDBクラスターに進行中のDDLジョブがあるかどうかを確認することをお勧めします。クラスタにDDLジョブがある場合、クラスタをアップグレードするには、DDLの実行が終了するまで待つか、 [`ADMIN CANCEL DDL`](/sql-statements/sql-statement-admin-cancel-ddl.md)コマンドを使用してDDLジョブをキャンセルしてからクラスタをアップグレードします。
+アップグレードする前に、 [`ADMIN SHOW DDL`](/sql-statements/sql-statement-admin-show-ddl.md)コマンドを使用して、TiDBクラスタに進行中のDDLジョブがあるかどうかを確認することをお勧めします。クラスタにDDLジョブがある場合、クラスタをアップグレードするには、DDLの実行が終了するまで待つか、 [`ADMIN CANCEL DDL`](/sql-statements/sql-statement-admin-cancel-ddl.md)コマンドを使用してDDLジョブをキャンセルしてからクラスタをアップグレードします。
 
-さらに、クラスターのアップグレード中は、DDLステートメントを実行し<strong>ない</strong>でください。そうしないと、未定義動作の問題が発生する可能性があります。
+さらに、クラスタのアップグレード中は、DDLステートメントを実行し**ない**でください。そうしないと、未定義動作の問題が発生する可能性があります。
 
 ### バイナリを使用してTiDBをアップグレードするにはどうすればよいですか？ {#how-to-upgrade-tidb-using-the-binary}
 
-バイナリを使用してTiDBをデプロイすることはお勧めしません。 Binaryを使用したアップグレードのTiDBサポートは、TiUPを使用した場合ほどフレンドリーではありません。 [TiUPを使用してTiDBをデプロイする](/production-deployment-using-tiup.md)にすることをお勧めします。
+バイナリを使用してTiDBをアップグレードすることはお勧めしません。代わりに、バージョンの一貫性と互換性の両方を保証する[TiUPを使用してTiDBをアップグレードする](/upgrade-tidb-using-tiup.md)または[KubernetesでTiDBクラスタをアップグレードする](https://docs.pingcap.com/tidb-in-kubernetes/stable/upgrade-a-tidb-cluster)にすることをお勧めします。
 
 ## アップグレード後のよくある質問 {#after-upgrade-faqs}
 
@@ -310,7 +309,7 @@ TiDB v2.1.1以前のバージョンでは、文字セットがUTF-8の場合、�
 
     具体的には、変数`tidb_skip_utf8_check`を使用して、データの正当なUTF-8およびUTF8MB4チェックをスキップできます。ただし、チェックをスキップすると、MySQLがチェックを実行するため、TiDBからMySQLへのデータの複製に失敗する可能性があります。
 
-    UTF-8チェックのみをスキップする場合は、 `tidb_check_mb4_value_in_utf8`を設定できます。この変数はv2.1.3の`config.toml`ファイルに追加され、構成ファイルの`check-mb4-value-in-utf8`を変更してから、クラスターを再起動して有効にすることができます。
+    UTF-8チェックのみをスキップする場合は、 `tidb_check_mb4_value_in_utf8`を設定できます。この変数はv2.1.3の`config.toml`ファイルに追加され、構成ファイルの`check-mb4-value-in-utf8`を変更してから、クラスタを再起動して有効にすることができます。
 
     v2.1.5以降では、HTTPAPIとセッション変数を介して`tidb_check_mb4_value_in_utf8`を設定できます。
 

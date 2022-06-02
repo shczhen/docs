@@ -1,24 +1,23 @@
 ---
-title: SET [GLOBAL|SESSION] <variable> | TiDB SQL Statement Reference
-summary: An overview of the usage of SET [GLOBAL|SESSION] <variable> for the TiDB database.
-aliases: ['/docs/dev/sql-statements/sql-statement-set-variable/','/docs/dev/reference/sql/statements/set-variable/']
+title: SET [GLOBAL |SESSION]<変数>| TiDBSQLステートメントリファレンス
+summary: TiDBデータベースのSET[GLOBAL|SESSION]<variable>の使用法の概要。
 ---
 
 # <code>SET [GLOBAL|SESSION] &#x3C;variable></code> {#code-set-global-session-x3c-variable-code}
 
 ステートメント`SET [GLOBAL|SESSION]`は、スコープが`SESSION`または`GLOBAL`のTiDBの組み込み変数の1つを変更します。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > MySQLと同様に、 `GLOBAL`変数への変更は、既存の接続にもローカル接続にも適用されません。新しいセッションのみが値の変更を反映します。
 
 ## あらすじ {#synopsis}
 
-<strong>SetStmt：</strong>
+**SetStmt：**
 
 ![SetStmt](/media/sqlgram/SetStmt.png)
 
-<strong>VariableAssignment：</strong>
+**VariableAssignment：**
 
 ![VariableAssignment](/media/sqlgram/VariableAssignment.png)
 
@@ -86,7 +85,7 @@ mysql> SHOW SESSION VARIABLES LIKE 'sql_mode';
 
 次の動作の違いが適用されます。
 
--   `SET GLOBAL`で行った変更は、クラスター内のすべてのTiDBインスタンスに伝播されます。これは、変更がレプリカに伝播されないMySQLとは異なります。
+-   `SET GLOBAL`で行った変更は、クラスタのすべてのTiDBインスタンスに伝播されます。これは、変更がレプリカに伝播されないMySQLとは異なります。
 -   TiDBは、いくつかの変数を読み取り可能と設定可能の両方として提示します。これは、アプリケーションとコネクタの両方がMySQL変数を読み取るのが一般的であるため、MySQLの互換性のために必要です。例：JDBCコネクタは、動作に依存していなくても、クエリキャッシュ設定の読み取りと設定の両方を行います。
 -   `SET GLOBAL`で行った変更は、TiDBサーバーの再起動後も保持されます。これは、TiDBの`SET GLOBAL`は、MySQL8.0以降で利用可能な`SET PERSIST`と同様に動作することを意味します。
 

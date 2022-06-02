@@ -1,22 +1,22 @@
 ---
-title: TiDB Specific Functions
-summary: Learn about the usage of TiDB specific functions.
+title: TiDB固有の機能
+summary: TiDB固有の機能の使用法について学びます。
 ---
 
 # TiDB固有の機能 {#tidb-specific-functions}
 
 次の関数はTiDB拡張機能であり、MySQLにはありません。
 
-| 関数名                                                                                | 機能の説明                                                                                                                               |
-| :--------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------- |
-| `TIDB_BOUNDED_STALENESS()`                                                         | `TIDB_BOUNDED_STALENESS`関数は、時間範囲内で可能な限り新しいデータを読み取るようにTiDBに指示します。参照： [`AS OF TIMESTAMP`句を使用して履歴データを読み取る](/as-of-timestamp.md)        |
-| [`TIDB_DECODE_KEY(str)`](#tidb_decode_key)                                         | `TIDB_DECODE_KEY`関数を使用して、TiDBでエンコードされたキーエントリを`_tidb_rowid`と`table_id`を含むJSON構造にデコードできます。これらのエンコードされたキーは、一部のシステムテーブルとログ出力にあります。      |
-| [`TIDB_DECODE_PLAN(str)`](#tidb_decode_plan)                                       | `TIDB_DECODE_PLAN`関数は、TiDB実行プランをデコードするために使用できます。                                                                                    |
-| `TIDB_IS_DDL_OWNER()`                                                              | `TIDB_IS_DDL_OWNER`関数を使用して、接続しているTiDBインスタンスがDDL所有者であるかどうかを確認できます。 DDL所有者は、クラスター内の他のすべてのノードに代わってDDLステートメントを実行するタスクを実行するTiDBインスタンスです。 |
-| [`TIDB_PARSE_TSO(num)`](#tidb_parse_tso)                                           | `TIDB_PARSE_TSO`関数を使用して、TiDBTSOタイムスタンプから物理タイムスタンプを抽出できます。参照： [`tidb_current_ts`](/system-variables.md#tidb_current_ts) 。            |
-| [`TIDB_VERSION()`](#tidb_version)                                                  | `TIDB_VERSION`関数は、追加のビルド情報を含むTiDBバージョンを返します。                                                                                        |
-| [`TIDB_DECODE_SQL_DIGESTS(digests, stmtTruncateLength)`](#tidb_decode_sql_digests) | `TIDB_DECODE_SQL_DIGESTS()`関数は、クラスター内のSQLダイジェストのセットに対応する正規化されたSQLステートメント（形式と引数のない形式）を照会するために使用されます。                                 |
-| `VITESS_HASH(str)`                                                                 | `VITESS_HASH`関数は、Vitessの`HASH`関数と互換性のある文字列のハッシュを返します。これは、Vitessからのデータ移行を支援することを目的としています。                                            |
+| 関数名                                                                                | 機能の説明                                                                                                                             |
+| :--------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------- |
+| `TIDB_BOUNDED_STALENESS()`                                                         | `TIDB_BOUNDED_STALENESS`関数は、時間範囲内で可能な限り新しいデータを読み取るようにTiDBに指示します。参照： [`AS OF TIMESTAMP`句を使用して履歴データを読み取る](/as-of-timestamp.md)      |
+| [`TIDB_DECODE_KEY(str)`](#tidb_decode_key)                                         | `TIDB_DECODE_KEY`関数を使用して、TiDBでエンコードされたキーエントリを`_tidb_rowid`と`table_id`を含むJSON構造にデコードできます。これらのエンコードされたキーは、一部のシステムテーブルおよびログ出力にあります。  |
+| [`TIDB_DECODE_PLAN(str)`](#tidb_decode_plan)                                       | `TIDB_DECODE_PLAN`関数は、TiDB実行プランをデコードするために使用できます。                                                                                  |
+| `TIDB_IS_DDL_OWNER()`                                                              | `TIDB_IS_DDL_OWNER`関数を使用して、接続しているTiDBインスタンスがDDL所有者であるかどうかを確認できます。 DDL所有者は、クラスタの他のすべてのノードに代わってDDLステートメントを実行するタスクを実行するTiDBインスタンスです。 |
+| [`TIDB_PARSE_TSO(num)`](#tidb_parse_tso)                                           | `TIDB_PARSE_TSO`関数を使用して、TiDBTSOタイムスタンプから物理タイムスタンプを抽出できます。参照： [`tidb_current_ts`](/system-variables.md#tidb_current_ts) 。          |
+| [`TIDB_VERSION()`](#tidb_version)                                                  | `TIDB_VERSION`関数は、追加のビルド情報を含むTiDBバージョンを返します。                                                                                      |
+| [`TIDB_DECODE_SQL_DIGESTS(digests, stmtTruncateLength)`](#tidb_decode_sql_digests) | `TIDB_DECODE_SQL_DIGESTS()`関数は、クラスタのSQLダイジェストのセットに対応する正規化されたSQLステートメント（形式と引数のない形式）を照会するために使用されます。                                 |
+| `VITESS_HASH(str)`                                                                 | `VITESS_HASH`関数は、Vitessの`HASH`関数と互換性のある文字列のハッシュを返します。これは、Vitessからのデータ移行を支援することを目的としています。                                          |
 
 ## 例 {#examples}
 
@@ -176,19 +176,19 @@ Check Table Before Drop: false
 
 ### TIDB_DECODE_SQL_DIGESTS {#tidb-decode-sql-digests}
 
-`TIDB_DECODE_SQL_DIGESTS()`関数は、クラスター内のSQLダイジェストのセットに対応する正規化されたSQLステートメント（形式と引数のない形式）を照会するために使用されます。この関数は、1つまたは2つの引数を受け入れます。
+`TIDB_DECODE_SQL_DIGESTS()`関数は、クラスタのSQLダイジェストのセットに対応する正規化されたSQLステートメント（形式と引数のない形式）を照会するために使用されます。この関数は、1つまたは2つの引数を受け入れます。
 
 -   `digests` ：文字列。このパラメーターはJSON文字列配列の形式であり、配列内の各文字列はSQLダイジェストです。
 -   `stmtTruncateLength` ：整数（オプション）。これは、返される結果の各SQLステートメントの長さを制限するために使用されます。 SQLステートメントが指定された長さを超える場合、ステートメントは切り捨てられます。 `0`は、長さが無制限であることを意味します。
 
-この関数は、JSON文字列配列の形式の文字列を返します。配列の<em>i</em>番目の項目は、 `digests`パラメーターの<em>i</em>番目の要素に対応する正規化されたSQLステートメントです。 `digests`パラメーターの要素が有効なSQLダイジェストではない場合、またはシステムが対応するSQLステートメントを見つけることができない場合、返される結果の対応する項目は`null`です。切り捨ての長さが指定されている場合（ `stmtTruncateLength > 0` ）、この長さを超える結果の各ステートメントについて、最初の`stmtTruncateLength`文字が保持され、末尾に接尾辞`"..."`が追加されて切り捨てを示します。 `digests`パラメータが`NULL`の場合、関数の戻り値は`NULL`です。
+この関数は、JSON文字列配列の形式の文字列を返します。配列の*i*番目の項目は、 `digests`パラメーターの<em>i</em>番目の要素に対応する正規化されたSQLステートメントです。 `digests`パラメーターの要素が有効なSQLダイジェストではない場合、またはシステムが対応するSQLステートメントを見つけることができない場合、返される結果の対応する項目は`null`です。切り捨ての長さが指定されている場合（ `stmtTruncateLength > 0` ）、この長さを超える結果の各ステートメントについて、最初の`stmtTruncateLength`文字が保持され、末尾に接尾辞`"..."`が追加されて切り捨てを示します。 `digests`パラメータが`NULL`の場合、関数の戻り値は`NULL`です。
 
-> <strong>ノート：</strong>
+> **ノート：**
 >
 > -   この機能を使用できるのは、 [処理する](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_process)の権限を持つユーザーのみです。
 > -   `TIDB_DECODE_SQL_DIGESTS`が実行されると、TiDBはステートメントサマリーテーブルから各SQLダイジェストに対応するステートメントをクエリするため、対応するステートメントがどのSQLダイジェストでも常に検出される保証はありません。クラスタで実行されたステートメントのみを見つけることができ、これらのSQLステートメントを照会できるかどうかは、ステートメント要約テーブルの関連する構成によっても影響を受けます。ステートメント要約テーブルの詳細な説明については、 [ステートメント要約表](/statement-summary-tables.md)を参照してください。
-> -   この関数はオーバーヘッドが高くなります。行数が多いクエリ（たとえば、大規模でビジーなクラスタで`information_schema.cluster_tidb_trx`のテーブル全体をクエリする場合）では、この関数を使用すると、クエリの実行時間が長すぎる可能性があります。注意して使用してください。
->     -   この関数は、呼び出されるたびに`STATEMENTS_SUMMARY` 、および`STATEMENTS_SUMMARY_HISTORY`のテーブルを内部的にクエリし、クエリには`CLUSTER_STATEMENTS_SUMMARY`の操作が含まれるため、オーバーヘッドが高く`UNION` `CLUSTER_STATEMENTS_SUMMARY_HISTORY` 。この関数は現在、ベクトル化をサポートしていません。つまり、データの複数の行に対してこの関数を呼び出す場合、上記のクエリは行ごとに個別に実行されます。
+> -   この関数はオーバーヘッドが高くなります。行数が多いクエリ（たとえば、大規模でビジーなクラスタで`information_schema.cluster_tidb_trx`のテーブル全体をクエリする）では、この関数を使用すると、クエリの実行時間が長すぎる可能性があります。注意して使用してください。
+>     -   この関数は、呼び出されるたびに`STATEMENTS_SUMMARY` 、および`STATEMENTS_SUMMARY_HISTORY`テーブルを内部的にクエリし、クエリには`CLUSTER_STATEMENTS_SUMMARY`操作が含まれるため、オーバーヘッドが高く`UNION` `CLUSTER_STATEMENTS_SUMMARY_HISTORY` 。この関数は現在、ベクトル化をサポートしていません。つまり、データの複数の行に対してこの関数を呼び出す場合、上記のクエリは行ごとに個別に実行されます。
 
 {{< copyable "" >}}
 
@@ -207,7 +207,7 @@ select tidb_decode_sql_digests(@digests);
 1 row in set (0.00 sec)
 ```
 
-上記の例では、パラメーターは3つのSQLダイジェストを含むJSON配列であり、対応するSQLステートメントはクエリ結果の3つの項目です。ただし、2番目のSQLダイジェストに対応するSQLステートメントがクラスターから見つからないため、結果の2番目の項目は`null`です。
+上記の例では、パラメーターは3つのSQLダイジェストを含むJSON配列であり、対応するSQLステートメントはクエリ結果の3つの項目です。ただし、2番目のSQLダイジェストに対応するSQLステートメントがクラスタから見つからないため、結果の2番目の項目は`null`です。
 
 {{< copyable "" >}}
 
